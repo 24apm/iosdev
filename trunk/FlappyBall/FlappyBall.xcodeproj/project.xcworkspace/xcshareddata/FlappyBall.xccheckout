@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>27AF820E-3D5E-41CC-81C7-DBE387AAE936</string>
+	<key>IDESourceControlProjectName</key>
+	<string>FlappyBall</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>BFB18324-EDDA-439E-8C5A-E11DE76A685D</key>
+		<string>https://github.com/24apm/Bird.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Bird/FlappyBall.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>BFB18324-EDDA-439E-8C5A-E11DE76A685D</key>
+		<string>../..</string>
+		<key>C4BAAAF8-D14E-4992-BF7D-4828C5DBA951</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/24apm/Bird.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>C4BAAAF8-D14E-4992-BF7D-4828C5DBA951</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>BFB18324-EDDA-439E-8C5A-E11DE76A685D</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Bird</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>C4BAAAF8-D14E-4992-BF7D-4828C5DBA951</string>
+			<key>IDESourceControlWCCName</key>
+			<string>iosdev</string>
+		</dict>
+	</array>
+</dict>
+</plist>
