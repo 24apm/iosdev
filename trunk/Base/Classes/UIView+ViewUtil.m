@@ -1,6 +1,6 @@
 //
 //  UIView+ViewUtil.m
-//  FlappyBall
+//  Base
 //
 //  Created by MacCoder on 2/8/14.
 //  Copyright (c) 2014 MacCoder. All rights reserved.
