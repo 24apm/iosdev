@@ -71,7 +71,7 @@
 		D0F6849F18B31C3E00CBB819 /* WorldObjectView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F6848318B31C3E00CBB819 /* WorldObjectView.m */; };
 		D0F684A018B31C3E00CBB819 /* XibView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F6848518B31C3E00CBB819 /* XibView.m */; };
 		D0F684A118B31C3E00CBB819 /* FXLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F6848818B31C3E00CBB819 /* FXLabel.m */; };
-		D0F684A218B31C3E00CBB819 /* GameCenterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F6848C18B31C3E00CBB819 /* GameCenterManager.m */; };
+		D0F684A218B31C3E00CBB819 /* GameCenterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F6848C18B31C3E00CBB819 /* GameCenterManager.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		D0F684A318B31C3E00CBB819 /* iRate.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D0F6848E18B31C3E00CBB819 /* iRate.bundle */; };
 		D0F684A418B31C3E00CBB819 /* iRate.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F6849018B31C3E00CBB819 /* iRate.m */; };
 		D0F684A518B31C3E00CBB819 /* THLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F6849318B31C3E00CBB819 /* THLabel.m */; };

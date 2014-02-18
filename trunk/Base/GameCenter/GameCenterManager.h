@@ -44,7 +44,7 @@
  Copyright (C) 2010 Apple Inc. All Rights Reserved.
  
  */
-
+// -fno-objc-arc
 #import <Foundation/Foundation.h>
 
 
