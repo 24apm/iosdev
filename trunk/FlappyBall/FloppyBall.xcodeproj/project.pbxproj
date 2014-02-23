@@ -518,6 +518,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = MacCoder;
 				TargetAttributes = {
+					D0E30E8018A376E300FFD3CE = {
+						DevelopmentTeam = YS47XTCZZB;
+					};
 					D0E30EA118A376E300FFD3CE = {
 						TestTargetID = D0E30E8018A376E300FFD3CE;
 					};
@@ -737,11 +740,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Jeffrey Wan (MT34DA8UCA)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Jeffrey Wan (YS47XTCZZB)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FlappyBall/FloppyBall-Prefix.pch";
 				INFOPLIST_FILE = "FlappyBall/FloppyBall-Info.plist";
 				PRODUCT_NAME = FloppyBall;
+				PROVISIONING_PROFILE = "3D31D0BB-2A2E-4909-A386-FDD53F3FEA78";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -752,11 +757,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Jeffrey Wan (MT34DA8UCA)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Jeffrey Wan (YS47XTCZZB)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jeffrey Wan (YS47XTCZZB)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FlappyBall/FloppyBall-Prefix.pch";
 				INFOPLIST_FILE = "FlappyBall/FloppyBall-Info.plist";
 				PRODUCT_NAME = FloppyBall;
+				PROVISIONING_PROFILE = "3D31D0BB-2A2E-4909-A386-FDD53F3FEA78";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -767,6 +774,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/FlappyBall.app/FlappyBall";
+				CODE_SIGN_IDENTITY = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -780,6 +788,7 @@
 				);
 				INFOPLIST_FILE = "FlappyBallTests/FlappyBallTests-Info.plist";
 				PRODUCT_NAME = FloppyBallTests;
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -790,6 +799,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/FlappyBall.app/FlappyBall";
+				CODE_SIGN_IDENTITY = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -799,6 +809,7 @@
 				GCC_PREFIX_HEADER = "FlappyBall/FlappyBall-Prefix.pch";
 				INFOPLIST_FILE = "FlappyBallTests/FlappyBallTests-Info.plist";
 				PRODUCT_NAME = FloppyBallTests;
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};

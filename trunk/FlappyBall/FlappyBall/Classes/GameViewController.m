@@ -198,7 +198,6 @@
             self.menuButton.hidden = YES;
             self.highestScoreText.hidden = YES;
             self.maxScoreLabel.hidden = YES;
-            self.resultView.sharedText = [NSString stringWithFormat:@"High Score: %d!", self.maxScore];
             [self showResult];
             break;
         default:

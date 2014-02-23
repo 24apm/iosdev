@@ -163,6 +163,7 @@
         return;
     }
     
+    self.sharedText = [NSString stringWithFormat:@"High Score: %d!", self.maxScore];
     if ([SLComposeViewController isAvailableForServiceType:socialType]) {
         // Initialize Compose View Controller
         SLComposeViewController *vc = [SLComposeViewController composeViewControllerForServiceType:socialType];
