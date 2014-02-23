@@ -21,7 +21,7 @@
 - (void)setup {
     [super setup];
     
-    if (BLACK_AND_WHITE_MODE) {
+    if (NO && BLACK_AND_WHITE_MODE) {
         self.pipeTopView.image = nil;
         self.pipeTopView.backgroundColor = [UIColor clearColor];
         self.pipeDownView.image = nil;
@@ -32,9 +32,9 @@
         self.pipeDownView.layer.borderWidth = 3.f * IPAD_SCALE;
     }
     
-    self.properties.speedMin = CGPointMake(OBSTACLE_SPEED * IPAD_SCALE, 0.f);
+    self.properties.speedMin = CGPointMake(OBSTACLE_SPEED_MAX * IPAD_SCALE, 0.f);
     self.properties.speedMax = CGPointMake(0.f, 0.f);
-    self.properties.speed = CGPointMake(OBSTACLE_SPEED * IPAD_SCALE, 0.f);
+    self.properties.speed = CGPointMake(OBSTACLE_SPEED_MAX * IPAD_SCALE, 0.f);
 }
 
 - (void)setupGapDistance:(float)gapDistance gapCenterY:(float)gapCenterY {

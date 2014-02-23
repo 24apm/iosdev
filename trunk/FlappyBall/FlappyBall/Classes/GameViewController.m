@@ -20,10 +20,6 @@
 #import "SoundManager.h"
 #import "MenuView.h"
 
-#define SOUND_EFFECT_BUMP @"bumpEffect"
-#define SOUND_EFFECT_BOUNCE @"bounceEffect"
-#define SOUND_EFFECT_BLING @"blingEffect"
-
 @interface GameViewController ()
 
 @property (strong, nonatomic) NSMutableArray *worldObstacles;
@@ -77,7 +73,7 @@
     self.resultView.hidden = YES;
     self.resultView.size = self.containerView.size;
     self.resultView.vc = self;
-    self.resultView.sharedImage = self.ladyBugView.imageView.image;
+    self.resultView.sharedImage = [UIImage imageNamed:@"FlappyBallIcon60x60.png"];
     
     self.mainView = [[MainView alloc] init];
     [self.containerView addSubview:self.mainView];
@@ -100,6 +96,9 @@
     [[SoundManager instance] prepare:SOUND_EFFECT_BUMP count:2];
     [[SoundManager instance] prepare:SOUND_EFFECT_BOUNCE count:5];
     [[SoundManager instance] prepare:SOUND_EFFECT_BLING count:2];
+    [[SoundManager instance] prepare:SOUND_EFFECT_DUN1 count:1];
+    [[SoundManager instance] prepare:SOUND_EFFECT_DUN2 count:1];
+    [[SoundManager instance] prepare:SOUND_EFFECT_DUN3 count:1];
 }
 
 - (void)gameViewsHidden:(BOOL)hidden {
@@ -250,14 +249,27 @@
 
 - (void)resetPipe:(PipeView *)pipeView {
     float randomY = [Utils randBetweenMin:self.view.frame.size.height * 0.3f max:self.view.frame.size.height * 0.7f];
-    [pipeView setupGapDistance:self.ladyBugView.frame.size.height * OBSTACLE_GAP_BY_CHARACTER_MULTIPLIER gapCenterY:randomY];
+    
+    float limit = OBSTACLE_GAP_BY_CHARACTER_MULTIPLIER_MIN;
+    float current = OBSTACLE_GAP_BY_CHARACTER_MULTIPLIER_MAX - self.score/OBSTACLE_GAP_BY_CHARACTER_MULTIPLIER_INCREASE_STEP_OVER_X_SCORES * OBSTACLE_GAP_BY_CHARACTER_MULTIPLIER_STEP;
+    float gapHeightMultiplier = MAX(current, limit);
+    
+    [pipeView setupGapDistance:self.ladyBugView.frame.size.height * gapHeightMultiplier gapCenterY:randomY];
     [self.scorableObjects addObject:pipeView];
     if (self.lastGeneratedPipe) {
         pipeView.x = self.lastGeneratedPipe.x + self.view.width * OBSTACLE_GAP_BY_SCREEN_WIDTH_PERCENTAGE;
     } else {
         pipeView.x = self.view.width * 1.5f;
     }
+    pipeView.properties.speed = [self currentPipeSpeed];
     self.lastGeneratedPipe = pipeView;
+}
+
+- (CGPoint)currentPipeSpeed {
+    float limitPipeVelocity = OBSTACLE_SPEED_MIN;
+    float currentPipeVelocity = OBSTACLE_SPEED_MAX - self.score/OBSTACLE_SPEED_INCREASE_STEP_OVER_X_SCORES * OBSTACLE_SPEED_STEP;
+    float pipeVelocity = MAX(currentPipeVelocity, limitPipeVelocity);
+    return CGPointMake(pipeVelocity * IPAD_SCALE, 0.f);
 }
 
 - (void)resetPipes {
@@ -299,8 +311,10 @@
     [self initialize];
     [self.mainView show];
     
-    [self createAdBannerView];
-    [self.view addSubview:self.adBannerView];
+    if (ENABLE_AD) {
+        [self createAdBannerView];
+        [self.view addSubview:self.adBannerView];
+    }
     [self loginToGameCenter];
 }
 
@@ -321,6 +335,7 @@
         
         if (self.isGameOver) {
             [[SoundManager instance] play:SOUND_EFFECT_BUMP];
+            [self updateGameState:GameStateResultMode];
         }
         self.isGameOver = YES;
     }
@@ -421,7 +436,7 @@
 
 - (void)resumeObstacles {
     for (PipeView *pipeView in self.worldObstacles) {
-        pipeView.properties.speed = CGPointMake(OBSTACLE_SPEED * IPAD_SCALE, 0.f);
+        pipeView.properties.speed = [self currentPipeSpeed];
     }
 }
 
@@ -454,7 +469,9 @@
     if (isGameOver) {
         [self animateCollision];
         [self stopObstacles];
-        [self updateGameState:GameStateResultMode];
+        if (self.ladyBugView.isPaused) {
+            [self updateGameState:GameStateResultMode];
+        }
     } else {
         [self resumeObstacles];
     }

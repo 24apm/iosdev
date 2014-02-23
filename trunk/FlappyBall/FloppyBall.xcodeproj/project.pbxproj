@@ -55,6 +55,10 @@
 		D0E30EA518A376E300FFD3CE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E30E8418A376E300FFD3CE /* Foundation.framework */; };
 		D0E30EA618A376E300FFD3CE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E30E8818A376E300FFD3CE /* UIKit.framework */; };
 		D0E30EDF18A37D6400FFD3CE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E30EDE18A37D6400FFD3CE /* QuartzCore.framework */; };
+		D0E48D7118B9B40B0052F48D /* Wall160x960.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E48D7018B9B40A0052F48D /* Wall160x960.png */; };
+		D0E48D7518B9BF9D0052F48D /* dun1.caf in Resources */ = {isa = PBXBuildFile; fileRef = D0E48D7218B9BF9D0052F48D /* dun1.caf */; };
+		D0E48D7618B9BF9D0052F48D /* dun2.caf in Resources */ = {isa = PBXBuildFile; fileRef = D0E48D7318B9BF9D0052F48D /* dun2.caf */; };
+		D0E48D7718B9BF9D0052F48D /* dun3.caf in Resources */ = {isa = PBXBuildFile; fileRef = D0E48D7418B9BF9D0052F48D /* dun3.caf */; };
 		D0EDB82818A8A55100C103F5 /* bumpEffect.caf in Resources */ = {isa = PBXBuildFile; fileRef = D0EDB82718A8A55100C103F5 /* bumpEffect.caf */; };
 		D0EE1F2D18AB4BE800AD7C8F /* blingEffect.caf in Resources */ = {isa = PBXBuildFile; fileRef = D0EE1F2C18AB4BE800AD7C8F /* blingEffect.caf */; };
 		D0F6849418B31C3E00CBB819 /* AnimUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F6846C18B31C3E00CBB819 /* AnimUtil.m */; };
@@ -152,6 +156,10 @@
 		D0E30EA218A376E300FFD3CE /* FloppyBallTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FloppyBallTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0E30EA318A376E300FFD3CE /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		D0E30EDE18A37D6400FFD3CE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		D0E48D7018B9B40A0052F48D /* Wall160x960.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Wall160x960.png; sourceTree = "<group>"; };
+		D0E48D7218B9BF9D0052F48D /* dun1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = dun1.caf; sourceTree = "<group>"; };
+		D0E48D7318B9BF9D0052F48D /* dun2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = dun2.caf; sourceTree = "<group>"; };
+		D0E48D7418B9BF9D0052F48D /* dun3.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = dun3.caf; sourceTree = "<group>"; };
 		D0EDB82718A8A55100C103F5 /* bumpEffect.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = bumpEffect.caf; sourceTree = "<group>"; };
 		D0EE1F2C18AB4BE800AD7C8F /* blingEffect.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = blingEffect.caf; sourceTree = "<group>"; };
 		D0F6846B18B31C3E00CBB819 /* AnimUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimUtil.h; sourceTree = "<group>"; };
@@ -351,6 +359,7 @@
 		D0E50A2818A7349300AA353E /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				D0E48D7018B9B40A0052F48D /* Wall160x960.png */,
 				D0C79E7F18AF4BFD0032BDB8 /* FlappyBall2.png */,
 				D04BEBA418ADECAD00DB72F5 /* Floor.png */,
 				D048A83D18ACAAAB00411DF9 /* facebook_share.png */,
@@ -448,6 +457,9 @@
 		D0F7853418A8655800CA1ADA /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				D0E48D7218B9BF9D0052F48D /* dun1.caf */,
+				D0E48D7318B9BF9D0052F48D /* dun2.caf */,
+				D0E48D7418B9BF9D0052F48D /* dun3.caf */,
 				D0EE1F2C18AB4BE800AD7C8F /* blingEffect.caf */,
 				D0EDB82718A8A55100C103F5 /* bumpEffect.caf */,
 				D0F7853718A8659F00CA1ADA /* bounceEffect.caf */,
@@ -537,6 +549,7 @@
 				D08FE3FC18B305F10031D798 /* MainView~ipad.xib in Resources */,
 				D08FE3FD18B305F10031D798 /* MainWindow.xib in Resources */,
 				D0C79E8018AF4BFD0032BDB8 /* FlappyBall2.png in Resources */,
+				D0E48D7518B9BF9D0052F48D /* dun1.caf in Resources */,
 				D08FE3FA18B305F10031D798 /* LadyBugView~ipad.xib in Resources */,
 				D08FE3E618B305F10031D798 /* FloorView.xib in Resources */,
 				D08FE3F418B305F10031D798 /* BackgroundView.xib in Resources */,
@@ -555,11 +568,14 @@
 				D08FE3FF18B305F10031D798 /* MenuView~ipad.xib in Resources */,
 				D08FE40118B305F10031D798 /* PipeView~ipad.xib in Resources */,
 				D08FE3F718B305F10031D798 /* GameViewController.xib in Resources */,
+				D0E48D7718B9BF9D0052F48D /* dun3.caf in Resources */,
 				D0F7853818A8659F00CA1ADA /* bounceEffect.caf in Resources */,
+				D0E48D7618B9BF9D0052F48D /* dun2.caf in Resources */,
 				D08FE40018B305F10031D798 /* PipeView.xib in Resources */,
 				D08FE3F918B305F10031D798 /* LadyBugView.xib in Resources */,
 				D048A83F18ACAAAB00411DF9 /* facebook_share.png in Resources */,
 				D08FE3F518B305F10031D798 /* BackgroundView~ipad.xib in Resources */,
+				D0E48D7118B9B40B0052F48D /* Wall160x960.png in Resources */,
 				D08FE40318B305F10031D798 /* ResultView~ipad.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -32,12 +32,22 @@
 }
 
 - (void)play {
+    if (self.soundEffects.count <= 0) { return; }
+    
+    SoundEffect *soundEffect = [self.soundEffects objectAtIndex:self.index];
+    [soundEffect play];
+
+    self.index++;
     if (self.index >= self.soundEffects.count) {
         self.index = 0;
     }
+}
+
+- (NSTimeInterval)duration {
+    if (self.soundEffects.count <= 0) { return 0; }
+    
     SoundEffect *soundEffect = [self.soundEffects objectAtIndex:self.index];
-    [soundEffect play];
-    self.index++;
+    return [soundEffect duration];
 }
 
 @end

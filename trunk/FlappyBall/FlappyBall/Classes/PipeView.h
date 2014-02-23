@@ -13,7 +13,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *pipeTopView;
 @property (weak, nonatomic) IBOutlet UIImageView *pipeDownView;
 
-
 - (void)setupGapDistance:(float)gapDistance gapCenterY:(float)gapCenterY;
 
 @end

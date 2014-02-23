@@ -29,6 +29,7 @@
     if (BLACK_AND_WHITE_MODE) {
    //     [self blackAndWhite];
     }
+    self.isPaused = NO;
     self.currentState = LadyBugViewStateTutorialMode;
     [self refresh];
 }
@@ -77,12 +78,14 @@
 }
 
 - (void)paused {
+    self.isPaused = YES;
     self.properties.speed = CGPointMake(0.f, 0.f);
     self.properties.acceleration = CGPointMake(0.f, 0.f);
     self.properties.gravity = CGPointMake(0.f, 0.f);
 }
 
 - (void)resume {
+    self.isPaused = NO;
     self.properties.speed = CGPointMake(0.f, 2.f * IPAD_SCALE);
     self.properties.acceleration = CGPointMake(0.f, 0.f);
     self.properties.gravity = CGPointMake(0.f, GRAVITY * IPAD_SCALE);

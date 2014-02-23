@@ -49,4 +49,12 @@
     }
 }
 
+- (NSTimeInterval)duration:(NSString *)fileName {
+    SoundEffectHelper *soundEffect = [self.soundEffects objectForKey:fileName];
+    if (!soundEffect) {
+        [self prepare:fileName];
+    }
+    return [soundEffect duration];
+}
+
 @end

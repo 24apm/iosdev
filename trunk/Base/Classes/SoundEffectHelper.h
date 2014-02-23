@@ -12,5 +12,6 @@
 
 - (id)initAVSoundNamed:(NSString *)fileName withCount:(int)count;
 - (void)play;
+- (NSTimeInterval)duration;
 
 @end

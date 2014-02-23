@@ -10,6 +10,8 @@
 #import <Social/Social.h>
 #import "AnimUtil.h"
 #import "iRate.h"
+#import "SoundManager.h"
+#import "GameConstants.h"
 
 @interface ResultView()
 
@@ -51,7 +53,8 @@
     self.currentScoreLabel.text = [NSString stringWithFormat:@"%d", self.currentScore];
     self.maxScoreLabel.text = [NSString stringWithFormat:@"%d", self.lastMaxScore];
     self.step = ceil((float)self.targetScore / (RESULT_VIEW_SCORE_LABEL_ANIMATION_TOTAL_DURATION/RESULT_VIEW_SCORE_LABEL_ANIMATION_STEP_DURATION));
-   
+    self.transform = CGAffineTransformIdentity;
+    
     [UIView animateWithDuration:RESULT_VIEW_VIEW_TOTAL_DURATION * 0.9f animations:^{
         self.y = -self.height * 0.05f;
     } completion:^(BOOL complete) {
@@ -59,11 +62,51 @@
             self.y = 0.f;
         } completion:^(BOOL complete) {
             [self performSelector:@selector(animateLabel) withObject:nil afterDelay:0.4f];
+            [self performSelector:@selector(part1) withObject:nil afterDelay:0.6f];
+            [self performSelector:@selector(part2) withObject:nil afterDelay:0.85f];
+            [self performSelector:@selector(part3) withObject:nil afterDelay:1.09f];
         }];
     }];
     
     [[iRate sharedInstance] promptIfNetworkAvailable];
 }
+
+- (void)part1 {
+    [[SoundManager instance] play:SOUND_EFFECT_DUN1];
+    CGFloat angle = M_PI * 0.05f;
+    [UIView animateWithDuration:0.1f animations:^{
+        self.transform = CGAffineTransformMakeRotation(angle);
+        self.transform = CGAffineTransformScale(self.transform, 1.1f, 1.1f);
+    }];
+}
+
+- (void)part2 {
+    [[SoundManager instance] play:SOUND_EFFECT_DUN2];
+    CGFloat angle = -M_PI * 0.05f;
+    [UIView animateWithDuration:0.1f animations:^{
+        self.transform = CGAffineTransformMakeRotation(angle);
+        self.transform = CGAffineTransformScale(self.transform, 1.15f, 1.15f);
+    }];
+}
+
+- (void)part3 {
+    [[SoundManager instance] play:SOUND_EFFECT_DUN3];
+    CGFloat angle = M_PI * 0.10f;
+    [UIView animateWithDuration:0.1f animations:^{
+        self.transform = CGAffineTransformMakeRotation(angle);
+        self.transform = CGAffineTransformScale(self.transform, 1.3f, 1.3f);
+    }];
+}
+
+- (void)hide {
+    self.transform = CGAffineTransformIdentity;
+    [UIView animateWithDuration:0.3f animations:^{
+        self.y = self.height;
+    } completion:^(BOOL complete) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:RESULT_VIEW_DISMISSED_NOTIFICATION object:self];
+    }];
+}
+
 
 - (void)updateScoreLabel {
     self.currentScoreLabel.text = [NSString stringWithFormat:@"%d", self.currentScore];
@@ -137,14 +180,5 @@
     // Present Activity View Controller
     [self.vc presentViewController:vc animated:YES completion:nil];
 }
-
-- (void)hide {
-    [UIView animateWithDuration:0.3f animations:^{
-        self.y = self.height;
-    } completion:^(BOOL complete) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:RESULT_VIEW_DISMISSED_NOTIFICATION object:self];
-    }];
-}
-
 
 @end

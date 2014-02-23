@@ -19,6 +19,7 @@ typedef enum {
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (nonatomic) LadyBugViewState currentState;
 @property (nonatomic) CGPoint startingPoint;
+@property (nonatomic) BOOL isPaused;
 
 - (void)drawStep;
 - (void)paused;
