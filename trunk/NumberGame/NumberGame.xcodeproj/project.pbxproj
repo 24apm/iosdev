@@ -15,6 +15,7 @@
 		D048A84018ACAAAB00411DF9 /* twitter_share.png in Resources */ = {isa = PBXBuildFile; fileRef = D048A83E18ACAAAB00411DF9 /* twitter_share.png */; };
 		D048A84618ACB25200411DF9 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D048A84518ACB25200411DF9 /* GameKit.framework */; };
 		D04BEBA518ADECAD00DB72F5 /* Floor.png in Resources */ = {isa = PBXBuildFile; fileRef = D04BEBA418ADECAD00DB72F5 /* Floor.png */; };
+		D04E827218BA8FE9007E1081 /* ProgressBarComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = D04E827118BA8FE9007E1081 /* ProgressBarComponent.m */; };
 		D04F704218AA1197000509AA /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D04F704118AA1197000509AA /* Social.framework */; };
 		D05A830D18B3223C003C18EB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D05A82DC18B3223C003C18EB /* AppDelegate.m */; };
 		D05A830E18B3223C003C18EB /* BackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = D05A82DF18B3223C003C18EB /* BackgroundView.m */; };
@@ -102,6 +103,8 @@
 		D048A83E18ACAAAB00411DF9 /* twitter_share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twitter_share.png; sourceTree = "<group>"; };
 		D048A84518ACB25200411DF9 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		D04BEBA418ADECAD00DB72F5 /* Floor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Floor.png; sourceTree = "<group>"; };
+		D04E827018BA8FE9007E1081 /* ProgressBarComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressBarComponent.h; sourceTree = "<group>"; };
+		D04E827118BA8FE9007E1081 /* ProgressBarComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressBarComponent.m; sourceTree = "<group>"; };
 		D04F704118AA1197000509AA /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		D05A82DB18B3223C003C18EB /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D05A82DC18B3223C003C18EB /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -239,6 +242,15 @@
 			);
 			name = Icons;
 			path = Resources/Icons;
+			sourceTree = "<group>";
+		};
+		D04E826F18BA8FCD007E1081 /* Componenets */ = {
+			isa = PBXGroup;
+			children = (
+				D04E827018BA8FE9007E1081 /* ProgressBarComponent.h */,
+				D04E827118BA8FE9007E1081 /* ProgressBarComponent.m */,
+			);
+			path = Componenets;
 			sourceTree = "<group>";
 		};
 		D05A82DA18B3223C003C18EB /* NumberGame */ = {
@@ -389,6 +401,7 @@
 		D0F6846A18B31C3E00CBB819 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				D04E826F18BA8FCD007E1081 /* Componenets */,
 				D0F6846B18B31C3E00CBB819 /* AnimUtil.h */,
 				D0F6846C18B31C3E00CBB819 /* AnimUtil.m */,
 				D0F6846D18B31C3E00CBB819 /* Base-Prefix.pch */,
@@ -617,6 +630,7 @@
 				D0F6849F18B31C3E00CBB819 /* WorldObjectView.m in Sources */,
 				D0F6849E18B31C3E00CBB819 /* WorldObjectProperties.m in Sources */,
 				D0F6849718B31C3E00CBB819 /* Hex.m in Sources */,
+				D04E827218BA8FE9007E1081 /* ProgressBarComponent.m in Sources */,
 				D0F6849C18B31C3E00CBB819 /* UIView+ViewUtil.m in Sources */,
 				D05A831318B3223C003C18EB /* MainView.m in Sources */,
 				D0F6849A18B31C3E00CBB819 /* SoundEffectHelper.m in Sources */,

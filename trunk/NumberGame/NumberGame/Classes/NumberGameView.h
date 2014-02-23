@@ -7,6 +7,7 @@
 //
 
 #import "XibView.h"
+#import "ProgressBarComponent.h"
 
 @interface NumberGameView : XibView
 
@@ -16,6 +17,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *targetNumberLabel;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *answerSlots;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *choiceSlots;
+@property (strong, nonatomic) IBOutlet ProgressBarComponent *progressBar;
 - (void)show;
 
 @end

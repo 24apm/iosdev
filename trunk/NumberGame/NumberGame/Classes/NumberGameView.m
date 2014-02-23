@@ -14,23 +14,34 @@
 
 //@property (nonatomic) int answerSlotsNum;
 
+@property (nonatomic, retain) NSTimer *timer;
+@property (nonatomic) double nextExpireTime;
+@property (nonatomic) double maxTime;
+
 @end
 
 @implementation NumberGameView
-
-- (id)init {
-    self = [super init];
-    if (self) {
-        [self setup];
-    }
-    return self;
-}
 
 - (void)setup {
     [super setup];
     for (int i = 0; i < self.choiceSlots.count; i++) {
         UIButton *choice = [self.choiceSlots objectAtIndex:i];
         choice.tag = i+1;
+    }
+    
+    self.maxTime = 30.f;
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(updateProgressBar) userInfo:nil repeats:YES];
+
+}
+
+- (void)updateProgressBar {
+    float percentage = (self.nextExpireTime - CACurrentMediaTime()) / self.maxTime;
+
+    if (percentage > 0) {
+        [self.progressBar fillBar:percentage animated:YES];
+    } else {
+        [self.progressBar fillBar:0.f animated:YES];
+        [self.timer invalidate];
     }
 }
 
@@ -40,7 +51,7 @@
     NSDictionary *data = [[NumberManager instance] generateLevel];
     int targetValue = [[data objectForKey:@"targetNumber"] intValue];
     NSArray *array = [data objectForKey:@"algebra"];
-    self.targetNumberLabel.text = [NSString stringWithFormat:@"%d",targetValue];
+        self.targetNumberLabel.text = [NSString stringWithFormat:@"%d",targetValue];
     for(int i = 0; i < self.choiceSlots.count; i++) {
         UIButton *slot = [self.choiceSlots objectAtIndex:i];
         NSString *arrayTitle;
@@ -50,9 +61,20 @@
                 arrayTitle = array[i];
             }
             [slot setTitle:arrayTitle forState:UIControlStateNormal];
-        
+        slot.enabled = YES;
+    }
+    [self resetAnswers];
+    
+    self.nextExpireTime = CACurrentMediaTime() + self.maxTime;
+}
+
+- (void)resetAnswers {
+    for (UIButton *slot in self.answerSlots) {
+        slot.tag = 0;
+        [slot setTitle:@"?" forState:UIControlStateNormal];
     }
 }
+
 - (void)show {
     [UIView animateWithDuration:0.3f animations:^ {
         self.transform = CGAffineTransformIdentity;

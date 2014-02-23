@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NumberGameView">
             <connections>
+                <outlet property="progressBar" destination="mbY-ts-gvF" id="0PM-zu-4H8"/>
                 <outlet property="targetNumberLabel" destination="af0-cU-D9a" id="AgM-Ku-RL1"/>
                 <outletCollection property="answerSlots" destination="w0S-wh-Nx6" id="ux6-aq-KGg"/>
                 <outletCollection property="answerSlots" destination="yw5-b7-1tl" id="KxR-Sq-a24"/>
@@ -154,6 +155,27 @@
                         <action selector="choiceSlotPressed:" destination="-1" eventType="touchUpInside" id="xJ9-aF-SnU"/>
                     </connections>
                 </button>
+                <view contentMode="scaleToFill" id="mbY-ts-gvF" customClass="ProgressBarComponent">
+                    <rect key="frame" x="10" y="95" width="300" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" id="hSh-JJ-FCb" userLabel="Background">
+                            <rect key="frame" x="0.0" y="0.0" width="300" height="20"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
+                        <view contentMode="scaleToFill" id="QP2-1b-JMO" userLabel="Foreground">
+                            <rect key="frame" x="0.0" y="0.0" width="300" height="20"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.27843138579999999" green="0.84705889229999998" blue="0.45098042490000001" alpha="1" colorSpace="deviceRGB"/>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="backgroundView" destination="hSh-JJ-FCb" id="hdx-rv-IxP"/>
+                        <outlet property="foregroundView" destination="QP2-1b-JMO" id="stL-9m-XiD"/>
+                    </connections>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
