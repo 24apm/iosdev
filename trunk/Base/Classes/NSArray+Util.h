@@ -13,3 +13,9 @@
 - (id) randomObject;
 
 @end
+
+@interface NSMutableArray (Util)
+
+- (void) randomArray;
+
+@end

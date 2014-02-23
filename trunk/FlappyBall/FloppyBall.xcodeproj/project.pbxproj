@@ -121,8 +121,8 @@
 		D08FE3C818B305F10031D798 /* TutorialView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialView.h; sourceTree = "<group>"; };
 		D08FE3C918B305F10031D798 /* TutorialView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialView.m; sourceTree = "<group>"; };
 		D08FE3CB18B305F10031D798 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		D08FE3CC18B305F10031D798 /* FlappyBall-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "FlappyBall-Info.plist"; sourceTree = "<group>"; };
-		D08FE3CD18B305F10031D798 /* FlappyBall-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FlappyBall-Prefix.pch"; sourceTree = "<group>"; };
+		D08FE3CC18B305F10031D798 /* FloppyBall-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "FloppyBall-Info.plist"; sourceTree = "<group>"; };
+		D08FE3CD18B305F10031D798 /* FloppyBall-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FloppyBall-Prefix.pch"; sourceTree = "<group>"; };
 		D08FE3CE18B305F10031D798 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D08FE3CF18B305F10031D798 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D08FE3D118B305F10031D798 /* BackgroundView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BackgroundView.xib; sourceTree = "<group>"; };
@@ -145,11 +145,11 @@
 		D08FE3E218B305F10031D798 /* TutorialView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TutorialView.xib; sourceTree = "<group>"; };
 		D08FE3E318B305F10031D798 /* TutorialView~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "TutorialView~ipad.xib"; sourceTree = "<group>"; };
 		D0C79E7F18AF4BFD0032BDB8 /* FlappyBall2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FlappyBall2.png; sourceTree = "<group>"; };
-		D0E30E8118A376E300FFD3CE /* FlappyBall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlappyBall.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0E30E8118A376E300FFD3CE /* FloppyBall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FloppyBall.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0E30E8418A376E300FFD3CE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D0E30E8618A376E300FFD3CE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		D0E30E8818A376E300FFD3CE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		D0E30EA218A376E300FFD3CE /* FlappyBallTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlappyBallTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0E30EA218A376E300FFD3CE /* FloppyBallTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FloppyBallTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0E30EA318A376E300FFD3CE /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		D0E30EDE18A37D6400FFD3CE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D0EDB82718A8A55100C103F5 /* bumpEffect.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = bumpEffect.caf; sourceTree = "<group>"; };
@@ -232,19 +232,20 @@
 			path = Resources/Icons;
 			sourceTree = "<group>";
 		};
-		D08FE3B118B305F10031D798 /* FlappyBall */ = {
+		D08FE3B118B305F10031D798 /* FloppyBall */ = {
 			isa = PBXGroup;
 			children = (
 				D08FE3B218B305F10031D798 /* AppDelegate.h */,
 				D08FE3B318B305F10031D798 /* AppDelegate.m */,
 				D08FE3B418B305F10031D798 /* Classes */,
 				D08FE3CA18B305F10031D798 /* InfoPlist.strings */,
-				D08FE3CC18B305F10031D798 /* FlappyBall-Info.plist */,
-				D08FE3CD18B305F10031D798 /* FlappyBall-Prefix.pch */,
+				D08FE3CC18B305F10031D798 /* FloppyBall-Info.plist */,
+				D08FE3CD18B305F10031D798 /* FloppyBall-Prefix.pch */,
 				D08FE3CE18B305F10031D798 /* Images.xcassets */,
 				D08FE3CF18B305F10031D798 /* main.m */,
 				D08FE3D018B305F10031D798 /* Xib */,
 			);
+			name = FloppyBall;
 			path = FlappyBall;
 			sourceTree = "<group>";
 		};
@@ -306,7 +307,7 @@
 			isa = PBXGroup;
 			children = (
 				D0F6846918B31C3E00CBB819 /* Base */,
-				D08FE3B118B305F10031D798 /* FlappyBall */,
+				D08FE3B118B305F10031D798 /* FloppyBall */,
 				D0E30ECD18A3780B00FFD3CE /* Resources */,
 				D0E30E8318A376E300FFD3CE /* Frameworks */,
 				D0E30E8218A376E300FFD3CE /* Products */,
@@ -316,8 +317,8 @@
 		D0E30E8218A376E300FFD3CE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D0E30E8118A376E300FFD3CE /* FlappyBall.app */,
-				D0E30EA218A376E300FFD3CE /* FlappyBallTests.xctest */,
+				D0E30E8118A376E300FFD3CE /* FloppyBall.app */,
+				D0E30EA218A376E300FFD3CE /* FloppyBallTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -458,9 +459,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D0E30E8018A376E300FFD3CE /* FlappyBall */ = {
+		D0E30E8018A376E300FFD3CE /* FloppyBall */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D0E30EB318A376E300FFD3CE /* Build configuration list for PBXNativeTarget "FlappyBall" */;
+			buildConfigurationList = D0E30EB318A376E300FFD3CE /* Build configuration list for PBXNativeTarget "FloppyBall" */;
 			buildPhases = (
 				D0E30E7D18A376E300FFD3CE /* Sources */,
 				D0E30E7E18A376E300FFD3CE /* Frameworks */,
@@ -470,14 +471,14 @@
 			);
 			dependencies = (
 			);
-			name = FlappyBall;
+			name = FloppyBall;
 			productName = Bird;
-			productReference = D0E30E8118A376E300FFD3CE /* FlappyBall.app */;
+			productReference = D0E30E8118A376E300FFD3CE /* FloppyBall.app */;
 			productType = "com.apple.product-type.application";
 		};
-		D0E30EA118A376E300FFD3CE /* FlappyBallTests */ = {
+		D0E30EA118A376E300FFD3CE /* FloppyBallTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D0E30EB618A376E300FFD3CE /* Build configuration list for PBXNativeTarget "FlappyBallTests" */;
+			buildConfigurationList = D0E30EB618A376E300FFD3CE /* Build configuration list for PBXNativeTarget "FloppyBallTests" */;
 			buildPhases = (
 				D0E30E9E18A376E300FFD3CE /* Sources */,
 				D0E30E9F18A376E300FFD3CE /* Frameworks */,
@@ -488,9 +489,9 @@
 			dependencies = (
 				D0E30EA818A376E300FFD3CE /* PBXTargetDependency */,
 			);
-			name = FlappyBallTests;
+			name = FloppyBallTests;
 			productName = BirdTests;
-			productReference = D0E30EA218A376E300FFD3CE /* FlappyBallTests.xctest */;
+			productReference = D0E30EA218A376E300FFD3CE /* FloppyBallTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -507,7 +508,7 @@
 					};
 				};
 			};
-			buildConfigurationList = D0E30E7C18A376E300FFD3CE /* Build configuration list for PBXProject "FlappyBall" */;
+			buildConfigurationList = D0E30E7C18A376E300FFD3CE /* Build configuration list for PBXProject "FloppyBall" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -520,8 +521,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D0E30E8018A376E300FFD3CE /* FlappyBall */,
-				D0E30EA118A376E300FFD3CE /* FlappyBallTests */,
+				D0E30E8018A376E300FFD3CE /* FloppyBall */,
+				D0E30EA118A376E300FFD3CE /* FloppyBallTests */,
 			);
 		};
 /* End PBXProject section */
@@ -622,7 +623,7 @@
 /* Begin PBXTargetDependency section */
 		D0E30EA818A376E300FFD3CE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D0E30E8018A376E300FFD3CE /* FlappyBall */;
+			target = D0E30E8018A376E300FFD3CE /* FloppyBall */;
 			targetProxy = D0E30EA718A376E300FFD3CE /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -716,10 +717,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jeffrey Wan (MT34DA8UCA)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "FlappyBall/FlappyBall-Prefix.pch";
-				INFOPLIST_FILE = "FlappyBall/FlappyBall-Info.plist";
-				PRODUCT_NAME = FlappyBall;
+				GCC_PREFIX_HEADER = "FlappyBall/FloppyBall-Prefix.pch";
+				INFOPLIST_FILE = "FlappyBall/FloppyBall-Info.plist";
+				PRODUCT_NAME = FloppyBall;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -730,10 +732,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jeffrey Wan (MT34DA8UCA)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "FlappyBall/FlappyBall-Prefix.pch";
-				INFOPLIST_FILE = "FlappyBall/FlappyBall-Info.plist";
-				PRODUCT_NAME = FlappyBall;
+				GCC_PREFIX_HEADER = "FlappyBall/FloppyBall-Prefix.pch";
+				INFOPLIST_FILE = "FlappyBall/FloppyBall-Info.plist";
+				PRODUCT_NAME = FloppyBall;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -756,7 +759,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "FlappyBallTests/FlappyBallTests-Info.plist";
-				PRODUCT_NAME = FlappyBallTests;
+				PRODUCT_NAME = FloppyBallTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -775,7 +778,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FlappyBall/FlappyBall-Prefix.pch";
 				INFOPLIST_FILE = "FlappyBallTests/FlappyBallTests-Info.plist";
-				PRODUCT_NAME = FlappyBallTests;
+				PRODUCT_NAME = FloppyBallTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -784,7 +787,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D0E30E7C18A376E300FFD3CE /* Build configuration list for PBXProject "FlappyBall" */ = {
+		D0E30E7C18A376E300FFD3CE /* Build configuration list for PBXProject "FloppyBall" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D0E30EB118A376E300FFD3CE /* Debug */,
@@ -793,7 +796,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D0E30EB318A376E300FFD3CE /* Build configuration list for PBXNativeTarget "FlappyBall" */ = {
+		D0E30EB318A376E300FFD3CE /* Build configuration list for PBXNativeTarget "FloppyBall" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D0E30EB418A376E300FFD3CE /* Debug */,
@@ -802,7 +805,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D0E30EB618A376E300FFD3CE /* Build configuration list for PBXNativeTarget "FlappyBallTests" */ = {
+		D0E30EB618A376E300FFD3CE /* Build configuration list for PBXNativeTarget "FloppyBallTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D0E30EB718A376E300FFD3CE /* Debug */,

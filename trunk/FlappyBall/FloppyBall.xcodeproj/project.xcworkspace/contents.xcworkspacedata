@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:FlappyBall.xcodeproj">
+      location = "self:FloppyBall.xcodeproj">
    </FileRef>
 </Workspace>

@@ -7,19 +7,40 @@
 //
 
 #import "NSArray+Util.h"
-
+#import "Utils.h"
 @interface NSArray()
 
 @end
 
 @implementation NSArray (Util)
 
-- (id) randomObject
-{
+- (id) randomObject {
     if ([self count] == 0) {
         return nil;
     }
     return [self objectAtIndex: arc4random() % [self count]];
+}
+
+@end
+
+@interface NSMutableArray()
+
+@end
+
+@implementation NSMutableArray (Util)
+
+- (void)randomArray {
+    if ([self count] == 0) {
+        return;
+    }
+    int totalNumber = [self count];
+    for (int i = 0; i < totalNumber; i++) {
+        int index = [Utils randBetweenMinInt:0 max:totalNumber - 1];
+        id oldElement = [self objectAtIndex:i];
+        id newElement = [self objectAtIndex:(index)];
+        [self replaceObjectAtIndex:i withObject:newElement];
+        [self replaceObjectAtIndex:index withObject:oldElement];
+    }
 }
 
 @end

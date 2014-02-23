@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D0E30E8018A376E300FFD3CE"
-               BuildableName = "FlappyBall.app"
-               BlueprintName = "FlappyBall"
-               ReferencedContainer = "container:FlappyBall.xcodeproj">
+               BuildableName = "FloppyBall.app"
+               BlueprintName = "FloppyBall"
+               ReferencedContainer = "container:FloppyBall.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D0E30EA118A376E300FFD3CE"
-               BuildableName = "FlappyBallTests.xctest"
-               BlueprintName = "FlappyBallTests"
-               ReferencedContainer = "container:FlappyBall.xcodeproj">
+               BuildableName = "FloppyBallTests.xctest"
+               BlueprintName = "FloppyBallTests"
+               ReferencedContainer = "container:FloppyBall.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -43,9 +43,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D0E30E8018A376E300FFD3CE"
-            BuildableName = "FlappyBall.app"
-            BlueprintName = "FlappyBall"
-            ReferencedContainer = "container:FlappyBall.xcodeproj">
+            BuildableName = "FloppyBall.app"
+            BlueprintName = "FloppyBall"
+            ReferencedContainer = "container:FloppyBall.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D0E30E8018A376E300FFD3CE"
-            BuildableName = "FlappyBall.app"
-            BlueprintName = "FlappyBall"
-            ReferencedContainer = "container:FlappyBall.xcodeproj">
+            BuildableName = "FloppyBall.app"
+            BlueprintName = "FloppyBall"
+            ReferencedContainer = "container:FloppyBall.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -80,9 +80,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D0E30E8018A376E300FFD3CE"
-            BuildableName = "FlappyBall.app"
-            BlueprintName = "FlappyBall"
-            ReferencedContainer = "container:FlappyBall.xcodeproj">
+            BuildableName = "FloppyBall.app"
+            BlueprintName = "FloppyBall"
+            ReferencedContainer = "container:FloppyBall.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

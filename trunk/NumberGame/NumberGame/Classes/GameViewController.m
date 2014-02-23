@@ -19,7 +19,8 @@
 #import "SoundEffect.h"
 #import "SoundManager.h"
 #import "MenuView.h"
-
+#import "NumberManager.h"
+#import "NumberGameView.h"
 #define SOUND_EFFECT_BUMP @"bumpEffect"
 #define SOUND_EFFECT_BOUNCE @"bounceEffect"
 #define SOUND_EFFECT_BLING @"blingEffect"
@@ -41,6 +42,7 @@
 @property (strong, nonatomic) ResultView *resultView;
 @property (strong, nonatomic) MainView *mainView;
 @property (strong, nonatomic) MenuView *menuView;
+@property (strong, nonatomic) NumberGameView *numberGameView;
 
 @end
 
@@ -83,6 +85,13 @@
     [self.containerView addSubview:self.mainView];
     self.mainView.hidden = YES;
     self.mainView.size = self.containerView.size;
+    
+    self.numberGameView = [[NumberGameView alloc] init];
+    [self.containerView addSubview:self.numberGameView ];
+    self.numberGameView.hidden = YES;
+    self.numberGameView.size = self.containerView.size;
+    
+    
     
     self.menuView = [[MenuView alloc] init];
     [self.containerView addSubview:self.menuView];
@@ -158,12 +167,13 @@
     self.resultView.hidden = YES;
     self.menuView.hidden = YES;
     self.menuButton.hidden = YES;
-    
+    self.numberGameView.hidden = YES;
+
     switch (self.currentGameState) {
         case GameStateMainMode:
             self.isRunning = YES;
-            self.mainView.hidden = NO;
-            [self.mainView show];
+            self.numberGameView.hidden = NO;
+            [self.numberGameView show];
             break;
         case GameStateTutorialMode:
             [self gameViewsHidden:NO];
@@ -302,6 +312,29 @@
     [self createAdBannerView];
     [self.view addSubview:self.adBannerView];
     [self loginToGameCenter];
+  
+//    NSDictionary *data = [[NumberManager instance] generateLevel];
+//    int targetValue = [[data objectForKey:@"targetValue"] intValue];
+//    NSArray *array = [data objectForKey:@"algebra"];
+//   /*
+//    NSArray *attemptedAnswer = blah bah;
+//    BOOL isCorrect = [[NumberManager instance] checkAlgebra:attemptedAnswer targetValue:targetValue];
+//*/
+//    NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
+//    for (int i = 0; i < 1000; i++) {
+//        int rand = [Utils randBetweenMinInt:5 max:10];
+//        NSString *key = [NSString stringWithFormat:@"%d",rand];
+//        if (![dictionary objectForKey:key]) {
+//            [dictionary setObject:[NSNumber numberWithInt:1] forKey:key];
+//        } else {
+//            int count = [[dictionary objectForKey:key] intValue];
+//            count++;
+//            [dictionary setObject:[NSNumber numberWithInt:count] forKey:key];
+//        }
+//    }
+//    for(NSString *key in [dictionary allKeys]) {
+//        NSLog(@"key:%@ count:%@",key, [dictionary objectForKey:key]);
+//    }
 }
 
 - (void)didReceiveMemoryWarning

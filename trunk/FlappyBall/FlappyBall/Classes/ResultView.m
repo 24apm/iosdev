@@ -94,12 +94,16 @@
     UIButton *button = sender;
     int tag = button.tag;
     NSString *socialType = nil;
+    NSString *socialString = @"";
+    
     switch (tag) {
         case 1:
             socialType = SLServiceTypeTwitter;
+            socialString = @"Twitter";
             break;
         case 2:
             socialType = SLServiceTypeFacebook;
+            socialString = @"Facebook";
             break;
         default:
             break;
@@ -117,7 +121,7 @@
         // Present Compose View Controller
         [self.vc presentViewController:vc animated:YES completion:nil];
     } else {
-        NSString *message = [NSString stringWithFormat:@"It seems that we cannot talk to %@ at the moment or you have not yet added your %@ account to this device. Go to the Settings application to add your %@ account to this device.", button.titleLabel.text, button.titleLabel.text, button.titleLabel.text];
+        NSString *message = [NSString stringWithFormat:@"It seems that we cannot talk to %@ at the moment or you have not yet added your %@ account to this device. Go to the Settings application to add your %@ account to this device.", socialString, socialString, socialString];
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Oops" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alertView show];
     }

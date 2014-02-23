@@ -15,5 +15,6 @@
 
 + (CGSize)screenSize;
 + (float)randBetweenMin:(int)min max:(int)max;
++ (int)randBetweenMinInt:(int)min max:(int)max;
 
 @end
