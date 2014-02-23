@@ -62,9 +62,6 @@
             self.y = 0.f;
         } completion:^(BOOL complete) {
             [self performSelector:@selector(animateLabel) withObject:nil afterDelay:0.4f];
-            [self performSelector:@selector(part1) withObject:nil afterDelay:0.6f];
-            [self performSelector:@selector(part2) withObject:nil afterDelay:0.85f];
-            [self performSelector:@selector(part3) withObject:nil afterDelay:1.09f];
         }];
     }];
     
@@ -98,7 +95,13 @@
     }];
 }
 
+- (void)part4 {
+    [[SoundManager instance] play:SOUND_EFFECT_HALLELUJAH];
+    self.playButton.enabled = YES;
+}
+
 - (void)hide {
+    [NSObject cancelPreviousPerformRequestsWithTarget:self];
     self.transform = CGAffineTransformIdentity;
     [UIView animateWithDuration:0.3f animations:^{
         self.y = self.height;
@@ -115,8 +118,9 @@
         self.currentScoreLabel.text = [NSString stringWithFormat:@"%d", self.targetScore];
         if (self.maxScore > self.lastMaxScore) {
             [self performSelector:@selector(updateMaxLabel) withObject:nil afterDelay:0.2f];
+        } else {
+            self.playButton.enabled = YES;
         }
-        self.playButton.enabled = YES;
     } else {
         self.currentScore += self.step;
     }
@@ -127,6 +131,10 @@
     self.maxScoreLabel.text = [NSString stringWithFormat:@"%d", self.maxScore];
     [AnimUtil wobble:self.maxScoreLabel duration:0.2f angle:M_PI/128.f repeatCount:6.f];
     [AnimUtil wobble:self.recordLabel duration:0.2f angle:M_PI/128.f repeatCount:6.f];
+    [self performSelector:@selector(part1) withObject:nil afterDelay:0.6f];
+    [self performSelector:@selector(part2) withObject:nil afterDelay:0.85f];
+    [self performSelector:@selector(part3) withObject:nil afterDelay:1.09f];
+    [self performSelector:@selector(part4) withObject:nil afterDelay:2.09f];
 }
 
 - (void)animateLabel {

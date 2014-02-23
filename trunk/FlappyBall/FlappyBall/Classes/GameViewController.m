@@ -95,10 +95,11 @@
 - (void)preloadSounds {
     [[SoundManager instance] prepare:SOUND_EFFECT_BUMP count:2];
     [[SoundManager instance] prepare:SOUND_EFFECT_BOUNCE count:5];
-    [[SoundManager instance] prepare:SOUND_EFFECT_BLING count:2];
+    [[SoundManager instance] prepare:SOUND_EFFECT_BLING count:4];
     [[SoundManager instance] prepare:SOUND_EFFECT_DUN1 count:1];
     [[SoundManager instance] prepare:SOUND_EFFECT_DUN2 count:1];
     [[SoundManager instance] prepare:SOUND_EFFECT_DUN3 count:1];
+    [[SoundManager instance] prepare:SOUND_EFFECT_HALLELUJAH count:1];
 }
 
 - (void)gameViewsHidden:(BOOL)hidden {
@@ -248,7 +249,7 @@
 }
 
 - (void)resetPipe:(PipeView *)pipeView {
-    float randomY = [Utils randBetweenMin:self.view.frame.size.height * 0.3f max:self.view.frame.size.height * 0.7f];
+    float randomY = [Utils randBetweenMin:self.view.frame.size.height * 0.4f max:self.view.frame.size.height * 0.7f];
     
     float limit = OBSTACLE_GAP_BY_CHARACTER_MULTIPLIER_MIN;
     float current = OBSTACLE_GAP_BY_CHARACTER_MULTIPLIER_MAX - self.score/OBSTACLE_GAP_BY_CHARACTER_MULTIPLIER_INCREASE_STEP_OVER_X_SCORES * OBSTACLE_GAP_BY_CHARACTER_MULTIPLIER_STEP;
