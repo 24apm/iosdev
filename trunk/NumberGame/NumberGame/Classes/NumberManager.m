@@ -11,6 +11,7 @@
 
 @interface NumberManager()
 
+
 @end
 
 @implementation NumberManager
@@ -28,13 +29,15 @@
     // do stuff
     int tiles = 3;
     int choiceSlots = 9;
-    NSMutableArray *algebra = [NSMutableArray arrayWithArray:[self generateAnswerFor:tiles]];
+    
+    NSMutableArray *algebra = [NSMutableArray arrayWithArray:[self generateAlgebraFor:tiles]];
     int numberIndex = 2;
     int operatorIndex = 1;
     int targetNumber = [((NSNumber *)algebra[0])intValue];
     int nextNumber = [((NSNumber *)algebra[numberIndex])intValue];
-    NSString *operator = algebra[operatorIndex];
+    NSString *operator = [algebra objectAtIndex:operatorIndex];
     for (int i = 0; i <= tiles - 3; i = i + 2) {
+        
         if ([operator isEqualToString:@"*"]) {
             targetNumber = targetNumber * nextNumber;
         } else if ([operator isEqualToString:@"+"]) {
@@ -49,19 +52,19 @@
                 switch (reset) {
                     case 0:
                         targetNumber = targetNumber * nextNumber;
-                        algebra[operatorIndex] = @"*";
+                        [algebra replaceObjectAtIndex:operatorIndex withObject:@"*"];
                         break;
                     case 1:
                         targetNumber = targetNumber - nextNumber;
-                        algebra[operatorIndex] = @"-";
+                        [algebra replaceObjectAtIndex:operatorIndex withObject:@"-"];
                         break;
                     case 2:
                         targetNumber = targetNumber + nextNumber;
-                        algebra[operatorIndex] = @"+";
+                        [algebra replaceObjectAtIndex:operatorIndex withObject:@"+"];
                         break;
                     default:
                         targetNumber = targetNumber * nextNumber;
-                        algebra[operatorIndex] = @"*";
+                        [algebra replaceObjectAtIndex:operatorIndex withObject:@"*"];
                         break;
                 }
             }
@@ -69,19 +72,22 @@
         if (numberIndex + 2 <= tiles) {
             numberIndex += 2;
             operatorIndex += 2;
-            nextNumber = [((NSNumber *)algebra[numberIndex])intValue];
-            operator = algebra[operatorIndex];
+            nextNumber = [[algebra objectAtIndex:numberIndex]intValue];
+            operator = [algebra objectAtIndex:operatorIndex];
         }
     }
-    int algebraSize = algebra.count-1;
+    
+    self.currentGeneratedAnswer = [algebra mutableCopy];
+
+    // adding fillers
+    int algebraSize = algebra.count;
     int maxNumberRange = 10;
+    NSArray *operatorArr = @[@"+", @"-", @"*", @"/"];
     while (algebraSize < choiceSlots) {
-        int randomNumOp = maxNumberRange + 4;
+        int randomNumOp = maxNumberRange + operatorArr.count;
         int filler = [Utils randBetweenMinInt:1 max:randomNumOp];
         if (filler > maxNumberRange) {
-            NSArray *operator = @[@"+", @"-", @"*", @"/"];
-            int op = [Utils randBetweenMinInt:0 max:operator.count - 1];
-            [algebra addObject:operator[op]];
+            [algebra addObject:[operatorArr objectAtIndex:filler - maxNumberRange - 1]];
             algebraSize++;
         } else {
             NSNumber *addFiller = [NSNumber numberWithInt:filler];
@@ -89,19 +95,21 @@
             algebraSize++;
         }
     }
-    
+    self.currentGeneratedFillerAnswer = [algebra mutableCopy];
+
     //for (int i = 0; i < 10; i++) {
       //  NSMutableArray *test = [NSMutableArray arrayWithArray:@[@(1),@(2),@(3),@(4),@(5),@(6),@"7",@"8",@"9"]];
         //[test randomArray];
         //NSLog(@"%@", test);
  //   }
     
-    [algebra randomArray];
+    [algebra shuffle];
     [dictionary setObject:algebra forKey:@"algebra"];
     [dictionary setObject:@(targetNumber) forKey:@"targetNumber"];
     // Dictionary:
     // "algrebra" => ["12", "+", "32", "-", "2", ...],
     // "targetValue" => 123
+    self.currentGeneratedShuffledAnswer = [algebra mutableCopy];
 
     return dictionary;
 }
@@ -146,20 +154,18 @@
     return isCorrect;
 }
 
-- (NSArray *)generateAnswerFor:(int)input {
+- (NSArray *)generateAlgebraFor:(int)input {
     NSArray *operator = @[@"+", @"-", @"*", @"/"];
     NSMutableArray *array = [NSMutableArray array];
     for (int i = 0; i < input; i++) {
-        int test = i % 2;
-        if (test <= 0) {
-        array[i] = [NSNumber numberWithInt:[Utils randBetweenMinInt:1 max:10]];
+        if (i % 2 == 0) {
+            [array addObject:[NSNumber numberWithInt:[Utils randBetweenMinInt:1 max:10]]];
         } else {
             int op = [Utils randBetweenMinInt:0 max:operator.count - 1];
-            array[i] = operator[op];
+            [array addObject:operator[op]];
         }
     }
     return array;
-    
 }
 
 - (NSArray *)stringConverter:(NSArray *)algebra {

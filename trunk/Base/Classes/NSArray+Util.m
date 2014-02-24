@@ -29,7 +29,7 @@
 
 @implementation NSMutableArray (Util)
 
-- (void)randomArray {
+- (void)shuffle {
     if ([self count] == 0) {
         return;
     }

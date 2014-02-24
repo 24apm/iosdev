@@ -96,27 +96,10 @@
 
 
 - (IBAction)answerSlotPressed:(UIButton *)sender {
-    //    NSString *resetting = @"?";
-    //    if (self.answerSlotsNum > 2) {
-    //        self.answerSlotsNum = 2;
-    //    }
-    //    if (self.answerSlotsNum >= 0 && ![sender.titleLabel.text isEqualToString:@"?"]) {
-    //        UIButton *slot = self.answerSlots[self.answerSlotsNum];
-    //        [slot setTitle:resetting forState:UIControlStateNormal];
-    //        self.answerSlotsNum--;
-    //    }
-    //
     [self removeSlot:sender];
 }
 
 - (IBAction)choiceSlotPressed:(UIButton *)sender {
-    //    NSString *chosenNumber = sender.titleLabel.text;
-    //    if (self.answerSlotsNum < 3) {
-    //    UIButton *slot = self.answerSlots[self.answerSlotsNum];
-    //    [slot setTitle:chosenNumber forState:UIControlStateNormal];
-    //    self.answerSlotsNum++;
-    //    }
-    
     [self fillSlot:sender];
 }
 

@@ -16,6 +16,6 @@
 
 @interface NSMutableArray (Util)
 
-- (void) randomArray;
+- (void) shuffle;
 
 @end

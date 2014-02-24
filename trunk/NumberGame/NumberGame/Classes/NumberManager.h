@@ -13,6 +13,10 @@
 + (NumberManager *)instance;
 - (NSDictionary *)generateLevel;
 - (BOOL)checkAlgebra:(NSArray *)algrebra targetValue:(float)targetValue;
-- (NSArray *)generateAnswerFor:(int)input;
+- (NSArray *)generateAlgebraFor:(int)input;
+
+@property (nonatomic, retain) NSMutableArray *currentGeneratedAnswer;
+@property (nonatomic, retain) NSMutableArray *currentGeneratedFillerAnswer;
+@property (nonatomic, retain) NSMutableArray *currentGeneratedShuffledAnswer;
 
 @end
