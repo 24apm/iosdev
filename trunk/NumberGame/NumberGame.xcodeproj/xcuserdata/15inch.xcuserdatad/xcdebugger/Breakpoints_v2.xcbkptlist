@@ -82,27 +82,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "NumberGame/Classes/NumberGameView.m"
-            timestampString = "414896526.051491"
+            timestampString = "414910004.787867"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "127"
-            endingLineNumber = "127"
-            landmarkName = "-fillSlot:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "NumberGame/Classes/NumberGameView.m"
-            timestampString = "414896526.051491"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
+            startingLineNumber = "221"
+            endingLineNumber = "221"
             landmarkName = "-fillSlot:"
             landmarkType = "5">
          </BreakpointContent>

@@ -9,6 +9,8 @@
 #import "NumberGameView.h"
 #import "NumberManager.h"
 #import "Utils.h"
+#import "InGameMessageView.h"
+#import "GameConstants.h"
 
 @interface NumberGameView ()
 
@@ -17,6 +19,9 @@
 @property (nonatomic, retain) NSTimer *timer;
 @property (nonatomic) double nextExpireTime;
 @property (nonatomic) double maxTime;
+@property (nonatomic, retain) UIColor *numberBackgroundColor;
+@property (nonatomic, retain) UIColor *operatorBackgroundColor;
+@property (nonatomic, retain) InGameMessageView *messageView;
 
 @end
 
@@ -31,7 +36,24 @@
     
     self.maxTime = 30.f;
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(updateProgressBar) userInfo:nil repeats:YES];
+    
+    self.numberBackgroundColor = [UIColor colorWithRed:84.f/255.f green:255.f/255.f blue:136.f/255.f alpha:1.0f];
+    self.operatorBackgroundColor = [UIColor colorWithRed:67.f/255.f green:204.f/255.f blue:109.f/255.f alpha:1.0f];
+    
+    
+    self.messageView = [[InGameMessageView alloc] init];
+    [self addSubview:self.messageView];
+    self.messageView.frame = self.frame;
+    self.messageView.hidden = YES;
+}
 
+- (IBAction)cheatPressed:(id)sender {
+    self.cheatLabel.hidden = !self.cheatLabel.hidden;
+    
+    NSString *myString = [NSString stringWithFormat:@"%@", [[NumberManager instance] currentGeneratedAnswer]];
+    NSString *newString = [[myString componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]] componentsJoinedByString:@""];
+
+    self.cheatLabel.text = newString;
 }
 
 - (void)updateProgressBar {
@@ -48,30 +70,55 @@
 - (void)refreshGame {
     // self.answerSlotsNum = 0;
     //int maxNumberRange = 10;
-    NSDictionary *data = [[NumberManager instance] generateLevel];
+    NSDictionary *data = [[NumberManager instance] generateLevel:self.answerSlots.count choiceSlots:self.choiceSlots.count];
     int targetValue = [[data objectForKey:@"targetNumber"] intValue];
     NSArray *array = [data objectForKey:@"algebra"];
-        self.targetNumberLabel.text = [NSString stringWithFormat:@"%d",targetValue];
+    
+    [self refreshChoices:array];
+    [self resetAnswers];
+    self.targetNumberLabel.text = [NSString stringWithFormat:@"%d",targetValue];
+    
+    self.nextExpireTime = CACurrentMediaTime() + self.maxTime;
+    self.cheatLabel.hidden = YES;
+}
+
+- (void)refreshChoices:(NSArray *)array {
     for(int i = 0; i < self.choiceSlots.count; i++) {
         UIButton *slot = [self.choiceSlots objectAtIndex:i];
         NSString *arrayTitle;
-            if ([array[i] isKindOfClass: [NSNumber class]]) {
-                arrayTitle = [NSString stringWithFormat:@"%d", [((NSNumber *)array[i])intValue]];
-            } else{
-                arrayTitle = array[i];
-            }
-            [slot setTitle:arrayTitle forState:UIControlStateNormal];
-        slot.enabled = YES;
+        if ([array[i] isKindOfClass: [NSNumber class]]) {
+            arrayTitle = [NSString stringWithFormat:@"%d", [((NSNumber *)array[i])intValue]];
+            slot.backgroundColor = self.numberBackgroundColor;
+        } else{
+            slot.backgroundColor = self.operatorBackgroundColor;
+            arrayTitle = array[i];
+        }
+        [slot setTitle:arrayTitle forState:UIControlStateNormal];
     }
-    [self resetAnswers];
-    
-    self.nextExpireTime = CACurrentMediaTime() + self.maxTime;
+    [self resetChoices];
+}
+
+- (void)resetChoices {
+    for(int i = 0; i < self.choiceSlots.count; i++) {
+        UIButton *slot = [self.choiceSlots objectAtIndex:i];
+        [slot setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        slot.layer.cornerRadius = slot.height * 0.1f;
+    }
 }
 
 - (void)resetAnswers {
-    for (UIButton *slot in self.answerSlots) {
+    for (int i = 0; i < self.answerSlots.count; i++) {
+        UIButton *slot = [self.answerSlots objectAtIndex:i];
         slot.tag = 0;
         [slot setTitle:@"?" forState:UIControlStateNormal];
+        if (i % 2 == 0) {
+            slot.layer.borderColor = self.numberBackgroundColor.CGColor;
+        } else {
+            slot.layer.borderColor = self.operatorBackgroundColor.CGColor;
+        }
+        slot.layer.borderWidth = 2.f * IPAD_SCALE;
+        slot.layer.cornerRadius = slot.height * 0.1f;
+        slot.backgroundColor = [UIColor clearColor];
     }
 }
 
@@ -100,22 +147,69 @@
 }
 
 - (IBAction)choiceSlotPressed:(UIButton *)sender {
-    [self fillSlot:sender];
+    BOOL hasFound = NO;
+    for (int i = 0; i < self.answerSlots.count; i++){
+        UIButton *answer = [self.answerSlots objectAtIndex:i];
+        if (sender.tag == answer.tag) {
+            [self removeSlot:answer];
+            hasFound = YES;
+            break;
+        }
+    }
+    
+    if (!hasFound) {
+        [self fillSlot:sender];
+    }
+}
+
+- (void)animate:(UIView *)fromView toView:(UIView *)toView {
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:[fromView blit]];
+    [fromView.superview addSubview:imageView];
+    imageView.frame = fromView.frame;
+    [UIView animateWithDuration:0.3f
+                          delay:0.f
+                        options:UIViewAnimationOptionCurveEaseInOut
+                     animations:^{
+                         imageView.frame = [toView.superview convertRect:toView.frame toView:fromView.superview];
+                     } completion:^(BOOL completed) {
+                         [UIView animateWithDuration:0.3f
+                                               delay:0.f
+                                             options:UIViewAnimationOptionCurveEaseInOut
+                                          animations:^{
+                                              imageView.alpha = 0.3f;
+                                          } completion:^(BOOL completed) {
+                                              [imageView removeFromSuperview];
+                                          }];
+                     }];
 }
 
 - (void)fillSlot:(UIButton *)choice {
     // find first empty slot
     NSMutableArray *algebra = [NSMutableArray array];
+    NSString *choiceString = [choice titleForState:UIControlStateNormal];
+    BOOL isOperator = [[NumberManager instance] isOperator:choiceString];
     for(int i = 0; i < self.answerSlots.count; i++) {
         UIButton *slot = self.answerSlots[i];
         // fill the slot with choice button if there is one
         if ([slot.titleLabel.text isEqualToString:@"?"]) {
-            [slot setTitle:[choice titleForState:UIControlStateNormal] forState:UIControlStateNormal];
+            if (isOperator && i % 2 == 0) {
+                [self animateIncorrectAnswer];
+                break;
+            }
+            
+            if (!isOperator && i % 2 == 1) {
+                [self animateIncorrectAnswer];
+                break;
+            }
+            [slot setTitle:choiceString forState:UIControlStateNormal];
             //  disable current choice
             
-            choice.enabled = NO;
+            [choice setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
             //  set slot with choice's tag (keep reference)
             slot.tag = choice.tag;
+            
+            
+            [self animate:choice toView:slot];
             break;
         }
     }
@@ -133,8 +227,25 @@
         float targetValue = [self.targetNumberLabel.text floatValue];
         BOOL isCorrect =[[NumberManager instance] checkAlgebra:algebra targetValue:targetValue];
         if (isCorrect) {
+            [self.messageView show];
             [self refreshGame];
+        } else {
+            [self animateIncorrectAnswer];
         }
+    }
+}
+
+- (void)animateIncorrectAnswer {
+    for (UIButton *slot in self.answerSlots) {
+        UIColor *cachedColor = slot.backgroundColor;
+        [UIView animateWithDuration:0.1f
+                              delay:0.f
+                            options:UIViewAnimationOptionAutoreverse
+                         animations:^{
+                             slot.backgroundColor = [UIColor redColor];
+                         } completion:^(BOOL completed) {
+                             slot.backgroundColor = cachedColor;
+                         }];
     }
 }
 
@@ -148,7 +259,9 @@
         for (int i = 0; i < self.choiceSlots.count; i++){
             UIButton *choice = [self.choiceSlots objectAtIndex:i];
             if (choice.tag == slot.tag) {
-                choice.enabled = YES;
+                [choice setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+                [self animate:slot toView:choice];
+
                 slot.tag = 0;
                 [slot setTitle:@"?" forState:UIControlStateNormal];
             }

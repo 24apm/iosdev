@@ -11,9 +11,10 @@
 @interface NumberManager : NSObject
 
 + (NumberManager *)instance;
-- (NSDictionary *)generateLevel;
+- (NSDictionary *)generateLevel:(int)answerSlots choiceSlots:(int)choiceSlots;
 - (BOOL)checkAlgebra:(NSArray *)algrebra targetValue:(float)targetValue;
 - (NSArray *)generateAlgebraFor:(int)input;
+- (BOOL)isOperator:(id)object;
 
 @property (nonatomic, retain) NSMutableArray *currentGeneratedAnswer;
 @property (nonatomic, retain) NSMutableArray *currentGeneratedFillerAnswer;

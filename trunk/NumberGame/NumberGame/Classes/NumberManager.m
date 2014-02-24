@@ -11,7 +11,6 @@
 
 @interface NumberManager()
 
-
 @end
 
 @implementation NumberManager
@@ -24,11 +23,10 @@
     return instance;
 }
 
-- (NSDictionary *)generateLevel {
+- (NSDictionary *)generateLevel:(int)answerSlots choiceSlots:(int)choiceSlots {
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
     // do stuff
-    int tiles = 3;
-    int choiceSlots = 9;
+    int tiles = answerSlots;
     
     NSMutableArray *algebra = [NSMutableArray arrayWithArray:[self generateAlgebraFor:tiles]];
     int numberIndex = 2;
@@ -117,9 +115,7 @@
 - (BOOL)checkAlgebra:(NSArray *)algebra targetValue:(float)targetValue {
     
     BOOL isCorrect = NO;
-    NSMutableArray *answer;
-    answer = [NSMutableArray arrayWithArray:[self stringConverter:algebra]];
-    int tiles = 3;
+    int tiles = algebra.count;
     int numberIndex = 2;
     int operatorIndex = 1;
     int attemptAnswer = [((NSNumber *)algebra[0])intValue];
@@ -169,16 +165,29 @@
 }
 
 - (NSArray *)stringConverter:(NSArray *)algebra {
-    NSMutableArray *attemptAnswer;
+    NSMutableArray *attemptAnswer = [NSMutableArray array];
     for (int i = 0; i < algebra.count; i++) {
         if (i % 2) {
-            NSNumber *number;
-            number = [algebra objectAtIndex:i];
-            [[attemptAnswer objectAtIndex:i] addObject:number];
+            NSNumber *number = [algebra objectAtIndex:i];
+            [attemptAnswer addObject:number];
         } else {
-            [[attemptAnswer objectAtIndex:i] addObject:[algebra objectAtIndex:i]];
+            [attemptAnswer addObject:[algebra objectAtIndex:i]];
         }
     }
         return attemptAnswer;
 }
+
+- (BOOL)isOperator:(id)object {
+    if ([object isKindOfClass:[NSString class]]) {
+        NSArray *operators = @[@"+", @"-", @"*", @"/"];
+        NSString *temp = object;
+        for (NSString *op in operators) {
+            if ([temp isEqualToString:op]) {
+                return YES;
+            }
+        }
+    }
+    return NO;
+}
+
 @end

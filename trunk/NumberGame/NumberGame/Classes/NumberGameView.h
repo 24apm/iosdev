@@ -18,6 +18,10 @@
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *answerSlots;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *choiceSlots;
 @property (strong, nonatomic) IBOutlet ProgressBarComponent *progressBar;
+
+@property (strong, nonatomic) IBOutlet UIButton *cheatButton;
+@property (strong, nonatomic) IBOutlet UILabel *cheatLabel;
+
 - (void)show;
 
 @end

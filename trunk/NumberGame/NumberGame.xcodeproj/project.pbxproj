@@ -60,6 +60,9 @@
 		D0E30EA518A376E300FFD3CE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E30E8418A376E300FFD3CE /* Foundation.framework */; };
 		D0E30EA618A376E300FFD3CE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E30E8818A376E300FFD3CE /* UIKit.framework */; };
 		D0E30EDF18A37D6400FFD3CE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E30EDE18A37D6400FFD3CE /* QuartzCore.framework */; };
+		D0E364CE18BAFE8B00A5676B /* InGameMessageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E364CD18BAFE8B00A5676B /* InGameMessageView.xib */; };
+		D0E364D118BAFE9D00A5676B /* InGameMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E364D018BAFE9D00A5676B /* InGameMessageView.m */; };
+		D0E364D318BB06B700A5676B /* NumberGameView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E364D218BB06B700A5676B /* NumberGameView~ipad.xib */; };
 		D0EDB82818A8A55100C103F5 /* bumpEffect.caf in Resources */ = {isa = PBXBuildFile; fileRef = D0EDB82718A8A55100C103F5 /* bumpEffect.caf */; };
 		D0EE1F2D18AB4BE800AD7C8F /* blingEffect.caf in Resources */ = {isa = PBXBuildFile; fileRef = D0EE1F2C18AB4BE800AD7C8F /* blingEffect.caf */; };
 		D0F6849418B31C3E00CBB819 /* AnimUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F6846C18B31C3E00CBB819 /* AnimUtil.m */; };
@@ -164,6 +167,10 @@
 		D0E30EA218A376E300FFD3CE /* NumberGameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NumberGameTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0E30EA318A376E300FFD3CE /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		D0E30EDE18A37D6400FFD3CE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		D0E364CD18BAFE8B00A5676B /* InGameMessageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InGameMessageView.xib; sourceTree = "<group>"; };
+		D0E364CF18BAFE9D00A5676B /* InGameMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InGameMessageView.h; sourceTree = "<group>"; };
+		D0E364D018BAFE9D00A5676B /* InGameMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InGameMessageView.m; sourceTree = "<group>"; };
+		D0E364D218BB06B700A5676B /* NumberGameView~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "NumberGameView~ipad.xib"; sourceTree = "<group>"; };
 		D0EDB82718A8A55100C103F5 /* bumpEffect.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = bumpEffect.caf; sourceTree = "<group>"; };
 		D0EE1F2C18AB4BE800AD7C8F /* blingEffect.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = blingEffect.caf; sourceTree = "<group>"; };
 		D0F6846B18B31C3E00CBB819 /* AnimUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimUtil.h; sourceTree = "<group>"; };
@@ -295,6 +302,8 @@
 				D05A82F218B3223C003C18EB /* TutorialView.m */,
 				D0414E9618B36C6A00A296F6 /* NumberGameView.h */,
 				D0414E9718B36C6A00A296F6 /* NumberGameView.m */,
+				D0E364CF18BAFE9D00A5676B /* InGameMessageView.h */,
+				D0E364D018BAFE9D00A5676B /* InGameMessageView.m */,
 				D05A832F18B32785003C18EB /* NumberManager.h */,
 				D05A833018B32785003C18EB /* NumberManager.m */,
 			);
@@ -324,6 +333,8 @@
 				D05A830B18B3223C003C18EB /* TutorialView.xib */,
 				D05A830C18B3223C003C18EB /* TutorialView~ipad.xib */,
 				D0414E9418B36BD500A296F6 /* NumberGameView.xib */,
+				D0E364D218BB06B700A5676B /* NumberGameView~ipad.xib */,
+				D0E364CD18BAFE8B00A5676B /* InGameMessageView.xib */,
 			);
 			path = Xib;
 			sourceTree = "<group>";
@@ -568,6 +579,7 @@
 				D05A831A18B3223C003C18EB /* Images.xcassets in Resources */,
 				D05A831D18B3223C003C18EB /* BackgroundView.xib in Resources */,
 				D05A832D18B3223C003C18EB /* TutorialView.xib in Resources */,
+				D0E364D318BB06B700A5676B /* NumberGameView~ipad.xib in Resources */,
 				D05A830F18B3223C003C18EB /* FloorView.xib in Resources */,
 				D048A84018ACAAAB00411DF9 /* twitter_share.png in Resources */,
 				D0EE1F2D18AB4BE800AD7C8F /* blingEffect.caf in Resources */,
@@ -581,6 +593,7 @@
 				D0F684A318B31C3E00CBB819 /* iRate.bundle in Resources */,
 				D05A832818B3223C003C18EB /* MenuView~ipad.xib in Resources */,
 				D05A832A18B3223C003C18EB /* PipeView~ipad.xib in Resources */,
+				D0E364CE18BAFE8B00A5676B /* InGameMessageView.xib in Resources */,
 				D05A832018B3223C003C18EB /* GameViewController.xib in Resources */,
 				D0F7853818A8659F00CA1ADA /* bounceEffect.caf in Resources */,
 				D05A832918B3223C003C18EB /* PipeView.xib in Resources */,
@@ -607,6 +620,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D05A833118B32785003C18EB /* NumberManager.m in Sources */,
+				D0E364D118BAFE9D00A5676B /* InGameMessageView.m in Sources */,
 				D05A831818B3223C003C18EB /* TutorialView.m in Sources */,
 				D05A831718B3223C003C18EB /* ResultView.m in Sources */,
 				D0F6849418B31C3E00CBB819 /* AnimUtil.m in Sources */,
