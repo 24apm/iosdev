@@ -63,6 +63,7 @@
 		D0E364CE18BAFE8B00A5676B /* InGameMessageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E364CD18BAFE8B00A5676B /* InGameMessageView.xib */; };
 		D0E364D118BAFE9D00A5676B /* InGameMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E364D018BAFE9D00A5676B /* InGameMessageView.m */; };
 		D0E364D318BB06B700A5676B /* NumberGameView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E364D218BB06B700A5676B /* NumberGameView~ipad.xib */; };
+		D0E364D518BB07D800A5676B /* InGameMessageView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E364D418BB07D800A5676B /* InGameMessageView~ipad.xib */; };
 		D0EDB82818A8A55100C103F5 /* bumpEffect.caf in Resources */ = {isa = PBXBuildFile; fileRef = D0EDB82718A8A55100C103F5 /* bumpEffect.caf */; };
 		D0EE1F2D18AB4BE800AD7C8F /* blingEffect.caf in Resources */ = {isa = PBXBuildFile; fileRef = D0EE1F2C18AB4BE800AD7C8F /* blingEffect.caf */; };
 		D0F6849418B31C3E00CBB819 /* AnimUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F6846C18B31C3E00CBB819 /* AnimUtil.m */; };
@@ -171,6 +172,7 @@
 		D0E364CF18BAFE9D00A5676B /* InGameMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InGameMessageView.h; sourceTree = "<group>"; };
 		D0E364D018BAFE9D00A5676B /* InGameMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InGameMessageView.m; sourceTree = "<group>"; };
 		D0E364D218BB06B700A5676B /* NumberGameView~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "NumberGameView~ipad.xib"; sourceTree = "<group>"; };
+		D0E364D418BB07D800A5676B /* InGameMessageView~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "InGameMessageView~ipad.xib"; sourceTree = "<group>"; };
 		D0EDB82718A8A55100C103F5 /* bumpEffect.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = bumpEffect.caf; sourceTree = "<group>"; };
 		D0EE1F2C18AB4BE800AD7C8F /* blingEffect.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = blingEffect.caf; sourceTree = "<group>"; };
 		D0F6846B18B31C3E00CBB819 /* AnimUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimUtil.h; sourceTree = "<group>"; };
@@ -335,6 +337,7 @@
 				D0414E9418B36BD500A296F6 /* NumberGameView.xib */,
 				D0E364D218BB06B700A5676B /* NumberGameView~ipad.xib */,
 				D0E364CD18BAFE8B00A5676B /* InGameMessageView.xib */,
+				D0E364D418BB07D800A5676B /* InGameMessageView~ipad.xib */,
 			);
 			path = Xib;
 			sourceTree = "<group>";
@@ -595,6 +598,7 @@
 				D05A832A18B3223C003C18EB /* PipeView~ipad.xib in Resources */,
 				D0E364CE18BAFE8B00A5676B /* InGameMessageView.xib in Resources */,
 				D05A832018B3223C003C18EB /* GameViewController.xib in Resources */,
+				D0E364D518BB07D800A5676B /* InGameMessageView~ipad.xib in Resources */,
 				D0F7853818A8659F00CA1ADA /* bounceEffect.caf in Resources */,
 				D05A832918B3223C003C18EB /* PipeView.xib in Resources */,
 				D05A832218B3223C003C18EB /* LadyBugView.xib in Resources */,
