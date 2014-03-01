@@ -164,12 +164,12 @@
     return array;
 }
 
-- (NSArray *)stringConverter:(NSArray *)algebra {
+- (NSMutableArray *)stringConverter:(NSArray *)algebra {
     NSMutableArray *attemptAnswer = [NSMutableArray array];
     for (int i = 0; i < algebra.count; i++) {
-        if (i % 2) {
-            NSNumber *number = [algebra objectAtIndex:i];
-            [attemptAnswer addObject:number];
+        if ([[algebra objectAtIndex:i] isKindOfClass:[NSNumber class]]) {
+            NSString *string = [NSString stringWithFormat: @"%d",[[algebra objectAtIndex:i] intValue]];
+            [attemptAnswer addObject:string];
         } else {
             [attemptAnswer addObject:[algebra objectAtIndex:i]];
         }
@@ -188,6 +188,10 @@
         }
     }
     return NO;
+}
+
+- (NSMutableArray *)currentGeneratedAnswerInStrings {
+    return [self stringConverter:self.currentGeneratedAnswer];
 }
 
 @end

@@ -10,6 +10,7 @@
 #import <Social/Social.h>
 #import "AnimUtil.h"
 #import "iRate.h"
+#import "UserData.h"
 
 @interface ResultView()
 
@@ -22,6 +23,7 @@
 @property int step;
 @property int targetScore;
 
+@property (strong, nonatomic) IBOutlet UIImageView *imageView;
 @property (strong, nonatomic) IBOutlet UIButton *twitterButton;
 @property (strong, nonatomic) IBOutlet UIButton *facebookButton;
 
@@ -51,7 +53,7 @@
     self.currentScoreLabel.text = [NSString stringWithFormat:@"%d", self.currentScore];
     self.maxScoreLabel.text = [NSString stringWithFormat:@"%d", self.lastMaxScore];
     self.step = ceil((float)self.targetScore / (RESULT_VIEW_SCORE_LABEL_ANIMATION_TOTAL_DURATION/RESULT_VIEW_SCORE_LABEL_ANIMATION_STEP_DURATION));
-   
+    self.imageView.image = [UserData instance].lastGameSS;
     [UIView animateWithDuration:RESULT_VIEW_VIEW_TOTAL_DURATION * 0.9f animations:^{
         self.y = -self.height * 0.05f;
     } completion:^(BOOL complete) {

@@ -7,7 +7,6 @@
 //
 
 #import "GameViewController.h"
-#import "GameLoopTimer.h"
 #import "GameConstants.h"
 #import "PipeView.h"
 #import "Utils.h"
@@ -21,9 +20,10 @@
 #import "MenuView.h"
 #import "NumberManager.h"
 #import "NumberGameView.h"
-#define SOUND_EFFECT_BUMP @"bumpEffect"
-#define SOUND_EFFECT_BOUNCE @"bounceEffect"
-#define SOUND_EFFECT_BLING @"blingEffect"
+#import "GameCenterHelper.h"
+
+#define SOUND_EFFECT_BANG @"bang"
+#define SOUND_EFFECT_BOING @"boing"
 
 @interface GameViewController ()
 
@@ -49,8 +49,6 @@
 @implementation GameViewController
 
 - (void)initialize {
-    [[GameLoopTimer instance] initialize];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(drawStep) name:DRAW_STEP_NOTIFICATION object:nil];
     self.currentGameState = -1;
     self.worldObstacles = [NSMutableArray array];
     self.scorableObjects = [NSMutableArray array];
@@ -60,12 +58,14 @@
     self.lastGeneratedPipe = nil;
     _isGameOver = YES;
     [self loadUserData];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mainMenuCallback) name:RESULT_VIEW_DISMISSED_NOTIFICATION object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tutorialCallback) name:MAIN_VIEW_DISMISSED_NOTIFICATION object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resumeCallback) name:MENU_VIEW_DISMISSED_NOTIFICATION object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resultViewCallback) name:RESULT_VIEW_DISMISSED_NOTIFICATION object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mainViewCallback) name:MAIN_VIEW_DISMISSED_NOTIFICATION object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(menuViewCallback) name:MENU_VIEW_DISMISSED_NOTIFICATION object:nil];
 
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mainMenuCallback) name:MENU_VIEW_GO_TO_MAIN_MENU_NOTIFICATION object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resultViewCallback) name:MENU_VIEW_GO_TO_MAIN_MENU_NOTIFICATION object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showLeaderboard) name:SHOW_LEADERBOARD_NOTIFICATION object:nil];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(numberGameViewCallback) name: NUMBER_GAME_CALLBACK_NOTIFICATION object:nil];
 
     [self createObstacle];
     
@@ -74,12 +74,6 @@
     self.tutorialView.hidden = YES;
     self.tutorialView.size = self.containerView.size;
     
-    self.resultView = [[ResultView alloc] init];
-    [self.containerView addSubview:self.resultView];
-    self.resultView.hidden = YES;
-    self.resultView.size = self.containerView.size;
-    self.resultView.vc = self;
-    self.resultView.sharedImage = self.ladyBugView.imageView.image;
     
     self.mainView = [[MainView alloc] init];
     [self.containerView addSubview:self.mainView];
@@ -91,6 +85,12 @@
     self.numberGameView.hidden = YES;
     self.numberGameView.size = self.containerView.size;
     
+    self.resultView = [[ResultView alloc] init];
+    [self.containerView addSubview:self.resultView];
+    self.resultView.hidden = YES;
+    self.resultView.size = self.containerView.size;
+    self.resultView.vc = self;
+    self.resultView.sharedImage = self.ladyBugView.imageView.image;
     
     
     self.menuView = [[MenuView alloc] init];
@@ -106,9 +106,8 @@
 }
 
 - (void)preloadSounds {
-    [[SoundManager instance] prepare:SOUND_EFFECT_BUMP count:2];
-    [[SoundManager instance] prepare:SOUND_EFFECT_BOUNCE count:5];
-    [[SoundManager instance] prepare:SOUND_EFFECT_BLING count:2];
+    [[SoundManager instance] prepare:SOUND_EFFECT_BANG count:2];
+    [[SoundManager instance] prepare:SOUND_EFFECT_BOING count:5];
 }
 
 - (void)gameViewsHidden:(BOOL)hidden {
@@ -120,18 +119,6 @@
     self.highestScoreText.hidden = hidden;
 }
 
-- (void)saveUserData{
-    [self submitScore:self.maxScore];
-    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    [defaults setValue:@(self.maxScore) forKey:@"maxScore"];
-    [defaults synchronize];
-}
-
-- (void)submitScore:(int)score {
-    if(score > 0) {
-        [self.gameCenterManager reportScore: score forCategory: self.currentLeaderBoard];
-    }
-}
 
 - (IBAction)menuPressed:(id)sender {
     [self updateGameState:GameStateMenuMode];
@@ -142,20 +129,28 @@
     self.maxScoreLabel.text = [NSString stringWithFormat:@"%d", self.maxScore];
 }
 
-- (void)mainMenuCallback {
+- (void)resultViewCallback {
     [self updateGameState:GameStateMainMode];
 }
 
-- (void)tutorialCallback {
-    [self updateGameState:GameStateTutorialMode];
+- (void)mainViewCallback {
+    [self updateGameState:GameStateGameMode];
 }
 
-- (void)resumeCallback {
+- (void)menuViewCallback {
     if (self.isGameOver) {
         [self updateGameState:GameStateResultMode];
     } else {
         [self updateGameState:GameStateResumeMode];
     }
+}
+
+- (void)numberGameViewCallback {
+    [self updateGameState:GameStateResultMode];
+}
+
+- (void)showLeaderboard {
+    [[GameCenterHelper instance] showLeaderboard:self];
 }
 
 - (void)refresh {
@@ -172,8 +167,8 @@
     switch (self.currentGameState) {
         case GameStateMainMode:
             self.isRunning = YES;
-            self.numberGameView.hidden = NO;
-            [self.numberGameView show];
+            self.mainView.hidden = NO;
+            [self.mainView show];
             break;
         case GameStateTutorialMode:
             [self gameViewsHidden:NO];
@@ -185,10 +180,9 @@
             [self.ladyBugView refresh];
             break;
         case GameStateGameMode:
-            self.containerView.hidden = YES;
-            [self gameViewsHidden:NO];
-            self.ladyBugView.currentState = LadyBugViewStateGameMode;
-            [self.ladyBugView refresh];
+            self.numberGameView.hidden = NO;
+            [self.numberGameView show];
+            self.containerView.hidden = NO;
             break;
         case GameStateMenuMode:
             self.isRunning = NO;
@@ -203,13 +197,9 @@
             break;
         case GameStateResultMode:
             self.resultView.hidden = NO;
-            [self gameViewsHidden:NO];
-            self.scoreLabel.hidden = YES;
-            self.menuButton.hidden = YES;
-            self.highestScoreText.hidden = YES;
-            self.maxScoreLabel.hidden = YES;
-            self.resultView.sharedText = [NSString stringWithFormat:@"High Score: %d!", self.maxScore];
-            [self showResult];
+            self.numberGameView.hidden = NO;
+//            self.resultView.sharedText = [NSString stringWithFormat:@"High Score: %d!", self.maxScore];
+            [self.resultView show];
             break;
         default:
             break;
@@ -239,7 +229,6 @@
         
         self.ladyBugView.properties.acceleration = CGPointMake(self.ladyBugView.properties.acceleration.x, 0);
     }
-    [[SoundManager instance] play:SOUND_EFFECT_BOUNCE];
 }
 
 - (void)createObstacle {
@@ -288,7 +277,6 @@
     self.firstTapped = NO;
     self.lastGeneratedPipe = nil;
     [self resetPipes];
-    [self refreshLabel];
 }
 
 - (void)setFirstTapped:(BOOL)firstTapped {
@@ -311,186 +299,15 @@
     
     [self createAdBannerView];
     [self.view addSubview:self.adBannerView];
-    [self loginToGameCenter];
+    [GameCenterHelper instance].currentLeaderBoard = kLeaderboardID;
+    [[GameCenterHelper instance] loginToGameCenter];
   
-//    NSDictionary *data = [[NumberManager instance] generateLevel];
-//    int targetValue = [[data objectForKey:@"targetValue"] intValue];
-//    NSArray *array = [data objectForKey:@"algebra"];
-//   /*
-//    NSArray *attemptedAnswer = blah bah;
-//    BOOL isCorrect = [[NumberManager instance] checkAlgebra:attemptedAnswer targetValue:targetValue];
-//*/
-//    NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
-//    for (int i = 0; i < 1000; i++) {
-//        int rand = [Utils randBetweenMinInt:5 max:10];
-//        NSString *key = [NSString stringWithFormat:@"%d",rand];
-//        if (![dictionary objectForKey:key]) {
-//            [dictionary setObject:[NSNumber numberWithInt:1] forKey:key];
-//        } else {
-//            int count = [[dictionary objectForKey:key] intValue];
-//            count++;
-//            [dictionary setObject:[NSNumber numberWithInt:count] forKey:key];
-//        }
-//    }
-//    for(NSString *key in [dictionary allKeys]) {
-//        NSLog(@"key:%@ count:%@",key, [dictionary objectForKey:key]);
-//    }
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (void)boundaryTestForLadyBug {
-    if ((self.ladyBugView.y + self.ladyBugView.height) > self.view.height) {
-        self.ladyBugView.y = (self.view.height - self.ladyBugView.height);        
-        self.ladyBugView.properties.rotation = 90.f;
-        [self.ladyBugView paused];
-        
-        // not game
-        // is already game
-        
-        if (self.isGameOver) {
-            [[SoundManager instance] play:SOUND_EFFECT_BUMP];
-        }
-        self.isGameOver = YES;
-    }
-}
-
-- (void)boundaryTestForPipes {
-    if (self.isGameOver) return;
-
-    for (PipeView *pipeView in self.worldObstacles) {
-        // off map
-        if (pipeView.center.x < -pipeView.width) {
-            [self resetPipe:pipeView];
-        }
-    }
-}
-
-- (void)collisionDetection {
-    if (self.isGameOver) return;
-    
-    for (PipeView *pipe in self.worldObstacles) {
-        
-        // Screen points
-        CGRect topFrame = [pipe.pipeTopView.superview convertRect:pipe.pipeTopView.frame toView:self.ladyBugView.superview];
-        CGRect bottomFrame = [pipe.pipeDownView.superview convertRect:pipe.pipeDownView.frame toView:self.ladyBugView.superview];
-        
-        if (CGRectIntersectsRect(self.ladyBugView.frame, topFrame)) {
-            self.isGameOver = YES;
-        } else if (CGRectIntersectsRect(self.ladyBugView.frame, bottomFrame)) {
-            self.isGameOver = YES;
-        }
-    }
-}
-
-- (void)showResult {
-    int tMaxScore = self.maxScore;
-    if (self.score > self.maxScore) {
-        self.maxScore = self.score;
-        self.maxScoreLabel.text = [NSString stringWithFormat:@"%d", self.maxScore];
-        [self saveUserData];
-    } else {
-        self.resultView.recordLabel.hidden = YES;
-    }
-    self.resultView.currentScoreLabel.text = [NSString stringWithFormat:@"%d", self.score];
-    self.resultView.maxScoreLabel.text = [NSString stringWithFormat:@"%d", tMaxScore];
-    self.resultView.lastMaxScore = tMaxScore;
-    self.resultView.maxScore = self.maxScore;
-    [self.resultView show];
-}
-
-
-- (void)animateCollision {
-    [self flash];
-    [AnimUtil wobble:self.view duration:0.1f angle:M_PI/128.f];
-    [[SoundManager instance] play:SOUND_EFFECT_BUMP];
-}
-
-- (void)flash {
-    float duration = 0.2f;
-    self.flashOverlay.alpha = 0.f;
-    [UIView animateWithDuration:duration delay:0.f options:UIViewAnimationOptionLayoutSubviews animations:^{
-        self.flashOverlay.alpha = 1.0f;
-    } completion:^(BOOL completed){
-        [UIView animateWithDuration:duration delay:0.f options:UIViewAnimationOptionLayoutSubviews animations:^{
-        } completion:^(BOOL completed){
-            self.flashOverlay.alpha = 0.0f;
-        } ];
-    } ];
-}
-
-- (void)checkIfScored {
-    if (self.isGameOver) return;
-    if (self.scorableObjects.count <= 0) return;
-    
-    NSMutableArray *scorableObjectsTemp = [NSMutableArray array];
-    for (PipeView *pipeView in self.scorableObjects) {
-        // passed ladybug
-        CGRect pipeFrame = [pipeView.superview convertRect:pipeView.frame toView:self.ladyBugView.superview];
-        if (self.ladyBugView.center.x > pipeFrame.origin.x + pipeView.frame.size.width) {
-            self.score++;
-            [[SoundManager instance] play:SOUND_EFFECT_BLING];
-            [self refreshLabel];
-        } else {
-            [scorableObjectsTemp addObject:pipeView];
-        }
-    }
-    self.scorableObjects = scorableObjectsTemp;
-}
-
-- (void)refreshLabel {
-    self.scoreLabel.text = [NSString stringWithFormat:@"%d", self.score];
-}
-
-- (void)stopObstacles {
-    for (PipeView *pipeView in self.worldObstacles) {
-        pipeView.properties.speed = CGPointMake(0.f, 0.f);
-    }
-}
-
-- (void)resumeObstacles {
-    for (PipeView *pipeView in self.worldObstacles) {
-        pipeView.properties.speed = CGPointMake(OBSTACLE_SPEED * IPAD_SCALE, 0.f);
-    }
-}
-
-- (void)drawStep {
-    if (!self.isRunning) return;
-    
-    [self.backgroundView drawStep];
-    
-    if (self.currentGameState == GameStateTutorialMode || self.currentGameState == GameStateGameMode || self.currentGameState == GameStateResultMode || self.currentGameState == GameStateResumeMode) {
-        if (self.firstTapped) {
-            for (PipeView *pipeView in self.worldObstacles) {
-                [pipeView drawStep];
-            }
-            [self boundaryTestForPipes];
-            [self collisionDetection];
-            [self boundaryTestForLadyBug];
-            [self checkIfScored];
-        }
-        [self.ladyBugView drawStep];
-    }
-}
-
-- (void)setIsGameOver:(BOOL)isGameOver {
-    if (self.isGameOver == isGameOver) return;
-    if (DEBUG_MODE) {
-        isGameOver = NO;
-    }
-    
-    _isGameOver = isGameOver;
-    if (isGameOver) {
-        [self animateCollision];
-        [self stopObstacles];
-        [self updateGameState:GameStateResultMode];
-    } else {
-        [self resumeObstacles];
-    }
 }
 
 #pragma mark - ADs
@@ -501,16 +318,16 @@
     } else {
         self.adBannerView = [[ADBannerView alloc] init];
     }
-    self.adBannerView.y = -self.adBannerView.height;
+    self.adBannerView.y = self.view.height;
     self.adBannerView.delegate = self;
 }
 
 - (void)layoutAnimated:(BOOL)animated {
-    float bannerYOffset = 0.f;
+    float bannerYOffset = self.view.height;
     if (self.adBannerView.bannerLoaded) {
-        bannerYOffset = 0;
+        bannerYOffset = self.view.height - self.adBannerView.height;
     } else {
-        bannerYOffset = -self.adBannerView.height;
+        bannerYOffset = self.view.height;
     }
     
     [UIView animateWithDuration:animated ? 0.25 : 0.0 animations:^{
@@ -532,38 +349,5 @@
     [self layoutAnimated:YES];
 }
 
-#pragma mark - GameCenter
-
-- (void)loginToGameCenter {
-    self.currentLeaderBoard = kLeaderboardID;
-    
-    if ([GameCenterManager isGameCenterAvailable]) {
-        
-        self.gameCenterManager = [[GameCenterManager alloc] init];
-        [self.gameCenterManager setDelegate:self];
-        [self.gameCenterManager authenticateLocalUser];
-        
-    } else {
-        
-        // The current device does not support Game Center.
-        
-    }
-}
-
-#pragma mark - Leaderboard
-
-- (IBAction) showLeaderboard {
-    GKLeaderboardViewController *leaderboardController = [[GKLeaderboardViewController alloc] init];
-    if (leaderboardController != NULL) {
-        leaderboardController.category = self.currentLeaderBoard;
-        leaderboardController.timeScope = GKLeaderboardTimeScopeWeek;
-        leaderboardController.leaderboardDelegate = self;
-        [self presentViewController:leaderboardController animated:YES completion:nil];
-    }
-}
-
-- (void)leaderboardViewControllerDidFinish:(GKLeaderboardViewController *)viewController {
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
 
 @end

@@ -12,7 +12,8 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    [self fillBar:0.f];
+    [self fillBar:1.f];
+    self.clipsToBounds = YES;
 }
 
 - (void)fillBar:(CGFloat)percentage animated:(BOOL)animated {
@@ -20,7 +21,7 @@
     frame.size.width = self.backgroundView.frame.size.width * percentage;
     
     if (animated) {
-        [UIView animateWithDuration:0.3f animations:^ {
+        [UIView animateWithDuration:1.0f animations:^ {
             self.foregroundView.frame = frame;
         }];
     } else {

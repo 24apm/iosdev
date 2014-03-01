@@ -21,6 +21,7 @@
 @property (strong, nonatomic) NSString *sharedText;
 @property (strong, nonatomic) UIImage *sharedImage;
 @property (strong, nonatomic) IBOutlet UILabel *recordLabel;
+@property (strong, nonatomic) IBOutlet UIImageView *lastGameSS;
 
 @property (strong, nonatomic) IBOutlet UIButton *playButton;
 

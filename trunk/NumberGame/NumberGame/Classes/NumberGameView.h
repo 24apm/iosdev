@@ -9,6 +9,8 @@
 #import "XibView.h"
 #import "ProgressBarComponent.h"
 
+#define NUMBER_GAME_CALLBACK_NOTIFICATION @"NUMBER_GAME_CALLBACK_NOTIFICATION"
+
 @interface NumberGameView : XibView
 
 - (IBAction)answerSlotPressed:(UIButton *)sender;
@@ -21,7 +23,7 @@
 
 @property (strong, nonatomic) IBOutlet UIButton *cheatButton;
 @property (strong, nonatomic) IBOutlet UILabel *cheatLabel;
-
+@property (strong, nonatomic) IBOutlet UILabel *scores;
 - (void)show;
 
 @end

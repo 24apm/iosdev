@@ -11,17 +11,29 @@
 #import "Utils.h"
 #import "InGameMessageView.h"
 #import "GameConstants.h"
+#import "UserData.h"
+#import "SoundEffect.h"
+#import "SoundManager.h"
+
+#define BUFFER_TIME 0.f
+#define SOUND_EFFECT_BANG @"bong"
+#define SOUND_EFFECT_BOING @"pop"
+#define SOUND_EFFECT_SPRING @"spring"
+#define SOUND_EFFECT_BONG @"bong"
+#define SOUND_EFFECT_DING @"ding"
 
 @interface NumberGameView ()
 
 //@property (nonatomic) int answerSlotsNum;
 
+@property (strong, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (nonatomic, retain) NSTimer *timer;
 @property (nonatomic) double nextExpireTime;
 @property (nonatomic) double maxTime;
 @property (nonatomic, retain) UIColor *numberBackgroundColor;
 @property (nonatomic, retain) UIColor *operatorBackgroundColor;
 @property (nonatomic, retain) InGameMessageView *messageView;
+@property (nonatomic) int currentScore;
 
 @end
 
@@ -32,38 +44,73 @@
     for (int i = 0; i < self.choiceSlots.count; i++) {
         UIButton *choice = [self.choiceSlots objectAtIndex:i];
         choice.tag = i+1;
+        self.currentScore = 0;
+        [self preloadSounds];
     }
     
-    self.maxTime = 30.f;
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(updateProgressBar) userInfo:nil repeats:YES];
+    self.maxTime = 10.f;
     
     self.numberBackgroundColor = [UIColor colorWithRed:84.f/255.f green:255.f/255.f blue:136.f/255.f alpha:1.0f];
     self.operatorBackgroundColor = [UIColor colorWithRed:67.f/255.f green:204.f/255.f blue:109.f/255.f alpha:1.0f];
-    
-    
-    self.messageView = [[InGameMessageView alloc] init];
-    [self addSubview:self.messageView];
-    self.messageView.frame = self.frame;
-    self.messageView.hidden = YES;
+}
+
+- (void)preloadSounds {
+    [[SoundManager instance] prepare:SOUND_EFFECT_BANG count:2];
+    [[SoundManager instance] prepare:SOUND_EFFECT_BOING count:5];
+    [[SoundManager instance] prepare:SOUND_EFFECT_SPRING count:5];
+    [[SoundManager instance] prepare:SOUND_EFFECT_BONG count:5];
+    [[SoundManager instance] prepare:SOUND_EFFECT_DING count:5];
+}
+
+-(void)setCurrentScore:(int)currentScore {
+    _currentScore = currentScore;
+    self.scoreLabel.text = [NSString stringWithFormat: @"Score: %d",_currentScore];
+}
+
+- (void)showMessageView {
+    if (!self.messageView) {
+        self.messageView = [[InGameMessageView alloc] init];
+        [self addSubview:self.messageView];
+        self.messageView.frame = self.frame;
+        self.messageView.hidden = YES;
+    }
+    [self bringSubviewToFront:self.messageView];
+    [self.messageView show];
 }
 
 - (IBAction)cheatPressed:(id)sender {
-    self.cheatLabel.hidden = !self.cheatLabel.hidden;
-    
-    NSString *myString = [NSString stringWithFormat:@"%@", [[NumberManager instance] currentGeneratedAnswer]];
-    NSString *newString = [[myString componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]] componentsJoinedByString:@""];
+    [self showAnswer];
+    [self.progressBar fillBar:0.f animated:NO];
+    [self.timer invalidate];
+    [[SoundManager instance] play:SOUND_EFFECT_BANG];
+    [UserData instance].score = self.currentScore;
+    [UserData instance].lastGameSS = [self blit];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NUMBER_GAME_CALLBACK_NOTIFICATION object:self];
+}
 
-    self.cheatLabel.text = newString;
+-(void)showAnswer {
+    self.cheatLabel.hidden = NO;
+    NSString *t = @"Answer: ";
+    NSMutableArray *newArray = [[NumberManager instance] currentGeneratedAnswerInStrings];
+    for (int i = 0; i < newArray.count; i++) {
+        t = [NSString stringWithFormat:@"%@ %@",t, [newArray objectAtIndex:i]];
+    }
+    self.cheatLabel.text = t;
 }
 
 - (void)updateProgressBar {
     float percentage = (self.nextExpireTime - CACurrentMediaTime()) / self.maxTime;
 
     if (percentage > 0) {
-        [self.progressBar fillBar:percentage animated:YES];
+        [self.progressBar fillBar:percentage animated:NO];
     } else {
-        [self.progressBar fillBar:0.f animated:YES];
+        [self showAnswer];
+        [self.progressBar fillBar:0.f animated:NO];
         [self.timer invalidate];
+        [[SoundManager instance] play:SOUND_EFFECT_BANG];
+        [UserData instance].score = self.currentScore;
+        [UserData instance].lastGameSS = [self blit];
+        [[NSNotificationCenter defaultCenter] postNotificationName:NUMBER_GAME_CALLBACK_NOTIFICATION object:self];
     }
 }
 
@@ -73,13 +120,43 @@
     NSDictionary *data = [[NumberManager instance] generateLevel:self.answerSlots.count choiceSlots:self.choiceSlots.count];
     int targetValue = [[data objectForKey:@"targetNumber"] intValue];
     NSArray *array = [data objectForKey:@"algebra"];
-    
     [self refreshChoices:array];
     [self resetAnswers];
     self.targetNumberLabel.text = [NSString stringWithFormat:@"%d",targetValue];
     
-    self.nextExpireTime = CACurrentMediaTime() + self.maxTime;
+    self.nextExpireTime = CACurrentMediaTime() + self.maxTime + BUFFER_TIME;
     self.cheatLabel.hidden = YES;
+    
+    if (self.timer) {
+        [self.timer invalidate];
+    }
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0f/60.f target:self selector:@selector(updateProgressBar) userInfo:nil repeats:YES];
+}
+
+- (void)animateAnswersOut {
+    for (int i = 0; i < self.answerSlots.count; i++) {
+        UIButton *button = [self.answerSlots objectAtIndex:i];
+        if (button.tag > 0) {
+            [self animateBlitAndFadeout:button delay:i * 0.3f + 1.5f];
+        }
+    }
+}
+
+- (void)animateBlitAndFadeout:(UIView *)view delay:(float)delay {
+    UIImageView *blitView = [[UIImageView alloc] initWithImage:[view blit]];
+    [self addSubview:blitView];
+    blitView.frame = [view.superview convertRect:view.frame toView:blitView.superview];
+    
+    [UIView animateWithDuration:0.3f
+                          delay:delay
+                        options:UIViewAnimationOptionCurveEaseInOut
+                     animations:^ {
+                         blitView.transform = CGAffineTransformMakeScale(2.0f, 2.0f);
+                         blitView.alpha = 0.2f;
+                     } completion:^(BOOL complete) {
+                        [[SoundManager instance]play:SOUND_EFFECT_DING];
+                         [blitView removeFromSuperview];
+                     }];
 }
 
 - (void)refreshChoices:(NSArray *)array {
@@ -110,7 +187,7 @@
     for (int i = 0; i < self.answerSlots.count; i++) {
         UIButton *slot = [self.answerSlots objectAtIndex:i];
         slot.tag = 0;
-        [slot setTitle:@"?" forState:UIControlStateNormal];
+        [slot setTitle:@"" forState:UIControlStateNormal];
         if (i % 2 == 0) {
             slot.layer.borderColor = self.numberBackgroundColor.CGColor;
         } else {
@@ -123,6 +200,7 @@
 }
 
 - (void)show {
+    self.currentScore = 0;
     [UIView animateWithDuration:0.3f animations:^ {
         self.transform = CGAffineTransformIdentity;
         self.alpha = 1.0f;
@@ -144,6 +222,7 @@
 
 - (IBAction)answerSlotPressed:(UIButton *)sender {
     [self removeSlot:sender];
+    [[SoundManager instance]play:SOUND_EFFECT_SPRING];
 }
 
 - (IBAction)choiceSlotPressed:(UIButton *)sender {
@@ -191,14 +270,16 @@
     for(int i = 0; i < self.answerSlots.count; i++) {
         UIButton *slot = self.answerSlots[i];
         // fill the slot with choice button if there is one
-        if ([slot.titleLabel.text isEqualToString:@"?"]) {
+        if (slot.tag == 0) {
             if (isOperator && i % 2 == 0) {
                 [self animateIncorrectAnswer];
+                [[SoundManager instance]play:SOUND_EFFECT_BONG];
                 break;
             }
             
             if (!isOperator && i % 2 == 1) {
                 [self animateIncorrectAnswer];
+                [[SoundManager instance]play:SOUND_EFFECT_BONG];
                 break;
             }
             [slot setTitle:choiceString forState:UIControlStateNormal];
@@ -210,6 +291,7 @@
             
             
             [self animate:choice toView:slot];
+            [[SoundManager instance] play:SOUND_EFFECT_BOING];
             break;
         }
     }
@@ -217,7 +299,7 @@
     BOOL hasEmpty = NO;
     for(int i = 0; i < self.answerSlots.count; i++) {
         UIButton *slot = self.answerSlots[i];
-        if ([[slot titleForState:UIControlStateNormal] isEqualToString:@"?"]) {
+        if (slot.tag == 0) {
             hasEmpty = YES;
         } else {
             [algebra addObject:[slot titleForState:UIControlStateNormal]];
@@ -227,10 +309,17 @@
         float targetValue = [self.targetNumberLabel.text floatValue];
         BOOL isCorrect =[[NumberManager instance] checkAlgebra:algebra targetValue:targetValue];
         if (isCorrect) {
-            [self.messageView show];
-            [self refreshGame];
+            [self.timer invalidate];
+            [self animateAnswersOut];
+            [self showMessageView];
+            [self resetAnswers];
+            [self.progressBar fillBar:1.0f animated:YES];
+
+            [self performSelector:@selector(refreshGame) withObject:nil afterDelay:2.2f];
+            self.currentScore++;
         } else {
             [self animateIncorrectAnswer];
+                [[SoundManager instance]play:SOUND_EFFECT_BONG];
         }
     }
 }
@@ -255,7 +344,7 @@
 
 - (void)removeSlot:(UIButton *)slot {
     // check if current slot is used
-    if (![slot.titleLabel.text isEqualToString:@"?"]) {
+    if (!slot.tag == 0) {
         for (int i = 0; i < self.choiceSlots.count; i++){
             UIButton *choice = [self.choiceSlots objectAtIndex:i];
             if (choice.tag == slot.tag) {
@@ -263,7 +352,7 @@
                 [self animate:slot toView:choice];
 
                 slot.tag = 0;
-                [slot setTitle:@"?" forState:UIControlStateNormal];
+                [slot setTitle:@"" forState:UIControlStateNormal];
             }
         }
     }

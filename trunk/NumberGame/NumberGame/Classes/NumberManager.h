@@ -15,6 +15,7 @@
 - (BOOL)checkAlgebra:(NSArray *)algrebra targetValue:(float)targetValue;
 - (NSArray *)generateAlgebraFor:(int)input;
 - (BOOL)isOperator:(id)object;
+- (NSMutableArray *)currentGeneratedAnswerInStrings;
 
 @property (nonatomic, retain) NSMutableArray *currentGeneratedAnswer;
 @property (nonatomic, retain) NSMutableArray *currentGeneratedFillerAnswer;

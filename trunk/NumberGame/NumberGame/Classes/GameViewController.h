@@ -13,8 +13,6 @@
 #import "ResultView.h"
 #import "THLabel.h"
 #import "MainView.h"
-#import "GameCenterManager.h"
-#import <GameKit/GameKit.h>
 #import "FloorView.h"
 
 typedef enum {
@@ -26,7 +24,7 @@ typedef enum {
     GameStateResultMode
 } GameState;
 
-@interface GameViewController : UIViewController <ADBannerViewDelegate, GKLeaderboardViewControllerDelegate, GameCenterManagerDelegate>
+@interface GameViewController : UIViewController <ADBannerViewDelegate>
 
 @property (weak, nonatomic) IBOutlet BackgroundView *backgroundView;
 @property (weak, nonatomic) IBOutlet UIView *obstacleLayer;
@@ -43,7 +41,5 @@ typedef enum {
 @property (strong, nonatomic) IBOutlet FloorView *floorView;
 
 @property (nonatomic, retain) ADBannerView *adBannerView;
-@property (nonatomic, retain) GameCenterManager *gameCenterManager;
-@property (nonatomic, retain) NSString* currentLeaderBoard;
 
 @end
