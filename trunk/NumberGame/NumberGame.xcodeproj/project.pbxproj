@@ -52,6 +52,9 @@
 		D05A833118B32785003C18EB /* NumberManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D05A833018B32785003C18EB /* NumberManager.m */; };
 		D07F418018A4D8C7009680FD /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07F417F18A4D8C7009680FD /* iAd.framework */; };
 		D0C79E8018AF4BFD0032BDB8 /* FlappyBall2.png in Resources */ = {isa = PBXBuildFile; fileRef = D0C79E7F18AF4BFD0032BDB8 /* FlappyBall2.png */; };
+		D0E279B018C1DC37000F7170 /* NSArray+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E279AB18C1DC37000F7170 /* NSArray+Util.m */; };
+		D0E279B118C1DC37000F7170 /* UIView+ViewUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E279AD18C1DC37000F7170 /* UIView+ViewUtil.m */; };
+		D0E279B218C1DC37000F7170 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E279AF18C1DC37000F7170 /* Utils.m */; };
 		D0E30E8518A376E300FFD3CE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E30E8418A376E300FFD3CE /* Foundation.framework */; };
 		D0E30E8718A376E300FFD3CE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E30E8618A376E300FFD3CE /* CoreGraphics.framework */; };
 		D0E30E8918A376E300FFD3CE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E30E8818A376E300FFD3CE /* UIKit.framework */; };
@@ -76,12 +79,9 @@
 		D0F6849518B31C3E00CBB819 /* Base.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F6846F18B31C3E00CBB819 /* Base.m */; };
 		D0F6849618B31C3E00CBB819 /* GameLoopTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F6847118B31C3E00CBB819 /* GameLoopTimer.m */; };
 		D0F6849718B31C3E00CBB819 /* Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F6847318B31C3E00CBB819 /* Hex.m */; };
-		D0F6849818B31C3E00CBB819 /* NSArray+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F6847518B31C3E00CBB819 /* NSArray+Util.m */; };
 		D0F6849918B31C3E00CBB819 /* SoundEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F6847718B31C3E00CBB819 /* SoundEffect.m */; };
 		D0F6849A18B31C3E00CBB819 /* SoundEffectHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F6847918B31C3E00CBB819 /* SoundEffectHelper.m */; };
 		D0F6849B18B31C3E00CBB819 /* SoundManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F6847B18B31C3E00CBB819 /* SoundManager.m */; };
-		D0F6849C18B31C3E00CBB819 /* UIView+ViewUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F6847D18B31C3E00CBB819 /* UIView+ViewUtil.m */; };
-		D0F6849D18B31C3E00CBB819 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F6847F18B31C3E00CBB819 /* Utils.m */; };
 		D0F6849E18B31C3E00CBB819 /* WorldObjectProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F6848118B31C3E00CBB819 /* WorldObjectProperties.m */; };
 		D0F6849F18B31C3E00CBB819 /* WorldObjectView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F6848318B31C3E00CBB819 /* WorldObjectView.m */; };
 		D0F684A018B31C3E00CBB819 /* XibView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F6848518B31C3E00CBB819 /* XibView.m */; };
@@ -165,6 +165,12 @@
 		D05A833018B32785003C18EB /* NumberManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NumberManager.m; sourceTree = "<group>"; };
 		D07F417F18A4D8C7009680FD /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		D0C79E7F18AF4BFD0032BDB8 /* FlappyBall2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FlappyBall2.png; sourceTree = "<group>"; };
+		D0E279AA18C1DC37000F7170 /* NSArray+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Util.h"; sourceTree = "<group>"; };
+		D0E279AB18C1DC37000F7170 /* NSArray+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Util.m"; sourceTree = "<group>"; };
+		D0E279AC18C1DC37000F7170 /* UIView+ViewUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ViewUtil.h"; sourceTree = "<group>"; };
+		D0E279AD18C1DC37000F7170 /* UIView+ViewUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ViewUtil.m"; sourceTree = "<group>"; };
+		D0E279AE18C1DC37000F7170 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
+		D0E279AF18C1DC37000F7170 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
 		D0E30E8118A376E300FFD3CE /* NumberGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NumberGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0E30E8418A376E300FFD3CE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D0E30E8618A376E300FFD3CE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -197,18 +203,12 @@
 		D0F6847118B31C3E00CBB819 /* GameLoopTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = GameLoopTimer.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D0F6847218B31C3E00CBB819 /* Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Hex.h; sourceTree = "<group>"; };
 		D0F6847318B31C3E00CBB819 /* Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Hex.m; sourceTree = "<group>"; };
-		D0F6847418B31C3E00CBB819 /* NSArray+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "NSArray+Util.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		D0F6847518B31C3E00CBB819 /* NSArray+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "NSArray+Util.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D0F6847618B31C3E00CBB819 /* SoundEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundEffect.h; sourceTree = "<group>"; };
 		D0F6847718B31C3E00CBB819 /* SoundEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundEffect.m; sourceTree = "<group>"; };
 		D0F6847818B31C3E00CBB819 /* SoundEffectHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = SoundEffectHelper.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		D0F6847918B31C3E00CBB819 /* SoundEffectHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SoundEffectHelper.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D0F6847A18B31C3E00CBB819 /* SoundManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = SoundManager.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		D0F6847B18B31C3E00CBB819 /* SoundManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SoundManager.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		D0F6847C18B31C3E00CBB819 /* UIView+ViewUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "UIView+ViewUtil.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		D0F6847D18B31C3E00CBB819 /* UIView+ViewUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "UIView+ViewUtil.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		D0F6847E18B31C3E00CBB819 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
-		D0F6847F18B31C3E00CBB819 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
 		D0F6848018B31C3E00CBB819 /* WorldObjectProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = WorldObjectProperties.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		D0F6848118B31C3E00CBB819 /* WorldObjectProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = WorldObjectProperties.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D0F6848218B31C3E00CBB819 /* WorldObjectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = WorldObjectView.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -356,6 +356,19 @@
 			path = Xib;
 			sourceTree = "<group>";
 		};
+		D0E279A918C1DC37000F7170 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				D0E279AA18C1DC37000F7170 /* NSArray+Util.h */,
+				D0E279AB18C1DC37000F7170 /* NSArray+Util.m */,
+				D0E279AC18C1DC37000F7170 /* UIView+ViewUtil.h */,
+				D0E279AD18C1DC37000F7170 /* UIView+ViewUtil.m */,
+				D0E279AE18C1DC37000F7170 /* Utils.h */,
+				D0E279AF18C1DC37000F7170 /* Utils.m */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		D0E30E7818A376E300FFD3CE = {
 			isa = PBXGroup;
 			children = (
@@ -429,6 +442,7 @@
 		D0F6846A18B31C3E00CBB819 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				D0E279A918C1DC37000F7170 /* Utils */,
 				D04E826F18BA8FCD007E1081 /* Componenets */,
 				D0F6846B18B31C3E00CBB819 /* AnimUtil.h */,
 				D0F6846C18B31C3E00CBB819 /* AnimUtil.m */,
@@ -439,20 +453,14 @@
 				D0F6847118B31C3E00CBB819 /* GameLoopTimer.m */,
 				D0F6847218B31C3E00CBB819 /* Hex.h */,
 				D0F6847318B31C3E00CBB819 /* Hex.m */,
-				D0F6847418B31C3E00CBB819 /* NSArray+Util.h */,
 				D0EB7A0E18BF281000AC8CEB /* GameCenterHelper.h */,
 				D0EB7A0F18BF281000AC8CEB /* GameCenterHelper.m */,
-				D0F6847518B31C3E00CBB819 /* NSArray+Util.m */,
 				D0F6847618B31C3E00CBB819 /* SoundEffect.h */,
 				D0F6847718B31C3E00CBB819 /* SoundEffect.m */,
 				D0F6847818B31C3E00CBB819 /* SoundEffectHelper.h */,
 				D0F6847918B31C3E00CBB819 /* SoundEffectHelper.m */,
 				D0F6847A18B31C3E00CBB819 /* SoundManager.h */,
 				D0F6847B18B31C3E00CBB819 /* SoundManager.m */,
-				D0F6847C18B31C3E00CBB819 /* UIView+ViewUtil.h */,
-				D0F6847D18B31C3E00CBB819 /* UIView+ViewUtil.m */,
-				D0F6847E18B31C3E00CBB819 /* Utils.h */,
-				D0F6847F18B31C3E00CBB819 /* Utils.m */,
 				D0F6848018B31C3E00CBB819 /* WorldObjectProperties.h */,
 				D0F6848118B31C3E00CBB819 /* WorldObjectProperties.m */,
 				D0F6848218B31C3E00CBB819 /* WorldObjectView.h */,
@@ -650,7 +658,6 @@
 				D05A831818B3223C003C18EB /* TutorialView.m in Sources */,
 				D05A831718B3223C003C18EB /* ResultView.m in Sources */,
 				D0F6849418B31C3E00CBB819 /* AnimUtil.m in Sources */,
-				D0F6849818B31C3E00CBB819 /* NSArray+Util.m in Sources */,
 				D05A830E18B3223C003C18EB /* BackgroundView.m in Sources */,
 				D0EB7A1018BF281000AC8CEB /* GameCenterHelper.m in Sources */,
 				D05A831B18B3223C003C18EB /* main.m in Sources */,
@@ -671,15 +678,16 @@
 				D0F6849F18B31C3E00CBB819 /* WorldObjectView.m in Sources */,
 				D0EB7A0D18BF239A00AC8CEB /* UserData.m in Sources */,
 				D0F6849E18B31C3E00CBB819 /* WorldObjectProperties.m in Sources */,
+				D0E279B118C1DC37000F7170 /* UIView+ViewUtil.m in Sources */,
 				D0F6849718B31C3E00CBB819 /* Hex.m in Sources */,
+				D0E279B218C1DC37000F7170 /* Utils.m in Sources */,
 				D04E827218BA8FE9007E1081 /* ProgressBarComponent.m in Sources */,
-				D0F6849C18B31C3E00CBB819 /* UIView+ViewUtil.m in Sources */,
 				D05A831318B3223C003C18EB /* MainView.m in Sources */,
+				D0E279B018C1DC37000F7170 /* NSArray+Util.m in Sources */,
 				D0F6849A18B31C3E00CBB819 /* SoundEffectHelper.m in Sources */,
 				D05A831118B3223C003C18EB /* GameViewController.m in Sources */,
 				D0F684A218B31C3E00CBB819 /* GameCenterManager.m in Sources */,
 				D0F6849618B31C3E00CBB819 /* GameLoopTimer.m in Sources */,
-				D0F6849D18B31C3E00CBB819 /* Utils.m in Sources */,
 				D0F6849918B31C3E00CBB819 /* SoundEffect.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
