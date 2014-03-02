@@ -14,13 +14,16 @@
 #import "UserData.h"
 #import "SoundEffect.h"
 #import "SoundManager.h"
+#import <StoreKit/StoreKit.h>
+#import "NumberGameIAPHelper.h"
 
 #define BUFFER_TIME 0.f
-#define SOUND_EFFECT_BANG @"bong"
-#define SOUND_EFFECT_BOING @"pop"
-#define SOUND_EFFECT_SPRING @"spring"
-#define SOUND_EFFECT_BONG @"bong"
 #define SOUND_EFFECT_DING @"ding"
+#define SOUND_EFFECT_POP @"pop"
+#define SOUND_EFFECT_BLING @"bling"
+#define SOUND_EFFECT_BOING @"boing"
+#define SOUND_EFFECT_TICKING @"ticking"
+#define SOUND_EFFECT_WINNING @"winningEffect"
 
 @interface NumberGameView ()
 
@@ -34,6 +37,7 @@
 @property (nonatomic, retain) UIColor *operatorBackgroundColor;
 @property (nonatomic, retain) InGameMessageView *messageView;
 @property (nonatomic) int currentScore;
+@property (nonatomic) BOOL playedTick;
 
 @end
 
@@ -47,7 +51,7 @@
         self.currentScore = 0;
         [self preloadSounds];
     }
-    
+    self.playedTick = NO;
     self.maxTime = 10.f;
     
     self.numberBackgroundColor = [UIColor colorWithRed:84.f/255.f green:255.f/255.f blue:136.f/255.f alpha:1.0f];
@@ -55,10 +59,11 @@
 }
 
 - (void)preloadSounds {
-    [[SoundManager instance] prepare:SOUND_EFFECT_BANG count:2];
+    [[SoundManager instance] prepare:SOUND_EFFECT_TICKING count:1];
+    [[SoundManager instance] prepare:SOUND_EFFECT_WINNING count:2];
     [[SoundManager instance] prepare:SOUND_EFFECT_BOING count:5];
-    [[SoundManager instance] prepare:SOUND_EFFECT_SPRING count:5];
-    [[SoundManager instance] prepare:SOUND_EFFECT_BONG count:5];
+    [[SoundManager instance] prepare:SOUND_EFFECT_POP count:5];
+    [[SoundManager instance] prepare:SOUND_EFFECT_BLING count:5];
     [[SoundManager instance] prepare:SOUND_EFFECT_DING count:5];
 }
 
@@ -82,7 +87,7 @@
     [self showAnswer];
     [self.progressBar fillBar:0.f animated:NO];
     [self.timer invalidate];
-    [[SoundManager instance] play:SOUND_EFFECT_BANG];
+    [[SoundManager instance] play:SOUND_EFFECT_WINNING];
     [UserData instance].score = self.currentScore;
     [UserData instance].lastGameSS = [self blit];
     [[NSNotificationCenter defaultCenter] postNotificationName:NUMBER_GAME_CALLBACK_NOTIFICATION object:self];
@@ -103,11 +108,19 @@
 
     if (percentage > 0) {
         [self.progressBar fillBar:percentage animated:NO];
+        
+        // time is running out
+        if (!self.playedTick && self.nextExpireTime - CACurrentMediaTime() < 4.4) {
+            [[SoundManager instance] play:SOUND_EFFECT_TICKING];
+            self.playedTick = YES;
+        }
     } else {
         [self showAnswer];
         [self.progressBar fillBar:0.f animated:NO];
         [self.timer invalidate];
-        [[SoundManager instance] play:SOUND_EFFECT_BANG];
+        [[SoundManager instance] stop:SOUND_EFFECT_TICKING];
+
+        [[SoundManager instance] play:SOUND_EFFECT_WINNING];
         [UserData instance].score = self.currentScore;
         [UserData instance].lastGameSS = [self blit];
         [[NSNotificationCenter defaultCenter] postNotificationName:NUMBER_GAME_CALLBACK_NOTIFICATION object:self];
@@ -123,7 +136,8 @@
     [self refreshChoices:array];
     [self resetAnswers];
     self.targetNumberLabel.text = [NSString stringWithFormat:@"%d",targetValue];
-    
+    self.playedTick = NO;
+
     self.nextExpireTime = CACurrentMediaTime() + self.maxTime + BUFFER_TIME;
     self.cheatLabel.hidden = YES;
     
@@ -154,7 +168,7 @@
                          blitView.transform = CGAffineTransformMakeScale(2.0f, 2.0f);
                          blitView.alpha = 0.2f;
                      } completion:^(BOOL complete) {
-                        [[SoundManager instance]play:SOUND_EFFECT_DING];
+                        [[SoundManager instance]play:SOUND_EFFECT_POP];
                          [blitView removeFromSuperview];
                      }];
 }
@@ -201,6 +215,8 @@
 
 - (void)show {
     self.currentScore = 0;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(productPurchased:) name:IAPHelperProductPurchasedNotification object:nil];
+
     [UIView animateWithDuration:0.3f animations:^ {
         self.transform = CGAffineTransformIdentity;
         self.alpha = 1.0f;
@@ -210,6 +226,7 @@
 }
 
 - (void)hide {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [UIView animateWithDuration:0.3f animations:^{
         self.transform = CGAffineTransformMakeScale(2.0f, 2.0f);
         self.alpha = 0.0f;
@@ -220,9 +237,17 @@
 }
 
 
+- (void)productPurchased:(NSNotification *)notification {
+    NSString *productIdentifier = notification.object;
+    if (productIdentifier) {
+        // Unlock answer
+        [self showAnswer];
+    }
+}
+
 - (IBAction)answerSlotPressed:(UIButton *)sender {
     [self removeSlot:sender];
-    [[SoundManager instance]play:SOUND_EFFECT_SPRING];
+    [[SoundManager instance] play:SOUND_EFFECT_POP];
 }
 
 - (IBAction)choiceSlotPressed:(UIButton *)sender {
@@ -231,6 +256,7 @@
         UIButton *answer = [self.answerSlots objectAtIndex:i];
         if (sender.tag == answer.tag) {
             [self removeSlot:answer];
+            [[SoundManager instance] play:SOUND_EFFECT_POP];
             hasFound = YES;
             break;
         }
@@ -273,13 +299,13 @@
         if (slot.tag == 0) {
             if (isOperator && i % 2 == 0) {
                 [self animateIncorrectAnswer];
-                [[SoundManager instance]play:SOUND_EFFECT_BONG];
+                [[SoundManager instance]play:SOUND_EFFECT_BOING];
                 break;
             }
             
             if (!isOperator && i % 2 == 1) {
                 [self animateIncorrectAnswer];
-                [[SoundManager instance]play:SOUND_EFFECT_BONG];
+                [[SoundManager instance]play:SOUND_EFFECT_BOING];
                 break;
             }
             [slot setTitle:choiceString forState:UIControlStateNormal];
@@ -289,9 +315,8 @@
             //  set slot with choice's tag (keep reference)
             slot.tag = choice.tag;
             
-            
             [self animate:choice toView:slot];
-            [[SoundManager instance] play:SOUND_EFFECT_BOING];
+            [[SoundManager instance] play:SOUND_EFFECT_POP];
             break;
         }
     }
@@ -310,16 +335,18 @@
         BOOL isCorrect =[[NumberManager instance] checkAlgebra:algebra targetValue:targetValue];
         if (isCorrect) {
             [self.timer invalidate];
+            [[SoundManager instance] stop:SOUND_EFFECT_TICKING];
             [self animateAnswersOut];
             [self showMessageView];
+            [[SoundManager instance]play:SOUND_EFFECT_BLING];
             [self resetAnswers];
             [self.progressBar fillBar:1.0f animated:YES];
-
+            
             [self performSelector:@selector(refreshGame) withObject:nil afterDelay:2.2f];
             self.currentScore++;
         } else {
             [self animateIncorrectAnswer];
-                [[SoundManager instance]play:SOUND_EFFECT_BONG];
+            [[SoundManager instance]play:SOUND_EFFECT_BOING];
         }
     }
 }
@@ -356,6 +383,7 @@
             }
         }
     }
+    
     // if yes
     // find matching choice button (based on tag)
     //  re-enable the matching choice button

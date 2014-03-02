@@ -41,6 +41,12 @@
     return self.audio.duration;
 }
 
+- (void)stop {
+    [self.audio stop];
+    self.audio.currentTime = 0;
+    [self.audio prepareToPlay];
+}
+
 - (void)play {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         [self.audio play];

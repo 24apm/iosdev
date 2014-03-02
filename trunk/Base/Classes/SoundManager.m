@@ -37,6 +37,15 @@
     [soundEffect play];
 }
 
+- (void)stop:(NSString *)fileName {
+    SoundEffectHelper *soundEffect = [self.soundEffects objectForKey:fileName];
+    if (soundEffect) {
+        NSLog(@"Sound manager stop ");
+
+        [soundEffect stop];
+    }
+}
+
 - (void)prepare:(NSString *)fileName {
     [self prepare:fileName count:1];
 }

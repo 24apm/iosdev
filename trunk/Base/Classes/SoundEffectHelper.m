@@ -43,6 +43,17 @@
     }
 }
 
+- (void)stop {
+    NSLog(@"sound effect helper");
+    if (self.soundEffects.count <= 0) { return; }
+
+    for (SoundEffect *soundEffect in self.soundEffects) {
+        [soundEffect stop];
+        NSLog(@"self.audio stopped %@", soundEffect);
+
+    }
+}
+
 - (NSTimeInterval)duration {
     if (self.soundEffects.count <= 0) { return 0; }
     

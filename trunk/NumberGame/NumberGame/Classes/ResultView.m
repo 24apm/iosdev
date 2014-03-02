@@ -11,6 +11,7 @@
 #import "AnimUtil.h"
 #import "iRate.h"
 #import "UserData.h"
+#import "NumberGameIAPHelper.h"
 
 @interface ResultView()
 
@@ -134,6 +135,16 @@
     UIActivityViewController *vc = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
     // Present Activity View Controller
     [self.vc presentViewController:vc animated:YES completion:nil];
+}
+
+- (IBAction)unlockPressed:(id)sender {
+    NSArray *products = [NumberGameIAPHelper sharedInstance].products;
+    for (SKProduct *product in products) {
+        if ([product.productIdentifier isEqualToString:@"com.jeffrwan.whatstheanswer.answer"]) {
+            NSLog(@"Buying %@...", product.productIdentifier);
+            [[NumberGameIAPHelper sharedInstance] buyProduct:product];
+        }
+    }
 }
 
 - (void)hide {

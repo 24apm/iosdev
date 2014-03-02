@@ -43,6 +43,7 @@
 @property (strong, nonatomic) MainView *mainView;
 @property (strong, nonatomic) MenuView *menuView;
 @property (strong, nonatomic) NumberGameView *numberGameView;
+@property (strong, nonatomic) NSArray *products;
 
 @end
 

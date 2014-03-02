@@ -13,7 +13,6 @@
 #import "ResultView.h"
 #import "THLabel.h"
 #import "MainView.h"
-#import "FloorView.h"
 
 typedef enum {
     GameStateMainMode,
@@ -38,7 +37,6 @@ typedef enum {
 @property (strong, nonatomic) IBOutlet UIView *flashOverlay;;
 @property (nonatomic) GameState currentGameState;
 @property (strong, nonatomic) IBOutlet UIView *containerView;
-@property (strong, nonatomic) IBOutlet FloorView *floorView;
 
 @property (nonatomic, retain) ADBannerView *adBannerView;
 
