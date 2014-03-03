@@ -211,7 +211,7 @@
 - (void)resetChoices {
     for(int i = 0; i < self.choiceSlots.count; i++) {
         UIButton *slot = [self.choiceSlots objectAtIndex:i];
-        [slot setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        slot.selected = NO;
         slot.layer.cornerRadius = slot.height * 0.1f;
     }
 }
@@ -331,7 +331,7 @@
             [slot setTitle:choiceString forState:UIControlStateNormal];
             //  disable current choice
             
-            [choice setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+            choice.selected = YES;
             //  set slot with choice's tag (keep reference)
             slot.tag = choice.tag;
             
@@ -398,7 +398,7 @@
         for (int i = 0; i < self.choiceSlots.count; i++){
             UIButton *choice = [self.choiceSlots objectAtIndex:i];
             if (choice.tag == slot.tag) {
-                [choice setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+                choice.selected = NO;
                 [self animate:slot toView:choice];
                 
                 slot.tag = 0;
