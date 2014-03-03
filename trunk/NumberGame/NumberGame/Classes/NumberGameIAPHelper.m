@@ -19,7 +19,7 @@
     static NumberGameIAPHelper * sharedInstance;
     dispatch_once(&once, ^{
         NSSet * productIdentifiers = [NSSet setWithObjects:
-                                      @"com.jeffrwan.whatstheanswer.answer",
+                                      IAP_UNLOCK_ANSWER,
                                       nil];
         sharedInstance = [[self alloc] initWithProductIdentifiers:productIdentifiers];
     });

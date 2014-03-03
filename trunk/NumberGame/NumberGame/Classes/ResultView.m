@@ -143,7 +143,7 @@
 - (IBAction)unlockPressed:(id)sender {
     NSArray *products = [NumberGameIAPHelper sharedInstance].products;
     for (SKProduct *product in products) {
-        if ([product.productIdentifier isEqualToString:@"com.jeffrwan.whatstheanswer.answer"]) {
+        if ([product.productIdentifier isEqualToString:IAP_UNLOCK_ANSWER]) {
             NSLog(@"Buying %@...", product.productIdentifier);
             [[NumberGameIAPHelper sharedInstance] buyProduct:product];
         }

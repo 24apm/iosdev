@@ -8,6 +8,8 @@
 
 #import "IAPHelper.h"
 
+#define IAP_UNLOCK_ANSWER @"com.jeffrwan.whatstheanswer.answer"
+
 @interface NumberGameIAPHelper : IAPHelper
 
 @property (strong, nonatomic) NSArray *products;
