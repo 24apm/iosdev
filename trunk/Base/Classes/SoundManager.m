@@ -40,8 +40,6 @@
 - (void)stop:(NSString *)fileName {
     SoundEffectHelper *soundEffect = [self.soundEffects objectForKey:fileName];
     if (soundEffect) {
-        NSLog(@"Sound manager stop ");
-
         [soundEffect stop];
     }
 }

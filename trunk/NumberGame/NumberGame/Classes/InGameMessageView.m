@@ -10,7 +10,6 @@
 
 @implementation InGameMessageView
 
-
 - (void)show {
     self.hidden = NO;
     self.alpha = 1.0f;

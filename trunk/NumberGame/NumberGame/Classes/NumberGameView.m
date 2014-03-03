@@ -56,9 +56,12 @@
     }
     self.playedTick = NO;
     self.maxTime = 10.f;
+    
     [self loadUserData];
     self.numberBackgroundColor = [UIColor colorWithRed:84.f/255.f green:255.f/255.f blue:136.f/255.f alpha:1.0f];
     self.operatorBackgroundColor = [UIColor colorWithRed:67.f/255.f green:204.f/255.f blue:109.f/255.f alpha:1.0f];
+    
+    self.cheatButton.hidden = !DEBUG_MODE;
 }
 
 
@@ -127,7 +130,6 @@
             self.playedTick = YES;
         }
     } else {
-        [self showAnswer];
         [self.progressBar fillBar:0.f animated:NO];
         [self.timer invalidate];
         [[SoundManager instance] stop:SOUND_EFFECT_TICKING];

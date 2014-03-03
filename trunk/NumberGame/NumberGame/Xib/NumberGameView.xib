@@ -34,7 +34,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
             <subviews>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="af0-cU-D9a">
-                    <rect key="frame" x="60.000000000000036" y="55" width="199.99999999999997" height="60"/>
+                    <rect key="frame" x="60" y="55" width="200" height="60"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="40"/>
@@ -42,7 +42,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="yw5-b7-1tl">
-                    <rect key="frame" x="85.000000000000014" y="185" width="40" height="50"/>
+                    <rect key="frame" x="85" y="185" width="40" height="50"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.27843138579999999" green="0.84705889229999998" blue="0.45098042490000001" alpha="1" colorSpace="deviceRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -62,7 +62,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="s1T-7b-1Vj">
-                    <rect key="frame" x="140.00000000000003" y="185" width="40" height="50"/>
+                    <rect key="frame" x="140" y="185" width="40" height="50"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.27843138579999999" green="0.84705889229999998" blue="0.45098042490000001" alpha="1" colorSpace="deviceRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -102,7 +102,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="xws-pA-qHT">
-                    <rect key="frame" x="140.00000000000003" y="280" width="40" height="50"/>
+                    <rect key="frame" x="140" y="280" width="40" height="50"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.27843138579999999" green="0.84705889229999998" blue="0.45098042490000001" alpha="1" colorSpace="deviceRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -122,7 +122,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Dvw-dZ-CBj">
-                    <rect key="frame" x="85.000000000000014" y="345" width="40" height="50"/>
+                    <rect key="frame" x="85" y="345" width="40" height="50"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.27843138579999999" green="0.84705889229999998" blue="0.45098042490000001" alpha="1" colorSpace="deviceRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -182,7 +182,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="NZo-g5-CZV">
-                    <rect key="frame" x="250.00000000000009" y="280" width="40" height="50"/>
+                    <rect key="frame" x="250" y="280" width="40" height="50"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.27843138579999999" green="0.84705889229999998" blue="0.45098042490000001" alpha="1" colorSpace="deviceRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -202,7 +202,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="vO4-QU-hgD">
-                    <rect key="frame" x="85.000000000000014" y="280" width="40" height="50"/>
+                    <rect key="frame" x="85" y="280" width="40" height="50"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.27843138579999999" green="0.84705889229999998" blue="0.45098042490000001" alpha="1" colorSpace="deviceRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -222,7 +222,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="EEa-1C-iYe">
-                    <rect key="frame" x="30.000000000000014" y="280" width="40" height="50"/>
+                    <rect key="frame" x="30" y="280" width="40" height="50"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.27843138579999999" green="0.84705889229999998" blue="0.45098042490000001" alpha="1" colorSpace="deviceRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -242,7 +242,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="jhK-Z5-P7i">
-                    <rect key="frame" x="140.00000000000003" y="345" width="40" height="50"/>
+                    <rect key="frame" x="140" y="345" width="40" height="50"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.27843138579999999" green="0.84705889229999998" blue="0.45098042490000001" alpha="1" colorSpace="deviceRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -262,7 +262,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="fKm-6u-Cdk">
-                    <rect key="frame" x="30.000000000000014" y="345" width="40" height="50"/>
+                    <rect key="frame" x="30" y="345" width="40" height="50"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.27843138579999999" green="0.84705889229999998" blue="0.45098042490000001" alpha="1" colorSpace="deviceRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -282,7 +282,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="h4h-7z-pm2">
-                    <rect key="frame" x="250.00000000000009" y="345" width="40" height="50"/>
+                    <rect key="frame" x="250" y="345" width="40" height="50"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.27843138579999999" green="0.84705889229999998" blue="0.45098042490000001" alpha="1" colorSpace="deviceRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -302,7 +302,7 @@
                     </connections>
                 </button>
                 <view contentMode="scaleToFill" id="mbY-ts-gvF" customClass="ProgressBarComponent">
-                    <rect key="frame" x="10" y="137" width="299.99999999999989" height="20"/>
+                    <rect key="frame" x="10" y="137" width="300" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <view contentMode="scaleToFill" id="hSh-JJ-FCb" userLabel="Background">
@@ -311,7 +311,7 @@
                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
                         <view contentMode="scaleToFill" id="QP2-1b-JMO" userLabel="Foreground">
-                            <rect key="frame" x="0.0" y="0.0" width="299.99999999999994" height="20"/>
+                            <rect key="frame" x="0.0" y="0.0" width="300" height="20"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" red="0.27843138579999999" green="0.84705889229999998" blue="0.45098042490000001" alpha="1" colorSpace="deviceRGB"/>
                         </view>
@@ -333,7 +333,7 @@
                     </connections>
                 </button>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Vct-Ic-Thz" userLabel="CheatLabel">
-                    <rect key="frame" x="17" y="103" width="300.00000000000006" height="21"/>
+                    <rect key="frame" x="17" y="103" width="300" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
