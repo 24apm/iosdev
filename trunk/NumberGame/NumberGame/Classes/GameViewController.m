@@ -44,20 +44,22 @@
 - (void)initialize {
     self.currentGameState = -1;
 
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resultViewCallback) name:RESULT_VIEW_DISMISSED_NOTIFICATION object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mainViewCallback) name:MAIN_VIEW_DISMISSED_NOTIFICATION object:nil];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resultViewCallback) name:MENU_VIEW_GO_TO_MAIN_MENU_NOTIFICATION object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showLeaderboard) name:SHOW_LEADERBOARD_NOTIFICATION object:nil];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(numberGameViewCallback) name: NUMBER_GAME_CALLBACK_NOTIFICATION object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(numberGameViewReturnLobbyCallback) name: NUMBER_GAME_RETURN_LOBBY_NOTIFICATION object:nil];
+
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showAchievements) name: SHOW_ACHIEVEMENT_NOTIFICATION object:nil];
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resultViewCallback) name:RESULT_VIEW_DISMISSED_NOTIFICATION object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showAnswerCallback) name:RESULT_VIEW_SHOW_ANSWER_NOTIFICATION object:nil];
+
     self.tutorialView = [[TutorialView alloc] init];
     [self.containerView addSubview:self.tutorialView];
     self.tutorialView.hidden = YES;
     self.tutorialView.size = self.containerView.size;
-    
     
     self.mainView = [[MainView alloc] init];
     [self.containerView addSubview:self.mainView];
@@ -89,24 +91,32 @@
     [[SoundManager instance] prepare:SOUND_EFFECT_BOING count:5];
 }
 
-- (void)resultViewCallback {
-    [self updateGameState:GameStateMainMode];
-}
-
 - (void)mainViewCallback {
     [self updateGameState:GameStateGameMode];
-}
-
-- (void)numberGameViewCallback {
-    [self updateGameState:GameStateResultMode];
 }
 
 - (void)showLeaderboard {
     [[GameCenterHelper instance] showLeaderboard:self];
 }
 
--(void)showAchievements {
+- (void)showAchievements {
     [[GameCenterHelper instance] showAchievements:self];
+}
+
+- (void)numberGameViewCallback {
+    [self updateGameState:GameStateResultMode];
+}
+
+- (void)resultViewCallback {
+    [self updateGameState:GameStateMainMode];
+}
+
+- (void)showAnswerCallback {
+    [self updateGameState:GameStateShowAnswerMode];
+}
+
+- (void)numberGameViewReturnLobbyCallback {
+    [self updateGameState:GameStateMainMode];
 }
 
 - (void)refresh {
@@ -129,20 +139,22 @@
             break;
         case GameStateGameMode:
             self.numberGameView.hidden = NO;
+            [self.numberGameView refreshGame];
             [self.numberGameView show];
-            self.containerView.hidden = NO;
             break;
         case GameStateMenuMode:
             self.menuView.hidden = NO;
             [self.menuView show];
             break;
-        case GameStateResumeMode:
-            self.containerView.userInteractionEnabled = NO;
-            break;
         case GameStateResultMode:
             self.resultView.hidden = NO;
             [[GameCenterHelper instance] checkAchievements];
             [self.resultView show];
+            break;
+        case GameStateShowAnswerMode:
+            self.numberGameView.hidden = NO;
+            [self.numberGameView showAnswer];
+            [self.numberGameView show];
             break;
         default:
             break;
@@ -165,9 +177,9 @@
     
     [self createAdBannerView];
     [self.view addSubview:self.adBannerView];
+    
     [GameCenterHelper instance].currentLeaderBoard = kLeaderboardID;
     [[GameCenterHelper instance] loginToGameCenter];
-  
 }
 
 - (void)didReceiveMemoryWarning

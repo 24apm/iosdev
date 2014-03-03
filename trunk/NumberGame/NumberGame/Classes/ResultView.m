@@ -27,19 +27,11 @@
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
 @property (strong, nonatomic) IBOutlet UIButton *twitterButton;
 @property (strong, nonatomic) IBOutlet UIButton *facebookButton;
+@property (strong, nonatomic) NSArray *products;
 
 @end
 
 @implementation ResultView
-
-- (id)initWithCoder:(NSCoder *)aDecoder {
-    self = [super initWithCoder:aDecoder];
-    if (self) {
-        self.y = self.height;
-        self.currentScore = 0;
-    }
-    return self;
-}
 
 - (IBAction)playAgainPressed:(id)sender {
     [self hide];
@@ -56,6 +48,14 @@
     self.maxScoreLabel.text = [NSString stringWithFormat:@"%d", self.lastMaxScore];
     self.step = ceil((float)self.targetScore / (RESULT_VIEW_SCORE_LABEL_ANIMATION_TOTAL_DURATION/RESULT_VIEW_SCORE_LABEL_ANIMATION_STEP_DURATION));
     self.imageView.image = [UserData instance].lastGameSS;
+    self.activityIndicatorView.hidden = YES;
+    self.products = [NumberGameIAPHelper sharedInstance].products;
+    if (!self.products) {
+        self.unlockButton.hidden = YES;
+    } else {
+        self.unlockButton.hidden = NO;
+    }
+
     [UIView animateWithDuration:RESULT_VIEW_VIEW_TOTAL_DURATION * 0.9f animations:^{
         self.y = -self.height * 0.05f;
     } completion:^(BOOL complete) {
@@ -69,6 +69,8 @@
     if ([[iRate sharedInstance] shouldPromptForRating]) {
         [[iRate sharedInstance] promptIfNetworkAvailable];
     }
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(productPurchased:) name:IAPHelperProductPurchasedNotification object:nil];
 }
 
 - (void)updateScoreLabel {
@@ -141,16 +143,38 @@
 }
 
 - (IBAction)unlockPressed:(id)sender {
-    NSArray *products = [NumberGameIAPHelper sharedInstance].products;
-    for (SKProduct *product in products) {
+    for (SKProduct *product in self.products) {
         if ([product.productIdentifier isEqualToString:IAP_UNLOCK_ANSWER]) {
             NSLog(@"Buying %@...", product.productIdentifier);
+            self.activityIndicatorView.hidden = NO;
+            [self.activityIndicatorView startAnimating];
             [[NumberGameIAPHelper sharedInstance] buyProduct:product];
         }
     }
 }
 
+- (void)productPurchased:(NSNotification *)notification {
+    NSString *productIdentifier = notification.object;
+    if (productIdentifier) {
+        // Unlock answer
+        [self.activityIndicatorView stopAnimating];
+        self.activityIndicatorView.hidden = YES;
+
+        [self showAnswer];
+    }
+}
+
+- (void)showAnswer {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [UIView animateWithDuration:0.3f animations:^{
+        self.y = self.height;
+    } completion:^(BOOL complete) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:RESULT_VIEW_SHOW_ANSWER_NOTIFICATION object:self];
+    }];
+}
+
 - (void)hide {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [UIView animateWithDuration:0.3f animations:^{
         self.y = self.height;
     } completion:^(BOOL complete) {

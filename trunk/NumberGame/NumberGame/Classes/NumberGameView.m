@@ -113,7 +113,30 @@
     for (int i = 0; i < newArray.count; i++) {
         t = [NSString stringWithFormat:@"%@ %@",t, [newArray objectAtIndex:i]];
     }
+    
+    for (NSString *answer in newArray) {
+        for (UIButton *choice in self.choiceSlots) {
+            NSString *choiceText = [choice titleForState:UIControlStateNormal];
+            // matching answer
+            BOOL hasSelected = choice.layer.borderWidth > 0;
+            if (!hasSelected && [choiceText isEqualToString:answer]) {
+                [self showBorder:choice];
+                break;
+            }
+        }
+    }
     self.cheatLabel.text = t;
+    self.cheatView.hidden = NO;
+}
+
+- (void)showBorder:(UIView *)view {
+    view.layer.borderColor = [UIColor orangeColor].CGColor;
+    view.layer.borderWidth = 2.f * IPAD_SCALE;
+}
+
+- (void)hideBorder:(UIView *)view {
+    view.layer.borderColor = [UIColor clearColor].CGColor;
+    view.layer.borderWidth = 0.f;
 }
 
 - (void)updateProgressBar {
@@ -145,8 +168,7 @@
 }
 
 - (void)refreshGame {
-    // self.answerSlotsNum = 0;
-    //int maxNumberRange = 10;
+    self.cheatView.hidden = YES;
     NSDictionary *data = [[NumberManager instance] generateLevel:self.answerSlots.count choiceSlots:self.choiceSlots.count];
     int targetValue = [[data objectForKey:@"targetNumber"] intValue];
     NSArray *array = [data objectForKey:@"algebra"];
@@ -215,6 +237,7 @@
         UIButton *slot = [self.choiceSlots objectAtIndex:i];
         slot.selected = NO;
         slot.layer.cornerRadius = slot.height * 0.1f;
+        [self hideBorder:slot];
     }
 }
 
@@ -238,14 +261,22 @@
     self.transform = CGAffineTransformMakeScale(2.0f, 2.0f);
     self.alpha = 0;
     self.currentScore = 0;
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(productPurchased:) name:IAPHelperProductPurchasedNotification object:nil];
     
     [UIView animateWithDuration:0.3f animations:^ {
         self.transform = CGAffineTransformIdentity;
         self.alpha = 1.0f;
     } completion:^(BOOL complete) {
     }];
-    [self refreshGame];
+}
+
+- (IBAction)returnLobby:(id)sender {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [UIView animateWithDuration:0.3f animations:^{
+        self.transform = CGAffineTransformMakeScale(0.3f, 0.3f);
+        self.alpha = 0.0f;
+    } completion:^(BOOL complete) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:NUMBER_GAME_RETURN_LOBBY_NOTIFICATION object:self];
+    }];
 }
 
 - (void)hide {
@@ -256,15 +287,6 @@
     } completion:^(BOOL complete) {
         [[NSNotificationCenter defaultCenter] postNotificationName:NUMBER_GAME_CALLBACK_NOTIFICATION object:self];
     }];
-}
-
-
-- (void)productPurchased:(NSNotification *)notification {
-    NSString *productIdentifier = notification.object;
-    if (productIdentifier) {
-        // Unlock answer
-        [self showAnswer];
-    }
 }
 
 - (IBAction)answerSlotPressed:(UIButton *)sender {

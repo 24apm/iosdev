@@ -9,6 +9,7 @@
 #import "XibView.h"
 
 #define RESULT_VIEW_DISMISSED_NOTIFICATION @"RESULT_VIEW_DISMISSED_NOTIFICATION"
+#define RESULT_VIEW_SHOW_ANSWER_NOTIFICATION @"RESULT_VIEW_SHOW_ANSWER_NOTIFICATION"
 
 @interface ResultView : XibView
 
@@ -24,6 +25,8 @@
 @property (strong, nonatomic) IBOutlet UIImageView *lastGameSS;
 
 @property (strong, nonatomic) IBOutlet UIButton *playButton;
+@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicatorView;
+@property (strong, nonatomic) IBOutlet UIButton *unlockButton;
 
 - (void)show;
 
