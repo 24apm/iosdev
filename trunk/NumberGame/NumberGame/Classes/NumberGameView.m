@@ -16,14 +16,9 @@
 #import "SoundManager.h"
 #import <StoreKit/StoreKit.h>
 #import "NumberGameIAPHelper.h"
+#import "GameViewController.h"
 
 #define BUFFER_TIME 0.f
-#define SOUND_EFFECT_DING @"ding"
-#define SOUND_EFFECT_POP @"pop"
-#define SOUND_EFFECT_BLING @"bling"
-#define SOUND_EFFECT_BOING @"boing"
-#define SOUND_EFFECT_TICKING @"ticking"
-#define SOUND_EFFECT_WINNING @"winningEffect"
 
 @interface NumberGameView ()
 
@@ -52,7 +47,6 @@
         UIButton *choice = [self.choiceSlots objectAtIndex:i];
         choice.tag = i+1;
         self.currentScore = 0;
-        [self preloadSounds];
     }
     self.playedTick = NO;
     self.maxTime = 10.f;
@@ -68,16 +62,6 @@
 - (void)loadUserData {
     [UserData instance].maxScore = [[[NSUserDefaults standardUserDefaults] valueForKey:@"maxScore"] intValue];
     self.topScoreLabel.text = [self updateMaxScore];
-}
-
-
-- (void)preloadSounds {
-    [[SoundManager instance] prepare:SOUND_EFFECT_TICKING count:1];
-    [[SoundManager instance] prepare:SOUND_EFFECT_WINNING count:2];
-    [[SoundManager instance] prepare:SOUND_EFFECT_BOING count:5];
-    [[SoundManager instance] prepare:SOUND_EFFECT_POP count:5];
-    [[SoundManager instance] prepare:SOUND_EFFECT_BLING count:5];
-    [[SoundManager instance] prepare:SOUND_EFFECT_DING count:5];
 }
 
 -(void)setCurrentScore:(int)currentScore {

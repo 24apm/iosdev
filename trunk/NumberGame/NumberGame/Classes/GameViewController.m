@@ -24,9 +24,6 @@
 #import "PromoBannerView.h"
 #import "PromoManager.h"
 
-#define SOUND_EFFECT_BANG @"bang"
-#define SOUND_EFFECT_BOING @"boing"
-
 @interface GameViewController ()
 
 @property (strong, nonatomic) TutorialView *tutorialView;
@@ -87,8 +84,12 @@
 }
 
 - (void)preloadSounds {
-    [[SoundManager instance] prepare:SOUND_EFFECT_BANG count:2];
+    [[SoundManager instance] prepare:SOUND_EFFECT_TICKING count:1];
+    [[SoundManager instance] prepare:SOUND_EFFECT_WINNING count:2];
     [[SoundManager instance] prepare:SOUND_EFFECT_BOING count:5];
+    [[SoundManager instance] prepare:SOUND_EFFECT_POP count:5];
+    [[SoundManager instance] prepare:SOUND_EFFECT_BLING count:5];
+    [[SoundManager instance] prepare:SOUND_EFFECT_DING count:5];
 }
 
 - (void)mainViewCallback {
