@@ -21,8 +21,16 @@
     static PromoManager *instance = nil;
     if (!instance) {
         instance = [[PromoManager alloc] init];
+        instance.promos = [NSMutableArray array];
+        [instance setupAds];
     }
     return instance;
+}
+
+- (void)setupAds {
+    [self addPromo:[PromoGameData setupWithImagePath:@"FlappyBallIcon100x100.png"
+                                         description:@"Play Floppy Ball!"
+                                           actionURL:@"itms-apps://itunes.apple.com/us/app/floppy-ball/id827253862?ls=1&mt=8"]];
 }
 
 - (void)addPromo:(PromoGameData *)gameData {

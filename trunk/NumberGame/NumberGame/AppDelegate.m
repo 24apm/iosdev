@@ -10,6 +10,7 @@
 #import "iRate.h"
 #import "NotificationManager.h"
 #import "NumberGameIAPHelper.h"
+#import "PromoManager.h"
 
 @implementation AppDelegate
 
@@ -26,7 +27,6 @@
     //configure iRate
     [iRate sharedInstance].daysUntilPrompt = 5;
     [iRate sharedInstance].usesUntilPrompt = 15;
-    
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions

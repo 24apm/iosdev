@@ -21,7 +21,8 @@
     
     //enable preview mode
     [iRate sharedInstance].previewMode = NO;
-    
+    [iRate sharedInstance].promptAtLaunch = NO;
+
     //configure iRate
     [iRate sharedInstance].daysUntilPrompt = 5;
     [iRate sharedInstance].usesUntilPrompt = 15;

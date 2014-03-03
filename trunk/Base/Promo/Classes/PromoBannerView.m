@@ -7,25 +7,18 @@
 //
 
 #import "PromoBannerView.h"
+#import "PromoManager.h"
 
 @implementation PromoBannerView
 
-- (id)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
-    }
-    return self;
+- (void)setupWithPromoGameData:(PromoGameData *)gameData {
+    self.iconView.image = [UIImage imageNamed:gameData.imagePath];
+    self.descriptionLabel.text = gameData.description;
+    self.actionUrl = gameData.actionURL;
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
+- (IBAction)promoPressed:(id)sender {
+    [[PromoManager instance] goToAppStore:self.actionUrl];
 }
-*/
 
 @end

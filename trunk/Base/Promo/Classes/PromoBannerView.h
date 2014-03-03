@@ -7,7 +7,14 @@
 //
 
 #import "XibView.h"
+#import "PromoGameData.h"
 
 @interface PromoBannerView : XibView
+
+@property (strong, nonatomic) IBOutlet UIImageView *iconView;
+@property (strong, nonatomic) IBOutlet UILabel *descriptionLabel;
+@property (strong, nonatomic) NSString *actionUrl;
+
+- (void)setupWithPromoGameData:(PromoGameData *)gameData;
 
 @end

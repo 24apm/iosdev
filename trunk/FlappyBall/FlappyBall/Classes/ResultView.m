@@ -65,7 +65,9 @@
         }];
     }];
     
-    [[iRate sharedInstance] promptIfNetworkAvailable];
+    if ([[iRate sharedInstance] shouldPromptForRating]) {
+        [[iRate sharedInstance] promptIfNetworkAvailable];
+    }
 }
 
 - (void)part1 {
