@@ -10,13 +10,14 @@
 #import "GameCenterManager.h"
 #import <GameKit/GameKit.h>
 
-@interface GameCenterHelper : NSObject <GKLeaderboardViewControllerDelegate, GameCenterManagerDelegate>
+@interface GameCenterHelperBase : NSObject <GKLeaderboardViewControllerDelegate, GKAchievementViewControllerDelegate, GameCenterManagerDelegate>
 
 @property (nonatomic, retain) GameCenterManager *gameCenterManager;
 @property (nonatomic, retain) NSString* currentLeaderBoard;
 
-+ (GameCenterHelper *)instance;
 - (void)loginToGameCenter;
 - (void)showLeaderboard:(UIViewController *)viewController;
+- (void)showAchievements:(UIViewController *)viewController;
+- (void)checkAchievements;
 
 @end

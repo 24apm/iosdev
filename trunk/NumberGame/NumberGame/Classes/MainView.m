@@ -27,6 +27,9 @@
 - (IBAction)leaderboardPressed:(id)sender {
     [[NSNotificationCenter defaultCenter] postNotificationName:SHOW_LEADERBOARD_NOTIFICATION object:self];
 }
+- (IBAction)achievementPressed:(id)sender {
+    [[NSNotificationCenter defaultCenter] postNotificationName:SHOW_ACHIEVEMENT_NOTIFICATION object:self];
+}
 
 - (void)show {
     [UIView animateWithDuration:0.3f animations:^{

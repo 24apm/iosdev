@@ -21,6 +21,9 @@
 #import "NumberManager.h"
 #import "NumberGameView.h"
 #import "GameCenterHelper.h"
+#import "UserData.h"
+#import "PromoBannerView.h"
+#import "PromoManager.h"
 
 #define SOUND_EFFECT_BANG @"bang"
 #define SOUND_EFFECT_BOING @"boing"
@@ -44,6 +47,7 @@
 @property (strong, nonatomic) MenuView *menuView;
 @property (strong, nonatomic) NumberGameView *numberGameView;
 @property (strong, nonatomic) NSArray *products;
+@property (strong, nonatomic) PromoBannerView *promoBannerView;
 
 @end
 
@@ -58,7 +62,6 @@
     self.isRunning = YES;
     self.lastGeneratedPipe = nil;
     _isGameOver = YES;
-    [self loadUserData];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resultViewCallback) name:RESULT_VIEW_DISMISSED_NOTIFICATION object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mainViewCallback) name:MAIN_VIEW_DISMISSED_NOTIFICATION object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(menuViewCallback) name:MENU_VIEW_DISMISSED_NOTIFICATION object:nil];
@@ -67,7 +70,8 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showLeaderboard) name:SHOW_LEADERBOARD_NOTIFICATION object:nil];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(numberGameViewCallback) name: NUMBER_GAME_CALLBACK_NOTIFICATION object:nil];
-
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showAchievements) name: SHOW_ACHIEVEMENT_NOTIFICATION object:nil];
+    
     [self createObstacle];
     
     self.tutorialView = [[TutorialView alloc] init];
@@ -99,6 +103,9 @@
     self.menuView.hidden = YES;
     self.menuView.size = self.containerView.size;
     
+
+    
+    
     if (BLACK_AND_WHITE_MODE) {
         [self blackAndWhite];
     }
@@ -125,11 +132,6 @@
     [self updateGameState:GameStateMenuMode];
 }
 
-- (void)loadUserData {
-    self.maxScore = [[[NSUserDefaults standardUserDefaults] valueForKey:@"maxScore"] intValue];
-    self.maxScoreLabel.text = [NSString stringWithFormat:@"%d", self.maxScore];
-}
-
 - (void)resultViewCallback {
     [self updateGameState:GameStateMainMode];
 }
@@ -152,6 +154,10 @@
 
 - (void)showLeaderboard {
     [[GameCenterHelper instance] showLeaderboard:self];
+}
+
+-(void)showAchievements {
+    [[GameCenterHelper instance] showAchievements:self];
 }
 
 - (void)refresh {
@@ -198,10 +204,11 @@
             break;
         case GameStateResultMode:
             self.resultView.hidden = NO;
-            self.numberGameView.hidden = NO;
 //            self.resultView.sharedText = [NSString stringWithFormat:@"High Score: %d!", self.maxScore];
+            [[GameCenterHelper instance] checkAchievements];
             [self.resultView show];
             break;
+            
         default:
             break;
     }
@@ -321,14 +328,24 @@
     }
     self.adBannerView.y = self.view.height;
     self.adBannerView.delegate = self;
+    
+    // custom
+    self.promoBannerView = [[PromoBannerView alloc] init];
+    [self.containerView addSubview:self.promoBannerView];
+    self.promoBannerView.frame = self.adBannerView.frame;
+    self.promoBannerView.y = self.view.height - self.promoBannerView.height;
+    self.promoBannerView.hidden = YES;
 }
 
 - (void)layoutAnimated:(BOOL)animated {
     float bannerYOffset = self.view.height;
     if (self.adBannerView.bannerLoaded) {
         bannerYOffset = self.view.height - self.adBannerView.height;
+        self.promoBannerView.hidden = YES;
     } else {
         bannerYOffset = self.view.height;
+        [self.promoBannerView setupWithPromoGameData:[[PromoManager instance] nextPromo]];
+        self.promoBannerView.hidden = NO;
     }
     
     [UIView animateWithDuration:animated ? 0.25 : 0.0 animations:^{

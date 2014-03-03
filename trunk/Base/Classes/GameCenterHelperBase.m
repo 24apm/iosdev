@@ -6,18 +6,9 @@
 //  Copyright (c) 2014 MacCoder. All rights reserved.
 //
 
-#import "GameCenterHelper.h"
+#import "GameCenterHelperBase.h"
 
-@implementation GameCenterHelper
-
-+ (GameCenterHelper *)instance {
-    static GameCenterHelper *instance = nil;
-    if (!instance) {
-        instance = [[GameCenterHelper alloc] init];
-    }
-    return instance;
-}
-
+@implementation GameCenterHelperBase
 
 #pragma mark - GameCenter
 
@@ -49,6 +40,28 @@
 
 - (void)leaderboardViewControllerDidFinish:(GKLeaderboardViewController *)viewController {
     [viewController dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+- (void)showAchievements:(UIViewController *)viewController
+{
+    GKAchievementViewController *achievements = [[GKAchievementViewController alloc] init];
+    if (achievements != NULL)
+    {
+        achievements.achievementDelegate = self;
+        [viewController presentViewController:achievements animated:YES completion:nil];
+
+    }
+}
+
+- (void)achievementViewControllerDidFinish:(GKAchievementViewController *)viewController;
+{
+    [viewController dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void) checkAchievements
+{
+
 }
 
 @end

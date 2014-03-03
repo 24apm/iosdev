@@ -50,8 +50,9 @@
     self.playButton.enabled = NO;
     self.recordLabel.hidden = YES;
     self.currentScore = 0;
-    self.targetScore = [self.currentScoreLabel.text intValue];
+    self.targetScore = [UserData instance].score;
     self.currentScoreLabel.text = [NSString stringWithFormat:@"%d", self.currentScore];
+    self.lastMaxScore = [UserData instance].maxScore;
     self.maxScoreLabel.text = [NSString stringWithFormat:@"%d", self.lastMaxScore];
     self.step = ceil((float)self.targetScore / (RESULT_VIEW_SCORE_LABEL_ANIMATION_TOTAL_DURATION/RESULT_VIEW_SCORE_LABEL_ANIMATION_STEP_DURATION));
     self.imageView.image = [UserData instance].lastGameSS;

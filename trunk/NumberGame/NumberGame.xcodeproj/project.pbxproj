@@ -55,6 +55,7 @@
 		D0E1123218C2ECF300808072 /* pop.caf in Resources */ = {isa = PBXBuildFile; fileRef = D0E1123018C2ECF300808072 /* pop.caf */; };
 		D0E1123318C2ECF300808072 /* ticking.caf in Resources */ = {isa = PBXBuildFile; fileRef = D0E1123118C2ECF300808072 /* ticking.caf */; };
 		D0E1123518C2EDF000808072 /* bling.caf in Resources */ = {isa = PBXBuildFile; fileRef = D0E1123418C2EDF000808072 /* bling.caf */; };
+		D0E1123818C30DE900808072 /* GameCenterHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E1123718C30DE900808072 /* GameCenterHelper.m */; };
 		D0E279B018C1DC37000F7170 /* NSArray+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E279AB18C1DC37000F7170 /* NSArray+Util.m */; };
 		D0E279B118C1DC37000F7170 /* UIView+ViewUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E279AD18C1DC37000F7170 /* UIView+ViewUtil.m */; };
 		D0E279B218C1DC37000F7170 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E279AF18C1DC37000F7170 /* Utils.m */; };
@@ -73,8 +74,14 @@
 		D0E36B8B18C2906F00BA56E7 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E36B8A18C2906F00BA56E7 /* StoreKit.framework */; };
 		D0E388B418C06F45001000FC /* ResultView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E388B318C06F45001000FC /* ResultView.xib */; };
 		D0EB7A0D18BF239A00AC8CEB /* UserData.m in Sources */ = {isa = PBXBuildFile; fileRef = D0EB7A0C18BF239A00AC8CEB /* UserData.m */; };
-		D0EB7A1018BF281000AC8CEB /* GameCenterHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D0EB7A0F18BF281000AC8CEB /* GameCenterHelper.m */; };
+		D0EB7A1018BF281000AC8CEB /* GameCenterHelperBase.m in Sources */ = {isa = PBXBuildFile; fileRef = D0EB7A0F18BF281000AC8CEB /* GameCenterHelperBase.m */; };
 		D0EB7A1218BF30F100AC8CEB /* NumberGameView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0EB7A1118BF30F100AC8CEB /* NumberGameView~ipad.xib */; };
+		D0EF543018C4271F00ECF334 /* PromoGameData.m in Sources */ = {isa = PBXBuildFile; fileRef = D0EF542D18C4271F00ECF334 /* PromoGameData.m */; };
+		D0EF543118C4271F00ECF334 /* PromoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D0EF542F18C4271F00ECF334 /* PromoManager.m */; };
+		D0EF543318C4276B00ECF334 /* FlappyBallIcon100x100.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EF543218C4276B00ECF334 /* FlappyBallIcon100x100.png */; };
+		D0EF543618C4285400ECF334 /* PromoBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0EF543518C4285400ECF334 /* PromoBannerView.m */; };
+		D0EF543818C4286100ECF334 /* PromoBannerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0EF543718C4286100ECF334 /* PromoBannerView.xib */; };
+		D0EF543A18C442DC00ECF334 /* PromoBannerView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0EF543918C442DC00ECF334 /* PromoBannerView~ipad.xib */; };
 		D0F6849418B31C3E00CBB819 /* AnimUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F6846C18B31C3E00CBB819 /* AnimUtil.m */; };
 		D0F6849518B31C3E00CBB819 /* Base.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F6846F18B31C3E00CBB819 /* Base.m */; };
 		D0F6849618B31C3E00CBB819 /* GameLoopTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F6847118B31C3E00CBB819 /* GameLoopTimer.m */; };
@@ -167,6 +174,8 @@
 		D0E1123018C2ECF300808072 /* pop.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = pop.caf; sourceTree = "<group>"; };
 		D0E1123118C2ECF300808072 /* ticking.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ticking.caf; sourceTree = "<group>"; };
 		D0E1123418C2EDF000808072 /* bling.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = bling.caf; sourceTree = "<group>"; };
+		D0E1123618C30DE900808072 /* GameCenterHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameCenterHelper.h; sourceTree = "<group>"; };
+		D0E1123718C30DE900808072 /* GameCenterHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameCenterHelper.m; sourceTree = "<group>"; };
 		D0E279AA18C1DC37000F7170 /* NSArray+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Util.h"; sourceTree = "<group>"; };
 		D0E279AB18C1DC37000F7170 /* NSArray+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Util.m"; sourceTree = "<group>"; };
 		D0E279AC18C1DC37000F7170 /* UIView+ViewUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ViewUtil.h"; sourceTree = "<group>"; };
@@ -192,9 +201,18 @@
 		D0E388B318C06F45001000FC /* ResultView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResultView.xib; sourceTree = "<group>"; };
 		D0EB7A0B18BF239A00AC8CEB /* UserData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserData.h; sourceTree = "<group>"; };
 		D0EB7A0C18BF239A00AC8CEB /* UserData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserData.m; sourceTree = "<group>"; };
-		D0EB7A0E18BF281000AC8CEB /* GameCenterHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameCenterHelper.h; sourceTree = "<group>"; };
-		D0EB7A0F18BF281000AC8CEB /* GameCenterHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameCenterHelper.m; sourceTree = "<group>"; };
+		D0EB7A0E18BF281000AC8CEB /* GameCenterHelperBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameCenterHelperBase.h; sourceTree = "<group>"; };
+		D0EB7A0F18BF281000AC8CEB /* GameCenterHelperBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameCenterHelperBase.m; sourceTree = "<group>"; };
 		D0EB7A1118BF30F100AC8CEB /* NumberGameView~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "NumberGameView~ipad.xib"; sourceTree = "<group>"; };
+		D0EF542C18C4271F00ECF334 /* PromoGameData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PromoGameData.h; sourceTree = "<group>"; };
+		D0EF542D18C4271F00ECF334 /* PromoGameData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PromoGameData.m; sourceTree = "<group>"; };
+		D0EF542E18C4271F00ECF334 /* PromoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PromoManager.h; sourceTree = "<group>"; };
+		D0EF542F18C4271F00ECF334 /* PromoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PromoManager.m; sourceTree = "<group>"; };
+		D0EF543218C4276B00ECF334 /* FlappyBallIcon100x100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FlappyBallIcon100x100.png; sourceTree = "<group>"; };
+		D0EF543418C4285400ECF334 /* PromoBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PromoBannerView.h; sourceTree = "<group>"; };
+		D0EF543518C4285400ECF334 /* PromoBannerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PromoBannerView.m; sourceTree = "<group>"; };
+		D0EF543718C4286100ECF334 /* PromoBannerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PromoBannerView.xib; sourceTree = "<group>"; };
+		D0EF543918C442DC00ECF334 /* PromoBannerView~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "PromoBannerView~ipad.xib"; sourceTree = "<group>"; };
 		D0F6846B18B31C3E00CBB819 /* AnimUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimUtil.h; sourceTree = "<group>"; };
 		D0F6846C18B31C3E00CBB819 /* AnimUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimUtil.m; sourceTree = "<group>"; };
 		D0F6846D18B31C3E00CBB819 /* Base-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Base-Prefix.pch"; sourceTree = "<group>"; };
@@ -325,6 +343,8 @@
 				D05A833018B32785003C18EB /* NumberManager.m */,
 				D0EB7A0B18BF239A00AC8CEB /* UserData.h */,
 				D0EB7A0C18BF239A00AC8CEB /* UserData.m */,
+				D0E1123618C30DE900808072 /* GameCenterHelper.h */,
+				D0E1123718C30DE900808072 /* GameCenterHelper.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -450,9 +470,42 @@
 			path = Resources/Images;
 			sourceTree = "<group>";
 		};
+		D0EF542918C4271F00ECF334 /* Promo */ = {
+			isa = PBXGroup;
+			children = (
+				D0EF542A18C4271F00ECF334 /* AppIcons */,
+				D0EF542B18C4271F00ECF334 /* Classes */,
+			);
+			path = Promo;
+			sourceTree = "<group>";
+		};
+		D0EF542A18C4271F00ECF334 /* AppIcons */ = {
+			isa = PBXGroup;
+			children = (
+				D0EF543218C4276B00ECF334 /* FlappyBallIcon100x100.png */,
+			);
+			path = AppIcons;
+			sourceTree = "<group>";
+		};
+		D0EF542B18C4271F00ECF334 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				D0EF542C18C4271F00ECF334 /* PromoGameData.h */,
+				D0EF542D18C4271F00ECF334 /* PromoGameData.m */,
+				D0EF542E18C4271F00ECF334 /* PromoManager.h */,
+				D0EF542F18C4271F00ECF334 /* PromoManager.m */,
+				D0EF543418C4285400ECF334 /* PromoBannerView.h */,
+				D0EF543518C4285400ECF334 /* PromoBannerView.m */,
+				D0EF543718C4286100ECF334 /* PromoBannerView.xib */,
+				D0EF543918C442DC00ECF334 /* PromoBannerView~ipad.xib */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
 		D0F6846918B31C3E00CBB819 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				D0EF542918C4271F00ECF334 /* Promo */,
 				D0E36B8318C28C8400BA56E7 /* iAP */,
 				D0F6846A18B31C3E00CBB819 /* Classes */,
 				D0F6848618B31C3E00CBB819 /* FXLabel */,
@@ -478,8 +531,8 @@
 				D0F6847118B31C3E00CBB819 /* GameLoopTimer.m */,
 				D0F6847218B31C3E00CBB819 /* Hex.h */,
 				D0F6847318B31C3E00CBB819 /* Hex.m */,
-				D0EB7A0E18BF281000AC8CEB /* GameCenterHelper.h */,
-				D0EB7A0F18BF281000AC8CEB /* GameCenterHelper.m */,
+				D0EB7A0E18BF281000AC8CEB /* GameCenterHelperBase.h */,
+				D0EB7A0F18BF281000AC8CEB /* GameCenterHelperBase.m */,
 				D0F6847618B31C3E00CBB819 /* SoundEffect.h */,
 				D0F6847718B31C3E00CBB819 /* SoundEffect.m */,
 				D0F6847818B31C3E00CBB819 /* SoundEffectHelper.h */,
@@ -615,6 +668,8 @@
 			files = (
 				D015791118ACD9F500AA3803 /* FlappyBallIcon60x60.png in Resources */,
 				D0E388B418C06F45001000FC /* ResultView.xib in Resources */,
+				D0EF543818C4286100ECF334 /* PromoBannerView.xib in Resources */,
+				D0EF543318C4276B00ECF334 /* FlappyBallIcon100x100.png in Resources */,
 				D05A832118B3223C003C18EB /* GameViewController~ipad.xib in Resources */,
 				D05A832518B3223C003C18EB /* MainView~ipad.xib in Resources */,
 				D05A832618B3223C003C18EB /* MainWindow.xib in Resources */,
@@ -636,6 +691,7 @@
 				D0F684A318B31C3E00CBB819 /* iRate.bundle in Resources */,
 				D0E1123318C2ECF300808072 /* ticking.caf in Resources */,
 				D05A832818B3223C003C18EB /* MenuView~ipad.xib in Resources */,
+				D0EF543A18C442DC00ECF334 /* PromoBannerView~ipad.xib in Resources */,
 				D05A832A18B3223C003C18EB /* PipeView~ipad.xib in Resources */,
 				D0E364CE18BAFE8B00A5676B /* InGameMessageView.xib in Resources */,
 				D05A832018B3223C003C18EB /* GameViewController.xib in Resources */,
@@ -666,12 +722,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				D05A833118B32785003C18EB /* NumberManager.m in Sources */,
+				D0EF543018C4271F00ECF334 /* PromoGameData.m in Sources */,
 				D0E364D118BAFE9D00A5676B /* InGameMessageView.m in Sources */,
 				D05A831818B3223C003C18EB /* TutorialView.m in Sources */,
 				D05A831718B3223C003C18EB /* ResultView.m in Sources */,
 				D0F6849418B31C3E00CBB819 /* AnimUtil.m in Sources */,
 				D05A830E18B3223C003C18EB /* BackgroundView.m in Sources */,
-				D0EB7A1018BF281000AC8CEB /* GameCenterHelper.m in Sources */,
+				D0EB7A1018BF281000AC8CEB /* GameCenterHelperBase.m in Sources */,
 				D05A831B18B3223C003C18EB /* main.m in Sources */,
 				D05A830D18B3223C003C18EB /* AppDelegate.m in Sources */,
 				D05A831518B3223C003C18EB /* NotificationManager.m in Sources */,
@@ -681,8 +738,10 @@
 				D0F684A118B31C3E00CBB819 /* FXLabel.m in Sources */,
 				D0F684A418B31C3E00CBB819 /* iRate.m in Sources */,
 				D0F6849518B31C3E00CBB819 /* Base.m in Sources */,
+				D0EF543118C4271F00ECF334 /* PromoManager.m in Sources */,
 				D05A831618B3223C003C18EB /* PipeView.m in Sources */,
 				D0F6849B18B31C3E00CBB819 /* SoundManager.m in Sources */,
+				D0E1123818C30DE900808072 /* GameCenterHelper.m in Sources */,
 				D05A831218B3223C003C18EB /* LadyBugView.m in Sources */,
 				D05A831018B3223C003C18EB /* GameConstants.m in Sources */,
 				D0E36B8618C28C8400BA56E7 /* IAPHelper.m in Sources */,
@@ -699,6 +758,7 @@
 				D0E279B018C1DC37000F7170 /* NSArray+Util.m in Sources */,
 				D0F6849A18B31C3E00CBB819 /* SoundEffectHelper.m in Sources */,
 				D05A831118B3223C003C18EB /* GameViewController.m in Sources */,
+				D0EF543618C4285400ECF334 /* PromoBannerView.m in Sources */,
 				D0F684A218B31C3E00CBB819 /* GameCenterManager.m in Sources */,
 				D0F6849618B31C3E00CBB819 /* GameLoopTimer.m in Sources */,
 				D0F6849918B31C3E00CBB819 /* SoundEffect.m in Sources */,

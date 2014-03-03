@@ -37,7 +37,10 @@
 @property (nonatomic, retain) UIColor *operatorBackgroundColor;
 @property (nonatomic, retain) InGameMessageView *messageView;
 @property (nonatomic) int currentScore;
+@property (nonatomic) int topScore;
 @property (nonatomic) BOOL playedTick;
+@property (strong, nonatomic) IBOutlet UILabel *topScoreLabel;
+
 
 @end
 
@@ -53,10 +56,17 @@
     }
     self.playedTick = NO;
     self.maxTime = 10.f;
-    
+    [self loadUserData];
     self.numberBackgroundColor = [UIColor colorWithRed:84.f/255.f green:255.f/255.f blue:136.f/255.f alpha:1.0f];
     self.operatorBackgroundColor = [UIColor colorWithRed:67.f/255.f green:204.f/255.f blue:109.f/255.f alpha:1.0f];
 }
+
+
+- (void)loadUserData {
+    [UserData instance].maxScore = [[[NSUserDefaults standardUserDefaults] valueForKey:@"maxScore"] intValue];
+    self.topScoreLabel.text = [self updateMaxScore];
+}
+
 
 - (void)preloadSounds {
     [[SoundManager instance] prepare:SOUND_EFFECT_TICKING count:1];
@@ -69,7 +79,7 @@
 
 -(void)setCurrentScore:(int)currentScore {
     _currentScore = currentScore;
-    self.scoreLabel.text = [NSString stringWithFormat: @"Score: %d",_currentScore];
+    self.scoreLabel.text = [NSString stringWithFormat: @"Streak: %d",_currentScore];
 }
 
 - (void)showMessageView {
@@ -105,13 +115,15 @@
 
 - (void)updateProgressBar {
     float percentage = (self.nextExpireTime - CACurrentMediaTime()) / self.maxTime;
-
+    
     if (percentage > 0) {
         [self.progressBar fillBar:percentage animated:NO];
         
         // time is running out
         if (!self.playedTick && self.nextExpireTime - CACurrentMediaTime() < 4.4) {
             [[SoundManager instance] play:SOUND_EFFECT_TICKING];
+            self.progressBar.foregroundView.backgroundColor = [UIColor redColor];
+            
             self.playedTick = YES;
         }
     } else {
@@ -119,11 +131,14 @@
         [self.progressBar fillBar:0.f animated:NO];
         [self.timer invalidate];
         [[SoundManager instance] stop:SOUND_EFFECT_TICKING];
-
         [[SoundManager instance] play:SOUND_EFFECT_WINNING];
         [UserData instance].score = self.currentScore;
         [UserData instance].lastGameSS = [self blit];
-        [[NSNotificationCenter defaultCenter] postNotificationName:NUMBER_GAME_CALLBACK_NOTIFICATION object:self];
+        if (self.currentScore > self.topScore) {
+            self.topScore = self.currentScore;
+            [self.topScoreLabel setText:[self updateMaxScore]];
+        }
+        [self hide];
     }
 }
 
@@ -135,9 +150,13 @@
     NSArray *array = [data objectForKey:@"algebra"];
     [self refreshChoices:array];
     [self resetAnswers];
+    self.progressBar.foregroundView.backgroundColor = [UIColor colorWithRed:71.f/255.f
+                                                                      green:216.f/255.f
+                                                                       blue:115.f/255.f
+                                                                      alpha:1.f];
     self.targetNumberLabel.text = [NSString stringWithFormat:@"%d",targetValue];
     self.playedTick = NO;
-
+    
     self.nextExpireTime = CACurrentMediaTime() + self.maxTime + BUFFER_TIME;
     self.cheatLabel.hidden = YES;
     
@@ -168,7 +187,7 @@
                          blitView.transform = CGAffineTransformMakeScale(2.0f, 2.0f);
                          blitView.alpha = 0.2f;
                      } completion:^(BOOL complete) {
-                        [[SoundManager instance]play:SOUND_EFFECT_POP];
+                         [[SoundManager instance]play:SOUND_EFFECT_POP];
                          [blitView removeFromSuperview];
                      }];
 }
@@ -214,9 +233,11 @@
 }
 
 - (void)show {
+    self.transform = CGAffineTransformMakeScale(2.0f, 2.0f);
+    self.alpha = 0;
     self.currentScore = 0;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(productPurchased:) name:IAPHelperProductPurchasedNotification object:nil];
-
+    
     [UIView animateWithDuration:0.3f animations:^ {
         self.transform = CGAffineTransformIdentity;
         self.alpha = 1.0f;
@@ -228,11 +249,10 @@
 - (void)hide {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [UIView animateWithDuration:0.3f animations:^{
-        self.transform = CGAffineTransformMakeScale(2.0f, 2.0f);
+        self.transform = CGAffineTransformMakeScale(0.3f, 0.3f);
         self.alpha = 0.0f;
     } completion:^(BOOL complete) {
-        //        [[NSNotificationCenter defaultCenter] postNotificationName:MAIN_VIEW_DISMISSED_NOTIFICATION object:self];
-        //
+        [[NSNotificationCenter defaultCenter] postNotificationName:NUMBER_GAME_CALLBACK_NOTIFICATION object:self];
     }];
 }
 
@@ -341,7 +361,10 @@
             [[SoundManager instance]play:SOUND_EFFECT_BLING];
             [self resetAnswers];
             [self.progressBar fillBar:1.0f animated:YES];
-            
+            self.progressBar.foregroundView.backgroundColor = [UIColor colorWithRed:71.f/255.f
+                                                                              green:216.f/255.f
+                                                                               blue:115.f/255.f
+                                                                              alpha:1.f];
             [self performSelector:@selector(refreshGame) withObject:nil afterDelay:2.2f];
             self.currentScore++;
         } else {
@@ -377,7 +400,7 @@
             if (choice.tag == slot.tag) {
                 [choice setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
                 [self animate:slot toView:choice];
-
+                
                 slot.tag = 0;
                 [slot setTitle:@"" forState:UIControlStateNormal];
             }
@@ -392,4 +415,7 @@
     //  nothing
 }
 
+- (NSString *)updateMaxScore {
+    return [NSString stringWithFormat:@"Best: %d", [UserData instance].maxScore];
+}
 @end

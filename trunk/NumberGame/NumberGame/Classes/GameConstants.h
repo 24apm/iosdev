@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#define kLeaderboardID @"1"
+#define kLeaderboardID @"2"
 
 #define IPAD_SCALE ((UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 2.0f : 1.0f)
 
@@ -24,7 +24,8 @@
 #define DEBUG_MODE NO
 #define BLACK_AND_WHITE_MODE YES
 
-
+#define kAchievementOneStreak @"1_Streak"
+#define kAchievement10Streak @"10_Streak"
 
 @interface GameConstants : NSObject
 

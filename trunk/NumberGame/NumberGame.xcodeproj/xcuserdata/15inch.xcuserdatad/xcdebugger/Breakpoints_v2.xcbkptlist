@@ -81,13 +81,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "NumberGame/Classes/NumberGameView.m"
-            timestampString = "415429898.937555"
+            filePath = "NumberGame/Classes/GameViewController.m"
+            timestampString = "415511662.056503"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "153"
-            endingLineNumber = "153"
-            landmarkName = "-animateAnswersOut"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "-initialize"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

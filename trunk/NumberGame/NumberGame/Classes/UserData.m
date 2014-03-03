@@ -15,6 +15,7 @@
     static UserData *instance = nil;
     if (!instance) {
         instance = [[UserData alloc] init];
+        instance.maxScore = [[[NSUserDefaults standardUserDefaults] valueForKey:@"maxScore"] intValue];
     }
     return instance;
 }
@@ -27,8 +28,11 @@
 }
 
 - (void)setMaxScore:(int)maxScore {
-    _maxScore = maxScore;
-    [self saveUserData];
+    
+    if (maxScore > _maxScore) {
+        _maxScore = maxScore;
+        [self saveUserData];
+    }
 }
 
 - (void)saveUserData{
