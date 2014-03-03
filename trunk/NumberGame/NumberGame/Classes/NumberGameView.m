@@ -136,7 +136,7 @@
         [UserData instance].lastGameSS = [self blit];
         if (self.currentScore > self.topScore) {
             self.topScore = self.currentScore;
-            [self.topScoreLabel setText:[self updateMaxScore]];
+            self.topScoreLabel.text = [self updateMaxScore];
         }
         [self hide];
     }

@@ -7,7 +7,6 @@
 //
 
 #import "XibView.h"
-#import "LadyBugView.h"
 
 @interface MainView : XibView
 
@@ -16,7 +15,6 @@
 #define SHOW_ACHIEVEMENT_NOTIFICATION @"SHOW_ACHIEVEMENT_NOTIFICATION"
 
 @property (strong, nonatomic) IBOutlet UIView *titleView;
-@property (strong, nonatomic) IBOutlet LadyBugView *ladyBugView;
 
 - (void)show;
 

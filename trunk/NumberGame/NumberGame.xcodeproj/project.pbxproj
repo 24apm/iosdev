@@ -18,32 +18,23 @@
 		D04E827218BA8FE9007E1081 /* ProgressBarComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = D04E827118BA8FE9007E1081 /* ProgressBarComponent.m */; };
 		D04F704218AA1197000509AA /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D04F704118AA1197000509AA /* Social.framework */; };
 		D05A830D18B3223C003C18EB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D05A82DC18B3223C003C18EB /* AppDelegate.m */; };
-		D05A830E18B3223C003C18EB /* BackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = D05A82DF18B3223C003C18EB /* BackgroundView.m */; };
 		D05A831018B3223C003C18EB /* GameConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D05A82E218B3223C003C18EB /* GameConstants.m */; };
 		D05A831118B3223C003C18EB /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D05A82E418B3223C003C18EB /* GameViewController.m */; };
-		D05A831218B3223C003C18EB /* LadyBugView.m in Sources */ = {isa = PBXBuildFile; fileRef = D05A82E618B3223C003C18EB /* LadyBugView.m */; };
 		D05A831318B3223C003C18EB /* MainView.m in Sources */ = {isa = PBXBuildFile; fileRef = D05A82E818B3223C003C18EB /* MainView.m */; };
 		D05A831418B3223C003C18EB /* MenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = D05A82EA18B3223C003C18EB /* MenuView.m */; };
 		D05A831518B3223C003C18EB /* NotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D05A82EC18B3223C003C18EB /* NotificationManager.m */; };
-		D05A831618B3223C003C18EB /* PipeView.m in Sources */ = {isa = PBXBuildFile; fileRef = D05A82EE18B3223C003C18EB /* PipeView.m */; };
 		D05A831718B3223C003C18EB /* ResultView.m in Sources */ = {isa = PBXBuildFile; fileRef = D05A82F018B3223C003C18EB /* ResultView.m */; };
 		D05A831818B3223C003C18EB /* TutorialView.m in Sources */ = {isa = PBXBuildFile; fileRef = D05A82F218B3223C003C18EB /* TutorialView.m */; };
 		D05A831918B3223C003C18EB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D05A82F318B3223C003C18EB /* InfoPlist.strings */; };
 		D05A831A18B3223C003C18EB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D05A82F518B3223C003C18EB /* Images.xcassets */; };
 		D05A831B18B3223C003C18EB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D05A82F618B3223C003C18EB /* main.m */; };
-		D05A831D18B3223C003C18EB /* BackgroundView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D05A82FA18B3223C003C18EB /* BackgroundView.xib */; };
-		D05A831E18B3223C003C18EB /* BackgroundView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D05A82FB18B3223C003C18EB /* BackgroundView~ipad.xib */; };
 		D05A832018B3223C003C18EB /* GameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D05A82FE18B3223C003C18EB /* GameViewController.xib */; };
 		D05A832118B3223C003C18EB /* GameViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D05A82FF18B3223C003C18EB /* GameViewController~ipad.xib */; };
-		D05A832218B3223C003C18EB /* LadyBugView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D05A830018B3223C003C18EB /* LadyBugView.xib */; };
-		D05A832318B3223C003C18EB /* LadyBugView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D05A830118B3223C003C18EB /* LadyBugView~ipad.xib */; };
 		D05A832418B3223C003C18EB /* MainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D05A830218B3223C003C18EB /* MainView.xib */; };
 		D05A832518B3223C003C18EB /* MainView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D05A830318B3223C003C18EB /* MainView~ipad.xib */; };
 		D05A832618B3223C003C18EB /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = D05A830418B3223C003C18EB /* MainWindow.xib */; };
 		D05A832718B3223C003C18EB /* MenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D05A830518B3223C003C18EB /* MenuView.xib */; };
 		D05A832818B3223C003C18EB /* MenuView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D05A830618B3223C003C18EB /* MenuView~ipad.xib */; };
-		D05A832918B3223C003C18EB /* PipeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D05A830718B3223C003C18EB /* PipeView.xib */; };
-		D05A832A18B3223C003C18EB /* PipeView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D05A830818B3223C003C18EB /* PipeView~ipad.xib */; };
 		D05A832B18B3223C003C18EB /* ResultView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D05A830918B3223C003C18EB /* ResultView~ipad.xib */; };
 		D05A832D18B3223C003C18EB /* TutorialView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D05A830B18B3223C003C18EB /* TutorialView.xib */; };
 		D05A832E18B3223C003C18EB /* TutorialView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D05A830C18B3223C003C18EB /* TutorialView~ipad.xib */; };
@@ -124,22 +115,16 @@
 		D04F704118AA1197000509AA /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		D05A82DB18B3223C003C18EB /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D05A82DC18B3223C003C18EB /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		D05A82DE18B3223C003C18EB /* BackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundView.h; sourceTree = "<group>"; };
-		D05A82DF18B3223C003C18EB /* BackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundView.m; sourceTree = "<group>"; };
 		D05A82E118B3223C003C18EB /* GameConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameConstants.h; sourceTree = "<group>"; };
 		D05A82E218B3223C003C18EB /* GameConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameConstants.m; sourceTree = "<group>"; };
 		D05A82E318B3223C003C18EB /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
 		D05A82E418B3223C003C18EB /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
-		D05A82E518B3223C003C18EB /* LadyBugView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LadyBugView.h; sourceTree = "<group>"; };
-		D05A82E618B3223C003C18EB /* LadyBugView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LadyBugView.m; sourceTree = "<group>"; };
 		D05A82E718B3223C003C18EB /* MainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainView.h; sourceTree = "<group>"; };
 		D05A82E818B3223C003C18EB /* MainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainView.m; sourceTree = "<group>"; };
 		D05A82E918B3223C003C18EB /* MenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuView.h; sourceTree = "<group>"; };
 		D05A82EA18B3223C003C18EB /* MenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuView.m; sourceTree = "<group>"; };
 		D05A82EB18B3223C003C18EB /* NotificationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationManager.h; sourceTree = "<group>"; };
 		D05A82EC18B3223C003C18EB /* NotificationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationManager.m; sourceTree = "<group>"; };
-		D05A82ED18B3223C003C18EB /* PipeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PipeView.h; sourceTree = "<group>"; };
-		D05A82EE18B3223C003C18EB /* PipeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PipeView.m; sourceTree = "<group>"; };
 		D05A82EF18B3223C003C18EB /* ResultView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultView.h; sourceTree = "<group>"; };
 		D05A82F018B3223C003C18EB /* ResultView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultView.m; sourceTree = "<group>"; };
 		D05A82F118B3223C003C18EB /* TutorialView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialView.h; sourceTree = "<group>"; };
@@ -149,19 +134,13 @@
 		D05A82F618B3223C003C18EB /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D05A82F718B3223C003C18EB /* NumberGame-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "NumberGame-Info.plist"; sourceTree = "<group>"; };
 		D05A82F818B3223C003C18EB /* NumberGame-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NumberGame-Prefix.pch"; sourceTree = "<group>"; };
-		D05A82FA18B3223C003C18EB /* BackgroundView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BackgroundView.xib; sourceTree = "<group>"; };
-		D05A82FB18B3223C003C18EB /* BackgroundView~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "BackgroundView~ipad.xib"; sourceTree = "<group>"; };
 		D05A82FE18B3223C003C18EB /* GameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameViewController.xib; sourceTree = "<group>"; };
 		D05A82FF18B3223C003C18EB /* GameViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "GameViewController~ipad.xib"; sourceTree = "<group>"; };
-		D05A830018B3223C003C18EB /* LadyBugView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LadyBugView.xib; sourceTree = "<group>"; };
-		D05A830118B3223C003C18EB /* LadyBugView~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "LadyBugView~ipad.xib"; sourceTree = "<group>"; };
 		D05A830218B3223C003C18EB /* MainView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainView.xib; sourceTree = "<group>"; };
 		D05A830318B3223C003C18EB /* MainView~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "MainView~ipad.xib"; sourceTree = "<group>"; };
 		D05A830418B3223C003C18EB /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		D05A830518B3223C003C18EB /* MenuView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuView.xib; sourceTree = "<group>"; };
 		D05A830618B3223C003C18EB /* MenuView~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "MenuView~ipad.xib"; sourceTree = "<group>"; };
-		D05A830718B3223C003C18EB /* PipeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PipeView.xib; sourceTree = "<group>"; };
-		D05A830818B3223C003C18EB /* PipeView~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "PipeView~ipad.xib"; sourceTree = "<group>"; };
 		D05A830918B3223C003C18EB /* ResultView~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ResultView~ipad.xib"; sourceTree = "<group>"; };
 		D05A830B18B3223C003C18EB /* TutorialView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TutorialView.xib; sourceTree = "<group>"; };
 		D05A830C18B3223C003C18EB /* TutorialView~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "TutorialView~ipad.xib"; sourceTree = "<group>"; };
@@ -313,14 +292,10 @@
 		D05A82DD18B3223C003C18EB /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				D05A82DE18B3223C003C18EB /* BackgroundView.h */,
-				D05A82DF18B3223C003C18EB /* BackgroundView.m */,
 				D05A82E118B3223C003C18EB /* GameConstants.h */,
 				D05A82E218B3223C003C18EB /* GameConstants.m */,
 				D05A82E318B3223C003C18EB /* GameViewController.h */,
 				D05A82E418B3223C003C18EB /* GameViewController.m */,
-				D05A82E518B3223C003C18EB /* LadyBugView.h */,
-				D05A82E618B3223C003C18EB /* LadyBugView.m */,
 				D05A82E718B3223C003C18EB /* MainView.h */,
 				D05A82E818B3223C003C18EB /* MainView.m */,
 				D05A82E918B3223C003C18EB /* MenuView.h */,
@@ -329,8 +304,6 @@
 				D0E36B8818C28CE700BA56E7 /* NumberGameIAPHelper.m */,
 				D05A82EB18B3223C003C18EB /* NotificationManager.h */,
 				D05A82EC18B3223C003C18EB /* NotificationManager.m */,
-				D05A82ED18B3223C003C18EB /* PipeView.h */,
-				D05A82EE18B3223C003C18EB /* PipeView.m */,
 				D05A82EF18B3223C003C18EB /* ResultView.h */,
 				D05A82F018B3223C003C18EB /* ResultView.m */,
 				D05A82F118B3223C003C18EB /* TutorialView.h */,
@@ -352,19 +325,13 @@
 		D05A82F918B3223C003C18EB /* Xib */ = {
 			isa = PBXGroup;
 			children = (
-				D05A82FA18B3223C003C18EB /* BackgroundView.xib */,
-				D05A82FB18B3223C003C18EB /* BackgroundView~ipad.xib */,
 				D05A82FE18B3223C003C18EB /* GameViewController.xib */,
 				D05A82FF18B3223C003C18EB /* GameViewController~ipad.xib */,
-				D05A830018B3223C003C18EB /* LadyBugView.xib */,
-				D05A830118B3223C003C18EB /* LadyBugView~ipad.xib */,
 				D05A830218B3223C003C18EB /* MainView.xib */,
 				D05A830318B3223C003C18EB /* MainView~ipad.xib */,
 				D05A830418B3223C003C18EB /* MainWindow.xib */,
 				D05A830518B3223C003C18EB /* MenuView.xib */,
 				D05A830618B3223C003C18EB /* MenuView~ipad.xib */,
-				D05A830718B3223C003C18EB /* PipeView.xib */,
-				D05A830818B3223C003C18EB /* PipeView~ipad.xib */,
 				D05A830918B3223C003C18EB /* ResultView~ipad.xib */,
 				D0E388B318C06F45001000FC /* ResultView.xib */,
 				D05A830B18B3223C003C18EB /* TutorialView.xib */,
@@ -675,10 +642,8 @@
 				D05A832618B3223C003C18EB /* MainWindow.xib in Resources */,
 				D05A831918B3223C003C18EB /* InfoPlist.strings in Resources */,
 				D0E1122F18C2EC6000808072 /* winningEffect.caf in Resources */,
-				D05A832318B3223C003C18EB /* LadyBugView~ipad.xib in Resources */,
 				D0C79E8018AF4BFD0032BDB8 /* FlappyBall2.png in Resources */,
 				D05A831A18B3223C003C18EB /* Images.xcassets in Resources */,
-				D05A831D18B3223C003C18EB /* BackgroundView.xib in Resources */,
 				D05A832D18B3223C003C18EB /* TutorialView.xib in Resources */,
 				D048A84018ACAAAB00411DF9 /* twitter_share.png in Resources */,
 				D05A832B18B3223C003C18EB /* ResultView~ipad.xib in Resources */,
@@ -692,18 +657,14 @@
 				D0E1123318C2ECF300808072 /* ticking.caf in Resources */,
 				D05A832818B3223C003C18EB /* MenuView~ipad.xib in Resources */,
 				D0EF543A18C442DC00ECF334 /* PromoBannerView~ipad.xib in Resources */,
-				D05A832A18B3223C003C18EB /* PipeView~ipad.xib in Resources */,
 				D0E364CE18BAFE8B00A5676B /* InGameMessageView.xib in Resources */,
 				D05A832018B3223C003C18EB /* GameViewController.xib in Resources */,
 				D0E364D518BB07D800A5676B /* InGameMessageView~ipad.xib in Resources */,
-				D05A832918B3223C003C18EB /* PipeView.xib in Resources */,
 				D0E1123518C2EDF000808072 /* bling.caf in Resources */,
 				D0E1123218C2ECF300808072 /* pop.caf in Resources */,
-				D05A832218B3223C003C18EB /* LadyBugView.xib in Resources */,
 				D0414E9518B36BD500A296F6 /* NumberGameView.xib in Resources */,
 				D0EB7A1218BF30F100AC8CEB /* NumberGameView~ipad.xib in Resources */,
 				D048A83F18ACAAAB00411DF9 /* facebook_share.png in Resources */,
-				D05A831E18B3223C003C18EB /* BackgroundView~ipad.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -727,7 +688,6 @@
 				D05A831818B3223C003C18EB /* TutorialView.m in Sources */,
 				D05A831718B3223C003C18EB /* ResultView.m in Sources */,
 				D0F6849418B31C3E00CBB819 /* AnimUtil.m in Sources */,
-				D05A830E18B3223C003C18EB /* BackgroundView.m in Sources */,
 				D0EB7A1018BF281000AC8CEB /* GameCenterHelperBase.m in Sources */,
 				D05A831B18B3223C003C18EB /* main.m in Sources */,
 				D05A830D18B3223C003C18EB /* AppDelegate.m in Sources */,
@@ -739,10 +699,8 @@
 				D0F684A418B31C3E00CBB819 /* iRate.m in Sources */,
 				D0F6849518B31C3E00CBB819 /* Base.m in Sources */,
 				D0EF543118C4271F00ECF334 /* PromoManager.m in Sources */,
-				D05A831618B3223C003C18EB /* PipeView.m in Sources */,
 				D0F6849B18B31C3E00CBB819 /* SoundManager.m in Sources */,
 				D0E1123818C30DE900808072 /* GameCenterHelper.m in Sources */,
-				D05A831218B3223C003C18EB /* LadyBugView.m in Sources */,
 				D05A831018B3223C003C18EB /* GameConstants.m in Sources */,
 				D0E36B8618C28C8400BA56E7 /* IAPHelper.m in Sources */,
 				D0F684A018B31C3E00CBB819 /* XibView.m in Sources */,
