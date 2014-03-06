@@ -22,8 +22,6 @@
 
 @interface NumberGameView ()
 
-//@property (nonatomic) int answerSlotsNum;
-
 @property (strong, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (nonatomic, retain) NSTimer *timer;
 @property (nonatomic) double nextExpireTime;
@@ -31,11 +29,10 @@
 @property (nonatomic, retain) UIColor *numberBackgroundColor;
 @property (nonatomic, retain) UIColor *operatorBackgroundColor;
 @property (nonatomic, retain) InGameMessageView *messageView;
-@property (nonatomic) int currentScore;
 @property (nonatomic) int topScore;
 @property (nonatomic) BOOL playedTick;
 @property (strong, nonatomic) IBOutlet UILabel *topScoreLabel;
-
+@property (nonatomic) double timeLeft;
 
 @end
 
@@ -48,6 +45,7 @@
         choice.tag = i+1;
         self.currentScore = 0;
     }
+    self.lastBestScore = [UserData instance].maxScore;
     self.playedTick = NO;
     self.maxTime = 10.f;
     
@@ -142,16 +140,12 @@
         [[SoundManager instance] stop:SOUND_EFFECT_TICKING];
         [[SoundManager instance] play:SOUND_EFFECT_WINNING];
         [UserData instance].score = self.currentScore;
-        [UserData instance].lastGameSS = [self blit];
-        if (self.currentScore > self.topScore) {
-            self.topScore = self.currentScore;
-            self.topScoreLabel.text = [self updateMaxScore];
-        }
         [self hide];
     }
 }
 
 - (void)refreshGame {
+    [self loadUserData];
     self.cheatView.hidden = YES;
     NSDictionary *data = [[NumberManager instance] generateLevel:self.answerSlots.count choiceSlots:self.choiceSlots.count];
     int targetValue = [[data objectForKey:@"targetNumber"] intValue];
@@ -244,13 +238,23 @@
 - (void)show {
     self.transform = CGAffineTransformMakeScale(2.0f, 2.0f);
     self.alpha = 0;
-    self.currentScore = 0;
     
     [UIView animateWithDuration:0.3f animations:^ {
         self.transform = CGAffineTransformIdentity;
         self.alpha = 1.0f;
     } completion:^(BOOL complete) {
     }];
+}
+
+- (void)pause {
+    [self.timer invalidate];
+    self.timer = nil;
+     self.timeLeft = (self.nextExpireTime - CACurrentMediaTime());
+}
+
+- (void)resume {
+    self.nextExpireTime = CACurrentMediaTime() + self.timeLeft + BUFFER_TIME;
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0f/60.f target:self selector:@selector(updateProgressBar) userInfo:nil repeats:YES];
 }
 
 - (IBAction)returnLobby:(id)sender {
@@ -376,8 +380,11 @@
             [self performSelector:@selector(refreshGame) withObject:nil afterDelay:2.2f];
             self.currentScore++;
         } else {
-            [self animateIncorrectAnswer];
+            [self resetAnswers];
+            [self resetChoices];
             [[SoundManager instance]play:SOUND_EFFECT_BOING];
+            [self animateIncorrectAnswer];
+
         }
     }
 }

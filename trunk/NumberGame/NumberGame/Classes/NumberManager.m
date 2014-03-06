@@ -36,13 +36,13 @@
     NSString *operator = [algebra objectAtIndex:operatorIndex];
     for (int i = 0; i <= tiles - 3; i = i + 2) {
         
-        if ([operator isEqualToString:@"*"]) {
+        if ([operator isEqualToString:@"×"]) {
             targetNumber = targetNumber * nextNumber;
         } else if ([operator isEqualToString:@"+"]) {
             targetNumber = targetNumber + nextNumber;
         } else if ([operator isEqualToString:@"-"]) {
             targetNumber = targetNumber - nextNumber;
-        } else if ([operator isEqualToString:@"/"]) {
+        } else if ([operator isEqualToString:@"÷"]) {
             if (targetNumber % nextNumber == 0) {
                 targetNumber = targetNumber / nextNumber;
             } else {
@@ -50,7 +50,7 @@
                 switch (reset) {
                     case 0:
                         targetNumber = targetNumber * nextNumber;
-                        [algebra replaceObjectAtIndex:operatorIndex withObject:@"*"];
+                        [algebra replaceObjectAtIndex:operatorIndex withObject:@"×"];
                         break;
                     case 1:
                         targetNumber = targetNumber - nextNumber;
@@ -62,7 +62,7 @@
                         break;
                     default:
                         targetNumber = targetNumber * nextNumber;
-                        [algebra replaceObjectAtIndex:operatorIndex withObject:@"*"];
+                        [algebra replaceObjectAtIndex:operatorIndex withObject:@"×"];
                         break;
                 }
             }
@@ -80,7 +80,7 @@
     // adding fillers
     int algebraSize = algebra.count;
     int maxNumberRange = 10;
-    NSArray *operatorArr = @[@"+", @"-", @"*", @"/"];
+    NSArray *operatorArr = @[@"+", @"-", @"×", @"÷"];
     while (algebraSize < choiceSlots) {
         int randomNumOp = maxNumberRange + operatorArr.count;
         int filler = [Utils randBetweenMinInt:1 max:randomNumOp];
@@ -94,13 +94,7 @@
         }
     }
     self.currentGeneratedFillerAnswer = [algebra mutableCopy];
-
-    //for (int i = 0; i < 10; i++) {
-      //  NSMutableArray *test = [NSMutableArray arrayWithArray:@[@(1),@(2),@(3),@(4),@(5),@(6),@"7",@"8",@"9"]];
-        //[test randomArray];
-        //NSLog(@"%@", test);
- //   }
-    
+    self.targetAnswer = targetNumber;
     [algebra shuffle];
     [dictionary setObject:algebra forKey:@"algebra"];
     [dictionary setObject:@(targetNumber) forKey:@"targetNumber"];
@@ -122,13 +116,13 @@
     int nextNumber = [((NSNumber *)algebra[numberIndex])intValue];
     NSString *operator = algebra[operatorIndex];
     for (int i = 0; i <= tiles - 3; i = i + 2) {
-        if ([operator isEqualToString:@"*"]) {
+        if ([operator isEqualToString:@"×"]) {
             attemptAnswer = attemptAnswer * nextNumber;
         } else if ([operator isEqualToString:@"+"]) {
             attemptAnswer = attemptAnswer + nextNumber;
         } else if ([operator isEqualToString:@"-"]) {
             attemptAnswer = attemptAnswer - nextNumber;
-        } else if ([operator isEqualToString:@"/"]) {
+        } else if ([operator isEqualToString:@"÷"]) {
             attemptAnswer = attemptAnswer / nextNumber;
         }
         if (numberIndex + 2 <= tiles) {
@@ -151,7 +145,7 @@
 }
 
 - (NSArray *)generateAlgebraFor:(int)input {
-    NSArray *operator = @[@"+", @"-", @"*", @"/"];
+    NSArray *operator = @[@"+", @"-", @"×", @"÷"];
     NSMutableArray *array = [NSMutableArray array];
     for (int i = 0; i < input; i++) {
         if (i % 2 == 0) {
@@ -179,7 +173,7 @@
 
 - (BOOL)isOperator:(id)object {
     if ([object isKindOfClass:[NSString class]]) {
-        NSArray *operators = @[@"+", @"-", @"*", @"/"];
+        NSArray *operators = @[@"+", @"-", @"×", @"÷"];
         NSString *temp = object;
         for (NSString *op in operators) {
             if ([temp isEqualToString:op]) {

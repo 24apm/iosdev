@@ -8,14 +8,15 @@
 
 #import "MainView.h"
 #import "iRate.h"
+#import "GameCenterHelper.h"
+#import "GameConstants.h"
 
 @implementation MainView
 
-- (id)initWithCoder:(NSCoder *)aDecoder {
-    self = [super initWithCoder:aDecoder];
+- (id)init {
+    self = [super init];
     if (self) {
-        self.alpha = 0.0f;
-        self.transform = CGAffineTransformMakeScale(2.0f, 2.0f);
+        self.resetButton.hidden = !DEBUG_MODE;
     }
     return self;
 }
@@ -29,6 +30,10 @@
 }
 - (IBAction)achievementPressed:(id)sender {
     [[NSNotificationCenter defaultCenter] postNotificationName:SHOW_ACHIEVEMENT_NOTIFICATION object:self];
+}
+
+- (IBAction)resetAchievements:(id)sender {
+    [[GameCenterHelper instance].gameCenterManager resetAchievements];
 }
 
 - (void)show {

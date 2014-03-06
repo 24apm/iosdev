@@ -12,6 +12,8 @@
 #import "iRate.h"
 #import "UserData.h"
 #import "NumberGameIAPHelper.h"
+#import "GameCenterHelper.h"
+#import "NumberManager.h"
 
 @interface ResultView()
 
@@ -20,11 +22,10 @@
 #define RESULT_VIEW_VIEW_TOTAL_DURATION 0.3f
 
 @property NSTimer *timer;
-@property int currentScore;
-@property int step;
-@property int targetScore;
+@property (nonatomic) int currentScore;
+@property (nonatomic) int step;
+@property (nonatomic) int targetScore;
 
-@property (strong, nonatomic) IBOutlet UIImageView *imageView;
 @property (strong, nonatomic) IBOutlet UIButton *twitterButton;
 @property (strong, nonatomic) IBOutlet UIButton *facebookButton;
 @property (strong, nonatomic) NSArray *products;
@@ -38,24 +39,33 @@
 }
 
 - (void)show {
+    self.achievementLabel.hidden = YES;
+    self.reachedLabel.hidden = YES;
+    self.fadeOverlay.hidden = YES;
+    self.imgView.hidden = YES;
     self.y = self.height;
     self.playButton.enabled = NO;
     self.recordLabel.hidden = YES;
     self.currentScore = 0;
+    self.lastMaxScore = [UserData instance].maxScore;
     self.targetScore = [UserData instance].score;
     self.currentScoreLabel.text = [NSString stringWithFormat:@"%d", self.currentScore];
-    self.lastMaxScore = [UserData instance].maxScore;
     self.maxScoreLabel.text = [NSString stringWithFormat:@"%d", self.lastMaxScore];
     self.step = ceil((float)self.targetScore / (RESULT_VIEW_SCORE_LABEL_ANIMATION_TOTAL_DURATION/RESULT_VIEW_SCORE_LABEL_ANIMATION_STEP_DURATION));
-    self.imageView.image = [UserData instance].lastGameSS;
     self.activityIndicatorView.hidden = YES;
     self.products = [NumberGameIAPHelper sharedInstance].products;
     if (!self.products) {
         self.unlockButton.hidden = YES;
+        self.answerImage.hidden = YES;
+        self.targetAnswerLabel.hidden = YES;
     } else {
+        self.answerImage.image = [UIImage imageNamed:@"UnlockAnswer.png"];
+        self.answerImage.hidden = NO;
+        self.targetAnswerLabel.text = [NSString stringWithFormat:@"%d",[NumberManager instance].targetAnswer];
+        self.targetAnswerLabel.hidden = NO;
         self.unlockButton.hidden = NO;
     }
-
+    
     [UIView animateWithDuration:RESULT_VIEW_VIEW_TOTAL_DURATION * 0.9f animations:^{
         self.y = -self.height * 0.05f;
     } completion:^(BOOL complete) {
@@ -71,6 +81,8 @@
     }
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(productPurchased:) name:IAPHelperProductPurchasedNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(productFailed:) name:IAPHelperProductFailedNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showAchievementEarned:) name:SHOW_ACHIEVETMENT_EARNED object:nil];
 }
 
 - (void)updateScoreLabel {
@@ -78,7 +90,7 @@
     if (self.currentScore >= self.targetScore) {
         [self.timer invalidate], self.timer = nil;
         self.currentScoreLabel.text = [NSString stringWithFormat:@"%d", self.targetScore];
-        if (self.maxScore > self.lastMaxScore) {
+        if (self.currentScore > self.lastMaxScore) {
             [self performSelector:@selector(updateMaxLabel) withObject:nil afterDelay:0.2f];
         }
         self.playButton.enabled = YES;
@@ -89,7 +101,8 @@
 
 - (void)updateMaxLabel {
     self.recordLabel.hidden = NO;
-    self.maxScoreLabel.text = [NSString stringWithFormat:@"%d", self.maxScore];
+    self.maxScoreLabel.text = [NSString stringWithFormat:@"%d", self.currentScore];
+    [UserData instance].maxScore = self.currentScore;
     [AnimUtil wobble:self.maxScoreLabel duration:0.2f angle:M_PI/128.f repeatCount:6.f];
     [AnimUtil wobble:self.recordLabel duration:0.2f angle:M_PI/128.f repeatCount:6.f];
 }
@@ -145,6 +158,7 @@
 - (IBAction)unlockPressed:(id)sender {
     for (SKProduct *product in self.products) {
         if ([product.productIdentifier isEqualToString:IAP_UNLOCK_ANSWER]) {
+            self.userInteractionEnabled = NO;
             NSLog(@"Buying %@...", product.productIdentifier);
             self.activityIndicatorView.hidden = NO;
             [self.activityIndicatorView startAnimating];
@@ -159,9 +173,21 @@
         // Unlock answer
         [self.activityIndicatorView stopAnimating];
         self.activityIndicatorView.hidden = YES;
-
+        self.userInteractionEnabled = YES;
         [self showAnswer];
     }
+}
+
+- (void)productFailed:(NSNotification *)notification {
+    self.userInteractionEnabled = YES;
+    [self.activityIndicatorView stopAnimating];
+    self.activityIndicatorView.hidden = YES;
+}
+
+- (void)showAchievementEarned: (NSNotification *)notification {
+    self.imgView.image = [UIImage imageNamed:notification.object];
+    self.userInteractionEnabled = NO;
+    [self animateAchievemnt];
 }
 
 - (void)showAnswer {
@@ -180,6 +206,73 @@
     } completion:^(BOOL complete) {
         [[NSNotificationCenter defaultCenter] postNotificationName:RESULT_VIEW_DISMISSED_NOTIFICATION object:self];
     }];
+}
+
+- (void)animateAchievemnt {
+    self.fadeOverlay.hidden = NO;
+    self.imgView.hidden = NO;
+    
+    // offscreen at bottom
+    self.imgView.y = self.height;
+    self.fadeOverlay.alpha = 0.f;
+    
+    [UIView animateWithDuration:0.3f
+                          delay:0.3f
+                        options:UIViewAnimationOptionCurveEaseInOut
+                     animations:^ {
+                              // animate fading in
+                         self.fadeOverlay.alpha = 1.0f;
+                          } completion:nil];
+    
+    [UIView animateWithDuration:0.3f
+                          delay:0.8f
+                        options:UIViewAnimationOptionCurveEaseInOut
+                     animations:^ {
+                         // animate achievement to center
+                         self.imgView.center = self.center;
+                     } completion:^(BOOL finished) {
+                         [UIView animateWithDuration:0.3f
+                                               delay:0.0f
+                                             options:UIViewAnimationOptionCurveEaseInOut
+                                          animations:^ {
+                                              // animate fading in
+                                              self.achievementLabel.hidden = NO;
+                                              self.reachedLabel.hidden = NO;
+                                              self.imgView.transform = CGAffineTransformMakeScale(1.4f, 1.4f);
+                                          } completion:^(BOOL finished) {
+                                              [UIView animateWithDuration:0.3f
+                                                                    delay:1.0f
+                                                                  options:UIViewAnimationOptionCurveEaseInOut
+                                                               animations:^ {
+                                                                   // animate fading in
+                                                                   self.imgView.transform = CGAffineTransformIdentity;
+                                                               } completion:^(BOOL finished) {
+                                                                   [UIView animateWithDuration:0.3f
+                                                                                         delay:0.0f
+                                                                                       options:UIViewAnimationOptionCurveEaseInOut
+                                                                                    animations:^ {
+                                                                                        // animate fading in
+                                                                                        self.achievementLabel.hidden = YES;
+                                                                                        self.reachedLabel.hidden = YES;
+                                                                                        self.imgView.y = -self.imgView.height;                                                                                    } completion:^(BOOL finished) {
+                                                                                            [UIView animateWithDuration:0.3f
+                                                                                                                  delay:0.3f
+                                                                                                                options:UIViewAnimationOptionCurveEaseInOut
+                                                                                                             animations:^ {
+                                                                                                                 // animate fading in
+                                                                                                                 self.fadeOverlay.alpha = 0.0f;
+                                                                                                             } completion:^(BOOL finished) {
+                                                                                                                 self.fadeOverlay.hidden = YES;
+                                                                                                                 self.imgView.hidden = YES;
+                                                                                                                 self.userInteractionEnabled = YES;
+
+                                                                                                                 }];
+                                                                                    }];
+                                                               }];
+                                          }];
+                     }];
+    
+
 }
 
 

@@ -20,5 +20,5 @@
 @property (nonatomic, retain) NSMutableArray *currentGeneratedAnswer;
 @property (nonatomic, retain) NSMutableArray *currentGeneratedFillerAnswer;
 @property (nonatomic, retain) NSMutableArray *currentGeneratedShuffledAnswer;
-
+@property (nonatomic) int targetAnswer;
 @end

@@ -10,8 +10,13 @@
 
 @implementation PromoGameData
 
-+ (PromoGameData *)setupWithImagePath:(NSString *)imagePath description:(NSString *)description actionURL:(NSString *)actionURL {
++ (PromoGameData *)setupWithBundleId:(NSString *)bundleId
+                           imagePath:(NSString *)imagePath
+                         description:(NSString *)description
+                           actionURL:(NSString *)actionURL {
+    
     PromoGameData *promoGameData = [[PromoGameData alloc] init];
+    promoGameData.bundleId = bundleId;
     promoGameData.imagePath = imagePath;
     promoGameData.description = description;
     promoGameData.actionURL = actionURL;

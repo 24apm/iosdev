@@ -22,9 +22,6 @@
 
 - (void)setScore:(int)score {
     _score = score;
-    if (score > _maxScore) {
-        self.maxScore = score;
-    }
 }
 
 - (void)setMaxScore:(int)maxScore {

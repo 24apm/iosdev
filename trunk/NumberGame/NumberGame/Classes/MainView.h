@@ -15,6 +15,7 @@
 #define SHOW_ACHIEVEMENT_NOTIFICATION @"SHOW_ACHIEVEMENT_NOTIFICATION"
 
 @property (strong, nonatomic) IBOutlet UIView *titleView;
+@property (strong, nonatomic) IBOutlet UIButton *resetButton;
 
 - (void)show;
 

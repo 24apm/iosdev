@@ -11,6 +11,7 @@
 #import <StoreKit/StoreKit.h>
 
 NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurchasedNotification";
+NSString *const IAPHelperProductFailedNotification = @"IAPHelperProductFailedNotification";
 
 // 2
 @interface IAPHelper () <SKProductsRequestDelegate, SKPaymentTransactionObserver>
@@ -150,7 +151,7 @@ NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurcha
     {
         NSLog(@"Transaction error: %@", transaction.error.localizedDescription);
     }
-    
+    [[NSNotificationCenter defaultCenter] postNotificationName:IAPHelperProductFailedNotification object:nil userInfo:nil];
     [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
 }
 

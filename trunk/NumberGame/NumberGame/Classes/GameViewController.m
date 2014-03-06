@@ -13,10 +13,8 @@
 #import "AnimUtil.h"
 #import "ResultView.h"
 #import "MainView.h"
-#import "TutorialView.h"
 #import "SoundEffect.h"
 #import "SoundManager.h"
-#import "MenuView.h"
 #import "NumberManager.h"
 #import "NumberGameView.h"
 #import "GameCenterHelper.h"
@@ -26,10 +24,8 @@
 
 @interface GameViewController ()
 
-@property (strong, nonatomic) TutorialView *tutorialView;
 @property (strong, nonatomic) ResultView *resultView;
 @property (strong, nonatomic) MainView *mainView;
-@property (strong, nonatomic) MenuView *menuView;
 @property (strong, nonatomic) NumberGameView *numberGameView;
 @property (strong, nonatomic) NSArray *products;
 @property (strong, nonatomic) PromoBannerView *promoBannerView;
@@ -43,7 +39,6 @@
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mainViewCallback) name:MAIN_VIEW_DISMISSED_NOTIFICATION object:nil];
 
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resultViewCallback) name:MENU_VIEW_GO_TO_MAIN_MENU_NOTIFICATION object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showLeaderboard) name:SHOW_LEADERBOARD_NOTIFICATION object:nil];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(numberGameViewCallback) name: NUMBER_GAME_CALLBACK_NOTIFICATION object:nil];
@@ -52,12 +47,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showAchievements) name: SHOW_ACHIEVEMENT_NOTIFICATION object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resultViewCallback) name:RESULT_VIEW_DISMISSED_NOTIFICATION object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showAnswerCallback) name:RESULT_VIEW_SHOW_ANSWER_NOTIFICATION object:nil];
-
-    self.tutorialView = [[TutorialView alloc] init];
-    [self.containerView addSubview:self.tutorialView];
-    self.tutorialView.hidden = YES;
-    self.tutorialView.size = self.containerView.size;
-    
+  
     self.mainView = [[MainView alloc] init];
     [self.containerView addSubview:self.mainView];
     self.mainView.hidden = YES;
@@ -73,12 +63,7 @@
     self.resultView.hidden = YES;
     self.resultView.size = self.containerView.size;
     self.resultView.vc = self;
-    
-    self.menuView = [[MenuView alloc] init];
-    [self.containerView addSubview:self.menuView];
-    self.menuView.hidden = YES;
-    self.menuView.size = self.containerView.size;
-    
+
     [self preloadSounds];
     [self updateGameState:GameStateMainMode];
 }
@@ -120,13 +105,14 @@
     [self updateGameState:GameStateMainMode];
 }
 
+- (void)showAchievementCallBack {
+    [self updateGameState:GameStateShowAchievementMode];
+}
 - (void)refresh {
     self.containerView.hidden = NO;
     self.containerView.userInteractionEnabled = YES;
     self.mainView.hidden = YES;
-    self.tutorialView.hidden = YES;
     self.resultView.hidden = YES;
-    self.menuView.hidden = YES;
     self.numberGameView.hidden = YES;
 
     switch (self.currentGameState) {
@@ -136,16 +122,12 @@
             break;
         case GameStateTutorialMode:
             self.containerView.userInteractionEnabled = NO;
-            self.tutorialView.hidden = NO;
             break;
         case GameStateGameMode:
             self.numberGameView.hidden = NO;
+            self.numberGameView.currentScore = 0;
             [self.numberGameView refreshGame];
             [self.numberGameView show];
-            break;
-        case GameStateMenuMode:
-            self.menuView.hidden = NO;
-            [self.menuView show];
             break;
         case GameStateResultMode:
             self.resultView.hidden = NO;
@@ -157,7 +139,17 @@
             [self.numberGameView showAnswer];
             [self.numberGameView show];
             break;
+        case GameStatePauseMode:
+            self.numberGameView.hidden = NO;
+            [self.numberGameView pause];
+
+            break;
+        case GameStateResumeMode:
+            self.numberGameView.hidden = NO;
+            [self.numberGameView resume];
+            break;
         default:
+            
             break;
     }
 }
@@ -237,6 +229,16 @@
 - (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error {
     [self layoutAnimated:YES];
 }
+/*
+- (BOOL)bannerViewActionShouldBegin:(ADBannerView *)banner willLeaveApplication:(BOOL)willLeave {
+    //tap on banner
+    [self updateGameState:GameStatePauseMode];
+    return  YES;
+}
 
+- (void)bannerViewActionDidFinish:(ADBannerView *)banner {
+    [self updateGameState:GameStateResumeMode];
+}
+*/
 
 @end

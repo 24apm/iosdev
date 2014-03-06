@@ -7,9 +7,12 @@
 //
 
 #import "GameCenterHelperBase.h"
+#define SHOW_ACHIEVETMENT_EARNED @"SHOW_ACHIEVETMENT_EARNED"
 
 @interface GameCenterHelper : GameCenterHelperBase
 
 + (GameCenterHelper *)instance;
+
+@property (nonatomic, strong) NSString *imgName;
 
 @end

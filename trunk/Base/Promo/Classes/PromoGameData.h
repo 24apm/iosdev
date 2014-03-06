@@ -10,10 +10,14 @@
 
 @interface PromoGameData : NSObject
 
+@property (retain, nonatomic) NSString *bundleId;
 @property (retain, nonatomic) NSString *imagePath;
 @property (retain, nonatomic) NSString *description;
 @property (retain, nonatomic) NSString *actionURL;
 
-+ (PromoGameData *)setupWithImagePath:(NSString *)imagePath description:(NSString *)description actionURL:(NSString *)actionURL;
++ (PromoGameData *)setupWithBundleId:(NSString *)bundleId
+                           imagePath:(NSString *)imagePath
+                         description:(NSString *)description
+                           actionURL:(NSString *)actionURL;
 
 @end

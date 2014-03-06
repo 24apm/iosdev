@@ -42,8 +42,6 @@
     
     NSMutableArray *array = [NSMutableArray arrayWithObjects:
             @(1 * hour),
-            @(2 * hour),
-            @(4 * hour),
             @(8 * hour),
             @(12 * hour),
             @(1 * day),
@@ -66,14 +64,16 @@
 
 - (NSArray *)notificationBodyTexts{
     return [NSArray arrayWithObjects:
-            @"Ready to reach new height?",
+            @"Ready to reach a new streak?",
             @"How far can you go?",
+            @"Hungry for more?",
             nil];
 }
 
 - (NSArray *)notificationActionTexts {
     return [NSArray arrayWithObjects:
             @"Let's go!",
+            @"Tapping time!",
             nil];
 }
 

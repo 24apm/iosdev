@@ -27,9 +27,13 @@
 @property (strong, nonatomic) IBOutlet UILabel *scores;
 @property (strong, nonatomic) IBOutlet UIButton *returnButton;
 @property (strong, nonatomic) IBOutlet UIView *cheatView;
+@property (nonatomic) int currentScore;
+@property (nonatomic) int lastBestScore;
 
 - (void)show;
 - (void)refreshGame;
 - (void)showAnswer;
+- (void)pause;
+- (void)resume;
 
 @end
