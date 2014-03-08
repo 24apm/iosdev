@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D0E30E8018A376E300FFD3CE"
-               BuildableName = "What Answer.app"
-               BlueprintName = "What Answer"
-               ReferencedContainer = "container:What Answer.xcodeproj">
+               BuildableName = "What Number.app"
+               BlueprintName = "What Number"
+               ReferencedContainer = "container:What Number.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D0E30EA118A376E300FFD3CE"
-               BuildableName = "What AnswerTests.xctest"
-               BlueprintName = "What AnswerTests"
-               ReferencedContainer = "container:What Answer.xcodeproj">
+               BuildableName = "What NumberTests.xctest"
+               BlueprintName = "What NumberTests"
+               ReferencedContainer = "container:What Number.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -43,9 +43,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D0E30E8018A376E300FFD3CE"
-            BuildableName = "What Answer.app"
-            BlueprintName = "What Answer"
-            ReferencedContainer = "container:What Answer.xcodeproj">
+            BuildableName = "What Number.app"
+            BlueprintName = "What Number"
+            ReferencedContainer = "container:What Number.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D0E30E8018A376E300FFD3CE"
-            BuildableName = "What Answer.app"
-            BlueprintName = "What Answer"
-            ReferencedContainer = "container:What Answer.xcodeproj">
+            BuildableName = "What Number.app"
+            BlueprintName = "What Number"
+            ReferencedContainer = "container:What Number.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -80,9 +80,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D0E30E8018A376E300FFD3CE"
-            BuildableName = "What Answer.app"
-            BlueprintName = "What Answer"
-            ReferencedContainer = "container:What Answer.xcodeproj">
+            BuildableName = "What Number.app"
+            BlueprintName = "What Number"
+            ReferencedContainer = "container:What Number.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
