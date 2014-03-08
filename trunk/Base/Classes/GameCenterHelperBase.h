@@ -20,4 +20,7 @@
 - (void)showAchievements:(UIViewController *)viewController;
 - (void)checkAchievements;
 
+// override to set scores
+- (void)onLocalPlayerScoreReceived:(GKScore *)score;
+
 @end

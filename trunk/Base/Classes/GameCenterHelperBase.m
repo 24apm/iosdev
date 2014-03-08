@@ -18,7 +18,7 @@
         self.gameCenterManager = [[GameCenterManager alloc] init];
         [self.gameCenterManager setDelegate:self];
         [self.gameCenterManager authenticateLocalUser];
-        
+        [self retrieveLocalPlayerScore];
     } else {
         
         // The current device does not support Game Center.
@@ -27,6 +27,25 @@
 }
 
 #pragma mark - Leaderboard
+
+- (void)retrieveLocalPlayerScore {
+    GKLeaderboard *leaderboardRequest = [[GKLeaderboard alloc] init];
+    leaderboardRequest.category = self.currentLeaderBoard;
+    if (leaderboardRequest != nil) {
+        [leaderboardRequest loadScoresWithCompletionHandler:^(NSArray *scores, NSError *error){
+            if (error != nil) {
+                NSLog(@"Error: GameCenterHelperBase retrieveLocalPlayerScore failed %@", error);
+            }
+            else{
+                [self onLocalPlayerScoreReceived:leaderboardRequest.localPlayerScore];
+            }
+        }];
+    }
+}
+
+- (void)onLocalPlayerScoreReceived:(GKScore *)score {
+    // do something
+}
 
 - (void)showLeaderboard:(UIViewController *)viewController {
     GKLeaderboardViewController *leaderboardController = [[GKLeaderboardViewController alloc] init];
