@@ -151,4 +151,10 @@
         
     }
 }
+
+- (void)onLocalPlayerScoreReceived:(GKScore *)score {
+    [super onLocalPlayerScoreReceived:score];
+    [UserData instance].maxScore = score.value;
+}
+
 @end
