@@ -16,6 +16,7 @@
 - (NSArray *)generateAlgebraFor:(int)input;
 - (BOOL)isOperator:(id)object;
 - (NSMutableArray *)currentGeneratedAnswerInStrings;
+- (float)calculateWithOperandLeft:(float)operandLeft operator:(NSString *)op operandRight:(float)operandRight;
 
 @property (nonatomic, retain) NSMutableArray *currentGeneratedAnswer;
 @property (nonatomic, retain) NSMutableArray *currentGeneratedFillerAnswer;

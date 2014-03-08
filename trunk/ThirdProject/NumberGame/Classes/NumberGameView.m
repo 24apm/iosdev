@@ -19,6 +19,7 @@
 #import "GameViewController.h"
 
 #define BUFFER_TIME 0.f
+#define BUTTON_CORNER_RADIUS (10.f * IPAD_SCALE)
 
 @interface NumberGameView ()
 
@@ -166,16 +167,49 @@
     if (self.timer) {
         [self.timer invalidate];
     }
+    [self refreshDisplayAnswers];
     //self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0f/60.f target:self selector:@selector(updateProgressBar) userInfo:nil repeats:YES];
 }
 
+
+
 - (void)animateAnswersOut {
-    for (int i = 0; i < self.answerSlots.count; i++) {
-        UIButton *button = [self.answerSlots objectAtIndex:i];
-        if (button.tag > 0) {
-            [self animateBlitAndFadeout:button delay:i * 0.3f + 1.5f];
+    if (self.answerSlots.count <= 0) {
+        return;
+    }
+    
+    NSMutableArray *allButtons = [NSMutableArray array];
+    [allButtons addObject:[self.answerSlots objectAtIndex:0]];
+    
+    // line up buttons
+    for (int i = 2; i < self.answerSlots.count; i += 2) {
+        UIButton *opSlot = self.answerSlots[i-1];
+        [allButtons addObject:opSlot];
+        
+        UIButton *rightOperandSlot = self.answerSlots[i];
+        [allButtons addObject:rightOperandSlot];
+        
+        // row 1 = index 0
+        int slotDisplayIndex = i / 2 - 1;
+        
+        if (slotDisplayIndex < self.answerSlotsB.count) {
+            UIButton *answerSlotsB = [self.answerSlotsB objectAtIndex:slotDisplayIndex];
+            [allButtons addObject:answerSlotsB];
+            
+        }
+        // row 2 = index 0
+        if (slotDisplayIndex < self.answerSlotsA.count) {
+            UIButton *answerSlotsA = [self.answerSlotsA objectAtIndex:slotDisplayIndex];
+            [allButtons addObject:answerSlotsA];
         }
     }
+    
+    // animate
+    for (int i = 0; i < allButtons.count; i ++) {
+        UIButton *button = [allButtons objectAtIndex:i];
+        [self animateBlitAndFadeout:button delay:i * 0.3f + 1.5f];
+    }
+
 }
 
 - (void)animateBlitAndFadeout:(UIView *)view delay:(float)delay {
@@ -215,7 +249,7 @@
     for(int i = 0; i < self.choiceSlots.count; i++) {
         UIButton *slot = [self.choiceSlots objectAtIndex:i];
         slot.selected = NO;
-        slot.layer.cornerRadius = slot.height * 0.1f;
+        slot.layer.cornerRadius = BUTTON_CORNER_RADIUS;
         [self hideBorder:slot];
     }
 }
@@ -225,14 +259,17 @@
         UIButton *slot = [self.answerSlots objectAtIndex:i];
         slot.tag = 0;
         [slot setTitle:@"" forState:UIControlStateNormal];
+        UIColor *bgColor;
         if (i % 2 == 0) {
-            slot.layer.borderColor = self.numberBackgroundColor.CGColor;
+            bgColor = self.numberBackgroundColor;
         } else {
-            slot.layer.borderColor = self.operatorBackgroundColor.CGColor;
+            bgColor = self.operatorBackgroundColor;
         }
-        slot.layer.borderWidth = 2.f * IPAD_SCALE;
-        slot.layer.cornerRadius = slot.height * 0.1f;
-        slot.backgroundColor = [UIColor clearColor];
+        
+//        slot.layer.borderColor = bgColor.CGColor;
+//        slot.layer.borderWidth = 2.f * IPAD_SCALE;
+//        slot.layer.cornerRadius = BUTTON_CORNER_RADIUS;
+        slot.backgroundColor = bgColor;
     }
 }
 
@@ -281,6 +318,7 @@
 - (IBAction)answerSlotPressed:(UIButton *)sender {
     [self removeSlot:sender];
     [[SoundManager instance] play:SOUND_EFFECT_POP];
+    [self refreshDisplayAnswers];
 }
 
 - (IBAction)choiceSlotPressed:(UIButton *)sender {
@@ -310,11 +348,11 @@
                      animations:^{
                          imageView.frame = [toView.superview convertRect:toView.frame toView:fromView.superview];
                      } completion:^(BOOL completed) {
-                         [UIView animateWithDuration:0.3f
+                         [UIView animateWithDuration:0.1f
                                                delay:0.f
                                              options:UIViewAnimationOptionCurveEaseInOut
                                           animations:^{
-                                              imageView.alpha = 0.3f;
+                                              imageView.alpha = 0.0f;
                                           } completion:^(BOOL completed) {
                                               [imageView removeFromSuperview];
                                           }];
@@ -363,6 +401,8 @@
             [algebra addObject:[slot titleForState:UIControlStateNormal]];
         }
     }
+    
+    [self refreshDisplayAnswers];
     if (hasEmpty == NO){
         float targetValue = [self.targetNumberLabel.text floatValue];
         BOOL isCorrect =[[NumberManager instance] checkAlgebra:algebra targetValue:targetValue];
@@ -380,12 +420,64 @@
                                                                               alpha:1.f];
             [self performSelector:@selector(refreshGame) withObject:nil afterDelay:2.2f];
             self.currentScore++;
-        } else {
-            [self resetAnswers];
-            [self resetChoices];
-            [[SoundManager instance]play:SOUND_EFFECT_BOING];
-            [self animateIncorrectAnswer];
+        }
+//        else {
+//            [self resetAnswers];
+//            [self resetChoices];
+//            [[SoundManager instance]play:SOUND_EFFECT_BOING];
+//            [self animateIncorrectAnswer];
+//
+//        }
+    }
+}
 
+- (void)refreshDisplayAnswers {
+    if (self.answerSlots.count <= 0) {
+        return;
+    }
+    
+    UIButton *slot = self.answerSlots[0];
+    NSString *slotString = [slot titleForState:UIControlStateNormal];
+    
+    float rowAnswer = [slotString floatValue];
+    
+    // start index at 1st right operand
+    // ex. 1 + 2 - 3 (starts at 2)
+    // increment by a group of 2: operator and right operand
+    
+    for(int i = 2; i < self.answerSlots.count; i += 2) {
+        UIButton *opSlot = self.answerSlots[i-1];
+        NSString *opString = [opSlot titleForState:UIControlStateNormal];
+
+        UIButton *rightOperandSlot = self.answerSlots[i];
+        NSString *rightOperandString = [rightOperandSlot titleForState:UIControlStateNormal];
+        float rightOperandValue = [rightOperandString floatValue];
+        NSString *rowDisplayString = @"";
+        
+        // if button is set
+        if (opSlot.tag != 0 && rightOperandSlot.tag != 0) {
+            rowAnswer = [[NumberManager instance] calculateWithOperandLeft:rowAnswer operator:opString operandRight:rightOperandValue];
+            
+            NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+//            [formatter setAlwaysShowsDecimalSeparator:YES];
+            [formatter setAllowsFloats:YES];
+            [formatter setFormatterBehavior:NSNumberFormatterBehavior10_4];
+            [formatter setMaximumFractionDigits:1];
+            rowDisplayString = [formatter stringFromNumber:[NSNumber numberWithFloat:rowAnswer]];
+        }
+        
+        // row 1 = index 0
+        int slotDisplayIndex = i / 2 - 1;
+        
+        if (slotDisplayIndex < self.answerSlotsB.count) {
+            UIButton *answerSlotsB = [self.answerSlotsB objectAtIndex:slotDisplayIndex];
+            [answerSlotsB setTitle:rowDisplayString forState:UIControlStateNormal];
+            
+        }
+        // row 2 = index 0
+        if (slotDisplayIndex < self.answerSlotsA.count) {
+            UIButton *answerSlotsA = [self.answerSlotsA objectAtIndex:slotDisplayIndex];
+            [answerSlotsA setTitle:rowDisplayString forState:UIControlStateNormal];
         }
     }
 }

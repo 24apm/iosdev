@@ -116,15 +116,7 @@
     int nextNumber = [((NSNumber *)algebra[numberIndex])intValue];
     NSString *operator = algebra[operatorIndex];
     for (int i = 0; i <= tiles - 3; i = i + 2) {
-        if ([operator isEqualToString:@"×"]) {
-            attemptAnswer = attemptAnswer * nextNumber;
-        } else if ([operator isEqualToString:@"+"]) {
-            attemptAnswer = attemptAnswer + nextNumber;
-        } else if ([operator isEqualToString:@"-"]) {
-            attemptAnswer = attemptAnswer - nextNumber;
-        } else if ([operator isEqualToString:@"÷"]) {
-            attemptAnswer = attemptAnswer / nextNumber;
-        }
+        attemptAnswer = [self calculateWithOperandLeft:attemptAnswer operator:operator operandRight:nextNumber];
         if (numberIndex + 2 <= tiles) {
             numberIndex += 2;
             operatorIndex += 2;
@@ -142,6 +134,21 @@
     // else     NO if not
 
     return isCorrect;
+}
+
+- (float)calculateWithOperandLeft:(float)operandLeft operator:(NSString *)op operandRight:(float)operandRight {
+    
+    float total = 0.f;
+    if ([op isEqualToString:@"×"]) {
+        total = operandLeft * operandRight;
+    } else if ([op isEqualToString:@"+"]) {
+        total = operandLeft + operandRight;
+    } else if ([op isEqualToString:@"-"]) {
+        total = operandLeft - operandRight;
+    } else if ([op isEqualToString:@"÷"]) {
+        total = operandLeft / operandRight;
+    }
+    return total;
 }
 
 - (NSArray *)generateAlgebraFor:(int)input {

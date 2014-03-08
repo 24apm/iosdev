@@ -29,6 +29,8 @@
 @property (strong, nonatomic) IBOutlet UIView *cheatView;
 @property (nonatomic) int currentScore;
 @property (nonatomic) int lastBestScore;
+@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *answerSlotsA;
+@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *answerSlotsB;
 
 - (void)show;
 - (void)refreshGame;
