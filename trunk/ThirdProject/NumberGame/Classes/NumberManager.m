@@ -9,6 +9,7 @@
 #import "NumberManager.h"
 #import "Utils.h"
 #import "LevelData.h"
+#import "GameConstants.h"
 
 @interface NumberManager()
 @property (nonatomic, strong) LevelData *currentLevelData;
@@ -42,18 +43,18 @@
     NSString *operator = [algebra objectAtIndex:operatorIndex];
     for (int i = 0; i <= tiles - 3; i = i + 2) {
         
-        if ([operator isEqualToString:@"×"]) {
+        if ([operator isEqualToString:SYMBOL_OPERATION_MULTIPLICATION]) {
             multiLoop++;
             targetNumber = targetNumber * nextNumber;
-        } else if ([operator isEqualToString:@"+"]) {
+        } else if ([operator isEqualToString:SYMBOL_OPERATION_ADDITION]) {
             plusLoop++;
             targetNumber = targetNumber + nextNumber;
-        } else if ([operator isEqualToString:@"-"]) {
+        } else if ([operator isEqualToString:SYMBOL_OPERATION_SUBTRACTION]) {
             minusLoop++;
             targetNumber = targetNumber - nextNumber;
-        } else if ([operator isEqualToString:@"÷"]) {
+        } else if ([operator isEqualToString:SYMBOL_OPERATION_DIVSION]) {
             int newDivide = [self divideNumber:targetNumber];
-            if (targetNumber % nextNumber == 0) {
+            if (nextNumber != 0 && targetNumber % nextNumber == 0) {
                 targetNumber = targetNumber / nextNumber;
                 divNum++;
             } else if (newDivide != 1){
@@ -66,22 +67,22 @@
                 switch (reset) {
                     case 0:
                         targetNumber = targetNumber * nextNumber;
-                        [algebra replaceObjectAtIndex:operatorIndex withObject:@"×"];
+                        [algebra replaceObjectAtIndex:operatorIndex withObject:SYMBOL_OPERATION_MULTIPLICATION];
                         multiLoop++;
                         break;
                     case 1:
                         targetNumber = targetNumber - nextNumber;
-                        [algebra replaceObjectAtIndex:operatorIndex withObject:@"-"];
+                        [algebra replaceObjectAtIndex:operatorIndex withObject:SYMBOL_OPERATION_SUBTRACTION];
                         minusLoop++;
                         break;
                     case 2:
                         targetNumber = targetNumber + nextNumber;
-                        [algebra replaceObjectAtIndex:operatorIndex withObject:@"+"];
+                        [algebra replaceObjectAtIndex:operatorIndex withObject:SYMBOL_OPERATION_ADDITION];
                         plusLoop++;
                         break;
                     default:
                         targetNumber = targetNumber * nextNumber;
-                        [algebra replaceObjectAtIndex:operatorIndex withObject:@"×"];
+                        [algebra replaceObjectAtIndex:operatorIndex withObject:SYMBOL_OPERATION_MULTIPLICATION];
                         multiLoop++;
                         break;
                 }
@@ -158,13 +159,13 @@
 - (float)calculateWithOperandLeft:(float)operandLeft operator:(NSString *)op operandRight:(float)operandRight {
     
     float total = 0.f;
-    if ([op isEqualToString:@"×"]) {
+    if ([op isEqualToString:SYMBOL_OPERATION_MULTIPLICATION]) {
         total = operandLeft * operandRight;
-    } else if ([op isEqualToString:@"+"]) {
+    } else if ([op isEqualToString:SYMBOL_OPERATION_ADDITION]) {
         total = operandLeft + operandRight;
-    } else if ([op isEqualToString:@"-"]) {
+    } else if ([op isEqualToString:SYMBOL_OPERATION_SUBTRACTION]) {
         total = operandLeft - operandRight;
-    } else if ([op isEqualToString:@"÷"]) {
+    } else if ([op isEqualToString:SYMBOL_OPERATION_DIVSION]) {
         total = operandLeft / operandRight;
     }
     return total;
@@ -199,7 +200,7 @@
 
 - (BOOL)isOperator:(id)object {
     if ([object isKindOfClass:[NSString class]]) {
-        NSArray *operators = @[@"+", @"-", @"×", @"÷"];
+        NSArray *operators = @[SYMBOL_OPERATION_ADDITION, SYMBOL_OPERATION_SUBTRACTION, SYMBOL_OPERATION_MULTIPLICATION, SYMBOL_OPERATION_DIVSION];
         NSString *temp = object;
         for (NSString *op in operators) {
             if ([temp isEqualToString:op]) {

@@ -44,6 +44,11 @@
 #define SOUND_EFFECT_TICKING @"ticking"
 #define SOUND_EFFECT_WINNING @"winningEffect"
 
+#define SYMBOL_OPERATION_ADDITION @"+"
+#define SYMBOL_OPERATION_SUBTRACTION @"-"
+#define SYMBOL_OPERATION_MULTIPLICATION @"×"
+#define SYMBOL_OPERATION_DIVSION @"÷"
+
 @interface GameConstants : NSObject
 
 @end

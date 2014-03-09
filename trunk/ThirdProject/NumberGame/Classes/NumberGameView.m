@@ -62,6 +62,21 @@ typedef enum {
     self.operatorBackgroundColor = [UIColor colorWithRed:67.f/255.f green:204.f/255.f blue:109.f/255.f alpha:1.0f];
     self.emptyBackgroundColor = [UIColor colorWithRed:248.f/255.f green:246.f/255.f blue:232.f/255.f alpha:1.0f];
     self.cheatButton.hidden = !DEBUG_MODE;
+    [self setupButtons];
+}
+
+- (void)setupButtons {
+    [self setupMinimumFontSize:self.answerSlots];
+    [self setupMinimumFontSize:self.answerSlotsA];
+    [self setupMinimumFontSize:self.answerSlotsB];
+    [self setupMinimumFontSize:self.choiceSlots];
+}
+
+- (void)setupMinimumFontSize:(NSArray *)buttons {
+    for (UIButton *button in buttons) {
+        button.titleLabel.adjustsFontSizeToFitWidth = YES;
+        button.titleLabel.minimumScaleFactor = 0.5f;
+    }
 }
 
 - (void)refreshGame {
@@ -308,11 +323,13 @@ typedef enum {
 }
 
 - (IBAction)answerSlotPressed:(UIButton *)sender {
+    [self unhighlightChoiceSlotStates];
     [self removeSlot:sender];
     [self refreshDisplayAnswers];
 }
 
 - (IBAction)choiceSlotPressed:(UIButton *)sender {
+    [self unhighlightChoiceSlotStates];
     BOOL hasFound = NO;
     for (int i = 0; i < self.answerSlots.count; i++){
         UIButton *answer = [self.answerSlots objectAtIndex:i];
@@ -362,13 +379,13 @@ typedef enum {
         // fill the slot with choice button if there is one
         if (slot.tag == 0) {
             if (isOperator && i % 2 == 0) {
-                [self animateIncorrectAnswer];
+                [self highlightChoiceSlotStates];
                 [[SoundManager instance]play:SOUND_EFFECT_BOING];
                 break;
             }
             
             if (!isOperator && i % 2 == 1) {
-                [self animateIncorrectAnswer];
+                [self highlightChoiceSlotStates];
                 [[SoundManager instance]play:SOUND_EFFECT_BOING];
                 break;
             }
@@ -396,7 +413,8 @@ typedef enum {
         }
     }
     
-    [self refreshDisplayAnswers];
+    [self performSelector:@selector(refreshDisplayAnswers) withObject:nil afterDelay:0.3f];
+    
     if (hasEmpty == NO){
         float targetValue = [self.targetNumberLabel.text floatValue];
         BOOL isCorrect =[[NumberManager instance] checkAlgebra:algebra targetValue:targetValue];
@@ -471,7 +489,6 @@ typedef enum {
             [answerSlotsA setTitle:rowDisplayString forState:UIControlStateNormal];
         }
     }
-    [self refeshChoiceSlotStates];
     [self refeshAnswerSlotStates];
 }
 
@@ -538,8 +555,7 @@ typedef enum {
     }
 }
 
-- (void)refeshChoiceSlotStates {
-    return;
+- (void)highlightChoiceSlotStates {
     // get the next free button type
     ButtonType nextFreeButtonType = [self nextFreeButtonType];
     // loop through the choices and set the state
@@ -554,6 +570,16 @@ typedef enum {
         }
         [UIView animateWithDuration:0.3f animations:^{
             choice.alpha = alpha;
+        }];
+    }
+}
+
+- (void)unhighlightChoiceSlotStates {
+    // loop through the choices and set the state
+    for (int i = 0; i < self.choiceSlots.count; i++){
+        UIButton *choice = [self.choiceSlots objectAtIndex:i];
+        [UIView animateWithDuration:0.3f animations:^{
+            choice.alpha = 1.0f;
         }];
     }
 }
