@@ -40,7 +40,7 @@
 #define SOUND_EFFECT_DING @"ding"
 #define SOUND_EFFECT_POP @"pop"
 #define SOUND_EFFECT_BLING @"bling"
-#define SOUND_EFFECT_BOING @"boing"
+#define SOUND_EFFECT_BOING @"whoosh"
 #define SOUND_EFFECT_TICKING @"ticking"
 #define SOUND_EFFECT_WINNING @"winningEffect"
 

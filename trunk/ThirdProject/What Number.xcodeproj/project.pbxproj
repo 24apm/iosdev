@@ -79,6 +79,9 @@
 		D091245018CC28830050B59F /* PromoGameData.m in Sources */ = {isa = PBXBuildFile; fileRef = D091243018CC28830050B59F /* PromoGameData.m */; };
 		D091245118CC28830050B59F /* PromoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D091243218CC28830050B59F /* PromoManager.m */; };
 		D091245218CC28830050B59F /* THLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = D091243518CC28830050B59F /* THLabel.m */; };
+		D09124BA18CC55520050B59F /* blop.caf in Resources */ = {isa = PBXBuildFile; fileRef = D09124B718CC55520050B59F /* blop.caf */; };
+		D09124BB18CC55520050B59F /* tick.caf in Resources */ = {isa = PBXBuildFile; fileRef = D09124B818CC55520050B59F /* tick.caf */; };
+		D09124BC18CC55520050B59F /* whoosh.caf in Resources */ = {isa = PBXBuildFile; fileRef = D09124B918CC55520050B59F /* whoosh.caf */; };
 		D092E5D718C83B39003A3862 /* ResultView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D092E5D618C83B39003A3862 /* ResultView~ipad.xib */; };
 		D0E0AE8018C5C6B30069D746 /* GameViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E0AE7818C5C6B30069D746 /* GameViewController~ipad.xib */; };
 		D0E0AE8518C5C6B30069D746 /* NumberGameView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E0AE7D18C5C6B30069D746 /* NumberGameView~ipad.xib */; };
@@ -226,6 +229,9 @@
 		D091243218CC28830050B59F /* PromoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PromoManager.m; sourceTree = "<group>"; };
 		D091243418CC28830050B59F /* THLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THLabel.h; sourceTree = "<group>"; };
 		D091243518CC28830050B59F /* THLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THLabel.m; sourceTree = "<group>"; };
+		D09124B718CC55520050B59F /* blop.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = blop.caf; sourceTree = "<group>"; };
+		D09124B818CC55520050B59F /* tick.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = tick.caf; sourceTree = "<group>"; };
+		D09124B918CC55520050B59F /* whoosh.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = whoosh.caf; sourceTree = "<group>"; };
 		D092E5D618C83B39003A3862 /* ResultView~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ResultView~ipad.xib"; sourceTree = "<group>"; };
 		D0E0AE7818C5C6B30069D746 /* GameViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "GameViewController~ipad.xib"; sourceTree = "<group>"; };
 		D0E0AE7D18C5C6B30069D746 /* NumberGameView~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "NumberGameView~ipad.xib"; sourceTree = "<group>"; };
@@ -540,6 +546,9 @@
 		D0E1121B18C2EC6000808072 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				D09124B718CC55520050B59F /* blop.caf */,
+				D09124B818CC55520050B59F /* tick.caf */,
+				D09124B918CC55520050B59F /* whoosh.caf */,
 				D0E1123018C2ECF300808072 /* pop.caf */,
 				D0E1123118C2ECF300808072 /* ticking.caf */,
 				D0E1123418C2EDF000808072 /* bling.caf */,
@@ -716,9 +725,11 @@
 				D0338BAF18C713D60006C8B6 /* Achievementx500.png in Resources */,
 				D0338BAA18C713D60006C8B6 /* Achievementx150.png in Resources */,
 				D05A831918B3223C003C18EB /* InfoPlist.strings in Resources */,
+				D09124BC18CC55520050B59F /* whoosh.caf in Resources */,
 				D0E1122F18C2EC6000808072 /* winningEffect.caf in Resources */,
 				D05A831A18B3223C003C18EB /* Images.xcassets in Resources */,
 				D0338BAD18C713D60006C8B6 /* Achievementx250.png in Resources */,
+				D09124BB18CC55520050B59F /* tick.caf in Resources */,
 				D048A84018ACAAAB00411DF9 /* twitter_share.png in Resources */,
 				D0338BA518C713D60006C8B6 /* Achievementx60.png in Resources */,
 				D091244C18CC28830050B59F /* FlappyBallIcon100x100.png in Resources */,
@@ -749,6 +760,7 @@
 				D0414E9518B36BD500A296F6 /* NumberGameView.xib in Resources */,
 				D091244F18CC28830050B59F /* PromoBannerView~ipad.xib in Resources */,
 				D048A83F18ACAAAB00411DF9 /* facebook_share.png in Resources */,
+				D09124BA18CC55520050B59F /* blop.caf in Resources */,
 				D0338BAB18C713D60006C8B6 /* Achievementx170.png in Resources */,
 				D091244A18CC28830050B59F /* iRate.bundle in Resources */,
 			);

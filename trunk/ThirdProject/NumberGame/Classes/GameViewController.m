@@ -125,7 +125,6 @@
             break;
         case GameStateGameMode:
             self.numberGameView.hidden = NO;
-            self.numberGameView.currentScore = 0;
             [self.numberGameView refreshGame];
             [self.numberGameView show];
             break;

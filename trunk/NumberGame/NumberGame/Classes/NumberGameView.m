@@ -43,8 +43,8 @@
     for (int i = 0; i < self.choiceSlots.count; i++) {
         UIButton *choice = [self.choiceSlots objectAtIndex:i];
         choice.tag = i+1;
-        self.currentScore = 0;
     }
+    self.currentScore = 0;
     self.lastBestScore = [UserData instance].maxScore;
     self.playedTick = NO;
     self.maxTime = 10.f;

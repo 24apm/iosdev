@@ -25,7 +25,6 @@
 }
 
 - (void)setMaxScore:(int)maxScore {
-    
     if (maxScore > _maxScore) {
         _maxScore = maxScore;
         [self saveUserData];

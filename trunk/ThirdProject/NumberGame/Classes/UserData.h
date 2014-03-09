@@ -13,5 +13,6 @@
 @property (nonatomic, retain) UIImage *lastGameSS;
 
 + (UserData *)instance;
+- (void)submitScore:(int)score;
 
 @end

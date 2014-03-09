@@ -30,8 +30,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *scores;
 @property (strong, nonatomic) IBOutlet UIButton *returnButton;
 @property (strong, nonatomic) IBOutlet UIView *cheatView;
-@property (nonatomic) int currentScore;
-@property (nonatomic) int lastBestScore;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *answerSlotsA;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *answerSlotsB;
 

@@ -154,7 +154,11 @@
 
 - (void)onLocalPlayerScoreReceived:(GKScore *)score {
     [super onLocalPlayerScoreReceived:score];
-    [UserData instance].maxScore = score.value;
+    if ([UserData instance].maxScore > score.value) {
+        [[UserData instance] submitScore:[UserData instance].maxScore];
+    } else {
+        [UserData instance].maxScore = score.value;
+    }
 }
 
 @end

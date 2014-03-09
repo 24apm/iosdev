@@ -19,6 +19,12 @@
 #import "GameViewController.h"
 #import "LevelData.h"
 
+typedef enum {
+    ButtonTypeOperator,
+    ButtonTypeNumber,
+    ButtonTypeNone
+} ButtonType;
+
 #define BUFFER_TIME 0.f
 #define BUTTON_CORNER_RADIUS (10.f * IPAD_SCALE)
 
@@ -30,6 +36,8 @@
 @property (nonatomic) double maxTime;
 @property (nonatomic, retain) UIColor *numberBackgroundColor;
 @property (nonatomic, retain) UIColor *operatorBackgroundColor;
+@property (nonatomic, retain) UIColor *emptyBackgroundColor;
+
 @property (nonatomic, retain) InGameMessageView *messageView;
 @property (nonatomic) int topScore;
 @property (nonatomic) BOOL playedTick;
@@ -45,28 +53,53 @@
     for (int i = 0; i < self.choiceSlots.count; i++) {
         UIButton *choice = [self.choiceSlots objectAtIndex:i];
         choice.tag = i+1;
-        self.currentScore = 0;
     }
-    self.lastBestScore = [UserData instance].maxScore;
     self.playedTick = NO;
     self.maxTime = 10.f;
     
     [self loadUserData];
     self.numberBackgroundColor = [UIColor colorWithRed:84.f/255.f green:255.f/255.f blue:136.f/255.f alpha:1.0f];
     self.operatorBackgroundColor = [UIColor colorWithRed:67.f/255.f green:204.f/255.f blue:109.f/255.f alpha:1.0f];
-    
+    self.emptyBackgroundColor = [UIColor colorWithRed:248.f/255.f green:246.f/255.f blue:232.f/255.f alpha:1.0f];
     self.cheatButton.hidden = !DEBUG_MODE;
 }
 
+- (void)refreshGame {
+    [self loadUserData];
+    self.cheatView.hidden = YES;
+    
+    LevelData *levelData = [LevelData levelConfigForCurrentScore:[UserData instance].maxScore];
+    levelData.answerSlotCount = self.answerSlots.count;
+    levelData.choiceSlotCount = self.choiceSlots.count;
+    NSDictionary *data = [[NumberManager instance] generateLevel:levelData];
+    
+    // operator list
+    // number range
+    int targetValue = [[data objectForKey:@"targetNumber"] intValue];
+    NSArray *array = [data objectForKey:@"algebra"];
+    [self refreshChoices:array];
+    [self resetAnswers];
+    self.progressBar.hidden = YES;
+    self.progressBar.foregroundView.backgroundColor = [UIColor colorWithRed:71.f/255.f
+                                                                      green:216.f/255.f
+                                                                       blue:115.f/255.f
+                                                                      alpha:1.f];
+    self.targetNumberLabel.text = [NSString stringWithFormat:@"%d",targetValue];
+    self.playedTick = NO;
+    
+    self.nextExpireTime = CACurrentMediaTime() + self.maxTime + BUFFER_TIME;
+    self.cheatLabel.hidden = YES;
+    
+    if (self.timer) {
+        [self.timer invalidate];
+    }
+    [self refreshDisplayAnswers];
+    //self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0f/60.f target:self selector:@selector(updateProgressBar) userInfo:nil repeats:YES];
+}
 
 - (void)loadUserData {
     [UserData instance].maxScore = [[[NSUserDefaults standardUserDefaults] valueForKey:@"maxScore"] intValue];
     self.topScoreLabel.text = [self updateMaxScore];
-}
-
--(void)setCurrentScore:(int)currentScore {
-    _currentScore = currentScore;
-    self.scoreLabel.text = [NSString stringWithFormat: @"Streak: %d",_currentScore];
 }
 
 - (void)showMessageView {
@@ -85,9 +118,7 @@
     [self.progressBar fillBar:0.f animated:NO];
     [self.timer invalidate];
     [[SoundManager instance] play:SOUND_EFFECT_WINNING];
-    [UserData instance].score = self.currentScore;
     [UserData instance].lastGameSS = [self blit];
-//    [[NSNotificationCenter defaultCenter] postNotificationName:NUMBER_GAME_CALLBACK_NOTIFICATION object:self];
 }
 
 -(void)showAnswer {
@@ -141,45 +172,9 @@
         [self.timer invalidate];
         [[SoundManager instance] stop:SOUND_EFFECT_TICKING];
         [[SoundManager instance] play:SOUND_EFFECT_WINNING];
-        [UserData instance].score = self.currentScore;
         [self hide];
     }
 }
-
-- (void)refreshGame {
-    [self loadUserData];
-    self.cheatView.hidden = YES;
-    
-    LevelData *levelData = [LevelData levelConfigForCurrentScore:[UserData instance].score];
-    levelData.answerSlotCount = self.answerSlots.count;
-    levelData.choiceSlotCount = self.choiceSlots.count;
-    NSDictionary *data = [[NumberManager instance] generateLevel:levelData];
-    
-    // operator list
-    // number range
-    int targetValue = [[data objectForKey:@"targetNumber"] intValue];
-    NSArray *array = [data objectForKey:@"algebra"];
-    [self refreshChoices:array];
-    [self resetAnswers];
-    self.progressBar.hidden = YES;
-    self.progressBar.foregroundView.backgroundColor = [UIColor colorWithRed:71.f/255.f
-                                                                      green:216.f/255.f
-                                                                       blue:115.f/255.f
-                                                                      alpha:1.f];
-    self.targetNumberLabel.text = [NSString stringWithFormat:@"%d",targetValue];
-    self.playedTick = NO;
-    
-    self.nextExpireTime = CACurrentMediaTime() + self.maxTime + BUFFER_TIME;
-    self.cheatLabel.hidden = YES;
-    
-    if (self.timer) {
-        [self.timer invalidate];
-    }
-    [self refreshDisplayAnswers];
-    //self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0f/60.f target:self selector:@selector(updateProgressBar) userInfo:nil repeats:YES];
-}
-
-
 
 - (void)animateAnswersOut {
     if (self.answerSlots.count <= 0) {
@@ -266,18 +261,8 @@
         UIButton *slot = [self.answerSlots objectAtIndex:i];
         slot.tag = 0;
         [slot setTitle:@"" forState:UIControlStateNormal];
-        UIColor *bgColor;
-        if (i % 2 == 0) {
-            bgColor = self.numberBackgroundColor;
-        } else {
-            bgColor = self.operatorBackgroundColor;
-        }
-        
-//        slot.layer.borderColor = bgColor.CGColor;
-//        slot.layer.borderWidth = 2.f * IPAD_SCALE;
-//        slot.layer.cornerRadius = BUTTON_CORNER_RADIUS;
-        slot.backgroundColor = bgColor;
     }
+    [self refeshAnswerSlotStates];
 }
 
 - (void)show {
@@ -324,7 +309,6 @@
 
 - (IBAction)answerSlotPressed:(UIButton *)sender {
     [self removeSlot:sender];
-    [[SoundManager instance] play:SOUND_EFFECT_POP];
     [self refreshDisplayAnswers];
 }
 
@@ -334,7 +318,6 @@
         UIButton *answer = [self.answerSlots objectAtIndex:i];
         if (sender.tag == answer.tag) {
             [self removeSlot:answer];
-            [[SoundManager instance] play:SOUND_EFFECT_POP];
             hasFound = YES;
             break;
         }
@@ -342,19 +325,21 @@
     
     if (!hasFound) {
         [self fillSlot:sender];
+    } else {
+        [self refreshDisplayAnswers];
     }
-               [self hidingRows];
+    [self hidingRows];
 }
 
 - (void)animate:(UIView *)fromView toView:(UIView *)toView {
     UIImageView *imageView = [[UIImageView alloc] initWithImage:[fromView blit]];
-    [fromView.superview addSubview:imageView];
-    imageView.frame = fromView.frame;
+    [self addSubview:imageView];
+    imageView.frame = [fromView.superview convertRect:fromView.frame toView:self];
     [UIView animateWithDuration:0.3f
                           delay:0.f
                         options:UIViewAnimationOptionCurveEaseInOut
                      animations:^{
-                         imageView.frame = [toView.superview convertRect:toView.frame toView:fromView.superview];
+                         imageView.frame = [toView.superview convertRect:toView.frame toView:self];
                      } completion:^(BOOL completed) {
                          [UIView animateWithDuration:0.1f
                                                delay:0.f
@@ -390,11 +375,12 @@
             [slot setTitle:choiceString forState:UIControlStateNormal];
             //  disable current choice
             
+            [self animate:choice toView:slot];
             choice.selected = YES;
+            [self showBorder:choice];
             //  set slot with choice's tag (keep reference)
             slot.tag = choice.tag;
             
-            [self animate:choice toView:slot];
             [[SoundManager instance] play:SOUND_EFFECT_POP];
             break;
         }
@@ -427,8 +413,7 @@
                                                                                blue:115.f/255.f
                                                                               alpha:1.f];
             [self performSelector:@selector(refreshGame) withObject:nil afterDelay:2.2f];
-            self.currentScore++;
-            [UserData instance].score = self.currentScore;
+            [UserData instance].maxScore++;
         }
 //        else {
 //            [self resetAnswers];
@@ -486,6 +471,8 @@
             [answerSlotsA setTitle:rowDisplayString forState:UIControlStateNormal];
         }
     }
+    [self refeshChoiceSlotStates];
+    [self refeshAnswerSlotStates];
 }
 
 - (NSNumberFormatter *)formatterForRowDisplay {
@@ -518,6 +505,58 @@
 
 // otherwise, nothing happens
 
+- (ButtonType)nextFreeButtonType {
+    for(int i = 0; i < self.answerSlots.count; i++) {
+        UIButton *slot = self.answerSlots[i];
+        if (slot.tag == 0) {
+            if (i % 2 == 0) {
+                return ButtonTypeNumber;
+            }
+            
+            if (i % 2 == 1) {
+                return ButtonTypeOperator;
+            }
+        }
+    }
+    return ButtonTypeNone;
+}
+
+- (void)refeshAnswerSlotStates {
+    for (int i = 0; i < self.answerSlots.count; i++) {
+        UIButton *slot = [self.answerSlots objectAtIndex:i];
+        UIColor *bgColor;
+        if (slot.tag == 0) {
+            bgColor = self.emptyBackgroundColor;
+        } else {
+            if (i % 2 == 0) {
+                bgColor = self.numberBackgroundColor;
+            } else {
+                bgColor = self.operatorBackgroundColor;
+            }
+        }
+        slot.backgroundColor = bgColor;
+    }
+}
+
+- (void)refeshChoiceSlotStates {
+    return;
+    // get the next free button type
+    ButtonType nextFreeButtonType = [self nextFreeButtonType];
+    // loop through the choices and set the state
+    for (int i = 0; i < self.choiceSlots.count; i++){
+        UIButton *choice = [self.choiceSlots objectAtIndex:i];
+        NSString *choiceString = [choice titleForState:UIControlStateNormal];
+        CGFloat alpha = 0.f;
+        if ([[NumberManager instance] isOperator:choiceString]) {
+            alpha = nextFreeButtonType == ButtonTypeOperator ? 1.0f : 0.3f;
+        } else {
+            alpha = nextFreeButtonType == ButtonTypeNumber ? 1.0f : 0.3f;
+        }
+        [UIView animateWithDuration:0.3f animations:^{
+            choice.alpha = alpha;
+        }];
+    }
+}
 
 - (void)removeSlot:(UIButton *)slot {
     // check if current slot is used
@@ -526,12 +565,14 @@
             UIButton *choice = [self.choiceSlots objectAtIndex:i];
             if (choice.tag == slot.tag) {
                 choice.selected = NO;
+                [self hideBorder:choice];
                 [self animate:slot toView:choice];
                 
                 slot.tag = 0;
                 [slot setTitle:@"" forState:UIControlStateNormal];
             }
         }
+        [[SoundManager instance] play:SOUND_EFFECT_POP];
     }
     
     // if yes
@@ -543,7 +584,7 @@
 }
 
 - (NSString *)updateMaxScore {
-    return [NSString stringWithFormat:@"Best: %d", [UserData instance].maxScore];
+    return [NSString stringWithFormat:@"Level %d", [UserData instance].maxScore];
 }
 
 - (void)hidingRows {
