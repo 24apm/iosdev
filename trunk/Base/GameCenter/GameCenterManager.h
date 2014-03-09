@@ -64,9 +64,7 @@
 
 @interface GameCenterManager : NSObject
 {
-	NSMutableDictionary* earnedAchievementCache;
-	
-	id <GameCenterManagerDelegate, NSObject> delegate;
+	NSMutableDictionary* earnedAchievementCache;	
 }
 
 //This property must be attomic to ensure that the cache is always in a viable state...

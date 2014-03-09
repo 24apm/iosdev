@@ -8,10 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "GameViewController.h"
+#import "AppDelegateBase.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
-
-@property (strong, nonatomic) IBOutlet UIWindow *window;
-@property (strong, nonatomic) IBOutlet GameViewController *viewController;
+@interface AppDelegate : AppDelegateBase
 
 @end

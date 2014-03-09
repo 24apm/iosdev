@@ -10,7 +10,7 @@
 
 #define IPAD_SCALE ((UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 2.0f : 1.0f)
 
-#define DEBUG_MODE NO
+#define DEBUG_MODE YES
 
 // Game Center
 #define kLeaderboardID @"2"

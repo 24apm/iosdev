@@ -34,7 +34,6 @@
 		D048A83F18ACAAAB00411DF9 /* facebook_share.png in Resources */ = {isa = PBXBuildFile; fileRef = D048A83D18ACAAAB00411DF9 /* facebook_share.png */; };
 		D048A84018ACAAAB00411DF9 /* twitter_share.png in Resources */ = {isa = PBXBuildFile; fileRef = D048A83E18ACAAAB00411DF9 /* twitter_share.png */; };
 		D048A84618ACB25200411DF9 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D048A84518ACB25200411DF9 /* GameKit.framework */; };
-		D04E827218BA8FE9007E1081 /* ProgressBarComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = D04E827118BA8FE9007E1081 /* ProgressBarComponent.m */; };
 		D04F704218AA1197000509AA /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D04F704118AA1197000509AA /* Social.framework */; };
 		D05A830D18B3223C003C18EB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D05A82DC18B3223C003C18EB /* AppDelegate.m */; };
 		D05A831018B3223C003C18EB /* GameConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D05A82E218B3223C003C18EB /* GameConstants.m */; };
@@ -50,6 +49,36 @@
 		D05A832418B3223C003C18EB /* MainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D05A830218B3223C003C18EB /* MainView.xib */; };
 		D05A833118B32785003C18EB /* NumberManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D05A833018B32785003C18EB /* NumberManager.m */; };
 		D07F418018A4D8C7009680FD /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07F417F18A4D8C7009680FD /* iAd.framework */; };
+		D091232318CC22320050B59F /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = D091232218CC22320050B59F /* MainWindow.xib */; };
+		D091243618CC28830050B59F /* AppDelegateBase.m in Sources */ = {isa = PBXBuildFile; fileRef = D09123F318CC28830050B59F /* AppDelegateBase.m */; };
+		D091243718CC28830050B59F /* Base.m in Sources */ = {isa = PBXBuildFile; fileRef = D09123F618CC28830050B59F /* Base.m */; };
+		D091243818CC28830050B59F /* GameCenterHelperBase.m in Sources */ = {isa = PBXBuildFile; fileRef = D09123F818CC28830050B59F /* GameCenterHelperBase.m */; };
+		D091243918CC28830050B59F /* GameLoopTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = D09123FA18CC28830050B59F /* GameLoopTimer.m */; };
+		D091243A18CC28830050B59F /* Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = D09123FC18CC28830050B59F /* Hex.m */; };
+		D091243B18CC28830050B59F /* NotificationManagerBase.m in Sources */ = {isa = PBXBuildFile; fileRef = D09123FE18CC28830050B59F /* NotificationManagerBase.m */; };
+		D091243C18CC28830050B59F /* XibView.m in Sources */ = {isa = PBXBuildFile; fileRef = D091240018CC28830050B59F /* XibView.m */; };
+		D091243D18CC28830050B59F /* ProgressBarComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = D091240318CC28830050B59F /* ProgressBarComponent.m */; };
+		D091243E18CC28830050B59F /* WorldObjectProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D091240618CC28830050B59F /* WorldObjectProperties.m */; };
+		D091243F18CC28830050B59F /* WorldObjectView.m in Sources */ = {isa = PBXBuildFile; fileRef = D091240818CC28830050B59F /* WorldObjectView.m */; };
+		D091244018CC28830050B59F /* SoundEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = D091240B18CC28830050B59F /* SoundEffect.m */; };
+		D091244118CC28830050B59F /* SoundEffectHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D091240D18CC28830050B59F /* SoundEffectHelper.m */; };
+		D091244218CC28830050B59F /* SoundManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D091240F18CC28830050B59F /* SoundManager.m */; };
+		D091244318CC28830050B59F /* AnimUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D091241218CC28830050B59F /* AnimUtil.m */; };
+		D091244418CC28830050B59F /* NSArray+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = D091241418CC28830050B59F /* NSArray+Util.m */; };
+		D091244518CC28830050B59F /* UIView+ViewUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D091241618CC28830050B59F /* UIView+ViewUtil.m */; };
+		D091244618CC28830050B59F /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = D091241818CC28830050B59F /* Utils.m */; };
+		D091244718CC28830050B59F /* FXLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = D091241B18CC28830050B59F /* FXLabel.m */; };
+		D091244818CC28830050B59F /* GameCenterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D091241F18CC28830050B59F /* GameCenterManager.m */; };
+		D091244918CC28830050B59F /* IAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D091242218CC28830050B59F /* IAPHelper.m */; };
+		D091244A18CC28830050B59F /* iRate.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D091242418CC28830050B59F /* iRate.bundle */; };
+		D091244B18CC28830050B59F /* iRate.m in Sources */ = {isa = PBXBuildFile; fileRef = D091242618CC28830050B59F /* iRate.m */; };
+		D091244C18CC28830050B59F /* FlappyBallIcon100x100.png in Resources */ = {isa = PBXBuildFile; fileRef = D091242918CC28830050B59F /* FlappyBallIcon100x100.png */; };
+		D091244D18CC28830050B59F /* PromoBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = D091242C18CC28830050B59F /* PromoBannerView.m */; };
+		D091244E18CC28830050B59F /* PromoBannerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D091242D18CC28830050B59F /* PromoBannerView.xib */; };
+		D091244F18CC28830050B59F /* PromoBannerView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D091242E18CC28830050B59F /* PromoBannerView~ipad.xib */; };
+		D091245018CC28830050B59F /* PromoGameData.m in Sources */ = {isa = PBXBuildFile; fileRef = D091243018CC28830050B59F /* PromoGameData.m */; };
+		D091245118CC28830050B59F /* PromoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D091243218CC28830050B59F /* PromoManager.m */; };
+		D091245218CC28830050B59F /* THLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = D091243518CC28830050B59F /* THLabel.m */; };
 		D092E5D718C83B39003A3862 /* ResultView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D092E5D618C83B39003A3862 /* ResultView~ipad.xib */; };
 		D0E0AE8018C5C6B30069D746 /* GameViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E0AE7818C5C6B30069D746 /* GameViewController~ipad.xib */; };
 		D0E0AE8518C5C6B30069D746 /* NumberGameView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E0AE7D18C5C6B30069D746 /* NumberGameView~ipad.xib */; };
@@ -59,9 +88,6 @@
 		D0E1123318C2ECF300808072 /* ticking.caf in Resources */ = {isa = PBXBuildFile; fileRef = D0E1123118C2ECF300808072 /* ticking.caf */; };
 		D0E1123518C2EDF000808072 /* bling.caf in Resources */ = {isa = PBXBuildFile; fileRef = D0E1123418C2EDF000808072 /* bling.caf */; };
 		D0E1123818C30DE900808072 /* GameCenterHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E1123718C30DE900808072 /* GameCenterHelper.m */; };
-		D0E279B018C1DC37000F7170 /* NSArray+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E279AB18C1DC37000F7170 /* NSArray+Util.m */; };
-		D0E279B118C1DC37000F7170 /* UIView+ViewUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E279AD18C1DC37000F7170 /* UIView+ViewUtil.m */; };
-		D0E279B218C1DC37000F7170 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E279AF18C1DC37000F7170 /* Utils.m */; };
 		D0E30E8518A376E300FFD3CE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E30E8418A376E300FFD3CE /* Foundation.framework */; };
 		D0E30E8718A376E300FFD3CE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E30E8618A376E300FFD3CE /* CoreGraphics.framework */; };
 		D0E30E8918A376E300FFD3CE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E30E8818A376E300FFD3CE /* UIKit.framework */; };
@@ -69,37 +95,14 @@
 		D0E30EA518A376E300FFD3CE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E30E8418A376E300FFD3CE /* Foundation.framework */; };
 		D0E30EA618A376E300FFD3CE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E30E8818A376E300FFD3CE /* UIKit.framework */; };
 		D0E30EDF18A37D6400FFD3CE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E30EDE18A37D6400FFD3CE /* QuartzCore.framework */; };
-		D0E3211118C87C4D00600DF2 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E3211018C87C4D00600DF2 /* MainWindow.xib */; };
 		D0E3211318C87D9100600DF2 /* MainView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E3211218C87D9100600DF2 /* MainView~ipad.xib */; };
 		D0E364CE18BAFE8B00A5676B /* InGameMessageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E364CD18BAFE8B00A5676B /* InGameMessageView.xib */; };
 		D0E364D118BAFE9D00A5676B /* InGameMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E364D018BAFE9D00A5676B /* InGameMessageView.m */; };
-		D0E36B8618C28C8400BA56E7 /* IAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E36B8518C28C8400BA56E7 /* IAPHelper.m */; };
 		D0E36B8918C28CE700BA56E7 /* NumberGameIAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E36B8818C28CE700BA56E7 /* NumberGameIAPHelper.m */; };
 		D0E36B8B18C2906F00BA56E7 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E36B8A18C2906F00BA56E7 /* StoreKit.framework */; };
 		D0E388B418C06F45001000FC /* ResultView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E388B318C06F45001000FC /* ResultView.xib */; };
+		D0E3C40A18CB16D800EB447B /* LevelData.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E3C40918CB16D800EB447B /* LevelData.m */; };
 		D0EB7A0D18BF239A00AC8CEB /* UserData.m in Sources */ = {isa = PBXBuildFile; fileRef = D0EB7A0C18BF239A00AC8CEB /* UserData.m */; };
-		D0EB7A1018BF281000AC8CEB /* GameCenterHelperBase.m in Sources */ = {isa = PBXBuildFile; fileRef = D0EB7A0F18BF281000AC8CEB /* GameCenterHelperBase.m */; };
-		D0EF543018C4271F00ECF334 /* PromoGameData.m in Sources */ = {isa = PBXBuildFile; fileRef = D0EF542D18C4271F00ECF334 /* PromoGameData.m */; };
-		D0EF543118C4271F00ECF334 /* PromoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D0EF542F18C4271F00ECF334 /* PromoManager.m */; };
-		D0EF543318C4276B00ECF334 /* FlappyBallIcon100x100.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EF543218C4276B00ECF334 /* FlappyBallIcon100x100.png */; };
-		D0EF543618C4285400ECF334 /* PromoBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0EF543518C4285400ECF334 /* PromoBannerView.m */; };
-		D0EF543818C4286100ECF334 /* PromoBannerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0EF543718C4286100ECF334 /* PromoBannerView.xib */; };
-		D0EF543A18C442DC00ECF334 /* PromoBannerView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0EF543918C442DC00ECF334 /* PromoBannerView~ipad.xib */; };
-		D0F6849418B31C3E00CBB819 /* AnimUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F6846C18B31C3E00CBB819 /* AnimUtil.m */; };
-		D0F6849518B31C3E00CBB819 /* Base.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F6846F18B31C3E00CBB819 /* Base.m */; };
-		D0F6849618B31C3E00CBB819 /* GameLoopTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F6847118B31C3E00CBB819 /* GameLoopTimer.m */; };
-		D0F6849718B31C3E00CBB819 /* Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F6847318B31C3E00CBB819 /* Hex.m */; };
-		D0F6849918B31C3E00CBB819 /* SoundEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F6847718B31C3E00CBB819 /* SoundEffect.m */; };
-		D0F6849A18B31C3E00CBB819 /* SoundEffectHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F6847918B31C3E00CBB819 /* SoundEffectHelper.m */; };
-		D0F6849B18B31C3E00CBB819 /* SoundManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F6847B18B31C3E00CBB819 /* SoundManager.m */; };
-		D0F6849E18B31C3E00CBB819 /* WorldObjectProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F6848118B31C3E00CBB819 /* WorldObjectProperties.m */; };
-		D0F6849F18B31C3E00CBB819 /* WorldObjectView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F6848318B31C3E00CBB819 /* WorldObjectView.m */; };
-		D0F684A018B31C3E00CBB819 /* XibView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F6848518B31C3E00CBB819 /* XibView.m */; };
-		D0F684A118B31C3E00CBB819 /* FXLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F6848818B31C3E00CBB819 /* FXLabel.m */; };
-		D0F684A218B31C3E00CBB819 /* GameCenterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F6848C18B31C3E00CBB819 /* GameCenterManager.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		D0F684A318B31C3E00CBB819 /* iRate.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D0F6848E18B31C3E00CBB819 /* iRate.bundle */; };
-		D0F684A418B31C3E00CBB819 /* iRate.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F6849018B31C3E00CBB819 /* iRate.m */; };
-		D0F684A518B31C3E00CBB819 /* THLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F6849318B31C3E00CBB819 /* THLabel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -141,8 +144,6 @@
 		D048A83D18ACAAAB00411DF9 /* facebook_share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebook_share.png; sourceTree = "<group>"; };
 		D048A83E18ACAAAB00411DF9 /* twitter_share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twitter_share.png; sourceTree = "<group>"; };
 		D048A84518ACB25200411DF9 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
-		D04E827018BA8FE9007E1081 /* ProgressBarComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressBarComponent.h; sourceTree = "<group>"; };
-		D04E827118BA8FE9007E1081 /* ProgressBarComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressBarComponent.m; sourceTree = "<group>"; };
 		D04F704118AA1197000509AA /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		D05A82DB18B3223C003C18EB /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D05A82DC18B3223C003C18EB /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -168,6 +169,63 @@
 		D05A832F18B32785003C18EB /* NumberManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumberManager.h; sourceTree = "<group>"; };
 		D05A833018B32785003C18EB /* NumberManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NumberManager.m; sourceTree = "<group>"; };
 		D07F417F18A4D8C7009680FD /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
+		D091232218CC22320050B59F /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+		D09123F218CC28830050B59F /* AppDelegateBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegateBase.h; sourceTree = "<group>"; };
+		D09123F318CC28830050B59F /* AppDelegateBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegateBase.m; sourceTree = "<group>"; };
+		D09123F418CC28830050B59F /* Base-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Base-Prefix.pch"; sourceTree = "<group>"; };
+		D09123F518CC28830050B59F /* Base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base.h; sourceTree = "<group>"; };
+		D09123F618CC28830050B59F /* Base.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base.m; sourceTree = "<group>"; };
+		D09123F718CC28830050B59F /* GameCenterHelperBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameCenterHelperBase.h; sourceTree = "<group>"; };
+		D09123F818CC28830050B59F /* GameCenterHelperBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameCenterHelperBase.m; sourceTree = "<group>"; };
+		D09123F918CC28830050B59F /* GameLoopTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameLoopTimer.h; sourceTree = "<group>"; };
+		D09123FA18CC28830050B59F /* GameLoopTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameLoopTimer.m; sourceTree = "<group>"; };
+		D09123FB18CC28830050B59F /* Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Hex.h; sourceTree = "<group>"; };
+		D09123FC18CC28830050B59F /* Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Hex.m; sourceTree = "<group>"; };
+		D09123FD18CC28830050B59F /* NotificationManagerBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationManagerBase.h; sourceTree = "<group>"; };
+		D09123FE18CC28830050B59F /* NotificationManagerBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationManagerBase.m; sourceTree = "<group>"; };
+		D09123FF18CC28830050B59F /* XibView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XibView.h; sourceTree = "<group>"; };
+		D091240018CC28830050B59F /* XibView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XibView.m; sourceTree = "<group>"; };
+		D091240218CC28830050B59F /* ProgressBarComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressBarComponent.h; sourceTree = "<group>"; };
+		D091240318CC28830050B59F /* ProgressBarComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressBarComponent.m; sourceTree = "<group>"; };
+		D091240518CC28830050B59F /* WorldObjectProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorldObjectProperties.h; sourceTree = "<group>"; };
+		D091240618CC28830050B59F /* WorldObjectProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorldObjectProperties.m; sourceTree = "<group>"; };
+		D091240718CC28830050B59F /* WorldObjectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorldObjectView.h; sourceTree = "<group>"; };
+		D091240818CC28830050B59F /* WorldObjectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorldObjectView.m; sourceTree = "<group>"; };
+		D091240A18CC28830050B59F /* SoundEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundEffect.h; sourceTree = "<group>"; };
+		D091240B18CC28830050B59F /* SoundEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundEffect.m; sourceTree = "<group>"; };
+		D091240C18CC28830050B59F /* SoundEffectHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundEffectHelper.h; sourceTree = "<group>"; };
+		D091240D18CC28830050B59F /* SoundEffectHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundEffectHelper.m; sourceTree = "<group>"; };
+		D091240E18CC28830050B59F /* SoundManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundManager.h; sourceTree = "<group>"; };
+		D091240F18CC28830050B59F /* SoundManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundManager.m; sourceTree = "<group>"; };
+		D091241118CC28830050B59F /* AnimUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimUtil.h; sourceTree = "<group>"; };
+		D091241218CC28830050B59F /* AnimUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimUtil.m; sourceTree = "<group>"; };
+		D091241318CC28830050B59F /* NSArray+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Util.h"; sourceTree = "<group>"; };
+		D091241418CC28830050B59F /* NSArray+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Util.m"; sourceTree = "<group>"; };
+		D091241518CC28830050B59F /* UIView+ViewUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ViewUtil.h"; sourceTree = "<group>"; };
+		D091241618CC28830050B59F /* UIView+ViewUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ViewUtil.m"; sourceTree = "<group>"; };
+		D091241718CC28830050B59F /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
+		D091241818CC28830050B59F /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
+		D091241A18CC28830050B59F /* FXLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXLabel.h; sourceTree = "<group>"; };
+		D091241B18CC28830050B59F /* FXLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXLabel.m; sourceTree = "<group>"; };
+		D091241D18CC28830050B59F /* AppSpecificValues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppSpecificValues.h; sourceTree = "<group>"; };
+		D091241E18CC28830050B59F /* GameCenterManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameCenterManager.h; sourceTree = "<group>"; };
+		D091241F18CC28830050B59F /* GameCenterManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameCenterManager.m; sourceTree = "<group>"; };
+		D091242118CC28830050B59F /* IAPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPHelper.h; sourceTree = "<group>"; };
+		D091242218CC28830050B59F /* IAPHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAPHelper.m; sourceTree = "<group>"; };
+		D091242418CC28830050B59F /* iRate.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = iRate.bundle; sourceTree = "<group>"; };
+		D091242518CC28830050B59F /* iRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iRate.h; sourceTree = "<group>"; };
+		D091242618CC28830050B59F /* iRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iRate.m; sourceTree = "<group>"; };
+		D091242918CC28830050B59F /* FlappyBallIcon100x100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FlappyBallIcon100x100.png; sourceTree = "<group>"; };
+		D091242B18CC28830050B59F /* PromoBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PromoBannerView.h; sourceTree = "<group>"; };
+		D091242C18CC28830050B59F /* PromoBannerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PromoBannerView.m; sourceTree = "<group>"; };
+		D091242D18CC28830050B59F /* PromoBannerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PromoBannerView.xib; sourceTree = "<group>"; };
+		D091242E18CC28830050B59F /* PromoBannerView~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "PromoBannerView~ipad.xib"; sourceTree = "<group>"; };
+		D091242F18CC28830050B59F /* PromoGameData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PromoGameData.h; sourceTree = "<group>"; };
+		D091243018CC28830050B59F /* PromoGameData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PromoGameData.m; sourceTree = "<group>"; };
+		D091243118CC28830050B59F /* PromoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PromoManager.h; sourceTree = "<group>"; };
+		D091243218CC28830050B59F /* PromoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PromoManager.m; sourceTree = "<group>"; };
+		D091243418CC28830050B59F /* THLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THLabel.h; sourceTree = "<group>"; };
+		D091243518CC28830050B59F /* THLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THLabel.m; sourceTree = "<group>"; };
 		D092E5D618C83B39003A3862 /* ResultView~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ResultView~ipad.xib"; sourceTree = "<group>"; };
 		D0E0AE7818C5C6B30069D746 /* GameViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "GameViewController~ipad.xib"; sourceTree = "<group>"; };
 		D0E0AE7D18C5C6B30069D746 /* NumberGameView~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "NumberGameView~ipad.xib"; sourceTree = "<group>"; };
@@ -178,12 +236,6 @@
 		D0E1123418C2EDF000808072 /* bling.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = bling.caf; sourceTree = "<group>"; };
 		D0E1123618C30DE900808072 /* GameCenterHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameCenterHelper.h; sourceTree = "<group>"; };
 		D0E1123718C30DE900808072 /* GameCenterHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameCenterHelper.m; sourceTree = "<group>"; };
-		D0E279AA18C1DC37000F7170 /* NSArray+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Util.h"; sourceTree = "<group>"; };
-		D0E279AB18C1DC37000F7170 /* NSArray+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Util.m"; sourceTree = "<group>"; };
-		D0E279AC18C1DC37000F7170 /* UIView+ViewUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ViewUtil.h"; sourceTree = "<group>"; };
-		D0E279AD18C1DC37000F7170 /* UIView+ViewUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ViewUtil.m"; sourceTree = "<group>"; };
-		D0E279AE18C1DC37000F7170 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
-		D0E279AF18C1DC37000F7170 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
 		D0E30E8118A376E300FFD3CE /* What Number.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "What Number.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0E30E8418A376E300FFD3CE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D0E30E8618A376E300FFD3CE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -191,61 +243,18 @@
 		D0E30EA218A376E300FFD3CE /* What NumberTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "What NumberTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0E30EA318A376E300FFD3CE /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		D0E30EDE18A37D6400FFD3CE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		D0E3211018C87C4D00600DF2 /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		D0E3211218C87D9100600DF2 /* MainView~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "MainView~ipad.xib"; sourceTree = "<group>"; };
 		D0E364CD18BAFE8B00A5676B /* InGameMessageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InGameMessageView.xib; sourceTree = "<group>"; };
 		D0E364CF18BAFE9D00A5676B /* InGameMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InGameMessageView.h; sourceTree = "<group>"; };
 		D0E364D018BAFE9D00A5676B /* InGameMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InGameMessageView.m; sourceTree = "<group>"; };
-		D0E36B8418C28C8400BA56E7 /* IAPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPHelper.h; sourceTree = "<group>"; };
-		D0E36B8518C28C8400BA56E7 /* IAPHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAPHelper.m; sourceTree = "<group>"; };
 		D0E36B8718C28CE700BA56E7 /* NumberGameIAPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumberGameIAPHelper.h; sourceTree = "<group>"; };
 		D0E36B8818C28CE700BA56E7 /* NumberGameIAPHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NumberGameIAPHelper.m; sourceTree = "<group>"; };
 		D0E36B8A18C2906F00BA56E7 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		D0E388B318C06F45001000FC /* ResultView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResultView.xib; sourceTree = "<group>"; };
+		D0E3C40818CB16D800EB447B /* LevelData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelData.h; sourceTree = "<group>"; };
+		D0E3C40918CB16D800EB447B /* LevelData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelData.m; sourceTree = "<group>"; };
 		D0EB7A0B18BF239A00AC8CEB /* UserData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserData.h; sourceTree = "<group>"; };
 		D0EB7A0C18BF239A00AC8CEB /* UserData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserData.m; sourceTree = "<group>"; };
-		D0EB7A0E18BF281000AC8CEB /* GameCenterHelperBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameCenterHelperBase.h; sourceTree = "<group>"; };
-		D0EB7A0F18BF281000AC8CEB /* GameCenterHelperBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameCenterHelperBase.m; sourceTree = "<group>"; };
-		D0EF542C18C4271F00ECF334 /* PromoGameData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PromoGameData.h; sourceTree = "<group>"; };
-		D0EF542D18C4271F00ECF334 /* PromoGameData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PromoGameData.m; sourceTree = "<group>"; };
-		D0EF542E18C4271F00ECF334 /* PromoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PromoManager.h; sourceTree = "<group>"; };
-		D0EF542F18C4271F00ECF334 /* PromoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PromoManager.m; sourceTree = "<group>"; };
-		D0EF543218C4276B00ECF334 /* FlappyBallIcon100x100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FlappyBallIcon100x100.png; sourceTree = "<group>"; };
-		D0EF543418C4285400ECF334 /* PromoBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PromoBannerView.h; sourceTree = "<group>"; };
-		D0EF543518C4285400ECF334 /* PromoBannerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PromoBannerView.m; sourceTree = "<group>"; };
-		D0EF543718C4286100ECF334 /* PromoBannerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PromoBannerView.xib; sourceTree = "<group>"; };
-		D0EF543918C442DC00ECF334 /* PromoBannerView~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "PromoBannerView~ipad.xib"; sourceTree = "<group>"; };
-		D0F6846B18B31C3E00CBB819 /* AnimUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimUtil.h; sourceTree = "<group>"; };
-		D0F6846C18B31C3E00CBB819 /* AnimUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimUtil.m; sourceTree = "<group>"; };
-		D0F6846D18B31C3E00CBB819 /* Base-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Base-Prefix.pch"; sourceTree = "<group>"; };
-		D0F6846E18B31C3E00CBB819 /* Base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base.h; sourceTree = "<group>"; };
-		D0F6846F18B31C3E00CBB819 /* Base.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base.m; sourceTree = "<group>"; };
-		D0F6847018B31C3E00CBB819 /* GameLoopTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = GameLoopTimer.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		D0F6847118B31C3E00CBB819 /* GameLoopTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = GameLoopTimer.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		D0F6847218B31C3E00CBB819 /* Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Hex.h; sourceTree = "<group>"; };
-		D0F6847318B31C3E00CBB819 /* Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Hex.m; sourceTree = "<group>"; };
-		D0F6847618B31C3E00CBB819 /* SoundEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundEffect.h; sourceTree = "<group>"; };
-		D0F6847718B31C3E00CBB819 /* SoundEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundEffect.m; sourceTree = "<group>"; };
-		D0F6847818B31C3E00CBB819 /* SoundEffectHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = SoundEffectHelper.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		D0F6847918B31C3E00CBB819 /* SoundEffectHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SoundEffectHelper.m; sourceTree = "<group>"; };
-		D0F6847A18B31C3E00CBB819 /* SoundManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = SoundManager.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		D0F6847B18B31C3E00CBB819 /* SoundManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SoundManager.m; sourceTree = "<group>"; };
-		D0F6848018B31C3E00CBB819 /* WorldObjectProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = WorldObjectProperties.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		D0F6848118B31C3E00CBB819 /* WorldObjectProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = WorldObjectProperties.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		D0F6848218B31C3E00CBB819 /* WorldObjectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = WorldObjectView.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		D0F6848318B31C3E00CBB819 /* WorldObjectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = WorldObjectView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		D0F6848418B31C3E00CBB819 /* XibView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XibView.h; sourceTree = "<group>"; };
-		D0F6848518B31C3E00CBB819 /* XibView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XibView.m; sourceTree = "<group>"; };
-		D0F6848718B31C3E00CBB819 /* FXLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXLabel.h; sourceTree = "<group>"; };
-		D0F6848818B31C3E00CBB819 /* FXLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXLabel.m; sourceTree = "<group>"; };
-		D0F6848A18B31C3E00CBB819 /* AppSpecificValues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppSpecificValues.h; sourceTree = "<group>"; };
-		D0F6848B18B31C3E00CBB819 /* GameCenterManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameCenterManager.h; sourceTree = "<group>"; };
-		D0F6848C18B31C3E00CBB819 /* GameCenterManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameCenterManager.m; sourceTree = "<group>"; };
-		D0F6848E18B31C3E00CBB819 /* iRate.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = iRate.bundle; sourceTree = "<group>"; };
-		D0F6848F18B31C3E00CBB819 /* iRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iRate.h; sourceTree = "<group>"; };
-		D0F6849018B31C3E00CBB819 /* iRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iRate.m; sourceTree = "<group>"; };
-		D0F6849218B31C3E00CBB819 /* THLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THLabel.h; sourceTree = "<group>"; };
-		D0F6849318B31C3E00CBB819 /* THLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THLabel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -285,18 +294,10 @@
 			path = Resources/Icons;
 			sourceTree = "<group>";
 		};
-		D04E826F18BA8FCD007E1081 /* Componenets */ = {
-			isa = PBXGroup;
-			children = (
-				D04E827018BA8FE9007E1081 /* ProgressBarComponent.h */,
-				D04E827118BA8FE9007E1081 /* ProgressBarComponent.m */,
-			);
-			path = Componenets;
-			sourceTree = "<group>";
-		};
 		D05A82DA18B3223C003C18EB /* NumberGame */ = {
 			isa = PBXGroup;
 			children = (
+				D091232218CC22320050B59F /* MainWindow.xib */,
 				D05A82DB18B3223C003C18EB /* AppDelegate.h */,
 				D05A82DC18B3223C003C18EB /* AppDelegate.m */,
 				D05A82DD18B3223C003C18EB /* Classes */,
@@ -325,6 +326,8 @@
 				D0E36B8818C28CE700BA56E7 /* NumberGameIAPHelper.m */,
 				D05A82EB18B3223C003C18EB /* NotificationManager.h */,
 				D05A82EC18B3223C003C18EB /* NotificationManager.m */,
+				D0E3C40818CB16D800EB447B /* LevelData.h */,
+				D0E3C40918CB16D800EB447B /* LevelData.m */,
 				D05A82EF18B3223C003C18EB /* ResultView.h */,
 				D05A82F018B3223C003C18EB /* ResultView.m */,
 				D0414E9618B36C6A00A296F6 /* NumberGameView.h */,
@@ -354,9 +357,184 @@
 				D0E0AE7D18C5C6B30069D746 /* NumberGameView~ipad.xib */,
 				D0338B8718C6E06E0006C8B6 /* InGameMessageView~ipad.xib */,
 				D092E5D618C83B39003A3862 /* ResultView~ipad.xib */,
-				D0E3211018C87C4D00600DF2 /* MainWindow.xib */,
 			);
 			path = Xib;
+			sourceTree = "<group>";
+		};
+		D09123EF18CC28830050B59F /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				D09123F018CC28830050B59F /* Classes */,
+				D091241918CC28830050B59F /* FXLabel */,
+				D091241C18CC28830050B59F /* GameCenter */,
+				D091242018CC28830050B59F /* iAP */,
+				D091242318CC28830050B59F /* iRate */,
+				D091242718CC28830050B59F /* Promo */,
+				D091243318CC28830050B59F /* THLabel */,
+			);
+			name = Base;
+			path = ../Base;
+			sourceTree = "<group>";
+		};
+		D09123F018CC28830050B59F /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				D09123F118CC28830050B59F /* Base */,
+				D091240118CC28830050B59F /* Componenets */,
+				D091240418CC28830050B59F /* Physics */,
+				D091240918CC28830050B59F /* Sounds */,
+				D091241018CC28830050B59F /* Utils */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		D09123F118CC28830050B59F /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				D09123F218CC28830050B59F /* AppDelegateBase.h */,
+				D09123F318CC28830050B59F /* AppDelegateBase.m */,
+				D09123F418CC28830050B59F /* Base-Prefix.pch */,
+				D09123F518CC28830050B59F /* Base.h */,
+				D09123F618CC28830050B59F /* Base.m */,
+				D09123F718CC28830050B59F /* GameCenterHelperBase.h */,
+				D09123F818CC28830050B59F /* GameCenterHelperBase.m */,
+				D09123F918CC28830050B59F /* GameLoopTimer.h */,
+				D09123FA18CC28830050B59F /* GameLoopTimer.m */,
+				D09123FB18CC28830050B59F /* Hex.h */,
+				D09123FC18CC28830050B59F /* Hex.m */,
+				D09123FD18CC28830050B59F /* NotificationManagerBase.h */,
+				D09123FE18CC28830050B59F /* NotificationManagerBase.m */,
+				D09123FF18CC28830050B59F /* XibView.h */,
+				D091240018CC28830050B59F /* XibView.m */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		D091240118CC28830050B59F /* Componenets */ = {
+			isa = PBXGroup;
+			children = (
+				D091240218CC28830050B59F /* ProgressBarComponent.h */,
+				D091240318CC28830050B59F /* ProgressBarComponent.m */,
+			);
+			path = Componenets;
+			sourceTree = "<group>";
+		};
+		D091240418CC28830050B59F /* Physics */ = {
+			isa = PBXGroup;
+			children = (
+				D091240518CC28830050B59F /* WorldObjectProperties.h */,
+				D091240618CC28830050B59F /* WorldObjectProperties.m */,
+				D091240718CC28830050B59F /* WorldObjectView.h */,
+				D091240818CC28830050B59F /* WorldObjectView.m */,
+			);
+			path = Physics;
+			sourceTree = "<group>";
+		};
+		D091240918CC28830050B59F /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				D091240A18CC28830050B59F /* SoundEffect.h */,
+				D091240B18CC28830050B59F /* SoundEffect.m */,
+				D091240C18CC28830050B59F /* SoundEffectHelper.h */,
+				D091240D18CC28830050B59F /* SoundEffectHelper.m */,
+				D091240E18CC28830050B59F /* SoundManager.h */,
+				D091240F18CC28830050B59F /* SoundManager.m */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
+		D091241018CC28830050B59F /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				D091241118CC28830050B59F /* AnimUtil.h */,
+				D091241218CC28830050B59F /* AnimUtil.m */,
+				D091241318CC28830050B59F /* NSArray+Util.h */,
+				D091241418CC28830050B59F /* NSArray+Util.m */,
+				D091241518CC28830050B59F /* UIView+ViewUtil.h */,
+				D091241618CC28830050B59F /* UIView+ViewUtil.m */,
+				D091241718CC28830050B59F /* Utils.h */,
+				D091241818CC28830050B59F /* Utils.m */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		D091241918CC28830050B59F /* FXLabel */ = {
+			isa = PBXGroup;
+			children = (
+				D091241A18CC28830050B59F /* FXLabel.h */,
+				D091241B18CC28830050B59F /* FXLabel.m */,
+			);
+			path = FXLabel;
+			sourceTree = "<group>";
+		};
+		D091241C18CC28830050B59F /* GameCenter */ = {
+			isa = PBXGroup;
+			children = (
+				D091241D18CC28830050B59F /* AppSpecificValues.h */,
+				D091241E18CC28830050B59F /* GameCenterManager.h */,
+				D091241F18CC28830050B59F /* GameCenterManager.m */,
+			);
+			path = GameCenter;
+			sourceTree = "<group>";
+		};
+		D091242018CC28830050B59F /* iAP */ = {
+			isa = PBXGroup;
+			children = (
+				D091242118CC28830050B59F /* IAPHelper.h */,
+				D091242218CC28830050B59F /* IAPHelper.m */,
+			);
+			path = iAP;
+			sourceTree = "<group>";
+		};
+		D091242318CC28830050B59F /* iRate */ = {
+			isa = PBXGroup;
+			children = (
+				D091242418CC28830050B59F /* iRate.bundle */,
+				D091242518CC28830050B59F /* iRate.h */,
+				D091242618CC28830050B59F /* iRate.m */,
+			);
+			path = iRate;
+			sourceTree = "<group>";
+		};
+		D091242718CC28830050B59F /* Promo */ = {
+			isa = PBXGroup;
+			children = (
+				D091242818CC28830050B59F /* AppIcons */,
+				D091242A18CC28830050B59F /* Classes */,
+			);
+			path = Promo;
+			sourceTree = "<group>";
+		};
+		D091242818CC28830050B59F /* AppIcons */ = {
+			isa = PBXGroup;
+			children = (
+				D091242918CC28830050B59F /* FlappyBallIcon100x100.png */,
+			);
+			path = AppIcons;
+			sourceTree = "<group>";
+		};
+		D091242A18CC28830050B59F /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				D091242B18CC28830050B59F /* PromoBannerView.h */,
+				D091242C18CC28830050B59F /* PromoBannerView.m */,
+				D091242D18CC28830050B59F /* PromoBannerView.xib */,
+				D091242E18CC28830050B59F /* PromoBannerView~ipad.xib */,
+				D091242F18CC28830050B59F /* PromoGameData.h */,
+				D091243018CC28830050B59F /* PromoGameData.m */,
+				D091243118CC28830050B59F /* PromoManager.h */,
+				D091243218CC28830050B59F /* PromoManager.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		D091243318CC28830050B59F /* THLabel */ = {
+			isa = PBXGroup;
+			children = (
+				D091243418CC28830050B59F /* THLabel.h */,
+				D091243518CC28830050B59F /* THLabel.m */,
+			);
+			path = THLabel;
 			sourceTree = "<group>";
 		};
 		D0E1121B18C2EC6000808072 /* Sounds */ = {
@@ -372,23 +550,10 @@
 			path = Resources/Sounds;
 			sourceTree = "<group>";
 		};
-		D0E279A918C1DC37000F7170 /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				D0E279AA18C1DC37000F7170 /* NSArray+Util.h */,
-				D0E279AB18C1DC37000F7170 /* NSArray+Util.m */,
-				D0E279AC18C1DC37000F7170 /* UIView+ViewUtil.h */,
-				D0E279AD18C1DC37000F7170 /* UIView+ViewUtil.m */,
-				D0E279AE18C1DC37000F7170 /* Utils.h */,
-				D0E279AF18C1DC37000F7170 /* Utils.m */,
-			);
-			path = Utils;
-			sourceTree = "<group>";
-		};
 		D0E30E7818A376E300FFD3CE = {
 			isa = PBXGroup;
 			children = (
-				D0F6846918B31C3E00CBB819 /* Base */,
+				D09123EF18CC28830050B59F /* Base */,
 				D05A82DA18B3223C003C18EB /* NumberGame */,
 				D0E30ECD18A3780B00FFD3CE /* Resources */,
 				D0E30E8318A376E300FFD3CE /* Frameworks */,
@@ -431,15 +596,6 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
-		D0E36B8318C28C8400BA56E7 /* iAP */ = {
-			isa = PBXGroup;
-			children = (
-				D0E36B8418C28C8400BA56E7 /* IAPHelper.h */,
-				D0E36B8518C28C8400BA56E7 /* IAPHelper.m */,
-			);
-			path = iAP;
-			sourceTree = "<group>";
-		};
 		D0E50A2818A7349300AA353E /* Images */ = {
 			isa = PBXGroup;
 			children = (
@@ -469,123 +625,6 @@
 			);
 			name = Images;
 			path = Resources/Images;
-			sourceTree = "<group>";
-		};
-		D0EF542918C4271F00ECF334 /* Promo */ = {
-			isa = PBXGroup;
-			children = (
-				D0EF542A18C4271F00ECF334 /* AppIcons */,
-				D0EF542B18C4271F00ECF334 /* Classes */,
-			);
-			path = Promo;
-			sourceTree = "<group>";
-		};
-		D0EF542A18C4271F00ECF334 /* AppIcons */ = {
-			isa = PBXGroup;
-			children = (
-				D0EF543218C4276B00ECF334 /* FlappyBallIcon100x100.png */,
-			);
-			path = AppIcons;
-			sourceTree = "<group>";
-		};
-		D0EF542B18C4271F00ECF334 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				D0EF542C18C4271F00ECF334 /* PromoGameData.h */,
-				D0EF542D18C4271F00ECF334 /* PromoGameData.m */,
-				D0EF542E18C4271F00ECF334 /* PromoManager.h */,
-				D0EF542F18C4271F00ECF334 /* PromoManager.m */,
-				D0EF543418C4285400ECF334 /* PromoBannerView.h */,
-				D0EF543518C4285400ECF334 /* PromoBannerView.m */,
-				D0EF543718C4286100ECF334 /* PromoBannerView.xib */,
-				D0EF543918C442DC00ECF334 /* PromoBannerView~ipad.xib */,
-			);
-			path = Classes;
-			sourceTree = "<group>";
-		};
-		D0F6846918B31C3E00CBB819 /* Base */ = {
-			isa = PBXGroup;
-			children = (
-				D0EF542918C4271F00ECF334 /* Promo */,
-				D0E36B8318C28C8400BA56E7 /* iAP */,
-				D0F6846A18B31C3E00CBB819 /* Classes */,
-				D0F6848618B31C3E00CBB819 /* FXLabel */,
-				D0F6848918B31C3E00CBB819 /* GameCenter */,
-				D0F6848D18B31C3E00CBB819 /* iRate */,
-				D0F6849118B31C3E00CBB819 /* THLabel */,
-			);
-			name = Base;
-			path = ../Base;
-			sourceTree = "<group>";
-		};
-		D0F6846A18B31C3E00CBB819 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				D0E279A918C1DC37000F7170 /* Utils */,
-				D04E826F18BA8FCD007E1081 /* Componenets */,
-				D0F6846B18B31C3E00CBB819 /* AnimUtil.h */,
-				D0F6846C18B31C3E00CBB819 /* AnimUtil.m */,
-				D0F6846D18B31C3E00CBB819 /* Base-Prefix.pch */,
-				D0F6846E18B31C3E00CBB819 /* Base.h */,
-				D0F6846F18B31C3E00CBB819 /* Base.m */,
-				D0F6847018B31C3E00CBB819 /* GameLoopTimer.h */,
-				D0F6847118B31C3E00CBB819 /* GameLoopTimer.m */,
-				D0F6847218B31C3E00CBB819 /* Hex.h */,
-				D0F6847318B31C3E00CBB819 /* Hex.m */,
-				D0EB7A0E18BF281000AC8CEB /* GameCenterHelperBase.h */,
-				D0EB7A0F18BF281000AC8CEB /* GameCenterHelperBase.m */,
-				D0F6847618B31C3E00CBB819 /* SoundEffect.h */,
-				D0F6847718B31C3E00CBB819 /* SoundEffect.m */,
-				D0F6847818B31C3E00CBB819 /* SoundEffectHelper.h */,
-				D0F6847918B31C3E00CBB819 /* SoundEffectHelper.m */,
-				D0F6847A18B31C3E00CBB819 /* SoundManager.h */,
-				D0F6847B18B31C3E00CBB819 /* SoundManager.m */,
-				D0F6848018B31C3E00CBB819 /* WorldObjectProperties.h */,
-				D0F6848118B31C3E00CBB819 /* WorldObjectProperties.m */,
-				D0F6848218B31C3E00CBB819 /* WorldObjectView.h */,
-				D0F6848318B31C3E00CBB819 /* WorldObjectView.m */,
-				D0F6848418B31C3E00CBB819 /* XibView.h */,
-				D0F6848518B31C3E00CBB819 /* XibView.m */,
-			);
-			path = Classes;
-			sourceTree = "<group>";
-		};
-		D0F6848618B31C3E00CBB819 /* FXLabel */ = {
-			isa = PBXGroup;
-			children = (
-				D0F6848718B31C3E00CBB819 /* FXLabel.h */,
-				D0F6848818B31C3E00CBB819 /* FXLabel.m */,
-			);
-			path = FXLabel;
-			sourceTree = "<group>";
-		};
-		D0F6848918B31C3E00CBB819 /* GameCenter */ = {
-			isa = PBXGroup;
-			children = (
-				D0F6848A18B31C3E00CBB819 /* AppSpecificValues.h */,
-				D0F6848B18B31C3E00CBB819 /* GameCenterManager.h */,
-				D0F6848C18B31C3E00CBB819 /* GameCenterManager.m */,
-			);
-			path = GameCenter;
-			sourceTree = "<group>";
-		};
-		D0F6848D18B31C3E00CBB819 /* iRate */ = {
-			isa = PBXGroup;
-			children = (
-				D0F6848E18B31C3E00CBB819 /* iRate.bundle */,
-				D0F6848F18B31C3E00CBB819 /* iRate.h */,
-				D0F6849018B31C3E00CBB819 /* iRate.m */,
-			);
-			path = iRate;
-			sourceTree = "<group>";
-		};
-		D0F6849118B31C3E00CBB819 /* THLabel */ = {
-			isa = PBXGroup;
-			children = (
-				D0F6849218B31C3E00CBB819 /* THLabel.h */,
-				D0F6849318B31C3E00CBB819 /* THLabel.m */,
-			);
-			path = THLabel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -672,10 +711,8 @@
 				D0338B9D18C713D60006C8B6 /* Achievementx1.png in Resources */,
 				D0E0AE8518C5C6B30069D746 /* NumberGameView~ipad.xib in Resources */,
 				D0338B9E18C713D60006C8B6 /* Achievementx5.png in Resources */,
-				D0EF543818C4286100ECF334 /* PromoBannerView.xib in Resources */,
 				D0338B8818C6E06E0006C8B6 /* InGameMessageView~ipad.xib in Resources */,
 				D0338BA418C713D60006C8B6 /* Achievementx50.png in Resources */,
-				D0EF543318C4276B00ECF334 /* FlappyBallIcon100x100.png in Resources */,
 				D0338BAF18C713D60006C8B6 /* Achievementx500.png in Resources */,
 				D0338BAA18C713D60006C8B6 /* Achievementx150.png in Resources */,
 				D05A831918B3223C003C18EB /* InfoPlist.strings in Resources */,
@@ -684,6 +721,7 @@
 				D0338BAD18C713D60006C8B6 /* Achievementx250.png in Resources */,
 				D048A84018ACAAAB00411DF9 /* twitter_share.png in Resources */,
 				D0338BA518C713D60006C8B6 /* Achievementx60.png in Resources */,
+				D091244C18CC28830050B59F /* FlappyBallIcon100x100.png in Resources */,
 				D05A832418B3223C003C18EB /* MainView.xib in Resources */,
 				D0338BA818C713D60006C8B6 /* Achievementx115.png in Resources */,
 				D0E1122B18C2EC6000808072 /* boing.caf in Resources */,
@@ -691,11 +729,10 @@
 				D0338BA718C713D60006C8B6 /* Achievementx90.png in Resources */,
 				D0338BB018C713D60006C8B6 /* Achievementx999.png in Resources */,
 				D0338BAE18C713D60006C8B6 /* Achievementx350.png in Resources */,
-				D0F684A318B31C3E00CBB819 /* iRate.bundle in Resources */,
-				D0E3211118C87C4D00600DF2 /* MainWindow.xib in Resources */,
 				D0E1123318C2ECF300808072 /* ticking.caf in Resources */,
-				D0EF543A18C442DC00ECF334 /* PromoBannerView~ipad.xib in Resources */,
+				D091232318CC22320050B59F /* MainWindow.xib in Resources */,
 				D0338B9F18C713D60006C8B6 /* Achievementx10.png in Resources */,
+				D091244E18CC28830050B59F /* PromoBannerView.xib in Resources */,
 				D0E364CE18BAFE8B00A5676B /* InGameMessageView.xib in Resources */,
 				D05A832018B3223C003C18EB /* GameViewController.xib in Resources */,
 				D0338BA018C713D60006C8B6 /* Achievementx15.png in Resources */,
@@ -710,8 +747,10 @@
 				D0338BAC18C713D60006C8B6 /* Achievementx200.png in Resources */,
 				D0338BA918C713D60006C8B6 /* Achievementx130.png in Resources */,
 				D0414E9518B36BD500A296F6 /* NumberGameView.xib in Resources */,
+				D091244F18CC28830050B59F /* PromoBannerView~ipad.xib in Resources */,
 				D048A83F18ACAAAB00411DF9 /* facebook_share.png in Resources */,
 				D0338BAB18C713D60006C8B6 /* Achievementx170.png in Resources */,
+				D091244A18CC28830050B59F /* iRate.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -730,42 +769,45 @@
 			buildActionMask = 2147483647;
 			files = (
 				D05A833118B32785003C18EB /* NumberManager.m in Sources */,
-				D0EF543018C4271F00ECF334 /* PromoGameData.m in Sources */,
 				D0E364D118BAFE9D00A5676B /* InGameMessageView.m in Sources */,
 				D05A831718B3223C003C18EB /* ResultView.m in Sources */,
-				D0F6849418B31C3E00CBB819 /* AnimUtil.m in Sources */,
-				D0EB7A1018BF281000AC8CEB /* GameCenterHelperBase.m in Sources */,
+				D091243918CC28830050B59F /* GameLoopTimer.m in Sources */,
+				D091243618CC28830050B59F /* AppDelegateBase.m in Sources */,
+				D091244218CC28830050B59F /* SoundManager.m in Sources */,
 				D05A831B18B3223C003C18EB /* main.m in Sources */,
+				D091244518CC28830050B59F /* UIView+ViewUtil.m in Sources */,
+				D091243C18CC28830050B59F /* XibView.m in Sources */,
+				D091243818CC28830050B59F /* GameCenterHelperBase.m in Sources */,
 				D05A830D18B3223C003C18EB /* AppDelegate.m in Sources */,
 				D05A831518B3223C003C18EB /* NotificationManager.m in Sources */,
 				D0414E9818B36C6A00A296F6 /* NumberGameView.m in Sources */,
-				D0F684A518B31C3E00CBB819 /* THLabel.m in Sources */,
+				D091245018CC28830050B59F /* PromoGameData.m in Sources */,
+				D091244918CC28830050B59F /* IAPHelper.m in Sources */,
+				D091244718CC28830050B59F /* FXLabel.m in Sources */,
 				D05A831418B3223C003C18EB /* MenuView.m in Sources */,
-				D0F684A118B31C3E00CBB819 /* FXLabel.m in Sources */,
-				D0F684A418B31C3E00CBB819 /* iRate.m in Sources */,
-				D0F6849518B31C3E00CBB819 /* Base.m in Sources */,
-				D0EF543118C4271F00ECF334 /* PromoManager.m in Sources */,
-				D0F6849B18B31C3E00CBB819 /* SoundManager.m in Sources */,
 				D0E1123818C30DE900808072 /* GameCenterHelper.m in Sources */,
+				D091244818CC28830050B59F /* GameCenterManager.m in Sources */,
+				D091244318CC28830050B59F /* AnimUtil.m in Sources */,
 				D05A831018B3223C003C18EB /* GameConstants.m in Sources */,
-				D0E36B8618C28C8400BA56E7 /* IAPHelper.m in Sources */,
-				D0F684A018B31C3E00CBB819 /* XibView.m in Sources */,
+				D091243F18CC28830050B59F /* WorldObjectView.m in Sources */,
+				D091243E18CC28830050B59F /* WorldObjectProperties.m in Sources */,
+				D091244618CC28830050B59F /* Utils.m in Sources */,
+				D091245218CC28830050B59F /* THLabel.m in Sources */,
+				D091243A18CC28830050B59F /* Hex.m in Sources */,
+				D091243B18CC28830050B59F /* NotificationManagerBase.m in Sources */,
+				D0E3C40A18CB16D800EB447B /* LevelData.m in Sources */,
 				D0E36B8918C28CE700BA56E7 /* NumberGameIAPHelper.m in Sources */,
-				D0F6849F18B31C3E00CBB819 /* WorldObjectView.m in Sources */,
+				D091244D18CC28830050B59F /* PromoBannerView.m in Sources */,
+				D091244B18CC28830050B59F /* iRate.m in Sources */,
+				D091243D18CC28830050B59F /* ProgressBarComponent.m in Sources */,
+				D091243718CC28830050B59F /* Base.m in Sources */,
+				D091244018CC28830050B59F /* SoundEffect.m in Sources */,
+				D091244118CC28830050B59F /* SoundEffectHelper.m in Sources */,
+				D091244418CC28830050B59F /* NSArray+Util.m in Sources */,
 				D0EB7A0D18BF239A00AC8CEB /* UserData.m in Sources */,
-				D0F6849E18B31C3E00CBB819 /* WorldObjectProperties.m in Sources */,
-				D0E279B118C1DC37000F7170 /* UIView+ViewUtil.m in Sources */,
-				D0F6849718B31C3E00CBB819 /* Hex.m in Sources */,
-				D0E279B218C1DC37000F7170 /* Utils.m in Sources */,
-				D04E827218BA8FE9007E1081 /* ProgressBarComponent.m in Sources */,
+				D091245118CC28830050B59F /* PromoManager.m in Sources */,
 				D05A831318B3223C003C18EB /* MainView.m in Sources */,
-				D0E279B018C1DC37000F7170 /* NSArray+Util.m in Sources */,
-				D0F6849A18B31C3E00CBB819 /* SoundEffectHelper.m in Sources */,
 				D05A831118B3223C003C18EB /* GameViewController.m in Sources */,
-				D0EF543618C4285400ECF334 /* PromoBannerView.m in Sources */,
-				D0F684A218B31C3E00CBB819 /* GameCenterManager.m in Sources */,
-				D0F6849618B31C3E00CBB819 /* GameLoopTimer.m in Sources */,
-				D0F6849918B31C3E00CBB819 /* SoundEffect.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -875,13 +917,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Jeffrey Wan (YS47XTCZZB)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jeffrey Wan (MT34DA8UCA)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jeffrey Wan (YS47XTCZZB)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NumberGame/What Number-Prefix.pch";
 				INFOPLIST_FILE = "NumberGame/What Number-Info.plist";
 				PRODUCT_NAME = "What Number";
-				PROVISIONING_PROFILE = "0FD55204-E553-47AF-8AE0-93F8919E1FCA";
+				PROVISIONING_PROFILE = "84A682B5-A448-4397-AADD-0B826038A9AA";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -892,13 +934,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Jeffrey Wan (YS47XTCZZB)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jeffrey Wan (MT34DA8UCA)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jeffrey Wan (YS47XTCZZB)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NumberGame/What Number-Prefix.pch";
 				INFOPLIST_FILE = "NumberGame/What Number-Info.plist";
 				PRODUCT_NAME = "What Number";
-				PROVISIONING_PROFILE = "0FD55204-E553-47AF-8AE0-93F8919E1FCA";
+				PROVISIONING_PROFILE = "84A682B5-A448-4397-AADD-0B826038A9AA";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};

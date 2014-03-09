@@ -7,10 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "NotificationManagerBase.h"
 
-@interface NotificationManager : NSObject
+@interface NotificationManager : NotificationManagerBase
 
 + (NotificationManager *)instance;
-- (void)registerNotifications;
 
 @end

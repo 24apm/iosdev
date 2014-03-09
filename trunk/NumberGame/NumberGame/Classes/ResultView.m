@@ -101,8 +101,8 @@
 
 - (void)updateMaxLabel {
     self.recordLabel.hidden = NO;
-    self.maxScoreLabel.text = [NSString stringWithFormat:@"%d", self.currentScore];
-    [UserData instance].maxScore = self.currentScore;
+    self.maxScoreLabel.text = [NSString stringWithFormat:@"%d", self.targetScore];
+    [UserData instance].maxScore = self.targetScore;
     [AnimUtil wobble:self.maxScoreLabel duration:0.2f angle:M_PI/128.f repeatCount:6.f];
     [AnimUtil wobble:self.recordLabel duration:0.2f angle:M_PI/128.f repeatCount:6.f];
 }

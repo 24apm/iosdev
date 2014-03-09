@@ -17,6 +17,7 @@
 #import <StoreKit/StoreKit.h>
 #import "NumberGameIAPHelper.h"
 #import "GameViewController.h"
+#import "LevelData.h"
 
 #define BUFFER_TIME 0.f
 #define BUTTON_CORNER_RADIUS (10.f * IPAD_SCALE)
@@ -86,7 +87,7 @@
     [[SoundManager instance] play:SOUND_EFFECT_WINNING];
     [UserData instance].score = self.currentScore;
     [UserData instance].lastGameSS = [self blit];
-    [[NSNotificationCenter defaultCenter] postNotificationName:NUMBER_GAME_CALLBACK_NOTIFICATION object:self];
+//    [[NSNotificationCenter defaultCenter] postNotificationName:NUMBER_GAME_CALLBACK_NOTIFICATION object:self];
 }
 
 -(void)showAnswer {
@@ -148,7 +149,14 @@
 - (void)refreshGame {
     [self loadUserData];
     self.cheatView.hidden = YES;
-    NSDictionary *data = [[NumberManager instance] generateLevel:self.answerSlots.count choiceSlots:self.choiceSlots.count];
+    
+    LevelData *levelData = [LevelData levelConfigForCurrentScore:[UserData instance].score];
+    levelData.answerSlotCount = self.answerSlots.count;
+    levelData.choiceSlotCount = self.choiceSlots.count;
+    NSDictionary *data = [[NumberManager instance] generateLevel:levelData];
+    
+    // operator list
+    // number range
     int targetValue = [[data objectForKey:@"targetNumber"] intValue];
     NSArray *array = [data objectForKey:@"algebra"];
     [self refreshChoices:array];
@@ -195,7 +203,6 @@
         if (slotDisplayIndex < self.answerSlotsB.count) {
             UIButton *answerSlotsB = [self.answerSlotsB objectAtIndex:slotDisplayIndex];
             [allButtons addObject:answerSlotsB];
-            
         }
         // row 2 = index 0
         if (slotDisplayIndex < self.answerSlotsA.count) {
@@ -207,7 +214,7 @@
     // animate
     for (int i = 0; i < allButtons.count; i ++) {
         UIButton *button = [allButtons objectAtIndex:i];
-        [self animateBlitAndFadeout:button delay:i * 0.3f + 1.5f];
+        [self animateBlitAndFadeout:button delay:i * 0.1f + 1.5f];
     }
 
 }
@@ -336,6 +343,7 @@
     if (!hasFound) {
         [self fillSlot:sender];
     }
+               [self hidingRows];
 }
 
 - (void)animate:(UIView *)fromView toView:(UIView *)toView {
@@ -420,6 +428,7 @@
                                                                               alpha:1.f];
             [self performSelector:@selector(refreshGame) withObject:nil afterDelay:2.2f];
             self.currentScore++;
+            [UserData instance].score = self.currentScore;
         }
 //        else {
 //            [self resetAnswers];
@@ -458,11 +467,7 @@
         if (opSlot.tag != 0 && rightOperandSlot.tag != 0) {
             rowAnswer = [[NumberManager instance] calculateWithOperandLeft:rowAnswer operator:opString operandRight:rightOperandValue];
             
-            NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
-//            [formatter setAlwaysShowsDecimalSeparator:YES];
-            [formatter setAllowsFloats:YES];
-            [formatter setFormatterBehavior:NSNumberFormatterBehavior10_4];
-            [formatter setMaximumFractionDigits:1];
+            NSNumberFormatter *formatter = [self formatterForRowDisplay];
             rowDisplayString = [formatter stringFromNumber:[NSNumber numberWithFloat:rowAnswer]];
         }
         
@@ -472,6 +477,7 @@
         if (slotDisplayIndex < self.answerSlotsB.count) {
             UIButton *answerSlotsB = [self.answerSlotsB objectAtIndex:slotDisplayIndex];
             [answerSlotsB setTitle:rowDisplayString forState:UIControlStateNormal];
+  
             
         }
         // row 2 = index 0
@@ -480,6 +486,19 @@
             [answerSlotsA setTitle:rowDisplayString forState:UIControlStateNormal];
         }
     }
+}
+
+- (NSNumberFormatter *)formatterForRowDisplay {
+    static NSNumberFormatter *formatter = nil;
+    
+    if (!formatter) {
+        formatter = [[NSNumberFormatter alloc] init];
+        [formatter setAllowsFloats:YES];
+        [formatter setFormatterBehavior:NSNumberFormatterBehavior10_4];
+        [formatter setMaximumFractionDigits:1];
+    }
+    
+    return formatter;
 }
 
 - (void)animateIncorrectAnswer {
@@ -525,5 +544,28 @@
 
 - (NSString *)updateMaxScore {
     return [NSString stringWithFormat:@"Best: %d", [UserData instance].maxScore];
+}
+
+- (void)hidingRows {
+    return;
+    NSInteger count = self.answerSlotsA.count;
+    for (int i = 0; i < count; i++) {
+     UIButton *answerSlotsA = [self.answerSlotsA objectAtIndex:i];
+        if (![[answerSlotsA titleForState:UIControlStateNormal] isEqual:@""]) {
+         UIView *currentview = [self.rowsCollection objectAtIndex:i];
+           currentview.alpha = 1.0f;
+            }
+        }
+    
+}
+- (IBAction)answerSlot3aPressed:(UIButton *)sender {
+      return;
+    UIView *currentview = [self.rowsCollection objectAtIndex:1];
+    currentview.alpha = 1.0f;
+}
+- (IBAction)answerSlot2aPressed:(UIButton *)sender {
+      return;
+    UIView *currentview = [self.rowsCollection objectAtIndex:0];
+    currentview.alpha = 1.0f;
 }
 @end

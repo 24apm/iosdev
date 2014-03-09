@@ -8,10 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+@class LevelData;
 @interface NumberManager : NSObject
 
 + (NumberManager *)instance;
-- (NSDictionary *)generateLevel:(int)answerSlots choiceSlots:(int)choiceSlots;
+- (NSDictionary *)generateLevel:(LevelData *)levelData;
 - (BOOL)checkAlgebra:(NSArray *)algrebra targetValue:(float)targetValue;
 - (NSArray *)generateAlgebraFor:(int)input;
 - (BOOL)isOperator:(id)object;

@@ -8,9 +8,10 @@
 
 #import "NumberManager.h"
 #import "Utils.h"
+#import "LevelData.h"
 
 @interface NumberManager()
-
+@property (nonatomic, strong) LevelData *currentLevelData;
 @end
 
 @implementation NumberManager
@@ -23,12 +24,17 @@
     return instance;
 }
 
-- (NSDictionary *)generateLevel:(int)answerSlots choiceSlots:(int)choiceSlots {
+- (NSDictionary *)generateLevel:(LevelData *)levelData {
+    int divNum = 0;
+    int plusLoop = 0;
+    int minusLoop = 0;
+    int multiLoop = 0;
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
     // do stuff
-    int tiles = answerSlots;
-    
-    NSMutableArray *algebra = [NSMutableArray arrayWithArray:[self generateAlgebraFor:tiles]];
+    self.currentLevelData = levelData;
+    int tiles = levelData.answerSlotCount;
+    for (int j = 0; j < 2000; j++) {
+        NSMutableArray *algebra = [NSMutableArray arrayWithArray: [self generateAlgebraFor:tiles]];
     int numberIndex = 2;
     int operatorIndex = 1;
     int targetNumber = [((NSNumber *)algebra[0])intValue];
@@ -37,32 +43,46 @@
     for (int i = 0; i <= tiles - 3; i = i + 2) {
         
         if ([operator isEqualToString:@"×"]) {
+            multiLoop++;
             targetNumber = targetNumber * nextNumber;
         } else if ([operator isEqualToString:@"+"]) {
+            plusLoop++;
             targetNumber = targetNumber + nextNumber;
         } else if ([operator isEqualToString:@"-"]) {
+            minusLoop++;
             targetNumber = targetNumber - nextNumber;
         } else if ([operator isEqualToString:@"÷"]) {
+            int newDivide = [self divideNumber:targetNumber];
             if (targetNumber % nextNumber == 0) {
                 targetNumber = targetNumber / nextNumber;
+                divNum++;
+            } else if (newDivide != 1){
+            targetNumber = targetNumber / newDivide;
+                [algebra replaceObjectAtIndex:numberIndex withObject:[NSNumber numberWithInt:newDivide]];
+                divNum++;
+                
             } else {
                 int reset = [Utils randBetweenMinInt:0 max:2];
                 switch (reset) {
                     case 0:
                         targetNumber = targetNumber * nextNumber;
                         [algebra replaceObjectAtIndex:operatorIndex withObject:@"×"];
+                        multiLoop++;
                         break;
                     case 1:
                         targetNumber = targetNumber - nextNumber;
                         [algebra replaceObjectAtIndex:operatorIndex withObject:@"-"];
+                        minusLoop++;
                         break;
                     case 2:
                         targetNumber = targetNumber + nextNumber;
                         [algebra replaceObjectAtIndex:operatorIndex withObject:@"+"];
+                        plusLoop++;
                         break;
                     default:
                         targetNumber = targetNumber * nextNumber;
                         [algebra replaceObjectAtIndex:operatorIndex withObject:@"×"];
+                        multiLoop++;
                         break;
                 }
             }
@@ -76,16 +96,15 @@
     }
     
     self.currentGeneratedAnswer = [algebra mutableCopy];
-
+    
     // adding fillers
-    int algebraSize = algebra.count;
-    int maxNumberRange = 10;
-    NSArray *operatorArr = @[@"+", @"-", @"×", @"÷"];
-    while (algebraSize < choiceSlots) {
-        int randomNumOp = maxNumberRange + operatorArr.count;
-        int filler = [Utils randBetweenMinInt:1 max:randomNumOp];
-        if (filler > maxNumberRange) {
-            [algebra addObject:[operatorArr objectAtIndex:filler - maxNumberRange - 1]];
+    NSInteger algebraSize = algebra.count;
+    NSArray *operatorArr = self.currentLevelData.operation;
+    while (algebraSize < levelData.choiceSlotCount) {
+        NSInteger randomNumOp = self.currentLevelData.maxChoiceValue + operatorArr.count;
+        int filler = [Utils randBetweenMinInt:self.currentLevelData.minChoiceValue max:randomNumOp];
+        if (filler > self.currentLevelData.maxChoiceValue) {
+            [algebra addObject:[operatorArr objectAtIndex:filler - self.currentLevelData.maxChoiceValue - 1]];
             algebraSize++;
         } else {
             NSNumber *addFiller = [NSNumber numberWithInt:filler];
@@ -102,14 +121,14 @@
     // "algrebra" => ["12", "+", "32", "-", "2", ...],
     // "targetValue" => 123
     self.currentGeneratedShuffledAnswer = [algebra mutableCopy];
-
+    }
     return dictionary;
 }
 
 - (BOOL)checkAlgebra:(NSArray *)algebra targetValue:(float)targetValue {
     
     BOOL isCorrect = NO;
-    int tiles = algebra.count;
+    NSInteger tiles = algebra.count;
     int numberIndex = 2;
     int operatorIndex = 1;
     int attemptAnswer = [((NSNumber *)algebra[0])intValue];
@@ -127,12 +146,12 @@
     if (targetValue == attemptAnswer){
         isCorrect = YES;
     }
-        
+    
     // check for algebra
     // "algrebra" => ["12", "+", "32", "-", "2", ...], == targetValue
     // return YES if equal
     // else     NO if not
-
+    
     return isCorrect;
 }
 
@@ -152,11 +171,11 @@
 }
 
 - (NSArray *)generateAlgebraFor:(int)input {
-    NSArray *operator = @[@"+", @"-", @"×", @"÷"];
+    NSArray *operator = self.currentLevelData.operation;
     NSMutableArray *array = [NSMutableArray array];
     for (int i = 0; i < input; i++) {
         if (i % 2 == 0) {
-            [array addObject:[NSNumber numberWithInt:[Utils randBetweenMinInt:1 max:10]]];
+            [array addObject:[NSNumber numberWithInt:[Utils randBetweenMinInt:self.currentLevelData.minChoiceValue max:self.currentLevelData.maxChoiceValue]]];
         } else {
             int op = [Utils randBetweenMinInt:0 max:operator.count - 1];
             [array addObject:operator[op]];
@@ -175,7 +194,7 @@
             [attemptAnswer addObject:[algebra objectAtIndex:i]];
         }
     }
-        return attemptAnswer;
+    return attemptAnswer;
 }
 
 - (BOOL)isOperator:(id)object {
@@ -195,4 +214,15 @@
     return [self stringConverter:self.currentGeneratedAnswer];
 }
 
+- (int) divideNumber:(int)currentNumber {
+    int divideBy = 2;
+    while (currentNumber % divideBy != 0) {
+        divideBy++;
+        if (divideBy > 10) {
+            divideBy = 1;
+            return divideBy;
+        }
+    }
+    return divideBy;
+}
 @end
