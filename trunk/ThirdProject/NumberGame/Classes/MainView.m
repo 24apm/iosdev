@@ -10,6 +10,7 @@
 #import "iRate.h"
 #import "GameCenterHelper.h"
 #import "GameConstants.h"
+#import "UserData.h"
 
 @implementation MainView
 
@@ -17,6 +18,7 @@
     self = [super init];
     if (self) {
         self.resetButton.hidden = !DEBUG_MODE;
+        self.resetLocalScoreButton.hidden = !DEBUG_MODE;
     }
     return self;
 }
@@ -34,6 +36,10 @@
 
 - (IBAction)resetAchievements:(id)sender {
     [[GameCenterHelper instance].gameCenterManager resetAchievements];
+}
+
+- (IBAction)resetLocalScore:(id)sender {
+    [[UserData instance] resetLocalScore];
 }
 
 - (void)show {

@@ -8,6 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainView">
             <connections>
                 <outlet property="resetButton" destination="Gdn-K4-X4O" id="06q-UR-LI3"/>
+                <outlet property="resetLocalScoreButton" destination="XvA-ui-G9g" id="7F5-Hy-saW"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -54,13 +55,23 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Gdn-K4-X4O" userLabel="Button - Reset Achievement">
-                    <rect key="frame" x="69" y="168" width="182" height="30"/>
+                    <rect key="frame" x="69" y="163" width="182" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="Reset Achievement">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
                         <action selector="resetAchievements:" destination="-1" eventType="touchUpInside" id="i21-uH-gCE"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="XvA-ui-G9g">
+                    <rect key="frame" x="69" y="198" width="182" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Reset Local Score">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="resetLocalScore:" destination="-1" eventType="touchUpInside" id="VhQ-aT-bAe"/>
                     </connections>
                 </button>
             </subviews>

@@ -27,15 +27,20 @@
 - (void)setMaxScore:(int)maxScore {
     if (maxScore > _maxScore) {
         _maxScore = maxScore;
-        [self saveUserData];
+        [self saveUserScore:_maxScore];
     }
 }
 
-- (void)saveUserData{
-    [self submitScore:self.maxScore];
+- (void)saveUserScore:(int)score {
+    [self submitScore:score];
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    [defaults setValue:@(self.maxScore) forKey:@"maxScore"];
+    [defaults setValue:@(score) forKey:@"maxScore"];
     [defaults synchronize];
+}
+
+- (void)resetLocalScore {
+    [self saveUserScore:0];
+    _maxScore = 0;
 }
 
 - (void)submitScore:(int)score {

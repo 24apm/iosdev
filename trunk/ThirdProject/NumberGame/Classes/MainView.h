@@ -15,6 +15,7 @@
 #define SHOW_ACHIEVEMENT_NOTIFICATION @"SHOW_ACHIEVEMENT_NOTIFICATION"
 
 @property (strong, nonatomic) IBOutlet UIButton *resetButton;
+@property (strong, nonatomic) IBOutlet UIButton *resetLocalScoreButton;
 
 - (void)show;
 

@@ -14,5 +14,6 @@
 
 + (UserData *)instance;
 - (void)submitScore:(int)score;
+- (void)resetLocalScore;
 
 @end
