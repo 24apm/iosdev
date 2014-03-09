@@ -413,7 +413,7 @@ typedef enum {
         }
     }
     
-    [self performSelector:@selector(refreshDisplayAnswers) withObject:nil afterDelay:0.3f];
+    [self refreshDisplayAnswers];
     
     if (hasEmpty == NO){
         float targetValue = [self.targetNumberLabel.text floatValue];
