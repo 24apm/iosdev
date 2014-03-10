@@ -20,7 +20,6 @@
 
     [[NotificationManager instance] registerNotifications];
     [[NumberGameIAPHelper sharedInstance] loadProduct];
-
     return YES;
 }
 

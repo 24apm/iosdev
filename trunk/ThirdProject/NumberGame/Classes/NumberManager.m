@@ -36,92 +36,93 @@
     int tiles = levelData.answerSlotCount;
     for (int j = 0; j < 2000; j++) {
         NSMutableArray *algebra = [NSMutableArray arrayWithArray: [self generateAlgebraFor:tiles]];
-    int numberIndex = 2;
-    int operatorIndex = 1;
-    int targetNumber = [((NSNumber *)algebra[0])intValue];
-    int nextNumber = [((NSNumber *)algebra[numberIndex])intValue];
-    NSString *operator = [algebra objectAtIndex:operatorIndex];
-    for (int i = 0; i <= tiles - 3; i = i + 2) {
-        
-        if ([operator isEqualToString:SYMBOL_OPERATION_MULTIPLICATION]) {
-            multiLoop++;
-            targetNumber = targetNumber * nextNumber;
-        } else if ([operator isEqualToString:SYMBOL_OPERATION_ADDITION]) {
-            plusLoop++;
-            targetNumber = targetNumber + nextNumber;
-        } else if ([operator isEqualToString:SYMBOL_OPERATION_SUBTRACTION]) {
-            minusLoop++;
-            targetNumber = targetNumber - nextNumber;
-        } else if ([operator isEqualToString:SYMBOL_OPERATION_DIVSION]) {
-            int newDivide = [self divideNumber:targetNumber];
-            if (nextNumber != 0 && targetNumber % nextNumber == 0) {
-                targetNumber = targetNumber / nextNumber;
-                divNum++;
-            } else if (newDivide != 1){
-            targetNumber = targetNumber / newDivide;
-                [algebra replaceObjectAtIndex:numberIndex withObject:[NSNumber numberWithInt:newDivide]];
-                divNum++;
-                
-            } else {
-                int reset = [Utils randBetweenMinInt:0 max:2];
-                switch (reset) {
-                    case 0:
-                        targetNumber = targetNumber * nextNumber;
-                        [algebra replaceObjectAtIndex:operatorIndex withObject:SYMBOL_OPERATION_MULTIPLICATION];
-                        multiLoop++;
-                        break;
-                    case 1:
-                        targetNumber = targetNumber - nextNumber;
-                        [algebra replaceObjectAtIndex:operatorIndex withObject:SYMBOL_OPERATION_SUBTRACTION];
-                        minusLoop++;
-                        break;
-                    case 2:
-                        targetNumber = targetNumber + nextNumber;
-                        [algebra replaceObjectAtIndex:operatorIndex withObject:SYMBOL_OPERATION_ADDITION];
-                        plusLoop++;
-                        break;
-                    default:
-                        targetNumber = targetNumber * nextNumber;
-                        [algebra replaceObjectAtIndex:operatorIndex withObject:SYMBOL_OPERATION_MULTIPLICATION];
-                        multiLoop++;
-                        break;
+        int numberIndex = 2;
+        int operatorIndex = 1;
+        int targetNumber = [((NSNumber *)algebra[0])intValue];
+        int nextNumber = [((NSNumber *)algebra[numberIndex])intValue];
+        NSString *operator = [algebra objectAtIndex:operatorIndex];
+        for (int i = 0; i <= tiles - 3; i = i + 2) {
+            
+            if ([operator isEqualToString:SYMBOL_OPERATION_MULTIPLICATION]) {
+                multiLoop++;
+                targetNumber = targetNumber * nextNumber;
+            } else if ([operator isEqualToString:SYMBOL_OPERATION_ADDITION]) {
+                plusLoop++;
+                targetNumber = targetNumber + nextNumber;
+            } else if ([operator isEqualToString:SYMBOL_OPERATION_SUBTRACTION]) {
+                minusLoop++;
+                targetNumber = targetNumber - nextNumber;
+            } else if ([operator isEqualToString:SYMBOL_OPERATION_DIVSION]) {
+                int newDivide = [self divideNumber:targetNumber];
+                if (nextNumber != 0 && targetNumber % nextNumber == 0) {
+                    targetNumber = targetNumber / nextNumber;
+                    divNum++;
+                } else if (newDivide != 1){
+                    targetNumber = targetNumber / newDivide;
+                    [algebra replaceObjectAtIndex:numberIndex withObject:[NSNumber numberWithInt:newDivide]];
+                    divNum++;
+                    
+                } else {
+                    int reset = [Utils randBetweenMinInt:0 max:2];
+                    switch (reset) {
+                        case 0:
+                            targetNumber = targetNumber * nextNumber;
+                            [algebra replaceObjectAtIndex:operatorIndex withObject:SYMBOL_OPERATION_MULTIPLICATION];
+                            multiLoop++;
+                            break;
+                        case 1:
+                            targetNumber = targetNumber - nextNumber;
+                            [algebra replaceObjectAtIndex:operatorIndex withObject:SYMBOL_OPERATION_SUBTRACTION];
+                            minusLoop++;
+                            break;
+                        case 2:
+                            targetNumber = targetNumber + nextNumber;
+                            [algebra replaceObjectAtIndex:operatorIndex withObject:SYMBOL_OPERATION_ADDITION];
+                            plusLoop++;
+                            break;
+                        default:
+                            targetNumber = targetNumber * nextNumber;
+                            [algebra replaceObjectAtIndex:operatorIndex withObject:SYMBOL_OPERATION_MULTIPLICATION];
+                            multiLoop++;
+                            break;
+                    }
                 }
             }
+            if (numberIndex + 2 <= tiles) {
+                numberIndex += 2;
+                operatorIndex += 2;
+                nextNumber = [[algebra objectAtIndex:numberIndex]intValue];
+                operator = [algebra objectAtIndex:operatorIndex];
+            }
         }
-        if (numberIndex + 2 <= tiles) {
-            numberIndex += 2;
-            operatorIndex += 2;
-            nextNumber = [[algebra objectAtIndex:numberIndex]intValue];
-            operator = [algebra objectAtIndex:operatorIndex];
+        
+        self.currentGeneratedAnswer = [algebra mutableCopy];
+        
+        // adding fillers
+        NSInteger algebraSize = algebra.count;
+        NSArray *operatorArr = self.currentLevelData.operation;
+        while (algebraSize < levelData.choiceSlotCount) {
+            NSInteger randomNumOp = self.currentLevelData.maxChoiceValue + operatorArr.count;
+            int filler = [Utils randBetweenMinInt:self.currentLevelData.minChoiceValue max:randomNumOp];
+            if (filler > self.currentLevelData.maxChoiceValue) {
+                [algebra addObject:[operatorArr objectAtIndex:filler - self.currentLevelData.maxChoiceValue - 1]];
+                algebraSize++;
+            } else {
+                NSNumber *addFiller = [NSNumber numberWithInt:filler];
+                [algebra addObject:addFiller];
+                algebraSize++;
+            }
         }
-    }
-    
-    self.currentGeneratedAnswer = [algebra mutableCopy];
-    
-    // adding fillers
-    NSInteger algebraSize = algebra.count;
-    NSArray *operatorArr = self.currentLevelData.operation;
-    while (algebraSize < levelData.choiceSlotCount) {
-        NSInteger randomNumOp = self.currentLevelData.maxChoiceValue + operatorArr.count;
-        int filler = [Utils randBetweenMinInt:self.currentLevelData.minChoiceValue max:randomNumOp];
-        if (filler > self.currentLevelData.maxChoiceValue) {
-            [algebra addObject:[operatorArr objectAtIndex:filler - self.currentLevelData.maxChoiceValue - 1]];
-            algebraSize++;
-        } else {
-            NSNumber *addFiller = [NSNumber numberWithInt:filler];
-            [algebra addObject:addFiller];
-            algebraSize++;
-        }
-    }
-    self.currentGeneratedFillerAnswer = [algebra mutableCopy];
-    self.targetAnswer = targetNumber;
-    [algebra shuffle];
-    [dictionary setObject:algebra forKey:@"algebra"];
-    [dictionary setObject:@(targetNumber) forKey:@"targetNumber"];
-    // Dictionary:
-    // "algrebra" => ["12", "+", "32", "-", "2", ...],
-    // "targetValue" => 123
-    self.currentGeneratedShuffledAnswer = [algebra mutableCopy];
+        self.currentGeneratedFillerAnswer = [algebra mutableCopy];
+        self.targetAnswer = targetNumber;
+        [algebra shuffle];
+        [dictionary setObject:algebra forKey:@"algebra"];
+        [dictionary setObject:@(targetNumber) forKey:@"targetNumber"];
+        [dictionary setObject:[[NumberManager instance] currentGeneratedAnswerInStrings] forKey:@"currentGeneratedAnswerInStrings"];
+        // Dictionary:
+        // "algrebra" => ["12", "+", "32", "-", "2", ...],
+        // "targetValue" => 123
+        self.currentGeneratedShuffledAnswer = [algebra mutableCopy];
     }
     return dictionary;
 }

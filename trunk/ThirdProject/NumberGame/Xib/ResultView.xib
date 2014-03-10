@@ -8,17 +8,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ResultView">
             <connections>
                 <outlet property="achievementLabel" destination="8r9-kg-lbD" id="bTh-wY-aua"/>
-                <outlet property="activityIndicatorView" destination="ul2-zR-18D" id="f6S-K7-swS"/>
                 <outlet property="animatedView" destination="E0y-WY-ChO" id="Y5E-Tb-fwG"/>
-                <outlet property="answerImage" destination="ZCS-De-YGg" id="n3A-Vb-GvY"/>
-                <outlet property="currentScoreLabel" destination="xkn-1S-XZG" id="dR5-lE-PjC"/>
                 <outlet property="fadeOverlay" destination="FAk-CW-5dQ" id="NAN-dy-cFV"/>
                 <outlet property="imgView" destination="d5t-rd-9Y2" id="BPv-Ai-ZR4"/>
-                <outlet property="maxScoreLabel" destination="Fhu-lC-caH" id="O27-vN-VfW"/>
-                <outlet property="playButton" destination="teN-GH-KUX" id="HMy-eH-nOG"/>
-                <outlet property="recordLabel" destination="hxW-zl-urE" id="5yj-rK-uVg"/>
-                <outlet property="targetAnswerLabel" destination="g0y-pg-YtB" id="EBh-v7-ulK"/>
-                <outlet property="unlockButton" destination="pBe-bG-ooN" id="S4l-se-8iw"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -30,109 +22,6 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RESULT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DRp-om-XHt">
-                            <rect key="frame" x="41" y="60" width="240" height="60"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                            <color key="tintColor" red="0.22352942819999999" green="0.83137261870000001" blue="0.43921571970000001" alpha="1" colorSpace="deviceRGB"/>
-                            <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="32"/>
-                            <color key="textColor" red="0.2784313725" green="0.84705882349999995" blue="0.45098039220000002" alpha="1" colorSpace="deviceRGB"/>
-                            <nil key="highlightedColor"/>
-                            <color key="shadowColor" red="0.2823529541" green="0.72941178080000002" blue="0.8980392814" alpha="1" colorSpace="deviceRGB"/>
-                            <size key="shadowOffset" width="0.0" height="0.0"/>
-                        </label>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="UnlockAnswer.png" id="ZCS-De-YGg">
-                            <rect key="frame" x="67" y="232" width="136" height="73"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        </imageView>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="pBe-bG-ooN">
-                            <rect key="frame" x="66" y="285" width="188" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" red="0.91372555494308472" green="0.74901962280273438" blue="0.36862745881080627" alpha="1" colorSpace="deviceRGB"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <state key="normal" title="UNLOCK ANSWER"/>
-                            <connections>
-                                <action selector="unlockPressed:" destination="-1" eventType="touchUpInside" id="P5R-GQ-CAC"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="teN-GH-KUX">
-                            <rect key="frame" x="67" y="348" width="188" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" red="0.2784313725" green="0.84705882349999995" blue="0.45098039220000002" alpha="1" colorSpace="deviceRGB"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <state key="normal" title="BACK"/>
-                            <connections>
-                                <action selector="playAgainPressed:" destination="-1" eventType="touchUpInside" id="bcL-9o-D0E"/>
-                            </connections>
-                        </button>
-                        <button hidden="YES" opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="9wk-hu-KWa" userLabel="Button Fb">
-                            <rect key="frame" x="8" y="87" width="90" height="25"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <state key="normal" backgroundImage="facebook_share.png"/>
-                            <connections>
-                                <action selector="socialPressed:" destination="-1" eventType="touchUpInside" id="cY9-qT-bde"/>
-                            </connections>
-                        </button>
-                        <button hidden="YES" opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="gg8-Sk-NPZ" userLabel="Button Share">
-                            <rect key="frame" x="221" y="87" width="90" height="25"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <state key="normal" backgroundImage="twitter_share.png"/>
-                            <connections>
-                                <action selector="socialPressed:" destination="-1" eventType="touchUpInside" id="r4L-W7-f7v"/>
-                            </connections>
-                        </button>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Streak" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3KY-hg-ZUI">
-                            <rect key="frame" x="50" y="139" width="100" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" red="0.97254908080000002" green="0.96470594409999999" blue="0.90980398650000005" alpha="1" colorSpace="deviceRGB"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xkn-1S-XZG">
-                            <rect key="frame" x="170" y="139" width="100" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" red="0.97254908080000002" green="0.96470594409999999" blue="0.90980398650000005" alpha="1" colorSpace="deviceRGB"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Best" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="THR-8E-EUc">
-                            <rect key="frame" x="50" y="204" width="100" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" red="0.97254908080000002" green="0.96470594409999999" blue="0.90980398650000005" alpha="1" colorSpace="deviceRGB"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Fhu-lC-caH">
-                            <rect key="frame" x="170" y="203" width="100" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" red="0.97254908080000002" green="0.96470594409999999" blue="0.90980398650000005" alpha="1" colorSpace="deviceRGB"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NEW STREAK!!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hxW-zl-urE">
-                            <rect key="frame" x="150" y="161" width="145" height="34"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                            <color key="tintColor" red="0.22352942819999999" green="0.83137261870000001" blue="0.43921571970000001" alpha="1" colorSpace="deviceRGB"/>
-                            <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="16"/>
-                            <color key="textColor" red="1" green="0.65156431479999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            <nil key="highlightedColor"/>
-                            <color key="shadowColor" red="0.2823529541" green="0.72941178080000002" blue="0.8980392814" alpha="1" colorSpace="deviceRGB"/>
-                            <size key="shadowOffset" width="0.0" height="0.0"/>
-                        </label>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Answer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="g0y-pg-YtB">
-                            <rect key="frame" x="179" y="244" width="58" height="21"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                         <view contentMode="scaleToFill" id="FAk-CW-5dQ" userLabel="Fade Overlay">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
@@ -149,22 +38,15 @@
                             <rect key="frame" x="61" y="120" width="200" height="200"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                         </imageView>
-                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" id="ul2-zR-18D">
-                            <rect key="frame" x="150" y="290" width="20" height="20"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        </activityIndicatorView>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>
     </objects>
     <resources>
         <image name="Achievementx1.png" width="512" height="512"/>
-        <image name="UnlockAnswer.png" width="385" height="220"/>
-        <image name="facebook_share.png" width="122" height="42"/>
-        <image name="twitter_share.png" width="122" height="42"/>
     </resources>
 </document>

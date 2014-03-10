@@ -82,7 +82,6 @@
 		D09124BA18CC55520050B59F /* blop.caf in Resources */ = {isa = PBXBuildFile; fileRef = D09124B718CC55520050B59F /* blop.caf */; };
 		D09124BB18CC55520050B59F /* tick.caf in Resources */ = {isa = PBXBuildFile; fileRef = D09124B818CC55520050B59F /* tick.caf */; };
 		D09124BC18CC55520050B59F /* whoosh.caf in Resources */ = {isa = PBXBuildFile; fileRef = D09124B918CC55520050B59F /* whoosh.caf */; };
-		D092E5D718C83B39003A3862 /* ResultView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D092E5D618C83B39003A3862 /* ResultView~ipad.xib */; };
 		D0E0AE8018C5C6B30069D746 /* GameViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E0AE7818C5C6B30069D746 /* GameViewController~ipad.xib */; };
 		D0E0AE8518C5C6B30069D746 /* NumberGameView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E0AE7D18C5C6B30069D746 /* NumberGameView~ipad.xib */; };
 		D0E1122B18C2EC6000808072 /* boing.caf in Resources */ = {isa = PBXBuildFile; fileRef = D0E1122118C2EC6000808072 /* boing.caf */; };
@@ -232,7 +231,6 @@
 		D09124B718CC55520050B59F /* blop.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = blop.caf; sourceTree = "<group>"; };
 		D09124B818CC55520050B59F /* tick.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = tick.caf; sourceTree = "<group>"; };
 		D09124B918CC55520050B59F /* whoosh.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = whoosh.caf; sourceTree = "<group>"; };
-		D092E5D618C83B39003A3862 /* ResultView~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ResultView~ipad.xib"; sourceTree = "<group>"; };
 		D0E0AE7818C5C6B30069D746 /* GameViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "GameViewController~ipad.xib"; sourceTree = "<group>"; };
 		D0E0AE7D18C5C6B30069D746 /* NumberGameView~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "NumberGameView~ipad.xib"; sourceTree = "<group>"; };
 		D0E1122118C2EC6000808072 /* boing.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = boing.caf; sourceTree = "<group>"; };
@@ -362,7 +360,6 @@
 				D0E0AE7818C5C6B30069D746 /* GameViewController~ipad.xib */,
 				D0E0AE7D18C5C6B30069D746 /* NumberGameView~ipad.xib */,
 				D0338B8718C6E06E0006C8B6 /* InGameMessageView~ipad.xib */,
-				D092E5D618C83B39003A3862 /* ResultView~ipad.xib */,
 			);
 			path = Xib;
 			sourceTree = "<group>";
@@ -715,7 +712,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D092E5D718C83B39003A3862 /* ResultView~ipad.xib in Resources */,
 				D0E388B418C06F45001000FC /* ResultView.xib in Resources */,
 				D0338B9D18C713D60006C8B6 /* Achievementx1.png in Resources */,
 				D0E0AE8518C5C6B30069D746 /* NumberGameView~ipad.xib in Resources */,

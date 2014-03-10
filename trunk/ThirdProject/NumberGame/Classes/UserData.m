@@ -41,6 +41,10 @@
 - (void)resetLocalScore {
     [self saveUserScore:0];
     _maxScore = 0;
+    
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    [defaults setObject:nil forKey:@"currentLevelData"];
+    [defaults synchronize];
 }
 
 - (void)submitScore:(int)score {

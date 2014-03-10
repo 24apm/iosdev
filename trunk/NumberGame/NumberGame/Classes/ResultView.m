@@ -76,9 +76,7 @@
         }];
     }];
     
-    if ([[iRate sharedInstance] shouldPromptForRating]) {
-        [[iRate sharedInstance] promptIfNetworkAvailable];
-    }
+    [[iRate sharedInstance] logEvent:NO];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(productPurchased:) name:IAPHelperProductPurchasedNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(productFailed:) name:IAPHelperProductFailedNotification object:nil];

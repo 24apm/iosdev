@@ -29,7 +29,7 @@
 - (void) checkAchievements
 {
     double percentComplete = 100;
-    float currentScore = [UserData instance].score;
+    float currentScore = [UserData instance].maxScore;
     if(DEBUG_MODE) {
         currentScore = 1000;
     }
@@ -134,6 +134,7 @@
         [self.gameCenterManager submitAchievement: self.identifier percentComplete: percentComplete];
     }
 }
+
 - (void) achievementSubmitted: (GKAchievement*) ach error:(NSError*) error; {
     
     if((error == NULL) && (ach != NULL))

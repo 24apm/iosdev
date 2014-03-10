@@ -65,9 +65,7 @@
         }];
     }];
     
-    if ([[iRate sharedInstance] shouldPromptForRating]) {
-        [[iRate sharedInstance] promptIfNetworkAvailable];
-    }
+    [[iRate sharedInstance] logEvent:NO];
 }
 
 - (void)part1 {

@@ -47,7 +47,9 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showAchievements) name: SHOW_ACHIEVEMENT_NOTIFICATION object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resultViewCallback) name:RESULT_VIEW_DISMISSED_NOTIFICATION object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showAnswerCallback) name:RESULT_VIEW_SHOW_ANSWER_NOTIFICATION object:nil];
-  
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showAchievementEarned:) name:SHOW_ACHIEVETMENT_EARNED object:nil];
+    
     self.mainView = [[MainView alloc] init];
     [self.containerView addSubview:self.mainView];
     self.mainView.hidden = YES;
@@ -62,7 +64,6 @@
     [self.containerView addSubview:self.resultView];
     self.resultView.hidden = YES;
     self.resultView.size = self.containerView.size;
-    self.resultView.vc = self;
 
     [self preloadSounds];
     [self updateGameState:GameStateMainMode];
@@ -108,11 +109,17 @@
 - (void)showAchievementCallBack {
     [self updateGameState:GameStateShowAchievementMode];
 }
+
+- (void)showAchievementEarned: (NSNotification *)notification {
+    self.resultView.imgView.image = [UIImage imageNamed:notification.object];
+    self.resultView.hidden = NO;
+    [self.resultView show];
+}
+
 - (void)refresh {
     self.containerView.hidden = NO;
     self.containerView.userInteractionEnabled = YES;
     self.mainView.hidden = YES;
-    self.resultView.hidden = YES;
     self.numberGameView.hidden = YES;
 
     switch (self.currentGameState) {
@@ -128,11 +135,6 @@
             [self.numberGameView refreshGame];
             [self.numberGameView show];
             break;
-        case GameStateResultMode:
-            self.resultView.hidden = NO;
-            [[GameCenterHelper instance] checkAchievements];
-            [self.resultView show];
-            break;
         case GameStateShowAnswerMode:
             self.numberGameView.hidden = NO;
             [self.numberGameView showAnswer];
@@ -140,15 +142,11 @@
             break;
         case GameStatePauseMode:
             self.numberGameView.hidden = NO;
-            [self.numberGameView pause];
-
             break;
         case GameStateResumeMode:
             self.numberGameView.hidden = NO;
-            [self.numberGameView resume];
             break;
         default:
-            
             break;
     }
 }
@@ -188,7 +186,7 @@
     } else {
         self.adBannerView = [[ADBannerView alloc] init];
     }
-    self.adBannerView.y = self.view.height;
+    self.adBannerView.y = self.view.height - self.adBannerView.height;
     self.adBannerView.delegate = self;
     
     // custom
@@ -200,14 +198,14 @@
 }
 
 - (void)layoutAnimated:(BOOL)animated {
-    float bannerYOffset = self.view.height;
+    float bannerYOffset;
     if (self.adBannerView.bannerLoaded) {
-        bannerYOffset = self.view.height - self.adBannerView.height;
         self.promoBannerView.hidden = YES;
+        bannerYOffset = self.view.height - self.adBannerView.height;
     } else {
-        bannerYOffset = self.view.height;
         [self.promoBannerView setupWithPromoGameData:[[PromoManager instance] nextPromo]];
         self.promoBannerView.hidden = NO;
+        bannerYOffset = self.view.height;
     }
     
     [UIView animateWithDuration:animated ? 0.25 : 0.0 animations:^{
