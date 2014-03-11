@@ -30,9 +30,9 @@
 {
     double percentComplete = 100;
     float currentScore = [UserData instance].maxScore;
-    if(DEBUG_MODE) {
-        currentScore = 1000;
-    }
+//    if(DEBUG_MODE) {
+//        currentScore = 1000;
+//    }
     if (currentScore >= 1) {
         self.identifier= kAchievementOneStreak;
         self.imgName = @"Achievementx1.png";

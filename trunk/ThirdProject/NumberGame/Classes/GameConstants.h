@@ -13,9 +13,9 @@
 #define DEBUG_MODE YES
 
 // Game Center
-#define kLeaderboardID @"2"
+#define kLeaderboardID @"com.jeffrwan.thenumbergame.level"
 
-#define kAchievementOneStreak @"1_Streak"
+#define kAchievementOneStreak @"com.jeffrwan.thenumbergame.level1"
 #define kAchievement5Streak @"5_Streak"
 #define kAchievement10Streak @"10_Streak"
 #define kAchievement15Streak @"15_Streak"
@@ -37,7 +37,6 @@
 #define kAchievement999Streak @"999_Streak"
 
 // Sound effects
-#define SOUND_EFFECT_DING @"ding"
 #define SOUND_EFFECT_POP @"pop"
 #define SOUND_EFFECT_BLING @"bling"
 #define SOUND_EFFECT_BOING @"whoosh"

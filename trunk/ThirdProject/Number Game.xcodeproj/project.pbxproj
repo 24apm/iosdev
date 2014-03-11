@@ -164,8 +164,8 @@
 		D05A82F418B3223C003C18EB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D05A82F518B3223C003C18EB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D05A82F618B3223C003C18EB /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		D05A82F718B3223C003C18EB /* What Number-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "What Number-Info.plist"; sourceTree = "<group>"; };
-		D05A82F818B3223C003C18EB /* What Number-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "What Number-Prefix.pch"; sourceTree = "<group>"; };
+		D05A82F718B3223C003C18EB /* Number Game-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Number Game-Info.plist"; sourceTree = "<group>"; };
+		D05A82F818B3223C003C18EB /* Number Game-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Number Game-Prefix.pch"; sourceTree = "<group>"; };
 		D05A82FE18B3223C003C18EB /* GameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameViewController.xib; sourceTree = "<group>"; };
 		D05A830218B3223C003C18EB /* MainView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainView.xib; sourceTree = "<group>"; };
 		D05A832F18B32785003C18EB /* NumberManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumberManager.h; sourceTree = "<group>"; };
@@ -240,11 +240,11 @@
 		D0E1123418C2EDF000808072 /* bling.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = bling.caf; sourceTree = "<group>"; };
 		D0E1123618C30DE900808072 /* GameCenterHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameCenterHelper.h; sourceTree = "<group>"; };
 		D0E1123718C30DE900808072 /* GameCenterHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameCenterHelper.m; sourceTree = "<group>"; };
-		D0E30E8118A376E300FFD3CE /* What Number.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "What Number.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0E30E8118A376E300FFD3CE /* Number Game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Number Game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0E30E8418A376E300FFD3CE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D0E30E8618A376E300FFD3CE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		D0E30E8818A376E300FFD3CE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		D0E30EA218A376E300FFD3CE /* What NumberTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "What NumberTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0E30EA218A376E300FFD3CE /* Number GameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Number GameTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0E30EA318A376E300FFD3CE /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		D0E30EDE18A37D6400FFD3CE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D0E3211218C87D9100600DF2 /* MainView~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "MainView~ipad.xib"; sourceTree = "<group>"; };
@@ -308,8 +308,8 @@
 				D05A82F318B3223C003C18EB /* InfoPlist.strings */,
 				D05A82F518B3223C003C18EB /* Images.xcassets */,
 				D05A82F618B3223C003C18EB /* main.m */,
-				D05A82F718B3223C003C18EB /* What Number-Info.plist */,
-				D05A82F818B3223C003C18EB /* What Number-Prefix.pch */,
+				D05A82F718B3223C003C18EB /* Number Game-Info.plist */,
+				D05A82F818B3223C003C18EB /* Number Game-Prefix.pch */,
 				D05A82F918B3223C003C18EB /* Xib */,
 			);
 			path = NumberGame;
@@ -570,8 +570,8 @@
 		D0E30E8218A376E300FFD3CE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D0E30E8118A376E300FFD3CE /* What Number.app */,
-				D0E30EA218A376E300FFD3CE /* What NumberTests.xctest */,
+				D0E30E8118A376E300FFD3CE /* Number Game.app */,
+				D0E30EA218A376E300FFD3CE /* Number GameTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -636,9 +636,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D0E30E8018A376E300FFD3CE /* What Number */ = {
+		D0E30E8018A376E300FFD3CE /* Number Game */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D0E30EB318A376E300FFD3CE /* Build configuration list for PBXNativeTarget "What Number" */;
+			buildConfigurationList = D0E30EB318A376E300FFD3CE /* Build configuration list for PBXNativeTarget "Number Game" */;
 			buildPhases = (
 				D0E30E7D18A376E300FFD3CE /* Sources */,
 				D0E30E7E18A376E300FFD3CE /* Frameworks */,
@@ -648,14 +648,14 @@
 			);
 			dependencies = (
 			);
-			name = "What Number";
+			name = "Number Game";
 			productName = Bird;
-			productReference = D0E30E8118A376E300FFD3CE /* What Number.app */;
+			productReference = D0E30E8118A376E300FFD3CE /* Number Game.app */;
 			productType = "com.apple.product-type.application";
 		};
-		D0E30EA118A376E300FFD3CE /* What NumberTests */ = {
+		D0E30EA118A376E300FFD3CE /* Number GameTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D0E30EB618A376E300FFD3CE /* Build configuration list for PBXNativeTarget "What NumberTests" */;
+			buildConfigurationList = D0E30EB618A376E300FFD3CE /* Build configuration list for PBXNativeTarget "Number GameTests" */;
 			buildPhases = (
 				D0E30E9E18A376E300FFD3CE /* Sources */,
 				D0E30E9F18A376E300FFD3CE /* Frameworks */,
@@ -666,9 +666,9 @@
 			dependencies = (
 				D0E30EA818A376E300FFD3CE /* PBXTargetDependency */,
 			);
-			name = "What NumberTests";
+			name = "Number GameTests";
 			productName = BirdTests;
-			productReference = D0E30EA218A376E300FFD3CE /* What NumberTests.xctest */;
+			productReference = D0E30EA218A376E300FFD3CE /* Number GameTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -688,7 +688,7 @@
 					};
 				};
 			};
-			buildConfigurationList = D0E30E7C18A376E300FFD3CE /* Build configuration list for PBXProject "What Number" */;
+			buildConfigurationList = D0E30E7C18A376E300FFD3CE /* Build configuration list for PBXProject "Number Game" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -701,8 +701,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D0E30E8018A376E300FFD3CE /* What Number */,
-				D0E30EA118A376E300FFD3CE /* What NumberTests */,
+				D0E30E8018A376E300FFD3CE /* Number Game */,
+				D0E30EA118A376E300FFD3CE /* Number GameTests */,
 			);
 		};
 /* End PBXProject section */
@@ -831,7 +831,7 @@
 /* Begin PBXTargetDependency section */
 		D0E30EA818A376E300FFD3CE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D0E30E8018A376E300FFD3CE /* What Number */;
+			target = D0E30E8018A376E300FFD3CE /* Number Game */;
 			targetProxy = D0E30EA718A376E300FFD3CE /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -928,9 +928,9 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: Jeffrey Wan (MT34DA8UCA)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jeffrey Wan (YS47XTCZZB)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "NumberGame/What Number-Prefix.pch";
-				INFOPLIST_FILE = "NumberGame/What Number-Info.plist";
-				PRODUCT_NAME = "What Number";
+				GCC_PREFIX_HEADER = "NumberGame/Number Game-Prefix.pch";
+				INFOPLIST_FILE = "NumberGame/Number Game-Info.plist";
+				PRODUCT_NAME = "Number Game";
 				PROVISIONING_PROFILE = "84A682B5-A448-4397-AADD-0B826038A9AA";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
@@ -945,9 +945,9 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: Jeffrey Wan (MT34DA8UCA)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jeffrey Wan (YS47XTCZZB)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "NumberGame/What Number-Prefix.pch";
-				INFOPLIST_FILE = "NumberGame/What Number-Info.plist";
-				PRODUCT_NAME = "What Number";
+				GCC_PREFIX_HEADER = "NumberGame/Number Game-Prefix.pch";
+				INFOPLIST_FILE = "NumberGame/Number Game-Info.plist";
+				PRODUCT_NAME = "Number Game";
 				PROVISIONING_PROFILE = "84A682B5-A448-4397-AADD-0B826038A9AA";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
@@ -971,7 +971,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "NumberGameTests/NumberGameTests-Info.plist";
-				PRODUCT_NAME = "What NumberTests";
+				PRODUCT_NAME = "Number GameTests";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -990,7 +990,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NumberGame/NumberGame-Prefix.pch";
 				INFOPLIST_FILE = "NumberGameTests/NumberGameTests-Info.plist";
-				PRODUCT_NAME = "What NumberTests";
+				PRODUCT_NAME = "Number GameTests";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -999,7 +999,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D0E30E7C18A376E300FFD3CE /* Build configuration list for PBXProject "What Number" */ = {
+		D0E30E7C18A376E300FFD3CE /* Build configuration list for PBXProject "Number Game" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D0E30EB118A376E300FFD3CE /* Debug */,
@@ -1008,7 +1008,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D0E30EB318A376E300FFD3CE /* Build configuration list for PBXNativeTarget "What Number" */ = {
+		D0E30EB318A376E300FFD3CE /* Build configuration list for PBXNativeTarget "Number Game" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D0E30EB418A376E300FFD3CE /* Debug */,
@@ -1017,7 +1017,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D0E30EB618A376E300FFD3CE /* Build configuration list for PBXNativeTarget "What NumberTests" */ = {
+		D0E30EB618A376E300FFD3CE /* Build configuration list for PBXNativeTarget "Number GameTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D0E30EB718A376E300FFD3CE /* Debug */,

@@ -75,7 +75,6 @@
     [[SoundManager instance] prepare:SOUND_EFFECT_BOING count:5];
     [[SoundManager instance] prepare:SOUND_EFFECT_POP count:5];
     [[SoundManager instance] prepare:SOUND_EFFECT_BLING count:5];
-    [[SoundManager instance] prepare:SOUND_EFFECT_DING count:5];
 }
 
 - (void)mainViewCallback {
