@@ -8,7 +8,7 @@
 
 #import "IAPHelper.h"
 
-#define IAP_UNLOCK_ANSWER @"com.jeffrwan.whatstheanswer.answer"
+#define IAP_UNLOCK_ANSWER @"com.jeffrwan.thenumbergame.answer"
 
 @interface NumberGameIAPHelper : IAPHelper
 

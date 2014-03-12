@@ -49,7 +49,9 @@
 
 - (void)play {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        [self.audio play];
+        if (!self.audio.isPlaying) {
+            [self.audio play];
+        }
         dispatch_async(dispatch_get_main_queue(), ^{
         });
     });

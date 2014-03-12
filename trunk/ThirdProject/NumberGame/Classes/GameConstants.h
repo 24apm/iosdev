@@ -10,31 +10,31 @@
 
 #define IPAD_SCALE ((UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 2.0f : 1.0f)
 
-#define DEBUG_MODE YES
+#define DEBUG_MODE NO
 
 // Game Center
 #define kLeaderboardID @"com.jeffrwan.thenumbergame.level"
 
 #define kAchievementOneStreak @"com.jeffrwan.thenumbergame.level1"
-#define kAchievement5Streak @"5_Streak"
-#define kAchievement10Streak @"10_Streak"
-#define kAchievement15Streak @"15_Streak"
-#define kAchievement20Streak @"20_Streak"
-#define kAchievement30Streak @"30_Streak"
-#define kAchievement40Streak @"40_Streak"
-#define kAchievement50Streak @"50_Streak"
-#define kAchievement60Streak @"60_Streak"
-#define kAchievement75Streak @"75_Streak"
-#define kAchievement90Streak @"90_Streak"
-#define kAchievement115Streak @"115_Streak"
-#define kAchievement130Streak @"130_Streak"
-#define kAchievement150Streak @"150_Streak"
-#define kAchievement170Streak @"170_Streak"
-#define kAchievement200Streak @"200_Streak"
-#define kAchievement250Streak @"250_Streak"
-#define kAchievement350Streak @"350_Streak"
-#define kAchievement500Streak @"500_Streak"
-#define kAchievement999Streak @"999_Streak"
+#define kAchievement5Streak @"com.jeffrwan.thenumbergame.level5"
+#define kAchievement10Streak @"com.jeffrwan.thenumbergame.level10"
+#define kAchievement15Streak @"com.jeffrwan.thenumbergame.level15"
+#define kAchievement20Streak @"com.jeffrwan.thenumbergame.level20"
+#define kAchievement30Streak @"com.jeffrwan.thenumbergame.level30"
+#define kAchievement40Streak @"com.jeffrwan.thenumbergame.level40"
+#define kAchievement50Streak @"com.jeffrwan.thenumbergame.level50"
+#define kAchievement60Streak @"com.jeffrwan.thenumbergame.level60"
+#define kAchievement75Streak @"com.jeffrwan.thenumbergame.level75"
+#define kAchievement90Streak @"com.jeffrwan.thenumbergame.level90"
+#define kAchievement115Streak @"com.jeffrwan.thenumbergame.level115"
+#define kAchievement130Streak @"com.jeffrwan.thenumbergame.level130"
+#define kAchievement150Streak @"com.jeffrwan.thenumbergame.level150"
+#define kAchievement170Streak @"com.jeffrwan.thenumbergame.level170"
+#define kAchievement200Streak @"com.jeffrwan.thenumbergame.level200"
+#define kAchievement250Streak @"com.jeffrwan.thenumbergame.level250"
+#define kAchievement350Streak @"com.jeffrwan.thenumbergame.level350"
+#define kAchievement500Streak @"com.jeffrwan.thenumbergame.level500"
+#define kAchievement999Streak @"com.jeffrwan.thenumbergame.level999"
 
 // Sound effects
 #define SOUND_EFFECT_POP @"pop"

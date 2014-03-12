@@ -41,7 +41,7 @@
     int month = 30 * day;
     
     NSMutableArray *array = [NSMutableArray arrayWithObjects:
-            @(1 * hour),
+            @(3 * hour),
             @(8 * hour),
             @(12 * hour),
             @(1 * day),

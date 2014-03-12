@@ -11,6 +11,7 @@
 @property (nonatomic) int score;
 @property (nonatomic) int maxScore;
 @property (nonatomic, retain) UIImage *lastGameSS;
+@property (nonatomic) BOOL tutorialModeEnabled;
 
 + (UserData *)instance;
 - (void)submitScore:(int)score;

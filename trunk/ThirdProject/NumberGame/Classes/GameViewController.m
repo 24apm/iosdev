@@ -54,6 +54,7 @@
     [self.containerView addSubview:self.mainView];
     self.mainView.hidden = YES;
     self.mainView.size = self.containerView.size;
+    [UserData instance].tutorialModeEnabled = NO;
     
     self.numberGameView = [[NumberGameView alloc] init];
     [self.containerView addSubview:self.numberGameView ];

@@ -38,6 +38,11 @@
     [[GameCenterHelper instance].gameCenterManager resetAchievements];
 }
 
+- (IBAction)demoPressed:(UIButton *)sender {
+    [UserData instance].tutorialModeEnabled = YES;
+    [self hide];
+}
+
 - (IBAction)resetLocalScore:(id)sender {
     [[UserData instance] resetLocalScore];
 }

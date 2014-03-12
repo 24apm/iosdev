@@ -21,9 +21,10 @@
 
 - (NSArray *)notificationBodyTexts{
     return [NSArray arrayWithObjects:
-            @"Ready to reach a new streak?",
+            @"Ready to reach a new level?",
             @"How far can you go?",
-            @"Hungry for more?",
+            @"Play more?",
+            @"^________________^",
             nil];
 }
 
@@ -31,6 +32,7 @@
     return [NSArray arrayWithObjects:
             @"Let's go!",
             @"Tapping time!",
+            @"Slide to play!",
             nil];
 }
 
