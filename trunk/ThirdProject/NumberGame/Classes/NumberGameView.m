@@ -20,6 +20,7 @@
 #import "LevelData.h"
 #import "GameCenterHelper.h"
 #import "iRate.h"
+#import "AnimUtil.h"
 
 typedef enum {
     ButtonTypeOperator,
@@ -29,10 +30,9 @@ typedef enum {
 
 #define BUFFER_TIME 0.f
 #define BUTTON_CORNER_RADIUS (10.f * IPAD_SCALE)
+#define PENALTY_WAIT_TIME 10.f
 
 @interface NumberGameView ()
-
-@property (strong, nonatomic) IBOutlet UILabel *scoreLabel;
 
 @property (nonatomic, retain) UIColor *numberBackgroundColor;
 @property (nonatomic, retain) UIColor *operatorBackgroundColor;
@@ -43,6 +43,10 @@ typedef enum {
 @property (strong, nonatomic) IBOutlet UILabel *topScoreLabel;
 @property (strong, nonatomic) NSArray *products;
 @property (strong, nonatomic) NSDictionary *currentLevelData;
+@property (strong, nonatomic) IBOutlet ProgressBarComponent *progressBar;
+@property (strong, nonatomic) NSTimer *timer;
+@property (nonatomic) double waitTime;
+@property (strong, nonatomic) IBOutlet UILabel *demoLabel;
 
 @end
 
@@ -61,6 +65,7 @@ typedef enum {
     self.emptyBackgroundColor = [UIColor colorWithRed:248.f/255.f green:246.f/255.f blue:232.f/255.f alpha:1.0f];
     [self setupButtons];
     [self refreshCheatButton];
+    self.userTries = 3;
 }
 
 - (void)refreshCheatButton {
@@ -103,12 +108,19 @@ typedef enum {
     self.userInteractionEnabled = YES;
     [self loadUserData];
     self.cheatView.hidden = YES;
+    self.demoLabel.hidden = YES;
+    self.userTries = 3;
     
-
-    self.currentLevelData = [self loadLevelData];
-    if (!self.currentLevelData) {
-        self.currentLevelData = [self generateLevel];
-        [self cacheLevelData:self.currentLevelData];
+    if ([UserData instance].tutorialModeEnabled) {
+        self.userInteractionEnabled = NO;
+        self.currentLevelData = [self generateTutorialLevel];
+        self.demoLabel.hidden = NO;
+    } else {
+        self.currentLevelData = [self loadLevelData];
+        if (!self.currentLevelData) {
+            self.currentLevelData = [self generateLevel];
+            [self cacheLevelData:self.currentLevelData];
+        }
     }
     
     // operator list
@@ -118,15 +130,26 @@ typedef enum {
     [self refreshChoices:array];
     [self resetAnswers];
     self.targetNumberLabel.text = [NSString stringWithFormat:@"%d",targetValue];
-    
     self.cheatLabel.hidden = YES;
-    
+    self.progressBar.hidden = YES;
     [self refreshDisplayAnswers];
-    [self refreshCheatButton];
+    
+    if ([UserData instance].tutorialModeEnabled) {
+        [self performSelector:@selector(playTutorial) withObject:nil afterDelay:1.0f];
+    } else {
+        [self refreshCheatButton];
+    }
 }
 
 - (NSDictionary *)generateLevel {
     LevelData *levelData = [LevelData levelConfigForCurrentScore:[UserData instance].maxScore];
+    levelData.answerSlotCount = self.answerSlots.count;
+    levelData.choiceSlotCount = self.choiceSlots.count;
+    return [[NumberManager instance] generateLevel:levelData];
+}
+
+- (NSDictionary *)generateTutorialLevel {
+    LevelData *levelData = [LevelData levelConfigForCurrentScore:0];
     levelData.answerSlotCount = self.answerSlots.count;
     levelData.choiceSlotCount = self.choiceSlots.count;
     return [[NumberManager instance] generateLevel:levelData];
@@ -150,6 +173,70 @@ typedef enum {
     [defaults synchronize];
 }
 
+- (void)penaltyWait {
+    self.waitTime = CACurrentMediaTime() + PENALTY_WAIT_TIME;
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0f/60.f target:self selector:@selector(updateProgressBar) userInfo:nil repeats:YES];
+    [self updateProgressBar];
+    self.buttonLayerView.alpha = 0.5f;
+    self.userInteractionEnabled = NO;
+    self.progressBar.hidden = NO;
+}
+
+- (void)updateProgressBar {
+    double percentage = 1.0f-(self.waitTime - CACurrentMediaTime()) / PENALTY_WAIT_TIME;
+   // NSLog(@"percentage %0.2f", percentage);
+    if (percentage < 1.f) {
+        [self.progressBar fillBar:percentage animated:NO];
+        if (percentage > 0.33f && self.userTries <= 0) {
+            self.userTries++;
+        }
+        if (percentage > 0.66f && self.userTries <= 1) {
+            self.userTries++;
+        }
+        if (percentage > 0.99f && self.userTries <= 2) {
+            self.userTries++;
+        }
+    } else {
+        self.userTries = 3;
+        self.buttonLayerView.alpha = 1.0f;
+        self.userInteractionEnabled = YES;
+        [self.timer invalidate];
+        self.progressBar.hidden = YES;
+    }
+}
+
+- (void)flashError {
+    //[self flash];
+    [AnimUtil wobble:self duration:0.1f angle:M_PI/128.f];
+    [[SoundManager instance] play:SOUND_EFFECT_BOING];
+}
+
+- (void)flash {
+    float duration = 0.2f;
+    UIView *flashOverlay = [[UIView alloc] init];
+    [self addSubview:flashOverlay];
+    flashOverlay.backgroundColor = [UIColor whiteColor];
+    flashOverlay.frame = self.bounds;
+    flashOverlay.alpha = 0.f;
+    [UIView animateWithDuration:duration delay:0.f options:UIViewAnimationOptionLayoutSubviews animations:^{
+        flashOverlay.alpha = 1.0f;
+    } completion:^(BOOL completed){
+        [UIView animateWithDuration:duration delay:0.f options:UIViewAnimationOptionLayoutSubviews animations:^{
+        } completion:^(BOOL completed){
+            [flashOverlay removeFromSuperview];
+        } ];
+    } ];
+}
+
+- (void)decrementTries {
+    self.userTries = self.userTries - 1;
+    [self flashError];
+    if (self.userTries < 1) {
+        self.userTries = 0;
+        [self penaltyWait];
+
+    }
+}
 - (void)decrementCheatCount {
     NSInteger cheatCount = [[NSUserDefaults standardUserDefaults] integerForKey:@"cheat"];
     cheatCount--;
@@ -243,6 +330,33 @@ typedef enum {
     self.cheatView.hidden = NO;
 }
 
+- (void)playTutorial {
+    self.userInteractionEnabled = NO;
+    float delay = 0.f;
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    NSMutableArray *newArray = [self.currentLevelData objectForKey:@"currentGeneratedAnswerInStrings"];
+    for (NSString *answer in newArray) {
+        for (UIButton *choice in self.choiceSlots) {
+            NSString *choiceText = [choice titleForState:UIControlStateNormal];
+            // matching answer
+            if (![dict valueForKey:[NSString stringWithFormat:@"%d", choice.tag]]) {
+                if ([choiceText isEqualToString:answer]) {
+                    [dict setValue:@(YES) forKey:[NSString stringWithFormat:@"%d", choice.tag]];
+                    [self performSelector:@selector(fillSlot:) withObject:choice afterDelay:delay];
+                    delay += 1.f;
+                    break;
+                }
+            }
+        }
+    }
+    [self performSelector:@selector(resetUserInteractionEnabledAfterDelay) withObject:nil afterDelay:delay];
+    newArray = nil;
+}
+
+- (void)resetUserInteractionEnabledAfterDelay {
+    self.userInteractionEnabled = YES;
+}
+
 - (void)showBorder:(UIView *)view {
     view.layer.borderColor = [UIColor orangeColor].CGColor;
     view.layer.borderWidth = 2.f * IPAD_SCALE;
@@ -288,7 +402,7 @@ typedef enum {
         UIButton *button = [allButtons objectAtIndex:i];
         [self animateBlitAndFadeout:button delay:i * 0.1f + 1.5f];
     }
-
+    
 }
 
 - (void)animateBlitAndFadeout:(UIView *)view delay:(float)delay {
@@ -345,7 +459,6 @@ typedef enum {
 
 #pragma mark - show and hide
 - (void)show {
-    [self refreshCheatButton];
     self.transform = CGAffineTransformMakeScale(2.0f, 2.0f);
     self.alpha = 0;
     
@@ -358,7 +471,7 @@ typedef enum {
     } completion:^(BOOL complete) {
     }];
     
-
+    
 }
 
 - (IBAction)returnLobby:(id)sender {
@@ -391,16 +504,16 @@ typedef enum {
     [self unhighlightChoiceSlotStates];
     BOOL hasFound = NO;
     // disabled tapping choice to unselect because it causes confusion
-//    for (int i = 0; i < self.answerSlots.count; i++){
-//        UIButton *answer = [self.answerSlots objectAtIndex:i];
-//        if (sender.tag == answer.tag) {
-//            [self removeSlot:answer];
-//            hasFound = YES;
-//            break;
-//        }
-//    }
+    //    for (int i = 0; i < self.answerSlots.count; i++){
+    //        UIButton *answer = [self.answerSlots objectAtIndex:i];
+    //        if (sender.tag == answer.tag) {
+    //            [self removeSlot:answer];
+    //            hasFound = YES;
+    //            break;
+    //        }
+    //    }
     
-    if (!hasFound) {
+    if (!hasFound && [self hasEmptyInSlots]) {
         [self fillSlot:sender];
     } else {
         [self refreshDisplayAnswers];
@@ -478,17 +591,35 @@ typedef enum {
         float targetValue = [self.targetNumberLabel.text floatValue];
         BOOL isCorrect =[[NumberManager instance] checkAlgebra:algebra targetValue:targetValue];
         if (isCorrect) {
-            [self endGame];
+            if ([UserData instance].tutorialModeEnabled) {
+                [self tutorialEndGame];
+            } else {
+                [self endGame];
+            }
         } else {
+            [self decrementTries];
             [self performSelector:@selector(animateIncorrectAnswer) withObject:nil afterDelay:0.f];
             [self performSelector:@selector(animateIncorrectAnswer) withObject:nil afterDelay:0.2f];
             [self performSelector:@selector(animateIncorrectAnswer) withObject:nil afterDelay:0.4f];
-
+            
             [[SoundManager instance]play:SOUND_EFFECT_BOING];
         }
     }
 }
 
+- (BOOL)hasEmptyInSlots {
+    BOOL hasEmpty = NO;
+    for(int i = 0; i < self.answerSlots.count; i++) {
+        UIButton *slot = self.answerSlots[i];
+        if (slot.tag == 0) {
+            hasEmpty = YES;
+            break;
+        } else {
+            hasEmpty = NO;
+        }
+    }
+    return hasEmpty;
+}
 - (void)endGame {
     self.userInteractionEnabled = NO;
     [self animateAnswersOut];
@@ -499,9 +630,15 @@ typedef enum {
     [[iRate sharedInstance] logEvent:NO];
     [self decrementCheatCount];
     [[SoundManager instance] play:SOUND_EFFECT_BLING];
-    [[SoundManager instance] stop:SOUND_EFFECT_TICKING];
     [self performSelector:@selector(checkAchievements) withObject:nil afterDelay:1.2f];
     [self performSelector:@selector(newGame) withObject:nil afterDelay:3.2f];
+}
+
+- (void)tutorialEndGame {
+    self.userInteractionEnabled = NO;
+    [self showMessageView];
+    [self performSelector:@selector(returnLobby:) withObject:nil afterDelay:3.2f];
+    [UserData instance].tutorialModeEnabled = NO;
 }
 
 - (void)checkAchievements {
@@ -530,7 +667,7 @@ typedef enum {
     for(int i = 2; i < self.answerSlots.count; i += 2) {
         UIButton *opSlot = self.answerSlots[i-1];
         NSString *opString = [opSlot titleForState:UIControlStateNormal];
-
+        
         UIButton *rightOperandSlot = self.answerSlots[i];
         NSString *rightOperandString = [rightOperandSlot titleForState:UIControlStateNormal];
         float rightOperandValue = [rightOperandString floatValue];
@@ -550,7 +687,7 @@ typedef enum {
         if (slotDisplayIndex < self.answerSlotsB.count) {
             UIButton *answerSlotsB = [self.answerSlotsB objectAtIndex:slotDisplayIndex];
             [answerSlotsB setTitle:rowDisplayString forState:UIControlStateNormal];
-//            answerSlotsB.hidden = [rowDisplayString isEqualToString:@""];
+            //            answerSlotsB.hidden = [rowDisplayString isEqualToString:@""];
         }
         
         if (slotDisplayIndex < self.equalSignsCollection.count) {
@@ -562,7 +699,7 @@ typedef enum {
         if (slotDisplayIndex < self.answerSlotsA.count) {
             UIButton *answerSlotsA = [self.answerSlotsA objectAtIndex:slotDisplayIndex];
             [answerSlotsA setTitle:rowDisplayString forState:UIControlStateNormal];
-//            answerSlotsA.hidden = [rowDisplayString isEqualToString:@""];
+            //            answerSlotsA.hidden = [rowDisplayString isEqualToString:@""];
         }
     }
     [self refeshAnswerSlotStates];
@@ -579,6 +716,24 @@ typedef enum {
     }
     
     return formatter;
+}
+
+- (void) setUserTries:(int)userTries {
+    _userTries = userTries;
+    [self refreshHearts];
+}
+
+-(void) refreshHearts {
+    int refreshNum = self.userTries;
+    for (int i = 0; i < refreshNum; i++) {
+      UIImageView *temp = [self.hearts objectAtIndex:i];
+        temp.hidden = NO;
+    }
+    
+    for (int i = refreshNum; i < self.hearts.count; i++) {
+        UIImageView *temp = [self.hearts objectAtIndex:i];
+        temp.hidden = YES;
+    }
 }
 
 - (void)animateIncorrectAnswer {
@@ -690,21 +845,21 @@ typedef enum {
     return;
     NSInteger count = self.answerSlotsA.count;
     for (int i = 0; i < count; i++) {
-     UIButton *answerSlotsA = [self.answerSlotsA objectAtIndex:i];
+        UIButton *answerSlotsA = [self.answerSlotsA objectAtIndex:i];
         if (![[answerSlotsA titleForState:UIControlStateNormal] isEqual:@""]) {
-         UIView *currentview = [self.rowsCollection objectAtIndex:i];
-           currentview.alpha = 1.0f;
-            }
+            UIView *currentview = [self.rowsCollection objectAtIndex:i];
+            currentview.alpha = 1.0f;
         }
+    }
     
 }
 - (IBAction)answerSlot3aPressed:(UIButton *)sender {
-      return;
+    return;
     UIView *currentview = [self.rowsCollection objectAtIndex:1];
     currentview.alpha = 1.0f;
 }
 - (IBAction)answerSlot2aPressed:(UIButton *)sender {
-      return;
+    return;
     UIView *currentview = [self.rowsCollection objectAtIndex:0];
     currentview.alpha = 1.0f;
 }

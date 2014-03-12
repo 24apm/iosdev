@@ -18,19 +18,19 @@
     {
       "size" : "57x57",
       "idiom" : "iphone",
-      "filename" : "WTNappicon57x57.png",
+      "filename" : "NGIcon57.png",
       "scale" : "1x"
     },
     {
       "size" : "57x57",
       "idiom" : "iphone",
-      "filename" : "WTNappicon114x114.png",
+      "filename" : "NGIcon114.png",
       "scale" : "2x"
     },
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "WTNappicon120x120.png",
+      "filename" : "NGIcon120.png",
       "scale" : "2x"
     },
     {
@@ -66,25 +66,25 @@
     {
       "size" : "72x72",
       "idiom" : "ipad",
-      "filename" : "WTNappicon72x72.png",
+      "filename" : "NGIcon72.png",
       "scale" : "1x"
     },
     {
       "size" : "72x72",
       "idiom" : "ipad",
-      "filename" : "WTNappicon144x144.png",
+      "filename" : "NGIcon144.png",
       "scale" : "2x"
     },
     {
       "size" : "76x76",
       "idiom" : "ipad",
-      "filename" : "WTNappicon76x76.png",
+      "filename" : "NGIcon76.png",
       "scale" : "1x"
     },
     {
       "size" : "76x76",
       "idiom" : "ipad",
-      "filename" : "WTNappicon152x152.png",
+      "filename" : "NAIcon152x152.png",
       "scale" : "2x"
     }
   ],

@@ -23,6 +23,7 @@
 
 @property (strong, nonatomic) IBOutletCollection(UIView) NSArray *rowsCollection;
 
+@property (strong, nonatomic) IBOutletCollection(UIImageView) NSArray *hearts;
 @property (strong, nonatomic) IBOutlet UIButton *cheatButton;
 @property (strong, nonatomic) IBOutlet UILabel *cheatLabel;
 @property (strong, nonatomic) IBOutlet UILabel *scores;
@@ -32,6 +33,9 @@
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *answerSlotsB;
 @property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *equalSignsCollection;
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicatorView;
+@property (nonatomic) int userTries;
+@property (strong, nonatomic) IBOutlet UIView *buttonLayerView;
+@property (strong, nonatomic) IBOutlet UILabel *attemptLabel;
 
 - (void)show;
 - (void)refreshGame;

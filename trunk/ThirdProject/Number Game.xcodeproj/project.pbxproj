@@ -46,7 +46,6 @@
 		D05A831A18B3223C003C18EB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D05A82F518B3223C003C18EB /* Images.xcassets */; };
 		D05A831B18B3223C003C18EB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D05A82F618B3223C003C18EB /* main.m */; };
 		D05A832018B3223C003C18EB /* GameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D05A82FE18B3223C003C18EB /* GameViewController.xib */; };
-		D05A832418B3223C003C18EB /* MainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D05A830218B3223C003C18EB /* MainView.xib */; };
 		D05A833118B32785003C18EB /* NumberManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D05A833018B32785003C18EB /* NumberManager.m */; };
 		D07F418018A4D8C7009680FD /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07F417F18A4D8C7009680FD /* iAd.framework */; };
 		D091232318CC22320050B59F /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = D091232218CC22320050B59F /* MainWindow.xib */; };
@@ -83,7 +82,6 @@
 		D09124BB18CC55520050B59F /* tick.caf in Resources */ = {isa = PBXBuildFile; fileRef = D09124B818CC55520050B59F /* tick.caf */; };
 		D09124BC18CC55520050B59F /* whoosh.caf in Resources */ = {isa = PBXBuildFile; fileRef = D09124B918CC55520050B59F /* whoosh.caf */; };
 		D0E0AE8018C5C6B30069D746 /* GameViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E0AE7818C5C6B30069D746 /* GameViewController~ipad.xib */; };
-		D0E0AE8518C5C6B30069D746 /* NumberGameView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E0AE7D18C5C6B30069D746 /* NumberGameView~ipad.xib */; };
 		D0E1122B18C2EC6000808072 /* boing.caf in Resources */ = {isa = PBXBuildFile; fileRef = D0E1122118C2EC6000808072 /* boing.caf */; };
 		D0E1122F18C2EC6000808072 /* winningEffect.caf in Resources */ = {isa = PBXBuildFile; fileRef = D0E1122518C2EC6000808072 /* winningEffect.caf */; };
 		D0E1123218C2ECF300808072 /* pop.caf in Resources */ = {isa = PBXBuildFile; fileRef = D0E1123018C2ECF300808072 /* pop.caf */; };
@@ -97,7 +95,6 @@
 		D0E30EA518A376E300FFD3CE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E30E8418A376E300FFD3CE /* Foundation.framework */; };
 		D0E30EA618A376E300FFD3CE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E30E8818A376E300FFD3CE /* UIKit.framework */; };
 		D0E30EDF18A37D6400FFD3CE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E30EDE18A37D6400FFD3CE /* QuartzCore.framework */; };
-		D0E3211318C87D9100600DF2 /* MainView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E3211218C87D9100600DF2 /* MainView~ipad.xib */; };
 		D0E364CE18BAFE8B00A5676B /* InGameMessageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E364CD18BAFE8B00A5676B /* InGameMessageView.xib */; };
 		D0E364D118BAFE9D00A5676B /* InGameMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E364D018BAFE9D00A5676B /* InGameMessageView.m */; };
 		D0E36B8918C28CE700BA56E7 /* NumberGameIAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E36B8818C28CE700BA56E7 /* NumberGameIAPHelper.m */; };
@@ -105,6 +102,12 @@
 		D0E388B418C06F45001000FC /* ResultView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E388B318C06F45001000FC /* ResultView.xib */; };
 		D0E3C40A18CB16D800EB447B /* LevelData.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E3C40918CB16D800EB447B /* LevelData.m */; };
 		D0EB7A0D18BF239A00AC8CEB /* UserData.m in Sources */ = {isa = PBXBuildFile; fileRef = D0EB7A0C18BF239A00AC8CEB /* UserData.m */; };
+		D0ED116618CF04BC00C55BA9 /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = D0ED116518CF04BC00C55BA9 /* heart.png */; };
+		D0F0C80718D009EF00232E9D /* Achievementx999WtN.png in Resources */ = {isa = PBXBuildFile; fileRef = D0F0C80618D009EF00232E9D /* Achievementx999WtN.png */; };
+		D0F0C80918D0386E00232E9D /* ResultView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0F0C80818D0386E00232E9D /* ResultView~ipad.xib */; };
+		D0F0C80D18D0388100232E9D /* MainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0F0C80C18D0388100232E9D /* MainView.xib */; };
+		D0F0C80F18D04F2F00232E9D /* MainView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0F0C80E18D04F2F00232E9D /* MainView~ipad.xib */; };
+		D0F0C81118D04F5400232E9D /* NumberGameView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0F0C81018D04F5400232E9D /* NumberGameView~ipad.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -167,7 +170,6 @@
 		D05A82F718B3223C003C18EB /* Number Game-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Number Game-Info.plist"; sourceTree = "<group>"; };
 		D05A82F818B3223C003C18EB /* Number Game-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Number Game-Prefix.pch"; sourceTree = "<group>"; };
 		D05A82FE18B3223C003C18EB /* GameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameViewController.xib; sourceTree = "<group>"; };
-		D05A830218B3223C003C18EB /* MainView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainView.xib; sourceTree = "<group>"; };
 		D05A832F18B32785003C18EB /* NumberManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumberManager.h; sourceTree = "<group>"; };
 		D05A833018B32785003C18EB /* NumberManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = NumberManager.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D07F417F18A4D8C7009680FD /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
@@ -232,7 +234,6 @@
 		D09124B818CC55520050B59F /* tick.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = tick.caf; sourceTree = "<group>"; };
 		D09124B918CC55520050B59F /* whoosh.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = whoosh.caf; sourceTree = "<group>"; };
 		D0E0AE7818C5C6B30069D746 /* GameViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "GameViewController~ipad.xib"; sourceTree = "<group>"; };
-		D0E0AE7D18C5C6B30069D746 /* NumberGameView~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "NumberGameView~ipad.xib"; sourceTree = "<group>"; };
 		D0E1122118C2EC6000808072 /* boing.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = boing.caf; sourceTree = "<group>"; };
 		D0E1122518C2EC6000808072 /* winningEffect.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = winningEffect.caf; sourceTree = "<group>"; };
 		D0E1123018C2ECF300808072 /* pop.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = pop.caf; sourceTree = "<group>"; };
@@ -247,7 +248,6 @@
 		D0E30EA218A376E300FFD3CE /* Number GameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Number GameTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0E30EA318A376E300FFD3CE /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		D0E30EDE18A37D6400FFD3CE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		D0E3211218C87D9100600DF2 /* MainView~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "MainView~ipad.xib"; sourceTree = "<group>"; };
 		D0E364CD18BAFE8B00A5676B /* InGameMessageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InGameMessageView.xib; sourceTree = "<group>"; };
 		D0E364CF18BAFE9D00A5676B /* InGameMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InGameMessageView.h; sourceTree = "<group>"; };
 		D0E364D018BAFE9D00A5676B /* InGameMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InGameMessageView.m; sourceTree = "<group>"; };
@@ -259,6 +259,12 @@
 		D0E3C40918CB16D800EB447B /* LevelData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = LevelData.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D0EB7A0B18BF239A00AC8CEB /* UserData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserData.h; sourceTree = "<group>"; };
 		D0EB7A0C18BF239A00AC8CEB /* UserData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserData.m; sourceTree = "<group>"; };
+		D0ED116518CF04BC00C55BA9 /* heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart.png; sourceTree = "<group>"; };
+		D0F0C80618D009EF00232E9D /* Achievementx999WtN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Achievementx999WtN.png; path = "../../../../../../New folder (7)/Achievementx999WtN.png"; sourceTree = "<group>"; };
+		D0F0C80818D0386E00232E9D /* ResultView~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ResultView~ipad.xib"; sourceTree = "<group>"; };
+		D0F0C80C18D0388100232E9D /* MainView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainView.xib; sourceTree = "<group>"; };
+		D0F0C80E18D04F2F00232E9D /* MainView~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "MainView~ipad.xib"; sourceTree = "<group>"; };
+		D0F0C81018D04F5400232E9D /* NumberGameView~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "NumberGameView~ipad.xib"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -351,14 +357,15 @@
 		D05A82F918B3223C003C18EB /* Xib */ = {
 			isa = PBXGroup;
 			children = (
-				D0E3211218C87D9100600DF2 /* MainView~ipad.xib */,
 				D05A82FE18B3223C003C18EB /* GameViewController.xib */,
-				D05A830218B3223C003C18EB /* MainView.xib */,
+				D0F0C80C18D0388100232E9D /* MainView.xib */,
+				D0F0C80E18D04F2F00232E9D /* MainView~ipad.xib */,
 				D0414E9418B36BD500A296F6 /* NumberGameView.xib */,
+				D0F0C81018D04F5400232E9D /* NumberGameView~ipad.xib */,
 				D0E388B318C06F45001000FC /* ResultView.xib */,
+				D0F0C80818D0386E00232E9D /* ResultView~ipad.xib */,
 				D0E364CD18BAFE8B00A5676B /* InGameMessageView.xib */,
 				D0E0AE7818C5C6B30069D746 /* GameViewController~ipad.xib */,
-				D0E0AE7D18C5C6B30069D746 /* NumberGameView~ipad.xib */,
 				D0338B8718C6E06E0006C8B6 /* InGameMessageView~ipad.xib */,
 			);
 			path = Xib;
@@ -605,6 +612,8 @@
 		D0E50A2818A7349300AA353E /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				D0F0C80618D009EF00232E9D /* Achievementx999WtN.png */,
+				D0ED116518CF04BC00C55BA9 /* heart.png */,
 				D0338BB118C72DD30006C8B6 /* UnlockAnswer.png */,
 				D0338B8918C713D60006C8B6 /* Achievementx1.png */,
 				D0338B8A18C713D60006C8B6 /* Achievementx5.png */,
@@ -712,13 +721,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0F0C81118D04F5400232E9D /* NumberGameView~ipad.xib in Resources */,
 				D0E388B418C06F45001000FC /* ResultView.xib in Resources */,
 				D0338B9D18C713D60006C8B6 /* Achievementx1.png in Resources */,
-				D0E0AE8518C5C6B30069D746 /* NumberGameView~ipad.xib in Resources */,
 				D0338B9E18C713D60006C8B6 /* Achievementx5.png in Resources */,
 				D0338B8818C6E06E0006C8B6 /* InGameMessageView~ipad.xib in Resources */,
 				D0338BA418C713D60006C8B6 /* Achievementx50.png in Resources */,
 				D0338BAF18C713D60006C8B6 /* Achievementx500.png in Resources */,
+				D0F0C80718D009EF00232E9D /* Achievementx999WtN.png in Resources */,
 				D0338BAA18C713D60006C8B6 /* Achievementx150.png in Resources */,
 				D05A831918B3223C003C18EB /* InfoPlist.strings in Resources */,
 				D09124BC18CC55520050B59F /* whoosh.caf in Resources */,
@@ -728,11 +738,13 @@
 				D09124BB18CC55520050B59F /* tick.caf in Resources */,
 				D048A84018ACAAAB00411DF9 /* twitter_share.png in Resources */,
 				D0338BA518C713D60006C8B6 /* Achievementx60.png in Resources */,
+				D0ED116618CF04BC00C55BA9 /* heart.png in Resources */,
 				D091244C18CC28830050B59F /* FlappyBallIcon100x100.png in Resources */,
-				D05A832418B3223C003C18EB /* MainView.xib in Resources */,
 				D0338BA818C713D60006C8B6 /* Achievementx115.png in Resources */,
 				D0E1122B18C2EC6000808072 /* boing.caf in Resources */,
 				D0338BA618C713D60006C8B6 /* Achievementx75.png in Resources */,
+				D0F0C80F18D04F2F00232E9D /* MainView~ipad.xib in Resources */,
+				D0F0C80D18D0388100232E9D /* MainView.xib in Resources */,
 				D0338BA718C713D60006C8B6 /* Achievementx90.png in Resources */,
 				D0338BB018C713D60006C8B6 /* Achievementx999.png in Resources */,
 				D0338BAE18C713D60006C8B6 /* Achievementx350.png in Resources */,
@@ -748,12 +760,12 @@
 				D0338BA318C713D60006C8B6 /* Achievementx40.png in Resources */,
 				D0E1123518C2EDF000808072 /* bling.caf in Resources */,
 				D0338BA218C713D60006C8B6 /* Achievementx30.png in Resources */,
-				D0E3211318C87D9100600DF2 /* MainView~ipad.xib in Resources */,
 				D0338BB218C72DD30006C8B6 /* UnlockAnswer.png in Resources */,
 				D0E1123218C2ECF300808072 /* pop.caf in Resources */,
 				D0338BAC18C713D60006C8B6 /* Achievementx200.png in Resources */,
 				D0338BA918C713D60006C8B6 /* Achievementx130.png in Resources */,
 				D0414E9518B36BD500A296F6 /* NumberGameView.xib in Resources */,
+				D0F0C80918D0386E00232E9D /* ResultView~ipad.xib in Resources */,
 				D091244F18CC28830050B59F /* PromoBannerView~ipad.xib in Resources */,
 				D048A83F18ACAAAB00411DF9 /* facebook_share.png in Resources */,
 				D09124BA18CC55520050B59F /* blop.caf in Resources */,
@@ -865,7 +877,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Jeffrey Wan (YS47XTCZZB)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jeffrey Wan (YS47XTCZZB)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -883,6 +896,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "586EB4FC-3C3C-4FDE-8311-6AFE396A5A49";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -904,7 +918,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Jeffrey Wan (YS47XTCZZB)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jeffrey Wan (YS47XTCZZB)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -915,6 +930,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				PROVISIONING_PROFILE = "586EB4FC-3C3C-4FDE-8311-6AFE396A5A49";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
