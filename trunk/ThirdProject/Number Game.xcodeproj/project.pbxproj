@@ -47,6 +47,7 @@
 		D05A831B18B3223C003C18EB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D05A82F618B3223C003C18EB /* main.m */; };
 		D05A832018B3223C003C18EB /* GameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D05A82FE18B3223C003C18EB /* GameViewController.xib */; };
 		D05A833118B32785003C18EB /* NumberManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D05A833018B32785003C18EB /* NumberManager.m */; };
+		D077A2BC18D1716800744F88 /* NumberGameView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D077A2BB18D1716800744F88 /* NumberGameView~ipad.xib */; };
 		D07F418018A4D8C7009680FD /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07F417F18A4D8C7009680FD /* iAd.framework */; };
 		D091232318CC22320050B59F /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = D091232218CC22320050B59F /* MainWindow.xib */; };
 		D091243618CC28830050B59F /* AppDelegateBase.m in Sources */ = {isa = PBXBuildFile; fileRef = D09123F318CC28830050B59F /* AppDelegateBase.m */; };
@@ -107,7 +108,6 @@
 		D0F0C80918D0386E00232E9D /* ResultView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0F0C80818D0386E00232E9D /* ResultView~ipad.xib */; };
 		D0F0C80D18D0388100232E9D /* MainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0F0C80C18D0388100232E9D /* MainView.xib */; };
 		D0F0C80F18D04F2F00232E9D /* MainView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0F0C80E18D04F2F00232E9D /* MainView~ipad.xib */; };
-		D0F0C81118D04F5400232E9D /* NumberGameView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0F0C81018D04F5400232E9D /* NumberGameView~ipad.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -172,6 +172,7 @@
 		D05A82FE18B3223C003C18EB /* GameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameViewController.xib; sourceTree = "<group>"; };
 		D05A832F18B32785003C18EB /* NumberManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumberManager.h; sourceTree = "<group>"; };
 		D05A833018B32785003C18EB /* NumberManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = NumberManager.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		D077A2BB18D1716800744F88 /* NumberGameView~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "NumberGameView~ipad.xib"; sourceTree = "<group>"; };
 		D07F417F18A4D8C7009680FD /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		D091232218CC22320050B59F /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		D09123F218CC28830050B59F /* AppDelegateBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegateBase.h; sourceTree = "<group>"; };
@@ -264,7 +265,6 @@
 		D0F0C80818D0386E00232E9D /* ResultView~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ResultView~ipad.xib"; sourceTree = "<group>"; };
 		D0F0C80C18D0388100232E9D /* MainView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainView.xib; sourceTree = "<group>"; };
 		D0F0C80E18D04F2F00232E9D /* MainView~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "MainView~ipad.xib"; sourceTree = "<group>"; };
-		D0F0C81018D04F5400232E9D /* NumberGameView~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "NumberGameView~ipad.xib"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -361,7 +361,7 @@
 				D0F0C80C18D0388100232E9D /* MainView.xib */,
 				D0F0C80E18D04F2F00232E9D /* MainView~ipad.xib */,
 				D0414E9418B36BD500A296F6 /* NumberGameView.xib */,
-				D0F0C81018D04F5400232E9D /* NumberGameView~ipad.xib */,
+				D077A2BB18D1716800744F88 /* NumberGameView~ipad.xib */,
 				D0E388B318C06F45001000FC /* ResultView.xib */,
 				D0F0C80818D0386E00232E9D /* ResultView~ipad.xib */,
 				D0E364CD18BAFE8B00A5676B /* InGameMessageView.xib */,
@@ -721,7 +721,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D0F0C81118D04F5400232E9D /* NumberGameView~ipad.xib in Resources */,
+				D077A2BC18D1716800744F88 /* NumberGameView~ipad.xib in Resources */,
 				D0E388B418C06F45001000FC /* ResultView.xib in Resources */,
 				D0338B9D18C713D60006C8B6 /* Achievementx1.png in Resources */,
 				D0338B9E18C713D60006C8B6 /* Achievementx5.png in Resources */,
@@ -941,13 +941,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Jeffrey Wan (MT34DA8UCA)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Jeffrey Wan (YS47XTCZZB)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jeffrey Wan (YS47XTCZZB)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NumberGame/Number Game-Prefix.pch";
 				INFOPLIST_FILE = "NumberGame/Number Game-Info.plist";
 				PRODUCT_NAME = "Number Game";
-				PROVISIONING_PROFILE = "84A682B5-A448-4397-AADD-0B826038A9AA";
+				PROVISIONING_PROFILE = "586EB4FC-3C3C-4FDE-8311-6AFE396A5A49";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -958,13 +958,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Jeffrey Wan (MT34DA8UCA)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Jeffrey Wan (YS47XTCZZB)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jeffrey Wan (YS47XTCZZB)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NumberGame/Number Game-Prefix.pch";
 				INFOPLIST_FILE = "NumberGame/Number Game-Info.plist";
 				PRODUCT_NAME = "Number Game";
-				PROVISIONING_PROFILE = "84A682B5-A448-4397-AADD-0B826038A9AA";
+				PROVISIONING_PROFILE = "586EB4FC-3C3C-4FDE-8311-6AFE396A5A49";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};

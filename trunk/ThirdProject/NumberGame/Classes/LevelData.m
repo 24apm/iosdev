@@ -13,6 +13,7 @@
 
 + (LevelData *)levelConfigForCurrentScore:(int)score {
     LevelData *levelData = [[LevelData alloc] init];
+    //score = 800;
     if (score < 1) {
         levelData.operation = @[SYMBOL_OPERATION_ADDITION];
         levelData.minChoiceValue = 1;

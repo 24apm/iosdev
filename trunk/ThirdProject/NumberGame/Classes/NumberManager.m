@@ -133,8 +133,8 @@
     NSInteger tiles = algebra.count;
     int numberIndex = 2;
     int operatorIndex = 1;
-    int attemptAnswer = [((NSNumber *)algebra[0])intValue];
-    int nextNumber = [((NSNumber *)algebra[numberIndex])intValue];
+    float attemptAnswer = [((NSNumber *)algebra[0])intValue];
+    float nextNumber = [((NSNumber *)algebra[numberIndex])intValue];
     NSString *operator = algebra[operatorIndex];
     for (int i = 0; i <= tiles - 3; i = i + 2) {
         attemptAnswer = [self calculateWithOperandLeft:attemptAnswer operator:operator operandRight:nextNumber];
@@ -217,11 +217,10 @@
 }
 
 - (int) divideNumber:(int)currentNumber {
-    int divideBy = 2;
+    int divideBy = 10;
     while (currentNumber % divideBy != 0) {
-        divideBy++;
-        if (divideBy > 10) {
-            divideBy = 1;
+        divideBy--;
+        if (divideBy < 2) {
             return divideBy;
         }
     }

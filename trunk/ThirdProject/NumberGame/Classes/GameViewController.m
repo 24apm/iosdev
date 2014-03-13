@@ -202,9 +202,11 @@
     if (self.adBannerView.bannerLoaded) {
         self.promoBannerView.hidden = YES;
         bannerYOffset = self.view.height - self.adBannerView.height;
+     //   bannerYOffset = self.view.height;
     } else {
         [self.promoBannerView setupWithPromoGameData:[[PromoManager instance] nextPromo]];
         self.promoBannerView.hidden = NO;
+      //  self.promoBannerView.hidden = YES;
         bannerYOffset = self.view.height;
     }
     

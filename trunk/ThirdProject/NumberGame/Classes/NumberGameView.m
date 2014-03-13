@@ -100,7 +100,7 @@ typedef enum {
 - (void)setupMinimumFontSize:(NSArray *)buttons {
     for (UIButton *button in buttons) {
         button.titleLabel.adjustsFontSizeToFitWidth = YES;
-        button.titleLabel.minimumScaleFactor = 0.5f;
+        button.titleLabel.minimumScaleFactor = 0.3f;
     }
 }
 
@@ -307,7 +307,9 @@ typedef enum {
 }
 
 -(void)showAnswer {
-    [self resetChoices];
+    for (UIButton *choice in self.choiceSlots) {
+        [self hideBorder:choice];
+    }
     self.cheatLabel.hidden = NO;
     NSString *t = @"Answer: ";
     NSMutableArray *newArray = [self.currentLevelData objectForKey:@"currentGeneratedAnswerInStrings"];
@@ -588,8 +590,9 @@ typedef enum {
     [self refreshDisplayAnswers];
     
     if (hasEmpty == NO){
-        float targetValue = [self.targetNumberLabel.text floatValue];
-        BOOL isCorrect =[[NumberManager instance] checkAlgebra:algebra targetValue:targetValue];
+        UIButton *attemptAnswer = [self.answerSlotsB lastObject];
+        NSString *attemptString = [attemptAnswer titleForState:UIControlStateNormal];
+        BOOL isCorrect = ([attemptString isEqualToString:self.targetNumberLabel.text]);
         if (isCorrect) {
             if ([UserData instance].tutorialModeEnabled) {
                 [self tutorialEndGame];
