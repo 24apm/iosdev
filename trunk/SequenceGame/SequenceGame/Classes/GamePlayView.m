@@ -41,19 +41,6 @@
     }];
 }
 
-- (void)wobbleUnits {
-    for (int i = 0; i < self.imagePlaceHolder.count; i++) {
-        [AnimUtil wobble:[self.imagePlaceHolder objectAtIndex:i] duration:1.f angle:M_PI/128.f repeatCount:HUGE_VAL];
-    }
-}
-
-- (void)removeWobbleUnits {
-    for (int i = 0; i < self.imagePlaceHolder.count; i++) {
-        UIView *unit = [self.imagePlaceHolder objectAtIndex:i];
-        [unit.layer removeAllAnimations];
-    }
-}
-
 - (void)hide {
     [UIView animateWithDuration:0.3f animations:^{
         self.transform = CGAffineTransformMakeScale(2.0f, 2.0f);
@@ -113,13 +100,13 @@
 
 - (void)startTime {
     self.startingTime = CACurrentMediaTime();
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0f/60.f target:self selector:@selector(updateTimer) userInfo:nil repeats:YES];
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0f/20.f target:self selector:@selector(updateTimer) userInfo:nil repeats:YES];
 }
 
 - (void)updateTimer {
     double currentTime = CACurrentMediaTime() - self.startingTime;
     
-    self.timeLabel.text = [NSString stringWithFormat:@"%.2F", currentTime];
+    self.timeLabel.text = [NSString stringWithFormat:@"%.3F", currentTime];
 }
 
 - (void)endGame {
@@ -210,6 +197,19 @@
 
 - (void)removeView:(UIView *)view {
     [view removeFromSuperview];
+}
+
+- (void)wobbleUnits {
+    for (int i = 0; i < self.imagePlaceHolder.count; i++) {
+        [AnimUtil wobble:[self.imagePlaceHolder objectAtIndex:i] duration:1.f angle:M_PI/128.f repeatCount:HUGE_VAL];
+    }
+}
+
+- (void)removeWobbleUnits {
+    for (int i = 0; i < self.imagePlaceHolder.count; i++) {
+        UIView *unit = [self.imagePlaceHolder objectAtIndex:i];
+        [unit.layer removeAllAnimations];
+    }
 }
 
 - (void)showMessageView:(NSString *)text {
