@@ -12,9 +12,12 @@
 @property (nonatomic) int maxScore;
 @property (nonatomic, retain) UIImage *lastGameSS;
 @property (nonatomic) BOOL tutorialModeEnabled;
+@property (nonatomic) double currentScore;
 
 + (UserData *)instance;
 - (void)submitScore:(int)score;
 - (void)resetLocalScore;
-
+- (NSArray *)loadLocalLeaderBoard;
+- (void)addNewScoreLocalLeaderBoard:(double)newScores;
+- (void)resetLocalLeaderBoard;
 @end

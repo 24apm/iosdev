@@ -10,6 +10,9 @@
 
 @interface InGameMessageView : XibView
 
+@property (strong, nonatomic) IBOutlet UILabel *label;
+
 - (void)show;
+- (void)show:(NSString *)text;
 
 @end

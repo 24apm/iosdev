@@ -10,7 +10,7 @@
 
 #define IPAD_SCALE ((UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 2.0f : 1.0f)
 
-#define DEBUG_MODE NO
+#define DEBUG_MODE YES
 
 // Game Center
 #define kLeaderboardID @"com.jeffrwan.thenumbergame.level"
@@ -43,10 +43,9 @@
 #define SOUND_EFFECT_TICKING @"ticking"
 #define SOUND_EFFECT_WINNING @"winningEffect"
 
-#define SYMBOL_OPERATION_ADDITION @"+"
-#define SYMBOL_OPERATION_SUBTRACTION @"-"
-#define SYMBOL_OPERATION_MULTIPLICATION @"×"
-#define SYMBOL_OPERATION_DIVSION @"÷"
+#define IMAGE_ARROW @"arrow.png"
+#define IMAGE_MONSTER @"monster.png"
+#define IMAGE_BOSS @"boss.png"
 
 @interface GameConstants : NSObject
 

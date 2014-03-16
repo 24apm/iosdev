@@ -13,7 +13,6 @@
 #import "UserData.h"
 #import "NumberGameIAPHelper.h"
 #import "GameCenterHelper.h"
-#import "NumberManager.h"
 #import "SoundManager.h"
 #import "GameConstants.h"
 

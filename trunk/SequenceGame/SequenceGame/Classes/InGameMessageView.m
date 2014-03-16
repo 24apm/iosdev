@@ -10,6 +10,11 @@
 
 @implementation InGameMessageView
 
+- (void)show:(NSString *)text {
+    self.label.text = text;
+    [self show];
+}
+
 - (void)show {
     self.hidden = NO;
     self.alpha = 1.0f;
@@ -27,9 +32,7 @@
                     self.transform = CGAffineTransformMakeScale(2.00f, 2.00f);
                     self.alpha = 0.f;
                 } completion:^(BOOL completed) {
-                    self.transform = CGAffineTransformIdentity;
-                    self.hidden = YES;
-                    self.alpha = 1.0f;
+                    [self hide];
                 }];
             }];
         }];
@@ -37,7 +40,9 @@
 }
 
 - (void)hide {
-    
+    self.transform = CGAffineTransformIdentity;
+    self.hidden = YES;
+    self.alpha = 1.0f;
 }
 
 @end

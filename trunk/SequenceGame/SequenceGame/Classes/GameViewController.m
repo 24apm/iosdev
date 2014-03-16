@@ -15,20 +15,21 @@
 #import "MainView.h"
 #import "SoundEffect.h"
 #import "SoundManager.h"
-#import "NumberManager.h"
-#import "NumberGameView.h"
+#import "GamePlayView.h"
 #import "GameCenterHelper.h"
 #import "UserData.h"
 #import "PromoBannerView.h"
 #import "PromoManager.h"
+#import "LocalLeaderBoardView.h"
 
 @interface GameViewController ()
 
 @property (strong, nonatomic) ResultView *resultView;
 @property (strong, nonatomic) MainView *mainView;
-@property (strong, nonatomic) NumberGameView *numberGameView;
+@property (strong, nonatomic) GamePlayView *numberGameView;
 @property (strong, nonatomic) NSArray *products;
 @property (strong, nonatomic) PromoBannerView *promoBannerView;
+@property (strong, nonatomic) LocalLeaderBoardView *localLeaderBoardView;
 
 @end
 
@@ -41,14 +42,17 @@
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showLeaderboard) name:SHOW_LEADERBOARD_NOTIFICATION object:nil];
 
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(numberGameViewCallback) name: NUMBER_GAME_CALLBACK_NOTIFICATION object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(numberGameViewReturnLobbyCallback) name: NUMBER_GAME_RETURN_LOBBY_NOTIFICATION object:nil];
-
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showAchievements) name: SHOW_ACHIEVEMENT_NOTIFICATION object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resultViewCallback) name:RESULT_VIEW_DISMISSED_NOTIFICATION object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showAnswerCallback) name:RESULT_VIEW_SHOW_ANSWER_NOTIFICATION object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showAchievementEarned:) name:SHOW_ACHIEVETMENT_EARNED object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gameplayViewCallback) name:GAMEPLAY_VIEW_DISMISSED_NOTIFICATION object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(retryCallback) name:RETRY_BUTTON_NOTIFICATION object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(topCallback) name:TOP_BUTTON_NOTIFICATION object:nil];
     
     self.mainView = [[MainView alloc] init];
     [self.containerView addSubview:self.mainView];
@@ -56,7 +60,7 @@
     self.mainView.size = self.containerView.size;
     [UserData instance].tutorialModeEnabled = NO;
     
-    self.numberGameView = [[NumberGameView alloc] init];
+    self.numberGameView = [[GamePlayView alloc] init];
     [self.containerView addSubview:self.numberGameView ];
     self.numberGameView.hidden = YES;
     self.numberGameView.size = self.containerView.size;
@@ -66,6 +70,11 @@
     self.resultView.hidden = YES;
     self.resultView.size = self.containerView.size;
 
+    self.localLeaderBoardView = [[LocalLeaderBoardView alloc] init];
+    [self.containerView addSubview:self.localLeaderBoardView];
+    self.localLeaderBoardView.hidden = YES;
+    self.localLeaderBoardView.size = self.containerView.size;
+    
     [self preloadSounds];
     [self updateGameState:GameStateMainMode];
 }
@@ -110,6 +119,18 @@
     [self updateGameState:GameStateShowAchievementMode];
 }
 
+- (void)gameplayViewCallback {
+    [self updateGameState:GameStateLocalLeaderBoardMode];
+}
+
+- (void)retryCallback {
+    [self updateGameState:GameStateGameMode];
+}
+
+- (void)topCallback {
+    [self updateGameState:GameStateMainMode];
+}
+
 - (void)showAchievementEarned: (NSNotification *)notification {
     self.resultView.imgView.image = [UIImage imageNamed:notification.object];
     self.resultView.hidden = NO;
@@ -121,7 +142,8 @@
     self.containerView.userInteractionEnabled = YES;
     self.mainView.hidden = YES;
     self.numberGameView.hidden = YES;
-
+    self.localLeaderBoardView.hidden = YES;
+    
     switch (self.currentGameState) {
         case GameStateMainMode:
             self.mainView.hidden = NO;
@@ -137,7 +159,6 @@
             break;
         case GameStateShowAnswerMode:
             self.numberGameView.hidden = NO;
-            [self.numberGameView showAnswer];
             [self.numberGameView show];
             break;
         case GameStatePauseMode:
@@ -145,6 +166,10 @@
             break;
         case GameStateResumeMode:
             self.numberGameView.hidden = NO;
+            break;
+        case GameStateLocalLeaderBoardMode:
+            self.localLeaderBoardView.hidden = NO;
+            [self.localLeaderBoardView show];
             break;
         default:
             break;
@@ -168,8 +193,10 @@
     [self createAdBannerView];
     [self.view addSubview:self.adBannerView];
     
-    [GameCenterHelper instance].currentLeaderBoard = kLeaderboardID;
-    [[GameCenterHelper instance] loginToGameCenter];
+    if (!DEBUG_MODE) {
+        [GameCenterHelper instance].currentLeaderBoard = kLeaderboardID;
+        [[GameCenterHelper instance] loginToGameCenter];
+    }
 }
 
 - (void)didReceiveMemoryWarning

@@ -44,6 +44,7 @@
 }
 
 - (IBAction)resetLocalScore:(id)sender {
+    [[UserData instance] resetLocalLeaderBoard];
     [[UserData instance] resetLocalScore];
 }
 

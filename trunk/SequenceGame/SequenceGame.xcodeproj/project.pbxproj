@@ -75,13 +75,11 @@
 		D0E2E9A818D2D288009C757F /* GameConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E2E97D18D2D288009C757F /* GameConstants.m */; };
 		D0E2E9A918D2D288009C757F /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E2E97F18D2D288009C757F /* GameViewController.m */; };
 		D0E2E9AA18D2D288009C757F /* InGameMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E2E98118D2D288009C757F /* InGameMessageView.m */; };
-		D0E2E9AB18D2D288009C757F /* LevelData.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E2E98318D2D288009C757F /* LevelData.m */; };
 		D0E2E9AC18D2D288009C757F /* MainView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E2E98518D2D288009C757F /* MainView.m */; };
 		D0E2E9AD18D2D288009C757F /* MenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E2E98718D2D288009C757F /* MenuView.m */; };
 		D0E2E9AE18D2D288009C757F /* NotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E2E98918D2D288009C757F /* NotificationManager.m */; };
 		D0E2E9AF18D2D288009C757F /* NumberGameIAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E2E98B18D2D288009C757F /* NumberGameIAPHelper.m */; };
-		D0E2E9B018D2D288009C757F /* NumberGameView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E2E98D18D2D288009C757F /* NumberGameView.m */; };
-		D0E2E9B118D2D288009C757F /* NumberManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E2E98F18D2D288009C757F /* NumberManager.m */; };
+		D0E2E9B018D2D288009C757F /* GamePlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E2E98D18D2D288009C757F /* GamePlayView.m */; };
 		D0E2E9B218D2D288009C757F /* ResultView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E2E99118D2D288009C757F /* ResultView.m */; };
 		D0E2E9B318D2D288009C757F /* UserData.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E2E99318D2D288009C757F /* UserData.m */; };
 		D0E2E9B418D2D288009C757F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D0E2E99418D2D288009C757F /* InfoPlist.strings */; };
@@ -95,8 +93,7 @@
 		D0E2E9BC18D2D288009C757F /* InGameMessageView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E2E99F18D2D288009C757F /* InGameMessageView~ipad.xib */; };
 		D0E2E9BD18D2D288009C757F /* MainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E2E9A018D2D288009C757F /* MainView.xib */; };
 		D0E2E9BE18D2D288009C757F /* MainView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E2E9A118D2D288009C757F /* MainView~ipad.xib */; };
-		D0E2E9BF18D2D288009C757F /* NumberGameView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E2E9A218D2D288009C757F /* NumberGameView.xib */; };
-		D0E2E9C018D2D288009C757F /* NumberGameView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E2E9A318D2D288009C757F /* NumberGameView~ipad.xib */; };
+		D0E2E9BF18D2D288009C757F /* GamePlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E2E9A218D2D288009C757F /* GamePlayView.xib */; };
 		D0E2E9C118D2D288009C757F /* ResultView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E2E9A418D2D288009C757F /* ResultView.xib */; };
 		D0E2E9C218D2D288009C757F /* ResultView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E2E9A518D2D288009C757F /* ResultView~ipad.xib */; };
 		D0E30E8518A376E300FFD3CE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E30E8418A376E300FFD3CE /* Foundation.framework */; };
@@ -107,8 +104,20 @@
 		D0E30EA618A376E300FFD3CE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E30E8818A376E300FFD3CE /* UIKit.framework */; };
 		D0E30EDF18A37D6400FFD3CE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E30EDE18A37D6400FFD3CE /* QuartzCore.framework */; };
 		D0E36B8B18C2906F00BA56E7 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E36B8A18C2906F00BA56E7 /* StoreKit.framework */; };
+		D0E378FF18D42CF700541404 /* GameManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E378FE18D42CF700541404 /* GameManager.m */; };
+		D0EA7EBE18D521C90095DEBD /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EA7EBA18D521C90095DEBD /* arrow.png */; };
+		D0EA7EBF18D521C90095DEBD /* shield.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EA7EBB18D521C90095DEBD /* shield.png */; };
+		D0EA7EC018D521C90095DEBD /* sword.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EA7EBC18D521C90095DEBD /* sword.png */; };
+		D0EA7EC118D521C90095DEBD /* monster.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EA7EBD18D521C90095DEBD /* monster.png */; };
+		D0EA7EC418D52FE90095DEBD /* defend.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EA7EC218D52FE90095DEBD /* defend.png */; };
+		D0EA7EC518D52FE90095DEBD /* attack.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EA7EC318D52FE90095DEBD /* attack.png */; };
+		D0EA7ECA18D548020095DEBD /* LocalLeaderBoardView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0EA7EC918D548020095DEBD /* LocalLeaderBoardView.m */; };
+		D0EA7ECC18D562A10095DEBD /* LocalLeaderBoardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0EA7ECB18D562A10095DEBD /* LocalLeaderBoardView.xib */; };
+		D0EA7ED018D58B0E0095DEBD /* boss.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EA7ECF18D58B0E0095DEBD /* boss.png */; };
 		D0ED116618CF04BC00C55BA9 /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = D0ED116518CF04BC00C55BA9 /* heart.png */; };
 		D0F0C80718D009EF00232E9D /* Achievementx999WtN.png in Resources */ = {isa = PBXBuildFile; fileRef = D0F0C80618D009EF00232E9D /* Achievementx999WtN.png */; };
+		D0F1143618D41299007EB840 /* MonsterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0F1143518D41299007EB840 /* MonsterView.xib */; };
+		D0F1143918D412AF007EB840 /* MonsterView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F1143818D412AF007EB840 /* MonsterView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -222,8 +231,6 @@
 		D0E2E97F18D2D288009C757F /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
 		D0E2E98018D2D288009C757F /* InGameMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InGameMessageView.h; sourceTree = "<group>"; };
 		D0E2E98118D2D288009C757F /* InGameMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InGameMessageView.m; sourceTree = "<group>"; };
-		D0E2E98218D2D288009C757F /* LevelData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelData.h; sourceTree = "<group>"; };
-		D0E2E98318D2D288009C757F /* LevelData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelData.m; sourceTree = "<group>"; };
 		D0E2E98418D2D288009C757F /* MainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainView.h; sourceTree = "<group>"; };
 		D0E2E98518D2D288009C757F /* MainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainView.m; sourceTree = "<group>"; };
 		D0E2E98618D2D288009C757F /* MenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuView.h; sourceTree = "<group>"; };
@@ -232,10 +239,8 @@
 		D0E2E98918D2D288009C757F /* NotificationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationManager.m; sourceTree = "<group>"; };
 		D0E2E98A18D2D288009C757F /* NumberGameIAPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumberGameIAPHelper.h; sourceTree = "<group>"; };
 		D0E2E98B18D2D288009C757F /* NumberGameIAPHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NumberGameIAPHelper.m; sourceTree = "<group>"; };
-		D0E2E98C18D2D288009C757F /* NumberGameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumberGameView.h; sourceTree = "<group>"; };
-		D0E2E98D18D2D288009C757F /* NumberGameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NumberGameView.m; sourceTree = "<group>"; };
-		D0E2E98E18D2D288009C757F /* NumberManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumberManager.h; sourceTree = "<group>"; };
-		D0E2E98F18D2D288009C757F /* NumberManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NumberManager.m; sourceTree = "<group>"; };
+		D0E2E98C18D2D288009C757F /* GamePlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GamePlayView.h; sourceTree = "<group>"; };
+		D0E2E98D18D2D288009C757F /* GamePlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GamePlayView.m; sourceTree = "<group>"; };
 		D0E2E99018D2D288009C757F /* ResultView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultView.h; sourceTree = "<group>"; };
 		D0E2E99118D2D288009C757F /* ResultView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultView.m; sourceTree = "<group>"; };
 		D0E2E99218D2D288009C757F /* UserData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserData.h; sourceTree = "<group>"; };
@@ -252,8 +257,7 @@
 		D0E2E99F18D2D288009C757F /* InGameMessageView~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "InGameMessageView~ipad.xib"; sourceTree = "<group>"; };
 		D0E2E9A018D2D288009C757F /* MainView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainView.xib; sourceTree = "<group>"; };
 		D0E2E9A118D2D288009C757F /* MainView~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "MainView~ipad.xib"; sourceTree = "<group>"; };
-		D0E2E9A218D2D288009C757F /* NumberGameView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NumberGameView.xib; sourceTree = "<group>"; };
-		D0E2E9A318D2D288009C757F /* NumberGameView~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "NumberGameView~ipad.xib"; sourceTree = "<group>"; };
+		D0E2E9A218D2D288009C757F /* GamePlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GamePlayView.xib; sourceTree = "<group>"; };
 		D0E2E9A418D2D288009C757F /* ResultView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResultView.xib; sourceTree = "<group>"; };
 		D0E2E9A518D2D288009C757F /* ResultView~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ResultView~ipad.xib"; sourceTree = "<group>"; };
 		D0E30E8118A376E300FFD3CE /* SequenceGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SequenceGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -264,8 +268,23 @@
 		D0E30EA318A376E300FFD3CE /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		D0E30EDE18A37D6400FFD3CE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D0E36B8A18C2906F00BA56E7 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		D0E378FD18D42CF700541404 /* GameManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameManager.h; sourceTree = "<group>"; };
+		D0E378FE18D42CF700541404 /* GameManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameManager.m; sourceTree = "<group>"; };
+		D0EA7EBA18D521C90095DEBD /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
+		D0EA7EBB18D521C90095DEBD /* shield.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shield.png; sourceTree = "<group>"; };
+		D0EA7EBC18D521C90095DEBD /* sword.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sword.png; sourceTree = "<group>"; };
+		D0EA7EBD18D521C90095DEBD /* monster.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = monster.png; sourceTree = "<group>"; };
+		D0EA7EC218D52FE90095DEBD /* defend.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = defend.png; sourceTree = "<group>"; };
+		D0EA7EC318D52FE90095DEBD /* attack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = attack.png; sourceTree = "<group>"; };
+		D0EA7EC818D548020095DEBD /* LocalLeaderBoardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalLeaderBoardView.h; sourceTree = "<group>"; };
+		D0EA7EC918D548020095DEBD /* LocalLeaderBoardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalLeaderBoardView.m; sourceTree = "<group>"; };
+		D0EA7ECB18D562A10095DEBD /* LocalLeaderBoardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocalLeaderBoardView.xib; sourceTree = "<group>"; };
+		D0EA7ECF18D58B0E0095DEBD /* boss.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = boss.png; sourceTree = "<group>"; };
 		D0ED116518CF04BC00C55BA9 /* heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart.png; sourceTree = "<group>"; };
 		D0F0C80618D009EF00232E9D /* Achievementx999WtN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Achievementx999WtN.png; path = "../../../../../../New folder (7)/Achievementx999WtN.png"; sourceTree = "<group>"; };
+		D0F1143518D41299007EB840 /* MonsterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MonsterView.xib; sourceTree = "<group>"; };
+		D0F1143718D412AF007EB840 /* MonsterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonsterView.h; sourceTree = "<group>"; };
+		D0F1143818D412AF007EB840 /* MonsterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonsterView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -525,8 +544,6 @@
 				D0E2E97F18D2D288009C757F /* GameViewController.m */,
 				D0E2E98018D2D288009C757F /* InGameMessageView.h */,
 				D0E2E98118D2D288009C757F /* InGameMessageView.m */,
-				D0E2E98218D2D288009C757F /* LevelData.h */,
-				D0E2E98318D2D288009C757F /* LevelData.m */,
 				D0E2E98418D2D288009C757F /* MainView.h */,
 				D0E2E98518D2D288009C757F /* MainView.m */,
 				D0E2E98618D2D288009C757F /* MenuView.h */,
@@ -535,14 +552,18 @@
 				D0E2E98918D2D288009C757F /* NotificationManager.m */,
 				D0E2E98A18D2D288009C757F /* NumberGameIAPHelper.h */,
 				D0E2E98B18D2D288009C757F /* NumberGameIAPHelper.m */,
-				D0E2E98C18D2D288009C757F /* NumberGameView.h */,
-				D0E2E98D18D2D288009C757F /* NumberGameView.m */,
-				D0E2E98E18D2D288009C757F /* NumberManager.h */,
-				D0E2E98F18D2D288009C757F /* NumberManager.m */,
+				D0E2E98C18D2D288009C757F /* GamePlayView.h */,
+				D0E2E98D18D2D288009C757F /* GamePlayView.m */,
 				D0E2E99018D2D288009C757F /* ResultView.h */,
 				D0E2E99118D2D288009C757F /* ResultView.m */,
 				D0E2E99218D2D288009C757F /* UserData.h */,
+				D0F1143718D412AF007EB840 /* MonsterView.h */,
 				D0E2E99318D2D288009C757F /* UserData.m */,
+				D0F1143818D412AF007EB840 /* MonsterView.m */,
+				D0E378FD18D42CF700541404 /* GameManager.h */,
+				D0E378FE18D42CF700541404 /* GameManager.m */,
+				D0EA7EC818D548020095DEBD /* LocalLeaderBoardView.h */,
+				D0EA7EC918D548020095DEBD /* LocalLeaderBoardView.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -550,16 +571,17 @@
 		D0E2E99B18D2D288009C757F /* Xib */ = {
 			isa = PBXGroup;
 			children = (
+				D0EA7ECB18D562A10095DEBD /* LocalLeaderBoardView.xib */,
 				D0E2E99C18D2D288009C757F /* GameViewController.xib */,
 				D0E2E99D18D2D288009C757F /* GameViewController~ipad.xib */,
 				D0E2E99E18D2D288009C757F /* InGameMessageView.xib */,
 				D0E2E99F18D2D288009C757F /* InGameMessageView~ipad.xib */,
 				D0E2E9A018D2D288009C757F /* MainView.xib */,
 				D0E2E9A118D2D288009C757F /* MainView~ipad.xib */,
-				D0E2E9A218D2D288009C757F /* NumberGameView.xib */,
-				D0E2E9A318D2D288009C757F /* NumberGameView~ipad.xib */,
+				D0E2E9A218D2D288009C757F /* GamePlayView.xib */,
 				D0E2E9A418D2D288009C757F /* ResultView.xib */,
 				D0E2E9A518D2D288009C757F /* ResultView~ipad.xib */,
+				D0F1143518D41299007EB840 /* MonsterView.xib */,
 			);
 			path = Xib;
 			sourceTree = "<group>";
@@ -613,6 +635,13 @@
 		D0E50A2818A7349300AA353E /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				D0EA7ECF18D58B0E0095DEBD /* boss.png */,
+				D0EA7EC218D52FE90095DEBD /* defend.png */,
+				D0EA7EC318D52FE90095DEBD /* attack.png */,
+				D0EA7EBA18D521C90095DEBD /* arrow.png */,
+				D0EA7EBB18D521C90095DEBD /* shield.png */,
+				D0EA7EBC18D521C90095DEBD /* sword.png */,
+				D0EA7EBD18D521C90095DEBD /* monster.png */,
 				D0F0C80618D009EF00232E9D /* Achievementx999WtN.png */,
 				D0ED116518CF04BC00C55BA9 /* heart.png */,
 				D0338BB118C72DD30006C8B6 /* UnlockAnswer.png */,
@@ -733,26 +762,34 @@
 				D09124BC18CC55520050B59F /* whoosh.caf in Resources */,
 				D0E1122F18C2EC6000808072 /* winningEffect.caf in Resources */,
 				D0338BAD18C713D60006C8B6 /* Achievementx250.png in Resources */,
+				D0F1143618D41299007EB840 /* MonsterView.xib in Resources */,
 				D09124BB18CC55520050B59F /* tick.caf in Resources */,
 				D048A84018ACAAAB00411DF9 /* twitter_share.png in Resources */,
 				D0E2E9BD18D2D288009C757F /* MainView.xib in Resources */,
 				D0338BA518C713D60006C8B6 /* Achievementx60.png in Resources */,
 				D0ED116618CF04BC00C55BA9 /* heart.png in Resources */,
 				D091244C18CC28830050B59F /* FlappyBallIcon100x100.png in Resources */,
-				D0E2E9BF18D2D288009C757F /* NumberGameView.xib in Resources */,
+				D0EA7EBF18D521C90095DEBD /* shield.png in Resources */,
+				D0EA7EC018D521C90095DEBD /* sword.png in Resources */,
+				D0EA7ECC18D562A10095DEBD /* LocalLeaderBoardView.xib in Resources */,
+				D0E2E9BF18D2D288009C757F /* GamePlayView.xib in Resources */,
 				D0338BA818C713D60006C8B6 /* Achievementx115.png in Resources */,
+				D0EA7ED018D58B0E0095DEBD /* boss.png in Resources */,
 				D0E1122B18C2EC6000808072 /* boing.caf in Resources */,
 				D0338BA618C713D60006C8B6 /* Achievementx75.png in Resources */,
 				D0338BA718C713D60006C8B6 /* Achievementx90.png in Resources */,
 				D0338BB018C713D60006C8B6 /* Achievementx999.png in Resources */,
 				D0338BAE18C713D60006C8B6 /* Achievementx350.png in Resources */,
+				D0EA7EC418D52FE90095DEBD /* defend.png in Resources */,
 				D0E1123318C2ECF300808072 /* ticking.caf in Resources */,
+				D0EA7EC518D52FE90095DEBD /* attack.png in Resources */,
+				D0EA7EC118D521C90095DEBD /* monster.png in Resources */,
 				D0E2E9BE18D2D288009C757F /* MainView~ipad.xib in Resources */,
 				D0338B9F18C713D60006C8B6 /* Achievementx10.png in Resources */,
 				D091244E18CC28830050B59F /* PromoBannerView.xib in Resources */,
 				D0E2E9BA18D2D288009C757F /* GameViewController~ipad.xib in Resources */,
-				D0E2E9C018D2D288009C757F /* NumberGameView~ipad.xib in Resources */,
 				D0E2E9C218D2D288009C757F /* ResultView~ipad.xib in Resources */,
+				D0EA7EBE18D521C90095DEBD /* arrow.png in Resources */,
 				D0338BA018C713D60006C8B6 /* Achievementx15.png in Resources */,
 				D0338BA118C713D60006C8B6 /* Achievementx20.png in Resources */,
 				D0338BA318C713D60006C8B6 /* Achievementx40.png in Resources */,
@@ -795,24 +832,25 @@
 				D091244218CC28830050B59F /* SoundManager.m in Sources */,
 				D0E2E9A718D2D288009C757F /* GameCenterHelper.m in Sources */,
 				D091244518CC28830050B59F /* UIView+ViewUtil.m in Sources */,
+				D0F1143918D412AF007EB840 /* MonsterView.m in Sources */,
 				D0E2E9AC18D2D288009C757F /* MainView.m in Sources */,
 				D091243C18CC28830050B59F /* XibView.m in Sources */,
 				D091243818CC28830050B59F /* GameCenterHelperBase.m in Sources */,
 				D091245018CC28830050B59F /* PromoGameData.m in Sources */,
 				D091244918CC28830050B59F /* IAPHelper.m in Sources */,
+				D0EA7ECA18D548020095DEBD /* LocalLeaderBoardView.m in Sources */,
 				D091244718CC28830050B59F /* FXLabel.m in Sources */,
 				D091244818CC28830050B59F /* GameCenterManager.m in Sources */,
 				D091244318CC28830050B59F /* AnimUtil.m in Sources */,
 				D091243F18CC28830050B59F /* WorldObjectView.m in Sources */,
-				D0E2E9AB18D2D288009C757F /* LevelData.m in Sources */,
 				D0E2E9B218D2D288009C757F /* ResultView.m in Sources */,
 				D0E2E9A818D2D288009C757F /* GameConstants.m in Sources */,
 				D091243E18CC28830050B59F /* WorldObjectProperties.m in Sources */,
 				D0E2E9AD18D2D288009C757F /* MenuView.m in Sources */,
 				D0E2E9AE18D2D288009C757F /* NotificationManager.m in Sources */,
 				D091244618CC28830050B59F /* Utils.m in Sources */,
+				D0E378FF18D42CF700541404 /* GameManager.m in Sources */,
 				D091245218CC28830050B59F /* THLabel.m in Sources */,
-				D0E2E9B118D2D288009C757F /* NumberManager.m in Sources */,
 				D0E2E9AA18D2D288009C757F /* InGameMessageView.m in Sources */,
 				D091243A18CC28830050B59F /* Hex.m in Sources */,
 				D091243B18CC28830050B59F /* NotificationManagerBase.m in Sources */,
@@ -822,7 +860,7 @@
 				D091243D18CC28830050B59F /* ProgressBarComponent.m in Sources */,
 				D0E2E9B618D2D288009C757F /* main.m in Sources */,
 				D0E2E9A618D2D288009C757F /* AppDelegate.m in Sources */,
-				D0E2E9B018D2D288009C757F /* NumberGameView.m in Sources */,
+				D0E2E9B018D2D288009C757F /* GamePlayView.m in Sources */,
 				D0E2E9AF18D2D288009C757F /* NumberGameIAPHelper.m in Sources */,
 				D091243718CC28830050B59F /* Base.m in Sources */,
 				D0E2E9B318D2D288009C757F /* UserData.m in Sources */,
@@ -943,13 +981,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Jeffrey Wan (YS47XTCZZB)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jeffrey Wan (MT34DA8UCA)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jeffrey Wan (YS47XTCZZB)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SequenceGame/SequenceGame-Prefix.pch";
 				INFOPLIST_FILE = "SequenceGame/SequenceGame-Info.plist";
 				PRODUCT_NAME = SequenceGame;
-				PROVISIONING_PROFILE = "586EB4FC-3C3C-4FDE-8311-6AFE396A5A49";
+				PROVISIONING_PROFILE = "84A682B5-A448-4397-AADD-0B826038A9AA";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -960,13 +998,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Jeffrey Wan (YS47XTCZZB)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jeffrey Wan (MT34DA8UCA)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jeffrey Wan (YS47XTCZZB)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SequenceGame/SequenceGame-Prefix.pch";
 				INFOPLIST_FILE = "SequenceGame/SequenceGame-Info.plist";
 				PRODUCT_NAME = SequenceGame;
-				PROVISIONING_PROFILE = "586EB4FC-3C3C-4FDE-8311-6AFE396A5A49";
+				PROVISIONING_PROFILE = "84A682B5-A448-4397-AADD-0B826038A9AA";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
