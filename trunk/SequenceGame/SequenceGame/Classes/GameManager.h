@@ -25,7 +25,6 @@ typedef enum {
 + (GameManager *)instance;
 - (void)sequenceCaculation:(UserInput)input;
 - (NSArray *)currentVisibleQueue;
-- (NSString *)imagePathFor:(UnitType)unitType;
 - (NSString *)imagePathForUserInput:(UserInput)userInput;
 
 @property (nonatomic, strong) NSMutableArray *unitQueue;

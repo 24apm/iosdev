@@ -14,42 +14,27 @@
 - (id)initWithUnitType:(UnitType)unitType {
     self = [super init];
     if (self) {
+        self.unitType = unitType;
         [self setupWithUnitType:unitType];
     }
     return self;
 }
 
 - (void)setupWithUnitType:(UnitType)unitType {
-    self.unitType = unitType;
-    
     switch (unitType) {
         case UnitTypeArrow:
             self.hp = 1;
+            self.imagePath = IMAGE_ARROW;
             break;
         case UnitTypeMonster:
             self.hp = 1;
+            self.imagePath = IMAGE_MONSTER;
             break;
         case UnitTypeBoss:
             self.hp = 20;
+            self.imagePath = IMAGE_BOSS;
             break;
         default:
-            break;
-    }
-}
-
-+ (NSString *)imagePathFor:(UnitType)unitType {
-    switch (unitType) {
-        case UnitTypeArrow:
-            return IMAGE_ARROW;
-            break;
-        case UnitTypeMonster:
-            return IMAGE_MONSTER;
-            break;
-        case UnitTypeBoss:
-            return IMAGE_BOSS;
-            break;
-        default:
-            return nil;
             break;
     }
 }

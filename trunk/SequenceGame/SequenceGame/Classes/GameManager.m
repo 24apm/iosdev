@@ -58,10 +58,6 @@
     return [self.unitQueue subarrayWithRange:range];
 }
 
-- (NSString *)imagePathFor:(UnitType)unitType {
-    return [MonsterData imagePathFor:unitType];
-}
-
 - (NSString *)imagePathForUserInput:(UserInput)userInput {
     switch (userInput) {
         case UserInputAttack:

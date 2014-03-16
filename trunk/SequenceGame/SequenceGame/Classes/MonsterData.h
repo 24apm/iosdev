@@ -17,10 +17,10 @@ typedef enum {
 
 @interface MonsterData : NSObject
 
-@property (nonatomic) UnitType  unitType;
-@property (nonatomic) int       hp;
+@property (nonatomic) UnitType          unitType;
+@property (nonatomic, copy) NSString    *imagePath;
+@property (nonatomic) int               hp;
 
-+ (NSString *)imagePathFor:(UnitType)unitType;
 - (id)initWithUnitType:(UnitType)unitType;
 
 @end

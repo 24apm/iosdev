@@ -80,14 +80,14 @@
 - (void)refreshGame {
     NSArray *visibleUnits = [[GameManager instance] currentVisibleQueue];
     for (int i = 0; i < self.imagePlaceHolder.count; i++) {
-        int unitType;
+        NSString *imagePath;
         if (i < visibleUnits.count) {
-            unitType = ((MonsterData *)[visibleUnits objectAtIndex:i]).unitType;
+            imagePath = ((MonsterData *)[visibleUnits objectAtIndex:i]).imagePath;
         } else {
-            unitType = UnitTypeEmpty;
+            imagePath = nil;
         }
         MonsterView *monsterView = [self.imagePlaceHolder objectAtIndex:i];
-        [monsterView refreshImage:[[GameManager instance] imagePathFor:unitType]];
+        [monsterView refreshImage:imagePath];
     }
 }
 
