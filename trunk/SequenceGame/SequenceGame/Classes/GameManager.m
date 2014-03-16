@@ -24,19 +24,25 @@
     self.unitQueue = [NSMutableArray array];
     NSArray *units = @[@(UnitTypeArrow), @(UnitTypeMonster)];
     for (int i = 0; i < 50; i++) {
-        [self.unitQueue addObject:[units randomObject]];
+        UnitType unitType = [[units randomObject] integerValue];
+        [self.unitQueue addObject:[[MonsterData alloc] initWithUnitType:unitType]];
     }
-    [self.unitQueue addObject:[NSNumber numberWithInt:UnitTypeBoss]];
+    [self.unitQueue addObject:[[MonsterData alloc] initWithUnitType:UnitTypeBoss]];
 }
 
 - (void)sequenceCaculation:(UserInput)input {
     if (self.step >= self.unitQueue.count) {
         [[NSNotificationCenter defaultCenter] postNotificationName:GAMEPLAY_VIEW_VICTORY_NOTIFICATION object:nil];
     }
-    if(([[self.unitQueue objectAtIndex:self.step] integerValue] == UnitTypeArrow && input == UserInputDefend) ||
-       ([[self.unitQueue objectAtIndex:self.step] integerValue] == UnitTypeMonster && input == UserInputAttack) ||
-        ([[self.unitQueue objectAtIndex:self.step] integerValue] == UnitTypeBoss && input == UserInputAttack)) {
-        self.step++;
+    MonsterData *monsterData = [self.unitQueue objectAtIndex:self.step];
+    
+    if((monsterData.unitType == UnitTypeArrow && input == UserInputDefend) ||
+       (monsterData.unitType == UnitTypeMonster && input == UserInputAttack) ||
+       (monsterData.unitType == UnitTypeBoss && input == UserInputAttack)) {
+        monsterData.hp--;
+        if (monsterData.hp <= 0) {
+            self.step++;
+        }
         [[NSNotificationCenter defaultCenter] postNotificationName:GAME_MANAGER_REFRESH_NOTIFICATION object:nil];
     } else {
         [[NSNotificationCenter defaultCenter] postNotificationName:GAME_MANAGER_END_GAME_NOTIFICATION object:nil];
@@ -53,20 +59,7 @@
 }
 
 - (NSString *)imagePathFor:(UnitType)unitType {
-    switch (unitType) {
-        case UnitTypeArrow:
-            return IMAGE_ARROW;
-            break;
-        case UnitTypeMonster:
-            return IMAGE_MONSTER;
-            break;
-        case UnitTypeBoss:
-            return IMAGE_BOSS;
-            break;
-        default:
-            return nil;
-            break;
-    }
+    return [MonsterData imagePathFor:unitType];
 }
 
 - (NSString *)imagePathForUserInput:(UserInput)userInput {

@@ -154,7 +154,6 @@
             break;
         case GameStateGameMode:
             self.numberGameView.hidden = NO;
-            [self.numberGameView refreshGame];
             [self.numberGameView show];
             break;
         case GameStateShowAnswerMode:

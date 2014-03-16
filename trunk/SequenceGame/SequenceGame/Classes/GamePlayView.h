@@ -8,6 +8,7 @@
 
 #import "XibView.h"
 #import "MonsterView.h"
+#import "THLabel.h"
 
 #define GAMEPLAY_VIEW_DISMISSED_NOTIFICATION @"GAMEPLAY_VIEW_DISMISSED_NOTIFICATION"
 

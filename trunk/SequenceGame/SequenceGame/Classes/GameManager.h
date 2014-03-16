@@ -8,17 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import "Utils.h"
+#import "MonsterData.h"
 
 #define GAME_MANAGER_REFRESH_NOTIFICATION @"GAME_MANAGER_REFRESH_NOTIFICATION"
 #define GAME_MANAGER_END_GAME_NOTIFICATION @"GAME_MANAGER_END_GAME_NOTIFICATION"
 #define GAMEPLAY_VIEW_VICTORY_NOTIFICATION @"GAMEPLAY_VIEW_VICTORY_NOTIFICATION"
-
-typedef enum {
-    UnitTypeEmpty,
-    UnitTypeArrow,
-    UnitTypeMonster,
-    UnitTypeBoss
-} UnitType;
 
 typedef enum {
     UserInputDefend,

@@ -30,7 +30,7 @@
     self.startingTime = 0;
     self.timeLabel.text = [NSString stringWithFormat:@"0.00"];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshGameCallback) name:GAME_MANAGER_REFRESH_NOTIFICATION object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(endGame) name:GAME_MANAGER_END_GAME_NOTIFICATION object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(lostGame) name:GAME_MANAGER_END_GAME_NOTIFICATION object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(victoryGame) name:GAMEPLAY_VIEW_VICTORY_NOTIFICATION object:nil];
     [self renewGame];
     [UIView animateWithDuration:0.3f animations:^{
@@ -78,12 +78,11 @@
 }
 
 - (void)refreshGame {
-   
-    NSArray *level = [[GameManager instance] currentVisibleQueue];
+    NSArray *visibleUnits = [[GameManager instance] currentVisibleQueue];
     for (int i = 0; i < self.imagePlaceHolder.count; i++) {
         int unitType;
-        if (i < level.count) {
-            unitType = [[level objectAtIndex:i]intValue];
+        if (i < visibleUnits.count) {
+            unitType = ((MonsterData *)[visibleUnits objectAtIndex:i]).unitType;
         } else {
             unitType = UnitTypeEmpty;
         }
@@ -125,8 +124,7 @@
 
 - (void)endGame {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    [self.timer invalidate];
-    self.timer = nil;
+
     [[NSNotificationCenter defaultCenter] postNotificationName:GAMEPLAY_VIEW_DISMISSED_NOTIFICATION object:self];
     [self hide];
 }
@@ -134,10 +132,10 @@
 #pragma mark - Animation
 
 - (void)animateWeapon:(UserInput)userInput {
-    [self animateFadeInOut:[[GameManager instance] imagePathForUserInput:userInput]];
+    [self animateWeaponType:[[GameManager instance] imagePathForUserInput:userInput]];
 }
 
-- (void)animateFadeInOut:(NSString *)imagePath {
+- (void)animateWeaponType:(NSString *)imagePath {
     UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:imagePath]];
     [self addSubview:imageView];
     
@@ -149,6 +147,27 @@
     } completion:^ (BOOL completed) {
         [UIView animateWithDuration:0.3f delay:0.f options:UIViewAnimationOptionCurveEaseInOut animations:^{
             imageView.alpha = 0.0f;
+        } completion:^ (BOOL completed) {
+            [imageView removeFromSuperview];
+        }];
+    }];
+}
+
+- (void)animateMonsterScaledIn:(UIView *)view {
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:[view blit]];
+    [self addSubview:imageView];
+    
+    imageView.frame = [view.superview convertRect:view.frame toView:self];
+    imageView.contentMode = UIViewContentModeScaleAspectFit;
+    imageView.alpha = 0.0f;
+    
+    [UIView animateWithDuration:0.3f delay:0.f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        imageView.transform = CGAffineTransformMakeScale(8.f, 8.f);
+        imageView.alpha = 1.0f;
+    } completion:^ (BOOL completed) {
+        [UIView animateWithDuration:0.3f delay:2.f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            imageView.alpha = 0.0f;
+            imageView.transform = CGAffineTransformMakeScale(10.f, 10.f);
         } completion:^ (BOOL completed) {
             [imageView removeFromSuperview];
         }];
@@ -193,7 +212,7 @@
     [view removeFromSuperview];
 }
 
-- (void)showMessageView {
+- (void)showMessageView:(NSString *)text {
     if (!self.messageView) {
         self.messageView = [[InGameMessageView alloc] init];
         [self addSubview:self.messageView];
@@ -201,13 +220,29 @@
         self.messageView.hidden = YES;
     }
     [self bringSubviewToFront:self.messageView];
-    [self.messageView show];
+    [self.messageView show:text];
+}
+
+- (void)lostGame {
+    [self.timer invalidate]; self.timer = nil;
+//    [[SoundManager instance] play:SOUND_EFFECT_BOING];
+//    [self animateMonsterScaledIn:[self.imagePlaceHolder objectAtIndex:0]];
+    [self performSelector:@selector(shakeScreen) withObject:nil afterDelay:0.5f];
+    [self showMessageView:@"T_______T"];
+    [self performSelector:@selector(endGame) withObject:nil afterDelay:2.0f];
+}
+
+- (void)shakeScreen {
+    [AnimUtil wobble:self duration:0.1f angle:M_PI/128.f repeatCount:2];
 }
 
 - (void)victoryGame {
+    [self.timer invalidate]; self.timer = nil;
     self.finalTime = CACurrentMediaTime() - self.startingTime;
     [[UserData instance] addNewScoreLocalLeaderBoard:self.finalTime];
-    [self endGame];
+    [self showMessageView:@"VICTORY!"];
+    [[SoundManager instance] play:SOUND_EFFECT_WINNING];
+    [self performSelector:@selector(endGame) withObject:nil afterDelay:2.0f];
 }
 
 @end

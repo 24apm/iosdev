@@ -105,6 +105,7 @@
 		D0E30EDF18A37D6400FFD3CE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E30EDE18A37D6400FFD3CE /* QuartzCore.framework */; };
 		D0E36B8B18C2906F00BA56E7 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E36B8A18C2906F00BA56E7 /* StoreKit.framework */; };
 		D0E378FF18D42CF700541404 /* GameManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E378FE18D42CF700541404 /* GameManager.m */; };
+		D0E7628A18D626B7005CDF88 /* MonsterData.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E7628918D626B7005CDF88 /* MonsterData.m */; };
 		D0EA7EBE18D521C90095DEBD /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EA7EBA18D521C90095DEBD /* arrow.png */; };
 		D0EA7EBF18D521C90095DEBD /* shield.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EA7EBB18D521C90095DEBD /* shield.png */; };
 		D0EA7EC018D521C90095DEBD /* sword.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EA7EBC18D521C90095DEBD /* sword.png */; };
@@ -270,6 +271,8 @@
 		D0E36B8A18C2906F00BA56E7 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		D0E378FD18D42CF700541404 /* GameManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameManager.h; sourceTree = "<group>"; };
 		D0E378FE18D42CF700541404 /* GameManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameManager.m; sourceTree = "<group>"; };
+		D0E7628818D626B7005CDF88 /* MonsterData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonsterData.h; sourceTree = "<group>"; };
+		D0E7628918D626B7005CDF88 /* MonsterData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonsterData.m; sourceTree = "<group>"; };
 		D0EA7EBA18D521C90095DEBD /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
 		D0EA7EBB18D521C90095DEBD /* shield.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shield.png; sourceTree = "<group>"; };
 		D0EA7EBC18D521C90095DEBD /* sword.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sword.png; sourceTree = "<group>"; };
@@ -564,6 +567,8 @@
 				D0E378FE18D42CF700541404 /* GameManager.m */,
 				D0EA7EC818D548020095DEBD /* LocalLeaderBoardView.h */,
 				D0EA7EC918D548020095DEBD /* LocalLeaderBoardView.m */,
+				D0E7628818D626B7005CDF88 /* MonsterData.h */,
+				D0E7628918D626B7005CDF88 /* MonsterData.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -867,6 +872,7 @@
 				D091244018CC28830050B59F /* SoundEffect.m in Sources */,
 				D091244118CC28830050B59F /* SoundEffectHelper.m in Sources */,
 				D091244418CC28830050B59F /* NSArray+Util.m in Sources */,
+				D0E7628A18D626B7005CDF88 /* MonsterData.m in Sources */,
 				D091245118CC28830050B59F /* PromoManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
