@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="InGameMessageView">
             <connections>
+                <outlet property="imageView" destination="BT4-4z-jt2" id="z4t-5a-h1e"/>
                 <outlet property="label" destination="yh5-Lz-Wzr" id="QE4-mv-jtD"/>
             </connections>
         </placeholder>
@@ -30,6 +31,10 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="BT4-4z-jt2">
+                    <rect key="frame" x="60" y="110" width="200" height="200"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

@@ -43,7 +43,6 @@
 }
 
 - (void)hide {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [UIView animateWithDuration:0.3f animations:^{
         self.transform = CGAffineTransformMakeScale(2.0f, 2.0f);
         self.alpha = 0.0f;
@@ -73,7 +72,6 @@
     if (self.timer == nil) {
         [self startTime];
     }
-
     [[GameManager instance] sequenceCaculation:UserInputDefend];
 }
 
@@ -100,16 +98,18 @@
 }
 
 - (void)lostGame {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     self.userInteractionEnabled = NO;
     [self.timer invalidate]; self.timer = nil;
 //    [[SoundManager instance] play:SOUND_EFFECT_BOING];
 //    [self animateMonsterScaledIn:[self.imagePlaceHolder objectAtIndex:0]];
     [self.gameLayoutView shakeScreen];
-    [self.gameLayoutView showMessageView:@"T_______T"];
+    [self.gameLayoutView showMessageViewWithImage:@"rip.png"];
     [self performSelector:@selector(endGame) withObject:nil afterDelay:2.0f];
 }
 
 - (void)victoryGame {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     self.userInteractionEnabled = NO;
     [self.timer invalidate]; self.timer = nil;
     self.finalTime = CACurrentMediaTime() - self.startingTime;

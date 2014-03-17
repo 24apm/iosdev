@@ -22,18 +22,24 @@
 @implementation GameLayoutView
 
 - (IBAction)leftButtonPressed:(UIButton *)sender {
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_GAME_LAYOUT_VIEW_LEFT_BUTTON_PRESSED object:nil];
-    
+    [self performSelector:@selector(leftPressed) withObject:nil afterDelay:0.05f];
     [[SoundManager instance]play:SOUND_EFFECT_POP];
     [self animateWeapon:UserInputDefend];
 }
 
+- (void)leftPressed {
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_GAME_LAYOUT_VIEW_LEFT_BUTTON_PRESSED object:nil];
+}
 
 - (IBAction)rightButtonPressed:(UIButton *)sender {
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_GAME_LAYOUT_VIEW_RIGHT_BUTTON_PRESSED object:nil];
+    [self performSelector:@selector(rightPressed) withObject:nil afterDelay:0.05f];
 
     [[SoundManager instance] play:SOUND_EFFECT_POP];
     [self animateWeapon:UserInputAttack];
+}
+
+- (void)rightPressed {
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_GAME_LAYOUT_VIEW_RIGHT_BUTTON_PRESSED object:nil];
 }
 
 - (void)updateUnitViews:(NSArray *)visibleUnits {
@@ -94,8 +100,8 @@
     }];
 }
 
-- (void)animate:(UIView *)fromView toPoint:(CGPoint)toPoint {
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:[fromView blit]];
+- (void)animate:(MonsterView *)fromView toPoint:(CGPoint)toPoint {
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:fromView.imageView.image];
     [self addSubview:imageView];
     imageView.frame = [fromView.superview convertRect:fromView.frame toView:self];
     
@@ -166,6 +172,17 @@
     }
     [self bringSubviewToFront:self.messageView];
     [self.messageView show:text];
+}
+
+- (void)showMessageViewWithImage:(NSString *)imageName {
+    if (!self.messageView) {
+        self.messageView = [[InGameMessageView alloc] init];
+        [self addSubview:self.messageView];
+        self.messageView.frame = self.frame;
+        self.messageView.hidden = YES;
+    }
+    [self bringSubviewToFront:self.messageView];
+    [self.messageView showImage:imageName];
 }
 
 @end

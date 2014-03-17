@@ -33,6 +33,7 @@
 - (void)sequenceCaculation:(UserInput)input {
     if (self.step >= self.unitQueue.count) {
         [[NSNotificationCenter defaultCenter] postNotificationName:GAMEPLAY_VIEW_VICTORY_NOTIFICATION object:nil];
+        return;
     }
     MonsterData *monsterData = [self.unitQueue objectAtIndex:self.step];
     

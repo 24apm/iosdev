@@ -10,8 +10,24 @@
 
 @implementation InGameMessageView
 
+- (id)init {
+    self = [super init];
+    if (self) {
+        self.imageView.hidden = YES;
+        self.label.hidden = YES;
+    }
+    return self;
+}
+
+- (void)showImage:(NSString *)imageName {
+    self.imageView.image = [UIImage imageNamed:imageName];
+    self.imageView.hidden = NO;
+    [self show];
+}
+
 - (void)show:(NSString *)text {
     self.label.text = text;
+    self.label.hidden = NO;
     [self show];
 }
 
@@ -43,6 +59,8 @@
     self.transform = CGAffineTransformIdentity;
     self.hidden = YES;
     self.alpha = 1.0f;
+    self.imageView.hidden = YES;
+    self.label.hidden = YES;
 }
 
 @end

@@ -24,6 +24,7 @@
 - (void)animatePopFrontUnit;
 - (void)updateUnitViews:(NSArray *)visibleUnits;
 - (void)showMessageView:(NSString *)text;
+- (void)showMessageViewWithImage:(NSString *)imageName;
 - (void)shakeScreen;
 
 @end

@@ -11,8 +11,10 @@
 @interface InGameMessageView : XibView
 
 @property (strong, nonatomic) IBOutlet UILabel *label;
+@property (strong, nonatomic) IBOutlet UIImageView *imageView;
 
 - (void)show;
 - (void)show:(NSString *)text;
+- (void)showImage:(NSString *)imageName;
 
 @end

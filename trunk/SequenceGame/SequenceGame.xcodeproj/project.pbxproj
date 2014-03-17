@@ -67,6 +67,7 @@
 		D09124BC18CC55520050B59F /* whoosh.caf in Resources */ = {isa = PBXBuildFile; fileRef = D09124B918CC55520050B59F /* whoosh.caf */; };
 		D0A9405A18D6A5EF0049E018 /* GameLayoutView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A9405918D6A5EF0049E018 /* GameLayoutView.m */; };
 		D0A9405C18D6A5FD0049E018 /* GameLayoutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0A9405B18D6A5FD0049E018 /* GameLayoutView.xib */; };
+		D0A9405E18D6BED20049E018 /* rip.png in Resources */ = {isa = PBXBuildFile; fileRef = D0A9405D18D6BED20049E018 /* rip.png */; };
 		D0E1122B18C2EC6000808072 /* boing.caf in Resources */ = {isa = PBXBuildFile; fileRef = D0E1122118C2EC6000808072 /* boing.caf */; };
 		D0E1122F18C2EC6000808072 /* winningEffect.caf in Resources */ = {isa = PBXBuildFile; fileRef = D0E1122518C2EC6000808072 /* winningEffect.caf */; };
 		D0E1123218C2ECF300808072 /* pop.caf in Resources */ = {isa = PBXBuildFile; fileRef = D0E1123018C2ECF300808072 /* pop.caf */; };
@@ -222,6 +223,7 @@
 		D0A9405818D6A5EF0049E018 /* GameLayoutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameLayoutView.h; sourceTree = "<group>"; };
 		D0A9405918D6A5EF0049E018 /* GameLayoutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameLayoutView.m; sourceTree = "<group>"; };
 		D0A9405B18D6A5FD0049E018 /* GameLayoutView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameLayoutView.xib; sourceTree = "<group>"; };
+		D0A9405D18D6BED20049E018 /* rip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rip.png; sourceTree = "<group>"; };
 		D0E1122118C2EC6000808072 /* boing.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = boing.caf; sourceTree = "<group>"; };
 		D0E1122518C2EC6000808072 /* winningEffect.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = winningEffect.caf; sourceTree = "<group>"; };
 		D0E1123018C2ECF300808072 /* pop.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = pop.caf; sourceTree = "<group>"; };
@@ -648,6 +650,7 @@
 		D0E50A2818A7349300AA353E /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				D0A9405D18D6BED20049E018 /* rip.png */,
 				D0EA7ECF18D58B0E0095DEBD /* boss.png */,
 				D0EA7EC218D52FE90095DEBD /* defend.png */,
 				D0EA7EC318D52FE90095DEBD /* attack.png */,
@@ -788,6 +791,7 @@
 				D0E2E9BF18D2D288009C757F /* GamePlayView.xib in Resources */,
 				D0338BA818C713D60006C8B6 /* Achievementx115.png in Resources */,
 				D0EA7ED018D58B0E0095DEBD /* boss.png in Resources */,
+				D0A9405E18D6BED20049E018 /* rip.png in Resources */,
 				D0E1122B18C2EC6000808072 /* boing.caf in Resources */,
 				D0338BA618C713D60006C8B6 /* Achievementx75.png in Resources */,
 				D0338BA718C713D60006C8B6 /* Achievementx90.png in Resources */,
