@@ -9,15 +9,15 @@
 #import "XibView.h"
 #import "MonsterView.h"
 #import "THLabel.h"
+#import "GameLayoutView.h"
 
 #define GAMEPLAY_VIEW_DISMISSED_NOTIFICATION @"GAMEPLAY_VIEW_DISMISSED_NOTIFICATION"
 
 @interface GamePlayView : XibView
 
-@property (strong, nonatomic) IBOutletCollection(MonsterView) NSArray *imagePlaceHolder;
-@property (strong, nonatomic) IBOutlet UILabel *timeLabel;
-@property (strong, nonatomic) IBOutlet UIView *attackView;
+@property (strong, nonatomic) IBOutlet GameLayoutView *gameLayoutView;
 
 - (void)show;
 - (void)refreshGame;
+
 @end

@@ -65,6 +65,8 @@
 		D09124BA18CC55520050B59F /* blop.caf in Resources */ = {isa = PBXBuildFile; fileRef = D09124B718CC55520050B59F /* blop.caf */; };
 		D09124BB18CC55520050B59F /* tick.caf in Resources */ = {isa = PBXBuildFile; fileRef = D09124B818CC55520050B59F /* tick.caf */; };
 		D09124BC18CC55520050B59F /* whoosh.caf in Resources */ = {isa = PBXBuildFile; fileRef = D09124B918CC55520050B59F /* whoosh.caf */; };
+		D0A9405A18D6A5EF0049E018 /* GameLayoutView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A9405918D6A5EF0049E018 /* GameLayoutView.m */; };
+		D0A9405C18D6A5FD0049E018 /* GameLayoutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0A9405B18D6A5FD0049E018 /* GameLayoutView.xib */; };
 		D0E1122B18C2EC6000808072 /* boing.caf in Resources */ = {isa = PBXBuildFile; fileRef = D0E1122118C2EC6000808072 /* boing.caf */; };
 		D0E1122F18C2EC6000808072 /* winningEffect.caf in Resources */ = {isa = PBXBuildFile; fileRef = D0E1122518C2EC6000808072 /* winningEffect.caf */; };
 		D0E1123218C2ECF300808072 /* pop.caf in Resources */ = {isa = PBXBuildFile; fileRef = D0E1123018C2ECF300808072 /* pop.caf */; };
@@ -217,6 +219,9 @@
 		D09124B718CC55520050B59F /* blop.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = blop.caf; sourceTree = "<group>"; };
 		D09124B818CC55520050B59F /* tick.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = tick.caf; sourceTree = "<group>"; };
 		D09124B918CC55520050B59F /* whoosh.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = whoosh.caf; sourceTree = "<group>"; };
+		D0A9405818D6A5EF0049E018 /* GameLayoutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameLayoutView.h; sourceTree = "<group>"; };
+		D0A9405918D6A5EF0049E018 /* GameLayoutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameLayoutView.m; sourceTree = "<group>"; };
+		D0A9405B18D6A5FD0049E018 /* GameLayoutView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameLayoutView.xib; sourceTree = "<group>"; };
 		D0E1122118C2EC6000808072 /* boing.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = boing.caf; sourceTree = "<group>"; };
 		D0E1122518C2EC6000808072 /* winningEffect.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = winningEffect.caf; sourceTree = "<group>"; };
 		D0E1123018C2ECF300808072 /* pop.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = pop.caf; sourceTree = "<group>"; };
@@ -569,6 +574,8 @@
 				D0EA7EC918D548020095DEBD /* LocalLeaderBoardView.m */,
 				D0E7628818D626B7005CDF88 /* MonsterData.h */,
 				D0E7628918D626B7005CDF88 /* MonsterData.m */,
+				D0A9405818D6A5EF0049E018 /* GameLayoutView.h */,
+				D0A9405918D6A5EF0049E018 /* GameLayoutView.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -587,6 +594,7 @@
 				D0E2E9A418D2D288009C757F /* ResultView.xib */,
 				D0E2E9A518D2D288009C757F /* ResultView~ipad.xib */,
 				D0F1143518D41299007EB840 /* MonsterView.xib */,
+				D0A9405B18D6A5FD0049E018 /* GameLayoutView.xib */,
 			);
 			path = Xib;
 			sourceTree = "<group>";
@@ -806,6 +814,7 @@
 				D0E1123218C2ECF300808072 /* pop.caf in Resources */,
 				D0E2E9BB18D2D288009C757F /* InGameMessageView.xib in Resources */,
 				D0338BAC18C713D60006C8B6 /* Achievementx200.png in Resources */,
+				D0A9405C18D6A5FD0049E018 /* GameLayoutView.xib in Resources */,
 				D0338BA918C713D60006C8B6 /* Achievementx130.png in Resources */,
 				D091244F18CC28830050B59F /* PromoBannerView~ipad.xib in Resources */,
 				D048A83F18ACAAAB00411DF9 /* facebook_share.png in Resources */,
@@ -855,6 +864,7 @@
 				D0E2E9AE18D2D288009C757F /* NotificationManager.m in Sources */,
 				D091244618CC28830050B59F /* Utils.m in Sources */,
 				D0E378FF18D42CF700541404 /* GameManager.m in Sources */,
+				D0A9405A18D6A5EF0049E018 /* GameLayoutView.m in Sources */,
 				D091245218CC28830050B59F /* THLabel.m in Sources */,
 				D0E2E9AA18D2D288009C757F /* InGameMessageView.m in Sources */,
 				D091243A18CC28830050B59F /* Hex.m in Sources */,
