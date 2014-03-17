@@ -15,6 +15,8 @@
 @interface LocalLeaderBoardView : XibView
 
 @property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *labelScores;
+@property (strong, nonatomic) IBOutlet UILabel *currentScore;
+@property (strong, nonatomic) IBOutlet UILabel *leaderBoardLabel;
 
 - (void)show;
 

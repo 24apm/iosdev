@@ -9,6 +9,7 @@
 #import "LocalLeaderBoardView.h"
 #import "UserData.h"
 #import "GameConstants.h"
+#import "GameManager.h"
 
 @implementation LocalLeaderBoardView
 
@@ -31,11 +32,20 @@
       [[NSNotificationCenter defaultCenter] postNotificationName:TOP_BUTTON_NOTIFICATION object:self];
 }
 
+- (void)initializeTitleBoard {
+    if ([[GameManager instance].gameMode isEqualToString:GAME_MODE_TIME]) {
+        self.leaderBoardLabel.text = @"Time Attack Leaderboard";
+    } else if([[GameManager instance].gameMode isEqualToString:GAME_MODE_DISTANCE]) {
+        self.leaderBoardLabel.text = @"Distance Attack Leaderboard";
+    }
+}
+
 - (void)initializeLeaderBoard {
-    NSArray *localLeaderBoardMemory = [[UserData instance] loadLocalLeaderBoard];
+    NSArray *localLeaderBoardMemory = [[UserData instance] loadLocalLeaderBoard:[GameManager instance].gameMode];
     int step;
+    [self initializeTitleBoard];
     double newEntry = [UserData instance].currentScore;
-    for (step = 0; step < localLeaderBoardMemory.count; step++) {
+    for (step = 0; step < localLeaderBoardMemory.count && step < self.labelScores.count; step++) {
         UILabel *scoreText = [self.labelScores objectAtIndex:step];
         double score = [[localLeaderBoardMemory objectAtIndex:step] doubleValue];
         scoreText.text = [NSString stringWithFormat:@"%.3F", score];
@@ -45,6 +55,7 @@
         scoreText.textColor = [UIColor colorWithRed:1.f green:1.f blue:1.f alpha:1.f];
         }
     }
+    self.currentScore.text = [NSString stringWithFormat:@"Current: %.3F", [UserData instance].currentScore];
     [UserData instance].currentScore = 0;
     if (step < self.labelScores.count) {
         for (;step < self.labelScores.count; step++) {

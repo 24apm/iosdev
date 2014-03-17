@@ -47,6 +47,10 @@
 #define IMAGE_MONSTER @"monster.png"
 #define IMAGE_BOSS @"boss.png"
 
+#define GAME_MODE_TIME @"timeAttackMode"
+#define GAME_MODE_DISTANCE @"distanceAttackMode"
+
+
 @interface GameConstants : NSObject
 
 @end

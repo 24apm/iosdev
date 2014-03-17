@@ -8,6 +8,7 @@
 
 #import "UserData.h"
 #import "GameCenterHelper.h"
+#import "GameConstants.h"
 
 @implementation UserData
 
@@ -20,30 +21,32 @@
     return instance;
 }
 
-- (NSArray *)loadLocalLeaderBoard {
-    NSArray *localLeaderboard = [[NSUserDefaults standardUserDefaults] objectForKey:@"arrayOfScores"];
+- (NSArray *)loadLocalLeaderBoard:(NSString *)mode {
+    NSArray *localLeaderboard = [[NSUserDefaults standardUserDefaults] objectForKey:mode];
     if (!localLeaderboard) {
         localLeaderboard = [NSArray array];
     }
     return localLeaderboard;
 }
 
-- (void)saveLocalLeaderBoard:(NSArray *)array {
+- (void)saveLocalLeaderBoard:(NSArray *)array mode:(NSString *)mode {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:array forKey:@"arrayOfScores"];
+    [defaults setObject:array forKey:mode];
     [defaults synchronize];
 }
 
-- (NSMutableArray *)sortingArray:(NSMutableArray *)array :(double)newNumber{
-    int index = 0;
+- (NSMutableArray *)sortingArray:(NSMutableArray *)array newNumber:(double)newNumber{
+    int index = -1;
     for (int i = 0; i < array.count; i++) {
         if (newNumber < [[array objectAtIndex:i] doubleValue]) {
             index = i;
             break;
-        } else {
-            index = array.count;
         }
     }
+    if (index < 0) {
+        index = array.count;
+    }
+    
     [array insertObject:[NSNumber numberWithDouble:newNumber] atIndex:index];
     return array;
 }
@@ -51,26 +54,27 @@
 -(void)resetLocalLeaderBoard {
     NSArray *array = [NSArray array];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:array forKey:@"arrayOfScores"];
+    [defaults setObject:array forKey:GAME_MODE_TIME];
+    [defaults setObject:array forKey:GAME_MODE_DISTANCE];
     [defaults synchronize];
 }
 
-- (void)addNewScoreLocalLeaderBoard:(double)newScores {
+- (void)addNewScoreLocalLeaderBoard:(double)newScores mode:(NSString *)mode {
     // load local leaderboard
     // insert new score into leaderboard
     // sort it
     // take the top x range (truncate if neccessarily)
     // save new leaderboard
-    NSMutableArray *sortedArray = [NSMutableArray arrayWithArray:[self loadLocalLeaderBoard]];
-    sortedArray = [self sortingArray:sortedArray :newScores];
+    NSMutableArray *sortedArray = [NSMutableArray arrayWithArray:[self loadLocalLeaderBoard :(NSString *)mode]];
+    sortedArray = [self sortingArray:sortedArray newNumber:newScores];
     NSArray *finalArray = [self truncateArray:sortedArray];
-    [self saveLocalLeaderBoard:finalArray];
+    [self saveLocalLeaderBoard:finalArray mode:(NSString *)mode];
     self.currentScore = newScores;
     // save newScores member to self.currentScore
 }
 
 - (NSArray *)truncateArray:(NSMutableArray *)array {
-    NSRange range = NSMakeRange(0, MIN(array.count,10));
+    NSRange range = NSMakeRange(0, MIN(array.count, 100));
     return [array subarrayWithRange:range];
 }
 
@@ -78,22 +82,22 @@
     _score = score;
 }
 
-- (void)setMaxScore:(int)maxScore {
+- (void)setMaxScore:(int)maxScore mode:(NSString *)mode {
     if (maxScore > _maxScore) {
         _maxScore = maxScore;
-        [self saveUserScore:_maxScore];
+        [self saveUserScore:_maxScore mode:(NSString *)mode];
     }
 }
 
-- (void)saveUserScore:(int)score {
-    [self submitScore:score];
+- (void)saveUserScore:(int)score mode:(NSString *)mode {
+    [self submitScore:score mode:(NSString *)mode];
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     [defaults setValue:@(score) forKey:@"maxScore"];
     [defaults synchronize];
 }
 
-- (void)resetLocalScore {
-    [self saveUserScore:0];
+- (void)resetLocalScore :(NSString *)mode {
+    [self saveUserScore:0 mode:(NSString *)mode];
     _maxScore = 0;
     
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
@@ -101,7 +105,7 @@
     [defaults synchronize];
 }
 
-- (void)submitScore:(int)score {
+- (void)submitScore:(int)score mode:(NSString *)mode {
     if(score > 0) {
         [[GameCenterHelper instance].gameCenterManager reportScore:score forCategory: [GameCenterHelper instance].currentLeaderBoard];
     }

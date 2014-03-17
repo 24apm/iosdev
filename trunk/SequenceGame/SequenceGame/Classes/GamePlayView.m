@@ -37,7 +37,7 @@
         self.transform = CGAffineTransformIdentity;
         self.alpha = 1.0f;
     } completion:^(BOOL complete) {
-        [self wobbleUnits];
+        //[self wobbleUnits];
     }];
 }
 
@@ -51,6 +51,7 @@
 }
 
 - (void)renewGame{
+    self.userInteractionEnabled = YES;
     [[GameManager instance] generatelevel];
     [self refreshGame];
 }
@@ -91,7 +92,7 @@
 
 - (IBAction)rightButtonPressed:(UIButton *)sender {
     if (self.timer == nil) {
-        [self startTime];
+       [self startTime];
     }
     [[SoundManager instance]play:SOUND_EFFECT_POP];
     [self animateWeapon:UserInputAttack];
@@ -105,7 +106,7 @@
 
 - (void)updateTimer {
     double currentTime = CACurrentMediaTime() - self.startingTime;
-    
+
     self.timeLabel.text = [NSString stringWithFormat:@"%.3F", currentTime];
 }
 
@@ -170,7 +171,7 @@
     bubbleFadeIn.fromValue = [NSNumber numberWithFloat:1.0f];
     bubbleFadeIn.toValue = [NSNumber numberWithFloat:0.0f];
     
-    float scaleRand = [Utils randBetweenMinInt:0 max:4];
+    float scaleRand = [Utils randBetweenMinInt:0 max:8];
     CABasicAnimation *bubbleExplode = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
     bubbleExplode.toValue = [NSNumber numberWithFloat:scaleRand];
     
@@ -201,7 +202,7 @@
 
 - (void)wobbleUnits {
     for (int i = 0; i < self.imagePlaceHolder.count; i++) {
-        [AnimUtil wobble:[self.imagePlaceHolder objectAtIndex:i] duration:1.f angle:M_PI/128.f repeatCount:HUGE_VAL];
+        [AnimUtil wobble:[self.imagePlaceHolder objectAtIndex:i] duration:0.5f angle:M_PI/128.f repeatCount:HUGE_VAL];
     }
 }
 
@@ -224,10 +225,11 @@
 }
 
 - (void)lostGame {
+    self.userInteractionEnabled = NO;
     [self.timer invalidate]; self.timer = nil;
 //    [[SoundManager instance] play:SOUND_EFFECT_BOING];
 //    [self animateMonsterScaledIn:[self.imagePlaceHolder objectAtIndex:0]];
-    [self performSelector:@selector(shakeScreen) withObject:nil afterDelay:0.5f];
+    [self shakeScreen];
     [self showMessageView:@"T_______T"];
     [self performSelector:@selector(endGame) withObject:nil afterDelay:2.0f];
 }
@@ -237,9 +239,11 @@
 }
 
 - (void)victoryGame {
+    self.userInteractionEnabled = NO;
     [self.timer invalidate]; self.timer = nil;
     self.finalTime = CACurrentMediaTime() - self.startingTime;
-    [[UserData instance] addNewScoreLocalLeaderBoard:self.finalTime];
+    self.timeLabel.text = [NSString stringWithFormat:@"%.3F", self.finalTime];
+    [[UserData instance] addNewScoreLocalLeaderBoard:self.finalTime mode:[GameManager instance].gameMode];
     [self showMessageView:@"VICTORY!"];
     [[SoundManager instance] play:SOUND_EFFECT_WINNING];
     [self performSelector:@selector(endGame) withObject:nil afterDelay:2.0f];

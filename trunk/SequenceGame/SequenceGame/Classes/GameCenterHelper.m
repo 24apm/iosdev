@@ -9,6 +9,7 @@
 #import "GameCenterHelper.h"
 #import "UserData.h"
 #import "GameConstants.h"
+#import "GameManager.h"
 
 @interface GameCenterHelper()
 
@@ -156,7 +157,7 @@
 - (void)onLocalPlayerScoreReceived:(GKScore *)score {
     [super onLocalPlayerScoreReceived:score];
     if ([UserData instance].maxScore > score.value) {
-        [[UserData instance] submitScore:[UserData instance].maxScore];
+        [[UserData instance] submitScore:[UserData instance].maxScore mode:[GameManager instance].gameMode];
     } else {
         [UserData instance].maxScore = score.value;
     }

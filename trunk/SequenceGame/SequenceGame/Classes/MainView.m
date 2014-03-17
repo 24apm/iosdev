@@ -11,6 +11,7 @@
 #import "GameCenterHelper.h"
 #import "GameConstants.h"
 #import "UserData.h"
+#import "GameManager.h"
 
 @implementation MainView
 
@@ -24,6 +25,14 @@
 }
 
 - (IBAction)startButtonPressed:(id)sender {
+    [self hide];
+}
+- (IBAction)timeAttackButtonPressed:(UIButton *)sender {
+    [GameManager instance].gameMode = GAME_MODE_TIME;
+    [self hide];
+}
+- (IBAction)distanceAttackButtonPressed:(UIButton *)sender {
+    [GameManager instance].gameMode = GAME_MODE_DISTANCE;
     [self hide];
 }
 
@@ -45,7 +54,7 @@
 
 - (IBAction)resetLocalScore:(id)sender {
     [[UserData instance] resetLocalLeaderBoard];
-    [[UserData instance] resetLocalScore];
+    [[UserData instance] resetLocalScore :(NSString *)[GameManager instance].gameMode];
 }
 
 - (void)show {
