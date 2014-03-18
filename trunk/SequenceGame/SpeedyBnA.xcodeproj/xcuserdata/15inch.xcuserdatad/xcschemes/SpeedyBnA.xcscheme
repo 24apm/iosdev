@@ -16,8 +16,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D0E30E8018A376E300FFD3CE"
                BuildableName = "SequenceGame.app"
-               BlueprintName = "SequenceGame"
-               ReferencedContainer = "container:SequenceGame.xcodeproj">
+               BlueprintName = "SpeedyBnA"
+               ReferencedContainer = "container:SpeedyBnA.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -34,8 +34,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D0E30EA118A376E300FFD3CE"
                BuildableName = "SequenceGameTests.xctest"
-               BlueprintName = "SequenceGameTests"
-               ReferencedContainer = "container:SequenceGame.xcodeproj">
+               BlueprintName = "SpeedyBnATests"
+               ReferencedContainer = "container:SpeedyBnA.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -44,8 +44,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D0E30E8018A376E300FFD3CE"
             BuildableName = "SequenceGame.app"
-            BlueprintName = "SequenceGame"
-            ReferencedContainer = "container:SequenceGame.xcodeproj">
+            BlueprintName = "SpeedyBnA"
+            ReferencedContainer = "container:SpeedyBnA.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -63,8 +63,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D0E30E8018A376E300FFD3CE"
             BuildableName = "SequenceGame.app"
-            BlueprintName = "SequenceGame"
-            ReferencedContainer = "container:SequenceGame.xcodeproj">
+            BlueprintName = "SpeedyBnA"
+            ReferencedContainer = "container:SpeedyBnA.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -81,8 +81,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D0E30E8018A376E300FFD3CE"
             BuildableName = "SequenceGame.app"
-            BlueprintName = "SequenceGame"
-            ReferencedContainer = "container:SequenceGame.xcodeproj">
+            BlueprintName = "SpeedyBnA"
+            ReferencedContainer = "container:SpeedyBnA.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

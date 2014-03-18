@@ -89,7 +89,7 @@
 		D0E2E9B518D2D288009C757F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0E2E99618D2D288009C757F /* Images.xcassets */; };
 		D0E2E9B618D2D288009C757F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E2E99718D2D288009C757F /* main.m */; };
 		D0E2E9B718D2D288009C757F /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E2E99818D2D288009C757F /* MainWindow.xib */; };
-		D0E2E9B818D2D288009C757F /* SequenceGame-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D0E2E99918D2D288009C757F /* SequenceGame-Info.plist */; };
+		D0E2E9B818D2D288009C757F /* SpeedyBnA-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D0E2E99918D2D288009C757F /* SpeedyBnA-Info.plist */; };
 		D0E2E9B918D2D288009C757F /* GameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E2E99C18D2D288009C757F /* GameViewController.xib */; };
 		D0E2E9BB18D2D288009C757F /* InGameMessageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E2E99E18D2D288009C757F /* InGameMessageView.xib */; };
 		D0E2E9BD18D2D288009C757F /* MainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E2E9A018D2D288009C757F /* MainView.xib */; };
@@ -257,18 +257,18 @@
 		D0E2E99618D2D288009C757F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D0E2E99718D2D288009C757F /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D0E2E99818D2D288009C757F /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
-		D0E2E99918D2D288009C757F /* SequenceGame-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "SequenceGame-Info.plist"; sourceTree = "<group>"; };
-		D0E2E99A18D2D288009C757F /* SequenceGame-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SequenceGame-Prefix.pch"; sourceTree = "<group>"; };
+		D0E2E99918D2D288009C757F /* SpeedyBnA-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "SpeedyBnA-Info.plist"; sourceTree = "<group>"; };
+		D0E2E99A18D2D288009C757F /* SpeedyBnA-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SpeedyBnA-Prefix.pch"; sourceTree = "<group>"; };
 		D0E2E99C18D2D288009C757F /* GameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameViewController.xib; sourceTree = "<group>"; };
 		D0E2E99E18D2D288009C757F /* InGameMessageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InGameMessageView.xib; sourceTree = "<group>"; };
 		D0E2E9A018D2D288009C757F /* MainView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainView.xib; sourceTree = "<group>"; };
 		D0E2E9A218D2D288009C757F /* GamePlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GamePlayView.xib; sourceTree = "<group>"; };
 		D0E2E9A418D2D288009C757F /* ResultView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResultView.xib; sourceTree = "<group>"; };
-		D0E30E8118A376E300FFD3CE /* SequenceGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SequenceGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0E30E8118A376E300FFD3CE /* SpeedyBnA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpeedyBnA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0E30E8418A376E300FFD3CE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D0E30E8618A376E300FFD3CE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		D0E30E8818A376E300FFD3CE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		D0E30EA218A376E300FFD3CE /* SequenceGameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SequenceGameTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0E30EA218A376E300FFD3CE /* SpeedyBnATests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpeedyBnATests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0E30EA318A376E300FFD3CE /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		D0E30EDE18A37D6400FFD3CE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D0E36B8A18C2906F00BA56E7 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -537,8 +537,8 @@
 				D0E2E99618D2D288009C757F /* Images.xcassets */,
 				D0E2E99718D2D288009C757F /* main.m */,
 				D0E2E99818D2D288009C757F /* MainWindow.xib */,
-				D0E2E99918D2D288009C757F /* SequenceGame-Info.plist */,
-				D0E2E99A18D2D288009C757F /* SequenceGame-Prefix.pch */,
+				D0E2E99918D2D288009C757F /* SpeedyBnA-Info.plist */,
+				D0E2E99A18D2D288009C757F /* SpeedyBnA-Prefix.pch */,
 				D0E2E99B18D2D288009C757F /* Xib */,
 			);
 			path = SequenceGame;
@@ -615,8 +615,8 @@
 		D0E30E8218A376E300FFD3CE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D0E30E8118A376E300FFD3CE /* SequenceGame.app */,
-				D0E30EA218A376E300FFD3CE /* SequenceGameTests.xctest */,
+				D0E30E8118A376E300FFD3CE /* SpeedyBnA.app */,
+				D0E30EA218A376E300FFD3CE /* SpeedyBnATests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -693,9 +693,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D0E30E8018A376E300FFD3CE /* SequenceGame */ = {
+		D0E30E8018A376E300FFD3CE /* SpeedyBnA */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D0E30EB318A376E300FFD3CE /* Build configuration list for PBXNativeTarget "SequenceGame" */;
+			buildConfigurationList = D0E30EB318A376E300FFD3CE /* Build configuration list for PBXNativeTarget "SpeedyBnA" */;
 			buildPhases = (
 				D0E30E7D18A376E300FFD3CE /* Sources */,
 				D0E30E7E18A376E300FFD3CE /* Frameworks */,
@@ -705,14 +705,14 @@
 			);
 			dependencies = (
 			);
-			name = SequenceGame;
+			name = SpeedyBnA;
 			productName = Bird;
-			productReference = D0E30E8118A376E300FFD3CE /* SequenceGame.app */;
+			productReference = D0E30E8118A376E300FFD3CE /* SpeedyBnA.app */;
 			productType = "com.apple.product-type.application";
 		};
-		D0E30EA118A376E300FFD3CE /* SequenceGameTests */ = {
+		D0E30EA118A376E300FFD3CE /* SpeedyBnATests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D0E30EB618A376E300FFD3CE /* Build configuration list for PBXNativeTarget "SequenceGameTests" */;
+			buildConfigurationList = D0E30EB618A376E300FFD3CE /* Build configuration list for PBXNativeTarget "SpeedyBnATests" */;
 			buildPhases = (
 				D0E30E9E18A376E300FFD3CE /* Sources */,
 				D0E30E9F18A376E300FFD3CE /* Frameworks */,
@@ -723,9 +723,9 @@
 			dependencies = (
 				D0E30EA818A376E300FFD3CE /* PBXTargetDependency */,
 			);
-			name = SequenceGameTests;
+			name = SpeedyBnATests;
 			productName = BirdTests;
-			productReference = D0E30EA218A376E300FFD3CE /* SequenceGameTests.xctest */;
+			productReference = D0E30EA218A376E300FFD3CE /* SpeedyBnATests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -745,7 +745,7 @@
 					};
 				};
 			};
-			buildConfigurationList = D0E30E7C18A376E300FFD3CE /* Build configuration list for PBXProject "SequenceGame" */;
+			buildConfigurationList = D0E30E7C18A376E300FFD3CE /* Build configuration list for PBXProject "SpeedyBnA" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -758,8 +758,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D0E30E8018A376E300FFD3CE /* SequenceGame */,
-				D0E30EA118A376E300FFD3CE /* SequenceGameTests */,
+				D0E30E8018A376E300FFD3CE /* SpeedyBnA */,
+				D0E30EA118A376E300FFD3CE /* SpeedyBnATests */,
 			);
 		};
 /* End PBXProject section */
@@ -775,7 +775,7 @@
 				D0E2E9B518D2D288009C757F /* Images.xcassets in Resources */,
 				D0338BAF18C713D60006C8B6 /* Achievementx500.png in Resources */,
 				D0F0C80718D009EF00232E9D /* Achievementx999WtN.png in Resources */,
-				D0E2E9B818D2D288009C757F /* SequenceGame-Info.plist in Resources */,
+				D0E2E9B818D2D288009C757F /* SpeedyBnA-Info.plist in Resources */,
 				D0338BAA18C713D60006C8B6 /* Achievementx150.png in Resources */,
 				D0EC496618D6DE2000537BB6 /* GamePlayDistanceView.xib in Resources */,
 				D09124BC18CC55520050B59F /* whoosh.caf in Resources */,
@@ -905,7 +905,7 @@
 /* Begin PBXTargetDependency section */
 		D0E30EA818A376E300FFD3CE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D0E30E8018A376E300FFD3CE /* SequenceGame */;
+			target = D0E30E8018A376E300FFD3CE /* SpeedyBnA */;
 			targetProxy = D0E30EA718A376E300FFD3CE /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1006,9 +1006,9 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: Jeffrey Wan (MT34DA8UCA)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jeffrey Wan (YS47XTCZZB)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SequenceGame/SequenceGame-Prefix.pch";
-				INFOPLIST_FILE = "SequenceGame/SequenceGame-Info.plist";
-				PRODUCT_NAME = SequenceGame;
+				GCC_PREFIX_HEADER = "SequenceGame/SpeedyBnA-Prefix.pch";
+				INFOPLIST_FILE = "SequenceGame/SpeedyBnA-Info.plist";
+				PRODUCT_NAME = SpeedyBnA;
 				PROVISIONING_PROFILE = "84A682B5-A448-4397-AADD-0B826038A9AA";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
@@ -1023,9 +1023,9 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: Jeffrey Wan (MT34DA8UCA)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jeffrey Wan (YS47XTCZZB)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SequenceGame/SequenceGame-Prefix.pch";
-				INFOPLIST_FILE = "SequenceGame/SequenceGame-Info.plist";
-				PRODUCT_NAME = SequenceGame;
+				GCC_PREFIX_HEADER = "SequenceGame/SpeedyBnA-Prefix.pch";
+				INFOPLIST_FILE = "SequenceGame/SpeedyBnA-Info.plist";
+				PRODUCT_NAME = SpeedyBnA;
 				PROVISIONING_PROFILE = "84A682B5-A448-4397-AADD-0B826038A9AA";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
@@ -1049,7 +1049,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "NumberGameTests/NumberGameTests-Info.plist";
-				PRODUCT_NAME = SequenceGameTests;
+				PRODUCT_NAME = SpeedyBnATests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -1068,7 +1068,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NumberGame/NumberGame-Prefix.pch";
 				INFOPLIST_FILE = "NumberGameTests/NumberGameTests-Info.plist";
-				PRODUCT_NAME = SequenceGameTests;
+				PRODUCT_NAME = SpeedyBnATests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -1077,7 +1077,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D0E30E7C18A376E300FFD3CE /* Build configuration list for PBXProject "SequenceGame" */ = {
+		D0E30E7C18A376E300FFD3CE /* Build configuration list for PBXProject "SpeedyBnA" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D0E30EB118A376E300FFD3CE /* Debug */,
@@ -1086,7 +1086,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D0E30EB318A376E300FFD3CE /* Build configuration list for PBXNativeTarget "SequenceGame" */ = {
+		D0E30EB318A376E300FFD3CE /* Build configuration list for PBXNativeTarget "SpeedyBnA" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D0E30EB418A376E300FFD3CE /* Debug */,
@@ -1095,7 +1095,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D0E30EB618A376E300FFD3CE /* Build configuration list for PBXNativeTarget "SequenceGameTests" */ = {
+		D0E30EB618A376E300FFD3CE /* Build configuration list for PBXNativeTarget "SpeedyBnATests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D0E30EB718A376E300FFD3CE /* Debug */,
