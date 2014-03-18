@@ -64,16 +64,33 @@
 
 - (NSArray *)notificationBodyTexts{
     return [NSArray arrayWithObjects:
-            @"Ready to reach a new streak?",
-            @"How far can you go?",
-            @"Hungry for more?",
+            @"^_____________^",
+            @"^_____________^Y",
+            @"@____@",
+            @"@o@",
+            @"^o^",
+            @"^.^Y",
+            @"@.@",
+            @"T_____T",
+            @"<.<",
+            @">.>",
+            @">_<",
+            @">____<",
+            @">.<",
+            @">_>",
+            @"<_<",
+            @"O_____O",
+            @"O_O",
+            @"O.O",
+            @"ToT",
+            @"Y^o^Y",
+            @"Y^_^Y",
             nil];
 }
 
 - (NSArray *)notificationActionTexts {
     return [NSArray arrayWithObjects:
             @"Let's go!",
-            @"Tapping time!",
             nil];
 }
 

@@ -30,7 +30,7 @@
 - (void) checkAchievements
 {
     double percentComplete = 100;
-    float currentScore = [UserData instance].maxScore;
+    float currentScore = 0; //TODO
     if(DEBUG_MODE) {
         currentScore = 1000;
     }
@@ -151,15 +151,6 @@
     {
         // Achievement Submission Failed.
         
-    }
-}
-
-- (void)onLocalPlayerScoreReceived:(GKScore *)score {
-    [super onLocalPlayerScoreReceived:score];
-    if ([UserData instance].maxScore > score.value) {
-        [[UserData instance] submitScore:[UserData instance].maxScore mode:[GameManager instance].gameMode];
-    } else {
-        [UserData instance].maxScore = score.value;
     }
 }
 

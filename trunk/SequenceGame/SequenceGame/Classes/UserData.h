@@ -8,8 +8,6 @@
 
 @interface UserData : NSObject
 
-@property (nonatomic) int score;
-@property (nonatomic) int maxScore;
 @property (nonatomic, retain) UIImage *lastGameSS;
 @property (nonatomic) BOOL tutorialModeEnabled;
 @property (nonatomic) double currentScore;
@@ -20,4 +18,5 @@
 - (NSArray *)loadLocalLeaderBoard :(NSString *)mode;
 - (void)addNewScoreLocalLeaderBoard:(double)newScores mode:(NSString *)mode;
 - (void)resetLocalLeaderBoard;
+
 @end

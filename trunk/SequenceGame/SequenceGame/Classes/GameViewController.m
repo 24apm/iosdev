@@ -198,7 +198,7 @@
     [self.view addSubview:self.adBannerView];
     
     if (!DEBUG_MODE) {
-        [GameCenterHelper instance].currentLeaderBoard = kLeaderboardID;
+        [GameCenterHelper instance].currentLeaderBoard = kLeaderboardBestScoreID;
         [[GameCenterHelper instance] loginToGameCenter];
     }
 }

@@ -33,41 +33,51 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ak8-00-4fp">
-                    <rect key="frame" x="20" y="355" width="132" height="32"/>
+                    <rect key="frame" x="20" y="354" width="130" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.81568627449999997" green="0.19266968900000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <state key="normal" title="Time Attack"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="TIME ATTACK"/>
                     <connections>
                         <action selector="timeAttackButtonPressed:" destination="-1" eventType="touchUpInside" id="0on-BS-yaj"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="P5y-A2-lJA">
-                    <rect key="frame" x="168" y="355" width="132" height="32"/>
+                    <rect key="frame" x="169" y="354" width="130" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.0" green="0.65739924630000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <state key="normal" title="Distance Attack"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="DISTANCE ATTACK"/>
                     <connections>
                         <action selector="distanceAttackButtonPressed:" destination="-1" eventType="touchUpInside" id="Pe1-WF-zuW"/>
                         <action selector="startButtonPressed:" destination="-1" eventType="touchUpInside" id="amX-gn-E2d"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ZaW-GQ-a6Q">
-                    <rect key="frame" x="20" y="242" width="132" height="32"/>
+                    <rect key="frame" x="20" y="304" width="130" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <state key="normal" title="LEADERBOARD"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="BEST TIME"/>
                     <connections>
-                        <action selector="leaderboardPressed:" destination="-1" eventType="touchUpInside" id="126-Sd-e1Y"/>
+                        <action selector="bestTimePressed:" destination="-1" eventType="touchUpInside" id="JQh-x1-UA8"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="VkS-AM-tdt">
+                    <rect key="frame" x="170" y="304" width="130" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="BEST SCORE"/>
+                    <connections>
+                        <action selector="bestScorePressed:" destination="-1" eventType="touchUpInside" id="GEC-eD-met"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ZHg-Ma-6fI">
-                    <rect key="frame" x="168" y="242" width="132" height="32"/>
+                    <rect key="frame" x="94" y="254" width="132" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <state key="normal" title="ACHIEVEMENT"/>
                     <connections>
                         <action selector="achievementPressed:" destination="-1" eventType="touchUpInside" id="MIX-fb-LmT"/>

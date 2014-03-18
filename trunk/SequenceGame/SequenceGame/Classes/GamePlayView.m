@@ -27,7 +27,7 @@
 - (id)init {
     self = [super init];
     if (self) {
-        self.gameLayoutView.timeLabel.textColor = COLOR_RED;
+        self.gameLayoutView.timeLabel.textColor = kCOLOR_RED;
     }
     return self;
 }

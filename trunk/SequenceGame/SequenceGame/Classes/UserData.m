@@ -17,7 +17,6 @@
     static UserData *instance = nil;
     if (!instance) {
         instance = [[UserData alloc] init];
-        instance.maxScore = [[[NSUserDefaults standardUserDefaults] valueForKey:@"maxScore"] intValue];
     }
     return instance;
 }
@@ -85,8 +84,16 @@
     NSMutableArray *sortedArray = sortedArray = [NSMutableArray arrayWithArray:[self loadLocalLeaderBoard :(NSString *)mode]];
     if ([mode isEqualToString:GAME_MODE_TIME]) {
         sortedArray = [self sortingArrayAcending:sortedArray newNumber:newScores];
+        double fastestValue = [[sortedArray objectAtIndex:0] doubleValue];
+        if (newScores <= fastestValue) {
+            [self submitScore:newScores mode:mode];
+        }
     } else if ([mode isEqualToString:GAME_MODE_DISTANCE]) {
         sortedArray = [self sortingArrayDecending:sortedArray newNumber:newScores];
+        double highestValue = [[sortedArray objectAtIndex:0] doubleValue];
+        if (newScores >= highestValue) {
+            [self submitScore:newScores mode:mode];
+        }
     }
     NSArray *finalArray = [self truncateArray:sortedArray];
     [self saveLocalLeaderBoard:finalArray mode:(NSString *)mode];
@@ -99,27 +106,7 @@
     return [array subarrayWithRange:range];
 }
 
-- (void)setScore:(int)score {
-    _score = score;
-}
-
-- (void)setMaxScore:(int)maxScore mode:(NSString *)mode {
-    if (maxScore > _maxScore) {
-        _maxScore = maxScore;
-        [self saveUserScore:_maxScore mode:(NSString *)mode];
-    }
-}
-
-- (void)saveUserScore:(int)score mode:(NSString *)mode {
-    [self submitScore:score mode:(NSString *)mode];
-    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    [defaults setValue:@(score) forKey:@"maxScore"];
-    [defaults synchronize];
-}
-
 - (void)resetLocalScore :(NSString *)mode {
-    [self saveUserScore:0 mode:(NSString *)mode];
-    _maxScore = 0;
     
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     [defaults setObject:nil forKey:@"currentLevelData"];
@@ -127,8 +114,15 @@
 }
 
 - (void)submitScore:(int)score mode:(NSString *)mode {
-    if(score > 0) {
-        [[GameCenterHelper instance].gameCenterManager reportScore:score forCategory: [GameCenterHelper instance].currentLeaderBoard];
+    NSString *leaderBoardCategory = nil;
+    if ([mode isEqualToString:GAME_MODE_TIME]) {
+        leaderBoardCategory = kLeaderboardBestTimeID;
+    } else if ([mode isEqualToString:GAME_MODE_DISTANCE]) {
+        leaderBoardCategory = kLeaderboardBestScoreID;
+    }
+    
+    if(leaderBoardCategory && score > 0) {
+        [[GameCenterHelper instance].gameCenterManager reportScore:score forCategory: leaderBoardCategory];
     }
 }
 

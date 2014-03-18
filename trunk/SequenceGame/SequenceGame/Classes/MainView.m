@@ -39,6 +39,17 @@
 - (IBAction)leaderboardPressed:(id)sender {
     [[NSNotificationCenter defaultCenter] postNotificationName:SHOW_LEADERBOARD_NOTIFICATION object:self];
 }
+
+- (IBAction)bestTimePressed:(id)sender {
+    [GameCenterHelper instance].currentLeaderBoard = kLeaderboardBestTimeID;
+    [[NSNotificationCenter defaultCenter] postNotificationName:SHOW_LEADERBOARD_NOTIFICATION object:self];
+}
+
+- (IBAction)bestScorePressed:(id)sender {
+    [GameCenterHelper instance].currentLeaderBoard = kLeaderboardBestScoreID;
+    [[NSNotificationCenter defaultCenter] postNotificationName:SHOW_LEADERBOARD_NOTIFICATION object:self];
+}
+
 - (IBAction)achievementPressed:(id)sender {
     [[NSNotificationCenter defaultCenter] postNotificationName:SHOW_ACHIEVEMENT_NOTIFICATION object:self];
 }

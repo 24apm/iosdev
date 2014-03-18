@@ -35,9 +35,9 @@
 - (void)initializeTitleBoard {
     if ([[GameManager instance].gameMode isEqualToString:GAME_MODE_TIME]) {
         self.leaderBoardLabel.text = @"Time Attack Leaderboard";
-        self.leaderBoardLabel.textColor = COLOR_RED;
+        self.leaderBoardLabel.textColor = kCOLOR_RED;
     } else if([[GameManager instance].gameMode isEqualToString:GAME_MODE_DISTANCE]) {
-        self.leaderBoardLabel.textColor = COLOR_BLUE;
+        self.leaderBoardLabel.textColor = kCOLOR_BLUE;
         self.leaderBoardLabel.text = @"Distance Attack Leaderboard";
 
     }
@@ -63,9 +63,9 @@
         scoreText.text = [NSString stringWithFormat:format, score];
         if (score == newEntry && notFound) {
             if ([[GameManager instance].gameMode isEqualToString:GAME_MODE_TIME]) {
-                scoreText.textColor = COLOR_RED;
+                scoreText.textColor = kCOLOR_RED;
             } else {
-                scoreText.textColor = COLOR_BLUE;
+                scoreText.textColor = kCOLOR_BLUE;
             }
             notFound = NO;
         } else {
