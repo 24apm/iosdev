@@ -14,7 +14,7 @@
 #import "UserData.h"
 #import "AnimUtil.h"
 
-#define BUFFER 10
+#define BUFFER 15
 
 @interface GamePlayDistanceView ()
 
@@ -29,7 +29,8 @@
 - (void)show {
     self.score = -1;
     self.startingTime = 0;
-    self.gameLayoutView.timeLabel.text = [NSString stringWithFormat:@"10.00"];
+    self.gameLayoutView.timeLabel.text = [self formatTimeString:BUFFER];
+    self.gameLayoutView.distanceLabel.hidden = NO;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshGameCallback) name:GAME_MANAGER_REFRESH_NOTIFICATION object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(lostGame) name:GAME_MANAGER_END_GAME_NOTIFICATION object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(leftPressedCallback) name:NOTIFICATION_GAME_LAYOUT_VIEW_LEFT_BUTTON_PRESSED object:nil];
@@ -68,6 +69,7 @@
     NSArray *visibleUnits = [[GameManager instance] currentVisibleQueue];
     [self.gameLayoutView updateUnitViews:visibleUnits];
     self.score = [GameManager instance].step;
+    self.gameLayoutView.distanceLabel.text = [NSString stringWithFormat:@"%d",self.score];
 }
 
 - (void)leftPressedCallback {
@@ -93,10 +95,14 @@
 
 - (void)updateTimer {
     double currentTime = self.startingTime - CACurrentMediaTime();
-    self.gameLayoutView.timeLabel.text = [NSString stringWithFormat:@"%.3F", currentTime];
+    self.gameLayoutView.timeLabel.text = [self formatTimeString:currentTime];
     if (currentTime < 0) {
         [self victoryGame];
     }
+}
+
+- (NSString *)formatTimeString:(float)time {
+    return [NSString stringWithFormat:@"%.3F", time];
 }
 
 - (void)endGame {
@@ -112,7 +118,6 @@
     [self.gameLayoutView shakeScreen];
     [self.gameLayoutView showMessageViewWithImage:@"rip.png"];
     [self performSelector:@selector(endGame) withObject:nil afterDelay:1.0f];
-    self.gameLayoutView.timeLabel.text = [NSString stringWithFormat:@"%d", 0];
     [[UserData instance] addNewScoreLocalLeaderBoard:self.score mode:[GameManager instance].gameMode];
 }
 
@@ -120,7 +125,7 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     self.userInteractionEnabled = NO;
     [self.timer invalidate]; self.timer = nil;
-    self.gameLayoutView.timeLabel.text = [NSString stringWithFormat:@"%d", 0];
+    self.gameLayoutView.timeLabel.text = [self formatTimeString:0.f];
     [[UserData instance] addNewScoreLocalLeaderBoard:self.score mode:[GameManager instance].gameMode];
     [self.gameLayoutView showMessageView:@"VICTORY!"];
     [[SoundManager instance] play:SOUND_EFFECT_WINNING];

@@ -8,6 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GameLayoutView">
             <connections>
                 <outlet property="attackView" destination="Vws-gm-XhU" id="XLJ-sF-FWq"/>
+                <outlet property="distanceLabel" destination="b3T-tR-ag9" id="FbR-sk-8Cn"/>
                 <outlet property="timeLabel" destination="5Q4-M8-vgH" id="bsO-J6-GAT"/>
                 <outletCollection property="imagePlaceHolder" destination="O4a-bZ-iyQ" id="fYz-dq-fcd"/>
                 <outletCollection property="imagePlaceHolder" destination="Qmm-LP-dq9" id="YrS-Vx-cx0"/>
@@ -93,6 +94,13 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="99" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="b3T-tR-ag9" userLabel="Distance">
+                    <rect key="frame" x="210" y="0.0" width="100" height="40"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>

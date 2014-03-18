@@ -20,6 +20,7 @@
 @property (strong, nonatomic) IBOutletCollection(MonsterView) NSArray *imagePlaceHolder;
 @property (strong, nonatomic) IBOutlet UILabel *timeLabel;
 @property (strong, nonatomic) IBOutlet UIView *attackView;
+@property (strong, nonatomic) IBOutlet UILabel *distanceLabel;
 
 - (void)animatePopFrontUnit;
 - (void)updateUnitViews:(NSArray *)visibleUnits;
