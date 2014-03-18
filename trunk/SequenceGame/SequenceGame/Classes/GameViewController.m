@@ -21,12 +21,15 @@
 #import "PromoBannerView.h"
 #import "PromoManager.h"
 #import "LocalLeaderBoardView.h"
+#import "GamePlayDistanceView.h"
+#import "GameManager.h"
 
 @interface GameViewController ()
 
 @property (strong, nonatomic) ResultView *resultView;
 @property (strong, nonatomic) MainView *mainView;
-@property (strong, nonatomic) GamePlayView *numberGameView;
+@property (strong, nonatomic) GamePlayView *timeAttackMode;
+@property (strong, nonatomic) GamePlayDistanceView *distanceAttackMode;
 @property (strong, nonatomic) NSArray *products;
 @property (strong, nonatomic) PromoBannerView *promoBannerView;
 @property (strong, nonatomic) LocalLeaderBoardView *localLeaderBoardView;
@@ -60,10 +63,15 @@
     self.mainView.size = self.containerView.size;
     [UserData instance].tutorialModeEnabled = NO;
     
-    self.numberGameView = [[GamePlayView alloc] init];
-    [self.containerView addSubview:self.numberGameView ];
-    self.numberGameView.hidden = YES;
-    self.numberGameView.size = self.containerView.size;
+    self.timeAttackMode = [[GamePlayView alloc] init];
+    [self.containerView addSubview:self.timeAttackMode ];
+    self.timeAttackMode.hidden = YES;
+    self.timeAttackMode.size = self.containerView.size;
+    
+    self.distanceAttackMode = [[GamePlayDistanceView alloc] init];
+    [self.containerView addSubview:self.distanceAttackMode ];
+    self.distanceAttackMode.hidden = YES;
+    self.distanceAttackMode.size = self.containerView.size;
     
     self.resultView = [[ResultView alloc] init];
     [self.containerView addSubview:self.resultView];
@@ -141,8 +149,9 @@
     self.containerView.hidden = NO;
     self.containerView.userInteractionEnabled = YES;
     self.mainView.hidden = YES;
-    self.numberGameView.hidden = YES;
+    self.timeAttackMode.hidden = YES;
     self.localLeaderBoardView.hidden = YES;
+    self.distanceAttackMode.hidden = YES;
     
     switch (self.currentGameState) {
         case GameStateMainMode:
@@ -153,18 +162,14 @@
             self.containerView.userInteractionEnabled = NO;
             break;
         case GameStateGameMode:
-            self.numberGameView.hidden = NO;
-            [self.numberGameView show];
-            break;
-        case GameStateShowAnswerMode:
-            self.numberGameView.hidden = NO;
-            [self.numberGameView show];
-            break;
-        case GameStatePauseMode:
-            self.numberGameView.hidden = NO;
-            break;
-        case GameStateResumeMode:
-            self.numberGameView.hidden = NO;
+            if ([[GameManager instance].gameMode isEqualToString:GAME_MODE_TIME]) {
+                [self.timeAttackMode show];
+                self.timeAttackMode.hidden = NO;
+            } else if([[GameManager instance].gameMode isEqualToString:GAME_MODE_DISTANCE]){
+                [self.distanceAttackMode show];
+                self.distanceAttackMode.hidden = NO;
+            }
+            
             break;
         case GameStateLocalLeaderBoardMode:
             self.localLeaderBoardView.hidden = NO;

@@ -9,6 +9,7 @@
 #import "UserData.h"
 #import "GameCenterHelper.h"
 #import "GameConstants.h"
+#import "GameConstants.h"
 
 @implementation UserData
 
@@ -35,7 +36,23 @@
     [defaults synchronize];
 }
 
-- (NSMutableArray *)sortingArray:(NSMutableArray *)array newNumber:(double)newNumber{
+- (NSMutableArray *)sortingArrayDecending:(NSMutableArray *)array newNumber:(double)newNumber{
+    int index = -1;
+    for (int i = 0; i < array.count; i++) {
+        if (newNumber > [[array objectAtIndex:i] doubleValue]) {
+            index = i;
+            break;
+        }
+    }
+    if (index < 0) {
+        index = array.count;
+    }
+    
+    [array insertObject:[NSNumber numberWithDouble:newNumber] atIndex:index];
+    return array;
+}
+
+- (NSMutableArray *)sortingArrayAcending:(NSMutableArray *)array newNumber:(double)newNumber{
     int index = -1;
     for (int i = 0; i < array.count; i++) {
         if (newNumber < [[array objectAtIndex:i] doubleValue]) {
@@ -65,8 +82,12 @@
     // sort it
     // take the top x range (truncate if neccessarily)
     // save new leaderboard
-    NSMutableArray *sortedArray = [NSMutableArray arrayWithArray:[self loadLocalLeaderBoard :(NSString *)mode]];
-    sortedArray = [self sortingArray:sortedArray newNumber:newScores];
+    NSMutableArray *sortedArray = sortedArray = [NSMutableArray arrayWithArray:[self loadLocalLeaderBoard :(NSString *)mode]];
+    if ([mode isEqualToString:GAME_MODE_TIME]) {
+        sortedArray = [self sortingArrayAcending:sortedArray newNumber:newScores];
+    } else if ([mode isEqualToString:GAME_MODE_DISTANCE]) {
+        sortedArray = [self sortingArrayDecending:sortedArray newNumber:newScores];
+    }
     NSArray *finalArray = [self truncateArray:sortedArray];
     [self saveLocalLeaderBoard:finalArray mode:(NSString *)mode];
     self.currentScore = newScores;

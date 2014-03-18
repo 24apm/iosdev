@@ -19,11 +19,22 @@
     return instance;
 }
 
-- (void)generatelevel {
+- (void)generatelevelForTime {
     self.step = 0;
     self.unitQueue = [NSMutableArray array];
     NSArray *units = @[@(UnitTypeArrow), @(UnitTypeMonster)];
     for (int i = 0; i < 50; i++) {
+        UnitType unitType = [[units randomObject] integerValue];
+        [self.unitQueue addObject:[[MonsterData alloc] initWithUnitType:unitType]];
+    }
+    [self.unitQueue addObject:[[MonsterData alloc] initWithUnitType:UnitTypeBoss]];
+}
+
+- (void)generatelevelForDistance {
+    self.step = 0;
+    self.unitQueue = [NSMutableArray array];
+    NSArray *units = @[@(UnitTypeArrow), @(UnitTypeMonster)];
+    for (int i = 0; i < 1000; i++) {
         UnitType unitType = [[units randomObject] integerValue];
         [self.unitQueue addObject:[[MonsterData alloc] initWithUnitType:unitType]];
     }

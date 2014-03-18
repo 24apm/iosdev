@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 MacCoder. All rights reserved.
 //
 
-#import "GamePlayView.h"
+#import "GamePlayDistanceView.h"
 #import "GameManager.h"
 #import "MonsterView.h"
 #import "GameConstants.h"
@@ -14,7 +14,9 @@
 #import "UserData.h"
 #import "AnimUtil.h"
 
-@interface GamePlayView ()
+#define BUFFER 10
+
+@interface GamePlayDistanceView ()
 
 @property (nonatomic, strong) NSTimer *timer;
 @property (nonatomic) CFTimeInterval startingTime;
@@ -22,14 +24,14 @@
 
 @end
 
-@implementation GamePlayView
+@implementation GamePlayDistanceView
 
 - (void)show {
+    self.score = -1;
     self.startingTime = 0;
-    self.gameLayoutView.timeLabel.text = [NSString stringWithFormat:@"0.00"];
+    self.gameLayoutView.timeLabel.text = [NSString stringWithFormat:@"10.00"];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshGameCallback) name:GAME_MANAGER_REFRESH_NOTIFICATION object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(lostGame) name:GAME_MANAGER_END_GAME_NOTIFICATION object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(victoryGame) name:GAMEPLAY_VIEW_VICTORY_NOTIFICATION object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(leftPressedCallback) name:NOTIFICATION_GAME_LAYOUT_VIEW_LEFT_BUTTON_PRESSED object:nil];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rightPressedCallback) name:NOTIFICATION_GAME_LAYOUT_VIEW_RIGHT_BUTTON_PRESSED object:nil];
@@ -53,7 +55,7 @@
 
 - (void)renewGame{
     self.userInteractionEnabled = YES;
-    [[GameManager instance] generatelevelForTime];
+    [[GameManager instance] generatelevelForDistance];
     [self refreshGame];
 }
 
@@ -65,6 +67,7 @@
 - (void)refreshGame {
     NSArray *visibleUnits = [[GameManager instance] currentVisibleQueue];
     [self.gameLayoutView updateUnitViews:visibleUnits];
+    self.score = [GameManager instance].step;
 }
 
 - (void)leftPressedCallback {
@@ -84,13 +87,16 @@
 }
 
 - (void)startTime {
-    self.startingTime = CACurrentMediaTime();
+    self.startingTime = CACurrentMediaTime() + BUFFER;
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0f/20.f target:self selector:@selector(updateTimer) userInfo:nil repeats:YES];
 }
 
 - (void)updateTimer {
-    double currentTime = CACurrentMediaTime() - self.startingTime;
+    double currentTime = self.startingTime - CACurrentMediaTime();
     self.gameLayoutView.timeLabel.text = [NSString stringWithFormat:@"%.3F", currentTime];
+    if (currentTime < 0) {
+        [self victoryGame];
+    }
 }
 
 - (void)endGame {
@@ -105,19 +111,20 @@
 //    [self animateMonsterScaledIn:[self.imagePlaceHolder objectAtIndex:0]];
     [self.gameLayoutView shakeScreen];
     [self.gameLayoutView showMessageViewWithImage:@"rip.png"];
-    [self performSelector:@selector(endGame) withObject:nil afterDelay:2.0f];
+    [self performSelector:@selector(endGame) withObject:nil afterDelay:1.0f];
+    self.gameLayoutView.timeLabel.text = [NSString stringWithFormat:@"%d", 0];
+    [[UserData instance] addNewScoreLocalLeaderBoard:self.score mode:[GameManager instance].gameMode];
 }
 
 - (void)victoryGame {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     self.userInteractionEnabled = NO;
     [self.timer invalidate]; self.timer = nil;
-    self.finalTime = CACurrentMediaTime() - self.startingTime;
-    self.gameLayoutView.timeLabel.text = [NSString stringWithFormat:@"%.3F", self.finalTime];
-    [[UserData instance] addNewScoreLocalLeaderBoard:self.finalTime mode:[GameManager instance].gameMode];
+    self.gameLayoutView.timeLabel.text = [NSString stringWithFormat:@"%d", 0];
+    [[UserData instance] addNewScoreLocalLeaderBoard:self.score mode:[GameManager instance].gameMode];
     [self.gameLayoutView showMessageView:@"VICTORY!"];
     [[SoundManager instance] play:SOUND_EFFECT_WINNING];
-    [self performSelector:@selector(endGame) withObject:nil afterDelay:2.0f];
+    [self performSelector:@selector(endGame) withObject:nil afterDelay:1.0f];
 }
 
 @end

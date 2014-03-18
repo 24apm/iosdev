@@ -21,7 +21,8 @@ typedef enum {
 
 @interface GameManager : NSObject
 
-- (void)generatelevel;
+- (void)generatelevelForTime;
+- (void)generatelevelForDistance;
 + (GameManager *)instance;
 - (void)sequenceCaculation:(UserInput)input;
 - (NSArray *)currentVisibleQueue;

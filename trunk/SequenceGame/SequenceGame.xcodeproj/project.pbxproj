@@ -118,6 +118,8 @@
 		D0EA7ECA18D548020095DEBD /* LocalLeaderBoardView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0EA7EC918D548020095DEBD /* LocalLeaderBoardView.m */; };
 		D0EA7ECC18D562A10095DEBD /* LocalLeaderBoardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0EA7ECB18D562A10095DEBD /* LocalLeaderBoardView.xib */; };
 		D0EA7ED018D58B0E0095DEBD /* boss.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EA7ECF18D58B0E0095DEBD /* boss.png */; };
+		D0EC496618D6DE2000537BB6 /* GamePlayDistanceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0EC496518D6DE2000537BB6 /* GamePlayDistanceView.xib */; };
+		D0EC496918D6E33D00537BB6 /* GamePlayDistanceView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0EC496718D6E33D00537BB6 /* GamePlayDistanceView.m */; };
 		D0ED116618CF04BC00C55BA9 /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = D0ED116518CF04BC00C55BA9 /* heart.png */; };
 		D0F0C80718D009EF00232E9D /* Achievementx999WtN.png in Resources */ = {isa = PBXBuildFile; fileRef = D0F0C80618D009EF00232E9D /* Achievementx999WtN.png */; };
 		D0F1143618D41299007EB840 /* MonsterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0F1143518D41299007EB840 /* MonsterView.xib */; };
@@ -290,6 +292,9 @@
 		D0EA7EC918D548020095DEBD /* LocalLeaderBoardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalLeaderBoardView.m; sourceTree = "<group>"; };
 		D0EA7ECB18D562A10095DEBD /* LocalLeaderBoardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocalLeaderBoardView.xib; sourceTree = "<group>"; };
 		D0EA7ECF18D58B0E0095DEBD /* boss.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = boss.png; sourceTree = "<group>"; };
+		D0EC496518D6DE2000537BB6 /* GamePlayDistanceView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GamePlayDistanceView.xib; sourceTree = "<group>"; };
+		D0EC496718D6E33D00537BB6 /* GamePlayDistanceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GamePlayDistanceView.m; sourceTree = "<group>"; };
+		D0EC496818D6E33D00537BB6 /* GamePlayDistanceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GamePlayDistanceView.h; sourceTree = "<group>"; };
 		D0ED116518CF04BC00C55BA9 /* heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart.png; sourceTree = "<group>"; };
 		D0F0C80618D009EF00232E9D /* Achievementx999WtN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Achievementx999WtN.png; path = "../../../../../../New folder (7)/Achievementx999WtN.png"; sourceTree = "<group>"; };
 		D0F1143518D41299007EB840 /* MonsterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MonsterView.xib; sourceTree = "<group>"; };
@@ -564,6 +569,8 @@
 				D0E2E98B18D2D288009C757F /* NumberGameIAPHelper.m */,
 				D0E2E98C18D2D288009C757F /* GamePlayView.h */,
 				D0E2E98D18D2D288009C757F /* GamePlayView.m */,
+				D0EC496718D6E33D00537BB6 /* GamePlayDistanceView.m */,
+				D0EC496818D6E33D00537BB6 /* GamePlayDistanceView.h */,
 				D0E2E99018D2D288009C757F /* ResultView.h */,
 				D0E2E99118D2D288009C757F /* ResultView.m */,
 				D0E2E99218D2D288009C757F /* UserData.h */,
@@ -593,6 +600,7 @@
 				D0E2E9A018D2D288009C757F /* MainView.xib */,
 				D0E2E9A118D2D288009C757F /* MainView~ipad.xib */,
 				D0E2E9A218D2D288009C757F /* GamePlayView.xib */,
+				D0EC496518D6DE2000537BB6 /* GamePlayDistanceView.xib */,
 				D0E2E9A418D2D288009C757F /* ResultView.xib */,
 				D0E2E9A518D2D288009C757F /* ResultView~ipad.xib */,
 				D0F1143518D41299007EB840 /* MonsterView.xib */,
@@ -775,6 +783,7 @@
 				D0F0C80718D009EF00232E9D /* Achievementx999WtN.png in Resources */,
 				D0E2E9B818D2D288009C757F /* SequenceGame-Info.plist in Resources */,
 				D0338BAA18C713D60006C8B6 /* Achievementx150.png in Resources */,
+				D0EC496618D6DE2000537BB6 /* GamePlayDistanceView.xib in Resources */,
 				D09124BC18CC55520050B59F /* whoosh.caf in Resources */,
 				D0E1122F18C2EC6000808072 /* winningEffect.caf in Resources */,
 				D0338BAD18C713D60006C8B6 /* Achievementx250.png in Resources */,
@@ -860,6 +869,7 @@
 				D091244718CC28830050B59F /* FXLabel.m in Sources */,
 				D091244818CC28830050B59F /* GameCenterManager.m in Sources */,
 				D091244318CC28830050B59F /* AnimUtil.m in Sources */,
+				D0EC496918D6E33D00537BB6 /* GamePlayDistanceView.m in Sources */,
 				D091243F18CC28830050B59F /* WorldObjectView.m in Sources */,
 				D0E2E9B218D2D288009C757F /* ResultView.m in Sources */,
 				D0E2E9A818D2D288009C757F /* GameConstants.m in Sources */,

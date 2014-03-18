@@ -44,24 +44,38 @@
     NSArray *localLeaderBoardMemory = [[UserData instance] loadLocalLeaderBoard:[GameManager instance].gameMode];
     int step;
     [self initializeTitleBoard];
+    NSString *format;
+    if ([[GameManager instance].gameMode isEqualToString:GAME_MODE_TIME]) {
+        format = @"%.3F";
+         self.currentScore.text = [NSString stringWithFormat:@"Current: %.3F", [UserData instance].currentScore];
+    } else {
+        format = @"%.0F";
+         self.currentScore.text = [NSString stringWithFormat:@"Current: %.0F", [UserData instance].currentScore];
+    }
+    BOOL notFound = YES;
     double newEntry = [UserData instance].currentScore;
     for (step = 0; step < localLeaderBoardMemory.count && step < self.labelScores.count; step++) {
         UILabel *scoreText = [self.labelScores objectAtIndex:step];
         double score = [[localLeaderBoardMemory objectAtIndex:step] doubleValue];
-        scoreText.text = [NSString stringWithFormat:@"%.3F", score];
-        if (score == newEntry) {
+        scoreText.text = [NSString stringWithFormat:format, score];
+        if (score == newEntry && notFound) {
             scoreText.textColor = [UIColor colorWithRed:1.f green:0.f blue:0.f alpha:1.f];
+            notFound = NO;
         } else {
         scoreText.textColor = [UIColor colorWithRed:1.f green:1.f blue:1.f alpha:1.f];
         }
     }
-    self.currentScore.text = [NSString stringWithFormat:@"Current: %.3F", [UserData instance].currentScore];
+    
+    [self fillerScore:step];
+}
+
+- (void) fillerScore: (int)step {
     [UserData instance].currentScore = 0;
     if (step < self.labelScores.count) {
         for (;step < self.labelScores.count; step++) {
             UILabel *scoreText = [self.labelScores objectAtIndex:step];
             double score = 0;
-            scoreText.text = [NSString stringWithFormat:@"%.3F", score];
+            scoreText.text = [NSString stringWithFormat:@"%.0F", score];
             scoreText.textColor = [UIColor colorWithRed:1.f green:1.f blue:1.f alpha:1.f];
         }
     }
