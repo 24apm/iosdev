@@ -21,6 +21,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *timeLabel;
 @property (strong, nonatomic) IBOutlet UIView *attackView;
 @property (strong, nonatomic) IBOutlet UILabel *distanceLabel;
+@property (strong, nonatomic) IBOutlet UIImageView *headerImageView;
 
 - (void)animatePopFrontUnit;
 - (void)updateUnitViews:(NSArray *)visibleUnits;

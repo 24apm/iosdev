@@ -24,6 +24,14 @@
 
 @implementation GamePlayView
 
+- (id)init {
+    self = [super init];
+    if (self) {
+        self.gameLayoutView.timeLabel.textColor = COLOR_RED;
+    }
+    return self;
+}
+
 - (void)show {
     self.startingTime = 0;
     self.gameLayoutView.timeLabel.text = [NSString stringWithFormat:@"0.00"];
@@ -85,7 +93,7 @@
 
 - (void)startTime {
     self.startingTime = CACurrentMediaTime();
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0f/20.f target:self selector:@selector(updateTimer) userInfo:nil repeats:YES];
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0f/15.f target:self selector:@selector(updateTimer) userInfo:nil repeats:YES];
 }
 
 - (void)updateTimer {

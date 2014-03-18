@@ -26,6 +26,14 @@
 
 @implementation GamePlayDistanceView
 
+- (id)init {
+    self = [super init];
+    if (self) {
+        self.gameLayoutView.timeLabel.textColor = COLOR_BLUE;
+    }
+    return self;
+}
+
 - (void)show {
     self.score = -1;
     self.startingTime = 0;
@@ -90,7 +98,7 @@
 
 - (void)startTime {
     self.startingTime = CACurrentMediaTime() + BUFFER;
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0f/20.f target:self selector:@selector(updateTimer) userInfo:nil repeats:YES];
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0f/15.f target:self selector:@selector(updateTimer) userInfo:nil repeats:YES];
 }
 
 - (void)updateTimer {
