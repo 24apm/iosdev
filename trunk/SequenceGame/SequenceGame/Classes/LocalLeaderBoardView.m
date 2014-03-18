@@ -34,12 +34,13 @@
 
 - (void)initializeTitleBoard {
     if ([[GameManager instance].gameMode isEqualToString:GAME_MODE_TIME]) {
-        self.leaderBoardLabel.text = @"Time Attack Leaderboard";
+        self.leaderBoardLabel.text = @"TIME ATTACK";
         self.leaderBoardLabel.textColor = kCOLOR_RED;
+        self.retryButton.backgroundColor = kCOLOR_RED;
     } else if([[GameManager instance].gameMode isEqualToString:GAME_MODE_DISTANCE]) {
         self.leaderBoardLabel.textColor = kCOLOR_BLUE;
-        self.leaderBoardLabel.text = @"Distance Attack Leaderboard";
-
+        self.leaderBoardLabel.text = @"DISTANCE ATTACK";
+        self.retryButton.backgroundColor = kCOLOR_BLUE;
     }
 }
 

@@ -9,6 +9,7 @@
             <connections>
                 <outlet property="currentScore" destination="7yH-1v-UGy" id="xJv-dH-jhG"/>
                 <outlet property="leaderBoardLabel" destination="j63-OA-QQU" id="fw4-ah-Ggq"/>
+                <outlet property="retryButton" destination="3c4-fl-g7Y" id="UT5-qb-LcT"/>
                 <outletCollection property="labelScores" destination="hby-rT-b2I" id="abV-UP-oWp"/>
                 <outletCollection property="labelScores" destination="e8H-bu-0If" id="f13-da-GZo"/>
                 <outletCollection property="labelScores" destination="ejK-1W-BiV" id="XEv-Wf-pK0"/>
@@ -96,12 +97,12 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="3c4-fl-g7Y" userLabel="Retry Button">
-                    <rect key="frame" x="35" y="357" width="80" height="50"/>
+                    <rect key="frame" x="205" y="357" width="80" height="50"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" name="alternateSelectedControlTextColor" catalog="System" colorSpace="catalog"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <state key="normal" title="Retry">
-                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="RETRY">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -109,12 +110,12 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Rxs-SW-ZA5" userLabel="Top Button">
-                    <rect key="frame" x="205" y="357" width="80" height="50"/>
+                    <rect key="frame" x="35" y="357" width="80" height="50"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" name="alternateSelectedControlTextColor" catalog="System" colorSpace="catalog"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <state key="normal" title="Top">
-                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="BACK">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>

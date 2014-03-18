@@ -47,14 +47,18 @@
     // do something
 }
 
-- (void)showLeaderboard:(UIViewController *)viewController {
+- (void)showLeaderboard:(UIViewController *)viewController category:(NSString *)category {
     GKLeaderboardViewController *leaderboardController = [[GKLeaderboardViewController alloc] init];
     if (leaderboardController != NULL) {
-        leaderboardController.category = self.currentLeaderBoard;
+        leaderboardController.category = category;
         leaderboardController.timeScope = GKLeaderboardTimeScopeWeek;
         leaderboardController.leaderboardDelegate = self;
         [viewController presentViewController:leaderboardController animated:YES completion:nil];
     }
+}
+
+- (void)showLeaderboard:(UIViewController *)viewController {
+    [self showLeaderboard:viewController category:self.currentLeaderBoard];
 }
 
 - (void)leaderboardViewControllerDidFinish:(GKLeaderboardViewController *)viewController {

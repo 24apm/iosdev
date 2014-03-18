@@ -17,6 +17,7 @@
 
 - (void)loginToGameCenter;
 - (void)showLeaderboard:(UIViewController *)viewController;
+- (void)showLeaderboard:(UIViewController *)viewController category:(NSString *)category;
 - (void)showAchievements:(UIViewController *)viewController;
 - (void)checkAchievements;
 

@@ -17,6 +17,7 @@
 @property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *labelScores;
 @property (strong, nonatomic) IBOutlet UILabel *currentScore;
 @property (strong, nonatomic) IBOutlet UILabel *leaderBoardLabel;
+@property (strong, nonatomic) IBOutlet UIButton *retryButton;
 
 - (void)show;
 

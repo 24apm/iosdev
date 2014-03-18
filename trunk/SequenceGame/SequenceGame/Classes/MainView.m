@@ -36,10 +36,6 @@
     [self hide];
 }
 
-- (IBAction)leaderboardPressed:(id)sender {
-    [[NSNotificationCenter defaultCenter] postNotificationName:SHOW_LEADERBOARD_NOTIFICATION object:self];
-}
-
 - (IBAction)bestTimePressed:(id)sender {
     [GameCenterHelper instance].currentLeaderBoard = kLeaderboardBestTimeID;
     [[NSNotificationCenter defaultCenter] postNotificationName:SHOW_LEADERBOARD_NOTIFICATION object:self];
