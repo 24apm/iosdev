@@ -30,9 +30,10 @@
 
 - (void)setup {
     if(!self.loaderView) {
-        self.loaderView = [[UIView alloc] initWithFrame:self.frame];
+        self.loaderView = [[UIView alloc] init];
         [self addSubview:self.loaderView];
-        
+        self.loaderView.frame = CGRectMake(0.f, 0.f, self.bounds.size.width, self.bounds.size.height);
+
         NSString *nibName = NSStringFromClass([self class]);
         NSArray *nibObjects = nil;
         Class UINibClass = NSClassFromString(@"UINib");
@@ -46,7 +47,14 @@
         UIView *xibView = [nibObjects objectAtIndex:0];
         self.backgroundColor = [UIColor clearColor];
         self.autoresizingMask = self.loaderView.autoresizingMask;
-        self.loaderView.frame = xibView.frame;
+        
+        if (self.bounds.size.width <= 0.f && self.bounds.size.height <= 0.f) {
+            // xib's frame override parent's frame
+            self.loaderView.frame = xibView.frame;
+        } else {
+            // parent frame overrides xib's frame
+            xibView.frame = self.loaderView.frame;
+        }
         [self.loaderView addSubview:xibView];
         self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.loaderView.frame.size.width, self.loaderView.frame.size.height);
         self.loaderView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;

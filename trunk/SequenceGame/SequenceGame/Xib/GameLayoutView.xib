@@ -22,27 +22,27 @@
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" id="dgI-ss-fZU" userLabel="Monster View4" customClass="MonsterView" colorLabel="IBBuiltInLabel-Orange">
-                    <rect key="frame" x="129.99999999999997" y="44.999999999999993" width="60.000000000000007" height="60"/>
+                    <rect key="frame" x="140" y="55" width="40" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.180392161" green="0.64705884459999996" blue="0.34117648010000001" alpha="1" colorSpace="deviceRGB"/>
                 </view>
                 <view contentMode="scaleToFill" id="fLJ-bd-z3Q" userLabel="Monster View3" customClass="MonsterView" colorLabel="IBBuiltInLabel-Orange">
-                    <rect key="frame" x="129.99999999999997" y="115" width="60.000000000000007" height="60"/>
+                    <rect key="frame" x="135" y="105" width="50" height="50"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.180392161" green="0.64705884459999996" blue="0.34117648010000001" alpha="1" colorSpace="deviceRGB"/>
                 </view>
                 <view contentMode="scaleToFill" id="Qmm-LP-dq9" userLabel="Monster View2" customClass="MonsterView" colorLabel="IBBuiltInLabel-Orange">
-                    <rect key="frame" x="129.99999999999997" y="185" width="60.000000000000021" height="60"/>
+                    <rect key="frame" x="130" y="170" width="60" height="60"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.180392161" green="0.64705884459999996" blue="0.34117648010000001" alpha="1" colorSpace="deviceRGB"/>
                 </view>
                 <view contentMode="scaleToFill" id="O4a-bZ-iyQ" userLabel="Monster View1" customClass="MonsterView" colorLabel="IBBuiltInLabel-Orange">
-                    <rect key="frame" x="120.00000000000001" y="250" width="79.999999999999986" height="80"/>
+                    <rect key="frame" x="110" y="235" width="100" height="100"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.180392161" green="0.64705884459999996" blue="0.34117648010000001" alpha="1" colorSpace="deviceRGB"/>
                 </view>
                 <view hidden="YES" contentMode="scaleToFill" id="Vws-gm-XhU" userLabel="Attack View" colorLabel="IBBuiltInLabel-Orange">
-                    <rect key="frame" x="109.99999999999999" y="243" width="99.999999999999986" height="62"/>
+                    <rect key="frame" x="110" y="268" width="100" height="62"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
