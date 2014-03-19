@@ -104,6 +104,10 @@
 		D0E30EDF18A37D6400FFD3CE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E30EDE18A37D6400FFD3CE /* QuartzCore.framework */; };
 		D0E36B8B18C2906F00BA56E7 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E36B8A18C2906F00BA56E7 /* StoreKit.framework */; };
 		D0E378FF18D42CF700541404 /* GameManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E378FE18D42CF700541404 /* GameManager.m */; };
+		D0E4BCCE18D95D9200132C17 /* Victory.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E4BCCD18D95D9200132C17 /* Victory.png */; };
+		D0E4BCD118D9743700132C17 /* bossknight.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E4BCCF18D9743700132C17 /* bossknight.png */; };
+		D0E4BCD218D9743700132C17 /* soldier.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E4BCD018D9743700132C17 /* soldier.png */; };
+		D0E4BCD418D97BB500132C17 /* swordattack.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E4BCD318D97BB500132C17 /* swordattack.png */; };
 		D0E7628A18D626B7005CDF88 /* MonsterData.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E7628918D626B7005CDF88 /* MonsterData.m */; };
 		D0EA7EBE18D521C90095DEBD /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EA7EBA18D521C90095DEBD /* arrow.png */; };
 		D0EA7EBF18D521C90095DEBD /* shield.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EA7EBB18D521C90095DEBD /* shield.png */; };
@@ -122,6 +126,10 @@
 		D0F0C80718D009EF00232E9D /* Achievementx999WtN.png in Resources */ = {isa = PBXBuildFile; fileRef = D0F0C80618D009EF00232E9D /* Achievementx999WtN.png */; };
 		D0F1143618D41299007EB840 /* MonsterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0F1143518D41299007EB840 /* MonsterView.xib */; };
 		D0F1143918D412AF007EB840 /* MonsterView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F1143818D412AF007EB840 /* MonsterView.m */; };
+		D0F11CB218D83CFD007A8963 /* CustomizationView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F11CB118D83CFD007A8963 /* CustomizationView.m */; };
+		D0F11CB418D83D70007A8963 /* CustomizationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0F11CB318D83D70007A8963 /* CustomizationView.xib */; };
+		D0F11CB718D8411E007A8963 /* CustomizationItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F11CB618D8411E007A8963 /* CustomizationItemView.m */; };
+		D0F11CB918D8412F007A8963 /* CustomizationItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0F11CB818D8412F007A8963 /* CustomizationItemView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -274,6 +282,10 @@
 		D0E36B8A18C2906F00BA56E7 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		D0E378FD18D42CF700541404 /* GameManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameManager.h; sourceTree = "<group>"; };
 		D0E378FE18D42CF700541404 /* GameManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameManager.m; sourceTree = "<group>"; };
+		D0E4BCCD18D95D9200132C17 /* Victory.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Victory.png; sourceTree = "<group>"; };
+		D0E4BCCF18D9743700132C17 /* bossknight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bossknight.png; sourceTree = "<group>"; };
+		D0E4BCD018D9743700132C17 /* soldier.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = soldier.png; sourceTree = "<group>"; };
+		D0E4BCD318D97BB500132C17 /* swordattack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = swordattack.png; sourceTree = "<group>"; };
 		D0E7628818D626B7005CDF88 /* MonsterData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonsterData.h; sourceTree = "<group>"; };
 		D0E7628918D626B7005CDF88 /* MonsterData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonsterData.m; sourceTree = "<group>"; };
 		D0EA7EBA18D521C90095DEBD /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
@@ -296,6 +308,12 @@
 		D0F1143518D41299007EB840 /* MonsterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MonsterView.xib; sourceTree = "<group>"; };
 		D0F1143718D412AF007EB840 /* MonsterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonsterView.h; sourceTree = "<group>"; };
 		D0F1143818D412AF007EB840 /* MonsterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonsterView.m; sourceTree = "<group>"; };
+		D0F11CB018D83CFD007A8963 /* CustomizationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomizationView.h; sourceTree = "<group>"; };
+		D0F11CB118D83CFD007A8963 /* CustomizationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomizationView.m; sourceTree = "<group>"; };
+		D0F11CB318D83D70007A8963 /* CustomizationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomizationView.xib; sourceTree = "<group>"; };
+		D0F11CB518D8411E007A8963 /* CustomizationItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomizationItemView.h; sourceTree = "<group>"; };
+		D0F11CB618D8411E007A8963 /* CustomizationItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomizationItemView.m; sourceTree = "<group>"; };
+		D0F11CB818D8412F007A8963 /* CustomizationItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomizationItemView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -569,6 +587,8 @@
 				D0EC496818D6E33D00537BB6 /* GamePlayDistanceView.h */,
 				D0E2E99018D2D288009C757F /* ResultView.h */,
 				D0E2E99118D2D288009C757F /* ResultView.m */,
+				D0F11CB518D8411E007A8963 /* CustomizationItemView.h */,
+				D0F11CB618D8411E007A8963 /* CustomizationItemView.m */,
 				D0E2E99218D2D288009C757F /* UserData.h */,
 				D0F1143718D412AF007EB840 /* MonsterView.h */,
 				D0E2E99318D2D288009C757F /* UserData.m */,
@@ -581,6 +601,8 @@
 				D0E7628918D626B7005CDF88 /* MonsterData.m */,
 				D0A9405818D6A5EF0049E018 /* GameLayoutView.h */,
 				D0A9405918D6A5EF0049E018 /* GameLayoutView.m */,
+				D0F11CB018D83CFD007A8963 /* CustomizationView.h */,
+				D0F11CB118D83CFD007A8963 /* CustomizationView.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -589,6 +611,7 @@
 			isa = PBXGroup;
 			children = (
 				D0EA7ECB18D562A10095DEBD /* LocalLeaderBoardView.xib */,
+				D0F11CB818D8412F007A8963 /* CustomizationItemView.xib */,
 				D0E2E99C18D2D288009C757F /* GameViewController.xib */,
 				D0E2E99E18D2D288009C757F /* InGameMessageView.xib */,
 				D0E2E9A018D2D288009C757F /* MainView.xib */,
@@ -597,6 +620,7 @@
 				D0E2E9A418D2D288009C757F /* ResultView.xib */,
 				D0F1143518D41299007EB840 /* MonsterView.xib */,
 				D0A9405B18D6A5FD0049E018 /* GameLayoutView.xib */,
+				D0F11CB318D83D70007A8963 /* CustomizationView.xib */,
 			);
 			path = Xib;
 			sourceTree = "<group>";
@@ -650,6 +674,10 @@
 		D0E50A2818A7349300AA353E /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				D0E4BCD318D97BB500132C17 /* swordattack.png */,
+				D0E4BCCF18D9743700132C17 /* bossknight.png */,
+				D0E4BCD018D9743700132C17 /* soldier.png */,
+				D0E4BCCD18D95D9200132C17 /* Victory.png */,
 				D0EF3FD218D7FB1B00C50442 /* red_header.png */,
 				D0EF3FD318D7FB1B00C50442 /* blue_header.png */,
 				D0A9405D18D6BED20049E018 /* rip.png */,
@@ -776,6 +804,7 @@
 				D0338BAF18C713D60006C8B6 /* Achievementx500.png in Resources */,
 				D0F0C80718D009EF00232E9D /* Achievementx999WtN.png in Resources */,
 				D0E2E9B818D2D288009C757F /* SpeedyBnA-Info.plist in Resources */,
+				D0E4BCD418D97BB500132C17 /* swordattack.png in Resources */,
 				D0338BAA18C713D60006C8B6 /* Achievementx150.png in Resources */,
 				D0EC496618D6DE2000537BB6 /* GamePlayDistanceView.xib in Resources */,
 				D09124BC18CC55520050B59F /* whoosh.caf in Resources */,
@@ -788,6 +817,7 @@
 				D0338BA518C713D60006C8B6 /* Achievementx60.png in Resources */,
 				D0ED116618CF04BC00C55BA9 /* heart.png in Resources */,
 				D091244C18CC28830050B59F /* FlappyBallIcon100x100.png in Resources */,
+				D0E4BCD218D9743700132C17 /* soldier.png in Resources */,
 				D0EA7EBF18D521C90095DEBD /* shield.png in Resources */,
 				D0EA7EC018D521C90095DEBD /* sword.png in Resources */,
 				D0EF3FD418D7FB1B00C50442 /* red_header.png in Resources */,
@@ -801,8 +831,10 @@
 				D0338BA718C713D60006C8B6 /* Achievementx90.png in Resources */,
 				D0338BB018C713D60006C8B6 /* Achievementx999.png in Resources */,
 				D0338BAE18C713D60006C8B6 /* Achievementx350.png in Resources */,
+				D0E4BCCE18D95D9200132C17 /* Victory.png in Resources */,
 				D0EA7EC418D52FE90095DEBD /* defend.png in Resources */,
 				D0E1123318C2ECF300808072 /* ticking.caf in Resources */,
+				D0F11CB418D83D70007A8963 /* CustomizationView.xib in Resources */,
 				D0EA7EC518D52FE90095DEBD /* attack.png in Resources */,
 				D0EA7EC118D521C90095DEBD /* monster.png in Resources */,
 				D0338B9F18C713D60006C8B6 /* Achievementx10.png in Resources */,
@@ -813,6 +845,7 @@
 				D0338BA318C713D60006C8B6 /* Achievementx40.png in Resources */,
 				D0E1123518C2EDF000808072 /* bling.caf in Resources */,
 				D0338BA218C713D60006C8B6 /* Achievementx30.png in Resources */,
+				D0F11CB918D8412F007A8963 /* CustomizationItemView.xib in Resources */,
 				D0338BB218C72DD30006C8B6 /* UnlockAnswer.png in Resources */,
 				D0E2E9B418D2D288009C757F /* InfoPlist.strings in Resources */,
 				D0E2E9B918D2D288009C757F /* GameViewController.xib in Resources */,
@@ -827,6 +860,7 @@
 				D0E2E9B718D2D288009C757F /* MainWindow.xib in Resources */,
 				D0E2E9C118D2D288009C757F /* ResultView.xib in Resources */,
 				D09124BA18CC55520050B59F /* blop.caf in Resources */,
+				D0E4BCD118D9743700132C17 /* bossknight.png in Resources */,
 				D0338BAB18C713D60006C8B6 /* Achievementx170.png in Resources */,
 				D091244A18CC28830050B59F /* iRate.bundle in Resources */,
 			);
@@ -873,10 +907,12 @@
 				D0A9405A18D6A5EF0049E018 /* GameLayoutView.m in Sources */,
 				D091245218CC28830050B59F /* THLabel.m in Sources */,
 				D0E2E9AA18D2D288009C757F /* InGameMessageView.m in Sources */,
+				D0F11CB718D8411E007A8963 /* CustomizationItemView.m in Sources */,
 				D091243A18CC28830050B59F /* Hex.m in Sources */,
 				D091243B18CC28830050B59F /* NotificationManagerBase.m in Sources */,
 				D091244D18CC28830050B59F /* PromoBannerView.m in Sources */,
 				D0E2E9A918D2D288009C757F /* GameViewController.m in Sources */,
+				D0F11CB218D83CFD007A8963 /* CustomizationView.m in Sources */,
 				D091244B18CC28830050B59F /* iRate.m in Sources */,
 				D091243D18CC28830050B59F /* ProgressBarComponent.m in Sources */,
 				D0E2E9B618D2D288009C757F /* main.m in Sources */,

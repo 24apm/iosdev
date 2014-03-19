@@ -7,6 +7,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainView">
             <connections>
+                <outlet property="achievementButton" destination="ZHg-Ma-6fI" id="UQi-dU-uGW"/>
+                <outlet property="customizeButton" destination="DVn-IF-KZ3" id="gB5-hM-DuR"/>
                 <outlet property="resetButton" destination="Gdn-K4-X4O" id="06q-UR-LI3"/>
                 <outlet property="resetLocalScoreButton" destination="XvA-ui-G9g" id="7F5-Hy-saW"/>
             </connections>
@@ -75,6 +77,16 @@ BLOCKS AND ATTACKS</string>
                     <state key="normal" title="ACHIEVEMENT"/>
                     <connections>
                         <action selector="achievementPressed:" destination="-1" eventType="touchUpInside" id="MIX-fb-LmT"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="DVn-IF-KZ3">
+                    <rect key="frame" x="90" y="368" width="140" height="40"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="CUSTOMIZE"/>
+                    <connections>
+                        <action selector="customizeButtonPressed:" destination="-1" eventType="touchUpInside" id="77d-S3-4HZ"/>
                     </connections>
                 </button>
                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Gdn-K4-X4O" userLabel="Button - Reset Achievement">

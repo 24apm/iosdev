@@ -12,6 +12,7 @@
 #import "GameConstants.h"
 #import "UserData.h"
 #import "GameManager.h"
+#import "CustomizationView.h"
 
 @implementation MainView
 
@@ -20,6 +21,8 @@
     if (self) {
         self.resetButton.hidden = !DEBUG_MODE;
         self.resetLocalScoreButton.hidden = !DEBUG_MODE;
+        self.customizeButton.hidden = YES;
+        self.achievementButton.hidden = YES;
     }
     return self;
 }
@@ -27,10 +30,12 @@
 - (IBAction)startButtonPressed:(id)sender {
     [self hide];
 }
+
 - (IBAction)timeAttackButtonPressed:(UIButton *)sender {
     [GameManager instance].gameMode = GAME_MODE_TIME;
     [self hide];
 }
+
 - (IBAction)distanceAttackButtonPressed:(UIButton *)sender {
     [GameManager instance].gameMode = GAME_MODE_DISTANCE;
     [self hide];
@@ -62,6 +67,10 @@
 - (IBAction)resetLocalScore:(id)sender {
     [[UserData instance] resetLocalLeaderBoard];
     [[UserData instance] resetLocalScore :(NSString *)[GameManager instance].gameMode];
+}
+
+- (IBAction)customizeButtonPressed:(UIButton *)sender {
+    [[NSNotificationCenter defaultCenter] postNotificationName:CUSTOMIZE_VIEW_NOTIFICATION object:self];
 }
 
 - (void)show {

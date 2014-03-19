@@ -19,4 +19,6 @@
 - (void)addNewScoreLocalLeaderBoard:(double)newScores mode:(NSString *)mode;
 - (void)resetLocalLeaderBoard;
 
+@property (nonatomic, strong) NSString *currentEquippedItem;
+
 @end

@@ -136,6 +136,7 @@
     self.gameLayoutView.timeLabel.text = [self formatTimeString:0.f];
     [[UserData instance] addNewScoreLocalLeaderBoard:self.score mode:[GameManager instance].gameMode];
     [self.gameLayoutView showMessageView:@"VICTORY!"];
+    [self.gameLayoutView showMessageViewWithImage:@"Victory.png"];
     [[SoundManager instance] play:SOUND_EFFECT_WINNING];
     [self performSelector:@selector(endGame) withObject:nil afterDelay:1.0f];
 }

@@ -22,7 +22,8 @@ typedef enum {
     GameStatePauseMode,
     GameStateResumeMode,
     GameStateGameplayMode,
-    GameStateLocalLeaderBoardMode
+    GameStateLocalLeaderBoardMode,
+    GameStateCustomizeMode
 } GameState;
 
 @interface GameViewController : UIViewController <ADBannerViewDelegate>

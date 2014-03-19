@@ -123,7 +123,8 @@
     self.finalTime = CACurrentMediaTime() - self.startingTime;
     self.gameLayoutView.timeLabel.text = [NSString stringWithFormat:@"%.3F", self.finalTime];
     [[UserData instance] addNewScoreLocalLeaderBoard:self.finalTime mode:[GameManager instance].gameMode];
-    [self.gameLayoutView showMessageView:@"VICTORY!"];
+   // [self.gameLayoutView showMessageView:@"VICTORY!"];
+    [self.gameLayoutView showMessageViewWithImage:@"Victory.png"];
     [[SoundManager instance] play:SOUND_EFFECT_WINNING];
     [self performSelector:@selector(endGame) withObject:nil afterDelay:2.0f];
 }

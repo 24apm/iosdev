@@ -23,6 +23,7 @@
 #import "LocalLeaderBoardView.h"
 #import "GamePlayDistanceView.h"
 #import "GameManager.h"
+#import "CustomizationView.h"
 
 @interface GameViewController ()
 
@@ -33,6 +34,7 @@
 @property (strong, nonatomic) NSArray *products;
 @property (strong, nonatomic) PromoBannerView *promoBannerView;
 @property (strong, nonatomic) LocalLeaderBoardView *localLeaderBoardView;
+@property (strong, nonatomic) CustomizationView *customizationView;
 
 @end
 
@@ -53,6 +55,8 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gameplayViewCallback) name:GAMEPLAY_VIEW_DISMISSED_NOTIFICATION object:nil];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(customizeViewCallback) name:CUSTOMIZE_VIEW_NOTIFICATION object:nil];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(retryCallback) name:RETRY_BUTTON_NOTIFICATION object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(topCallback) name:TOP_BUTTON_NOTIFICATION object:nil];
@@ -62,6 +66,11 @@
     self.mainView.hidden = YES;
     self.mainView.size = self.containerView.size;
     [UserData instance].tutorialModeEnabled = NO;
+    
+    self.customizationView = [[CustomizationView alloc] init];
+    [self.containerView addSubview:self.customizationView ];
+    self.customizationView.hidden = YES;
+    self.customizationView.size = self.containerView.size;
     
     self.timeAttackMode = [[GamePlayView alloc] init];
     [self.containerView addSubview:self.timeAttackMode ];
@@ -139,6 +148,10 @@
     [self updateGameState:GameStateMainMode];
 }
 
+- (void)customizeViewCallback {
+    [self updateGameState:GameStateCustomizeMode];
+}
+
 - (void)showAchievementEarned: (NSNotification *)notification {
     self.resultView.imgView.image = [UIImage imageNamed:notification.object];
     self.resultView.hidden = NO;
@@ -152,6 +165,7 @@
     self.timeAttackMode.hidden = YES;
     self.localLeaderBoardView.hidden = YES;
     self.distanceAttackMode.hidden = YES;
+    self.customizationView.hidden = YES;
     
     switch (self.currentGameState) {
         case GameStateMainMode:
@@ -169,11 +183,14 @@
                 [self.distanceAttackMode show];
                 self.distanceAttackMode.hidden = NO;
             }
-            
             break;
         case GameStateLocalLeaderBoardMode:
             self.localLeaderBoardView.hidden = NO;
             [self.localLeaderBoardView show];
+            break;
+        case GameStateCustomizeMode:
+            self.customizationView.hidden = NO;
+            [self.customizationView show];
             break;
         default:
             break;

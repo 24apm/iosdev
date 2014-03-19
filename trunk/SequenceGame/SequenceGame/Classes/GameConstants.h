@@ -44,9 +44,9 @@
 #define SOUND_EFFECT_TICKING @"ticking"
 #define SOUND_EFFECT_WINNING @"winningEffect"
 
-#define IMAGE_ARROW @"arrow.png"
-#define IMAGE_MONSTER @"monster.png"
-#define IMAGE_BOSS @"boss.png"
+#define IMAGE_ARROW @"swordattack.png"
+#define IMAGE_MONSTER @"soldier.png"
+#define IMAGE_BOSS @"bossknight.png"
 
 #define GAME_MODE_TIME @"timeAttackMode"
 #define GAME_MODE_DISTANCE @"distanceAttackMode"

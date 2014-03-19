@@ -16,6 +16,8 @@
 
 @property (strong, nonatomic) IBOutlet UIButton *resetButton;
 @property (strong, nonatomic) IBOutlet UIButton *resetLocalScoreButton;
+@property (strong, nonatomic) IBOutlet UIButton *customizeButton;
+@property (strong, nonatomic) IBOutlet UIButton *achievementButton;
 
 - (void)show;
 
