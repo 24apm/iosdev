@@ -109,7 +109,7 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     self.userInteractionEnabled = NO;
     [self.timer invalidate]; self.timer = nil;
-//    [[SoundManager instance] play:SOUND_EFFECT_BOING];
+    [[SoundManager instance] play:SOUND_EFFECT_SHARP_PUNCH];
 //    [self animateMonsterScaledIn:[self.imagePlaceHolder objectAtIndex:0]];
     [self.gameLayoutView shakeScreen];
     [self.gameLayoutView showMessageViewWithImage:@"rip.png"];

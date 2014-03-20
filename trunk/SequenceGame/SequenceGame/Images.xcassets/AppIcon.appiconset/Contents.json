@@ -18,19 +18,19 @@
     {
       "size" : "57x57",
       "idiom" : "iphone",
-      "filename" : "NGIcon57.png",
+      "filename" : "RushyKnightIcon57.png",
       "scale" : "1x"
     },
     {
       "size" : "57x57",
       "idiom" : "iphone",
-      "filename" : "NGIcon114.png",
+      "filename" : "RushyKnightIcon114.png",
       "scale" : "2x"
     },
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "NGIcon120.png",
+      "filename" : "RushyKnightIcon60.png",
       "scale" : "2x"
     },
     {
@@ -66,25 +66,25 @@
     {
       "size" : "72x72",
       "idiom" : "ipad",
-      "filename" : "NGIcon72.png",
+      "filename" : "RushyKnightIcon72.png",
       "scale" : "1x"
     },
     {
       "size" : "72x72",
       "idiom" : "ipad",
-      "filename" : "NGIcon144.png",
+      "filename" : "RushyKnightIcon144-1.png",
       "scale" : "2x"
     },
     {
       "size" : "76x76",
       "idiom" : "ipad",
-      "filename" : "NGIcon76.png",
+      "filename" : "RushyKnightIcon76.png",
       "scale" : "1x"
     },
     {
       "size" : "76x76",
       "idiom" : "ipad",
-      "filename" : "NAIcon152x152.png",
+      "filename" : "RushyKnightIcon152.png",
       "scale" : "2x"
     }
   ],

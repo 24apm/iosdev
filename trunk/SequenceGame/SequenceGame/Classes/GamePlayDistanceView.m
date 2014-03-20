@@ -121,7 +121,7 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     self.userInteractionEnabled = NO;
     [self.timer invalidate]; self.timer = nil;
-//    [[SoundManager instance] play:SOUND_EFFECT_BOING];
+    [[SoundManager instance] play:SOUND_EFFECT_SHARP_PUNCH];
 //    [self animateMonsterScaledIn:[self.imagePlaceHolder objectAtIndex:0]];
     [self.gameLayoutView shakeScreen];
     [self.gameLayoutView showMessageViewWithImage:@"rip.png"];
@@ -135,7 +135,7 @@
     [self.timer invalidate]; self.timer = nil;
     self.gameLayoutView.timeLabel.text = [self formatTimeString:0.f];
     [[UserData instance] addNewScoreLocalLeaderBoard:self.score mode:[GameManager instance].gameMode];
-    [self.gameLayoutView showMessageView:@"VICTORY!"];
+   // [self.gameLayoutView showMessageView:@"VICTORY!"];
     [self.gameLayoutView showMessageViewWithImage:@"Victory.png"];
     [[SoundManager instance] play:SOUND_EFFECT_WINNING];
     [self performSelector:@selector(endGame) withObject:nil afterDelay:1.0f];

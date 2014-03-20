@@ -16,8 +16,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D0E30E8018A376E300FFD3CE"
                BuildableName = "SpeedyBnA.app"
-               BlueprintName = "SpeedyBnA"
-               ReferencedContainer = "container:SpeedyBnA.xcodeproj">
+               BlueprintName = "RushyKnight"
+               ReferencedContainer = "container:RushyKnight.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -34,8 +34,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D0E30EA118A376E300FFD3CE"
                BuildableName = "SpeedyBnATests.xctest"
-               BlueprintName = "SpeedyBnATests"
-               ReferencedContainer = "container:SpeedyBnA.xcodeproj">
+               BlueprintName = "RushyKnightTests"
+               ReferencedContainer = "container:RushyKnight.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -44,8 +44,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D0E30E8018A376E300FFD3CE"
             BuildableName = "SpeedyBnA.app"
-            BlueprintName = "SpeedyBnA"
-            ReferencedContainer = "container:SpeedyBnA.xcodeproj">
+            BlueprintName = "RushyKnight"
+            ReferencedContainer = "container:RushyKnight.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -63,8 +63,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D0E30E8018A376E300FFD3CE"
             BuildableName = "SpeedyBnA.app"
-            BlueprintName = "SpeedyBnA"
-            ReferencedContainer = "container:SpeedyBnA.xcodeproj">
+            BlueprintName = "RushyKnight"
+            ReferencedContainer = "container:RushyKnight.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -81,8 +81,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D0E30E8018A376E300FFD3CE"
             BuildableName = "SpeedyBnA.app"
-            BlueprintName = "SpeedyBnA"
-            ReferencedContainer = "container:SpeedyBnA.xcodeproj">
+            BlueprintName = "RushyKnight"
+            ReferencedContainer = "container:RushyKnight.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

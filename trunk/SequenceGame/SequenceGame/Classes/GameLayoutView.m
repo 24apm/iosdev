@@ -109,7 +109,7 @@
     bubbleFadeIn.fromValue = [NSNumber numberWithFloat:1.0f];
     bubbleFadeIn.toValue = [NSNumber numberWithFloat:0.0f];
     
-    float scaleRand = [Utils randBetweenMinInt:0 max:8];
+    float scaleRand = [Utils randBetweenMinInt:0 max:2];
     CABasicAnimation *bubbleExplode = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
     bubbleExplode.toValue = [NSNumber numberWithFloat:scaleRand];
     
@@ -120,7 +120,7 @@
     rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
     rotationAnimation.fromValue = [NSNumber numberWithFloat:0.0f];
     rotationAnimation.toValue = [NSNumber numberWithFloat: M_PI * 2.0f];
-    rotationAnimation.duration = 0.2f;
+    rotationAnimation.duration = 0.3f;
     rotationAnimation.cumulative = YES;
     rotationAnimation.repeatCount = HUGE_VAL;
     
@@ -139,9 +139,9 @@
 }
 
 - (void)animatePopFrontUnit {
-    NSArray *xPositions = @[@(self.width), @(-self.width)];
+    NSArray *xPositions = @[@(self.width), @(0)];
     float x = [[xPositions randomObject] floatValue];
-    float y = [Utils randBetweenMinInt:0 max:self.height];
+    float y = [Utils randBetweenMinInt:0 max:self.height / 2.f];
     
     [self animate:[self.imagePlaceHolder objectAtIndex:0] toPoint:CGPointMake(x,y)];
 }

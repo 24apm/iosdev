@@ -26,6 +26,6 @@
         </view>
     </objects>
     <resources>
-        <image name="bossknight.png" width="120" height="120"/>
+        <image name="bossknight.png" width="320" height="320"/>
     </resources>
 </document>
