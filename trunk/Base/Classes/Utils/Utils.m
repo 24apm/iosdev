@@ -23,12 +23,13 @@
     return screenSize;
 }
 
-+ (float)randBetweenMin:(int)min max:(int)max {
++ (float)randBetweenMin:(float)min max:(float)max {
     return ((float)arc4random() / ARC4RANDOM_MAX) * (max-min) + min;
 }
 
 + (int)randBetweenMinInt:(int)min max:(int)max {
     return arc4random() % (max-min + 1) + min;
 }
+
 
 @end

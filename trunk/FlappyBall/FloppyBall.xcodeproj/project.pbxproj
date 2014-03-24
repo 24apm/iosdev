@@ -69,7 +69,6 @@
 		D091238118CC26770050B59F /* IAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D091235A18CC26770050B59F /* IAPHelper.m */; };
 		D091238218CC26770050B59F /* iRate.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D091235C18CC26770050B59F /* iRate.bundle */; };
 		D091238318CC26770050B59F /* iRate.m in Sources */ = {isa = PBXBuildFile; fileRef = D091235E18CC26770050B59F /* iRate.m */; };
-		D091238418CC26770050B59F /* FlappyBallIcon100x100.png in Resources */ = {isa = PBXBuildFile; fileRef = D091236118CC26770050B59F /* FlappyBallIcon100x100.png */; };
 		D091238518CC26770050B59F /* PromoBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = D091236418CC26770050B59F /* PromoBannerView.m */; };
 		D091238618CC26770050B59F /* PromoBannerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D091236518CC26770050B59F /* PromoBannerView.xib */; };
 		D091238718CC26770050B59F /* PromoBannerView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D091236618CC26770050B59F /* PromoBannerView~ipad.xib */; };
@@ -77,6 +76,10 @@
 		D091238918CC26770050B59F /* PromoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D091236A18CC26770050B59F /* PromoManager.m */; };
 		D091238A18CC26770050B59F /* THLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = D091236D18CC26770050B59F /* THLabel.m */; };
 		D0C79E8018AF4BFD0032BDB8 /* FlappyBall2.png in Resources */ = {isa = PBXBuildFile; fileRef = D0C79E7F18AF4BFD0032BDB8 /* FlappyBall2.png */; };
+		D0DFFCF118DC2C3B001424DF /* FlappyBallIcon100x100.png in Resources */ = {isa = PBXBuildFile; fileRef = D0DFFCED18DC2C3B001424DF /* FlappyBallIcon100x100.png */; };
+		D0DFFCF218DC2C3B001424DF /* NGIcon120.png in Resources */ = {isa = PBXBuildFile; fileRef = D0DFFCEE18DC2C3B001424DF /* NGIcon120.png */; };
+		D0DFFCF318DC2C3B001424DF /* RushyKnightIcon120.png in Resources */ = {isa = PBXBuildFile; fileRef = D0DFFCEF18DC2C3B001424DF /* RushyKnightIcon120.png */; };
+		D0DFFCF418DC2C3B001424DF /* WTNappicon120x120.png in Resources */ = {isa = PBXBuildFile; fileRef = D0DFFCF018DC2C3B001424DF /* WTNappicon120x120.png */; };
 		D0E30E8518A376E300FFD3CE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E30E8418A376E300FFD3CE /* Foundation.framework */; };
 		D0E30E8718A376E300FFD3CE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E30E8618A376E300FFD3CE /* CoreGraphics.framework */; };
 		D0E30E8918A376E300FFD3CE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E30E8818A376E300FFD3CE /* UIKit.framework */; };
@@ -205,7 +208,6 @@
 		D091235C18CC26770050B59F /* iRate.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = iRate.bundle; sourceTree = "<group>"; };
 		D091235D18CC26770050B59F /* iRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iRate.h; sourceTree = "<group>"; };
 		D091235E18CC26770050B59F /* iRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iRate.m; sourceTree = "<group>"; };
-		D091236118CC26770050B59F /* FlappyBallIcon100x100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FlappyBallIcon100x100.png; sourceTree = "<group>"; };
 		D091236318CC26770050B59F /* PromoBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PromoBannerView.h; sourceTree = "<group>"; };
 		D091236418CC26770050B59F /* PromoBannerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PromoBannerView.m; sourceTree = "<group>"; };
 		D091236518CC26770050B59F /* PromoBannerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PromoBannerView.xib; sourceTree = "<group>"; };
@@ -217,6 +219,10 @@
 		D091236C18CC26770050B59F /* THLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THLabel.h; sourceTree = "<group>"; };
 		D091236D18CC26770050B59F /* THLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THLabel.m; sourceTree = "<group>"; };
 		D0C79E7F18AF4BFD0032BDB8 /* FlappyBall2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FlappyBall2.png; sourceTree = "<group>"; };
+		D0DFFCED18DC2C3B001424DF /* FlappyBallIcon100x100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FlappyBallIcon100x100.png; sourceTree = "<group>"; };
+		D0DFFCEE18DC2C3B001424DF /* NGIcon120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NGIcon120.png; sourceTree = "<group>"; };
+		D0DFFCEF18DC2C3B001424DF /* RushyKnightIcon120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RushyKnightIcon120.png; sourceTree = "<group>"; };
+		D0DFFCF018DC2C3B001424DF /* WTNappicon120x120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WTNappicon120x120.png; sourceTree = "<group>"; };
 		D0E30E8118A376E300FFD3CE /* FloppyBall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FloppyBall.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0E30E8418A376E300FFD3CE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D0E30E8618A376E300FFD3CE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -481,18 +487,10 @@
 		D091235F18CC26770050B59F /* Promo */ = {
 			isa = PBXGroup;
 			children = (
-				D091236018CC26770050B59F /* AppIcons */,
+				D0DFFCEC18DC2C3B001424DF /* AppIcons */,
 				D091236218CC26770050B59F /* Classes */,
 			);
 			path = Promo;
-			sourceTree = "<group>";
-		};
-		D091236018CC26770050B59F /* AppIcons */ = {
-			isa = PBXGroup;
-			children = (
-				D091236118CC26770050B59F /* FlappyBallIcon100x100.png */,
-			);
-			path = AppIcons;
 			sourceTree = "<group>";
 		};
 		D091236218CC26770050B59F /* Classes */ = {
@@ -517,6 +515,17 @@
 				D091236D18CC26770050B59F /* THLabel.m */,
 			);
 			path = THLabel;
+			sourceTree = "<group>";
+		};
+		D0DFFCEC18DC2C3B001424DF /* AppIcons */ = {
+			isa = PBXGroup;
+			children = (
+				D0DFFCED18DC2C3B001424DF /* FlappyBallIcon100x100.png */,
+				D0DFFCEE18DC2C3B001424DF /* NGIcon120.png */,
+				D0DFFCEF18DC2C3B001424DF /* RushyKnightIcon120.png */,
+				D0DFFCF018DC2C3B001424DF /* WTNappicon120x120.png */,
+			);
+			path = AppIcons;
 			sourceTree = "<group>";
 		};
 		D0E30E7818A376E300FFD3CE = {
@@ -671,7 +680,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D091238418CC26770050B59F /* FlappyBallIcon100x100.png in Resources */,
 				D015791118ACD9F500AA3803 /* FlappyBallIcon60x60.png in Resources */,
 				D08FE3F818B305F10031D798 /* GameViewController~ipad.xib in Resources */,
 				D08FE3FC18B305F10031D798 /* MainView~ipad.xib in Resources */,
@@ -691,6 +699,7 @@
 				D015791018ACD9F500AA3803 /* FlappyBall152x152.png in Resources */,
 				D091238618CC26770050B59F /* PromoBannerView.xib in Resources */,
 				D08FE3FB18B305F10031D798 /* MainView.xib in Resources */,
+				D0DFFCF218DC2C3B001424DF /* NGIcon120.png in Resources */,
 				D08FE40518B305F10031D798 /* TutorialView~ipad.xib in Resources */,
 				D091238718CC26770050B59F /* PromoBannerView~ipad.xib in Resources */,
 				D08FE3F218B305F10031D798 /* Images.xcassets in Resources */,
@@ -699,11 +708,14 @@
 				D08FE40118B305F10031D798 /* PipeView~ipad.xib in Resources */,
 				D08FE3F718B305F10031D798 /* GameViewController.xib in Resources */,
 				D0F7853818A8659F00CA1ADA /* bounceEffect.caf in Resources */,
+				D0DFFCF118DC2C3B001424DF /* FlappyBallIcon100x100.png in Resources */,
 				D0E48D7F18B9E1D10052F48D /* dun1.caf in Resources */,
 				D08FE40018B305F10031D798 /* PipeView.xib in Resources */,
 				D0E48D7918B9DD9C0052F48D /* Hallelujah.caf in Resources */,
 				D08FE3F918B305F10031D798 /* LadyBugView.xib in Resources */,
+				D0DFFCF418DC2C3B001424DF /* WTNappicon120x120.png in Resources */,
 				D091238218CC26770050B59F /* iRate.bundle in Resources */,
+				D0DFFCF318DC2C3B001424DF /* RushyKnightIcon120.png in Resources */,
 				D048A83F18ACAAAB00411DF9 /* facebook_share.png in Resources */,
 				D08FE3F518B305F10031D798 /* BackgroundView~ipad.xib in Resources */,
 				D0E48D7118B9B40B0052F48D /* Wall160x960.png in Resources */,
@@ -873,7 +885,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Jeffrey Wan (YS47XTCZZB)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jeffrey Wan (YS47XTCZZB)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FlappyBall/FloppyBall-Prefix.pch";
 				INFOPLIST_FILE = "FlappyBall/FloppyBall-Info.plist";

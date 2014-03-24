@@ -248,7 +248,7 @@
 
 - (void)layoutAnimated:(BOOL)animated {
     float bannerYOffset;
-    if (self.adBannerView.bannerLoaded) {
+    if (self.adBannerView.bannerLoaded && NO) {
         self.promoBannerView.hidden = YES;
         bannerYOffset = self.view.height - self.adBannerView.height;
      //   bannerYOffset = self.view.height;

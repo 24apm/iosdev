@@ -19,6 +19,7 @@
 
 - (IBAction)promoPressed:(id)sender {
     [[PromoManager instance] goToAppStore:self.actionUrl];
+    [self setupWithPromoGameData:[[PromoManager instance] nextPromo]];
 }
 
 @end

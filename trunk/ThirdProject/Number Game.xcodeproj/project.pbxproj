@@ -72,7 +72,6 @@
 		D091244918CC28830050B59F /* IAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D091242218CC28830050B59F /* IAPHelper.m */; };
 		D091244A18CC28830050B59F /* iRate.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D091242418CC28830050B59F /* iRate.bundle */; };
 		D091244B18CC28830050B59F /* iRate.m in Sources */ = {isa = PBXBuildFile; fileRef = D091242618CC28830050B59F /* iRate.m */; };
-		D091244C18CC28830050B59F /* FlappyBallIcon100x100.png in Resources */ = {isa = PBXBuildFile; fileRef = D091242918CC28830050B59F /* FlappyBallIcon100x100.png */; };
 		D091244D18CC28830050B59F /* PromoBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = D091242C18CC28830050B59F /* PromoBannerView.m */; };
 		D091244E18CC28830050B59F /* PromoBannerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D091242D18CC28830050B59F /* PromoBannerView.xib */; };
 		D091244F18CC28830050B59F /* PromoBannerView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D091242E18CC28830050B59F /* PromoBannerView~ipad.xib */; };
@@ -82,6 +81,10 @@
 		D09124BA18CC55520050B59F /* blop.caf in Resources */ = {isa = PBXBuildFile; fileRef = D09124B718CC55520050B59F /* blop.caf */; };
 		D09124BB18CC55520050B59F /* tick.caf in Resources */ = {isa = PBXBuildFile; fileRef = D09124B818CC55520050B59F /* tick.caf */; };
 		D09124BC18CC55520050B59F /* whoosh.caf in Resources */ = {isa = PBXBuildFile; fileRef = D09124B918CC55520050B59F /* whoosh.caf */; };
+		D0DFFCE818DC2BF5001424DF /* FlappyBallIcon100x100.png in Resources */ = {isa = PBXBuildFile; fileRef = D0DFFCE418DC2BF5001424DF /* FlappyBallIcon100x100.png */; };
+		D0DFFCE918DC2BF5001424DF /* NGIcon120.png in Resources */ = {isa = PBXBuildFile; fileRef = D0DFFCE518DC2BF5001424DF /* NGIcon120.png */; };
+		D0DFFCEA18DC2BF5001424DF /* RushyKnightIcon120.png in Resources */ = {isa = PBXBuildFile; fileRef = D0DFFCE618DC2BF5001424DF /* RushyKnightIcon120.png */; };
+		D0DFFCEB18DC2BF5001424DF /* WTNappicon120x120.png in Resources */ = {isa = PBXBuildFile; fileRef = D0DFFCE718DC2BF5001424DF /* WTNappicon120x120.png */; };
 		D0E0AE8018C5C6B30069D746 /* GameViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E0AE7818C5C6B30069D746 /* GameViewController~ipad.xib */; };
 		D0E1122B18C2EC6000808072 /* boing.caf in Resources */ = {isa = PBXBuildFile; fileRef = D0E1122118C2EC6000808072 /* boing.caf */; };
 		D0E1122F18C2EC6000808072 /* winningEffect.caf in Resources */ = {isa = PBXBuildFile; fileRef = D0E1122518C2EC6000808072 /* winningEffect.caf */; };
@@ -220,7 +223,6 @@
 		D091242418CC28830050B59F /* iRate.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = iRate.bundle; sourceTree = "<group>"; };
 		D091242518CC28830050B59F /* iRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iRate.h; sourceTree = "<group>"; };
 		D091242618CC28830050B59F /* iRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iRate.m; sourceTree = "<group>"; };
-		D091242918CC28830050B59F /* FlappyBallIcon100x100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FlappyBallIcon100x100.png; sourceTree = "<group>"; };
 		D091242B18CC28830050B59F /* PromoBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PromoBannerView.h; sourceTree = "<group>"; };
 		D091242C18CC28830050B59F /* PromoBannerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PromoBannerView.m; sourceTree = "<group>"; };
 		D091242D18CC28830050B59F /* PromoBannerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PromoBannerView.xib; sourceTree = "<group>"; };
@@ -234,6 +236,10 @@
 		D09124B718CC55520050B59F /* blop.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = blop.caf; sourceTree = "<group>"; };
 		D09124B818CC55520050B59F /* tick.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = tick.caf; sourceTree = "<group>"; };
 		D09124B918CC55520050B59F /* whoosh.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = whoosh.caf; sourceTree = "<group>"; };
+		D0DFFCE418DC2BF5001424DF /* FlappyBallIcon100x100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FlappyBallIcon100x100.png; sourceTree = "<group>"; };
+		D0DFFCE518DC2BF5001424DF /* NGIcon120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NGIcon120.png; sourceTree = "<group>"; };
+		D0DFFCE618DC2BF5001424DF /* RushyKnightIcon120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RushyKnightIcon120.png; sourceTree = "<group>"; };
+		D0DFFCE718DC2BF5001424DF /* WTNappicon120x120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WTNappicon120x120.png; sourceTree = "<group>"; };
 		D0E0AE7818C5C6B30069D746 /* GameViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "GameViewController~ipad.xib"; sourceTree = "<group>"; };
 		D0E1122118C2EC6000808072 /* boing.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = boing.caf; sourceTree = "<group>"; };
 		D0E1122518C2EC6000808072 /* winningEffect.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = winningEffect.caf; sourceTree = "<group>"; };
@@ -509,18 +515,10 @@
 		D091242718CC28830050B59F /* Promo */ = {
 			isa = PBXGroup;
 			children = (
-				D091242818CC28830050B59F /* AppIcons */,
+				D0DFFCE318DC2BF5001424DF /* AppIcons */,
 				D091242A18CC28830050B59F /* Classes */,
 			);
 			path = Promo;
-			sourceTree = "<group>";
-		};
-		D091242818CC28830050B59F /* AppIcons */ = {
-			isa = PBXGroup;
-			children = (
-				D091242918CC28830050B59F /* FlappyBallIcon100x100.png */,
-			);
-			path = AppIcons;
 			sourceTree = "<group>";
 		};
 		D091242A18CC28830050B59F /* Classes */ = {
@@ -545,6 +543,17 @@
 				D091243518CC28830050B59F /* THLabel.m */,
 			);
 			path = THLabel;
+			sourceTree = "<group>";
+		};
+		D0DFFCE318DC2BF5001424DF /* AppIcons */ = {
+			isa = PBXGroup;
+			children = (
+				D0DFFCE418DC2BF5001424DF /* FlappyBallIcon100x100.png */,
+				D0DFFCE518DC2BF5001424DF /* NGIcon120.png */,
+				D0DFFCE618DC2BF5001424DF /* RushyKnightIcon120.png */,
+				D0DFFCE718DC2BF5001424DF /* WTNappicon120x120.png */,
+			);
+			path = AppIcons;
 			sourceTree = "<group>";
 		};
 		D0E1121B18C2EC6000808072 /* Sounds */ = {
@@ -724,6 +733,7 @@
 				D077A2BC18D1716800744F88 /* NumberGameView~ipad.xib in Resources */,
 				D0E388B418C06F45001000FC /* ResultView.xib in Resources */,
 				D0338B9D18C713D60006C8B6 /* Achievementx1.png in Resources */,
+				D0DFFCEB18DC2BF5001424DF /* WTNappicon120x120.png in Resources */,
 				D0338B9E18C713D60006C8B6 /* Achievementx5.png in Resources */,
 				D0338B8818C6E06E0006C8B6 /* InGameMessageView~ipad.xib in Resources */,
 				D0338BA418C713D60006C8B6 /* Achievementx50.png in Resources */,
@@ -739,10 +749,10 @@
 				D048A84018ACAAAB00411DF9 /* twitter_share.png in Resources */,
 				D0338BA518C713D60006C8B6 /* Achievementx60.png in Resources */,
 				D0ED116618CF04BC00C55BA9 /* heart.png in Resources */,
-				D091244C18CC28830050B59F /* FlappyBallIcon100x100.png in Resources */,
 				D0338BA818C713D60006C8B6 /* Achievementx115.png in Resources */,
 				D0E1122B18C2EC6000808072 /* boing.caf in Resources */,
 				D0338BA618C713D60006C8B6 /* Achievementx75.png in Resources */,
+				D0DFFCEA18DC2BF5001424DF /* RushyKnightIcon120.png in Resources */,
 				D0F0C80F18D04F2F00232E9D /* MainView~ipad.xib in Resources */,
 				D0F0C80D18D0388100232E9D /* MainView.xib in Resources */,
 				D0338BA718C713D60006C8B6 /* Achievementx90.png in Resources */,
@@ -752,6 +762,8 @@
 				D091232318CC22320050B59F /* MainWindow.xib in Resources */,
 				D0338B9F18C713D60006C8B6 /* Achievementx10.png in Resources */,
 				D091244E18CC28830050B59F /* PromoBannerView.xib in Resources */,
+				D0DFFCE818DC2BF5001424DF /* FlappyBallIcon100x100.png in Resources */,
+				D0DFFCE918DC2BF5001424DF /* NGIcon120.png in Resources */,
 				D0E364CE18BAFE8B00A5676B /* InGameMessageView.xib in Resources */,
 				D05A832018B3223C003C18EB /* GameViewController.xib in Resources */,
 				D0338BA018C713D60006C8B6 /* Achievementx15.png in Resources */,

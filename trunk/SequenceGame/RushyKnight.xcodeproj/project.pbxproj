@@ -34,7 +34,6 @@
 		D091244918CC28830050B59F /* IAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D091242218CC28830050B59F /* IAPHelper.m */; };
 		D091244A18CC28830050B59F /* iRate.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D091242418CC28830050B59F /* iRate.bundle */; };
 		D091244B18CC28830050B59F /* iRate.m in Sources */ = {isa = PBXBuildFile; fileRef = D091242618CC28830050B59F /* iRate.m */; };
-		D091244C18CC28830050B59F /* FlappyBallIcon100x100.png in Resources */ = {isa = PBXBuildFile; fileRef = D091242918CC28830050B59F /* FlappyBallIcon100x100.png */; };
 		D091244D18CC28830050B59F /* PromoBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = D091242C18CC28830050B59F /* PromoBannerView.m */; };
 		D091244E18CC28830050B59F /* PromoBannerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D091242D18CC28830050B59F /* PromoBannerView.xib */; };
 		D091244F18CC28830050B59F /* PromoBannerView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D091242E18CC28830050B59F /* PromoBannerView~ipad.xib */; };
@@ -47,6 +46,10 @@
 		D0A9405A18D6A5EF0049E018 /* GameLayoutView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A9405918D6A5EF0049E018 /* GameLayoutView.m */; };
 		D0A9405C18D6A5FD0049E018 /* GameLayoutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0A9405B18D6A5FD0049E018 /* GameLayoutView.xib */; };
 		D0A9405E18D6BED20049E018 /* rip.png in Resources */ = {isa = PBXBuildFile; fileRef = D0A9405D18D6BED20049E018 /* rip.png */; };
+		D0DFFCFA18DC2EA3001424DF /* FlappyBallIcon100x100.png in Resources */ = {isa = PBXBuildFile; fileRef = D0DFFCF618DC2EA3001424DF /* FlappyBallIcon100x100.png */; };
+		D0DFFCFB18DC2EA3001424DF /* NGIcon120.png in Resources */ = {isa = PBXBuildFile; fileRef = D0DFFCF718DC2EA3001424DF /* NGIcon120.png */; };
+		D0DFFCFC18DC2EA3001424DF /* RushyKnightIcon120.png in Resources */ = {isa = PBXBuildFile; fileRef = D0DFFCF818DC2EA3001424DF /* RushyKnightIcon120.png */; };
+		D0DFFCFD18DC2EA3001424DF /* WTNappicon120x120.png in Resources */ = {isa = PBXBuildFile; fileRef = D0DFFCF918DC2EA3001424DF /* WTNappicon120x120.png */; };
 		D0E1122B18C2EC6000808072 /* boing.caf in Resources */ = {isa = PBXBuildFile; fileRef = D0E1122118C2EC6000808072 /* boing.caf */; };
 		D0E1122F18C2EC6000808072 /* winningEffect.caf in Resources */ = {isa = PBXBuildFile; fileRef = D0E1122518C2EC6000808072 /* winningEffect.caf */; };
 		D0E1123218C2ECF300808072 /* pop.caf in Resources */ = {isa = PBXBuildFile; fileRef = D0E1123018C2ECF300808072 /* pop.caf */; };
@@ -179,7 +182,6 @@
 		D091242418CC28830050B59F /* iRate.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = iRate.bundle; sourceTree = "<group>"; };
 		D091242518CC28830050B59F /* iRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iRate.h; sourceTree = "<group>"; };
 		D091242618CC28830050B59F /* iRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iRate.m; sourceTree = "<group>"; };
-		D091242918CC28830050B59F /* FlappyBallIcon100x100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FlappyBallIcon100x100.png; sourceTree = "<group>"; };
 		D091242B18CC28830050B59F /* PromoBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PromoBannerView.h; sourceTree = "<group>"; };
 		D091242C18CC28830050B59F /* PromoBannerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PromoBannerView.m; sourceTree = "<group>"; };
 		D091242D18CC28830050B59F /* PromoBannerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PromoBannerView.xib; sourceTree = "<group>"; };
@@ -197,6 +199,10 @@
 		D0A9405918D6A5EF0049E018 /* GameLayoutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameLayoutView.m; sourceTree = "<group>"; };
 		D0A9405B18D6A5FD0049E018 /* GameLayoutView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameLayoutView.xib; sourceTree = "<group>"; };
 		D0A9405D18D6BED20049E018 /* rip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rip.png; sourceTree = "<group>"; };
+		D0DFFCF618DC2EA3001424DF /* FlappyBallIcon100x100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FlappyBallIcon100x100.png; sourceTree = "<group>"; };
+		D0DFFCF718DC2EA3001424DF /* NGIcon120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NGIcon120.png; sourceTree = "<group>"; };
+		D0DFFCF818DC2EA3001424DF /* RushyKnightIcon120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RushyKnightIcon120.png; sourceTree = "<group>"; };
+		D0DFFCF918DC2EA3001424DF /* WTNappicon120x120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WTNappicon120x120.png; sourceTree = "<group>"; };
 		D0E1122118C2EC6000808072 /* boing.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = boing.caf; sourceTree = "<group>"; };
 		D0E1122518C2EC6000808072 /* winningEffect.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = winningEffect.caf; sourceTree = "<group>"; };
 		D0E1123018C2ECF300808072 /* pop.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = pop.caf; sourceTree = "<group>"; };
@@ -463,18 +469,10 @@
 		D091242718CC28830050B59F /* Promo */ = {
 			isa = PBXGroup;
 			children = (
-				D091242818CC28830050B59F /* AppIcons */,
+				D0DFFCF518DC2EA3001424DF /* AppIcons */,
 				D091242A18CC28830050B59F /* Classes */,
 			);
 			path = Promo;
-			sourceTree = "<group>";
-		};
-		D091242818CC28830050B59F /* AppIcons */ = {
-			isa = PBXGroup;
-			children = (
-				D091242918CC28830050B59F /* FlappyBallIcon100x100.png */,
-			);
-			path = AppIcons;
 			sourceTree = "<group>";
 		};
 		D091242A18CC28830050B59F /* Classes */ = {
@@ -499,6 +497,17 @@
 				D091243518CC28830050B59F /* THLabel.m */,
 			);
 			path = THLabel;
+			sourceTree = "<group>";
+		};
+		D0DFFCF518DC2EA3001424DF /* AppIcons */ = {
+			isa = PBXGroup;
+			children = (
+				D0DFFCF618DC2EA3001424DF /* FlappyBallIcon100x100.png */,
+				D0DFFCF718DC2EA3001424DF /* NGIcon120.png */,
+				D0DFFCF818DC2EA3001424DF /* RushyKnightIcon120.png */,
+				D0DFFCF918DC2EA3001424DF /* WTNappicon120x120.png */,
+			);
+			path = AppIcons;
 			sourceTree = "<group>";
 		};
 		D0E1121B18C2EC6000808072 /* Sounds */ = {
@@ -765,10 +774,12 @@
 				D0E1122F18C2EC6000808072 /* winningEffect.caf in Resources */,
 				D0F1143618D41299007EB840 /* MonsterView.xib in Resources */,
 				D09124BB18CC55520050B59F /* tick.caf in Resources */,
+				D0DFFCFA18DC2EA3001424DF /* FlappyBallIcon100x100.png in Resources */,
 				D048A84018ACAAAB00411DF9 /* twitter_share.png in Resources */,
+				D0DFFCFB18DC2EA3001424DF /* NGIcon120.png in Resources */,
+				D0DFFCFD18DC2EA3001424DF /* WTNappicon120x120.png in Resources */,
 				D0E2E9BD18D2D288009C757F /* MainView.xib in Resources */,
 				D0ED116618CF04BC00C55BA9 /* heart.png in Resources */,
-				D091244C18CC28830050B59F /* FlappyBallIcon100x100.png in Resources */,
 				D0E4BCD218D9743700132C17 /* soldier.png in Resources */,
 				D0EA7EBF18D521C90095DEBD /* shield.png in Resources */,
 				D0EA7EC018D521C90095DEBD /* sword.png in Resources */,
@@ -791,6 +802,7 @@
 				D0EA7EBE18D521C90095DEBD /* arrow.png in Resources */,
 				D0E1123518C2EDF000808072 /* bling.caf in Resources */,
 				D0F11CB918D8412F007A8963 /* CustomizationItemView.xib in Resources */,
+				D0DFFCFC18DC2EA3001424DF /* RushyKnightIcon120.png in Resources */,
 				D0E2E9B418D2D288009C757F /* InfoPlist.strings in Resources */,
 				D0E2E9B918D2D288009C757F /* GameViewController.xib in Resources */,
 				D0EA871B18DA78DE0034B392 /* bounceEffect.caf in Resources */,
@@ -983,13 +995,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Jeffrey Wan (MT34DA8UCA)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Jeffrey Wan (YS47XTCZZB)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jeffrey Wan (YS47XTCZZB)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SequenceGame/RushyKnight-Prefix.pch";
 				INFOPLIST_FILE = "SequenceGame/RushyKnight-Info.plist";
 				PRODUCT_NAME = RushyKnight;
-				PROVISIONING_PROFILE = "CB4532C1-7837-4A67-A8D6-32AA044757BD";
+				PROVISIONING_PROFILE = "C2528B13-BE01-4035-ADA8-E00A8A524A7D";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1000,13 +1012,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Jeffrey Wan (MT34DA8UCA)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Jeffrey Wan (YS47XTCZZB)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jeffrey Wan (YS47XTCZZB)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SequenceGame/RushyKnight-Prefix.pch";
 				INFOPLIST_FILE = "SequenceGame/RushyKnight-Info.plist";
 				PRODUCT_NAME = RushyKnight;
-				PROVISIONING_PROFILE = "CB4532C1-7837-4A67-A8D6-32AA044757BD";
+				PROVISIONING_PROFILE = "C2528B13-BE01-4035-ADA8-E00A8A524A7D";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};

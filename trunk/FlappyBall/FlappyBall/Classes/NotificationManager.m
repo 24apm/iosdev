@@ -19,17 +19,4 @@
     return instance;
 }
 
-- (NSArray *)notificationBodyTexts{
-    return [NSArray arrayWithObjects:
-            @"Ready to reach new height?",
-            @"How far can you go?",
-            nil];
-}
-
-- (NSArray *)notificationActionTexts {
-    return [NSArray arrayWithObjects:
-            @"Let's go!",
-            nil];
-}
-
 @end

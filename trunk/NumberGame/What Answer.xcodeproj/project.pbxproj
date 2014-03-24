@@ -71,7 +71,6 @@
 		D09124AD18CC2A030050B59F /* IAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D091248618CC2A030050B59F /* IAPHelper.m */; };
 		D09124AE18CC2A030050B59F /* iRate.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D091248818CC2A030050B59F /* iRate.bundle */; };
 		D09124AF18CC2A030050B59F /* iRate.m in Sources */ = {isa = PBXBuildFile; fileRef = D091248A18CC2A030050B59F /* iRate.m */; };
-		D09124B018CC2A030050B59F /* FlappyBallIcon100x100.png in Resources */ = {isa = PBXBuildFile; fileRef = D091248D18CC2A030050B59F /* FlappyBallIcon100x100.png */; };
 		D09124B118CC2A030050B59F /* PromoBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = D091249018CC2A030050B59F /* PromoBannerView.m */; };
 		D09124B218CC2A030050B59F /* PromoBannerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D091249118CC2A030050B59F /* PromoBannerView.xib */; };
 		D09124B318CC2A030050B59F /* PromoBannerView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D091249218CC2A030050B59F /* PromoBannerView~ipad.xib */; };
@@ -79,6 +78,10 @@
 		D09124B518CC2A030050B59F /* PromoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D091249618CC2A030050B59F /* PromoManager.m */; };
 		D09124B618CC2A030050B59F /* THLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = D091249918CC2A030050B59F /* THLabel.m */; };
 		D092E5D718C83B39003A3862 /* ResultView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D092E5D618C83B39003A3862 /* ResultView~ipad.xib */; };
+		D0DFFCDF18DC29C5001424DF /* FlappyBallIcon100x100.png in Resources */ = {isa = PBXBuildFile; fileRef = D0DFFCDB18DC29C5001424DF /* FlappyBallIcon100x100.png */; };
+		D0DFFCE018DC29C5001424DF /* NGIcon120.png in Resources */ = {isa = PBXBuildFile; fileRef = D0DFFCDC18DC29C5001424DF /* NGIcon120.png */; };
+		D0DFFCE118DC29C5001424DF /* RushyKnightIcon120.png in Resources */ = {isa = PBXBuildFile; fileRef = D0DFFCDD18DC29C5001424DF /* RushyKnightIcon120.png */; };
+		D0DFFCE218DC29C5001424DF /* WTNappicon120x120.png in Resources */ = {isa = PBXBuildFile; fileRef = D0DFFCDE18DC29C5001424DF /* WTNappicon120x120.png */; };
 		D0E0AE8018C5C6B30069D746 /* GameViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E0AE7818C5C6B30069D746 /* GameViewController~ipad.xib */; };
 		D0E0AE8518C5C6B30069D746 /* NumberGameView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E0AE7D18C5C6B30069D746 /* NumberGameView~ipad.xib */; };
 		D0E1122B18C2EC6000808072 /* boing.caf in Resources */ = {isa = PBXBuildFile; fileRef = D0E1122118C2EC6000808072 /* boing.caf */; };
@@ -213,7 +216,6 @@
 		D091248818CC2A030050B59F /* iRate.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = iRate.bundle; sourceTree = "<group>"; };
 		D091248918CC2A030050B59F /* iRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iRate.h; sourceTree = "<group>"; };
 		D091248A18CC2A030050B59F /* iRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iRate.m; sourceTree = "<group>"; };
-		D091248D18CC2A030050B59F /* FlappyBallIcon100x100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FlappyBallIcon100x100.png; sourceTree = "<group>"; };
 		D091248F18CC2A030050B59F /* PromoBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PromoBannerView.h; sourceTree = "<group>"; };
 		D091249018CC2A030050B59F /* PromoBannerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PromoBannerView.m; sourceTree = "<group>"; };
 		D091249118CC2A030050B59F /* PromoBannerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PromoBannerView.xib; sourceTree = "<group>"; };
@@ -225,6 +227,10 @@
 		D091249818CC2A030050B59F /* THLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THLabel.h; sourceTree = "<group>"; };
 		D091249918CC2A030050B59F /* THLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THLabel.m; sourceTree = "<group>"; };
 		D092E5D618C83B39003A3862 /* ResultView~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ResultView~ipad.xib"; sourceTree = "<group>"; };
+		D0DFFCDB18DC29C5001424DF /* FlappyBallIcon100x100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FlappyBallIcon100x100.png; sourceTree = "<group>"; };
+		D0DFFCDC18DC29C5001424DF /* NGIcon120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NGIcon120.png; sourceTree = "<group>"; };
+		D0DFFCDD18DC29C5001424DF /* RushyKnightIcon120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RushyKnightIcon120.png; sourceTree = "<group>"; };
+		D0DFFCDE18DC29C5001424DF /* WTNappicon120x120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WTNappicon120x120.png; sourceTree = "<group>"; };
 		D0E0AE7818C5C6B30069D746 /* GameViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "GameViewController~ipad.xib"; sourceTree = "<group>"; };
 		D0E0AE7D18C5C6B30069D746 /* NumberGameView~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "NumberGameView~ipad.xib"; sourceTree = "<group>"; };
 		D0E1122118C2EC6000808072 /* boing.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = boing.caf; sourceTree = "<group>"; };
@@ -494,18 +500,10 @@
 		D091248B18CC2A030050B59F /* Promo */ = {
 			isa = PBXGroup;
 			children = (
-				D091248C18CC2A030050B59F /* AppIcons */,
+				D0DFFCDA18DC29C5001424DF /* AppIcons */,
 				D091248E18CC2A030050B59F /* Classes */,
 			);
 			path = Promo;
-			sourceTree = "<group>";
-		};
-		D091248C18CC2A030050B59F /* AppIcons */ = {
-			isa = PBXGroup;
-			children = (
-				D091248D18CC2A030050B59F /* FlappyBallIcon100x100.png */,
-			);
-			path = AppIcons;
 			sourceTree = "<group>";
 		};
 		D091248E18CC2A030050B59F /* Classes */ = {
@@ -530,6 +528,17 @@
 				D091249918CC2A030050B59F /* THLabel.m */,
 			);
 			path = THLabel;
+			sourceTree = "<group>";
+		};
+		D0DFFCDA18DC29C5001424DF /* AppIcons */ = {
+			isa = PBXGroup;
+			children = (
+				D0DFFCDB18DC29C5001424DF /* FlappyBallIcon100x100.png */,
+				D0DFFCDC18DC29C5001424DF /* NGIcon120.png */,
+				D0DFFCDD18DC29C5001424DF /* RushyKnightIcon120.png */,
+				D0DFFCDE18DC29C5001424DF /* WTNappicon120x120.png */,
+			);
+			path = AppIcons;
 			sourceTree = "<group>";
 		};
 		D0E1121B18C2EC6000808072 /* Sounds */ = {
@@ -710,21 +719,23 @@
 				D0338BA418C713D60006C8B6 /* Achievementx50.png in Resources */,
 				D0338BAF18C713D60006C8B6 /* Achievementx500.png in Resources */,
 				D0338BAA18C713D60006C8B6 /* Achievementx150.png in Resources */,
+				D0DFFCE118DC29C5001424DF /* RushyKnightIcon120.png in Resources */,
 				D05A831918B3223C003C18EB /* InfoPlist.strings in Resources */,
 				D0E1122F18C2EC6000808072 /* winningEffect.caf in Resources */,
 				D05A831A18B3223C003C18EB /* Images.xcassets in Resources */,
 				D0338BAD18C713D60006C8B6 /* Achievementx250.png in Resources */,
 				D048A84018ACAAAB00411DF9 /* twitter_share.png in Resources */,
 				D0338BA518C713D60006C8B6 /* Achievementx60.png in Resources */,
-				D09124B018CC2A030050B59F /* FlappyBallIcon100x100.png in Resources */,
 				D05A832418B3223C003C18EB /* MainView.xib in Resources */,
 				D0338BA818C713D60006C8B6 /* Achievementx115.png in Resources */,
 				D0E1122B18C2EC6000808072 /* boing.caf in Resources */,
 				D0338BA618C713D60006C8B6 /* Achievementx75.png in Resources */,
 				D0338BA718C713D60006C8B6 /* Achievementx90.png in Resources */,
+				D0DFFCDF18DC29C5001424DF /* FlappyBallIcon100x100.png in Resources */,
 				D0338BB018C713D60006C8B6 /* Achievementx999.png in Resources */,
 				D0338BAE18C713D60006C8B6 /* Achievementx350.png in Resources */,
 				D0E3211118C87C4D00600DF2 /* MainWindow.xib in Resources */,
+				D0DFFCE218DC29C5001424DF /* WTNappicon120x120.png in Resources */,
 				D0E1123318C2ECF300808072 /* ticking.caf in Resources */,
 				D0338B9F18C713D60006C8B6 /* Achievementx10.png in Resources */,
 				D09124B218CC2A030050B59F /* PromoBannerView.xib in Resources */,
@@ -746,6 +757,7 @@
 				D048A83F18ACAAAB00411DF9 /* facebook_share.png in Resources */,
 				D0338BAB18C713D60006C8B6 /* Achievementx170.png in Resources */,
 				D09124AE18CC2A030050B59F /* iRate.bundle in Resources */,
+				D0DFFCE018DC29C5001424DF /* NGIcon120.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

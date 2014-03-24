@@ -14,7 +14,7 @@
 @interface Utils : NSObject
 
 + (CGSize)screenSize;
-+ (float)randBetweenMin:(int)min max:(int)max;
++ (float)randBetweenMin:(float)min max:(float)max;
 + (int)randBetweenMinInt:(int)min max:(int)max;
 
 @end
