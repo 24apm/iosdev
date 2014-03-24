@@ -10,8 +10,8 @@
 
 #define IPAD_SCALE ((UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 2.0f : 1.0f)
 
-#define DEBUG_MODE NO
-#define ENABLED_ADS YES
+#define DEBUG_MODE YES
+#define ENABLED_ADS NO
 
 // Game Center
 #define kLeaderboardBestTimeID @"com.jeffrwan.restroom.besttime"
@@ -49,6 +49,9 @@
 #define IMAGE_ARROW @"swordattack.png"
 #define IMAGE_MONSTER @"soldier.png"
 #define IMAGE_BOSS @"bossknight.png"
+#define IMAGE_MATERIAL_SHIELD @"defend.png"
+#define IMAGE_MATERIAL_WEAPON @"arrow.png"
+#define IMAGE_ENERGY @"heart.png"
 
 #define GAME_MODE_TIME @"timeAttackMode"
 #define GAME_MODE_DISTANCE @"distanceAttackMode"
