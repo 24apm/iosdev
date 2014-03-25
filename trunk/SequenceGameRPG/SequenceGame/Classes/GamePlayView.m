@@ -14,6 +14,8 @@
 #import "UserData.h"
 #import "AnimUtil.h"
 
+#define BUFFER 15
+
 @interface GamePlayView ()
 
 @property (nonatomic, strong) NSTimer *timer;
@@ -32,10 +34,13 @@
     return self;
 }
 
+- (NSString *)formatTimeString:(float)time {
+    return [NSString stringWithFormat:@"%.3F", time];
+}
+
 - (void)show {
     [self.gameLayoutView wobbleUnits];
-    self.startingTime = 0;
-    self.gameLayoutView.timeLabel.text = [NSString stringWithFormat:@"0.00"];
+    self.gameLayoutView.timeLabel.text = [self formatTimeString:BUFFER];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshGameCallback) name:GAME_MANAGER_REFRESH_NOTIFICATION object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(lostGame) name:GAME_MANAGER_END_GAME_NOTIFICATION object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(victoryGame) name:GAMEPLAY_VIEW_VICTORY_NOTIFICATION object:nil];
@@ -93,13 +98,17 @@
 }
 
 - (void)startTime {
-    self.startingTime = CACurrentMediaTime();
+    self.startingTime = CACurrentMediaTime() + BUFFER;
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0f/15.f target:self selector:@selector(updateTimer) userInfo:nil repeats:YES];
 }
 
 - (void)updateTimer {
-    double currentTime = CACurrentMediaTime() - self.startingTime;
+    double currentTime = self.startingTime - CACurrentMediaTime();
     self.gameLayoutView.timeLabel.text = [NSString stringWithFormat:@"%.3F", currentTime];
+    if (currentTime < 0) {
+        [self victoryGame];
+        self.gameLayoutView.timeLabel.text = [NSString stringWithFormat:@"%.3F", 0.f];
+    }
 }
 
 - (void)endGame {
@@ -107,12 +116,13 @@
 }
 
 - (void)lostGame {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-    [self.gameLayoutView frontImagePlaceHolder].imageView.image = nil;
-    self.userInteractionEnabled = NO;
-    [self.timer invalidate]; self.timer = nil;
-    [self.gameLayoutView performSelector:@selector(animateLostView) withObject:nil afterDelay:0.5f];
-    [self performSelector:@selector(endGame) withObject:nil afterDelay:2.0f];
+//    [[NSNotificationCenter defaultCenter] removeObserver:self];
+//    [self.gameLayoutView frontImagePlaceHolder].imageView.image = nil;
+//    self.userInteractionEnabled = NO;
+//    [self.timer invalidate]; self.timer = nil;
+//    [self.gameLayoutView performSelector:@selector(animateLostView) withObject:nil afterDelay:0.5f];
+//    [self performSelector:@selector(endGame) withObject:nil afterDelay:2.0f];
+    self.startingTime -= 5.f;
 }
 
 - (void)victoryGame {

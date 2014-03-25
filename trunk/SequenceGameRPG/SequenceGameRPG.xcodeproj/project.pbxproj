@@ -97,8 +97,8 @@
 		D0E4BCD418D97BB500132C17 /* swordattack.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E4BCD318D97BB500132C17 /* swordattack.png */; };
 		D0E7628A18D626B7005CDF88 /* MonsterData.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E7628918D626B7005CDF88 /* MonsterData.m */; };
 		D0EA7EBE18D521C90095DEBD /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EA7EBA18D521C90095DEBD /* arrow.png */; };
-		D0EA7EBF18D521C90095DEBD /* shield.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EA7EBB18D521C90095DEBD /* shield.png */; };
-		D0EA7EC018D521C90095DEBD /* sword.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EA7EBC18D521C90095DEBD /* sword.png */; };
+		D0EA7EBF18D521C90095DEBD /* shield1.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EA7EBB18D521C90095DEBD /* shield1.png */; };
+		D0EA7EC018D521C90095DEBD /* sword1.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EA7EBC18D521C90095DEBD /* sword1.png */; };
 		D0EA7EC118D521C90095DEBD /* monster.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EA7EBD18D521C90095DEBD /* monster.png */; };
 		D0EA7EC418D52FE90095DEBD /* defend.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EA7EC218D52FE90095DEBD /* defend.png */; };
 		D0EA7EC518D52FE90095DEBD /* attack.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EA7EC318D52FE90095DEBD /* attack.png */; };
@@ -268,8 +268,8 @@
 		D0E7628818D626B7005CDF88 /* MonsterData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonsterData.h; sourceTree = "<group>"; };
 		D0E7628918D626B7005CDF88 /* MonsterData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonsterData.m; sourceTree = "<group>"; };
 		D0EA7EBA18D521C90095DEBD /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
-		D0EA7EBB18D521C90095DEBD /* shield.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shield.png; sourceTree = "<group>"; };
-		D0EA7EBC18D521C90095DEBD /* sword.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sword.png; sourceTree = "<group>"; };
+		D0EA7EBB18D521C90095DEBD /* shield1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shield1.png; sourceTree = "<group>"; };
+		D0EA7EBC18D521C90095DEBD /* sword1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sword1.png; sourceTree = "<group>"; };
 		D0EA7EBD18D521C90095DEBD /* monster.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = monster.png; sourceTree = "<group>"; };
 		D0EA7EC218D52FE90095DEBD /* defend.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = defend.png; sourceTree = "<group>"; };
 		D0EA7EC318D52FE90095DEBD /* attack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = attack.png; sourceTree = "<group>"; };
@@ -681,8 +681,8 @@
 				D0EA7EC218D52FE90095DEBD /* defend.png */,
 				D0EA7EC318D52FE90095DEBD /* attack.png */,
 				D0EA7EBA18D521C90095DEBD /* arrow.png */,
-				D0EA7EBB18D521C90095DEBD /* shield.png */,
-				D0EA7EBC18D521C90095DEBD /* sword.png */,
+				D0EA7EBB18D521C90095DEBD /* shield1.png */,
+				D0EA7EBC18D521C90095DEBD /* sword1.png */,
 				D0EA7EBD18D521C90095DEBD /* monster.png */,
 				D0ED116518CF04BC00C55BA9 /* heart.png */,
 				D048A83D18ACAAAB00411DF9 /* facebook_share.png */,
@@ -791,8 +791,8 @@
 				D0E48B7518DD9748000EF905 /* InGameMessageView~ipad.xib in Resources */,
 				D0E48B7318DD9565000EF905 /* GameLayoutView~ipad.xib in Resources */,
 				D0E48B7E18DD998B000EF905 /* NGIcon120.png in Resources */,
-				D0EA7EBF18D521C90095DEBD /* shield.png in Resources */,
-				D0EA7EC018D521C90095DEBD /* sword.png in Resources */,
+				D0EA7EBF18D521C90095DEBD /* shield1.png in Resources */,
+				D0EA7EC018D521C90095DEBD /* sword1.png in Resources */,
 				D0EF3FD418D7FB1B00C50442 /* red_header.png in Resources */,
 				D0EA7ECC18D562A10095DEBD /* LocalLeaderBoardView.xib in Resources */,
 				D0E2E9BF18D2D288009C757F /* GamePlayView.xib in Resources */,

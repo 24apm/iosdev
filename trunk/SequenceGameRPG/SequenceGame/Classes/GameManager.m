@@ -21,13 +21,13 @@
 
 - (void)generatelevelForTime {
     self.unitQueue = [NSMutableArray array];
-    for (int i = 0; i < 1000; i++) {
+    for (int i = 0; i < 4; i++) {
         [self.unitQueue addObject:[self generateNextRandomUnit]];
     }
 }
 
 - (MonsterData *)generateNextRandomUnit {
-    NSArray *units = @[@(UnitTypeArrow), @(UnitTypeMonster), @(UnitTypeMaterialWeapon), @(UnitTypeMaterialShield), @(UnitTypeEnergy)];
+    NSArray *units = @[@(UnitTypeArrow), @(UnitTypeMonster), @(UnitTypeMaterialWeapon), @(UnitTypeMaterialShield), @(UnitTypeEnergy),@(UnitTypeBoss)];
     UnitType unitType = [[units randomObject] integerValue];
     MonsterData *monsterData = [[MonsterData alloc] initWithUnitType:unitType];
     return monsterData;

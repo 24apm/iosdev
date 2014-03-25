@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D0E30E8018A376E300FFD3CE"
-               BuildableName = "Toilet Rush.app"
+               BuildableName = "SequenceGameRPG.app"
                BlueprintName = "SequenceGameRPG"
                ReferencedContainer = "container:SequenceGameRPG.xcodeproj">
             </BuildableReference>
@@ -33,7 +33,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D0E30EA118A376E300FFD3CE"
-               BuildableName = "Toilet RushTests.xctest"
+               BuildableName = "SequenceGameRPGTests.xctest"
                BlueprintName = "SequenceGameRPGTests"
                ReferencedContainer = "container:SequenceGameRPG.xcodeproj">
             </BuildableReference>
@@ -43,7 +43,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D0E30E8018A376E300FFD3CE"
-            BuildableName = "Toilet Rush.app"
+            BuildableName = "SequenceGameRPG.app"
             BlueprintName = "SequenceGameRPG"
             ReferencedContainer = "container:SequenceGameRPG.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D0E30E8018A376E300FFD3CE"
-            BuildableName = "Toilet Rush.app"
+            BuildableName = "SequenceGameRPG.app"
             BlueprintName = "SequenceGameRPG"
             ReferencedContainer = "container:SequenceGameRPG.xcodeproj">
          </BuildableReference>
@@ -80,7 +80,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D0E30E8018A376E300FFD3CE"
-            BuildableName = "Toilet Rush.app"
+            BuildableName = "SequenceGameRPG.app"
             BlueprintName = "SequenceGameRPG"
             ReferencedContainer = "container:SequenceGameRPG.xcodeproj">
          </BuildableReference>

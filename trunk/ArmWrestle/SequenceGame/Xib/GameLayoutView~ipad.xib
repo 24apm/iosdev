@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4514" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+    <dependencies>
+        <deployment defaultVersion="1536" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GameLayoutView">
+            <connections>
+                <outlet property="distanceLabel" destination="b3T-tR-ag9" id="FbR-sk-8Cn"/>
+                <outlet property="leftButton" destination="IyW-aQ-Xyf" id="etB-6L-xFF"/>
+                <outlet property="rightButton" destination="qJp-VS-Z0V" id="rZX-VK-rcj"/>
+                <outlet property="timeLabel" destination="5Q4-M8-vgH" id="bsO-J6-GAT"/>
+                <outletCollection property="imagePlaceHolder" destination="O4a-bZ-iyQ" id="fYz-dq-fcd"/>
+                <outletCollection property="imagePlaceHolder" destination="fLJ-bd-z3Q" id="vaB-Y8-iIN"/>
+                <outletCollection property="imagePlaceHolder" destination="tFC-S7-aqW" id="cxu-52-87G"/>
+                <outletCollection property="imagePlaceHolder" destination="C2L-Eq-Nc7" id="WU6-q5-P9o"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="wkQ-lM-asS">
+            <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="23J-it-7PN" userLabel="Left Button Hit Area">
+                    <rect key="frame" x="0.0" y="0.0" width="384" height="981"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="leftButtonPressed:" destination="-1" eventType="touchUpInside" id="L8X-9E-can"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="IyW-aQ-Xyf" userLabel="Left Button">
+                    <rect key="frame" x="5" y="102.00000000000001" width="360" height="640.00000000000011"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal" backgroundImage="shield.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="leftButtonPressed:" destination="-1" eventType="touchUpInside" id="23p-hX-LGQ"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="GjC-Wg-tO7" userLabel="Right Button Hit Area">
+                    <rect key="frame" x="384" y="0.0" width="384" height="981.00000000000011"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="rightButtonPressed:" destination="-1" eventType="touchUpInside" id="qlu-cC-kQq"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="qJp-VS-Z0V" userLabel="Right Button">
+                    <rect key="frame" x="406" y="102" width="360" height="640.00000000000011"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal" backgroundImage="sword.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="rightButtonPressed:" destination="-1" eventType="touchUpInside" id="r23-eE-VN8"/>
+                    </connections>
+                </button>
+                <view userInteractionEnabled="NO" contentMode="scaleToFill" id="O4a-bZ-iyQ" userLabel="Monster View1" customClass="MonsterView" colorLabel="IBBuiltInLabel-Orange">
+                    <rect key="frame" x="144.00000000000003" y="340.99999999999994" width="480" height="427"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.180392161" green="0.64705884459999996" blue="0.34117648010000001" alpha="1" colorSpace="deviceRGB"/>
+                </view>
+                <view userInteractionEnabled="NO" contentMode="scaleToFill" id="fLJ-bd-z3Q" userLabel="Monster View3" customClass="MonsterView" colorLabel="IBBuiltInLabel-Orange">
+                    <rect key="frame" x="72.000000000000014" y="575.99999999999989" width="432" height="384"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.180392161" green="0.64705884459999996" blue="0.34117648010000001" alpha="1" colorSpace="deviceRGB"/>
+                </view>
+                <view userInteractionEnabled="NO" contentMode="scaleToFill" id="tFC-S7-aqW" userLabel="Monster View5" customClass="MonsterView" colorLabel="IBBuiltInLabel-Orange">
+                    <rect key="frame" x="0.0" y="672" width="384" height="341"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.180392161" green="0.64705884459999996" blue="0.34117648010000001" alpha="1" colorSpace="deviceRGB"/>
+                </view>
+                <view userInteractionEnabled="NO" contentMode="scaleToFill" id="C2L-Eq-Nc7" userLabel="Monster View7" customClass="MonsterView" colorLabel="IBBuiltInLabel-Orange">
+                    <rect key="frame" x="-89" y="725" width="336.00000000000006" height="299.00000000000006"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.180392161" green="0.64705884459999996" blue="0.34117648010000001" alpha="1" colorSpace="deviceRGB"/>
+                </view>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5Q4-M8-vgH" userLabel="Timer">
+                    <rect key="frame" x="0.0" y="0.0" width="768" height="85"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="80"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="99" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="b3T-tR-ag9" userLabel="Distance">
+                    <rect key="frame" x="516" y="0.0" width="240" height="85"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="60"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="0.8741398454" green="0.80592191219999998" blue="0.73915219310000002" alpha="1" colorSpace="calibratedRGB"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="shield.png" width="600" height="1200"/>
+        <image name="sword.png" width="600" height="1200"/>
+    </resources>
+</document>

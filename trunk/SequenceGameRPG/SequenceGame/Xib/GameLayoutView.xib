@@ -34,10 +34,10 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="IyW-aQ-Xyf" userLabel="Left Button">
-                    <rect key="frame" x="2" y="312" width="138" height="131"/>
+                    <rect key="frame" x="5" y="308" width="138" height="131"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <state key="normal" backgroundImage="shield.png">
+                    <state key="normal" backgroundImage="shield1.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -59,7 +59,7 @@
                     <rect key="frame" x="169" y="303" width="139" height="130"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <state key="normal" backgroundImage="sword.png">
+                    <state key="normal" backgroundImage="sword1.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -106,7 +106,7 @@
         </view>
     </objects>
     <resources>
-        <image name="shield.png" width="307" height="308"/>
-        <image name="sword.png" width="145" height="298"/>
+        <image name="shield1.png" width="307" height="308"/>
+        <image name="sword1.png" width="145" height="298"/>
     </resources>
 </document>
