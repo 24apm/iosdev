@@ -47,7 +47,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <state key="normal" title="BEST TIME"/>
+                    <state key="normal" title="BEST SPEED"/>
                     <connections>
                         <action selector="bestTimePressed:" destination="-1" eventType="touchUpInside" id="JQh-x1-UA8"/>
                     </connections>
