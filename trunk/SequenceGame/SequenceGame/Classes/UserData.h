@@ -13,7 +13,6 @@
 @property (nonatomic) double currentScore;
 
 + (UserData *)instance;
-- (void)submitScore:(int)score mode:(NSString *)mode;
 - (void)resetLocalScore :(NSString *)mode;
 - (NSArray *)loadLocalLeaderBoard :(NSString *)mode;
 - (void)addNewScoreLocalLeaderBoard:(double)newScores mode:(NSString *)mode;

@@ -86,13 +86,15 @@
         sortedArray = [self sortingArrayAcending:sortedArray newNumber:newScores];
         double fastestValue = [[sortedArray objectAtIndex:0] doubleValue];
         if (newScores <= fastestValue) {
-            [self submitScore:newScores mode:mode];
+            int64_t gcScore = (int64_t)(newScores * 1000.0f);
+            [self submitScore:gcScore mode:mode];
         }
     } else if ([mode isEqualToString:GAME_MODE_DISTANCE]) {
         sortedArray = [self sortingArrayDecending:sortedArray newNumber:newScores];
         double highestValue = [[sortedArray objectAtIndex:0] doubleValue];
         if (newScores >= highestValue) {
-            [self submitScore:newScores mode:mode];
+            int64_t gcScore = (int64_t)newScores;
+            [self submitScore:gcScore mode:mode];
         }
     }
     NSArray *finalArray = [self truncateArray:sortedArray];
@@ -113,7 +115,7 @@
     [defaults synchronize];
 }
 
-- (void)submitScore:(int)score mode:(NSString *)mode {
+- (void)submitScore:(int64_t)score mode:(NSString *)mode {
     NSString *leaderBoardCategory = nil;
     if ([mode isEqualToString:GAME_MODE_TIME]) {
         leaderBoardCategory = kLeaderboardBestTimeID;

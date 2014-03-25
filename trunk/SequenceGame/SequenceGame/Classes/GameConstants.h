@@ -13,7 +13,7 @@
 #define DEBUG_MODE NO
 
 // Game Center
-#define kLeaderboardBestTimeID @"com.jeffrwan.blockandattack.besttime"
+#define kLeaderboardBestTimeID @"com.jeffrwan.blockandattack.bestspeed"
 #define kLeaderboardBestScoreID @"com.jeffrwan.blockandattack.bestscore"
 
 #define kAchievementOneStreak @"com.jeffrwan.thenumbergame.level1"
