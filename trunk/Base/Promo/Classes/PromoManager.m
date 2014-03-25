@@ -43,6 +43,16 @@
                                           imagePath:@"WTNappicon120x120.png"
                                         description:@"What is the Answer!"
                                           actionURL:@"itms-apps://itunes.apple.com/us/app/whats-the-answer/id832059498?ls=1&mt=8"]];
+    
+    [self addPromo:[PromoGameData setupWithBundleId:@"com.jeffrwan.restroom"
+                                          imagePath:@"ToiletRush120.png"
+                                        description:@"Toilet Rush!"
+                                          actionURL:@"itms-apps://itunes.apple.com/us/app/toilet-rush/id844626495?ls=1&mt=8"]];
+    
+    [self addPromo:[PromoGameData setupWithBundleId:@"com.jeffrwan.blockandattack"
+                                          imagePath:@"RushyKnightIcon120.png"
+                                        description:@"Rushy Knight"
+                                          actionURL:@"itms-apps://itunes.apple.com/us/app/rushy-knight/id843104928?ls=1&mt=8"]];
     // add more promos!
     // add more promos!
 }

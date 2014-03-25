@@ -75,6 +75,7 @@
 		D0E2E9BD18D2D288009C757F /* MainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E2E9A018D2D288009C757F /* MainView.xib */; };
 		D0E2E9BF18D2D288009C757F /* GamePlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E2E9A218D2D288009C757F /* GamePlayView.xib */; };
 		D0E2E9C118D2D288009C757F /* ResultView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E2E9A418D2D288009C757F /* ResultView.xib */; };
+		D0E2F00D18E19C0300DA324E /* ToiletRush120.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E2F00C18E19C0300DA324E /* ToiletRush120.png */; };
 		D0E30E8518A376E300FFD3CE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E30E8418A376E300FFD3CE /* Foundation.framework */; };
 		D0E30E8718A376E300FFD3CE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E30E8618A376E300FFD3CE /* CoreGraphics.framework */; };
 		D0E30E8918A376E300FFD3CE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E30E8818A376E300FFD3CE /* UIKit.framework */; };
@@ -245,6 +246,7 @@
 		D0E2E9A018D2D288009C757F /* MainView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainView.xib; sourceTree = "<group>"; };
 		D0E2E9A218D2D288009C757F /* GamePlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GamePlayView.xib; sourceTree = "<group>"; };
 		D0E2E9A418D2D288009C757F /* ResultView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResultView.xib; sourceTree = "<group>"; };
+		D0E2F00C18E19C0300DA324E /* ToiletRush120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ToiletRush120.png; sourceTree = "<group>"; };
 		D0E30E8118A376E300FFD3CE /* Toilet Rush.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Toilet Rush.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0E30E8418A376E300FFD3CE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D0E30E8618A376E300FFD3CE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -660,6 +662,7 @@
 		D0E48B7818DD998B000EF905 /* AppIcons */ = {
 			isa = PBXGroup;
 			children = (
+				D0E2F00C18E19C0300DA324E /* ToiletRush120.png */,
 				D0E48B7918DD998B000EF905 /* FlappyBallIcon100x100.png */,
 				D0E48B7A18DD998B000EF905 /* NGIcon120.png */,
 				D0E48B7B18DD998B000EF905 /* RushyKnightIcon120.png */,
@@ -786,6 +789,7 @@
 				D0DFFCCD18DC1687001424DF /* femalelose.png in Resources */,
 				D0E1122F18C2EC6000808072 /* winningEffect.caf in Resources */,
 				D0F1143618D41299007EB840 /* MonsterView.xib in Resources */,
+				D0E2F00D18E19C0300DA324E /* ToiletRush120.png in Resources */,
 				D09124BB18CC55520050B59F /* tick.caf in Resources */,
 				D048A84018ACAAAB00411DF9 /* twitter_share.png in Resources */,
 				D0E2E9BD18D2D288009C757F /* MainView.xib in Resources */,
