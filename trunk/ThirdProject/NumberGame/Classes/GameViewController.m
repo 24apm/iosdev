@@ -19,8 +19,6 @@
 #import "NumberGameView.h"
 #import "GameCenterHelper.h"
 #import "UserData.h"
-#import "PromoBannerView.h"
-#import "PromoManager.h"
 
 @interface GameViewController ()
 
@@ -28,7 +26,6 @@
 @property (strong, nonatomic) MainView *mainView;
 @property (strong, nonatomic) NumberGameView *numberGameView;
 @property (strong, nonatomic) NSArray *products;
-@property (strong, nonatomic) PromoBannerView *promoBannerView;
 
 @end
 
@@ -165,9 +162,6 @@
     [self initialize];
     [self.mainView show];
     
-    [self createAdBannerView];
-    [self.view addSubview:self.adBannerView];
-    
     [GameCenterHelper instance].currentLeaderBoard = kLeaderboardID;
     [[GameCenterHelper instance] loginToGameCenter];
 }
@@ -177,67 +171,5 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-#pragma mark - ADs
-
-- (void) createAdBannerView {
-    if ([ADBannerView instancesRespondToSelector:@selector(initWithAdType:)]) {
-        self.adBannerView = [[ADBannerView alloc] initWithAdType:ADAdTypeBanner];
-    } else {
-        self.adBannerView = [[ADBannerView alloc] init];
-    }
-    self.adBannerView.y = self.view.height - self.adBannerView.height;
-    self.adBannerView.delegate = self;
-    
-    // custom
-    self.promoBannerView = [[PromoBannerView alloc] init];
-    [self.containerView addSubview:self.promoBannerView];
-    self.promoBannerView.frame = self.adBannerView.frame;
-    self.promoBannerView.y = self.view.height - self.promoBannerView.height;
-    self.promoBannerView.hidden = YES;
-}
-
-- (void)layoutAnimated:(BOOL)animated {
-    float bannerYOffset;
-    if (self.adBannerView.bannerLoaded) {
-        self.promoBannerView.hidden = YES;
-        bannerYOffset = self.view.height - self.adBannerView.height;
-     //   bannerYOffset = self.view.height;
-    } else {
-        [self.promoBannerView setupWithPromoGameData:[[PromoManager instance] nextPromo]];
-        self.promoBannerView.hidden = NO;
-      //  self.promoBannerView.hidden = YES;
-        bannerYOffset = self.view.height;
-    }
-    
-    [UIView animateWithDuration:animated ? 0.25 : 0.0 animations:^{
-        self.adBannerView.y = bannerYOffset;
-    }];
-}
-
-#pragma mark - ADBannerViewDelegate
-
-- (void)viewDidLayoutSubviews {
-    [self layoutAnimated:[UIView areAnimationsEnabled]];
-}
-
-- (void)bannerViewDidLoadAd:(ADBannerView *)banner {
-    [self layoutAnimated:YES];
-}
-
-- (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error {
-    [self layoutAnimated:YES];
-}
-/*
-- (BOOL)bannerViewActionShouldBegin:(ADBannerView *)banner willLeaveApplication:(BOOL)willLeave {
-    //tap on banner
-    [self updateGameState:GameStatePauseMode];
-    return  YES;
-}
-
-- (void)bannerViewActionDidFinish:(ADBannerView *)banner {
-    [self updateGameState:GameStateResumeMode];
-}
-*/
 
 @end
