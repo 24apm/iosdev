@@ -98,6 +98,7 @@
 }
 
 - (void)loadNextPromo {
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(loadNextPromo) object:nil];
     [self.promoBannerView setupWithPromoGameData:[[PromoManager instance] nextPromo]];
     [self layoutAnimated:YES];
     [self performSelector:@selector(loadNextPromo) withObject:nil afterDelay:20.f];
