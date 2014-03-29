@@ -23,7 +23,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.screenName = @"Game Screen";
+    self.screenName = [[NSBundle mainBundle] bundleIdentifier];
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"game_impression"     // Event category (required)
                                                           action:@"GameViewControllerBase"  // Event action (required)
