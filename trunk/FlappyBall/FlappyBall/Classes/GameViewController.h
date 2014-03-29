@@ -16,6 +16,7 @@
 #import "GameCenterManager.h"
 #import <GameKit/GameKit.h>
 #import "FloorView.h"
+#import "GameViewControllerBase.h"
 
 typedef enum {
     GameStateMainMode,
@@ -26,7 +27,7 @@ typedef enum {
     GameStateResultMode
 } GameState;
 
-@interface GameViewController : UIViewController <ADBannerViewDelegate, GKLeaderboardViewControllerDelegate, GameCenterManagerDelegate>
+@interface GameViewController : GameViewControllerBase <GKLeaderboardViewControllerDelegate, GameCenterManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet BackgroundView *backgroundView;
 @property (weak, nonatomic) IBOutlet UIView *obstacleLayer;

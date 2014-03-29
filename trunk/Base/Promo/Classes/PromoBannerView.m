@@ -22,6 +22,7 @@
                 self.iconView.image = [UIImage imageWithData: data];
                 self.descriptionLabel.text = gameData.description;
                 self.actionUrl = gameData.actionURL;
+                self.bundleId = gameData.bundleId;
             });
         });
         self.hidden = NO;
@@ -31,8 +32,24 @@
 }
 
 - (IBAction)promoPressed:(id)sender {
-    [[PromoManager instance] goToAppStore:self.actionUrl];
+    if (![self launchInstalledApp]) {
+        [[PromoManager instance] goToAppStore:self.actionUrl];
+    }
     [self setupWithPromoGameData:[[PromoManager instance] nextPromo]];
+}
+
+- (BOOL)launchInstalledApp {
+    UIApplication *ourApplication = [UIApplication sharedApplication];
+    NSString *URLEncodedText = @"";
+    NSString *scheme = [self.bundleId stringByAppendingString:@"://"];
+    NSString *ourPath = [scheme stringByAppendingString:URLEncodedText];
+    NSURL *ourURL = [NSURL URLWithString:ourPath];
+    if ([ourApplication canOpenURL:ourURL]) {
+        [ourApplication openURL:ourURL];
+        return YES;
+    } else {
+        return NO;
+    }
 }
 
 @end

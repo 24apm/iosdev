@@ -216,19 +216,6 @@
     }];
 }
 
-#pragma mark - ADBannerViewDelegate
-
-- (void)viewDidLayoutSubviews {
-    [self layoutAnimated:[UIView areAnimationsEnabled]];
-}
-
-- (void)bannerViewDidLoadAd:(ADBannerView *)banner {
-    [self layoutAnimated:YES];
-}
-
-- (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error {
-    [self layoutAnimated:YES];
-}
 /*
 - (BOOL)bannerViewActionShouldBegin:(ADBannerView *)banner willLeaveApplication:(BOOL)willLeave {
     //tap on banner

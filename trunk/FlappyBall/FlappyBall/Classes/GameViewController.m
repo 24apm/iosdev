@@ -310,12 +310,11 @@
 	// Do any additional setup after loading the view, typically from a nib.
     [self initialize];
     [self.mainView show];
-    
-    if (ENABLE_AD) {
-        [self createAdBannerView];
-        [self.view addSubview:self.adBannerView];
-    }
     [self loginToGameCenter];
+}
+
+- (AdBannerPositionMode)adBannerPositionMode {
+    return AdBannerPositionModeTop;
 }
 
 - (void)didReceiveMemoryWarning
@@ -475,45 +474,6 @@
     } else {
         [self resumeObstacles];
     }
-}
-
-#pragma mark - ADs
-
-- (void) createAdBannerView {
-    if ([ADBannerView instancesRespondToSelector:@selector(initWithAdType:)]) {
-        self.adBannerView = [[ADBannerView alloc] initWithAdType:ADAdTypeBanner];
-    } else {
-        self.adBannerView = [[ADBannerView alloc] init];
-    }
-    self.adBannerView.y = -self.adBannerView.height;
-    self.adBannerView.delegate = self;
-}
-
-- (void)layoutAnimated:(BOOL)animated {
-    float bannerYOffset = 0.f;
-    if (self.adBannerView.bannerLoaded) {
-        bannerYOffset = 0;
-    } else {
-        bannerYOffset = -self.adBannerView.height;
-    }
-    
-    [UIView animateWithDuration:animated ? 0.25 : 0.0 animations:^{
-        self.adBannerView.y = bannerYOffset;
-    }];
-}
-
-#pragma mark - ADBannerViewDelegate
-
-- (void)viewDidLayoutSubviews {
-    [self layoutAnimated:[UIView areAnimationsEnabled]];
-}
-
-- (void)bannerViewDidLoadAd:(ADBannerView *)banner {
-    [self layoutAnimated:YES];
-}
-
-- (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error {
-    [self layoutAnimated:YES];
 }
 
 #pragma mark - GameCenter
