@@ -42,6 +42,8 @@
         NSString *appName = [result objectForKey:@"trackName"];
         NSString *appBundleId = [result objectForKey:@"bundleId"];
         
+        actionURL = [self replaceScheme:actionURL];
+        
         NSLog(@"appName: %@", appName);
         NSLog(@"icon: %@", icon);
         NSLog(@"actionURL: %@", actionURL);
@@ -60,6 +62,16 @@
     }
     
     [[NSNotificationCenter defaultCenter] postNotificationName:AppInfoHTTPRequestCallbackNotification object:nil];
+}
+
+- (NSString *)replaceScheme:(NSString *)url {
+    NSString *str = url;
+    NSInteger colon = [str rangeOfString:@":"].location;
+    if (colon != NSNotFound) { // wtf how would it be missing
+        str = [str substringFromIndex:colon]; // strip off existing scheme
+        str = [@"itms-apps" stringByAppendingString:str];
+    }
+    return str;
 }
 
 @end

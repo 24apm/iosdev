@@ -23,6 +23,7 @@
     [super viewDidLoad];
     [self createAdBannerView];
     [self loadNextPromo];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadNextPromo) name:AppInfoHTTPRequestCallbackNotification object:nil];
 }
 
 #pragma mark - ADs
