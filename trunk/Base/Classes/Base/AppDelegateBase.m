@@ -11,6 +11,8 @@
 #import "NotificationManager.h"
 #import "PromoManager.h"
 #import "AppInfoHTTPRequest.h"
+#import "GAI.h"
+#import "GAIDictionaryBuilder.h"
 
 @implementation AppDelegateBase
 
@@ -32,6 +34,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [self setupAnalytics];
     
     // Handle launching from a notification
     UILocalNotification *locationNotification = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
@@ -40,18 +43,41 @@
         application.applicationIconBadgeNumber = 0;
     }
     
+    
     self.window.frame = UIScreen.mainScreen.applicationFrame;
 
     [self.window addSubview:self.viewController.view];
     [self.window makeKeyAndVisible];
     self.window.rootViewController = self.viewController;
     
+    
+    // Promo
     AppInfoHTTPRequest *request = [[AppInfoHTTPRequest alloc] initWithURL:@"https://itunes.apple.com/search?term=jeffrey+wan&entity=software"];
     [request send];
     
     return YES;
 }
 
+- (void)setupAnalytics {
+    // Optional: automatically send uncaught exceptions to Google Analytics.
+    [GAI sharedInstance].trackUncaughtExceptions = YES;
+    
+    // Optional: set Google Analytics dispatch interval to e.g. 20 seconds.
+    [GAI sharedInstance].dispatchInterval = 20;
+    
+//    // Optional: set Logger to VERBOSE for debug information.
+    [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
+    
+    // Initialize tracker. Replace with your tracking ID.
+    [[GAI sharedInstance] trackerWithTrackingId:@"UA-49468052-2"];
+    
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"game_impression"     // Event category (required)
+                                                          action:@"AppDelegateBase"  // Event action (required)
+                                                           label:[[NSBundle mainBundle] bundleIdentifier]          // Event label
+                                                           value:nil] build]];    // Event value
+    [[GAI sharedInstance] dispatch];
+}
 
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
 {
@@ -63,27 +89,32 @@
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+    [[GAI sharedInstance] dispatch];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    [[GAI sharedInstance] dispatch];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     // reset badge
     application.applicationIconBadgeNumber = 0;
+    [[GAI sharedInstance] dispatch];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
+    [[GAI sharedInstance] dispatch];
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
+    [[GAI sharedInstance] dispatch];
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 

@@ -9,6 +9,8 @@
 #import "GameViewControllerBase.h"
 #import "PromoManager.h"
 #import "AppInfoHTTPRequest.h"
+#import "GAIDictionaryBuilder.h"
+#import "GAI.h"
 
 @interface GameViewControllerBase ()
 
@@ -21,6 +23,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.screenName = @"Game Screen";
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"game_impression"     // Event category (required)
+                                                          action:@"GameViewControllerBase"  // Event action (required)
+                                                           label:[[NSBundle mainBundle] bundleIdentifier]          // Event label
+                                                           value:nil] build]];    // Event value
     [self createAdBannerView];
     [self loadNextPromo];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadNextPromo) name:AppInfoHTTPRequestCallbackNotification object:nil];
@@ -82,7 +90,7 @@
 
 - (void)layoutAnimated:(BOOL)animated {
     float bannerYOffset;
-    if (self.adBannerView.bannerLoaded) {
+    if (NO &&self.adBannerView.bannerLoaded) {
         self.promoBannerView.hidden = YES;
         bannerYOffset = [self adBannerPositionOnScreen];
         //   bannerYOffset = self.view.height;

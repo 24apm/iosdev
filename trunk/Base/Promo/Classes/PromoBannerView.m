@@ -9,6 +9,8 @@
 #import "PromoBannerView.h"
 #import "PromoManager.h"
 #import <CoreImage/CoreImage.h>
+#import "GAI.h"
+#import "GAIDictionaryBuilder.h"
 
 @implementation PromoBannerView
 
@@ -32,8 +34,25 @@
 }
 
 - (IBAction)promoPressed:(id)sender {
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"xpromo_banner"     // Event category (required)
+                                                          action:@"xpromo_banner_pressed"  // Event action (required)
+                                                           label:self.descriptionLabel.text          // Event label
+                                                           value:nil] build]];    // Event value
+    
     if (![self launchInstalledApp]) {
         [[PromoManager instance] goToAppStore:self.actionUrl];
+        id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+        [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"xpromo_banner"     // Event category (required)
+                                                              action:@"xpromo_goToAppStore"  // Event action (required)
+                                                               label:self.descriptionLabel.text          // Event label
+                                                               value:nil] build]];    // Event value
+    } else {
+        id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+        [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"xpromo_banner"     // Event category (required)
+                                                              action:@"xpromo_launchInstalledApp"  // Event action (required)
+                                                               label:self.descriptionLabel.text          // Event label
+                                                               value:nil] build]];    // Event value
     }
     [self setupWithPromoGameData:[[PromoManager instance] nextPromo]];
 }

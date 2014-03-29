@@ -7,6 +7,8 @@
 //
 
 #import "GameCenterHelperBase.h"
+#import "GAI.h"
+#import "GAIDictionaryBuilder.h"
 
 @implementation GameCenterHelperBase
 
@@ -58,6 +60,12 @@
 }
 
 - (void)showLeaderboard:(UIViewController *)viewController {
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"GameCenterHelperBase"     // Event category (required)
+                                                          action:@"showLeaderboard"  // Event action (required)
+                                                           label:[[NSBundle mainBundle] bundleIdentifier]          // Event label
+                                                           value:nil] build]];    // Event value
+    
     [self showLeaderboard:viewController category:self.currentLeaderBoard];
 }
 
@@ -68,6 +76,12 @@
 
 - (void)showAchievements:(UIViewController *)viewController
 {
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"GameCenterHelperBase"     // Event category (required)
+                                                          action:@"showAchievements"  // Event action (required)
+                                                           label:[[NSBundle mainBundle] bundleIdentifier]          // Event label
+                                                           value:nil] build]];    // Event value
+    
     GKAchievementViewController *achievements = [[GKAchievementViewController alloc] init];
     if (achievements != NULL)
     {

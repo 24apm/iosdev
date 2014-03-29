@@ -32,7 +32,6 @@
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
-    NSLog(@"didReceiveResponse");
     [self.responseData setLength:0];
 }
 
@@ -41,13 +40,9 @@
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-    NSLog(@"didFailWithError");
-    NSLog([NSString stringWithFormat:@"Connection failed: %@", [error description]]);
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    NSLog(@"connectionDidFinishLoading");
-    NSLog(@"Succeeded! Received %d bytes of data",[self.responseData length]);
 }
 
 @end
