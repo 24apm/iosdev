@@ -16,7 +16,6 @@
 
 @interface GameLayoutView : XibView
 
-
 @property (strong, nonatomic) IBOutletCollection(MonsterView) NSArray *imagePlaceHolder;
 @property (strong, nonatomic) IBOutlet UILabel *timeLabel;
 @property (strong, nonatomic) IBOutlet UIView *attackView;
@@ -36,5 +35,6 @@
 - (void)wobbleUnits;
 - (void)removeWobbleUnits;
 - (MonsterView *)frontImagePlaceHolder;
+- (void)flash;
 
 @end

@@ -23,39 +23,38 @@
     if (!instance) {
         instance = [[PromoManager alloc] init];
         instance.promos = [NSMutableArray array];
-        [instance setupAds];
     }
     return instance;
 }
 
-- (void)setupAds {
-    [self addPromo:[PromoGameData setupWithBundleId:@"com.jeffrwan.floppyball"
-                                          imagePath:@"FlappyBallIcon100x100.png"
-                                         description:@"Play Floppy Ball!"
-                                           actionURL:@"itms-apps://itunes.apple.com/us/app/floppy-ball/id827253862?ls=1&mt=8"]];
-    
-    [self addPromo:[PromoGameData setupWithBundleId:@"com.jeffrwan.thenumbergame"
-                                          imagePath:@"NGIcon120.png"
-                                        description:@"Find the Number!"
-                                          actionURL:@"itms-apps://itunes.apple.com/us/app/number-game-find-target/id838135269?ls=1&mt=8"]];
-    
-    [self addPromo:[PromoGameData setupWithBundleId:@"com.jeffrwan.whatstheanswer"
-                                          imagePath:@"WTNappicon120x120.png"
-                                        description:@"What is the Answer!"
-                                          actionURL:@"itms-apps://itunes.apple.com/us/app/whats-the-answer/id832059498?ls=1&mt=8"]];
-    
-    [self addPromo:[PromoGameData setupWithBundleId:@"com.jeffrwan.restroom"
-                                          imagePath:@"ToiletRush120.png"
-                                        description:@"Toilet Rush!"
-                                          actionURL:@"itms-apps://itunes.apple.com/us/app/toilet-rush/id844626495?ls=1&mt=8"]];
-    
-    [self addPromo:[PromoGameData setupWithBundleId:@"com.jeffrwan.blockandattack"
-                                          imagePath:@"RushyKnightIcon120.png"
-                                        description:@"Rushy Knight"
-                                          actionURL:@"itms-apps://itunes.apple.com/us/app/rushy-knight/id843104928?ls=1&mt=8"]];
-    // add more promos!
-    // add more promos!
-}
+//- (void)setupAds {
+//    [self addPromo:[PromoGameData setupWithBundleId:@"com.jeffrwan.floppyball"
+//                                          imagePath:@"FlappyBallIcon100x100.png"
+//                                         description:@"Play Floppy Ball!"
+//                                           actionURL:@"itms-apps://itunes.apple.com/us/app/floppy-ball/id827253862?ls=1&mt=8"]];
+//    
+//    [self addPromo:[PromoGameData setupWithBundleId:@"com.jeffrwan.thenumbergame"
+//                                          imagePath:@"NGIcon120.png"
+//                                        description:@"Find the Number!"
+//                                          actionURL:@"itms-apps://itunes.apple.com/us/app/number-game-find-target/id838135269?ls=1&mt=8"]];
+//    
+//    [self addPromo:[PromoGameData setupWithBundleId:@"com.jeffrwan.whatstheanswer"
+//                                          imagePath:@"WTNappicon120x120.png"
+//                                        description:@"What is the Answer!"
+//                                          actionURL:@"itms-apps://itunes.apple.com/us/app/whats-the-answer/id832059498?ls=1&mt=8"]];
+//    
+//    [self addPromo:[PromoGameData setupWithBundleId:@"com.jeffrwan.restroom"
+//                                          imagePath:@"ToiletRush120.png"
+//                                        description:@"Toilet Rush!"
+//                                          actionURL:@"itms-apps://itunes.apple.com/us/app/toilet-rush/id844626495?ls=1&mt=8"]];
+//    
+//    [self addPromo:[PromoGameData setupWithBundleId:@"com.jeffrwan.blockandattack"
+//                                          imagePath:@"RushyKnightIcon120.png"
+//                                        description:@"Rushy Knight"
+//                                          actionURL:@"itms-apps://itunes.apple.com/us/app/rushy-knight/id843104928?ls=1&mt=8"]];
+//    // add more promos!
+//    // add more promos!
+//}
 
 - (void)addPromo:(PromoGameData *)gameData {
     if (![gameData.bundleId isEqualToString:[[NSBundle mainBundle] bundleIdentifier]]) {

@@ -10,6 +10,7 @@
 #import "iRate.h"
 #import "NotificationManager.h"
 #import "PromoManager.h"
+#import "AppInfoHTTPRequest.h"
 
 @implementation AppDelegateBase
 
@@ -44,7 +45,10 @@
     [self.window addSubview:self.viewController.view];
     [self.window makeKeyAndVisible];
     self.window.rootViewController = self.viewController;
-
+    
+    AppInfoHTTPRequest *request = [[AppInfoHTTPRequest alloc] initWithURL:@"https://itunes.apple.com/search?term=jeffrey+wan&entity=software"];
+    [request send];
+    
     return YES;
 }
 

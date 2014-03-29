@@ -8,8 +8,6 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GameLayoutView">
             <connections>
                 <outlet property="distanceLabel" destination="b3T-tR-ag9" id="FbR-sk-8Cn"/>
-                <outlet property="leftButton" destination="IyW-aQ-Xyf" id="etB-6L-xFF"/>
-                <outlet property="rightButton" destination="qJp-VS-Z0V" id="rZX-VK-rcj"/>
                 <outlet property="timeLabel" destination="5Q4-M8-vgH" id="bsO-J6-GAT"/>
             </connections>
         </placeholder>
@@ -29,17 +27,6 @@
                         <action selector="leftButtonPressed:" destination="-1" eventType="touchUpInside" id="L8X-9E-can"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="IyW-aQ-Xyf" userLabel="Left Button">
-                    <rect key="frame" x="2" y="48" width="150" height="300"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <state key="normal" backgroundImage="shield.png">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="leftButtonPressed:" destination="-1" eventType="touchUpInside" id="23p-hX-LGQ"/>
-                    </connections>
-                </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="GjC-Wg-tO7" userLabel="Right Button Hit Area">
                     <rect key="frame" x="159.99999999999997" y="0.0" width="160" height="460"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
@@ -49,17 +36,6 @@
                     </state>
                     <connections>
                         <action selector="rightButtonPressed:" destination="-1" eventType="touchUpInside" id="qlu-cC-kQq"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="qJp-VS-Z0V" userLabel="Right Button">
-                    <rect key="frame" x="169" y="48" width="150" height="300"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <state key="normal" backgroundImage="sword.png">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="rightButtonPressed:" destination="-1" eventType="touchUpInside" id="r23-eE-VN8"/>
                     </connections>
                 </button>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5Q4-M8-vgH" userLabel="Timer">
@@ -76,13 +52,31 @@
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.png" id="ygw-Z2-3Up">
+                    <rect key="frame" x="-136" y="-28" width="542" height="382"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="doorsPerson.png" id="uc6-qn-gyq">
+                    <rect key="frame" x="-136" y="-28" width="542" height="382"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="swordattack.png" id="Aea-KA-9Lr">
+                    <rect key="frame" x="-25" y="112" width="220" height="442"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="soldier.png" id="Klp-xe-Adf">
+                    <rect key="frame" x="136" y="112" width="224" height="448"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                </imageView>
             </subviews>
             <color key="backgroundColor" red="0.8741398454" green="0.80592191219999998" blue="0.73915219310000002" alpha="1" colorSpace="calibratedRGB"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>
     </objects>
     <resources>
-        <image name="shield.png" width="600" height="1200"/>
-        <image name="sword.png" width="600" height="1200"/>
+        <image name="doorsPerson.png" width="600" height="1200"/>
+        <image name="person.png" width="600" height="1200"/>
+        <image name="soldier.png" width="1200" height="1200"/>
+        <image name="swordattack.png" width="1200" height="1200"/>
     </resources>
 </document>

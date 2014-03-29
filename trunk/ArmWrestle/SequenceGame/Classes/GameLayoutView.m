@@ -266,4 +266,23 @@
     return [self.imagePlaceHolder objectAtIndex:0];
 }
 
+- (void)flash {
+    UIView *flashOverView = [[UIView alloc] init];
+    [self addSubview:flashOverView];
+    flashOverView.frame = self.frame;
+    flashOverView.backgroundColor = [UIColor whiteColor];
+    
+    float duration = 0.2f;
+    flashOverView.alpha = 0.0f;
+    [UIView animateWithDuration:duration delay:0.f options:UIViewAnimationOptionLayoutSubviews animations:^{
+        flashOverView.alpha = 1.0f;
+    } completion:^(BOOL completed){
+        [UIView animateWithDuration:duration delay:0.f options:UIViewAnimationOptionLayoutSubviews animations:^{
+        } completion:^(BOOL completed){
+            flashOverView.alpha = 0.0f;
+            [flashOverView removeFromSuperview];
+        } ];
+    } ];
+}
+
 @end

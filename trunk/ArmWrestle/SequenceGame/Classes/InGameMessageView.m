@@ -23,6 +23,7 @@
     self.imageView.image = [UIImage imageNamed:imageName];
     self.imageView.hidden = NO;
     [self show];
+    
 }
 
 - (void)show:(NSString *)text {

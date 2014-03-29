@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 MacCoder. All rights reserved.
 //
 
+#import "GameViewControllerBase.h"
 #import <UIKit/UIKit.h>
-#import <iAd/iAd.h>
 #import "ResultView.h"
 #import "THLabel.h"
 #import "MainView.h"
@@ -26,11 +26,8 @@ typedef enum {
     GameStateCustomizeMode
 } GameState;
 
-@interface GameViewController : UIViewController <ADBannerViewDelegate>
+@interface GameViewController : GameViewControllerBase
 
 @property (nonatomic) GameState currentGameState;
-@property (strong, nonatomic) IBOutlet UIView *containerView;
-
-@property (nonatomic, retain) ADBannerView *adBannerView;
 
 @end

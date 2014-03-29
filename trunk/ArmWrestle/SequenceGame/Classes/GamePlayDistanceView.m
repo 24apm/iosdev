@@ -66,7 +66,6 @@
 
 - (void)renewGame{
     self.userInteractionEnabled = YES;
-    [[GameManager instance] generatelevelForDistance];
     [self refreshGame];
 }
 
@@ -75,8 +74,6 @@
 }
 
 - (void)refreshGame {
-    NSArray *visibleUnits = [[GameManager instance] currentVisibleQueue];
-    [self.gameLayoutView updateUnitViews:visibleUnits];
     self.score = [GameManager instance].step;
     self.gameLayoutView.distanceLabel.text = [NSString stringWithFormat:@"%d",self.score];
 }
@@ -86,7 +83,6 @@
     if (self.timer == nil) {
         [self startTime];
     }
-    [[GameManager instance] sequenceCaculation:UserInputDefend];
 }
 
 
@@ -94,7 +90,6 @@
     if (self.timer == nil) {
        [self startTime];
     }
-    [[GameManager instance] sequenceCaculation:UserInputAttack];
 }
 
 - (void)startTime {

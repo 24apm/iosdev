@@ -34,7 +34,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="IyW-aQ-Xyf" userLabel="Left Button">
-                    <rect key="frame" x="5" y="102" width="360" height="640.00000000000034"/>
+                    <rect key="frame" x="5" y="102.00000000000001" width="360" height="640.00000000000011"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <state key="normal" backgroundImage="shield.png">
@@ -45,7 +45,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="GjC-Wg-tO7" userLabel="Right Button Hit Area">
-                    <rect key="frame" x="384" y="0.0" width="384" height="981"/>
+                    <rect key="frame" x="384" y="0.0" width="384" height="981.00000000000011"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <state key="normal">
@@ -56,7 +56,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="qJp-VS-Z0V" userLabel="Right Button">
-                    <rect key="frame" x="406" y="102" width="360" height="640.00000000000034"/>
+                    <rect key="frame" x="406" y="102" width="360" height="640.00000000000011"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <state key="normal" backgroundImage="sword.png">
@@ -67,22 +67,22 @@
                     </connections>
                 </button>
                 <view userInteractionEnabled="NO" contentMode="scaleToFill" id="O4a-bZ-iyQ" userLabel="Monster View1" customClass="MonsterView" colorLabel="IBBuiltInLabel-Orange">
-                    <rect key="frame" x="144.00000000000003" y="341" width="480" height="427"/>
+                    <rect key="frame" x="144.00000000000003" y="340.99999999999994" width="480" height="427"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.180392161" green="0.64705884459999996" blue="0.34117648010000001" alpha="1" colorSpace="deviceRGB"/>
                 </view>
                 <view userInteractionEnabled="NO" contentMode="scaleToFill" id="fLJ-bd-z3Q" userLabel="Monster View3" customClass="MonsterView" colorLabel="IBBuiltInLabel-Orange">
-                    <rect key="frame" x="72.000000000000014" y="576.00000000000023" width="432" height="384.00000000000017"/>
+                    <rect key="frame" x="72.000000000000014" y="575.99999999999989" width="432" height="384"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.180392161" green="0.64705884459999996" blue="0.34117648010000001" alpha="1" colorSpace="deviceRGB"/>
                 </view>
                 <view userInteractionEnabled="NO" contentMode="scaleToFill" id="tFC-S7-aqW" userLabel="Monster View5" customClass="MonsterView" colorLabel="IBBuiltInLabel-Orange">
-                    <rect key="frame" x="0.0" y="672.00000000000011" width="384" height="341"/>
+                    <rect key="frame" x="0.0" y="672" width="384" height="341"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.180392161" green="0.64705884459999996" blue="0.34117648010000001" alpha="1" colorSpace="deviceRGB"/>
                 </view>
                 <view userInteractionEnabled="NO" contentMode="scaleToFill" id="C2L-Eq-Nc7" userLabel="Monster View7" customClass="MonsterView" colorLabel="IBBuiltInLabel-Orange">
-                    <rect key="frame" x="-89" y="725" width="336.00000000000006" height="299"/>
+                    <rect key="frame" x="-89" y="725" width="336.00000000000006" height="299.00000000000006"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.180392161" green="0.64705884459999996" blue="0.34117648010000001" alpha="1" colorSpace="deviceRGB"/>
                 </view>
