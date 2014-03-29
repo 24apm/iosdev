@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <iAd/iAd.h>
 #import "ResultView.h"
 #import "THLabel.h"
 #import "MainView.h"
@@ -28,7 +27,5 @@ typedef enum {
 
 @property (nonatomic) GameState currentGameState;
 @property (strong, nonatomic) IBOutlet UIView *containerView;
-
-@property (nonatomic, retain) ADBannerView *adBannerView;
 
 @end
