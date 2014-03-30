@@ -13,8 +13,6 @@
 
 @property (strong, nonatomic) IBOutlet UIImageView *iconView;
 @property (strong, nonatomic) IBOutlet UILabel *descriptionLabel;
-@property (strong, nonatomic) NSString *actionUrl;
-@property (strong, nonatomic) NSString *bundleId;
 
 - (void)setupWithPromoGameData:(PromoGameData *)gameData;
 

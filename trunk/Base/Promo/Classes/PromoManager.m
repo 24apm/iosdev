@@ -8,6 +8,8 @@
 
 #import "PromoManager.h"
 #import "Utils.h"
+#import "GAI.h"
+#import "GAIDictionaryBuilder.h"
 
 @interface PromoManager()
 
@@ -62,6 +64,14 @@
     }
 }
 
+- (NSArray *)nextPromoSetWithSize:(int)size {
+    NSMutableArray *randomPromos = [NSMutableArray arrayWithArray:self.promos];
+    [randomPromos shuffle];
+    NSRange range = NSMakeRange(0, MIN(size, randomPromos.count));
+    return [randomPromos subarrayWithRange:range];
+}
+
+// Banner
 - (PromoGameData *)nextPromo {
     if (!self.currentPromo) {
         self.currentPromo = [self.promos randomObject];
@@ -84,5 +94,45 @@
 - (void)goToAppStore:(NSString *)actionURL {
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:actionURL]];
 }
+
+- (void)promoPressed:(PromoGameData *)promoGameData {
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"xpromo_banner"     // Event category (required)
+                                                          action:@"xpromo_banner_pressed"  // Event action (required)
+                                                           label:promoGameData.description          // Event label
+                                                           value:nil] build]];    // Event value
+    
+    if (![self launchInstalledApp:promoGameData.bundleId]) {
+        [[PromoManager instance] goToAppStore:promoGameData.actionURL];
+        id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+        [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"xpromo_banner"     // Event category (required)
+                                                              action:@"xpromo_goToAppStore"  // Event action (required)
+                                                               label:promoGameData.description          // Event label
+                                                               value:nil] build]];    // Event value
+    } else {
+        id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+        [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"xpromo_banner"     // Event category (required)
+                                                              action:@"xpromo_launchInstalledApp"  // Event action (required)
+                                                               label:promoGameData.description          // Event label
+                                                               value:nil] build]];    // Event value
+    }
+    // [self setupWithPromoGameData:[[PromoManager instance] nextPromo]];
+}
+
+- (BOOL)launchInstalledApp:(NSString *)bundleId {
+    UIApplication *ourApplication = [UIApplication sharedApplication];
+    NSString *URLEncodedText = @"";
+    NSString *scheme = [bundleId stringByAppendingString:@"://"];
+    NSString *ourPath = [scheme stringByAppendingString:URLEncodedText];
+    NSURL *ourURL = [NSURL URLWithString:ourPath];
+    if ([ourApplication canOpenURL:ourURL]) {
+        [ourApplication openURL:ourURL];
+        return YES;
+    } else {
+        return NO;
+    }
+}
+
+
 
 @end

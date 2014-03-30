@@ -15,6 +15,10 @@
 
 
 @interface GameLayoutView : XibView
+@property (strong, nonatomic) IBOutlet UIImageView *door;
+@property (strong, nonatomic) IBOutlet UIImageView *person;
+@property (strong, nonatomic) IBOutlet UIImageView *female;
+@property (strong, nonatomic) IBOutlet UIImageView *male;
 
 @property (strong, nonatomic) IBOutletCollection(MonsterView) NSArray *imagePlaceHolder;
 @property (strong, nonatomic) IBOutlet UILabel *timeLabel;
@@ -36,5 +40,5 @@
 - (void)removeWobbleUnits;
 - (MonsterView *)frontImagePlaceHolder;
 - (void)flash;
-
+- (void) animateEnding;
 @end

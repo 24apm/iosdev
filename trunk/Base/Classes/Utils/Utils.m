@@ -7,6 +7,7 @@
 //
 
 #import "Utils.h"
+#import "AppDelegateBase.h"
 
 #define ARC4RANDOM_MAX 0x100000000
 
@@ -31,5 +32,9 @@
     return arc4random() % (max-min + 1) + min;
 }
 
++ (UIViewController *)rootViewController {
+    AppDelegateBase *appDelegateBase = [UIApplication sharedApplication].delegate;
+    return appDelegateBase.window.rootViewController;
+}
 
 @end

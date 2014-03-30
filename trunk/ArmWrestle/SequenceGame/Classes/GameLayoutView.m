@@ -65,6 +65,11 @@
 
 #pragma mark - Animation
 
+- (void)animateEnding {
+    self.door.image = [UIImage imageNamed:@"opendoor.png"];
+    [self animatePopFrontUnitFrom: self.person toView:self];
+}
+
 - (void)animateWeapon:(UserInput)userInput {
     [self animateWeaponType:[[GameManager instance] imagePathForUserInput:userInput]];
 }

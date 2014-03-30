@@ -14,7 +14,9 @@
 + (PromoManager *)instance;
 
 - (void)addPromo:(PromoGameData *)gameData;
-- (PromoGameData *)nextPromo;
 - (void)goToAppStore:(NSString *)actionURL;
+- (PromoGameData *)nextPromo;
+- (NSArray *)nextPromoSetWithSize:(int)size;
+- (void)promoPressed:(PromoGameData *)promoGameData;
 
 @end

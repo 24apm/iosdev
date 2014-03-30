@@ -55,6 +55,11 @@
 		D0E30EDF18A37D6400FFD3CE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E30EDE18A37D6400FFD3CE /* QuartzCore.framework */; };
 		D0E36B8B18C2906F00BA56E7 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E36B8A18C2906F00BA56E7 /* StoreKit.framework */; };
 		D0E378FF18D42CF700541404 /* GameManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E378FE18D42CF700541404 /* GameManager.m */; };
+		D0E3A0C918E7D6C200C7B63D /* PromoDialogView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E3A0C818E7D6C200C7B63D /* PromoDialogView.m */; };
+		D0E3A0CC18E7D75B00C7B63D /* PromoIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E3A0CB18E7D75B00C7B63D /* PromoIconView.m */; };
+		D0E3A0CE18E7D77D00C7B63D /* PromoIconView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E3A0CD18E7D77D00C7B63D /* PromoIconView.xib */; };
+		D0E3A0D018E7DA2900C7B63D /* PromoDialogView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E3A0CF18E7DA2900C7B63D /* PromoDialogView.xib */; };
+		D0E3A0D318E7DD4900C7B63D /* XibDialogView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E3A0D218E7DD4900C7B63D /* XibDialogView.m */; };
 		D0E48B7318DD9565000EF905 /* GameLayoutView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E48B7218DD9565000EF905 /* GameLayoutView~ipad.xib */; };
 		D0E48B7518DD9748000EF905 /* InGameMessageView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E48B7418DD9747000EF905 /* InGameMessageView~ipad.xib */; };
 		D0E48B7718DD9964000EF905 /* toilet_main.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E48B7618DD9964000EF905 /* toilet_main.png */; };
@@ -212,6 +217,14 @@
 		D0E36B8A18C2906F00BA56E7 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		D0E378FD18D42CF700541404 /* GameManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameManager.h; sourceTree = "<group>"; };
 		D0E378FE18D42CF700541404 /* GameManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameManager.m; sourceTree = "<group>"; };
+		D0E3A0C718E7D6C200C7B63D /* PromoDialogView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PromoDialogView.h; sourceTree = "<group>"; };
+		D0E3A0C818E7D6C200C7B63D /* PromoDialogView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PromoDialogView.m; sourceTree = "<group>"; };
+		D0E3A0CA18E7D75B00C7B63D /* PromoIconView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PromoIconView.h; sourceTree = "<group>"; };
+		D0E3A0CB18E7D75B00C7B63D /* PromoIconView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PromoIconView.m; sourceTree = "<group>"; };
+		D0E3A0CD18E7D77D00C7B63D /* PromoIconView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PromoIconView.xib; sourceTree = "<group>"; };
+		D0E3A0CF18E7DA2900C7B63D /* PromoDialogView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PromoDialogView.xib; sourceTree = "<group>"; };
+		D0E3A0D118E7DD4900C7B63D /* XibDialogView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XibDialogView.h; sourceTree = "<group>"; };
+		D0E3A0D218E7DD4900C7B63D /* XibDialogView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XibDialogView.m; sourceTree = "<group>"; };
 		D0E48B7218DD9565000EF905 /* GameLayoutView~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "GameLayoutView~ipad.xib"; sourceTree = "<group>"; };
 		D0E48B7418DD9747000EF905 /* InGameMessageView~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "InGameMessageView~ipad.xib"; sourceTree = "<group>"; };
 		D0E48B7618DD9964000EF905 /* toilet_main.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = toilet_main.png; sourceTree = "<group>"; };
@@ -638,6 +651,8 @@
 				D0EADD9118E769FC0016D2A0 /* NotificationManagerBase.m */,
 				D0EADD9218E769FC0016D2A0 /* XibView.h */,
 				D0EADD9318E769FC0016D2A0 /* XibView.m */,
+				D0E3A0D118E7DD4900C7B63D /* XibDialogView.h */,
+				D0E3A0D218E7DD4900C7B63D /* XibDialogView.m */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -771,6 +786,12 @@
 				D0EADDCC18E769FC0016D2A0 /* PromoGameData.m */,
 				D0EADDCD18E769FC0016D2A0 /* PromoManager.h */,
 				D0EADDCE18E769FC0016D2A0 /* PromoManager.m */,
+				D0E3A0C718E7D6C200C7B63D /* PromoDialogView.h */,
+				D0E3A0C818E7D6C200C7B63D /* PromoDialogView.m */,
+				D0E3A0CF18E7DA2900C7B63D /* PromoDialogView.xib */,
+				D0E3A0CA18E7D75B00C7B63D /* PromoIconView.h */,
+				D0E3A0CB18E7D75B00C7B63D /* PromoIconView.m */,
+				D0E3A0CD18E7D77D00C7B63D /* PromoIconView.xib */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -869,6 +890,7 @@
 				D0EA872818DA98460034B392 /* MainView~ipad.xib in Resources */,
 				D0E2E9B818D2D288009C757F /* TimedTap-Info.plist in Resources */,
 				D0E4BCD418D97BB500132C17 /* swordattack.png in Resources */,
+				D0E3A0D018E7DA2900C7B63D /* PromoDialogView.xib in Resources */,
 				D0EC496618D6DE2000537BB6 /* GamePlayDistanceView.xib in Resources */,
 				D09124BC18CC55520050B59F /* whoosh.caf in Resources */,
 				D0DFFCCD18DC1687001424DF /* femalelose.png in Resources */,
@@ -914,6 +936,7 @@
 				D0EADDE918E769FC0016D2A0 /* iRate.bundle in Resources */,
 				D0E7FF6C18E69DEB00896C7B /* person.png in Resources */,
 				D0E2E9B418D2D288009C757F /* InfoPlist.strings in Resources */,
+				D0E3A0CE18E7D77D00C7B63D /* PromoIconView.xib in Resources */,
 				D0E2E9B918D2D288009C757F /* GameViewController.xib in Resources */,
 				D0EA871B18DA78DE0034B392 /* bounceEffect.caf in Resources */,
 				D0EA872018DA7D0D0034B392 /* knight_main.png in Resources */,
@@ -953,8 +976,10 @@
 				D0EADDDA18E769FC0016D2A0 /* ProgressBarComponent.m in Sources */,
 				D0E2E9A818D2D288009C757F /* GameConstants.m in Sources */,
 				D0EADDE518E769FC0016D2A0 /* Utils.m in Sources */,
+				D0E3A0CC18E7D75B00C7B63D /* PromoIconView.m in Sources */,
 				D0E2E9AD18D2D288009C757F /* MenuView.m in Sources */,
 				D0EADDDF18E769FC0016D2A0 /* SoundEffect.m in Sources */,
+				D0E3A0C918E7D6C200C7B63D /* PromoDialogView.m in Sources */,
 				D0E2E9AE18D2D288009C757F /* NotificationManager.m in Sources */,
 				D0EADDD218E769FC0016D2A0 /* AppDelegateBase.m in Sources */,
 				D0E378FF18D42CF700541404 /* GameManager.m in Sources */,
@@ -965,6 +990,7 @@
 				D0F11CB718D8411E007A8963 /* CustomizationItemView.m in Sources */,
 				D0E2E9A918D2D288009C757F /* GameViewController.m in Sources */,
 				D0EADDDC18E769FC0016D2A0 /* HTTPRequest.m in Sources */,
+				D0E3A0D318E7DD4900C7B63D /* XibDialogView.m in Sources */,
 				D0EADDD718E769FC0016D2A0 /* Hex.m in Sources */,
 				D0EADDF018E769FC0016D2A0 /* PromoBannerView.m in Sources */,
 				D0F11CB218D83CFD007A8963 /* CustomizationView.m in Sources */,

@@ -138,6 +138,7 @@
 
 - (void)victoryGame {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [self.gameLayoutView animateEnding];
     self.userInteractionEnabled = NO;
     [self stopTime];
     [self.gameLayoutView flash];
@@ -159,5 +160,6 @@
     [[SoundManager instance] play:SOUND_EFFECT_WINNING];
     [self performSelector:@selector(endGame) withObject:nil afterDelay:1.5f];
 }
+
 
 @end
