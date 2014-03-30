@@ -60,6 +60,7 @@
 		D0E3A0CE18E7D77D00C7B63D /* PromoIconView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E3A0CD18E7D77D00C7B63D /* PromoIconView.xib */; };
 		D0E3A0D018E7DA2900C7B63D /* PromoDialogView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E3A0CF18E7DA2900C7B63D /* PromoDialogView.xib */; };
 		D0E3A0D318E7DD4900C7B63D /* XibDialogView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E3A0D218E7DD4900C7B63D /* XibDialogView.m */; };
+		D0E3A0D518E8119D00C7B63D /* doorsPerson.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E3A0D418E8119D00C7B63D /* doorsPerson.png */; };
 		D0E48B7318DD9565000EF905 /* GameLayoutView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E48B7218DD9565000EF905 /* GameLayoutView~ipad.xib */; };
 		D0E48B7518DD9748000EF905 /* InGameMessageView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E48B7418DD9747000EF905 /* InGameMessageView~ipad.xib */; };
 		D0E48B7718DD9964000EF905 /* toilet_main.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E48B7618DD9964000EF905 /* toilet_main.png */; };
@@ -71,7 +72,6 @@
 		D0E7628A18D626B7005CDF88 /* MonsterData.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E7628918D626B7005CDF88 /* MonsterData.m */; };
 		D0E7FF6B18E69DEB00896C7B /* opendoor.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E7FF6818E69DEB00896C7B /* opendoor.png */; };
 		D0E7FF6C18E69DEB00896C7B /* person.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E7FF6918E69DEB00896C7B /* person.png */; };
-		D0E7FF6D18E69DEB00896C7B /* doorsPerson.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E7FF6A18E69DEB00896C7B /* doorsPerson.png */; };
 		D0E7FF7918E6B02700896C7B /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E7FF7818E6B02700896C7B /* CoreImage.framework */; };
 		D0EA7EBE18D521C90095DEBD /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EA7EBA18D521C90095DEBD /* arrow.png */; };
 		D0EA7EBF18D521C90095DEBD /* shield.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EA7EBB18D521C90095DEBD /* shield.png */; };
@@ -225,6 +225,7 @@
 		D0E3A0CF18E7DA2900C7B63D /* PromoDialogView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PromoDialogView.xib; sourceTree = "<group>"; };
 		D0E3A0D118E7DD4900C7B63D /* XibDialogView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XibDialogView.h; sourceTree = "<group>"; };
 		D0E3A0D218E7DD4900C7B63D /* XibDialogView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XibDialogView.m; sourceTree = "<group>"; };
+		D0E3A0D418E8119D00C7B63D /* doorsPerson.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = doorsPerson.png; sourceTree = "<group>"; };
 		D0E48B7218DD9565000EF905 /* GameLayoutView~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "GameLayoutView~ipad.xib"; sourceTree = "<group>"; };
 		D0E48B7418DD9747000EF905 /* InGameMessageView~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "InGameMessageView~ipad.xib"; sourceTree = "<group>"; };
 		D0E48B7618DD9964000EF905 /* toilet_main.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = toilet_main.png; sourceTree = "<group>"; };
@@ -237,7 +238,6 @@
 		D0E7628918D626B7005CDF88 /* MonsterData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonsterData.m; sourceTree = "<group>"; };
 		D0E7FF6818E69DEB00896C7B /* opendoor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = opendoor.png; sourceTree = "<group>"; };
 		D0E7FF6918E69DEB00896C7B /* person.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = person.png; sourceTree = "<group>"; };
-		D0E7FF6A18E69DEB00896C7B /* doorsPerson.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = doorsPerson.png; sourceTree = "<group>"; };
 		D0E7FF7818E6B02700896C7B /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		D0EA7EBA18D521C90095DEBD /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
 		D0EA7EBB18D521C90095DEBD /* shield.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shield.png; sourceTree = "<group>"; };
@@ -551,9 +551,9 @@
 		D0E50A2818A7349300AA353E /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				D0E3A0D418E8119D00C7B63D /* doorsPerson.png */,
 				D0E7FF6818E69DEB00896C7B /* opendoor.png */,
 				D0E7FF6918E69DEB00896C7B /* person.png */,
-				D0E7FF6A18E69DEB00896C7B /* doorsPerson.png */,
 				D0E48B7618DD9964000EF905 /* toilet_main.png */,
 				D0DFFCCB18DC1687001424DF /* femalelose.png */,
 				D0DFFCCC18DC1687001424DF /* malelose.png */,
@@ -929,8 +929,8 @@
 				D0EA7EC518D52FE90095DEBD /* attack.png in Resources */,
 				D0EA7EC118D521C90095DEBD /* monster.png in Resources */,
 				D0EA871E18DA78DE0034B392 /* sharp_punch.caf in Resources */,
-				D0E7FF6D18E69DEB00896C7B /* doorsPerson.png in Resources */,
 				D0EA7EBE18D521C90095DEBD /* arrow.png in Resources */,
+				D0E3A0D518E8119D00C7B63D /* doorsPerson.png in Resources */,
 				D0E1123518C2EDF000808072 /* bling.caf in Resources */,
 				D0F11CB918D8412F007A8963 /* CustomizationItemView.xib in Resources */,
 				D0EADDE918E769FC0016D2A0 /* iRate.bundle in Resources */,

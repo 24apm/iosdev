@@ -16,10 +16,27 @@
 @interface GameLayoutView()
 
 @property (nonatomic, strong) InGameMessageView *messageView;
+@property (nonatomic) CGRect maleDefault;
+@property (nonatomic) CGRect femaleDefault;
+@property (nonatomic, strong) NSString* timeTextDefault;
 
 @end
 
 @implementation GameLayoutView
+
+- (void)setupDefault {
+    self.maleDefault = self.male.frame;
+    self.femaleDefault = self.female.frame;
+    self.timeTextDefault = self.timeText.text;
+    self.doorAfter.hidden = YES;
+    self.door.hidden = NO;
+}
+
+- (void)restoreDefault {
+    self.male.frame = self.maleDefault;
+    self.female.frame = self.femaleDefault;
+    self.timeText.text = self.timeTextDefault;
+}
 
 - (IBAction)leftButtonPressed:(UIButton *)sender {
     [self performSelector:@selector(leftPressed) withObject:nil afterDelay:0.05f];
@@ -65,9 +82,21 @@
 
 #pragma mark - Animation
 
-- (void)animateEnding {
+- (void)roundStart {
+    self.timeText.text = @"GO!!!";
     self.door.image = [UIImage imageNamed:@"opendoor.png"];
-    [self animatePopFrontUnitFrom: self.person toView:self];
+}
+- (void)animateMovingToDoorFor:(UIView *)view {
+    [self animateUnitFrom:view toView:self.finalPoint];
+}
+
+- (void)animateMovingAwayfromDoorFor:(UIImageView *)view {
+    self.doorAfter.hidden = NO;
+    self.door.hidden = YES;
+    CGPoint randPoint;
+    randPoint.x = [Utils randBetweenMin:0.f max:self.width];
+    randPoint.y = self.height;
+    [self animate:view toPoint:randPoint];
 }
 
 - (void)animateWeapon:(UserInput)userInput {
@@ -113,19 +142,24 @@
     }];
 }
 
-- (void)animateOut:(NSString *)imagePath monsterView:(MonsterView *)monsterView fromPoint:(CGPoint)fromPoint toPoint:(CGPoint)toPoint {
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:imagePath]];
+- (void)animateOut:(NSString *)imagePath fromPoint:(CGPoint)fromPoint toPoint:(CGPoint)toPoint {
+
+    
+}
+
+- (void)animate:(UIImageView *)view toPoint:(CGPoint)toPoint {
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:view.image];
     imageView.contentMode = UIViewContentModeScaleAspectFit;
     [self addSubview:imageView];
-    imageView.frame = [monsterView.superview convertRect:monsterView.frame toView:self];
-    imageView.center = fromPoint;
+    imageView.frame = [view.superview convertRect:view.frame toView:self];
     CABasicAnimation *bubbleFadeIn = [CABasicAnimation animationWithKeyPath:@"opacity"];
     bubbleFadeIn.fromValue = [NSNumber numberWithFloat:1.0f];
-    bubbleFadeIn.toValue = [NSNumber numberWithFloat:1.5f];
+    bubbleFadeIn.toValue = [NSNumber numberWithFloat:0.8f];
     
+    float scaleRand = [Utils randBetweenMinInt:0 max:4];
     CABasicAnimation *bubbleExplode = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
-    bubbleExplode.toValue = [NSNumber numberWithFloat:2.2f];
-
+    bubbleExplode.toValue = [NSNumber numberWithFloat:10];
+    
     CABasicAnimation *bubblePosition = [CABasicAnimation animationWithKeyPath:@"position"];
     bubblePosition.toValue = [NSNumber valueWithCGPoint:toPoint];
     
@@ -133,48 +167,13 @@
     rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
     rotationAnimation.fromValue = [NSNumber numberWithFloat:0.0f];
     rotationAnimation.toValue = [NSNumber numberWithFloat: M_PI * 2.0f];
-    rotationAnimation.duration = 0.1f;
+    rotationAnimation.duration = 0.4f;
     rotationAnimation.cumulative = YES;
     rotationAnimation.repeatCount = HUGE_VAL;
-
-    CAAnimationGroup *bubbleAnims = [CAAnimationGroup animation];
-    [bubbleAnims setAnimations:[NSArray arrayWithObjects:bubbleFadeIn, rotationAnimation, bubbleExplode, bubblePosition, nil]];
-    [bubbleAnims setDuration:0.2f];
-    [bubbleAnims setRemovedOnCompletion:NO];
-    [bubbleAnims setFillMode:kCAFillModeForwards];
-    [imageView.layer addAnimation:bubbleAnims forKey:nil];
-    
-    [self performSelector:@selector(removeView:) withObject:imageView afterDelay:bubbleAnims.duration + 0.1f];
-}
-
-- (void)animate:(MonsterView *)monsterView fromPoint:(CGPoint)fromPoint toPoint:(CGPoint)toPoint {
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:monsterView.imageView.image];
-    imageView.contentMode = UIViewContentModeScaleAspectFit;
-    [self addSubview:imageView];
-    imageView.frame = [monsterView.superview convertRect:monsterView.frame toView:self];
-    imageView.center = fromPoint;
-    CABasicAnimation *bubbleFadeIn = [CABasicAnimation animationWithKeyPath:@"opacity"];
-    bubbleFadeIn.fromValue = [NSNumber numberWithFloat:1.0f];
-    bubbleFadeIn.toValue = [NSNumber numberWithFloat:0.0f];
-    
-//    float scaleRand = [Utils randBetweenMinInt:0 max:2];
-//    CABasicAnimation *bubbleExplode = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
-//    bubbleExplode.toValue = [NSNumber numberWithFloat:scaleRand];
-//    
-    CABasicAnimation *bubblePosition = [CABasicAnimation animationWithKeyPath:@"position"];
-    bubblePosition.toValue = [NSNumber valueWithCGPoint:toPoint];
-    
-//    CABasicAnimation* rotationAnimation;
-//    rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
-//    rotationAnimation.fromValue = [NSNumber numberWithFloat:0.0f];
-//    rotationAnimation.toValue = [NSNumber numberWithFloat: M_PI * 2.0f];
-//    rotationAnimation.duration = 0.3f;
-//    rotationAnimation.cumulative = YES;
-//    rotationAnimation.repeatCount = HUGE_VAL;
     
     CAAnimationGroup *bubbleAnims = [CAAnimationGroup animation];
-    [bubbleAnims setAnimations:[NSArray arrayWithObjects:bubbleFadeIn, bubblePosition, nil]];
-    [bubbleAnims setDuration:0.2f];
+    [bubbleAnims setAnimations:[NSArray arrayWithObjects:bubbleFadeIn, bubblePosition, rotationAnimation, nil]];
+    [bubbleAnims setDuration:.5f];
     [bubbleAnims setRemovedOnCompletion:NO];
     [bubbleAnims setFillMode:kCAFillModeForwards];
     [imageView.layer addAnimation:bubbleAnims forKey:nil];
@@ -186,26 +185,31 @@
     [view removeFromSuperview];
 }
 
-- (void)animateOutPopFrontUnit:(NSString *)imagePath fromView:(UIView *)fromView toView:(UIView *)toView {
+- (void)animateUnitFrom:(UIView *)fromView toView:(UIView *)toView {
     // NSArray *xPositions = @[@(self.width), @(0)];
-    MonsterView *monsterView = [self.imagePlaceHolder objectAtIndex:0];
     
-    CGPoint screenPointForFromView = [fromView.superview convertPoint:fromView.center toView:self];
+//    CGPoint screenPointForFromView = [fromView.superview convertPoint:fromView.center toView:self];
+//    
+//    CGPoint screenPointForButton = [toView.superview convertPoint:toView.center toView:self];
+//    
+//    
     
-    CGPoint screenPointForButton = [toView.superview convertPoint:toView.center toView:self];
+    [UIView animateWithDuration:0.4f animations: ^{
+        fromView.center = toView.center;
+    }];
     
-    [self animateOut:imagePath monsterView:monsterView fromPoint:screenPointForFromView toPoint:screenPointForButton];
+//    [self animateOut:imagePath fromPoint:screenPointForFromView toPoint:screenPointForButton];
 }
 
 - (void)animatePopFrontUnitFrom:(UIView *)fromView toView:(UIView *)toView {
    // NSArray *xPositions = @[@(self.width), @(0)];
-    MonsterView *monsterView = [self.imagePlaceHolder objectAtIndex:0];
+  //  MonsterView *monsterView = [self.imagePlaceHolder objectAtIndex:0];
     
-    CGPoint screenPointForFromView = [fromView.superview convertPoint:fromView.center toView:self];
+ //   CGPoint screenPointForFromView = [fromView.superview convertPoint:fromView.center toView:self];
 
-    CGPoint screenPointForButton = [toView.superview convertPoint:toView.center toView:self];
+   // CGPoint screenPointForButton = [toView.superview convertPoint:toView.center toView:self];
     
-    [self animate:monsterView fromPoint:screenPointForFromView toPoint:screenPointForButton];
+  //  [self animate:monsterView fromPoint:screenPointForFromView toPoint:screenPointForButton];
 }
 
 - (void)wobbleUnits {
@@ -257,13 +261,13 @@
 }
 
 - (void)animateLostView {
-    [self animateOutPopFrontUnit:[self imageForCurrentDefeatedUnitType] fromView:self.currentButton toView:self];
+  //  [self animateOutPopFrontUnit:[self imageForCurrentDefeatedUnitType] fromView:self.currentButton toView:self];
     [self performSelector:@selector(animateMessageView) withObject:nil afterDelay:0.3f];
 }
 
 - (void)animateMessageView {
     [self shakeScreen];
-    [self showMessageViewWithImage:[self imageForCurrentDefeatedUnitType]];
+    [self showMessageView:@"TOO FAST!!!\nWAIT FOR YOUR TURN!"];
     [[SoundManager instance] play:SOUND_EFFECT_SHARP_PUNCH];
 }
 

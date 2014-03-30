@@ -26,7 +26,7 @@
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
                 </view>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="More Games!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="15" id="HER-0z-xTb" customClass="THLabel">
-                    <rect key="frame" x="11" y="44" width="300" height="76"/>
+                    <rect key="frame" x="11" y="84" width="300" height="76"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="38"/>
                     <color key="textColor" red="1" green="0.83579215116279071" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -41,17 +41,17 @@
                     </userDefinedRuntimeAttributes>
                 </label>
                 <view contentMode="scaleToFill" id="zpE-03-0ym" customClass="PromoIconView">
-                    <rect key="frame" x="50" y="180" width="50" height="50"/>
+                    <rect key="frame" x="20" y="250" width="80" height="80"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" id="8SN-jj-fbC" customClass="PromoIconView">
-                    <rect key="frame" x="135" y="180" width="50" height="50"/>
+                    <rect key="frame" x="120" y="230" width="80" height="80"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" id="1ZC-fd-l2b" customClass="PromoIconView">
-                    <rect key="frame" x="220" y="180" width="50" height="50"/>
+                    <rect key="frame" x="220" y="250" width="80" height="80"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                 </view>
@@ -59,7 +59,7 @@
                     <rect key="frame" x="280" y="0.0" width="40" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.81568627449999997" green="0.19266968900000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                     <state key="normal" title="X">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>

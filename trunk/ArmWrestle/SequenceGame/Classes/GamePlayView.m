@@ -21,6 +21,7 @@
 @property (nonatomic, strong) NSTimer *timer;
 @property (nonatomic) CFTimeInterval startingTime;
 @property (nonatomic) double finalTime;
+@property (nonatomic, strong) UIView* currentChoice;
 
 @end
 
@@ -30,6 +31,7 @@
     self = [super init];
     if (self) {
         self.gameLayoutView.timeLabel.textColor = kCOLOR_RED;
+        [self.gameLayoutView setupDefault];
     }
     return self;
 }
@@ -81,6 +83,7 @@
 
 - (void)leftPressedCallback {
     // tell manager to dosomething with action
+    self.currentChoice = self.gameLayoutView.female;
     if (self.timer != nil) {
         [[GameManager instance] addScore:UserInputDefend];
         [self victoryGame];
@@ -91,6 +94,7 @@
 
 
 - (void)rightPressedCallback {
+    self.currentChoice = self.gameLayoutView.male;
     if (self.timer != nil) {
         [[GameManager instance] addScore:UserInputAttack];
         [self victoryGame];
@@ -101,6 +105,7 @@
 }
 
 - (void)startTime {
+    [self.gameLayoutView roundStart];
     self.startingTime = CACurrentMediaTime();
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0f/15.f target:self selector:@selector(updateTimer) userInfo:nil repeats:YES];
 }
@@ -112,6 +117,7 @@
 
 - (void)endGame {
     [self hide];
+    [self performSelector:@selector(resetting) withObject:nil afterDelay:3.0f];
 }
 
 - (void)stopTime {
@@ -125,10 +131,12 @@
 
 - (void)lostGame {
     self.gameLayoutView.timeLabel.hidden = YES;
+    [self.gameLayoutView animateMovingToDoorFor:self.currentChoice];
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(renewGame) object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     self.userInteractionEnabled = NO;
-    [self.gameLayoutView performSelector:@selector(animateLostView) withObject:nil afterDelay:0.5f];
+    [self.gameLayoutView performSelector:@selector(animateLostView) withObject:nil afterDelay:0.3f];
+    [self performSelector:@selector(lostAnimation) withObject:nil afterDelay:0.3f];
     [self performSelector:@selector(endGame) withObject:nil afterDelay:2.0f];
 }
 
@@ -138,10 +146,41 @@
 
 - (void)victoryGame {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    [self.gameLayoutView animateEnding];
+    [self.gameLayoutView animateMovingToDoorFor:self.currentChoice];
     self.userInteractionEnabled = NO;
+    [self performSelector:@selector(winAnimation) withObject:nil afterDelay:0.4f];
+      [self performSelector:@selector(displayWinner) withObject:nil afterDelay:0.8f];
     [self stopTime];
     [self.gameLayoutView flash];
+     //  [self.gameLayoutView showMessageView:@"Good Work!"];
+    [[SoundManager instance] play:SOUND_EFFECT_WINNING];
+    [self performSelector:@selector(endGame) withObject:nil afterDelay:3.0f];
+}
+
+- (void)resetting {
+    self.currentChoice = nil;
+    [self.gameLayoutView restoreDefault];
+    self.gameLayoutView.male.hidden = NO;
+    self.gameLayoutView.female.hidden = NO;
+    self.gameLayoutView.person.hidden = NO;
+    self.gameLayoutView.door.image = [UIImage imageNamed:@"doorsPerson"];
+    self.gameLayoutView.doorAfter.hidden = YES;
+    self.gameLayoutView.door.hidden = NO;
+}
+
+- (void)winAnimation {
+    self.gameLayoutView.person.hidden = YES;
+    [self.gameLayoutView animateMovingAwayfromDoorFor:self.gameLayoutView.person];
+    self.gameLayoutView.doorAfter.hidden = NO;
+    self.gameLayoutView.door.hidden = YES;
+}
+
+- (void)lostAnimation {
+    self.currentChoice.hidden = YES;
+    [self.gameLayoutView animateMovingAwayfromDoorFor:self.currentChoice];
+}
+
+- (void)displayWinner {
     Winner winner = [[GameManager instance] calculateWinner];
     switch (winner) {
         case PlayerOneWin:
@@ -156,10 +195,5 @@
         default:
             break;
     }
-  //  [self.gameLayoutView showMessageView:@"Good Work!"];
-    [[SoundManager instance] play:SOUND_EFFECT_WINNING];
-    [self performSelector:@selector(endGame) withObject:nil afterDelay:1.5f];
 }
-
-
 @end
