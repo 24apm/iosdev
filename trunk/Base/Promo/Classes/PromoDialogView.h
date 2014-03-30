@@ -12,6 +12,9 @@
 
 @interface PromoDialogView : XibDialogView
 
+@property (strong, nonatomic) IBOutlet UIView *overlay;
+@property (strong, nonatomic) IBOutlet UILabel *headerLabel;
+@property (strong, nonatomic) IBOutlet UIButton *closeButton;
 @property (strong, nonatomic) IBOutletCollection(PromoIconView) NSArray *promoIcons;
 
 @end

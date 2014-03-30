@@ -21,13 +21,30 @@
 
 - (void)show {
     [super show];
+    float delay = 0.f;
+    
+    delay += 0.5f;
+    self.overlay.alpha = 0.f;
+    [self performSelector:@selector(fadeIn:) withObject:self.overlay afterDelay:delay];
+
+    delay += 0.5f;
+    self.headerLabel.alpha = 0.f;
+    [self performSelector:@selector(fadeIn:) withObject:self.headerLabel afterDelay:delay];
+
     NSArray *promoArray = [[PromoManager instance] nextPromoSetWithSize:3];
     for (int i = 0; i < promoArray.count; i++) {
         PromoIconView *promoIconView = [self.promoIcons objectAtIndex:i];
         [promoIconView setupWithPromoGameData:[promoArray objectAtIndex:i]];
         promoIconView.alpha = 0.f;
-        [self performSelector:@selector(fadeIn:) withObject:promoIconView afterDelay:i * 0.2f];
+        
+        delay += 0.3f;
+        [self performSelector:@selector(fadeIn:) withObject:promoIconView afterDelay:delay];
     }
+    
+    delay += 0.5f;
+    self.closeButton.alpha = 0.f;
+    [self performSelector:@selector(fadeIn:) withObject:self.closeButton afterDelay:delay];
+
 }
 
 - (void)fadeIn:(UIView *)view {

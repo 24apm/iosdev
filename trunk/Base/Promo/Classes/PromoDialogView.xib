@@ -7,6 +7,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PromoDialogView">
             <connections>
+                <outlet property="closeButton" destination="JHd-z3-mla" id="mWa-GM-KQk"/>
+                <outlet property="headerLabel" destination="HER-0z-xTb" id="WM4-kd-pR2"/>
+                <outlet property="overlay" destination="OWc-tF-y2r" id="kAV-ts-kA5"/>
                 <outletCollection property="promoIcons" destination="zpE-03-0ym" id="1Lf-7y-ICl"/>
                 <outletCollection property="promoIcons" destination="8SN-jj-fbC" id="ln7-aG-1pq"/>
                 <outletCollection property="promoIcons" destination="1ZC-fd-l2b" id="TJj-MK-TF5"/>
@@ -22,12 +25,20 @@
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
                 </view>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Try These Out!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="15" id="HER-0z-xTb">
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="More Games!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="15" id="HER-0z-xTb" customClass="THLabel">
                     <rect key="frame" x="11" y="44" width="300" height="76"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                    <color key="textColor" red="0.99667489470000004" green="1" blue="0.047547238370000001" alpha="1" colorSpace="deviceRGB"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="38"/>
+                    <color key="textColor" red="1" green="0.83579215116279071" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="strokeColor">
+                            <color key="value" red="0.39476734203296704" green="0.39476734203296704" blue="0.39476734203296704" alpha="1" colorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="strokeSize">
+                            <integer key="value" value="2"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </label>
                 <view contentMode="scaleToFill" id="zpE-03-0ym" customClass="PromoIconView">
                     <rect key="frame" x="50" y="180" width="50" height="50"/>
