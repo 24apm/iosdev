@@ -22,8 +22,12 @@
         self.transform = CGAffineTransformIdentity;
         self.alpha = 1.0f;
     } completion:^(BOOL complete) {
-        PromoDialogView *promoDialogView = [[PromoDialogView alloc] init];
-        [promoDialogView show];
+        static int promoDialogInLeaderBoardCount = 0;
+        promoDialogInLeaderBoardCount++;
+        if (promoDialogInLeaderBoardCount % 3 == 0) {
+            PromoDialogView *promoDialogView = [[PromoDialogView alloc] init];
+            [promoDialogView show];
+        }
     }];
 }
 
