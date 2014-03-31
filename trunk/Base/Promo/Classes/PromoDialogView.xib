@@ -39,7 +39,7 @@
                     </connections>
                 </button>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="More Games!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="15" id="HER-0z-xTb" customClass="THLabel">
-                    <rect key="frame" x="11" y="84" width="300" height="76"/>
+                    <rect key="frame" x="11" y="134" width="300" height="76"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="38"/>
                     <color key="textColor" red="1" green="0.83579215116279071" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
