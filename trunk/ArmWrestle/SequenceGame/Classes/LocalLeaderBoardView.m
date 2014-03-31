@@ -10,7 +10,6 @@
 #import "UserData.h"
 #import "GameConstants.h"
 #import "GameManager.h"
-#import "PromoDialogView.h"
 
 @implementation LocalLeaderBoardView
 
@@ -22,12 +21,6 @@
         self.transform = CGAffineTransformIdentity;
         self.alpha = 1.0f;
     } completion:^(BOOL complete) {
-        static int promoDialogInLeaderBoardCount = 0;
-        promoDialogInLeaderBoardCount++;
-        if (promoDialogInLeaderBoardCount % 3 == 0) {
-            PromoDialogView *promoDialogView = [[PromoDialogView alloc] init];
-            [promoDialogView show];
-        }
     }];
 }
 

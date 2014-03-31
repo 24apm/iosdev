@@ -13,7 +13,9 @@
 #import "SoundManager.h"
 #import "UserData.h"
 #import "AnimUtil.h"
+#import "PromoDialogView.h"
 
+#define TIMES_PLAYED_BEFORE_PROMO 3
 #define BUFFER 3
 
 @interface GamePlayView ()
@@ -26,6 +28,8 @@
 @end
 
 @implementation GamePlayView
+
+static int promoDialogInLeaderBoardCount = 0;
 
 - (id)init {
     self = [super init];
@@ -138,6 +142,16 @@
     [self.gameLayoutView performSelector:@selector(animateLostView) withObject:nil afterDelay:0.3f];
     [self performSelector:@selector(lostAnimation) withObject:nil afterDelay:0.3f];
     [self performSelector:@selector(endGame) withObject:nil afterDelay:2.0f];
+    [self performSelector:@selector(showPromoDialog) withObject:nil afterDelay:2.5f];
+}
+
+- (void)showPromoDialog {
+    promoDialogInLeaderBoardCount++;
+    
+    if (promoDialogInLeaderBoardCount % TIMES_PLAYED_BEFORE_PROMO == 0) {
+        PromoDialogView *promoDialogView = [[PromoDialogView alloc] init];
+        [promoDialogView show];
+    }
 }
 
 - (NSString *)formatTimeString:(float)time {
@@ -145,6 +159,7 @@
 }
 
 - (void)victoryGame {
+    promoDialogInLeaderBoardCount = 0; // reset promo
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [self.gameLayoutView animateMovingToDoorFor:self.currentChoice];
     self.userInteractionEnabled = NO;
