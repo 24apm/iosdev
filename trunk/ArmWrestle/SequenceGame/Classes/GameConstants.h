@@ -14,7 +14,7 @@
 #define ENABLED_ADS YES
 
 // Game Center
-#define kLeaderboardBestTimeID @"com.jeffrwan.restroom.besttime"
+#define kLeaderboardBestTimeID @"com.jeffrwan.restroom2.fastest"
 #define kLeaderboardBestScoreID @"com.jeffrwan.restroom.bestscore"
 
 #define kAchievementOneStreak @"com.jeffrwan.thenumbergame.level1"

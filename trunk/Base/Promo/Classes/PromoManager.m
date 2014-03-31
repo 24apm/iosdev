@@ -97,19 +97,18 @@
 - (void)promoPressed:(PromoGameData *)promoGameData {
     [TrackUtils trackAction:@"xpromo_banner_pressed" label:promoGameData.description];
 
-    if (![self launchInstalledApp:promoGameData.bundleId]) {
-        [[PromoManager instance] goToAppStore:promoGameData.actionURL];
+    if (![self launchInstalledApp:promoGameData]) {
         [TrackUtils trackAction:@"xpromo_banner_goToAppStore" label:promoGameData.description];
-    } else {
-        [TrackUtils trackAction:@"xpromo_banner_launchInstalledApp" label:promoGameData.description];
+        [[PromoManager instance] goToAppStore:promoGameData.actionURL];
     }
     // [self setupWithPromoGameData:[[PromoManager instance] nextPromo]];
 }
 
-- (BOOL)launchInstalledApp:(NSString *)bundleId {
+- (BOOL)launchInstalledApp:(PromoGameData *)promoGameData {
+    [TrackUtils trackAction:@"xpromo_banner_launchInstalledApp" label:promoGameData.description];
     UIApplication *ourApplication = [UIApplication sharedApplication];
     NSString *URLEncodedText = @"";
-    NSString *scheme = [bundleId stringByAppendingString:@"://"];
+    NSString *scheme = [promoGameData.bundleId stringByAppendingString:@"://"];
     NSString *ourPath = [scheme stringByAppendingString:URLEncodedText];
     NSURL *ourURL = [NSURL URLWithString:ourPath];
     if ([ourApplication canOpenURL:ourURL]) {
