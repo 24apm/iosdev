@@ -21,6 +21,7 @@
 #import "GameCenterHelper.h"
 #import "iRate.h"
 #import "AnimUtil.h"
+#import "PromoDialogView.h"
 
 typedef enum {
     ButtonTypeOperator,
@@ -31,6 +32,7 @@ typedef enum {
 #define BUFFER_TIME 0.f
 #define BUTTON_CORNER_RADIUS (10.f * IPAD_SCALE)
 #define PENALTY_WAIT_TIME 10.f
+#define TIMES_PLAYED_BEFORE_PROMO 3
 
 @interface NumberGameView ()
 
@@ -66,6 +68,15 @@ typedef enum {
     [self setupButtons];
     [self refreshCheatButton];
     self.userTries = 3;
+}
+
+- (void)showPromoDialog {
+    static int promoDialogInLeaderBoardCount = 0;
+    promoDialogInLeaderBoardCount++;
+    
+    if (promoDialogInLeaderBoardCount % TIMES_PLAYED_BEFORE_PROMO == 0) {
+        [PromoDialogView show];
+    }
 }
 
 - (void)refreshCheatButton {
@@ -180,6 +191,7 @@ typedef enum {
     self.buttonLayerView.alpha = 0.5f;
     self.userInteractionEnabled = NO;
     self.progressBar.hidden = NO;
+    [self showPromoDialog];
 }
 
 - (void)updateProgressBar {
