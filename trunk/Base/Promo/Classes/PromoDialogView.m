@@ -12,6 +12,8 @@
 #import "Utils.h"
 #import "TrackUtils.h"
 
+#define PROMO_CANCELLED_COUNT_MAX_REACHED 3
+
 @interface PromoDialogView()
 
 @property (strong, nonatomic) NSArray *promoArray;
@@ -20,6 +22,9 @@
 
 @implementation PromoDialogView
 
+static int promoCancelledCount = 0;
+
+
 - (id)init {
     self = [super init];
     if (self) {
@@ -27,6 +32,14 @@
         [TrackUtils trackAction:@"PromoDialogView" label:@"init"];
     }
     return self;
+}
+
++ (void)show {
+    if (promoCancelledCount < PROMO_CANCELLED_COUNT_MAX_REACHED) {
+        [[[PromoDialogView alloc] init] show];
+    } else {
+        [TrackUtils trackAction:@"PromoDialogView" label:@"PROMO_CANCELLED_COUNT_MAX_REACHED"];
+    }
 }
 
 - (void)show {
@@ -65,6 +78,7 @@
 
 - (IBAction)closePressed:(id)sender {
     [TrackUtils trackAction:@"PromoDialogView_closed" label:@"closeButtonPressed"];
+    promoCancelledCount++;
     [self dismissed];
 }
 

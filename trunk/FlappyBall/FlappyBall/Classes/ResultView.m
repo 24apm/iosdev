@@ -12,12 +12,14 @@
 #import "iRate.h"
 #import "SoundManager.h"
 #import "GameConstants.h"
+#import "PromoDialogView.h"
 
 @interface ResultView()
 
 #define RESULT_VIEW_SCORE_LABEL_ANIMATION_TOTAL_DURATION 0.8f
 #define RESULT_VIEW_SCORE_LABEL_ANIMATION_STEP_DURATION 0.05f
 #define RESULT_VIEW_VIEW_TOTAL_DURATION 0.3f
+#define TIMES_PLAYED_BEFORE_PROMO 3
 
 @property NSTimer *timer;
 @property int currentScore;
@@ -62,10 +64,20 @@
             self.y = 0.f;
         } completion:^(BOOL complete) {
             [self performSelector:@selector(animateLabel) withObject:nil afterDelay:0.4f];
+            [self showPromoDialog];
         }];
     }];
     
     [[iRate sharedInstance] logEvent:NO];
+}
+
+- (void)showPromoDialog {
+    static int promoDialogInLeaderBoardCount = 0;
+    promoDialogInLeaderBoardCount++;
+    
+    if (promoDialogInLeaderBoardCount % TIMES_PLAYED_BEFORE_PROMO == 0) {
+        [PromoDialogView show];
+    }
 }
 
 - (void)part1 {

@@ -17,4 +17,6 @@
 @property (strong, nonatomic) IBOutlet UIButton *closeButton;
 @property (strong, nonatomic) IBOutletCollection(PromoIconView) NSArray *promoIcons;
 
++ (void)show;
+
 @end

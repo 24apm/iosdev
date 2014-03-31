@@ -49,7 +49,7 @@
                             <color key="value" red="0.39476734203296704" green="0.39476734203296704" blue="0.39476734203296704" alpha="1" colorSpace="calibratedRGB"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="number" keyPath="strokeSize">
-                            <integer key="value" value="2"/>
+                            <integer key="value" value="4"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </label>

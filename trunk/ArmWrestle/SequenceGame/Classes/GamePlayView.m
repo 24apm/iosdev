@@ -149,8 +149,7 @@ static int promoDialogInLeaderBoardCount = 0;
     promoDialogInLeaderBoardCount++;
     
     if (promoDialogInLeaderBoardCount % TIMES_PLAYED_BEFORE_PROMO == 0) {
-        PromoDialogView *promoDialogView = [[PromoDialogView alloc] init];
-        [promoDialogView show];
+        [PromoDialogView show];
     }
 }
 
