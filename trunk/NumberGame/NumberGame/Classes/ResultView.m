@@ -14,6 +14,9 @@
 #import "NumberGameIAPHelper.h"
 #import "GameCenterHelper.h"
 #import "NumberManager.h"
+#import "PromoDialogView.h"
+
+#define TIMES_PLAYED_BEFORE_PROMO 3
 
 @interface ResultView()
 
@@ -73,6 +76,7 @@
             self.y = 0.f;
         } completion:^(BOOL complete) {
             [self performSelector:@selector(animateLabel) withObject:nil afterDelay:0.4f];
+            [self showPromoDialog];
         }];
     }];
     
@@ -81,6 +85,15 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(productPurchased:) name:IAPHelperProductPurchasedNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(productFailed:) name:IAPHelperProductFailedNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showAchievementEarned:) name:SHOW_ACHIEVETMENT_EARNED object:nil];
+}
+
+- (void)showPromoDialog {
+    static int promoDialogInLeaderBoardCount = 0;
+    promoDialogInLeaderBoardCount++;
+    
+    if (promoDialogInLeaderBoardCount % TIMES_PLAYED_BEFORE_PROMO == 0) {
+        [PromoDialogView show];
+    }
 }
 
 - (void)updateScoreLabel {
