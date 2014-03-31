@@ -9,8 +9,7 @@
 #import "GameViewControllerBase.h"
 #import "PromoManager.h"
 #import "AppInfoHTTPRequest.h"
-#import "GAIDictionaryBuilder.h"
-#import "GAI.h"
+#import "TrackUtils.h"
 
 @interface GameViewControllerBase ()
 
@@ -24,11 +23,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.screenName = [[NSBundle mainBundle] bundleIdentifier];
-    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
-    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"game_impression"     // Event category (required)
-                                                          action:@"GameViewControllerBase"  // Event action (required)
-                                                           label:[[NSBundle mainBundle] bundleIdentifier]          // Event label
-                                                           value:nil] build]];    // Event value
+    
+    [TrackUtils trackAction:@"game_impression" label:@"GameViewControllerBase"];
+
     [self createAdBannerView];
     [self loadNextPromo];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadNextPromo) name:AppInfoHTTPRequestCallbackNotification object:nil];

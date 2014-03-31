@@ -7,8 +7,7 @@
 //
 
 #import "GameCenterHelperBase.h"
-#import "GAI.h"
-#import "GAIDictionaryBuilder.h"
+#import "TrackUtils.h"
 
 @implementation GameCenterHelperBase
 
@@ -60,12 +59,8 @@
 }
 
 - (void)showLeaderboard:(UIViewController *)viewController {
-    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
-    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"GameCenterHelperBase"     // Event category (required)
-                                                          action:@"showLeaderboard"  // Event action (required)
-                                                           label:[[NSBundle mainBundle] bundleIdentifier]          // Event label
-                                                           value:nil] build]];    // Event value
-    
+    [TrackUtils trackAction:@"GameCenterHelperBase" label:@"showLeaderboard"];
+
     [self showLeaderboard:viewController category:self.currentLeaderBoard];
 }
 
@@ -74,14 +69,9 @@
 }
 
 
-- (void)showAchievements:(UIViewController *)viewController
-{
-    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
-    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"GameCenterHelperBase"     // Event category (required)
-                                                          action:@"showAchievements"  // Event action (required)
-                                                           label:[[NSBundle mainBundle] bundleIdentifier]          // Event label
-                                                           value:nil] build]];    // Event value
-    
+- (void)showAchievements:(UIViewController *)viewController {
+    [TrackUtils trackAction:@"GameCenterHelperBase" label:@"showAchievements"];
+
     GKAchievementViewController *achievements = [[GKAchievementViewController alloc] init];
     if (achievements != NULL)
     {
@@ -91,13 +81,11 @@
     }
 }
 
-- (void)achievementViewControllerDidFinish:(GKAchievementViewController *)viewController;
-{
+- (void)achievementViewControllerDidFinish:(GKAchievementViewController *)viewController {
     [viewController dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void) checkAchievements
-{
+- (void) checkAchievements {
 
 }
 

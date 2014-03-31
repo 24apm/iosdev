@@ -12,7 +12,7 @@
 #import "PromoManager.h"
 #import "AppInfoHTTPRequest.h"
 #import "GAI.h"
-#import "GAIDictionaryBuilder.h"
+#import "TrackUtils.h"
 
 @implementation AppDelegateBase
 
@@ -71,11 +71,8 @@
     // Initialize tracker. Replace with your tracking ID.
     [[GAI sharedInstance] trackerWithTrackingId:@"UA-49468052-2"];
     
-    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
-    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"game_impression"     // Event category (required)
-                                                          action:@"AppDelegateBase"  // Event action (required)
-                                                           label:[[NSBundle mainBundle] bundleIdentifier]          // Event label
-                                                           value:nil] build]];    // Event value
+    [TrackUtils trackAction:@"game_impression" label:@"AppDelegateBase"];
+
     [[GAI sharedInstance] dispatch];
 }
 

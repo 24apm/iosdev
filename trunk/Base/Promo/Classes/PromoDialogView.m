@@ -10,6 +10,7 @@
 #import "PromoManager.h"
 #import "AnimUtil.h"
 #import "Utils.h"
+#import "TrackUtils.h"
 
 @interface PromoDialogView()
 
@@ -23,6 +24,7 @@
     self = [super init];
     if (self) {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(promoIconCallback:) name:PROMO_ICON_CALLBACK object:nil];
+        [TrackUtils trackAction:@"PromoDialogView" label:@"init"];
     }
     return self;
 }
@@ -49,13 +51,21 @@
 
 - (void)promoIconCallback:(NSNotification *)notification {
     PromoIconView *promoIconView = notification.object;
+    [TrackUtils trackAction:@"PromoDialogView_promoIconPressed" label:promoIconView.promoGameData.bundleId];
     [[PromoManager instance] promoPressed:promoIconView.promoGameData];
+
     [self dismissed];
 }
 
 - (void)dismissed {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [super dismissed:self];
+}
+
+
+- (IBAction)closePressed:(id)sender {
+    [TrackUtils trackAction:@"PromoDialogView_closed" label:@"closeButtonPressed"];
+    [self dismissed];
 }
 
 #pragma mark - Animations

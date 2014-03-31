@@ -135,6 +135,7 @@
 		D0ED116618CF04BC00C55BA9 /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = D0ED116518CF04BC00C55BA9 /* heart.png */; };
 		D0EF3FD418D7FB1B00C50442 /* red_header.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EF3FD218D7FB1B00C50442 /* red_header.png */; };
 		D0EF3FD518D7FB1B00C50442 /* blue_header.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EF3FD318D7FB1B00C50442 /* blue_header.png */; };
+		D0F0B8FE18E8F4D900809CA2 /* TrackUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F0B8FD18E8F4D900809CA2 /* TrackUtils.m */; };
 		D0F1143618D41299007EB840 /* MonsterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0F1143518D41299007EB840 /* MonsterView.xib */; };
 		D0F1143918D412AF007EB840 /* MonsterView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F1143818D412AF007EB840 /* MonsterView.m */; };
 		D0F11CB218D83CFD007A8963 /* CustomizationView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F11CB118D83CFD007A8963 /* CustomizationView.m */; };
@@ -339,6 +340,8 @@
 		D0ED116518CF04BC00C55BA9 /* heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart.png; sourceTree = "<group>"; };
 		D0EF3FD218D7FB1B00C50442 /* red_header.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red_header.png; sourceTree = "<group>"; };
 		D0EF3FD318D7FB1B00C50442 /* blue_header.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blue_header.png; sourceTree = "<group>"; };
+		D0F0B8FC18E8F4D900809CA2 /* TrackUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackUtils.h; sourceTree = "<group>"; };
+		D0F0B8FD18E8F4D900809CA2 /* TrackUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackUtils.m; sourceTree = "<group>"; };
 		D0F1143518D41299007EB840 /* MonsterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MonsterView.xib; sourceTree = "<group>"; };
 		D0F1143718D412AF007EB840 /* MonsterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonsterView.h; sourceTree = "<group>"; };
 		D0F1143818D412AF007EB840 /* MonsterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonsterView.m; sourceTree = "<group>"; };
@@ -600,6 +603,8 @@
 			isa = PBXGroup;
 			children = (
 				D0EADD7A18E769FB0016D2A0 /* Library */,
+				D0F0B8FC18E8F4D900809CA2 /* TrackUtils.h */,
+				D0F0B8FD18E8F4D900809CA2 /* TrackUtils.m */,
 			);
 			path = Analytics;
 			sourceTree = "<group>";
@@ -1007,6 +1012,7 @@
 				D0EADDD818E769FC0016D2A0 /* NotificationManagerBase.m in Sources */,
 				D0EADDDB18E769FC0016D2A0 /* AppInfoHTTPRequest.m in Sources */,
 				D0E2E9AF18D2D288009C757F /* NumberGameIAPHelper.m in Sources */,
+				D0F0B8FE18E8F4D900809CA2 /* TrackUtils.m in Sources */,
 				D0EADDE218E769FC0016D2A0 /* AnimUtil.m in Sources */,
 				D0E2E9B318D2D288009C757F /* UserData.m in Sources */,
 				D0EADDEA18E769FC0016D2A0 /* iRate.m in Sources */,

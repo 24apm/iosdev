@@ -13,6 +13,7 @@
 
 - (void)show {
     [[Utils rootViewController].view addSubview:self];
+    self.frame = [Utils rootViewController].view.frame;
 }
 
 - (IBAction)dismissed:(id)sender {

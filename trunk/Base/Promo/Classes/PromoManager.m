@@ -8,8 +8,7 @@
 
 #import "PromoManager.h"
 #import "Utils.h"
-#import "GAI.h"
-#import "GAIDictionaryBuilder.h"
+#import "TrackUtils.h"
 
 @interface PromoManager()
 
@@ -96,25 +95,13 @@
 }
 
 - (void)promoPressed:(PromoGameData *)promoGameData {
-    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
-    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"xpromo_banner"     // Event category (required)
-                                                          action:@"xpromo_banner_pressed"  // Event action (required)
-                                                           label:promoGameData.description          // Event label
-                                                           value:nil] build]];    // Event value
-    
+    [TrackUtils trackAction:@"xpromo_banner_pressed" label:promoGameData.description];
+
     if (![self launchInstalledApp:promoGameData.bundleId]) {
         [[PromoManager instance] goToAppStore:promoGameData.actionURL];
-        id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
-        [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"xpromo_banner"     // Event category (required)
-                                                              action:@"xpromo_goToAppStore"  // Event action (required)
-                                                               label:promoGameData.description          // Event label
-                                                               value:nil] build]];    // Event value
+        [TrackUtils trackAction:@"xpromo_banner_goToAppStore" label:promoGameData.description];
     } else {
-        id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
-        [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"xpromo_banner"     // Event category (required)
-                                                              action:@"xpromo_launchInstalledApp"  // Event action (required)
-                                                               label:promoGameData.description          // Event label
-                                                               value:nil] build]];    // Event value
+        [TrackUtils trackAction:@"xpromo_banner_launchInstalledApp" label:promoGameData.description];
     }
     // [self setupWithPromoGameData:[[PromoManager instance] nextPromo]];
 }
