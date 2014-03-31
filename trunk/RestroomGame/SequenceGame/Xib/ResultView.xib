@@ -34,7 +34,7 @@
                             <color key="textColor" red="0.99667489465576298" green="1" blue="0.04754723837209307" alpha="1" colorSpace="deviceRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Achievementx1.png" id="d5t-rd-9Y2" userLabel="Achievement Icon">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="d5t-rd-9Y2" userLabel="Achievement Icon">
                             <rect key="frame" x="61" y="120" width="200" height="200"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                         </imageView>
@@ -46,7 +46,4 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>
     </objects>
-    <resources>
-        <image name="Achievementx1.png" width="512" height="512"/>
-    </resources>
 </document>
