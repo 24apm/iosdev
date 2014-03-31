@@ -635,6 +635,7 @@ typedef enum {
     }
     return hasEmpty;
 }
+
 - (void)endGame {
     self.userInteractionEnabled = NO;
     [self animateAnswersOut];
