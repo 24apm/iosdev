@@ -10,6 +10,9 @@
 #import "UserData.h"
 #import "GameConstants.h"
 #import "GameManager.h"
+#import "PromoDialogView.h"
+
+#define TIMES_PLAYED_BEFORE_PROMO 3
 
 @implementation LocalLeaderBoardView
 
@@ -21,6 +24,7 @@
         self.transform = CGAffineTransformIdentity;
         self.alpha = 1.0f;
     } completion:^(BOOL complete) {
+        [self showPromoDialog];
     }];
 }
 
@@ -88,4 +92,14 @@
         }
     }
 }
+
+- (void)showPromoDialog {
+    static int promoDialogInLeaderBoardCount = 0;
+    promoDialogInLeaderBoardCount++;
+    
+    if (promoDialogInLeaderBoardCount % TIMES_PLAYED_BEFORE_PROMO == 0) {
+        [PromoDialogView show];
+    }
+}
+
 @end
