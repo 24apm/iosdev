@@ -126,6 +126,7 @@
     [self.gameLayoutView shakeScreen];
     [self.gameLayoutView showMessageViewWithImage:@"rip.png"];
     [self performSelector:@selector(endGame) withObject:nil afterDelay:1.0f];
+    [self.gameLayoutView performSelector:@selector(showPromoDialog) withObject:nil afterDelay:2.5f];
     [[UserData instance] addNewScoreLocalLeaderBoard:self.score mode:[GameManager instance].gameMode];
 }
 

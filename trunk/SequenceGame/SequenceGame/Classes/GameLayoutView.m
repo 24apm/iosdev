@@ -12,6 +12,9 @@
 #import "SoundManager.h"
 #import "GameConstants.h"
 #import "InGameMessageView.h"
+#import "PromoDialogView.h"
+
+#define TIMES_PLAYED_BEFORE_PROMO 3
 
 @interface GameLayoutView()
 
@@ -183,6 +186,15 @@
     }
     [self bringSubviewToFront:self.messageView];
     [self.messageView showImage:imageName];
+}
+
+- (void)showPromoDialog {
+    static int promoDialogInLeaderBoardCount = 0;
+    promoDialogInLeaderBoardCount++;
+    
+    if (promoDialogInLeaderBoardCount % TIMES_PLAYED_BEFORE_PROMO == 0) {
+        [PromoDialogView show];
+    }
 }
 
 @end

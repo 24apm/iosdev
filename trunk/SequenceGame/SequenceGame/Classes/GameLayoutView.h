@@ -28,5 +28,6 @@
 - (void)showMessageView:(NSString *)text;
 - (void)showMessageViewWithImage:(NSString *)imageName;
 - (void)shakeScreen;
+- (void)showPromoDialog;
 
 @end
