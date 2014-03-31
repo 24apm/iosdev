@@ -20,6 +20,17 @@
 	<string>1.02</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>com.jeffrwan.floppyball</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.jeffrwan.floppyball</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>1.02</string>
 	<key>LSRequiresIPhoneOS</key>
@@ -39,16 +50,5 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>CFBundleURLTypes</key>
-	<array>
-		<dict>
-			<key>CFBundleURLName</key>
-			<string>com.jeffrwan.floppyball</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>com.jeffrwan.floppyball</string>
-			</array>
-		</dict>
-	</array>
 </dict>
 </plist>
