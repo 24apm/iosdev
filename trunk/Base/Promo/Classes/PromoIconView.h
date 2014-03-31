@@ -13,7 +13,9 @@
 
 @interface PromoIconView : XibView
 
+@property (strong, nonatomic) PromoGameData *promoGameData;
 @property (strong, nonatomic) IBOutlet UIImageView *iconView;
+
 - (void)setupWithPromoGameData:(PromoGameData *)gameData;
 
 @end

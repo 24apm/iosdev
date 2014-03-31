@@ -11,8 +11,6 @@
 
 @interface PromoIconView()
 
-@property (strong, nonatomic) PromoGameData *promoGameData;
-
 @end
 
 @implementation PromoIconView
@@ -30,7 +28,6 @@
 }
 
 - (IBAction)promoPressed:(id)sender {
-    [[PromoManager instance] promoPressed:self.promoGameData];
     [[NSNotificationCenter defaultCenter] postNotificationName:PROMO_ICON_CALLBACK object:self];
 }
 

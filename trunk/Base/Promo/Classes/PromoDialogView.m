@@ -47,6 +47,19 @@
     }
 }
 
+- (void)promoIconCallback:(NSNotification *)notification {
+    PromoIconView *promoIconView = notification.object;
+    [[PromoManager instance] promoPressed:promoIconView.promoGameData];
+    [self dismissed];
+}
+
+- (void)dismissed {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [super dismissed:self];
+}
+
+#pragma mark - Animations
+
 - (void)animateBackground {
     CABasicAnimation *fadeIn = [CABasicAnimation animationWithKeyPath:@"opacity"];
     fadeIn.toValue = [NSNumber numberWithFloat:1.f];
@@ -167,15 +180,6 @@
     view.alpha = 1.0f;
     view.center = toPoint;
 
-}
-
-- (void)promoIconCallback:(NSNotification *)notification {
-    [self dismissed];
-}
-
-- (void)dismissed {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-    [super dismissed:self];
 }
 
 @end
