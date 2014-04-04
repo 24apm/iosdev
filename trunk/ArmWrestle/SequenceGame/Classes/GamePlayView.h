@@ -16,6 +16,8 @@
 @interface GamePlayView : XibView
 
 @property (strong, nonatomic) IBOutlet GameLayoutView *gameLayoutView;
+@property (strong, nonatomic) IBOutlet UIButton *replayButton;
+@property (strong, nonatomic) IBOutlet UIButton *returnButton;
 
 - (void)show;
 - (void)refreshGame;

@@ -9,7 +9,6 @@
 #import "GameViewControllerBase.h"
 #import "PromoManager.h"
 #import "AppInfoHTTPRequest.h"
-#import "TrackUtils.h"
 
 @interface GameViewControllerBase ()
 
@@ -24,8 +23,6 @@
     [super viewDidLoad];
     self.screenName = [[NSBundle mainBundle] bundleIdentifier];
     
-    [TrackUtils trackAction:@"game_impression" label:@"GameViewControllerBase"];
-
     [self createAdBannerView];
     [self loadNextPromo];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadNextPromo) name:AppInfoHTTPRequestCallbackNotification object:nil];

@@ -19,7 +19,7 @@
 #import "GameCenterHelper.h"
 #import "UserData.h"
 #import "LocalLeaderBoardView.h"
-#import "GamePlayDistanceView.h"
+#import "GamePlayOneView.h"
 #import "GameManager.h"
 #import "CustomizationView.h"
 
@@ -28,7 +28,7 @@
 @property (strong, nonatomic) ResultView *resultView;
 @property (strong, nonatomic) MainView *mainView;
 @property (strong, nonatomic) GamePlayView *timeAttackMode;
-@property (strong, nonatomic) GamePlayDistanceView *distanceAttackMode;
+@property (strong, nonatomic) GamePlayOneView *singleMode;
 @property (strong, nonatomic) NSArray *products;
 @property (strong, nonatomic) LocalLeaderBoardView *localLeaderBoardView;
 @property (strong, nonatomic) CustomizationView *customizationView;
@@ -54,6 +54,8 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(customizeViewCallback) name:CUSTOMIZE_VIEW_NOTIFICATION object:nil];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gameplayOneViewCallback) name:GAMEPLAY_ONE_VIEW_DISMISSED_NOTIFICATION object:nil];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(retryCallback) name:RETRY_BUTTON_NOTIFICATION object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(topCallback) name:TOP_BUTTON_NOTIFICATION object:nil];
@@ -74,10 +76,10 @@
     self.timeAttackMode.hidden = YES;
     self.timeAttackMode.size = self.containerView.size;
     
-    self.distanceAttackMode = [[GamePlayDistanceView alloc] init];
-    [self.containerView addSubview:self.distanceAttackMode ];
-    self.distanceAttackMode.hidden = YES;
-    self.distanceAttackMode.size = self.containerView.size;
+    self.singleMode = [[GamePlayOneView alloc] init];
+    [self.containerView addSubview:self.singleMode ];
+    self.singleMode.hidden = YES;
+    self.singleMode.size = self.containerView.size;
     
     self.resultView = [[ResultView alloc] init];
     [self.containerView addSubview:self.resultView];
@@ -135,7 +137,7 @@
 }
 
 - (void)gameplayViewCallback {
-    [self updateGameState:GameStateLocalLeaderBoardMode];
+    [self updateGameState:GameStateMainMode];
 }
 
 - (void)retryCallback {
@@ -150,6 +152,10 @@
     [self updateGameState:GameStateCustomizeMode];
 }
 
+- (void)gameplayOneViewCallback {
+    [self updateGameState:GameStateLocalLeaderBoardMode];
+}
+
 - (void)showAchievementEarned: (NSNotification *)notification {
     self.resultView.imgView.image = [UIImage imageNamed:notification.object];
     self.resultView.hidden = NO;
@@ -162,7 +168,7 @@
     self.mainView.hidden = YES;
     self.timeAttackMode.hidden = YES;
     self.localLeaderBoardView.hidden = YES;
-    self.distanceAttackMode.hidden = YES;
+    self.singleMode.hidden = YES;
     self.customizationView.hidden = YES;
     
     switch (self.currentGameState) {
@@ -174,12 +180,12 @@
             self.containerView.userInteractionEnabled = NO;
             break;
         case GameStateGameMode:
-            if ([[GameManager instance].gameMode isEqualToString:GAME_MODE_TIME]) {
+            if ([[GameManager instance].gameMode isEqualToString:GAME_MODE_VS]) {
                 [self.timeAttackMode show];
                 self.timeAttackMode.hidden = NO;
-            } else if([[GameManager instance].gameMode isEqualToString:GAME_MODE_DISTANCE]){
-                [self.distanceAttackMode show];
-                self.distanceAttackMode.hidden = NO;
+            } else if([[GameManager instance].gameMode isEqualToString:GAME_MODE_SINGLE]){
+                [self.singleMode show];
+                self.singleMode.hidden = NO;
             }
             break;
         case GameStateLocalLeaderBoardMode:

@@ -18,17 +18,37 @@
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="toilet_main.png" id="fF5-K9-APJ">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="411"/>
+                    <rect key="frame" x="0.0" y="-50" width="320" height="411"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ak8-00-4fp">
-                    <rect key="frame" x="168" y="295" width="140.00000000000003" height="40"/>
+                    <rect key="frame" x="160" y="303" width="150.00000000000003" height="50"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.81568627449999997" green="0.19266968900000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <state key="normal" title="TIME ATTACK"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                    <state key="normal" backgroundImage="singleplayerbutton.png"/>
                     <connections>
-                        <action selector="timeAttackButtonPressed:" destination="-1" eventType="touchUpInside" id="0on-BS-yaj"/>
+                        <action selector="singleModeButtonPressed:" destination="-1" eventType="touchUpInside" id="uaV-5A-1zi"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="cdO-Ed-gAJ">
+                    <rect key="frame" x="7" y="332" width="150.00000000000003" height="50"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" backgroundImage="leaderboardbutton.png"/>
+                    <connections>
+                        <action selector="bestTimePressed:" destination="-1" eventType="touchUpInside" id="Vq2-7k-BOL"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="TMK-Uw-EXR">
+                    <rect key="frame" x="160" y="369" width="150.00000000000003" height="50"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                    <state key="normal" backgroundImage="vsbutton.png"/>
+                    <connections>
+                        <action selector="timeAttackButtonPressed:" destination="-1" eventType="touchUpInside" id="cYM-kl-Rjs"/>
                     </connections>
                 </button>
                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="DVn-IF-KZ3">
@@ -67,6 +87,9 @@
         </view>
     </objects>
     <resources>
-        <image name="toilet_main.png" width="1536" height="2048"/>
+        <image name="leaderboardbutton.png" width="600" height="200"/>
+        <image name="singleplayerbutton.png" width="600" height="200"/>
+        <image name="toilet_main.png" width="1536" height="1500"/>
+        <image name="vsbutton.png" width="600" height="200"/>
     </resources>
 </document>

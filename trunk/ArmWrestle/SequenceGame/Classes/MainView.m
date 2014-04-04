@@ -26,18 +26,22 @@
     }
     return self;
 }
+- (IBAction)singleModeButtonPressed:(UIButton *)sender {
+    [GameManager instance].gameMode = GAME_MODE_SINGLE;
+    [self hide];
+}
 
 - (IBAction)startButtonPressed:(id)sender {
     [self hide];
 }
 
 - (IBAction)timeAttackButtonPressed:(UIButton *)sender {
-    [GameManager instance].gameMode = GAME_MODE_TIME;
+    [GameManager instance].gameMode = GAME_MODE_VS;
     [self hide];
 }
 
 - (IBAction)distanceAttackButtonPressed:(UIButton *)sender {
-    [GameManager instance].gameMode = GAME_MODE_DISTANCE;
+    //[GameManager instance].gameMode = GAME_MODE_DISTANCE;
     [self hide];
 }
 

@@ -33,14 +33,10 @@
 }
 
 - (void)initializeTitleBoard {
-    if ([[GameManager instance].gameMode isEqualToString:GAME_MODE_TIME]) {
-        self.leaderBoardLabel.text = @"TIME ATTACK";
+    if ([[GameManager instance].gameMode isEqualToString:GAME_MODE_SINGLE]) {
+        self.leaderBoardLabel.text = @"YOUR BEST TIME";
         self.leaderBoardLabel.textColor = kCOLOR_RED;
         self.retryButton.backgroundColor = kCOLOR_RED;
-    } else if([[GameManager instance].gameMode isEqualToString:GAME_MODE_DISTANCE]) {
-        self.leaderBoardLabel.textColor = kCOLOR_BLUE;
-        self.leaderBoardLabel.text = @"DISTANCE ATTACK";
-        self.retryButton.backgroundColor = kCOLOR_BLUE;
     }
 }
 
@@ -49,7 +45,7 @@
     int step;
     [self initializeTitleBoard];
     NSString *format;
-    if ([[GameManager instance].gameMode isEqualToString:GAME_MODE_TIME]) {
+    if ([[GameManager instance].gameMode isEqualToString:GAME_MODE_SINGLE]) {
         format = @"%.3F";
          self.currentScore.text = [NSString stringWithFormat:@"Current: %.3F", [UserData instance].currentScore];
     } else {
@@ -63,7 +59,7 @@
         double score = [[localLeaderBoardMemory objectAtIndex:step] doubleValue];
         scoreText.text = [NSString stringWithFormat:format, score];
         if (score == newEntry && notFound) {
-            if ([[GameManager instance].gameMode isEqualToString:GAME_MODE_TIME]) {
+            if ([[GameManager instance].gameMode isEqualToString:GAME_MODE_SINGLE]) {
                 scoreText.textColor = kCOLOR_RED;
             } else {
                 scoreText.textColor = kCOLOR_BLUE;

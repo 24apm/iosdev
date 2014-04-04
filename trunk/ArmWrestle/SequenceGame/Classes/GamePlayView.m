@@ -34,30 +34,50 @@ static int promoDialogInLeaderBoardCount = 0;
 - (id)init {
     self = [super init];
     if (self) {
-        self.gameLayoutView.timeLabel.textColor = kCOLOR_RED;
+      //  self.gameLayoutView.timeLabel.textColor = kCOLOR_RED;
         [self.gameLayoutView setupDefault];
     }
     return self;
 }
+- (IBAction)replayButtonPressed:(UIButton *)sender {
+    [self show];
+}
+
+- (IBAction)returnButtonPressed:(UIButton *)sender {
+    [self hide];
+}
 
 - (void)show {
  //   [self.gameLayoutView wobbleUnits];
+    [self.gameLayoutView restoreDefault];
+    self.replayButton.hidden = YES;
+    self.returnButton.hidden = YES;
     self.startingTime = 0;
-    self.gameLayoutView.timeLabel.text = [NSString stringWithFormat:@"0.00"];
+     self.userInteractionEnabled = YES;
+    self.gameLayoutView.timeLabel.text = [NSString stringWithFormat:@"0.000"];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshGameCallback) name:GAME_MANAGER_REFRESH_NOTIFICATION object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(victoryGame) name:GAMEPLAY_VIEW_VICTORY_NOTIFICATION object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(leftPressedCallback) name:NOTIFICATION_GAME_LAYOUT_VIEW_LEFT_BUTTON_PRESSED object:nil];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rightPressedCallback) name:NOTIFICATION_GAME_LAYOUT_VIEW_RIGHT_BUTTON_PRESSED object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(startGame) name:NOTIFICATION_GAME_INTRO_SKIPPED object:nil];
 
     [UIView animateWithDuration:0.3f animations:^{
         self.transform = CGAffineTransformIdentity;
         self.alpha = 1.0f;
     } completion:^(BOOL complete) {
-    }];
-    self.gameLayoutView.timeLabel.hidden = NO;
-    self.userInteractionEnabled = YES;
-    float delay = [Utils randBetweenMin:1.f max:6.f];
+    }]; 
+    //self.userInteractionEnabled = YES;
+    float delay = 5.8f;
+    [self performSelector:@selector(startGame) withObject:nil afterDelay:delay];
+    [self.gameLayoutView introduction];
+
+}
+
+- (void)startGame {
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(startGame) object:nil];
+    float delay = [Utils randBetweenMin:5.f max:10.f];
     [self performSelector:@selector(renewGame) withObject:nil afterDelay:delay];
 }
 
@@ -67,6 +87,7 @@ static int promoDialogInLeaderBoardCount = 0;
         self.alpha = 0.0f;
     } completion:^(BOOL complete) {
         [self.gameLayoutView removeWobbleUnits];
+        [self resetting];
         [[NSNotificationCenter defaultCenter] postNotificationName:GAMEPLAY_VIEW_DISMISSED_NOTIFICATION object:self];
     }];
 }
@@ -88,24 +109,29 @@ static int promoDialogInLeaderBoardCount = 0;
 - (void)leftPressedCallback {
     // tell manager to dosomething with action
     self.currentChoice = self.gameLayoutView.female;
+     self.userInteractionEnabled = NO;
     if (self.timer != nil) {
+        [self stopTime];
         [[GameManager instance] addScore:UserInputDefend];
         [self victoryGame];
     } else {
         [self lostGame];
     }
+   // [self.gameLayoutView gameplayEnd];
 }
 
 
 - (void)rightPressedCallback {
     self.currentChoice = self.gameLayoutView.male;
+     self.userInteractionEnabled = NO;
     if (self.timer != nil) {
+        [self stopTime];
         [[GameManager instance] addScore:UserInputAttack];
         [self victoryGame];
     } else {
         [self lostGame];
     }
-
+   // [self.gameLayoutView gameplayEnd];
 }
 
 - (void)startTime {
@@ -120,8 +146,10 @@ static int promoDialogInLeaderBoardCount = 0;
 }
 
 - (void)endGame {
-    [self hide];
-    [self performSelector:@selector(resetting) withObject:nil afterDelay:3.0f];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+     self.userInteractionEnabled = YES;
+    self.replayButton.hidden = NO;
+    self.returnButton.hidden = NO;
 }
 
 - (void)stopTime {
@@ -137,8 +165,7 @@ static int promoDialogInLeaderBoardCount = 0;
     self.gameLayoutView.timeLabel.hidden = YES;
     [self.gameLayoutView animateMovingToDoorFor:self.currentChoice];
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(renewGame) object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-    self.userInteractionEnabled = NO;
+    //self.userInteractionEnabled = NO;
     [self.gameLayoutView performSelector:@selector(animateLostView) withObject:nil afterDelay:0.3f];
     [self performSelector:@selector(lostAnimation) withObject:nil afterDelay:0.3f];
     [self performSelector:@selector(endGame) withObject:nil afterDelay:2.0f];
@@ -159,12 +186,10 @@ static int promoDialogInLeaderBoardCount = 0;
 
 - (void)victoryGame {
     promoDialogInLeaderBoardCount = 0; // reset promo
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [self.gameLayoutView animateMovingToDoorFor:self.currentChoice];
-    self.userInteractionEnabled = NO;
+    //self.userInteractionEnabled = NO;
     [self performSelector:@selector(winAnimation) withObject:nil afterDelay:0.4f];
       [self performSelector:@selector(displayWinner) withObject:nil afterDelay:0.8f];
-    [self stopTime];
     [self.gameLayoutView flash];
      //  [self.gameLayoutView showMessageView:@"Good Work!"];
     [[SoundManager instance] play:SOUND_EFFECT_WINNING];
@@ -174,12 +199,6 @@ static int promoDialogInLeaderBoardCount = 0;
 - (void)resetting {
     self.currentChoice = nil;
     [self.gameLayoutView restoreDefault];
-    self.gameLayoutView.male.hidden = NO;
-    self.gameLayoutView.female.hidden = NO;
-    self.gameLayoutView.person.hidden = NO;
-    self.gameLayoutView.door.image = [UIImage imageNamed:@"doorsPerson"];
-    self.gameLayoutView.doorAfter.hidden = YES;
-    self.gameLayoutView.door.hidden = NO;
 }
 
 - (void)winAnimation {

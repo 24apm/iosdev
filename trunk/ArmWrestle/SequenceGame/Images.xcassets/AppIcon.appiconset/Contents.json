@@ -18,19 +18,19 @@
     {
       "size" : "57x57",
       "idiom" : "iphone",
-      "filename" : "ToiletRush57.png",
+      "filename" : "ToiletRush257.png",
       "scale" : "1x"
     },
     {
       "size" : "57x57",
       "idiom" : "iphone",
-      "filename" : "ToiletRush114.png",
+      "filename" : "ToiletRush2114.png",
       "scale" : "2x"
     },
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "ToiletRush120.png",
+      "filename" : "ToiletRush2120.png",
       "scale" : "2x"
     },
     {
@@ -66,25 +66,25 @@
     {
       "size" : "72x72",
       "idiom" : "ipad",
-      "filename" : "ToiletRush72.png",
+      "filename" : "ToiletRush272.png",
       "scale" : "1x"
     },
     {
       "size" : "72x72",
       "idiom" : "ipad",
-      "filename" : "ToiletRush144.png",
+      "filename" : "ToiletRush2144.png",
       "scale" : "2x"
     },
     {
       "size" : "76x76",
       "idiom" : "ipad",
-      "filename" : "ToiletRush76.png",
+      "filename" : "ToiletRush276.png",
       "scale" : "1x"
     },
     {
       "size" : "76x76",
       "idiom" : "ipad",
-      "filename" : "ToiletRush152.png",
+      "filename" : "ToiletRush2152.png",
       "scale" : "2x"
     }
   ],

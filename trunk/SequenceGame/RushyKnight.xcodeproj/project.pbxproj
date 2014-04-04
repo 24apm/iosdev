@@ -1110,7 +1110,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				BUNDLE_IDENTIFIER = com.jeffrwan.blockandattack;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Jeffrey Wan (MT34DA8UCA)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Jeffrey Wan (YS47XTCZZB)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jeffrey Wan (YS47XTCZZB)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SequenceGame/RushyKnight-Prefix.pch";
@@ -1120,7 +1120,7 @@
 					/Users/15inch/Desktop/tut/iosdev/trunk/Base/Analytics/Library,
 				);
 				PRODUCT_NAME = RushyKnight;
-				PROVISIONING_PROFILE = "CB4532C1-7837-4A67-A8D6-32AA044757BD";
+				PROVISIONING_PROFILE = "C2528B13-BE01-4035-ADA8-E00A8A524A7D";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1132,7 +1132,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				BUNDLE_IDENTIFIER = com.jeffrwan.blockandattack;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Jeffrey Wan (MT34DA8UCA)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Jeffrey Wan (YS47XTCZZB)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jeffrey Wan (YS47XTCZZB)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SequenceGame/RushyKnight-Prefix.pch";
@@ -1142,7 +1142,7 @@
 					/Users/15inch/Desktop/tut/iosdev/trunk/Base/Analytics/Library,
 				);
 				PRODUCT_NAME = RushyKnight;
-				PROVISIONING_PROFILE = "CB4532C1-7837-4A67-A8D6-32AA044757BD";
+				PROVISIONING_PROFILE = "C2528B13-BE01-4035-ADA8-E00A8A524A7D";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};

@@ -70,8 +70,8 @@
 -(void)resetLocalLeaderBoard {
     NSArray *array = [NSArray array];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:array forKey:GAME_MODE_TIME];
-    [defaults setObject:array forKey:GAME_MODE_DISTANCE];
+    [defaults setObject:array forKey:GAME_MODE_SINGLE];
+    //[defaults setObject:array forKey:GAME_MODE_DISTANCE];
     [defaults synchronize];
 }
 
@@ -82,16 +82,10 @@
     // take the top x range (truncate if neccessarily)
     // save new leaderboard
     NSMutableArray *sortedArray = sortedArray = [NSMutableArray arrayWithArray:[self loadLocalLeaderBoard :(NSString *)mode]];
-    if ([mode isEqualToString:GAME_MODE_TIME]) {
+    if ([mode isEqualToString:GAME_MODE_SINGLE]) {
         sortedArray = [self sortingArrayAcending:sortedArray newNumber:newScores];
         double fastestValue = [[sortedArray objectAtIndex:0] doubleValue];
         if (newScores <= fastestValue) {
-            [self submitScore:newScores mode:mode];
-        }
-    } else if ([mode isEqualToString:GAME_MODE_DISTANCE]) {
-        sortedArray = [self sortingArrayDecending:sortedArray newNumber:newScores];
-        double highestValue = [[sortedArray objectAtIndex:0] doubleValue];
-        if (newScores >= highestValue) {
             [self submitScore:newScores mode:mode];
         }
     }
@@ -115,11 +109,9 @@
 
 - (void)submitScore:(int)score mode:(NSString *)mode {
     NSString *leaderBoardCategory = nil;
-    if ([mode isEqualToString:GAME_MODE_TIME]) {
+    if ([mode isEqualToString:GAME_MODE_SINGLE]) {
         leaderBoardCategory = kLeaderboardBestTimeID;
-    } else if ([mode isEqualToString:GAME_MODE_DISTANCE]) {
-        leaderBoardCategory = kLeaderboardBestScoreID;
-    }
+    } 
     
     if(leaderBoardCategory && score > 0) {
         [[GameCenterHelper instance].gameCenterManager reportScore:score forCategory: leaderBoardCategory];
