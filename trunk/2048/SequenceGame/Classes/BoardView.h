@@ -10,4 +10,6 @@
 
 @interface BoardView : XibView
 
+- (void)generateRandomTile;
+
 @end

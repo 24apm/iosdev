@@ -27,11 +27,6 @@
     if (self) {
         [self setupBoard];
         [self layoutSlots];
-        
-        for (int i = 0 ; i < 24; i++) {
-            [self generateRandomTile];
-        }
-
     }
     return self;
 }
@@ -80,12 +75,13 @@
 }
 
 - (void)generateTileForSlot:(SlotView *)slot {
+    if (!slot) return;
+    
     TileView *tile = [[TileView alloc] init];
     slot.tileView = tile;
     [self addSubview:tile];
     tile.center = slot.center;
 }
-
 
 - (SlotView *)slotAt:(int)row :(int)col {
     return [self.slots objectAtIndex:col + row * BOARD_COLS];

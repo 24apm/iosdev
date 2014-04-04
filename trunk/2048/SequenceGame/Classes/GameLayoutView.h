@@ -7,7 +7,10 @@
 //
 
 #import "XibView.h"
+#import "BoardView.h"
 
-@interface GameLayoutView : XibView
+@interface GameLayoutView : XibView <UIGestureRecognizerDelegate>
+
+@property (strong, nonatomic) IBOutlet BoardView *boardView;
 
 @end
