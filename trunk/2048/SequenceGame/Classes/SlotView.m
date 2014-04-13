@@ -10,4 +10,11 @@
 
 @implementation SlotView
 
+- (void)unload {
+    [self.tileView removeFromSuperview];
+    self.tileView = nil;
+    
+    [self removeFromSuperview];
+}
+
 @end

@@ -13,4 +13,6 @@
 
 @property (nonatomic, retain) TileView *tileView;
 
+- (void)unload;
+
 @end

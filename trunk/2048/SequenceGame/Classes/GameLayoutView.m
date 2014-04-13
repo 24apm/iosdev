@@ -33,12 +33,16 @@
         [self addGestureRecognizer:panRecognizer]; // add to the view you want to detect swipe on
         self.panNumbers = 0;
         
-        [self.boardView generateRandomTile];
-        [self.boardView generateRandomTile];
         [UserData instance].currentScore = 0;
         
     }
     return self;
+}
+
+- (void)generateNewBoard {
+    [UserData instance].currentScore = 0;
+    self.currentScore.text = [NSString stringWithFormat:@"Current Score: %.f",[UserData instance].currentScore];
+    [self.boardView generateNewBoard];
 }
 
 - (void)panRecognized:(UIPanGestureRecognizer *)sender
@@ -49,8 +53,6 @@
     }
     
     CGPoint distance = [sender translationInView:self]; // get distance of pan/swipe in the view in which the gesture recognizer was added
-    CGPoint velocity = [sender velocityInView:self]; // get velocity of pan/swipe in the view in which the gesture recognizer was added
-    float usersSwipeSpeed = abs(velocity.x); // use this if you need to move an object at a speed that matches the users swipe speed
     
     if (sender.state == UIGestureRecognizerStateChanged) {
         [sender cancelsTouchesInView]; // you may or may not need this - check documentation if unsure
@@ -76,9 +78,6 @@
             self.swipedBegan = NO;
             self.currentScore.text = [NSString stringWithFormat:@"Current Score: %.f",[UserData instance].currentScore];
         }
-        //[self testRun];
-        //NSLog(@"%d",self.panNumbers);
-        // Note: if you don't want both axis directions to be triggered (i.e. up and right) you can add a tolerence instead of checking the distance against 0 you could check for greater and less than 50 or 100, etc.
     }
 }
 

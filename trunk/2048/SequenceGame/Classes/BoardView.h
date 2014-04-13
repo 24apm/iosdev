@@ -17,5 +17,7 @@
 - (void)shiftTilesUp;
 - (void)shiftTilesDown;
 
+- (void)generateNewBoard;
+
 @property (nonatomic) BOOL gameEnd;
 @end

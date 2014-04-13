@@ -14,7 +14,7 @@
 
 #define BOARD_ROWS 4
 #define BOARD_COLS 4
-#define DELAY_MERGE 0.7f
+#define DELAY_MERGE 0.4f
 #define DELAY_NOMERGE 0.2f
 
 @interface BoardView()
@@ -27,13 +27,19 @@
 
 @implementation BoardView
 
-- (id)initWithCoder:(NSCoder *)aDecoder {
-    self = [super initWithCoder:aDecoder];
-    if (self) {
-        [self setupBoard];
-        [self layoutSlots];
+- (void)generateNewBoard {
+    [self unload];
+    [self setupBoard];
+    [self layoutSlots];
+    [self generateRandomTile];
+    [self generateRandomTile];
+}
+
+- (void)unload {
+    for (SlotView *slotView in self.slots) {
+        [slotView unload];
     }
-    return self;
+    self.slots = nil;
 }
 
 - (void)setupBoard {

@@ -31,13 +31,6 @@
 
 static int promoDialogInLeaderBoardCount = 0;
 
-- (id)init {
-    self = [super init];
-    if (self) {
-      //  self.gameLayoutView.timeLabel.textColor = kCOLOR_RED;
-    }
-    return self;
-}
 - (IBAction)replayButtonPressed:(UIButton *)sender {
     [self show];
 }
@@ -47,27 +40,22 @@ static int promoDialogInLeaderBoardCount = 0;
 }
 
 - (void)show {
- //   [self.gameLayoutView wobbleUnits];
     self.replayButton.hidden = YES;
     self.returnButton.hidden = YES;
-    self.startingTime = 0;
-     self.userInteractionEnabled = YES;
-
     [UIView animateWithDuration:0.3f animations:^{
         self.transform = CGAffineTransformIdentity;
         self.alpha = 1.0f;
     } completion:^(BOOL complete) {
     }]; 
-    //self.userInteractionEnabled = YES;
-    float delay = 5.8f;
-    [self performSelector:@selector(startGame) withObject:nil afterDelay:delay];
-
+    [self startGame];
 }
 
 - (void)startGame {
-    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(startGame) object:nil];
-    float delay = [Utils randBetweenMin:5.f max:10.f];
-    [self performSelector:@selector(renewGame) withObject:nil afterDelay:delay];
+    [self.gameLayoutView generateNewBoard];
+}
+
+- (void)refreshGame {
+    
 }
 
 - (void)hide {
@@ -75,33 +63,10 @@ static int promoDialogInLeaderBoardCount = 0;
         self.transform = CGAffineTransformMakeScale(2.0f, 2.0f);
         self.alpha = 0.0f;
     } completion:^(BOOL complete) {
-        [self resetting];
         [[NSNotificationCenter defaultCenter] postNotificationName:GAMEPLAY_VIEW_DISMISSED_NOTIFICATION object:self];
     }];
 }
 
-- (void)renewGame{
-    [[GameManager instance] resetScore];
- 
-}
-
-- (void)refreshGameCallback {
-    [self refreshGame];
-}
-
-- (void)refreshGame {
-    //NSArray *visibleUnits = [[GameManager instance] currentVisibleQueue];
-    //[self.gameLayoutView updateUnitViews:visibleUnits];
-}
-
-- (void)leftPressedCallback {
- 
-}
-
-
-- (void)rightPressedCallback {
-
-}
 
 - (void)endGame {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -110,9 +75,6 @@ static int promoDialogInLeaderBoardCount = 0;
     self.returnButton.hidden = NO;
 }
 
-- (void)lostGame {
- 
-}
 
 - (void)showPromoDialog {
     promoDialogInLeaderBoardCount++;
@@ -122,21 +84,6 @@ static int promoDialogInLeaderBoardCount = 0;
     }
 }
 
-- (NSString *)formatTimeString:(float)time {
-    return [NSString stringWithFormat:@"%.3F", time];
-}
-
-- (void)victoryGame {
- 
-}
-
-- (void)resetting {
-    self.currentChoice = nil;
-}
-
-- (void)winAnimation {
-
-}
 
 
 @end

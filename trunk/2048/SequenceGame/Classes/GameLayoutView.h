@@ -14,4 +14,6 @@
 @property (strong, nonatomic) IBOutlet BoardView *boardView;
 @property (strong, nonatomic) IBOutlet UILabel *currentScore;
 
+- (void)generateNewBoard;
+
 @end
