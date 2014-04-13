@@ -16,8 +16,8 @@
 @interface GameLayoutOneView()
 
 @property (nonatomic, strong) InGameMessageView *messageView;
-@property (nonatomic) CGRect maleDefault;
-@property (nonatomic) CGRect femaleDefault;
+@property (nonatomic) CGPoint maleDefault;
+@property (nonatomic) CGPoint femaleDefault;
 @property (nonatomic, strong) NSString *timeTextDefault;
 @property (nonatomic) int gender;
 
@@ -31,8 +31,8 @@
 }
 
 - (void)setupDefault {
-    self.maleDefault = self.male.frame;
-    self.femaleDefault = self.female.frame;
+    self.maleDefault = self.male.center;
+    self.femaleDefault = self.female.center;
     
     [self restoreDefault];
     
@@ -47,8 +47,8 @@
 
 - (void)restoreDefault {
     [self randomGender];
-    self.male.frame = self.maleDefault;
-    self.female.frame = self.femaleDefault;
+    self.male.center = self.maleDefault;
+    self.female.center = self.femaleDefault;
     self.doorAfter.hidden = YES;
     self.handView1.alpha = 0.0f;
     self.introView.hidden = YES;
@@ -66,6 +66,7 @@
     self.leftButton.hidden = NO;
     self.timeLabel.hidden = YES;
     self.cloud.hidden = YES;
+    self.badBubble.hidden = YES;
 }
 
 - (void)handShow {
@@ -149,6 +150,7 @@
                   endPoint:CGPointMake(self.introPerson.center.x, self.introCloseDoor.center.y)];
 }
 - (void)closeDoor {
+    //[[SoundManager instance] play:SOUND_EFFECT_DOOR_CLOSE];
     self.introPerson.hidden = NO;
     self.introOpenDoor.hidden = YES;
     self.introCloseDoor.hidden = NO;
@@ -337,7 +339,7 @@
 - (void)animateMessageView {
     [self shakeScreen];
     [self showMessageView:@"TOO FAST!"];
-    [[SoundManager instance] play:SOUND_EFFECT_SHARP_PUNCH];
+    //[[SoundManager instance] play:SOUND_EFFECT_SHARP_PUNCH];
 }
 
 - (void)flash {

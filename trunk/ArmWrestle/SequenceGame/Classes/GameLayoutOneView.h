@@ -19,6 +19,7 @@ typedef enum {
 } Gender;
 
 @interface GameLayoutOneView : XibView
+@property (strong, nonatomic) IBOutlet UIImageView *badBubble;
 @property (strong, nonatomic) IBOutlet UIImageView *cloud;
 @property (strong, nonatomic) IBOutlet UIImageView *door;
 @property (strong, nonatomic) IBOutlet UIImageView *doorAfter;

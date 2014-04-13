@@ -102,6 +102,7 @@
     [[SoundManager instance] prepare:SOUND_EFFECT_POP count:5];
     [[SoundManager instance] prepare:SOUND_EFFECT_BLING count:5];
     [[SoundManager instance] prepare:SOUND_EFFECT_SHARP_PUNCH count:3];
+    [[SoundManager instance] prepare:SOUND_EFFECT_DOOR_CLOSE count:1];
 }
 
 - (void)mainViewCallback {

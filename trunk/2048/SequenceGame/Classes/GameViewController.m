@@ -214,10 +214,10 @@
     [self initialize];
     [self.mainView show];
     
-    if (!DEBUG_MODE) {
-        [GameCenterHelper instance].currentLeaderBoard = kLeaderboardBestTimeID;
-        [[GameCenterHelper instance] loginToGameCenter];
-    }
+//    if (!DEBUG_MODE) {
+//        [GameCenterHelper instance].currentLeaderBoard = kLeaderboardBestTimeID;
+//        [[GameCenterHelper instance] loginToGameCenter];
+//    }
 }
 
 - (void)didReceiveMemoryWarning {

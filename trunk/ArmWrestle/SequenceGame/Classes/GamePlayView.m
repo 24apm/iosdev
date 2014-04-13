@@ -24,6 +24,7 @@
 @property (nonatomic) CFTimeInterval startingTime;
 @property (nonatomic) double finalTime;
 @property (nonatomic, strong) UIView* currentChoice;
+@property (nonatomic) BOOL firstStart;
 
 @end
 
@@ -35,7 +36,7 @@ static int promoDialogInLeaderBoardCount = 0;
     self = [super init];
     if (self) {
       //  self.gameLayoutView.timeLabel.textColor = kCOLOR_RED;
-        [self.gameLayoutView setupDefault];
+        self.firstStart = NO;
     }
     return self;
 }
@@ -48,6 +49,10 @@ static int promoDialogInLeaderBoardCount = 0;
 }
 
 - (void)show {
+    if (!self.firstStart) {
+        [self.gameLayoutView setupDefault];
+        self.firstStart = YES;
+    }
  //   [self.gameLayoutView wobbleUnits];
     [self.gameLayoutView restoreDefault];
     self.replayButton.hidden = YES;
@@ -76,6 +81,7 @@ static int promoDialogInLeaderBoardCount = 0;
 }
 
 - (void)startGame {
+   // [[SoundManager instance] stop:SOUND_EFFECT_DOOR_CLOSE];
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(startGame) object:nil];
     float delay = [Utils randBetweenMin:5.f max:10.f];
     [self performSelector:@selector(renewGame) withObject:nil afterDelay:delay];
@@ -210,6 +216,7 @@ static int promoDialogInLeaderBoardCount = 0;
 
 - (void)lostAnimation {
     self.currentChoice.hidden = YES;
+     [[SoundManager instance] play:SOUND_EFFECT_SHARP_PUNCH];
     [self.gameLayoutView animateMovingAwayfromDoorFor:self.currentChoice];
 }
 

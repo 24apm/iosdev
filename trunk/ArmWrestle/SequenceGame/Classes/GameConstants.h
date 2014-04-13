@@ -45,6 +45,7 @@
 #define SOUND_EFFECT_TICKING @"ticking"
 #define SOUND_EFFECT_WINNING @"winningEffect"
 #define SOUND_EFFECT_SHARP_PUNCH @"sharp_punch"
+#define SOUND_EFFECT_DOOR_CLOSE @"doorClose"
 
 #define IMAGE_ARROW @"swordattack.png"
 #define IMAGE_MONSTER @"soldier.png"

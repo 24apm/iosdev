@@ -25,6 +25,7 @@
 @property (nonatomic) double finalTime;
 @property (nonatomic, strong) UIView *currentChoice;
 @property (nonatomic, strong) NSString *gender;
+@property (nonatomic) BOOL firstStart;
 
 @end
 
@@ -36,7 +37,7 @@ static int promoDialogInLeaderBoardCount = 0;
     self = [super init];
     if (self) {
        // self.gameLayoutView.timeLabel.textColor = kCOLOR_RED;
-        [self.gameLayoutView setupDefault];
+        self.firstStart = NO;
     }
     return self;
 }
@@ -49,7 +50,10 @@ static int promoDialogInLeaderBoardCount = 0;
 }
 
 - (void)show {
- //   [self.gameLayoutView wobbleUnits];
+    if (!self.firstStart) {
+        [self.gameLayoutView setupDefault];
+        self.firstStart = YES;
+    }
     [self.gameLayoutView restoreDefault];
     self.replayButton.hidden = YES;
     self.returnButton.hidden = YES;
@@ -197,12 +201,13 @@ static int promoDialogInLeaderBoardCount = 0;
 }
 
 - (void)lostAnimation {
+    [[SoundManager instance] play:SOUND_EFFECT_SHARP_PUNCH];
     self.currentChoice.hidden = YES;
     [self.gameLayoutView animateMovingAwayfromDoorFor:self.currentChoice];
 }
 
 - (void)displayWinner {
-    [self.gameLayoutView showMessageView:@"You\nWin!"];
+    [self.gameLayoutView showMessageView:@"Good\nJob!"];
 }
 
 @end

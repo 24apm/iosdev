@@ -50,6 +50,14 @@
     return self.frame.size;
 }
 
+- (void)setOrigin:(CGPoint)origin {
+    self.frame = CGRectMake(origin.x, origin.y, self.frame.size.width, self.frame.size.height);
+}
+
+- (CGPoint)origin {
+    return self.frame.origin;
+}
+
 - (UIImage *)blit {
     UIGraphicsBeginImageContextWithOptions(self.bounds.size, NO, [UIScreen mainScreen].scale);
     CGContextRef context = UIGraphicsGetCurrentContext();

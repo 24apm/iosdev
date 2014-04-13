@@ -7,9 +7,15 @@
 //
 
 #import "XibView.h"
+#define GAMEPLAY_VIEW_DISMISSED_NOTIFICATION @"GAMEPLAY_VIEW_DISMISSED_NOTIFICATION"
 
 @interface BoardView : XibView
 
 - (void)generateRandomTile;
+- (void)shiftTilesLeft;
+- (void)shiftTilesRight;
+- (void)shiftTilesUp;
+- (void)shiftTilesDown;
 
+@property (nonatomic) BOOL gameEnd;
 @end

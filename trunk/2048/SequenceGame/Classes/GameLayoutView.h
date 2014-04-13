@@ -12,5 +12,6 @@
 @interface GameLayoutView : XibView <UIGestureRecognizerDelegate>
 
 @property (strong, nonatomic) IBOutlet BoardView *boardView;
+@property (strong, nonatomic) IBOutlet UILabel *currentScore;
 
 @end

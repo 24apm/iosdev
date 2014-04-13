@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GameLayoutView">
             <connections>
+                <outlet property="badBubble" destination="wB9-zU-wzM" id="WuP-Le-B1Z"/>
                 <outlet property="cloud" destination="L2T-BJ-xSJ" id="bVe-It-33P"/>
                 <outlet property="distanceLabel" destination="b3T-tR-ag9" id="FbR-sk-8Cn"/>
                 <outlet property="door" destination="uc6-qn-gyq" id="BXU-Dr-ExF"/>
@@ -31,11 +32,11 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="wkQ-lM-asS">
-            <rect key="frame" x="0.0" y="0.0" width="768" height="1023.9999999999999"/>
+            <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="23J-it-7PN" userLabel="Left Button Hit Area">
-                    <rect key="frame" x="0.0" y="0.0" width="384" height="1026"/>
+                    <rect key="frame" x="0.0" y="-101" width="384" height="1225.9999999999995"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.81568627449999997" green="0.021505205297935152" blue="0.51989913453686365" alpha="0.40000000000000002" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -47,7 +48,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="GjC-Wg-tO7" userLabel="Right Button Hit Area">
-                    <rect key="frame" x="384" y="0.0" width="384" height="1023.9999999999999"/>
+                    <rect key="frame" x="384" y="-99.999999999999972" width="384" height="1223.9999999999995"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.0" green="0.65739924630000002" blue="1" alpha="0.40000000000000002" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -59,8 +60,8 @@
                     </connections>
                 </button>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5Q4-M8-vgH" userLabel="Timer">
-                    <rect key="frame" x="0.0" y="0.0" width="768" height="85"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                    <rect key="frame" x="0.0" y="0.0" width="768.00000000000023" height="84.999999999999972"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="80"/>
                     <color key="textColor" name="alternateSelectedControlTextColor" catalog="System" colorSpace="catalog"/>
                     <nil key="highlightedColor"/>
@@ -68,54 +69,56 @@
                     <size key="shadowOffset" width="1" height="1"/>
                 </label>
                 <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="99" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="b3T-tR-ag9" userLabel="Distance">
-                    <rect key="frame" x="516" y="0.0" width="239.99999999999994" height="85"/>
+                    <rect key="frame" x="516" y="0.0" width="239.99999999999991" height="84.999999999999972"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="30"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.png" id="ygw-Z2-3Up">
-                    <rect key="frame" x="263.99999999999989" y="145" width="239.99999999999994" height="356"/>
+                    <rect key="frame" x="263.99999999999989" y="144.99999999999997" width="239.99999999999991" height="355.99999999999989"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cloud1.png" id="L2T-BJ-xSJ">
-                    <rect key="frame" x="418" y="70" width="192.00000000000003" height="171"/>
+                    <rect key="frame" x="418" y="69.999999999999957" width="191.99999999999997" height="171"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="doorsPerson.png" id="KEj-Sx-aTh">
-                    <rect key="frame" x="259" y="122" width="247" height="427"/>
+                    <rect key="frame" x="259" y="121.99999999999996" width="247" height="427"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="opendoor.png" id="uc6-qn-gyq">
-                    <rect key="frame" x="151" y="119" width="360" height="427"/>
+                    <rect key="frame" x="151" y="119" width="359.99999999999983" height="427"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="swordattack.png" id="Aea-KA-9Lr">
-                    <rect key="frame" x="48" y="459" width="240" height="427"/>
+                    <rect key="frame" x="48" y="459.00000000000006" width="239.99999999999991" height="427"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.0" green="0.65739924630000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="soldier.png" id="Klp-xe-Adf">
-                    <rect key="frame" x="504.00000000000006" y="461" width="240" height="384"/>
+                    <rect key="frame" x="503.99999999999989" y="461.00000000000017" width="240" height="384"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.0" green="0.65739924630000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="doorsPerson.png" id="Dzx-wc-r44" userLabel="Image View2 - doorsPerson.png">
-                    <rect key="frame" x="259" y="122" width="247" height="427"/>
+                    <rect key="frame" x="259" y="122.00000000000003" width="247" height="427.00000000000017"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                 </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="badbubble.png" id="wB9-zU-wzM">
+                    <rect key="frame" x="355" y="310" width="58" height="26"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                </imageView>
                 <view userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" id="dLI-LG-kCm" userLabel="Hand View 1">
-                    <rect key="frame" x="108.00000000000001" y="574" width="120" height="127.99999999999999"/>
+                    <rect key="frame" x="108.00000000000001" y="574.00000000000011" width="119.99999999999997" height="128"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <view contentMode="scaleToFill" id="wYb-Ob-n9b">
-                            <rect key="frame" x="0.0" y="0.0" width="120" height="43"/>
+                            <rect key="frame" x="0.0" y="0.0" width="119.99999999999997" height="43"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TAP" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="osp-2m-FYs">
-                                    <rect key="frame" x="0.0" y="0.0" width="120" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="119.99999999999997" height="43.000000000000007"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
@@ -123,7 +126,7 @@
                             <color key="backgroundColor" red="0.27450981740000002" green="0.83137261870000001" blue="0.44313728810000003" alpha="1" colorSpace="deviceRGB"/>
                         </view>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hand.png" id="jM3-37-aNq">
-                            <rect key="frame" x="0.0" y="21" width="120" height="107"/>
+                            <rect key="frame" x="0.0" y="21.000000000000004" width="119.99999999999997" height="107.00000000000004"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         </imageView>
                     </subviews>
@@ -133,17 +136,17 @@
                     </accessibility>
                 </view>
                 <view userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" id="wOv-n0-Q1X" userLabel="Hand View 2">
-                    <rect key="frame" x="564" y="574" width="120" height="126"/>
+                    <rect key="frame" x="563.99999999999989" y="574.00000000000011" width="119.99999999999994" height="126.00000000000003"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <view contentMode="scaleToFill" id="aby-Ad-LSL">
-                            <rect key="frame" x="0.0" y="0.0" width="120" height="43"/>
+                            <rect key="frame" x="0.0" y="0.0" width="119.99999999999996" height="43"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TAP" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pq4-XD-H7T">
-                                    <rect key="frame" x="0.0" y="0.0" width="120" height="43.000000000000021"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="119.99999999999996" height="42.999999999999986"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
@@ -151,7 +154,7 @@
                             <color key="backgroundColor" red="0.27450981740000002" green="0.83137261870000001" blue="0.44313728810000003" alpha="1" colorSpace="deviceRGB"/>
                         </view>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hand.png" id="SiD-SF-9ie">
-                            <rect key="frame" x="0.0" y="21" width="120" height="106"/>
+                            <rect key="frame" x="0.0" y="21" width="119.99999999999996" height="106"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         </imageView>
                     </subviews>
@@ -161,11 +164,11 @@
                     </accessibility>
                 </view>
                 <view contentMode="scaleToFill" id="Ph5-Ll-dGV">
-                    <rect key="frame" x="0.0" y="0.0" width="768" height="1023.9999999999999"/>
+                    <rect key="frame" x="0.0" y="0.0" width="768" height="1024.0000000000002"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="cLB-Qd-dJk">
-                            <rect key="frame" x="0.0" y="0.0" width="768" height="1023.9999999999999"/>
+                            <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             <state key="normal">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -175,42 +178,42 @@
                             </connections>
                         </button>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultbackground.png" id="Jsh-62-ELw">
-                            <rect key="frame" x="0.0" y="0.0" width="768" height="1023.9999999999999"/>
+                            <rect key="frame" x="-5" y="-50" width="778" height="1124"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             <accessibility key="accessibilityConfiguration">
                                 <accessibilityTraits key="traits" none="YES" image="YES" notEnabled="YES"/>
                             </accessibility>
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="opendoor.png" id="FZT-EE-JRN">
-                            <rect key="frame" x="-192" y="164" width="960" height="747"/>
+                            <rect key="frame" x="-192" y="164.00000000000003" width="960" height="747.00000000000011"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             <accessibility key="accessibilityConfiguration">
                                 <accessibilityTraits key="traits" none="YES" image="YES" notEnabled="YES"/>
                             </accessibility>
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.png" id="Xa1-Tu-YYa">
-                            <rect key="frame" x="144.00000000000003" y="158" width="480" height="747"/>
+                            <rect key="frame" x="144.00000000000003" y="158.00000000000003" width="480" height="747.00000000000011"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             <accessibility key="accessibilityConfiguration">
                                 <accessibilityTraits key="traits" none="YES" image="YES" notEnabled="YES"/>
                             </accessibility>
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="swordattack.png" id="Kgp-eM-KSW">
-                            <rect key="frame" x="127" y="98" width="516" height="853"/>
+                            <rect key="frame" x="127" y="98.000000000000014" width="516" height="853.00000000000011"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             <accessibility key="accessibilityConfiguration">
                                 <accessibilityTraits key="traits" none="YES" image="YES" notEnabled="YES"/>
                             </accessibility>
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="soldier.png" id="FMB-Tg-CC4">
-                            <rect key="frame" x="144" y="63.999999999999993" width="480" height="853"/>
+                            <rect key="frame" x="144" y="64.000000000000014" width="480" height="853"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             <accessibility key="accessibilityConfiguration">
                                 <accessibilityTraits key="traits" none="YES" image="YES" notEnabled="YES"/>
                             </accessibility>
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="doorsPerson.png" id="U2W-C3-35E">
-                            <rect key="frame" x="101" y="166" width="600" height="747"/>
+                            <rect key="frame" x="101" y="166.00000000000003" width="600" height="747.00000000000011"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             <accessibility key="accessibilityConfiguration">
                                 <accessibilityTraits key="traits" none="YES" image="YES" notEnabled="YES"/>
@@ -228,6 +231,7 @@
         </view>
     </objects>
     <resources>
+        <image name="badbubble.png" width="295" height="266"/>
         <image name="bluebackground.png" width="1017" height="960"/>
         <image name="cloud1.png" width="295" height="266"/>
         <image name="defaultbackground.png" width="1017" height="960"/>

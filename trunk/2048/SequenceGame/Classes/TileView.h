@@ -12,4 +12,10 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *label;
 
+@property (nonatomic) int currentValue;
+@property (nonatomic) int realValue;
+
+- (void)updateToRealLabel;
+- (void)animateMergedTile;
+
 @end

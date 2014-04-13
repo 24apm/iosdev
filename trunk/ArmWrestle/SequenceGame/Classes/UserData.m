@@ -71,7 +71,6 @@
     NSArray *array = [NSArray array];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:array forKey:GAME_MODE_SINGLE];
-    //[defaults setObject:array forKey:GAME_MODE_DISTANCE];
     [defaults synchronize];
 }
 
@@ -86,7 +85,8 @@
         sortedArray = [self sortingArrayAcending:sortedArray newNumber:newScores];
         double fastestValue = [[sortedArray objectAtIndex:0] doubleValue];
         if (newScores <= fastestValue) {
-            [self submitScore:newScores mode:mode];
+            int64_t gcScore = (int64_t)(newScores * 1000.0f);
+            [self submitScore:gcScore mode:mode];
         }
     }
     NSArray *finalArray = [self truncateArray:sortedArray];
@@ -107,12 +107,11 @@
     [defaults synchronize];
 }
 
-- (void)submitScore:(int)score mode:(NSString *)mode {
+- (void)submitScore:(int64_t)score mode:(NSString *)mode {
     NSString *leaderBoardCategory = nil;
     if ([mode isEqualToString:GAME_MODE_SINGLE]) {
         leaderBoardCategory = kLeaderboardBestTimeID;
-    } 
-    
+    }
     if(leaderBoardCategory && score > 0) {
         [[GameCenterHelper instance].gameCenterManager reportScore:score forCategory: leaderBoardCategory];
     }

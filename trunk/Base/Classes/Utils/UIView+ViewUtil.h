@@ -15,6 +15,7 @@
 @property (nonatomic) float width;
 @property (nonatomic) float height;
 @property (nonatomic) CGSize size;
+@property (nonatomic) CGPoint origin;
 
 - (UIImage *)blit;
 

@@ -16,8 +16,8 @@
 @interface GameLayoutView()
 
 @property (nonatomic, strong) InGameMessageView *messageView;
-@property (nonatomic) CGRect maleDefault;
-@property (nonatomic) CGRect femaleDefault;
+@property (nonatomic) CGPoint maleDefault;
+@property (nonatomic) CGPoint femaleDefault;
 @property (nonatomic, strong) NSString* timeTextDefault;
 
 @end
@@ -25,15 +25,15 @@
 @implementation GameLayoutView
 
 - (void)setupDefault {
-    self.maleDefault = self.male.frame;
-    self.femaleDefault = self.female.frame;
+    self.maleDefault = self.male.center;
+    self.femaleDefault = self.female.center;
     [self initAnimateCloud];
     [self restoreDefault];
 }
 
 - (void)restoreDefault {
-    self.male.frame = self.maleDefault;
-    self.female.frame = self.femaleDefault;
+    self.male.center = self.maleDefault;
+    self.female.center = self.femaleDefault;
     self.timeText.text = self.timeTextDefault;
     self.doorAfter.hidden = YES;
     self.handView1.alpha = 0.0f;
@@ -56,6 +56,7 @@
     self.timeLabel.hidden = YES;
     self.cloud.hidden = YES;
     self.delay = 0;
+    self.badBubble.hidden = YES;
 }
 
 - (void)gameplayEnd {
@@ -142,6 +143,7 @@
                   endPoint:CGPointMake(self.introPerson.center.x, self.introCloseDoor.center.y)];
 }
 - (void)closeDoor {
+    //[[SoundManager instance] play:SOUND_EFFECT_DOOR_CLOSE];
     self.timeText.text = @"WHO IS NEXT?";
     self.introPerson.hidden = NO;
     self.introOpenDoor.hidden = YES;
@@ -238,6 +240,8 @@
     self.timeLabel.hidden = NO;
     [self.cloud stopAnimating];
     self.cloud.hidden = YES;
+    //self.badBubble.hidden = NO;
+   // [self animateBadBubble];
 }
 - (void)animateMovingToDoorFor:(UIView *)view {
     [self.male.layer removeAnimationForKey:@"iconShake"];
@@ -423,7 +427,7 @@
 - (void)animateMessageView {
     [self shakeScreen];
     [self showMessageView:@"TOO FAST!"];
-    [[SoundManager instance] play:SOUND_EFFECT_SHARP_PUNCH];
+    //[[SoundManager instance] play:SOUND_EFFECT_SHARP_PUNCH];
 }
 
 - (MonsterView *)frontImagePlaceHolder {
@@ -451,6 +455,27 @@
     [self handHide];
 }
 
+-(void)animateBadBubble {
+    CABasicAnimation *bubbleExplode = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+    bubbleExplode.toValue = [NSNumber numberWithFloat:10.f];
+    
+    CABasicAnimation *bubbleFadeIn = [CABasicAnimation animationWithKeyPath:@"opacity"];
+    bubbleFadeIn.fromValue = [NSNumber numberWithFloat:1.0f];
+    bubbleFadeIn.toValue = [NSNumber numberWithFloat:0.0f];
+    
+    CAAnimationGroup *bubbleAnims = [CAAnimationGroup animation];
+    [bubbleAnims setAnimations:[NSArray arrayWithObjects:bubbleFadeIn, bubbleExplode, nil]];
+    [bubbleAnims setDuration:.5f];
+    [bubbleAnims setRemovedOnCompletion:NO];
+    [bubbleAnims setFillMode:kCAFillModeForwards];
+    [self.badBubble.layer addAnimation:bubbleAnims forKey:nil];
+    [self performSelector:@selector(removeBadBubble) withObject:self.badBubble afterDelay:bubbleAnims.duration + 0.1f];
+}
+
+- (void)removeBadBubble {
+    [self.badBubble removeFromSuperview];
+    self.badBubble.hidden = YES;
+}
 - (void)initAnimateCloud {
     UIImage* img1 = [UIImage imageNamed:@"cloud1"];
     UIImage* img2 = [UIImage imageNamed:@"cloud2"];
