@@ -137,7 +137,7 @@
 }
 
 - (void)gameplayViewCallback {
-    [self updateGameState:GameStateMainMode];
+    [self updateGameState:GameStateLocalLeaderBoardMode];
 }
 
 - (void)retryCallback {

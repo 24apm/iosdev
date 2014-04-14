@@ -82,11 +82,11 @@
     // take the top x range (truncate if neccessarily)
     // save new leaderboard
     NSMutableArray *sortedArray = sortedArray = [NSMutableArray arrayWithArray:[self loadLocalLeaderBoard :(NSString *)mode]];
-    if ([mode isEqualToString:GAME_MODE_SINGLE]) {
-        sortedArray = [self sortingArrayAcending:sortedArray newNumber:newScores];
-        double fastestValue = [[sortedArray objectAtIndex:0] doubleValue];
-        if (newScores <= fastestValue) {
-            [self submitScore:newScores mode:mode];
+    if ([mode isEqualToString:GAME_MODE_VS]) {
+        sortedArray = [self sortingArrayDecending:sortedArray newNumber:newScores];
+        double highestScore = [[sortedArray objectAtIndex:0] doubleValue];
+        if (newScores >= highestScore) {
+            [self submitScore:newScores mode:mode];    //gamecenter submition
         }
     }
     NSArray *finalArray = [self truncateArray:sortedArray];

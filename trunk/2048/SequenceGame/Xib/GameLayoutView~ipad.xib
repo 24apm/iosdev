@@ -35,7 +35,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="23J-it-7PN" userLabel="Left Button Hit Area">
-                    <rect key="frame" x="0.0" y="0.0" width="384" height="1025.9999999999995"/>
+                    <rect key="frame" x="0.0" y="0.0" width="384" height="1025.9999999999998"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.81568627449999997" green="0.021505205297935152" blue="0.51989913453686365" alpha="0.40000000000000002" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -59,7 +59,7 @@
                     </connections>
                 </button>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5Q4-M8-vgH" userLabel="Timer">
-                    <rect key="frame" x="0.0" y="0.0" width="768.00000000000023" height="84.999999999999986"/>
+                    <rect key="frame" x="0.0" y="0.0" width="768.00000000000011" height="85"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="80"/>
                     <color key="textColor" name="alternateSelectedControlTextColor" catalog="System" colorSpace="catalog"/>
@@ -68,35 +68,35 @@
                     <size key="shadowOffset" width="1" height="1"/>
                 </label>
                 <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="99" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="b3T-tR-ag9" userLabel="Distance">
-                    <rect key="frame" x="516" y="0.0" width="239.99999999999991" height="84.999999999999986"/>
+                    <rect key="frame" x="515.99999999999989" y="0.0" width="239.99999999999994" height="85"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="30"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.png" id="ygw-Z2-3Up">
-                    <rect key="frame" x="263.99999999999989" y="144.99999999999997" width="239.99999999999991" height="355.99999999999989"/>
+                    <rect key="frame" x="263.99999999999994" y="144.99999999999997" width="239.99999999999994" height="355.99999999999994"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cloud1.png" id="L2T-BJ-xSJ">
-                    <rect key="frame" x="418" y="69.999999999999957" width="191.99999999999997" height="170.99999999999997"/>
+                    <rect key="frame" x="418" y="69.999999999999986" width="191.99999999999994" height="170.99999999999997"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="doorsPerson.png" id="KEj-Sx-aTh">
-                    <rect key="frame" x="259" y="121.99999999999999" width="247" height="427"/>
+                    <rect key="frame" x="259" y="121.99999999999996" width="247" height="426.99999999999994"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="opendoor.png" id="uc6-qn-gyq">
-                    <rect key="frame" x="151" y="119.00000000000001" width="359.99999999999983" height="427"/>
+                    <rect key="frame" x="151" y="118.99999999999999" width="359.99999999999983" height="426.99999999999994"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="swordattack.png" id="Aea-KA-9Lr">
-                    <rect key="frame" x="48" y="459.00000000000006" width="239.99999999999991" height="427"/>
+                    <rect key="frame" x="48" y="459.00000000000006" width="239.99999999999994" height="426.99999999999994"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.0" green="0.65739924630000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="soldier.png" id="Klp-xe-Adf">
-                    <rect key="frame" x="503.99999999999983" y="461.00000000000011" width="240" height="383.99999999999994"/>
+                    <rect key="frame" x="503.99999999999989" y="461.00000000000011" width="239.99999999999994" height="383.99999999999994"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.0" green="0.65739924630000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </imageView>
@@ -105,15 +105,15 @@
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <view userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" id="dLI-LG-kCm" userLabel="Hand View 1">
-                    <rect key="frame" x="108.00000000000001" y="574" width="119.99999999999997" height="128"/>
+                    <rect key="frame" x="108" y="574" width="120" height="128"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <view contentMode="scaleToFill" id="wYb-Ob-n9b">
-                            <rect key="frame" x="0.0" y="0.0" width="119.99999999999997" height="43.000000000000014"/>
+                            <rect key="frame" x="0.0" y="0.0" width="120" height="43"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TAP" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="osp-2m-FYs">
-                                    <rect key="frame" x="0.0" y="0.0" width="119.99999999999997" height="43.000000000000014"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="120" height="43"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -123,7 +123,7 @@
                             <color key="backgroundColor" red="0.27450981740000002" green="0.83137261870000001" blue="0.44313728810000003" alpha="1" colorSpace="deviceRGB"/>
                         </view>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hand.png" id="jM3-37-aNq">
-                            <rect key="frame" x="0.0" y="21.000000000000004" width="119.99999999999997" height="107.00000000000003"/>
+                            <rect key="frame" x="0.0" y="21.000000000000004" width="120" height="107"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         </imageView>
                     </subviews>
@@ -133,15 +133,15 @@
                     </accessibility>
                 </view>
                 <view userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" id="wOv-n0-Q1X" userLabel="Hand View 2">
-                    <rect key="frame" x="563.99999999999989" y="574" width="119.99999999999994" height="126.00000000000003"/>
+                    <rect key="frame" x="563.99999999999989" y="574" width="119.99999999999997" height="126.00000000000001"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <view contentMode="scaleToFill" id="aby-Ad-LSL">
-                            <rect key="frame" x="0.0" y="0.0" width="119.99999999999996" height="43"/>
+                            <rect key="frame" x="0.0" y="0.0" width="119.99999999999997" height="43"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TAP" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pq4-XD-H7T">
-                                    <rect key="frame" x="0.0" y="0.0" width="119.99999999999996" height="42.999999999999986"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="119.99999999999997" height="43"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -151,7 +151,7 @@
                             <color key="backgroundColor" red="0.27450981740000002" green="0.83137261870000001" blue="0.44313728810000003" alpha="1" colorSpace="deviceRGB"/>
                         </view>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hand.png" id="SiD-SF-9ie">
-                            <rect key="frame" x="0.0" y="21" width="119.99999999999996" height="106"/>
+                            <rect key="frame" x="0.0" y="21" width="119.99999999999997" height="106"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         </imageView>
                     </subviews>

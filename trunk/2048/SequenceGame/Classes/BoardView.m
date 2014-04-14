@@ -11,6 +11,7 @@
 #import "SlotView.h"
 #import "Utils.h"
 #import "UserData.h"
+#import "GameConstants.h"
 
 #define BOARD_ROWS 4
 #define BOARD_COLS 4
@@ -28,6 +29,7 @@
 @implementation BoardView
 
 - (void)generateNewBoard {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tilePressed:) name:MAX_LEVEL_TILE_PRESSED object:nil];
     [self unload];
     [self setupBoard];
     [self layoutSlots];
@@ -35,6 +37,12 @@
     [self generateRandomTile];
 }
 
+- (void)tilePressed:(id)tile {
+    NSDictionary *dict = [tile userInfo];
+    TileView *pressedTile = [dict objectForKey:@"pressedTile"];
+    [UserData instance].currentScore = [UserData instance].currentScore + pressedTile.currentValue;
+    pressedTile = nil;
+}
 - (void)unload {
     for (SlotView *slotView in self.slots) {
         [slotView unload];
@@ -91,20 +99,20 @@
 }
 
 - (void)mergeToNewSlot:(SlotView *)targetSlot currentSlot:(SlotView *)currentSlot {
-    if (targetSlot == currentSlot || targetSlot.tileView.tag > 0 || targetSlot.tileView.currentValue != currentSlot.tileView.currentValue) {
+    if (targetSlot == currentSlot || targetSlot.tileView.isMerged || !targetSlot.tileView.isMergeable || targetSlot.tileView.currentValue != currentSlot.tileView.currentValue) {
         return;
     }
     [self animateTileAndRemove:currentSlot.tileView toSlot:targetSlot];
     [targetSlot.tileView performSelector:@selector(animateMergedTile) withObject:nil afterDelay:0.2f];
     targetSlot.tileView.currentValue = targetSlot.tileView.currentValue + currentSlot.tileView.currentValue;
     [UserData instance].currentScore = [UserData instance].currentScore + targetSlot.tileView.currentValue;
-    targetSlot.tileView.tag = 1;
+    targetSlot.tileView.isMerged = YES;
     currentSlot.tileView = nil;
     self.hasMerge = YES;
 }
 
 - (void)shiftTilesLeft {
-    [self resetTags];
+    [self resetMerges];
     self.hasMerge = NO;
     self.hasMove = NO;
     for (int row = 0; row < BOARD_ROWS; row ++) {
@@ -133,7 +141,7 @@
 }
 
 - (void)shiftTilesRight {
-    [self resetTags];
+    [self resetMerges];
     self.hasMerge = NO;
     self.hasMove = NO;
     for (int row = 0; row < BOARD_ROWS; row ++) {
@@ -161,7 +169,7 @@
 }
 
 - (void)shiftTilesUp {
-    [self resetTags];
+    [self resetMerges];
     self.hasMerge = NO;
     self.hasMove = NO;
     for (int row = 0; row < BOARD_ROWS; row ++) {
@@ -190,7 +198,7 @@
 }
 
 - (void)shiftTilesDown {
-    [self resetTags];
+    [self resetMerges];
     self.hasMerge = NO;
     self.hasMove = NO;
     for (int row = BOARD_ROWS - 1; row >=  0; row --) {
@@ -319,7 +327,7 @@
     if (!slot) return;
     
     TileView *tile = [[TileView alloc] init];
-    NSArray *randArr = @[@(2),@(4)];
+    NSArray *randArr = @[@(2), @(4)];
     tile.currentValue = [[randArr randomObject] integerValue];
     [tile updateToRealLabel];
     slot.tileView = tile;
@@ -376,9 +384,9 @@
     slot.tileView.center = [slot.superview convertPoint:slot.center toView:slot.tileView.superview];
 }
 
-- (void)resetTags {
+- (void)resetMerges {
     for (SlotView * slot in self.slots) {
-        slot.tileView.tag = 0;
+         slot.tileView.isMerged = NO;
     }
 }
 
@@ -447,10 +455,12 @@
     if (!possibleMove) {
         [self performSelector:@selector(dismissView) withObject:nil afterDelay:1.8f];
         NSLog(@"Good Game");
+        [[UserData instance] addNewScoreLocalLeaderBoard: [UserData instance].currentScore mode:GAME_MODE_VS];
     }
 }
 
 - (void)dismissView{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [[NSNotificationCenter defaultCenter] postNotificationName:GAMEPLAY_VIEW_DISMISSED_NOTIFICATION object:self];
 }
 @end

@@ -162,6 +162,32 @@
 		D0F11CB418D83D70007A8963 /* CustomizationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0F11CB318D83D70007A8963 /* CustomizationView.xib */; };
 		D0F11CB718D8411E007A8963 /* CustomizationItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F11CB618D8411E007A8963 /* CustomizationItemView.m */; };
 		D0F11CB918D8412F007A8963 /* CustomizationItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0F11CB818D8412F007A8963 /* CustomizationItemView.xib */; };
+		D0F375B818FA3D9300D32A10 /* tier0.png in Resources */ = {isa = PBXBuildFile; fileRef = D0F375B718FA3D9300D32A10 /* tier0.png */; };
+		D0F375BF18FA457100D32A10 /* tier7.png in Resources */ = {isa = PBXBuildFile; fileRef = D0F375B918FA457100D32A10 /* tier7.png */; };
+		D0F375C018FA457100D32A10 /* tier8.png in Resources */ = {isa = PBXBuildFile; fileRef = D0F375BA18FA457100D32A10 /* tier8.png */; };
+		D0F375C118FA457100D32A10 /* tier5.png in Resources */ = {isa = PBXBuildFile; fileRef = D0F375BB18FA457100D32A10 /* tier5.png */; };
+		D0F375C218FA457100D32A10 /* tier6.png in Resources */ = {isa = PBXBuildFile; fileRef = D0F375BC18FA457100D32A10 /* tier6.png */; };
+		D0F375C318FA457100D32A10 /* tier4.png in Resources */ = {isa = PBXBuildFile; fileRef = D0F375BD18FA457100D32A10 /* tier4.png */; };
+		D0F375C418FA457100D32A10 /* tier3.png in Resources */ = {isa = PBXBuildFile; fileRef = D0F375BE18FA457100D32A10 /* tier3.png */; };
+		D0F375C718FA466400D32A10 /* tier12.png in Resources */ = {isa = PBXBuildFile; fileRef = D0F375C518FA466400D32A10 /* tier12.png */; };
+		D0F375C818FA466400D32A10 /* tier11.png in Resources */ = {isa = PBXBuildFile; fileRef = D0F375C618FA466400D32A10 /* tier11.png */; };
+		D0F375CA18FA78FA00D32A10 /* tier9.png in Resources */ = {isa = PBXBuildFile; fileRef = D0F375C918FA78FA00D32A10 /* tier9.png */; };
+		D0F375CC18FA7FA600D32A10 /* tier10.png in Resources */ = {isa = PBXBuildFile; fileRef = D0F375CB18FA7FA600D32A10 /* tier10.png */; };
+		D0F375CF18FA896300D32A10 /* tier1.png in Resources */ = {isa = PBXBuildFile; fileRef = D0F375CD18FA896300D32A10 /* tier1.png */; };
+		D0F375D018FA896300D32A10 /* tier2.png in Resources */ = {isa = PBXBuildFile; fileRef = D0F375CE18FA896300D32A10 /* tier2.png */; };
+		D0F375D718FA958000D32A10 /* tier11-2.png in Resources */ = {isa = PBXBuildFile; fileRef = D0F375D118FA958000D32A10 /* tier11-2.png */; };
+		D0F375D818FA958000D32A10 /* tier10-2.png in Resources */ = {isa = PBXBuildFile; fileRef = D0F375D218FA958000D32A10 /* tier10-2.png */; };
+		D0F375D918FA958000D32A10 /* tier9-2.png in Resources */ = {isa = PBXBuildFile; fileRef = D0F375D318FA958000D32A10 /* tier9-2.png */; };
+		D0F375DA18FA958000D32A10 /* tier0-2.png in Resources */ = {isa = PBXBuildFile; fileRef = D0F375D418FA958000D32A10 /* tier0-2.png */; };
+		D0F375DB18FA958000D32A10 /* tier1-2.png in Resources */ = {isa = PBXBuildFile; fileRef = D0F375D518FA958000D32A10 /* tier1-2.png */; };
+		D0F375DC18FA958000D32A10 /* tier12-2.png in Resources */ = {isa = PBXBuildFile; fileRef = D0F375D618FA958000D32A10 /* tier12-2.png */; };
+		D0F375E118FA981100D32A10 /* tier7-2.png in Resources */ = {isa = PBXBuildFile; fileRef = D0F375DD18FA981000D32A10 /* tier7-2.png */; };
+		D0F375E218FA981100D32A10 /* tier8-2.png in Resources */ = {isa = PBXBuildFile; fileRef = D0F375DE18FA981000D32A10 /* tier8-2.png */; };
+		D0F375E318FA981100D32A10 /* tier6-2.png in Resources */ = {isa = PBXBuildFile; fileRef = D0F375DF18FA981100D32A10 /* tier6-2.png */; };
+		D0F375E418FA981100D32A10 /* tier3-2.png in Resources */ = {isa = PBXBuildFile; fileRef = D0F375E018FA981100D32A10 /* tier3-2.png */; };
+		D0F375E818FA990100D32A10 /* tier4-2.png in Resources */ = {isa = PBXBuildFile; fileRef = D0F375E518FA990100D32A10 /* tier4-2.png */; };
+		D0F375E918FA990100D32A10 /* tier2-2.png in Resources */ = {isa = PBXBuildFile; fileRef = D0F375E618FA990100D32A10 /* tier2-2.png */; };
+		D0F375EA18FA990100D32A10 /* tier5-2.png in Resources */ = {isa = PBXBuildFile; fileRef = D0F375E718FA990100D32A10 /* tier5-2.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -395,6 +421,32 @@
 		D0F11CB518D8411E007A8963 /* CustomizationItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomizationItemView.h; sourceTree = "<group>"; };
 		D0F11CB618D8411E007A8963 /* CustomizationItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomizationItemView.m; sourceTree = "<group>"; };
 		D0F11CB818D8412F007A8963 /* CustomizationItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomizationItemView.xib; sourceTree = "<group>"; };
+		D0F375B718FA3D9300D32A10 /* tier0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tier0.png; sourceTree = "<group>"; };
+		D0F375B918FA457100D32A10 /* tier7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tier7.png; sourceTree = "<group>"; };
+		D0F375BA18FA457100D32A10 /* tier8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tier8.png; sourceTree = "<group>"; };
+		D0F375BB18FA457100D32A10 /* tier5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tier5.png; sourceTree = "<group>"; };
+		D0F375BC18FA457100D32A10 /* tier6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tier6.png; sourceTree = "<group>"; };
+		D0F375BD18FA457100D32A10 /* tier4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tier4.png; sourceTree = "<group>"; };
+		D0F375BE18FA457100D32A10 /* tier3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tier3.png; sourceTree = "<group>"; };
+		D0F375C518FA466400D32A10 /* tier12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tier12.png; sourceTree = "<group>"; };
+		D0F375C618FA466400D32A10 /* tier11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tier11.png; sourceTree = "<group>"; };
+		D0F375C918FA78FA00D32A10 /* tier9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tier9.png; sourceTree = "<group>"; };
+		D0F375CB18FA7FA600D32A10 /* tier10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tier10.png; sourceTree = "<group>"; };
+		D0F375CD18FA896300D32A10 /* tier1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tier1.png; sourceTree = "<group>"; };
+		D0F375CE18FA896300D32A10 /* tier2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tier2.png; sourceTree = "<group>"; };
+		D0F375D118FA958000D32A10 /* tier11-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tier11-2.png"; sourceTree = "<group>"; };
+		D0F375D218FA958000D32A10 /* tier10-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tier10-2.png"; sourceTree = "<group>"; };
+		D0F375D318FA958000D32A10 /* tier9-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tier9-2.png"; sourceTree = "<group>"; };
+		D0F375D418FA958000D32A10 /* tier0-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tier0-2.png"; sourceTree = "<group>"; };
+		D0F375D518FA958000D32A10 /* tier1-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tier1-2.png"; sourceTree = "<group>"; };
+		D0F375D618FA958000D32A10 /* tier12-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tier12-2.png"; sourceTree = "<group>"; };
+		D0F375DD18FA981000D32A10 /* tier7-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tier7-2.png"; sourceTree = "<group>"; };
+		D0F375DE18FA981000D32A10 /* tier8-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tier8-2.png"; sourceTree = "<group>"; };
+		D0F375DF18FA981100D32A10 /* tier6-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tier6-2.png"; sourceTree = "<group>"; };
+		D0F375E018FA981100D32A10 /* tier3-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tier3-2.png"; sourceTree = "<group>"; };
+		D0F375E518FA990100D32A10 /* tier4-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tier4-2.png"; sourceTree = "<group>"; };
+		D0F375E618FA990100D32A10 /* tier2-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tier2-2.png"; sourceTree = "<group>"; };
+		D0F375E718FA990100D32A10 /* tier5-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tier5-2.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -610,6 +662,32 @@
 		D0E50A2818A7349300AA353E /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				D0F375D618FA958000D32A10 /* tier12-2.png */,
+				D0F375C518FA466400D32A10 /* tier12.png */,
+				D0F375D118FA958000D32A10 /* tier11-2.png */,
+				D0F375C618FA466400D32A10 /* tier11.png */,
+				D0F375D218FA958000D32A10 /* tier10-2.png */,
+				D0F375CB18FA7FA600D32A10 /* tier10.png */,
+				D0F375D318FA958000D32A10 /* tier9-2.png */,
+				D0F375C918FA78FA00D32A10 /* tier9.png */,
+				D0F375DE18FA981000D32A10 /* tier8-2.png */,
+				D0F375BA18FA457100D32A10 /* tier8.png */,
+				D0F375DD18FA981000D32A10 /* tier7-2.png */,
+				D0F375B918FA457100D32A10 /* tier7.png */,
+				D0F375DF18FA981100D32A10 /* tier6-2.png */,
+				D0F375BC18FA457100D32A10 /* tier6.png */,
+				D0F375E718FA990100D32A10 /* tier5-2.png */,
+				D0F375BB18FA457100D32A10 /* tier5.png */,
+				D0F375E518FA990100D32A10 /* tier4-2.png */,
+				D0F375BD18FA457100D32A10 /* tier4.png */,
+				D0F375E018FA981100D32A10 /* tier3-2.png */,
+				D0F375BE18FA457100D32A10 /* tier3.png */,
+				D0F375E618FA990100D32A10 /* tier2-2.png */,
+				D0F375CE18FA896300D32A10 /* tier2.png */,
+				D0F375D518FA958000D32A10 /* tier1-2.png */,
+				D0F375CD18FA896300D32A10 /* tier1.png */,
+				D0F375D418FA958000D32A10 /* tier0-2.png */,
+				D0F375B718FA3D9300D32A10 /* tier0.png */,
 				D0E47C2418ED2F9F009CA771 /* leaderboardbutton.png */,
 				D0E47C2518ED2F9F009CA771 /* refreshbutton.png */,
 				D0E47C2618ED2F9F009CA771 /* homebutton.png */,
@@ -958,26 +1036,37 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0EC757018EBCCCE0015AD4C /* GameLayoutOneView.xib in Resources */,
+				D0F375C418FA457100D32A10 /* tier3.png in Resources */,
 				D0E395BD18EE789B00FB4D5A /* BoardView.xib in Resources */,
 				D0E2E9B518D2D288009C757F /* Images.xcassets in Resources */,
 				D0EADDEC18E769FC0016D2A0 /* NGIcon120.png in Resources */,
 				D0EA871C18DA78DE0034B392 /* kick.caf in Resources */,
 				D0E395BB18EE782F00FB4D5A /* TileView.xib in Resources */,
+				D0F375D018FA896300D32A10 /* tier2.png in Resources */,
 				D0E2E9B818D2D288009C757F /* 2048-Info.plist in Resources */,
+				D0F375E318FA981100D32A10 /* tier6-2.png in Resources */,
 				D0E395B318EE74AE00FB4D5A /* GameLayoutView~ipad.xib in Resources */,
 				D0E4BCD418D97BB500132C17 /* swordattack.png in Resources */,
+				D0F375E418FA981100D32A10 /* tier3-2.png in Resources */,
+				D0F375CF18FA896300D32A10 /* tier1.png in Resources */,
+				D0F375D918FA958000D32A10 /* tier9-2.png in Resources */,
 				D0E3A0D018E7DA2900C7B63D /* PromoDialogView.xib in Resources */,
 				D033855218EA9C22008D7861 /* defaultbackground.png in Resources */,
 				D0EC757918EBE5E40015AD4C /* cloud2.png in Resources */,
 				D09124BC18CC55520050B59F /* whoosh.caf in Resources */,
 				D0DFFCCD18DC1687001424DF /* femalelose.png in Resources */,
+				D0F375C718FA466400D32A10 /* tier12.png in Resources */,
+				D0F375B818FA3D9300D32A10 /* tier0.png in Resources */,
+				D0F375E818FA990100D32A10 /* tier4-2.png in Resources */,
 				D0E1122F18C2EC6000808072 /* winningEffect.caf in Resources */,
 				D0EADDEE18E769FC0016D2A0 /* ToiletRush120.png in Resources */,
 				D033855418EA9C22008D7861 /* pinkbackground.png in Resources */,
 				D0F1143618D41299007EB840 /* MonsterView.xib in Resources */,
 				D09124BB18CC55520050B59F /* tick.caf in Resources */,
+				D0F375C318FA457100D32A10 /* tier4.png in Resources */,
 				D048A84018ACAAAB00411DF9 /* twitter_share.png in Resources */,
 				D0EADDED18E769FC0016D2A0 /* RushyKnightIcon120.png in Resources */,
+				D0F375E918FA990100D32A10 /* tier2-2.png in Resources */,
 				D0E2E9BD18D2D288009C757F /* MainView.xib in Resources */,
 				D0E47C2818ED2F9F009CA771 /* refreshbutton.png in Resources */,
 				D0B4663518E9689400334CA2 /* hand.png in Resources */,
@@ -991,18 +1080,27 @@
 				D0E4BCD218D9743700132C17 /* soldier.png in Resources */,
 				D0E48B7518DD9748000EF905 /* InGameMessageView~ipad.xib in Resources */,
 				D0E57C0E18E143A900EA4081 /* GameLayoutView.xib in Resources */,
+				D0F375E218FA981100D32A10 /* tier8-2.png in Resources */,
 				D0EA7EBF18D521C90095DEBD /* shield.png in Resources */,
 				D0EA7EC018D521C90095DEBD /* sword.png in Resources */,
 				D0EF3FD418D7FB1B00C50442 /* red_header.png in Resources */,
 				D0EA7ECC18D562A10095DEBD /* LocalLeaderBoardView.xib in Resources */,
 				D0E7FF6B18E69DEB00896C7B /* opendoor.png in Resources */,
+				D0F375BF18FA457100D32A10 /* tier7.png in Resources */,
 				D0E2E9BF18D2D288009C757F /* GamePlayView.xib in Resources */,
 				D0EA871D18DA78DE0034B392 /* metal_clang.caf in Resources */,
+				D0F375D718FA958000D32A10 /* tier11-2.png in Resources */,
+				D0F375EA18FA990100D32A10 /* tier5-2.png in Resources */,
+				D0F375E118FA981100D32A10 /* tier7-2.png in Resources */,
 				D0EA7ED018D58B0E0095DEBD /* boss.png in Resources */,
+				D0F375CC18FA7FA600D32A10 /* tier10.png in Resources */,
+				D0F375DB18FA958000D32A10 /* tier1-2.png in Resources */,
+				D0F375DC18FA958000D32A10 /* tier12-2.png in Resources */,
 				D0EADDF218E769FC0016D2A0 /* PromoBannerView~ipad.xib in Resources */,
 				D0A9405E18D6BED20049E018 /* rip.png in Resources */,
 				D0E1122B18C2EC6000808072 /* boing.caf in Resources */,
 				D0EC757A18EBE5E40015AD4C /* cloud1.png in Resources */,
+				D0F375CA18FA78FA00D32A10 /* tier9.png in Resources */,
 				D0E4BCCE18D95D9200132C17 /* Victory.png in Resources */,
 				D0E47C2118ED29DC009CA771 /* singleplayerbutton.png in Resources */,
 				D0EA7EC418D52FE90095DEBD /* defend.png in Resources */,
@@ -1017,10 +1115,15 @@
 				D0F0B90018E8FAF500809CA2 /* PromoDialogView~ipad.xib in Resources */,
 				D033855318EA9C22008D7861 /* bluebackground.png in Resources */,
 				D0EA7EC118D521C90095DEBD /* monster.png in Resources */,
+				D0F375C118FA457100D32A10 /* tier5.png in Resources */,
+				D0F375C218FA457100D32A10 /* tier6.png in Resources */,
 				D0EA871E18DA78DE0034B392 /* sharp_punch.caf in Resources */,
+				D0F375D818FA958000D32A10 /* tier10-2.png in Resources */,
 				D0EA7EBE18D521C90095DEBD /* arrow.png in Resources */,
 				D0EC756B18EBC3F80015AD4C /* GamePlayOneView.xib in Resources */,
 				D0E3A0D518E8119D00C7B63D /* doorsPerson.png in Resources */,
+				D0F375C818FA466400D32A10 /* tier11.png in Resources */,
+				D0F375DA18FA958000D32A10 /* tier0-2.png in Resources */,
 				D0E1123518C2EDF000808072 /* bling.caf in Resources */,
 				D0F11CB918D8412F007A8963 /* CustomizationItemView.xib in Resources */,
 				D0EADDE918E769FC0016D2A0 /* iRate.bundle in Resources */,
@@ -1029,6 +1132,7 @@
 				D0E3A0CE18E7D77D00C7B63D /* PromoIconView.xib in Resources */,
 				D0E2E9B918D2D288009C757F /* GameViewController.xib in Resources */,
 				D0EA871B18DA78DE0034B392 /* bounceEffect.caf in Resources */,
+				D0F375C018FA457100D32A10 /* tier8.png in Resources */,
 				D0EA872018DA7D0D0034B392 /* knight_main.png in Resources */,
 				D0EF3FD518D7FB1B00C50442 /* blue_header.png in Resources */,
 				D0E1123218C2ECF300808072 /* pop.caf in Resources */,

@@ -10,6 +10,15 @@
 
 @implementation SlotView
 
+- (id)init {
+    self = [super init];
+    if (self) {
+        self.layer.cornerRadius = self.height / 5.f;
+        self.clipsToBounds = YES;
+    }
+    return self;
+}
+
 - (void)unload {
     [self.tileView removeFromSuperview];
     self.tileView = nil;

@@ -8,14 +8,21 @@
 
 #import "XibView.h"
 
+#define MAX_LEVEL_TILE_PRESSED @"MAX_LEVEL_TILE_PRESSED"
+
 @interface TileView : XibView
 
 @property (strong, nonatomic) IBOutlet UILabel *label;
 
+@property (strong, nonatomic) IBOutlet UIButton *tileButton;
+
 @property (nonatomic) int currentValue;
 @property (nonatomic) int realValue;
-
+@property (nonatomic) BOOL isMergeable;
+@property (nonatomic) BOOL isMerged;
+@property (strong, nonatomic) IBOutlet UIImageView *imgView;
 - (void)updateToRealLabel;
 - (void)animateMergedTile;
+
 
 @end
