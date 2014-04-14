@@ -32,16 +32,25 @@
         [panRecognizer setDelegate:self];
         [self addGestureRecognizer:panRecognizer]; // add to the view you want to detect swipe on
         self.panNumbers = 0;
-        
-        [UserData instance].currentScore = 0;
-        
+        [[UserData instance] addObserver:self forKeyPath:@"currentScore" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
+
     }
     return self;
 }
 
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if([keyPath isEqualToString:@"currentScore"])
+    {
+        float value = [[change objectForKey:NSKeyValueChangeNewKey]floatValue];
+            self.currentScore.text = [NSString stringWithFormat:@"Current Score: %.f",value];
+    }
+}
+
 - (void)generateNewBoard {
     [UserData instance].currentScore = 0;
-    self.currentScore.text = [NSString stringWithFormat:@"Current Score: %.f",[UserData instance].currentScore];
+    
+
     [self.boardView generateNewBoard];
 }
 
@@ -57,26 +66,27 @@
     if (sender.state == UIGestureRecognizerStateChanged) {
         [sender cancelsTouchesInView]; // you may or may not need this - check documentation if unsure
         
+        float distanceTreshold = 20.f;
+        
         if (self.swipedBegan) {
+            if(fabsf(distance.x) > distanceTreshold && fabsf(distance.y) > distanceTreshold) {
             if (fabsf(distance.x) > fabsf(distance.y)) {
                 if (distance.x > 0) { // right
                     [self.boardView shiftTilesRight];
-                    NSLog(@"user swiped right");
                 } else if (distance.x < 0) { //left
                     [self.boardView shiftTilesLeft];
-                    NSLog(@"user swiped left");
                 }
             } else {
                 if (distance.y > 0) { // down
                     [self.boardView shiftTilesDown];
-                    NSLog(@"user swiped down");
                 } else if (distance.y < 0) { //up
                     [self.boardView shiftTilesUp];
-                    NSLog(@"user swiped up");
                 }
             }
             self.swipedBegan = NO;
-            self.currentScore.text = [NSString stringWithFormat:@"Current Score: %.f",[UserData instance].currentScore];
+            
+           // self.currentScore.text = [NSString stringWithFormat:@"Current Score: %.f",[UserData instance].currentScore];
+            }
         }
     }
 }
