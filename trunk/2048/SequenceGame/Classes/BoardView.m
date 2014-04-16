@@ -12,6 +12,7 @@
 #import "Utils.h"
 #import "UserData.h"
 #import "GameConstants.h"
+#import "AnimatedLabel.h"
 
 #define BOARD_ROWS 4
 #define BOARD_COLS 4
@@ -28,8 +29,16 @@
 
 @implementation BoardView
 
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+    }
+    return self;
+}
+
 - (void)generateNewBoard {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tilePressed:) name:MAX_LEVEL_TILE_PRESSED object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tilePressed:) name:MAX_LEVEL_TILE_PRESSED object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismissView) name:GAME_END_BUTTON_PRESSED_NOTIFICATION object:nil];
     [self unload];
     [self setupBoard];
     [self layoutSlots];
@@ -37,12 +46,12 @@
     [self generateRandomTile];
 }
 
-- (void)tilePressed:(id)tile {
-    NSDictionary *dict = [tile userInfo];
-    TileView *pressedTile = [dict objectForKey:@"pressedTile"];
-    [UserData instance].currentScore = [UserData instance].currentScore + pressedTile.currentValue;
-    pressedTile = nil;
-}
+//- (void)tilePressed:(id)tile {
+//    NSDictionary *dict = [tile userInfo];
+//    TileView *pressedTile = [dict objectForKey:@"pressedTile"];
+//    [UserData instance].currentScore = [UserData instance].currentScore + pressedTile.currentValue;
+//    pressedTile = nil;
+//}
 - (void)unload {
     for (SlotView *slotView in self.slots) {
         [slotView unload];
@@ -106,6 +115,7 @@
     [targetSlot.tileView performSelector:@selector(animateMergedTile) withObject:nil afterDelay:0.2f];
     targetSlot.tileView.currentValue = targetSlot.tileView.currentValue + currentSlot.tileView.currentValue;
     [UserData instance].currentScore = [UserData instance].currentScore + targetSlot.tileView.currentValue;
+    [self animateLabel:targetSlot.tileView.currentValue atSlot:targetSlot];
     targetSlot.tileView.isMerged = YES;
     currentSlot.tileView = nil;
     self.hasMerge = YES;
@@ -224,6 +234,14 @@
             [self performSelector:@selector(generateRandomTile) withObject:nil afterDelay:DELAY_NOMERGE];
         }
     }
+}
+
+- (void)animateLabel:(int)value atSlot:(SlotView *)slot {
+    AnimatedLabel *label = [[AnimatedLabel alloc] init];
+    [self addSubview:label];
+    label.label.text = [NSString stringWithFormat:@"+%d", value];
+    label.center = slot.center;
+    [label animate];
 }
 
 - (int)targetSlotForMovingLeftFromCurrentRow:(int)currentRow currentCol:(int)currentCol {
@@ -453,8 +471,9 @@
         }
     }
     if (!possibleMove) {
-        [self performSelector:@selector(dismissView) withObject:nil afterDelay:1.8f];
+       // [self performSelector:@selector(dismissView) withObject:nil afterDelay:1.8f];
         NSLog(@"Good Game");
+        [[NSNotificationCenter defaultCenter] postNotificationName:NO_MORE_MOVE_NOTIFICATION object:self];
         [[UserData instance] addNewScoreLocalLeaderBoard: [UserData instance].currentScore mode:GAME_MODE_VS];
     }
 }

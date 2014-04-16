@@ -23,6 +23,8 @@
 		D0B4663518E9689400334CA2 /* hand.png in Resources */ = {isa = PBXBuildFile; fileRef = D0B4663418E9689400334CA2 /* hand.png */; };
 		D0DFFCCD18DC1687001424DF /* femalelose.png in Resources */ = {isa = PBXBuildFile; fileRef = D0DFFCCB18DC1687001424DF /* femalelose.png */; };
 		D0DFFCCE18DC1687001424DF /* malelose.png in Resources */ = {isa = PBXBuildFile; fileRef = D0DFFCCC18DC1687001424DF /* malelose.png */; };
+		D0E0FE1918FBB07F00C49FDF /* AnimatedLabel.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E0FE1818FBB07F00C49FDF /* AnimatedLabel.xib */; };
+		D0E0FE1C18FBB08F00C49FDF /* AnimatedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E0FE1B18FBB08F00C49FDF /* AnimatedLabel.m */; };
 		D0E1122B18C2EC6000808072 /* boing.caf in Resources */ = {isa = PBXBuildFile; fileRef = D0E1122118C2EC6000808072 /* boing.caf */; };
 		D0E1122F18C2EC6000808072 /* winningEffect.caf in Resources */ = {isa = PBXBuildFile; fileRef = D0E1122518C2EC6000808072 /* winningEffect.caf */; };
 		D0E1123218C2ECF300808072 /* pop.caf in Resources */ = {isa = PBXBuildFile; fileRef = D0E1123018C2ECF300808072 /* pop.caf */; };
@@ -59,8 +61,6 @@
 		D0E30EDF18A37D6400FFD3CE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E30EDE18A37D6400FFD3CE /* QuartzCore.framework */; };
 		D0E36B8B18C2906F00BA56E7 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E36B8A18C2906F00BA56E7 /* StoreKit.framework */; };
 		D0E378FF18D42CF700541404 /* GameManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E378FE18D42CF700541404 /* GameManager.m */; };
-		D0E395B118EE746700FB4D5A /* GameLayoutOneView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E395B018EE746700FB4D5A /* GameLayoutOneView~ipad.xib */; };
-		D0E395B318EE74AE00FB4D5A /* GameLayoutView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E395B218EE74AE00FB4D5A /* GameLayoutView~ipad.xib */; };
 		D0E395B918EE782200FB4D5A /* TileView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E395B818EE782200FB4D5A /* TileView.m */; };
 		D0E395BB18EE782F00FB4D5A /* TileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E395BA18EE782F00FB4D5A /* TileView.xib */; };
 		D0E395BD18EE789B00FB4D5A /* BoardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E395BC18EE789B00FB4D5A /* BoardView.xib */; };
@@ -81,6 +81,9 @@
 		D0E48B7518DD9748000EF905 /* InGameMessageView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E48B7418DD9747000EF905 /* InGameMessageView~ipad.xib */; };
 		D0E48B7718DD9964000EF905 /* toilet_main.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E48B7618DD9964000EF905 /* toilet_main.png */; };
 		D0E4A80218EE6DE7005D0CED /* LocalLeaderBoardView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E4A80118EE6DE7005D0CED /* LocalLeaderBoardView~ipad.xib */; };
+		D0E4B2CB18FCEEE700260ABD /* playbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E4B2CA18FCEEE700260ABD /* playbutton.png */; };
+		D0E4B2CE18FD268A00260ABD /* main2.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E4B2CC18FD268A00260ABD /* main2.png */; };
+		D0E4B2CF18FD268A00260ABD /* main.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E4B2CD18FD268A00260ABD /* main.png */; };
 		D0E4BCCE18D95D9200132C17 /* Victory.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E4BCCD18D95D9200132C17 /* Victory.png */; };
 		D0E4BCD118D9743700132C17 /* bossknight.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E4BCCF18D9743700132C17 /* bossknight.png */; };
 		D0E4BCD218D9743700132C17 /* soldier.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E4BCD018D9743700132C17 /* soldier.png */; };
@@ -147,7 +150,6 @@
 		D0EADE0118E76CC80016D2A0 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D0EADDFF18E76CC80016D2A0 /* libGoogleAnalyticsServices.a */; };
 		D0EC756B18EBC3F80015AD4C /* GamePlayOneView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0EC756A18EBC3F80015AD4C /* GamePlayOneView.xib */; };
 		D0EC756E18EBC5EF0015AD4C /* GamePlayOneView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0EC756C18EBC5EF0015AD4C /* GamePlayOneView.m */; };
-		D0EC757018EBCCCE0015AD4C /* GameLayoutOneView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0EC756F18EBCCCE0015AD4C /* GameLayoutOneView.xib */; };
 		D0EC757618EBD0990015AD4C /* GameLayoutOneView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0EC757518EBD0990015AD4C /* GameLayoutOneView.m */; };
 		D0EC757918EBE5E40015AD4C /* cloud2.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EC757718EBE5E40015AD4C /* cloud2.png */; };
 		D0EC757A18EBE5E40015AD4C /* cloud1.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EC757818EBE5E40015AD4C /* cloud1.png */; };
@@ -218,6 +220,9 @@
 		D0B4663418E9689400334CA2 /* hand.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hand.png; sourceTree = "<group>"; };
 		D0DFFCCB18DC1687001424DF /* femalelose.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = femalelose.png; sourceTree = "<group>"; };
 		D0DFFCCC18DC1687001424DF /* malelose.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = malelose.png; sourceTree = "<group>"; };
+		D0E0FE1818FBB07F00C49FDF /* AnimatedLabel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnimatedLabel.xib; sourceTree = "<group>"; };
+		D0E0FE1A18FBB08F00C49FDF /* AnimatedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatedLabel.h; sourceTree = "<group>"; };
+		D0E0FE1B18FBB08F00C49FDF /* AnimatedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimatedLabel.m; sourceTree = "<group>"; };
 		D0E1122118C2EC6000808072 /* boing.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = boing.caf; sourceTree = "<group>"; };
 		D0E1122518C2EC6000808072 /* winningEffect.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = winningEffect.caf; sourceTree = "<group>"; };
 		D0E1123018C2ECF300808072 /* pop.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = pop.caf; sourceTree = "<group>"; };
@@ -268,8 +273,6 @@
 		D0E36B8A18C2906F00BA56E7 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		D0E378FD18D42CF700541404 /* GameManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameManager.h; sourceTree = "<group>"; };
 		D0E378FE18D42CF700541404 /* GameManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameManager.m; sourceTree = "<group>"; };
-		D0E395B018EE746700FB4D5A /* GameLayoutOneView~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "GameLayoutOneView~ipad.xib"; sourceTree = "<group>"; };
-		D0E395B218EE74AE00FB4D5A /* GameLayoutView~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "GameLayoutView~ipad.xib"; sourceTree = "<group>"; };
 		D0E395B718EE782200FB4D5A /* TileView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TileView.h; sourceTree = "<group>"; };
 		D0E395B818EE782200FB4D5A /* TileView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TileView.m; sourceTree = "<group>"; };
 		D0E395BA18EE782F00FB4D5A /* TileView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TileView.xib; sourceTree = "<group>"; };
@@ -296,6 +299,9 @@
 		D0E48B7418DD9747000EF905 /* InGameMessageView~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "InGameMessageView~ipad.xib"; sourceTree = "<group>"; };
 		D0E48B7618DD9964000EF905 /* toilet_main.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = toilet_main.png; sourceTree = "<group>"; };
 		D0E4A80118EE6DE7005D0CED /* LocalLeaderBoardView~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "LocalLeaderBoardView~ipad.xib"; sourceTree = "<group>"; };
+		D0E4B2CA18FCEEE700260ABD /* playbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = playbutton.png; sourceTree = "<group>"; };
+		D0E4B2CC18FD268A00260ABD /* main2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = main2.png; sourceTree = "<group>"; };
+		D0E4B2CD18FD268A00260ABD /* main.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = main.png; sourceTree = "<group>"; };
 		D0E4BCCD18D95D9200132C17 /* Victory.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Victory.png; sourceTree = "<group>"; };
 		D0E4BCCF18D9743700132C17 /* bossknight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bossknight.png; sourceTree = "<group>"; };
 		D0E4BCD018D9743700132C17 /* soldier.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = soldier.png; sourceTree = "<group>"; };
@@ -401,7 +407,6 @@
 		D0EC756A18EBC3F80015AD4C /* GamePlayOneView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GamePlayOneView.xib; sourceTree = "<group>"; };
 		D0EC756C18EBC5EF0015AD4C /* GamePlayOneView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GamePlayOneView.m; sourceTree = "<group>"; };
 		D0EC756D18EBC5EF0015AD4C /* GamePlayOneView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GamePlayOneView.h; sourceTree = "<group>"; };
-		D0EC756F18EBCCCE0015AD4C /* GameLayoutOneView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameLayoutOneView.xib; sourceTree = "<group>"; };
 		D0EC757418EBD0990015AD4C /* GameLayoutOneView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameLayoutOneView.h; sourceTree = "<group>"; };
 		D0EC757518EBD0990015AD4C /* GameLayoutOneView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameLayoutOneView.m; sourceTree = "<group>"; };
 		D0EC757718EBE5E40015AD4C /* cloud2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cloud2.png; sourceTree = "<group>"; };
@@ -574,6 +579,8 @@
 				D0E7628918D626B7005CDF88 /* MonsterData.m */,
 				D0A9405818D6A5EF0049E018 /* GameLayoutView.h */,
 				D0E395BE18EE78A600FB4D5A /* BoardView.h */,
+				D0E0FE1A18FBB08F00C49FDF /* AnimatedLabel.h */,
+				D0E0FE1B18FBB08F00C49FDF /* AnimatedLabel.m */,
 				D0E395BF18EE78A600FB4D5A /* BoardView.m */,
 				D0A9405918D6A5EF0049E018 /* GameLayoutView.m */,
 				D0F11CB018D83CFD007A8963 /* CustomizationView.h */,
@@ -586,9 +593,6 @@
 			isa = PBXGroup;
 			children = (
 				D0E57C0D18E143A900EA4081 /* GameLayoutView.xib */,
-				D0E395B218EE74AE00FB4D5A /* GameLayoutView~ipad.xib */,
-				D0EC756F18EBCCCE0015AD4C /* GameLayoutOneView.xib */,
-				D0E395B018EE746700FB4D5A /* GameLayoutOneView~ipad.xib */,
 				D0EA7ECB18D562A10095DEBD /* LocalLeaderBoardView.xib */,
 				D0E395BA18EE782F00FB4D5A /* TileView.xib */,
 				D0E395BC18EE789B00FB4D5A /* BoardView.xib */,
@@ -604,6 +608,7 @@
 				D0E2E9A418D2D288009C757F /* ResultView.xib */,
 				D0F1143518D41299007EB840 /* MonsterView.xib */,
 				D0F11CB318D83D70007A8963 /* CustomizationView.xib */,
+				D0E0FE1818FBB07F00C49FDF /* AnimatedLabel.xib */,
 			);
 			path = Xib;
 			sourceTree = "<group>";
@@ -662,6 +667,9 @@
 		D0E50A2818A7349300AA353E /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				D0E4B2CC18FD268A00260ABD /* main2.png */,
+				D0E4B2CD18FD268A00260ABD /* main.png */,
+				D0E4B2CA18FCEEE700260ABD /* playbutton.png */,
 				D0F375D618FA958000D32A10 /* tier12-2.png */,
 				D0F375C518FA466400D32A10 /* tier12.png */,
 				D0F375D118FA958000D32A10 /* tier11-2.png */,
@@ -1035,7 +1043,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D0EC757018EBCCCE0015AD4C /* GameLayoutOneView.xib in Resources */,
+				D0E0FE1918FBB07F00C49FDF /* AnimatedLabel.xib in Resources */,
 				D0F375C418FA457100D32A10 /* tier3.png in Resources */,
 				D0E395BD18EE789B00FB4D5A /* BoardView.xib in Resources */,
 				D0E2E9B518D2D288009C757F /* Images.xcassets in Resources */,
@@ -1045,7 +1053,6 @@
 				D0F375D018FA896300D32A10 /* tier2.png in Resources */,
 				D0E2E9B818D2D288009C757F /* 2048-Info.plist in Resources */,
 				D0F375E318FA981100D32A10 /* tier6-2.png in Resources */,
-				D0E395B318EE74AE00FB4D5A /* GameLayoutView~ipad.xib in Resources */,
 				D0E4BCD418D97BB500132C17 /* swordattack.png in Resources */,
 				D0F375E418FA981100D32A10 /* tier3-2.png in Resources */,
 				D0F375CF18FA896300D32A10 /* tier1.png in Resources */,
@@ -1061,6 +1068,7 @@
 				D0E1122F18C2EC6000808072 /* winningEffect.caf in Resources */,
 				D0EADDEE18E769FC0016D2A0 /* ToiletRush120.png in Resources */,
 				D033855418EA9C22008D7861 /* pinkbackground.png in Resources */,
+				D0E4B2CB18FCEEE700260ABD /* playbutton.png in Resources */,
 				D0F1143618D41299007EB840 /* MonsterView.xib in Resources */,
 				D09124BB18CC55520050B59F /* tick.caf in Resources */,
 				D0F375C318FA457100D32A10 /* tier4.png in Resources */,
@@ -1087,9 +1095,11 @@
 				D0EA7ECC18D562A10095DEBD /* LocalLeaderBoardView.xib in Resources */,
 				D0E7FF6B18E69DEB00896C7B /* opendoor.png in Resources */,
 				D0F375BF18FA457100D32A10 /* tier7.png in Resources */,
+				D0E4B2CE18FD268A00260ABD /* main2.png in Resources */,
 				D0E2E9BF18D2D288009C757F /* GamePlayView.xib in Resources */,
 				D0EA871D18DA78DE0034B392 /* metal_clang.caf in Resources */,
 				D0F375D718FA958000D32A10 /* tier11-2.png in Resources */,
+				D0E4B2CF18FD268A00260ABD /* main.png in Resources */,
 				D0F375EA18FA990100D32A10 /* tier5-2.png in Resources */,
 				D0F375E118FA981100D32A10 /* tier7-2.png in Resources */,
 				D0EA7ED018D58B0E0095DEBD /* boss.png in Resources */,
@@ -1107,7 +1117,6 @@
 				D0EADDF118E769FC0016D2A0 /* PromoBannerView.xib in Resources */,
 				D0E1123318C2ECF300808072 /* ticking.caf in Resources */,
 				D0E47C2918ED2F9F009CA771 /* homebutton.png in Resources */,
-				D0E395B118EE746700FB4D5A /* GameLayoutOneView~ipad.xib in Resources */,
 				D0E48B7718DD9964000EF905 /* toilet_main.png in Resources */,
 				D0F11CB418D83D70007A8963 /* CustomizationView.xib in Resources */,
 				D0EA7EC518D52FE90095DEBD /* attack.png in Resources */,
@@ -1206,6 +1215,7 @@
 				D0EC757618EBD0990015AD4C /* GameLayoutOneView.m in Sources */,
 				D0F0B8FE18E8F4D900809CA2 /* TrackUtils.m in Sources */,
 				D0EADDE218E769FC0016D2A0 /* AnimUtil.m in Sources */,
+				D0E0FE1C18FBB08F00C49FDF /* AnimatedLabel.m in Sources */,
 				D0E2E9B318D2D288009C757F /* UserData.m in Sources */,
 				D0EADDEA18E769FC0016D2A0 /* iRate.m in Sources */,
 				D0EADDE318E769FC0016D2A0 /* NSArray+Util.m in Sources */,

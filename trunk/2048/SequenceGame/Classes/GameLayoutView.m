@@ -33,9 +33,22 @@
         [self addGestureRecognizer:panRecognizer]; // add to the view you want to detect swipe on
         self.panNumbers = 0;
         [[UserData instance] addObserver:self forKeyPath:@"currentScore" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
-
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(displayGameEnd) name:NO_MORE_MOVE_NOTIFICATION object:nil];
+        self.backgroundView.layer.cornerRadius = 20.f * IPAD_SCALE;
+        self.backgroundView.clipsToBounds = YES;
+        self.currentScore.layer.cornerRadius = 20.f * IPAD_SCALE;
     }
     return self;
+}
+
+- (void)displayGameEnd {
+    self.fadeView.hidden = NO;
+    self.endGameButton.hidden = NO;
+    self.endGameImg.hidden = NO;
+}
+
+- (IBAction)endGameButtonPressed:(id)sender {
+        [[NSNotificationCenter defaultCenter] postNotificationName:GAME_END_BUTTON_PRESSED_NOTIFICATION object:self];
 }
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
@@ -43,14 +56,15 @@
     if([keyPath isEqualToString:@"currentScore"])
     {
         float value = [[change objectForKey:NSKeyValueChangeNewKey]floatValue];
-            self.currentScore.text = [NSString stringWithFormat:@"Current Score: %.f",value];
+            self.currentScore.text = [NSString stringWithFormat:@"%.f",value];
     }
 }
 
 - (void)generateNewBoard {
+    self.fadeView.hidden =YES;
+    self.endGameButton.hidden = YES;
+    self.endGameImg.hidden = YES;
     [UserData instance].currentScore = 0;
-    
-
     [self.boardView generateNewBoard];
 }
 
@@ -66,26 +80,23 @@
     if (sender.state == UIGestureRecognizerStateChanged) {
         [sender cancelsTouchesInView]; // you may or may not need this - check documentation if unsure
         
-        float distanceTreshold = 20.f;
-        
+        float distanceTreshold = 10.f;
         if (self.swipedBegan) {
-            if(fabsf(distance.x) > distanceTreshold && fabsf(distance.y) > distanceTreshold) {
-            if (fabsf(distance.x) > fabsf(distance.y)) {
-                if (distance.x > 0) { // right
-                    [self.boardView shiftTilesRight];
-                } else if (distance.x < 0) { //left
-                    [self.boardView shiftTilesLeft];
+            if(fabsf(distance.x) > distanceTreshold || fabsf(distance.y) > distanceTreshold) {
+                if (fabsf(distance.x) > fabsf(distance.y)) {
+                    if (distance.x > 0) { // right
+                        [self.boardView shiftTilesRight];
+                    } else if (distance.x < 0) { //left
+                        [self.boardView shiftTilesLeft];
+                    }
+                } else {
+                    if (distance.y > 0) { // down
+                        [self.boardView shiftTilesDown];
+                    } else if (distance.y < 0) { //up
+                        [self.boardView shiftTilesUp];
+                    }
                 }
-            } else {
-                if (distance.y > 0) { // down
-                    [self.boardView shiftTilesDown];
-                } else if (distance.y < 0) { //up
-                    [self.boardView shiftTilesUp];
-                }
-            }
-            self.swipedBegan = NO;
-            
-           // self.currentScore.text = [NSString stringWithFormat:@"Current Score: %.f",[UserData instance].currentScore];
+                self.swipedBegan = NO;
             }
         }
     }

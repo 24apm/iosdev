@@ -76,10 +76,10 @@
     self.timeAttackMode.hidden = YES;
     self.timeAttackMode.size = self.containerView.size;
     
-    self.singleMode = [[GamePlayOneView alloc] init];
-    [self.containerView addSubview:self.singleMode ];
-    self.singleMode.hidden = YES;
-    self.singleMode.size = self.containerView.size;
+//    self.singleMode = [[GamePlayOneView alloc] init];
+//    [self.containerView addSubview:self.singleMode ];
+//    self.singleMode.hidden = YES;
+//    self.singleMode.size = self.containerView.size;
     
     self.resultView = [[ResultView alloc] init];
     [self.containerView addSubview:self.resultView];
