@@ -23,12 +23,13 @@
 @implementation PromoDialogView
 
 static int promoCancelledCount = 0;
-
+static int promoPressedCount = 0;
 
 - (id)init {
     self = [super init];
     if (self) {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(promoIconCallback:) name:PROMO_ICON_CALLBACK object:nil];
+        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(showCloseButton) name:ICON_PRESSED_NOTIFICATION object:nil];
         [TrackUtils trackAction:@"PromoDialogView" label:@"init"];
     }
     return self;
@@ -40,6 +41,28 @@ static int promoCancelledCount = 0;
     } else {
         [TrackUtils trackAction:@"PromoDialogView" label:@"PROMO_CANCELLED_COUNT_MAX_REACHED"];
     }
+}
+
+- (void)handShow {
+    //[self fadeInAndOut:self.handView1];
+    //[self fadeInAndOut:self.handView2];
+    //[self fadeInAndOut:self.handView3];
+}
+
+- (void)handHide {
+    //[self removeFadeInAndOut:self.handView1];
+    //[self removeFadeInAndOut:self.handView2];
+    //[self removeFadeInAndOut:self.handView3];
+}
+
+- (void)fadeInAndOut:(UIView *)view {
+    CABasicAnimation *fadeInAndOut = [CABasicAnimation animationWithKeyPath:@"opacity"];
+    fadeInAndOut.fromValue = [NSNumber numberWithFloat:1.f];
+    fadeInAndOut.toValue = [NSNumber numberWithFloat:1.f];
+    fadeInAndOut.autoreverses = YES;
+    fadeInAndOut.duration = 0.8f;
+    fadeInAndOut.repeatCount = HUGE_VAL;
+    [view.layer addAnimation:fadeInAndOut forKey:@"fadeInAndOut"];
 }
 
 - (void)show {
@@ -54,7 +77,7 @@ static int promoCancelledCount = 0;
 }
 
 - (void)setupPromos {
-    self.promoArray = [[PromoManager instance] nextPromoSetWithSize:3];
+    self.promoArray = [[PromoManager instance] nextPromoSetWithSize:self.promoIcons.count];
     for (int i = 0; i < self.promoArray.count; i++) {
         PromoIconView *promoIconView = [self.promoIcons objectAtIndex:i];
         [promoIconView setupWithPromoGameData:[self.promoArray objectAtIndex:i]];
@@ -96,7 +119,7 @@ static int promoCancelledCount = 0;
 - (void)animateFakePromos {
     float delay = 0.f;
     
-    for (int i = 0; i < 3; i++) {
+    for (int i = 0; i < self.promoIcons.count; i++) {
         delay += 0.1f;
         PromoIconView *promoIconView = [self.promoIcons objectAtIndex:i];
         [self performSelector:@selector(animateFakePromo:) withObject:promoIconView afterDelay:delay];
@@ -104,7 +127,7 @@ static int promoCancelledCount = 0;
 }
 
 - (void)animateFakePromo:(PromoIconView *)promoIconView {
-    UIImageView *fakePromo = [[UIImageView alloc] initWithImage:promoIconView.iconView.image];
+    UIImageView *fakePromo = [[UIImageView alloc] initWithImage:promoIconView.backViewImage.image];
     [self addSubview:fakePromo];
     fakePromo.frame = promoIconView.frame;
     fakePromo.center = self.center;
@@ -158,16 +181,21 @@ static int promoCancelledCount = 0;
         delay += 0.3f;
         [self performSelector:@selector(animateInAndWiggle:) withObject:promoIconView afterDelay:delay];
     }
-    
-    delay += 0.5f;
-    [self performSelector:@selector(animateIn:) withObject:self.closeButton afterDelay:delay];
+}
+
+- (void)showCloseButton {
+    promoPressedCount++;
+    if(promoPressedCount >= self.promoIcons.count ){
+        float delay = 2.f;
+        [self performSelector:@selector(fadeIn:) withObject:self.closeButton afterDelay:delay];
+        promoPressedCount = 0;
+    }
 }
 
 - (void)animateInAndWiggle:(UIView *)view {
     [self animateIn:view];
-    [AnimUtil wobble:view duration:0.3f angle:M_PI/128.f repeatCount:HUGE_VAL];
+    [AnimUtil wobble:view duration:0.6f angle:M_PI/128.f repeatCount:HUGE_VAL];
 }
-
 
 - (void)animateIn:(UIView *)view {
     CABasicAnimation *fadeIn = [CABasicAnimation animationWithKeyPath:@"opacity"];
@@ -181,7 +209,7 @@ static int promoCancelledCount = 0;
     CGPoint fromPoint = view.center;
     CGPoint toPoint = view.center;
     
-    fromPoint.y = -view.height;
+    //fromPoint.y = -view.height;
     view.center = fromPoint;
     
     NSArray *positionValues = [NSArray arrayWithObjects:
@@ -204,6 +232,23 @@ static int promoCancelledCount = 0;
     view.alpha = 1.0f;
     view.center = toPoint;
 
+}
+
+- (void)fadeIn:(UIView *)view {
+    CABasicAnimation *fadeIn = [CABasicAnimation animationWithKeyPath:@"opacity"];
+    fadeIn.toValue = [NSNumber numberWithFloat:1.f];
+    
+    CAAnimationGroup *groupAnimation = [CAAnimationGroup animation];
+    [groupAnimation setAnimations:[NSArray arrayWithObjects:fadeIn, nil]];
+    [groupAnimation setDuration:1.f];
+    [groupAnimation setRemovedOnCompletion:NO];
+    [groupAnimation setFillMode:kCAFillModeForwards];
+    [view.layer addAnimation:groupAnimation forKey:@"animateIn"];
+    [self performSelector:@selector(showView:) withObject:view afterDelay:groupAnimation.duration];
+}
+
+- (void)showView:(UIView *)view {
+    view.alpha = 1.0f;
 }
 
 @end

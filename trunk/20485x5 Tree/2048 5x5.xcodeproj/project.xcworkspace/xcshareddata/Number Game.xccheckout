@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>F2646F31-8A34-41A4-B5F1-A470E6F6CB60</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Number Game</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>626BD448-FC4C-4BEA-8D20-D0ECF3CD4758</key>
+		<string>https://github.com/24apm/iosdev.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>trunk/SequenceGame/Number Game.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>626BD448-FC4C-4BEA-8D20-D0ECF3CD4758</key>
+		<string>../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/24apm/iosdev.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>626BD448-FC4C-4BEA-8D20-D0ECF3CD4758</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>626BD448-FC4C-4BEA-8D20-D0ECF3CD4758</string>
+			<key>IDESourceControlWCCName</key>
+			<string>iosdev</string>
+		</dict>
+	</array>
+</dict>
+</plist>

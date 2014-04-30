@@ -14,6 +14,11 @@
 #import "InGameMessageView.h"
 #import "Utils.h"
 #import "UserData.h"
+#import "PromoDialogView.h"
+#import "iRate.h"
+#import "TrackUtils.h"
+
+#define TIMES_PLAYED_BEFORE_PROMO 3
 
 @interface GameLayoutView()
 
@@ -24,9 +29,22 @@
 
 @implementation GameLayoutView
 
+static int promoDialogInLeaderBoardCount = 0;
+
+- (void)showPromoDialog {
+    [TrackUtils trackAction:@"Gameplay" label:@"End"];
+    promoDialogInLeaderBoardCount++;
+    
+    if (promoDialogInLeaderBoardCount % TIMES_PLAYED_BEFORE_PROMO == 0) {
+        [PromoDialogView show];
+    }
+    [[iRate sharedInstance] logEvent:NO];
+}
+
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
+
         // add pan recognizer to the view when initialized
         UIPanGestureRecognizer *panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panRecognized:)];
         [panRecognizer setDelegate:self];
@@ -42,6 +60,7 @@
 }
 
 - (void)displayGameEnd {
+    [self showPromoDialog];
     self.fadeView.hidden = NO;
     self.endGameButton.hidden = NO;
     self.endGameImg.hidden = NO;
@@ -56,7 +75,7 @@
     if([keyPath isEqualToString:@"currentScore"])
     {
         float value = [[change objectForKey:NSKeyValueChangeNewKey]floatValue];
-            self.currentScore.text = [NSString stringWithFormat:@"%.f",value];
+            self.currentScore.text = [Utils formatWithComma:value];
     }
 }
 

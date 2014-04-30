@@ -17,5 +17,6 @@
 + (float)randBetweenMin:(float)min max:(float)max;
 + (int)randBetweenMinInt:(int)min max:(int)max;
 + (UIViewController *)rootViewController;
++ (NSString *)formatWithComma:(int)integer;
 
 @end

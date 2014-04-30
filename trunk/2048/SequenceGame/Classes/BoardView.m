@@ -13,6 +13,7 @@
 #import "UserData.h"
 #import "GameConstants.h"
 #import "AnimatedLabel.h"
+#import "SoundManager.h"
 
 #define BOARD_ROWS 4
 #define BOARD_COLS 4
@@ -143,8 +144,11 @@
     }
     if (self.hasMerge == YES || self.hasMove == YES) {
         if (self.hasMerge) {
+           // [[SoundManager instance] play:SOUND_EFFECT_BUI];
+             [[SoundManager instance] play:SOUND_EFFECT_BOILING];
             [self performSelector:@selector(generateRandomTile) withObject:nil afterDelay:DELAY_MERGE];
         } else {
+            [[SoundManager instance] play:SOUND_EFFECT_DUING];
             [self performSelector:@selector(generateRandomTile) withObject:nil afterDelay:DELAY_NOMERGE];
         }
     }
@@ -171,8 +175,11 @@
     }
     if (self.hasMerge == YES || self.hasMove == YES) {
         if (self.hasMerge) {
+            //[[SoundManager instance] play:SOUND_EFFECT_BUI];
+             [[SoundManager instance] play:SOUND_EFFECT_BOILING];
             [self performSelector:@selector(generateRandomTile) withObject:nil afterDelay:DELAY_MERGE];
         } else {
+            [[SoundManager instance] play:SOUND_EFFECT_DUING];
             [self performSelector:@selector(generateRandomTile) withObject:nil afterDelay:DELAY_NOMERGE];
         }
     }
@@ -200,8 +207,11 @@
     }
     if (self.hasMerge == YES || self.hasMove == YES) {
         if (self.hasMerge) {
+           // [[SoundManager instance] play:SOUND_EFFECT_BUI];
+             [[SoundManager instance] play:SOUND_EFFECT_BOILING];
             [self performSelector:@selector(generateRandomTile) withObject:nil afterDelay:DELAY_MERGE];
         } else {
+            [[SoundManager instance] play:SOUND_EFFECT_DUING];
             [self performSelector:@selector(generateRandomTile) withObject:nil afterDelay:DELAY_NOMERGE];
         }
     }
@@ -229,8 +239,11 @@
     }
     if (self.hasMerge == YES || self.hasMove == YES){
         if (self.hasMerge) {
+            //[[SoundManager instance] play:SOUND_EFFECT_BUI];
+             [[SoundManager instance] play:SOUND_EFFECT_BOILING];
             [self performSelector:@selector(generateRandomTile) withObject:nil afterDelay:DELAY_MERGE];
         } else {
+            [[SoundManager instance] play:SOUND_EFFECT_DUING];
             [self performSelector:@selector(generateRandomTile) withObject:nil afterDelay:DELAY_NOMERGE];
         }
     }

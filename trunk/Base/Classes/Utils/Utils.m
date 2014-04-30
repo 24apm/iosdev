@@ -37,4 +37,9 @@
     return appDelegateBase.window.rootViewController;
 }
 
++ (NSString *)formatWithComma:(int)integer {
+    NSString *formattedInteger = [NSNumberFormatter localizedStringFromNumber:@(integer) numberStyle:NSNumberFormatterDecimalStyle];
+    return formattedInteger;
+}
+
 @end

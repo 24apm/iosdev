@@ -50,14 +50,14 @@
          self.currentScore.text = [NSString stringWithFormat:@"Current: %.3F", [UserData instance].currentScore];
     } else {
         format = @"%.0F";
-         self.currentScore.text = [NSString stringWithFormat:@"Current: %.0F", [UserData instance].currentScore];
+         self.currentScore.text = [Utils formatWithComma:[UserData instance].currentScore];
     }
     BOOL notFound = YES;
     double newEntry = [UserData instance].currentScore;
     for (step = 0; step < localLeaderBoardMemory.count && step < self.labelScores.count; step++) {
         UILabel *scoreText = [self.labelScores objectAtIndex:step];
         double score = [[localLeaderBoardMemory objectAtIndex:step] doubleValue];
-        scoreText.text = [NSString stringWithFormat:format, score];
+        scoreText.text = [Utils formatWithComma:score];
         if (score == newEntry && notFound) {
             if ([[GameManager instance].gameMode isEqualToString:GAME_MODE_SINGLE]) {
                 scoreText.textColor = kCOLOR_RED;

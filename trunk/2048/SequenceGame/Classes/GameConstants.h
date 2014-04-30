@@ -15,7 +15,7 @@
 
 // Game Center
 #define kLeaderboardBestTimeID @"com.jeffrwan.restroom2.fastest"
-#define kLeaderboardBestScoreID @"com.jeffrwan.restroom.bestscore"
+#define kLeaderboardBestScoreID @"com.jeffrwan.2048sushi.point"
 
 #define kAchievementOneStreak @"com.jeffrwan.thenumbergame.level1"
 #define kAchievement5Streak @"com.jeffrwan.thenumbergame.level5"
@@ -45,6 +45,9 @@
 #define SOUND_EFFECT_TICKING @"ticking"
 #define SOUND_EFFECT_WINNING @"winningEffect"
 #define SOUND_EFFECT_SHARP_PUNCH @"sharp_punch"
+#define SOUND_EFFECT_BUI @"bui"
+#define SOUND_EFFECT_BOILING @"boiling"
+#define SOUND_EFFECT_DUING @"duing"
 
 #define IMAGE_ARROW @"swordattack.png"
 #define IMAGE_MONSTER @"soldier.png"

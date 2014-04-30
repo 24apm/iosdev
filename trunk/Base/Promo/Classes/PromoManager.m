@@ -105,7 +105,6 @@
 }
 
 - (BOOL)launchInstalledApp:(PromoGameData *)promoGameData {
-    [TrackUtils trackAction:@"xpromo_banner_launchInstalledApp" label:promoGameData.description];
     UIApplication *ourApplication = [UIApplication sharedApplication];
     NSString *URLEncodedText = @"";
     NSString *scheme = [promoGameData.bundleId stringByAppendingString:@"://"];
@@ -113,6 +112,7 @@
     NSURL *ourURL = [NSURL URLWithString:ourPath];
     if ([ourApplication canOpenURL:ourURL]) {
         [ourApplication openURL:ourURL];
+        [TrackUtils trackAction:@"xpromo_banner_launchInstalledApp" label:promoGameData.description];
         return YES;
     } else {
         return NO;
