@@ -29,16 +29,12 @@
 
 @implementation GameLayoutView
 
-static int promoDialogInLeaderBoardCount = 0;
 
 - (void)showPromoDialog {
     [TrackUtils trackAction:@"GamePlay" label:@"End"];
-    promoDialogInLeaderBoardCount++;
-    
-    if (promoDialogInLeaderBoardCount % TIMES_PLAYED_BEFORE_PROMO == 0) {
+
         [PromoDialogView show];
-    }
-    [[iRate sharedInstance] logEvent:NO];
+
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder {

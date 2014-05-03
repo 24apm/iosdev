@@ -29,7 +29,6 @@
 
 @implementation GamePlayView
 
-static int promoDialogInLeaderBoardCount = 0;
 
 - (IBAction)replayButtonPressed:(UIButton *)sender {
     [self show];

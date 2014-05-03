@@ -18,19 +18,19 @@
     {
       "size" : "57x57",
       "idiom" : "iphone",
-      "filename" : "20485x557.png",
+      "filename" : "20485x5572-1.png",
       "scale" : "1x"
     },
     {
       "size" : "57x57",
       "idiom" : "iphone",
-      "filename" : "20485x5114.png",
+      "filename" : "20485x51142.png",
       "scale" : "2x"
     },
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "20485x5120.png",
+      "filename" : "20485x51202.png",
       "scale" : "2x"
     },
     {
@@ -66,30 +66,33 @@
     {
       "size" : "72x72",
       "idiom" : "ipad",
-      "filename" : "20485x572.png",
+      "filename" : "20485x5572.png",
       "scale" : "1x"
     },
     {
       "size" : "72x72",
       "idiom" : "ipad",
-      "filename" : "20485x5144.png",
+      "filename" : "20485x51442.png",
       "scale" : "2x"
     },
     {
       "size" : "76x76",
       "idiom" : "ipad",
-      "filename" : "20485x576.png",
+      "filename" : "20485x5762.png",
       "scale" : "1x"
     },
     {
       "size" : "76x76",
       "idiom" : "ipad",
-      "filename" : "20485x5152.png",
+      "filename" : "20485x51522.png",
       "scale" : "2x"
     }
   ],
   "info" : {
     "version" : 1,
     "author" : "xcode"
+  },
+  "properties" : {
+    "pre-rendered" : true
   }
 }

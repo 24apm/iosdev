@@ -47,7 +47,7 @@
     self.promoBannerView = [[PromoBannerView alloc] init];
     self.promoBannerView.frame = self.adBannerView.frame;
     self.promoBannerView.y = [self adBannerPositionOnScreen];
-    self.promoBannerView.hidden = YES;
+    [self.promoBannerView hide];
     [self.view addSubview:self.promoBannerView];
     [self.view addSubview:self.adBannerView];
 }
@@ -85,11 +85,11 @@
 - (void)layoutAnimated:(BOOL)animated {
     float bannerYOffset;
     if (self.adBannerView.bannerLoaded) {
-        self.promoBannerView.hidden = YES;
+        [self.promoBannerView hide];
         bannerYOffset = [self adBannerPositionOnScreen];
         //   bannerYOffset = self.view.height;
     } else {
-        self.promoBannerView.hidden = NO;
+        [self.promoBannerView show];
         //  self.promoBannerView.hidden = YES;
         bannerYOffset = [self adBannerPositionOffScreen];
     }

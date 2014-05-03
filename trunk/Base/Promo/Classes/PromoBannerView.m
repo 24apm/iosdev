@@ -42,5 +42,16 @@
     [[PromoManager instance] promoPressed:self.promoGameData];
 }
 
+- (void)show {
+    if (self.promoGameData) {
+        self.hidden = NO;
+    } else {
+        self.hidden = YES;
+    }
+}
+
+- (void)hide {
+    self.hidden = YES;
+}
 
 @end

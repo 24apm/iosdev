@@ -36,10 +36,15 @@ static int promoPressedCount = 0;
 }
 
 + (void)show {
-    if (promoCancelledCount < PROMO_CANCELLED_COUNT_MAX_REACHED) {
-        [[[PromoDialogView alloc] init] show];
+    NSArray *promoArray = [[PromoManager instance] nextPromoSetWithSize:1];
+    if (promoArray && promoArray.count > 0) {
+        if (promoCancelledCount < PROMO_CANCELLED_COUNT_MAX_REACHED) {
+            [[[PromoDialogView alloc] init] show];
+        } else {
+            [TrackUtils trackAction:@"PromoDialogView" label:@"PROMO_CANCELLED_COUNT_MAX_REACHED"];
+        }
     } else {
-        [TrackUtils trackAction:@"PromoDialogView" label:@"PROMO_CANCELLED_COUNT_MAX_REACHED"];
+        [TrackUtils trackAction:@"PromoDialogViewOffline" label:@"PROMO_OFFLINE_PLAY_COUNT"];
     }
 }
 

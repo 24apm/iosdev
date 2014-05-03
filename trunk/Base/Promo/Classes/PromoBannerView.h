@@ -16,4 +16,7 @@
 
 - (void)setupWithPromoGameData:(PromoGameData *)gameData;
 
+- (void)show;
+- (void)hide;
+
 @end
