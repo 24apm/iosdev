@@ -171,6 +171,10 @@
 		D0ED116618CF04BC00C55BA9 /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = D0ED116518CF04BC00C55BA9 /* heart.png */; };
 		D0ED7C5F1914D60600D0E56D /* ConfirmMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0ED7C5E1914D60600D0E56D /* ConfirmMenu.xib */; };
 		D0ED7C621914D62700D0E56D /* ConfirmMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = D0ED7C611914D62700D0E56D /* ConfirmMenu.m */; };
+		D0ED7C641914F33600D0E56D /* CoinView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0ED7C631914F33600D0E56D /* CoinView.xib */; };
+		D0ED7C661914F46A00D0E56D /* CoinMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0ED7C651914F46A00D0E56D /* CoinMenuView.xib */; };
+		D0ED7C691914F51B00D0E56D /* CoinView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0ED7C681914F51B00D0E56D /* CoinView.m */; };
+		D0ED7C6C1914F52900D0E56D /* CoinMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0ED7C6B1914F52900D0E56D /* CoinMenuView.m */; };
 		D0EF3FD418D7FB1B00C50442 /* red_header.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EF3FD218D7FB1B00C50442 /* red_header.png */; };
 		D0EF3FD518D7FB1B00C50442 /* blue_header.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EF3FD318D7FB1B00C50442 /* blue_header.png */; };
 		D0F02F181910C7450003F759 /* PromoBannerView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0F02F171910C7450003F759 /* PromoBannerView~ipad.xib */; };
@@ -454,6 +458,12 @@
 		D0ED7C5E1914D60600D0E56D /* ConfirmMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConfirmMenu.xib; sourceTree = "<group>"; };
 		D0ED7C601914D62700D0E56D /* ConfirmMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmMenu.h; sourceTree = "<group>"; };
 		D0ED7C611914D62700D0E56D /* ConfirmMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmMenu.m; sourceTree = "<group>"; };
+		D0ED7C631914F33600D0E56D /* CoinView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CoinView.xib; sourceTree = "<group>"; };
+		D0ED7C651914F46A00D0E56D /* CoinMenuView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CoinMenuView.xib; sourceTree = "<group>"; };
+		D0ED7C671914F51B00D0E56D /* CoinView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoinView.h; sourceTree = "<group>"; };
+		D0ED7C681914F51B00D0E56D /* CoinView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoinView.m; sourceTree = "<group>"; };
+		D0ED7C6A1914F52900D0E56D /* CoinMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoinMenuView.h; sourceTree = "<group>"; };
+		D0ED7C6B1914F52900D0E56D /* CoinMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoinMenuView.m; sourceTree = "<group>"; };
 		D0EF3FD218D7FB1B00C50442 /* red_header.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red_header.png; sourceTree = "<group>"; };
 		D0EF3FD318D7FB1B00C50442 /* blue_header.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blue_header.png; sourceTree = "<group>"; };
 		D0F02F171910C7450003F759 /* PromoBannerView~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "PromoBannerView~ipad.xib"; sourceTree = "<group>"; };
@@ -644,6 +654,10 @@
 				D0EC893419135B3900FE5007 /* GameData.m */,
 				D0EC8936191362F200FE5007 /* PurchaseManager.h */,
 				D0EC8937191362F200FE5007 /* PurchaseManager.m */,
+				D0ED7C671914F51B00D0E56D /* CoinView.h */,
+				D0ED7C681914F51B00D0E56D /* CoinView.m */,
+				D0ED7C6A1914F52900D0E56D /* CoinMenuView.h */,
+				D0ED7C6B1914F52900D0E56D /* CoinMenuView.m */,
 				D0ED7C601914D62700D0E56D /* ConfirmMenu.h */,
 				D0ED7C611914D62700D0E56D /* ConfirmMenu.m */,
 			);
@@ -654,6 +668,8 @@
 			isa = PBXGroup;
 			children = (
 				D0ED7C5E1914D60600D0E56D /* ConfirmMenu.xib */,
+				D0ED7C631914F33600D0E56D /* CoinView.xib */,
+				D0ED7C651914F46A00D0E56D /* CoinMenuView.xib */,
 				D0F02F1E1910E8740003F759 /* ShopDialogView.xib */,
 				D0E57C0D18E143A900EA4081 /* GameLayoutView.xib */,
 				D0E4575E18FE5751009342C9 /* GameLayoutView~ipad.xib */,
@@ -1154,6 +1170,7 @@
 				D0F375E818FA990100D32A10 /* tier4-2.png in Resources */,
 				D0E1122F18C2EC6000808072 /* winningEffect.caf in Resources */,
 				D0EADDEE18E769FC0016D2A0 /* ToiletRush120.png in Resources */,
+				D0ED7C641914F33600D0E56D /* CoinView.xib in Resources */,
 				D033855418EA9C22008D7861 /* pinkbackground.png in Resources */,
 				D0E4B2CB18FCEEE700260ABD /* playbutton.png in Resources */,
 				D0F1143618D41299007EB840 /* MonsterView.xib in Resources */,
@@ -1235,6 +1252,7 @@
 				D0E2E9B418D2D288009C757F /* InfoPlist.strings in Resources */,
 				D0E3A0CE18E7D77D00C7B63D /* PromoIconView.xib in Resources */,
 				D0E2E9B918D2D288009C757F /* GameViewController.xib in Resources */,
+				D0ED7C661914F46A00D0E56D /* CoinMenuView.xib in Resources */,
 				D0EA871B18DA78DE0034B392 /* bounceEffect.caf in Resources */,
 				D0F02F1A1910C7640003F759 /* PromoDialogView~ipad.xib in Resources */,
 				D0F375C018FA457100D32A10 /* tier8.png in Resources */,
@@ -1274,6 +1292,7 @@
 				D0EADDDA18E769FC0016D2A0 /* ProgressBarComponent.m in Sources */,
 				D0E2E9A818D2D288009C757F /* GameConstants.m in Sources */,
 				D0EADDE518E769FC0016D2A0 /* Utils.m in Sources */,
+				D0ED7C691914F51B00D0E56D /* CoinView.m in Sources */,
 				D0E3A0CC18E7D75B00C7B63D /* PromoIconView.m in Sources */,
 				D0EC756E18EBC5EF0015AD4C /* GamePlayOneView.m in Sources */,
 				D0E2E9AD18D2D288009C757F /* MenuView.m in Sources */,
@@ -1326,6 +1345,7 @@
 				D0EADDE018E769FC0016D2A0 /* SoundEffectHelper.m in Sources */,
 				D0E7628A18D626B7005CDF88 /* MonsterData.m in Sources */,
 				D0EADDE118E769FC0016D2A0 /* SoundManager.m in Sources */,
+				D0ED7C6C1914F52900D0E56D /* CoinMenuView.m in Sources */,
 				D0EADDD418E769FC0016D2A0 /* GameCenterHelperBase.m in Sources */,
 				D0EADDD618E769FC0016D2A0 /* GameViewControllerBase.m in Sources */,
 			);

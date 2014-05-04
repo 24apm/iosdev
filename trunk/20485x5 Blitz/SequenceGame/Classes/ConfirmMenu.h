@@ -23,6 +23,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *result;
 
 @property (nonatomic, strong) ButtonView *buttonView;
+@property (nonatomic) int afterPay;
 
 - (void)show:(ButtonView *)buttonView;
 

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>9D0079DF-46D2-4E4F-87C3-BE4013FC0A73</string>
+	<key>IDESourceControlProjectName</key>
+	<string>2048 5x5 Blitz</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>2EB75563-B5BD-414D-9A34-77955AF1FB37</key>
+		<string>https://github.com/24apm/iosdev.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>trunk/20485x5 Blitz/2048 5x5 Blitz.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>2EB75563-B5BD-414D-9A34-77955AF1FB37</key>
+		<string>../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/24apm/iosdev.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>2EB75563-B5BD-414D-9A34-77955AF1FB37</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>2EB75563-B5BD-414D-9A34-77955AF1FB37</string>
+			<key>IDESourceControlWCCName</key>
+			<string>iosdev</string>
+		</dict>
+	</array>
+</dict>
+</plist>

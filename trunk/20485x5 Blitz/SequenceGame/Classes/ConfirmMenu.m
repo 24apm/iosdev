@@ -7,6 +7,7 @@
 //
 
 #import "ConfirmMenu.h"
+#import "CoinMenuView.h"
 
 @implementation ConfirmMenu
 
@@ -29,13 +30,25 @@
     self.buttonView = buttonView;
     self.itemCost.text = [NSString stringWithFormat:@"%d", buttonView.priceCheck];
     self.currentCoin.text = [NSString stringWithFormat:@"%d", [UserData instance].currentCoin];
-    int resultCost = [UserData instance].currentCoin - buttonView.priceCheck;
-    self.result.text = [NSString stringWithFormat:@"%d", resultCost];
+    self.afterPay = [UserData instance].currentCoin - buttonView.priceCheck;
+    self.result.text = [NSString stringWithFormat:@"%d", self.afterPay];
+}
+
+- (void)showCoin {
+    [super show];
+//    self.itemCost.text = [NSString stringWithFormat:@"%d", buttonView.priceCheck];
+//    self.currentCoin.text = [NSString stringWithFormat:@"%d", [UserData instance].currentCoin];
+//    self.afterPay = [UserData instance].currentCoin - buttonView.priceCheck;
+//    self.result.text = [NSString stringWithFormat:@"%d", self.afterPay];
 }
 
 - (IBAction)confirmButtonPressed:(UIButton *)sender {
-    [[NSNotificationCenter defaultCenter] postNotificationName:BUY_POWER_CONFIRM_BUTTON_PRESSED_NOTIFICATION object:self.buttonView];
-    [self dismissView];
+    if (self.afterPay >= 0) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:BUY_POWER_CONFIRM_BUTTON_PRESSED_NOTIFICATION object:self.buttonView];
+        [self dismissView];
+    } else {
+        [[[CoinMenuView alloc] init] show];
+    }
 }
 
 - (IBAction)cancelButtonPressed:(UIButton *)sender {
