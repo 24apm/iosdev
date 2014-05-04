@@ -41,6 +41,10 @@ static int promoDialogInLeaderBoardCount = 0;
     }];
 }
 
+- (IBAction)ratePressed:(id)sender {
+    [[iRate sharedInstance] openRatingsPageInAppStore];
+}
+
 - (IBAction)retryButtonPressed:(UIButton *)sender {
       [TrackUtils trackAction:@"Leaderboard" label:@"RetryButtonPressed"];
       [[NSNotificationCenter defaultCenter] postNotificationName:RETRY_BUTTON_NOTIFICATION object:self];
