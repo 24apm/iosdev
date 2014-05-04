@@ -15,7 +15,6 @@
 #import "AnimUtil.h"
 #import "PromoDialogView.h"
 
-#define TIMES_PLAYED_BEFORE_PROMO 3
 #define BUFFER 3
 
 @interface GamePlayOneView ()

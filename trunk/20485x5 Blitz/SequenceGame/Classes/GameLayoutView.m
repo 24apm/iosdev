@@ -42,6 +42,7 @@
     return self;
 }
 
+
 - (void)awakeFromNib {
     UIPanGestureRecognizer *panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panRecognized:)];
     [panRecognizer setDelegate:self];
@@ -66,6 +67,10 @@
     self.confirmMenu.hidden = NO;
     [[NSNotificationCenter defaultCenter]postNotificationName:CONFIRM_MENU_SHOWING object:notification];
     
+}
+
+- (IBAction)buyButtonPressed:(UIButton *)sender {
+    [[[CoinMenuView alloc] init] show];
 }
 
 - (void)displayGameEnd {

@@ -387,8 +387,8 @@
 //    scaleIn.duration = TILE_MOVE_ANIMATION_DURATION;
     
     CAKeyframeAnimation *opacity = [CAKeyframeAnimation animationWithKeyPath:@"opacity"];
-    opacity.values = @[@(0.3f),@(1.0f)];
-    
+    opacity.values = @[@(0.3f),@(1.0f),@(0.8f),@(1.0f)];
+    opacity.duration = 0.5f;
     [view.layer addAnimation:opacity forKey:@"opacity"];
 }
 

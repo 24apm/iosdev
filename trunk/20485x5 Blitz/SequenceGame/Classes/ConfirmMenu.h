@@ -24,6 +24,7 @@
 
 @property (nonatomic, strong) ButtonView *buttonView;
 @property (nonatomic) int afterPay;
+@property (strong, nonatomic) IBOutlet UIView *contentView;
 
 - (void)show:(ButtonView *)buttonView;
 

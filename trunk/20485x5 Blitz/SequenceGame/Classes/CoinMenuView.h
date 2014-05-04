@@ -7,8 +7,12 @@
 //
 
 #import "XibDialogView.h"
+#import "CoinView.h"
+#import "UserData.h"
 
 @interface CoinMenuView : XibDialogView
+
+@property (strong, nonatomic) IBOutletCollection(CoinView) NSArray *coinViewCollection;
 
 - (void)show;
 

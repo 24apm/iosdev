@@ -5,7 +5,14 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CoinMenuView"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CoinMenuView">
+            <connections>
+                <outletCollection property="coinViewCollection" destination="Qph-zR-H84" id="y37-jy-c35"/>
+                <outletCollection property="coinViewCollection" destination="Odu-VS-43m" id="ZBV-RX-n1S"/>
+                <outletCollection property="coinViewCollection" destination="TjN-Wd-NN3" id="LGk-es-aAe"/>
+                <outletCollection property="coinViewCollection" destination="XeV-VD-ctA" id="ZWk-Xg-hJu"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="1">
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>

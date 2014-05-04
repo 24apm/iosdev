@@ -11,9 +11,11 @@
 #import "ButtonView.h"
 #import "PurchaseManager.h"
 #import "ConfirmMenu.h"
+#import "CoinMenuView.h"
 
 @interface GameLayoutView : XibView <UIGestureRecognizerDelegate>
 @property (strong, nonatomic) IBOutlet UIView *fadeView;
+@property (strong, nonatomic) IBOutlet UIButton *buyCoinButton;
 
 @property (strong, nonatomic) IBOutlet BoardView *boardView;
 @property (strong, nonatomic) IBOutlet UILabel *currentScore;

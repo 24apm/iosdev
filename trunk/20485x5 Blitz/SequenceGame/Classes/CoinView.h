@@ -7,7 +7,14 @@
 //
 
 #import "XibView.h"
+#import "CoinIAPHelper.h"
+#define PURCHASE_BUTTON_TAPPED @"PURCHASE_BUTTON_TAPPED"
 
 @interface CoinView : XibView
+
+@property (strong, nonatomic) IBOutlet UILabel *costLabel;
+@property (nonatomic) SKProduct *product;
+
+- (void)setupProduct:(SKProduct *)product;
 
 @end

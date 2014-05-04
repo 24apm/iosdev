@@ -11,6 +11,7 @@
 #import "NotificationManager.h"
 #import "NumberGameIAPHelper.h"
 #import "PromoManager.h"
+#import "CoinIAPHelper.h"
 
 @implementation AppDelegate
 
@@ -19,7 +20,7 @@
     [super application:application didFinishLaunchingWithOptions:launchOptions];
 
     [[NotificationManager instance] registerNotifications];
-    [[NumberGameIAPHelper sharedInstance] loadProduct];
+    [[CoinIAPHelper sharedInstance] loadProduct];
 
     
     return YES;

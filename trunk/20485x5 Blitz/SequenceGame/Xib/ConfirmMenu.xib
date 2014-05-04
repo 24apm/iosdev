@@ -10,6 +10,7 @@
                 <outlet property="Operation" destination="ObJ-Ay-XaD" id="dKh-YN-DlP"/>
                 <outlet property="cancelButton" destination="Qft-Fv-0LP" id="jcK-zq-xgB"/>
                 <outlet property="confirmButton" destination="UUg-Jy-SKj" id="qLn-g4-UAX"/>
+                <outlet property="contentView" destination="1" id="Z6b-Yd-dB7"/>
                 <outlet property="currentCoin" destination="ERh-qC-63Y" id="btF-QZ-d0S"/>
                 <outlet property="itemCost" destination="Hgw-WL-jMO" id="cS4-0P-RSH"/>
                 <outlet property="result" destination="J3V-5k-bw7" id="pi1-vX-Hm6"/>
@@ -20,7 +21,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1">
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1" userLabel="Content">
                     <rect key="frame" x="10" y="140" width="300" height="200"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>

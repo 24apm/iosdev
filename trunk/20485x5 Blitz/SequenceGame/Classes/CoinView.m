@@ -10,22 +10,27 @@
 
 @implementation CoinView
 
-- (id)initWithFrame:(CGRect)frame
+- (id)initWithCoder:(NSCoder *)aDecoder
 {
-    self = [super initWithFrame:frame];
+    self = [super initWithCoder:aDecoder];
     if (self) {
         // Initialization code
     }
     return self;
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
+
+- (void)setupProduct:(SKProduct *)product {
+    self.product = product;
+    [self refresh];
 }
-*/
+
+- (void)refresh {
+    self.costLabel.text = self.product.priceAsString;
+}
+
+- (IBAction)buttonPressed:(UIButton *)sender {
+    [[NSNotificationCenter defaultCenter]postNotificationName:PURCHASE_BUTTON_TAPPED object:self];
+}
 
 @end
