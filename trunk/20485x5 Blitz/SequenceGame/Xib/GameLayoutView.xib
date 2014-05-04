@@ -7,7 +7,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GameLayoutView">
             <connections>
-                <outlet property="backgroundView" destination="mHA-Hr-ftp" id="M3Z-tW-p8X"/>
                 <outlet property="boardView" destination="O00-6d-Bgi" id="57w-88-37i"/>
                 <outlet property="buttonView1" destination="840-2w-jSl" id="vhZ-XQ-3Rs"/>
                 <outlet property="buttonView2" destination="HED-JW-GT1" id="BXj-Ip-B3r"/>
@@ -27,11 +26,6 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" id="mHA-Hr-ftp" userLabel="Background">
-                    <rect key="frame" x="5" y="85" width="310" height="310"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.80392163989999998" green="0.74901962280000001" blue="0.71372550729999995" alpha="1" colorSpace="deviceRGB"/>
-                </view>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coin:100" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Pb6-Ou-dVU">
                     <rect key="frame" x="10" y="9" width="100" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>

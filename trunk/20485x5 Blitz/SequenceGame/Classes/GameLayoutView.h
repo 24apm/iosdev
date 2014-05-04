@@ -33,6 +33,5 @@
 @property (strong, nonatomic) IBOutlet ConfirmMenu *confirmMenu;
 
 - (void)generateNewBoard;
-@property (strong, nonatomic) IBOutlet UIView *backgroundView;
 
 @end

@@ -14,6 +14,9 @@
 
 @interface BoardView : XibView
 
+@property (strong, nonatomic) IBOutlet UIView *contentLayer;
+@property (strong, nonatomic) IBOutlet UIView *backgroundLayer;
+
 - (void)generateRandomTile;
 - (void)shiftTilesLeft;
 - (void)shiftTilesRight;

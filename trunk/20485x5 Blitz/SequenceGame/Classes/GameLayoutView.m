@@ -35,9 +35,6 @@
         
         // add pan recognizer to the view when initialized
         
-        
-        // self.backgroundView.layer.cornerRadius = 20.f * IPAD_SCALE;
-        //self.backgroundView.clipsToBounds = YES;
         //self.currentScore.layer.cornerRadius = 20.f * IPAD_SCALE;
     }
     return self;

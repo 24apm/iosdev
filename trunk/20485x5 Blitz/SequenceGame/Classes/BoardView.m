@@ -39,6 +39,11 @@
     return self;
 }
 
+- (void)awakeFromNib {
+    self.backgroundLayer.layer.cornerRadius = 10.f * IPAD_SCALE;
+    self.backgroundLayer.clipsToBounds = YES;
+}
+
 - (void)generateNewBoard {
     //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tilePressed:) name:MAX_LEVEL_TILE_PRESSED object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismissView) name:GAME_END_BUTTON_PRESSED_NOTIFICATION object:nil];
@@ -74,7 +79,7 @@
         for (int x = 0; x < BOARD_COLS; x++) {
             slot = [[SlotView alloc] init];
             [self.slots addObject:slot];
-            [self addSubview:slot];
+            [self.contentLayer addSubview:slot];
         }
     }
 }
@@ -372,7 +377,7 @@
     tile.currentValue = [[randArr randomObject] integerValue];
     [tile updateToRealLabel];
     slot.tileView = tile;
-    [self addSubview:tile];
+    [self.contentLayer addSubview:tile];
     tile.center = slot.center;
     [self scaleIn:tile];
     
@@ -550,7 +555,7 @@
         TileView *tile = [storedTiles objectAtIndex:i];
         slot.tileView.hidden = YES;
         slot.tileView = tile;
-        [self addSubview:tile];
+        [self.contentLayer addSubview:tile];
         tile.center = slot.center;
         //        [self scaleIn:tile];
         [self performSelector:@selector(animateOnBoard:) withObject:slot afterDelay:i * averageTime + delay];
