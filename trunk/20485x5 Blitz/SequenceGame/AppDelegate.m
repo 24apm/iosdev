@@ -18,7 +18,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [super application:application didFinishLaunchingWithOptions:launchOptions];
-
+    
+    [iRate sharedInstance].usesUntilPrompt = 0;
+    [iRate sharedInstance].eventsUntilPrompt = 10;
+    
     [[NotificationManager instance] registerNotifications];
     [[CoinIAPHelper sharedInstance] loadProduct];
 
