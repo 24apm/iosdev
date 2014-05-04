@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "iRate.h"
 
-@interface AppDelegateBase : UIResponder <UIApplicationDelegate>
+@interface AppDelegateBase : UIResponder <UIApplicationDelegate, iRateDelegate>
 
 @property (strong, nonatomic) IBOutlet UIWindow *window;
 @property (strong, nonatomic) IBOutlet UIViewController *viewController;

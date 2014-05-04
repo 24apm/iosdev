@@ -19,8 +19,8 @@
 {
     [super application:application didFinishLaunchingWithOptions:launchOptions];
     
-    [iRate sharedInstance].usesUntilPrompt = 0;
-    [iRate sharedInstance].eventsUntilPrompt = 10;
+    [iRate sharedInstance].usesUntilPrompt = 2;
+    [iRate sharedInstance].eventsUntilPrompt = 5;
     
     [[NotificationManager instance] registerNotifications];
     [[CoinIAPHelper sharedInstance] loadProduct];
