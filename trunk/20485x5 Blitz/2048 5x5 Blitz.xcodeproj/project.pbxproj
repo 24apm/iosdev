@@ -107,6 +107,8 @@
 		D0E7FF6B18E69DEB00896C7B /* opendoor.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E7FF6818E69DEB00896C7B /* opendoor.png */; };
 		D0E7FF6C18E69DEB00896C7B /* person.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E7FF6918E69DEB00896C7B /* person.png */; };
 		D0E7FF7918E6B02700896C7B /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E7FF7818E6B02700896C7B /* CoreImage.framework */; };
+		D0E871F91916BA2300FFAFD9 /* ErrorDialogView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E871F81916BA2300FFAFD9 /* ErrorDialogView.m */; };
+		D0E871FB1916BA3300FFAFD9 /* ErrorDialogView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E871FA1916BA3300FFAFD9 /* ErrorDialogView.xib */; };
 		D0EA7EBE18D521C90095DEBD /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EA7EBA18D521C90095DEBD /* arrow.png */; };
 		D0EA7EBF18D521C90095DEBD /* shield.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EA7EBB18D521C90095DEBD /* shield.png */; };
 		D0EA7EC018D521C90095DEBD /* sword.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EA7EBC18D521C90095DEBD /* sword.png */; };
@@ -354,6 +356,9 @@
 		D0E7FF6818E69DEB00896C7B /* opendoor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = opendoor.png; sourceTree = "<group>"; };
 		D0E7FF6918E69DEB00896C7B /* person.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = person.png; sourceTree = "<group>"; };
 		D0E7FF7818E6B02700896C7B /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		D0E871F71916BA2300FFAFD9 /* ErrorDialogView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ErrorDialogView.h; sourceTree = "<group>"; };
+		D0E871F81916BA2300FFAFD9 /* ErrorDialogView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ErrorDialogView.m; sourceTree = "<group>"; };
+		D0E871FA1916BA3300FFAFD9 /* ErrorDialogView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ErrorDialogView.xib; sourceTree = "<group>"; };
 		D0EA7EBA18D521C90095DEBD /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
 		D0EA7EBB18D521C90095DEBD /* shield.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shield.png; sourceTree = "<group>"; };
 		D0EA7EBC18D521C90095DEBD /* sword.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sword.png; sourceTree = "<group>"; };
@@ -610,6 +615,8 @@
 				D0E2E97D18D2D288009C757F /* GameConstants.m */,
 				D0E2E97E18D2D288009C757F /* GameViewController.h */,
 				D0E2E97F18D2D288009C757F /* GameViewController.m */,
+				D0E871F71916BA2300FFAFD9 /* ErrorDialogView.h */,
+				D0E871F81916BA2300FFAFD9 /* ErrorDialogView.m */,
 				D0F02F1B1910DFC00003F759 /* ShopDialogView.h */,
 				D0F02F1C1910DFC00003F759 /* ShopDialogView.m */,
 				D0E2E98018D2D288009C757F /* InGameMessageView.h */,
@@ -673,6 +680,7 @@
 			children = (
 				D0ED7C5E1914D60600D0E56D /* ConfirmMenu.xib */,
 				D0ED7C631914F33600D0E56D /* CoinView.xib */,
+				D0E871FA1916BA3300FFAFD9 /* ErrorDialogView.xib */,
 				D0ED7C651914F46A00D0E56D /* CoinMenuView.xib */,
 				D0F02F1E1910E8740003F759 /* ShopDialogView.xib */,
 				D0E57C0D18E143A900EA4081 /* GameLayoutView.xib */,
@@ -1229,6 +1237,7 @@
 				D0EADDF118E769FC0016D2A0 /* PromoBannerView.xib in Resources */,
 				D0F02F211910E9E60003F759 /* ButtonView.xib in Resources */,
 				D0E1123318C2ECF300808072 /* ticking.caf in Resources */,
+				D0E871FB1916BA3300FFAFD9 /* ErrorDialogView.xib in Resources */,
 				D0E47C2918ED2F9F009CA771 /* homebutton.png in Resources */,
 				D0E48B7718DD9964000EF905 /* toilet_main.png in Resources */,
 				D0F11CB418D83D70007A8963 /* CustomizationView.xib in Resources */,
@@ -1306,6 +1315,7 @@
 				D0EADDD218E769FC0016D2A0 /* AppDelegateBase.m in Sources */,
 				D0F02F1D1910DFC00003F759 /* ShopDialogView.m in Sources */,
 				D0E378FF18D42CF700541404 /* GameManager.m in Sources */,
+				D0E871F91916BA2300FFAFD9 /* ErrorDialogView.m in Sources */,
 				D0E395C518EE791500FB4D5A /* SlotView.m in Sources */,
 				D0A9405A18D6A5EF0049E018 /* GameLayoutView.m in Sources */,
 				D0EADDF518E769FC0016D2A0 /* THLabel.m in Sources */,

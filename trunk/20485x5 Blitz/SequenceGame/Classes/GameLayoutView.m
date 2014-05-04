@@ -18,6 +18,7 @@
 #import "iRate.h"
 #import "TrackUtils.h"
 #import "GameData.h"
+#import "CoinIAPHelper.h"
 
 @interface GameLayoutView()
 
@@ -70,7 +71,7 @@
 }
 
 - (IBAction)buyButtonPressed:(UIButton *)sender {
-    [[[CoinMenuView alloc] init] show];
+    [[CoinIAPHelper sharedInstance] showCoinMenu];
 }
 
 - (void)displayGameEnd {

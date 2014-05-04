@@ -7,8 +7,24 @@
 //
 
 #import "CoinIAPHelper.h"
+#import "CoinMenuView.h"
+#import "ErrorDialogView.h"
+
+@interface CoinIAPHelper()
+
+@property (nonatomic) BOOL loaded;
+
+@end
 
 @implementation CoinIAPHelper
+
+- (void)showCoinMenu {
+    if ([CoinIAPHelper sharedInstance].hasLoaded) {
+        [[[CoinMenuView alloc] init] show];
+    } else {
+        [[[ErrorDialogView alloc] init] show];
+    }
+}
 
 + (CoinIAPHelper *)sharedInstance {
     static dispatch_once_t once;
@@ -35,8 +51,16 @@
                 [tempDictionary setObject:product forKey:product.productIdentifier];
             }
             self.productDictionary = [NSDictionary dictionaryWithDictionary:tempDictionary];
+            self.loaded = YES;
         }
     }];
+}
+
+- (BOOL)hasLoaded {
+    if (!self.loaded) {
+        [self loadProduct];
+    }
+    return self.loaded;
 }
 
 - (SKProduct *)productForType:(CostTierType)type {

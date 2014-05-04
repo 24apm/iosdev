@@ -26,10 +26,12 @@ typedef enum {
 
 @property (strong, nonatomic) NSArray *products;
 @property (strong, nonatomic) NSDictionary *productDictionary;
+@property (readonly, nonatomic) BOOL hasLoaded;
 
 + (CoinIAPHelper *)sharedInstance;
 - (void)loadProduct;
 - (SKProduct *)productForType:(CostTierType)type ;
 - (int)valueForProductId:(NSString *)productId;
+- (void)showCoinMenu;
 
 @end
