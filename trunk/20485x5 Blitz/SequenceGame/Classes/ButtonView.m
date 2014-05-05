@@ -20,7 +20,7 @@
         // Initialization code
     }
 
-    self.coinContainerView.layer.cornerRadius = 10.f * IPAD_SCALE;
+    self.coinContainerView.layer.cornerRadius = 8.f * IPAD_SCALE;
     return self;
 }
 
@@ -36,36 +36,41 @@
 }
 
 - (void)refresh {
+    int cost = 0;
     switch (self.type) {
         case ButtonViewTypeShuffle:
-            self.quantityLabel.text = [NSString stringWithFormat:@"%d",[GameData instance].shuffleCost];
-            // image shuffle
-            // cost label
+           cost = [GameData instance].shuffleCost;
             [self.buttonView setBackgroundImage:[UIImage imageNamed:@"button_powerup_bomb_shuffle.png"] forState: UIControlStateNormal];
             break;
         case ButtonViewTypeBomb2:
-            self.quantityLabel.text = [NSString stringWithFormat:@"%d",[GameData instance].bomb2Cost];
+            cost = [GameData instance].bomb2Cost;
             [self.buttonView setBackgroundImage:[UIImage imageNamed:@"button_powerup_bomb2"] forState: UIControlStateNormal];
             break;
         case ButtonViewTypeBomb4:
-            self.quantityLabel.text = [NSString stringWithFormat:@"%d",[GameData instance].bomb4Cost];
+            cost = [GameData instance].bomb4Cost;
             [self.buttonView setBackgroundImage:[UIImage imageNamed:@"button_powerup_bomb4"] forState: UIControlStateNormal];
 
             break;
         case ButtonViewTypeLostShuffle:
-            self.quantityLabel.text = [NSString stringWithFormat:@"%d",[GameData instance].lostGameCost];
+            cost = [GameData instance].lostGameCost;
             [self.buttonView setBackgroundImage:[UIImage imageNamed:@"button_powerup_bomb_shuffle.png"] forState: UIControlStateNormal];
             break;
         case ButtonViewTypeLostBomb2:
-            self.quantityLabel.text = [NSString stringWithFormat:@"%d",[GameData instance].lostGameCost];
+            cost = [GameData instance].lostGameCost;
             [self.buttonView setBackgroundImage:[UIImage imageNamed:@"button_powerup_bomb2"] forState: UIControlStateNormal];
             break;
         case ButtonViewTypeLostBomb4:
-            self.quantityLabel.text = [NSString stringWithFormat:@"%d",[GameData instance].lostGameCost];
+            cost = [GameData instance].lostGameCost;
             [self.buttonView setBackgroundImage:[UIImage imageNamed:@"button_powerup_bomb4"] forState: UIControlStateNormal];
             break;
         default:
             break;
+    }
+    
+    if (cost > 0) {
+        self.quantityLabel.text = [NSString stringWithFormat:@"%d",[GameData instance].shuffleCost];
+    } else {
+        self.quantityLabel.text = @"FREE";
     }
 }
 

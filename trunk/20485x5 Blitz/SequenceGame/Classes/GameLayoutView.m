@@ -35,7 +35,7 @@
         
         // add pan recognizer to the view when initialized
         
-        //self.currentScore.layer.cornerRadius = 20.f * IPAD_SCALE;
+        self.coinContainer.layer.cornerRadius = 6.f * IPAD_SCALE;
     }
     return self;
 }

@@ -31,6 +31,7 @@
 @property (strong, nonatomic) IBOutlet ButtonView *lostButtonView3;
 
 @property (strong, nonatomic) IBOutlet ConfirmMenu *confirmMenu;
+@property (strong, nonatomic) IBOutlet UIView *coinContainer;
 
 - (void)generateNewBoard;
 
