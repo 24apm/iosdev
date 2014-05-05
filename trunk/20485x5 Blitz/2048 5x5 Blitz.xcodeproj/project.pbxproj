@@ -98,6 +98,10 @@
 		D0E4BCD118D9743700132C17 /* bossknight.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E4BCCF18D9743700132C17 /* bossknight.png */; };
 		D0E4BCD218D9743700132C17 /* soldier.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E4BCD018D9743700132C17 /* soldier.png */; };
 		D0E4BCD418D97BB500132C17 /* swordattack.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E4BCD318D97BB500132C17 /* swordattack.png */; };
+		D0E541C019174EBB00DD7B1A /* button_powerup_bomb_shuffle.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E541BD19174EBB00DD7B1A /* button_powerup_bomb_shuffle.png */; };
+		D0E541C119174EBB00DD7B1A /* button_powerup_bomb2.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E541BE19174EBB00DD7B1A /* button_powerup_bomb2.png */; };
+		D0E541C219174EBB00DD7B1A /* button_powerup_bomb4.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E541BF19174EBB00DD7B1A /* button_powerup_bomb4.png */; };
+		D0E541C41917527700DD7B1A /* coin.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E541C31917527700DD7B1A /* coin.png */; };
 		D0E57C0E18E143A900EA4081 /* GameLayoutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E57C0D18E143A900EA4081 /* GameLayoutView.xib */; };
 		D0E6336C18FFB9D4007C1622 /* boiling.caf in Resources */ = {isa = PBXBuildFile; fileRef = D0E6336B18FFB9D4007C1622 /* boiling.caf */; };
 		D0E6336E18FFB9F8007C1622 /* duing.caf in Resources */ = {isa = PBXBuildFile; fileRef = D0E6336D18FFB9F8007C1622 /* duing.caf */; };
@@ -346,6 +350,10 @@
 		D0E4BCCF18D9743700132C17 /* bossknight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bossknight.png; sourceTree = "<group>"; };
 		D0E4BCD018D9743700132C17 /* soldier.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = soldier.png; sourceTree = "<group>"; };
 		D0E4BCD318D97BB500132C17 /* swordattack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = swordattack.png; sourceTree = "<group>"; };
+		D0E541BD19174EBB00DD7B1A /* button_powerup_bomb_shuffle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_powerup_bomb_shuffle.png; sourceTree = "<group>"; };
+		D0E541BE19174EBB00DD7B1A /* button_powerup_bomb2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_powerup_bomb2.png; sourceTree = "<group>"; };
+		D0E541BF19174EBB00DD7B1A /* button_powerup_bomb4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_powerup_bomb4.png; sourceTree = "<group>"; };
+		D0E541C31917527700DD7B1A /* coin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coin.png; sourceTree = "<group>"; };
 		D0E57C0D18E143A900EA4081 /* GameLayoutView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameLayoutView.xib; sourceTree = "<group>"; };
 		D0E6336B18FFB9D4007C1622 /* boiling.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = boiling.caf; sourceTree = "<group>"; };
 		D0E6336D18FFB9F8007C1622 /* duing.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = duing.caf; sourceTree = "<group>"; };
@@ -771,6 +779,10 @@
 		D0E50A2818A7349300AA353E /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				D0E541BD19174EBB00DD7B1A /* button_powerup_bomb_shuffle.png */,
+				D0E541BE19174EBB00DD7B1A /* button_powerup_bomb2.png */,
+				D0E541C31917527700DD7B1A /* coin.png */,
+				D0E541BF19174EBB00DD7B1A /* button_powerup_bomb4.png */,
 				D0E3D6FF190FB6F200701A56 /* flash.png */,
 				D0E4B2CC18FD268A00260ABD /* main2.png */,
 				D0E4B2CD18FD268A00260ABD /* main.png */,
@@ -1168,6 +1180,7 @@
 				D0F375E418FA981100D32A10 /* tier3-2.png in Resources */,
 				D0F375CF18FA896300D32A10 /* tier1.png in Resources */,
 				D0F375D918FA958000D32A10 /* tier9-2.png in Resources */,
+				D0E541C019174EBB00DD7B1A /* button_powerup_bomb_shuffle.png in Resources */,
 				D0E4576718FE5B97009342C9 /* MainView~ipad.xib in Resources */,
 				D0F02F181910C7450003F759 /* PromoBannerView~ipad.xib in Resources */,
 				D0E3A0D018E7DA2900C7B63D /* PromoDialogView.xib in Resources */,
@@ -1224,8 +1237,11 @@
 				D0F375EA18FA990100D32A10 /* tier5-2.png in Resources */,
 				D0F375E118FA981100D32A10 /* tier7-2.png in Resources */,
 				D0EA7ED018D58B0E0095DEBD /* boss.png in Resources */,
+				D0E541C219174EBB00DD7B1A /* button_powerup_bomb4.png in Resources */,
 				D0F375CC18FA7FA600D32A10 /* tier10.png in Resources */,
 				D0F375DB18FA958000D32A10 /* tier1-2.png in Resources */,
+				D0E541C119174EBB00DD7B1A /* button_powerup_bomb2.png in Resources */,
+				D0E541C41917527700DD7B1A /* coin.png in Resources */,
 				D0F375DC18FA958000D32A10 /* tier12-2.png in Resources */,
 				D0A9405E18D6BED20049E018 /* rip.png in Resources */,
 				D0E1122B18C2EC6000808072 /* boing.caf in Resources */,

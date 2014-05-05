@@ -24,7 +24,9 @@ typedef enum {
 @interface ButtonView : XibView
 
 @property (strong, nonatomic) IBOutlet UILabel *quantityLabel;
+@property (strong, nonatomic) IBOutlet UIButton *buttonView;
 @property (nonatomic) ButtonViewType type;
+@property (strong, nonatomic) IBOutlet UIView *coinContainerView;
 
 - (void)setupWithType:(ButtonViewType)type;
 - (void)refresh;
