@@ -17,10 +17,6 @@
 @property (nonatomic) int bomb2Cost;
 @property (nonatomic) int bomb4Cost;
 
-@property (nonatomic) int shuffleCostLost;
-@property (nonatomic) int bomb2CostLost;
-@property (nonatomic) int bomb4CostLost;
-
 @property (nonatomic) int lostGameCost;
 
 - (void)resetCost;

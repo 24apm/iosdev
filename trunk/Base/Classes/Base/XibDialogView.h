@@ -12,5 +12,6 @@
 
 - (IBAction)dismissed:(id)sender;
 - (void)show;
+- (void)showWithNoOverlay;
 
 @end

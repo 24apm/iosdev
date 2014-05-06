@@ -33,6 +33,8 @@
 @property (strong, nonatomic) IBOutlet ConfirmMenu *confirmMenu;
 @property (strong, nonatomic) IBOutlet UIView *coinContainer;
 
+@property (strong, nonatomic) ButtonView *queuedPowerUp;
+
 - (void)generateNewBoard;
 
 @end

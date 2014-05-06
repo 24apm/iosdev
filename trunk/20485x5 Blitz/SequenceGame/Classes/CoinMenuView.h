@@ -9,8 +9,11 @@
 #import "XibDialogView.h"
 #import "CoinView.h"
 #import "UserData.h"
+#import "AnimatingDialogView.h"
 
-@interface CoinMenuView : XibDialogView
+#define PURCHASE_SUCCESS_NOTIFICATION @"PURCHASE_SUCCESS_NOTIFICATION"
+
+@interface CoinMenuView : AnimatingDialogView
 
 @property (strong, nonatomic) IBOutletCollection(CoinView) NSArray *coinViewCollection;
 

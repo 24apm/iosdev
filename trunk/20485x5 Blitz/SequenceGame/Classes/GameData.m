@@ -40,8 +40,9 @@
 - (void)lostGameCostUpgrade {
     if (self.lostGameCost <= 0) {
         self.lostGameCost = self.lostGameCost + 4;
-    }
+    } else {
     self.lostGameCost = self.lostGameCost * 2;
+    }
 }
 
 @end

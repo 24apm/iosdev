@@ -10,11 +10,13 @@
 #import "ButtonView.h"
 #import "GameData.h"
 #import "UserData.h"
+#import "AnimatingDialogView.h"
 
 #define CANCEL_BUTTON_PRESSED_NOTIFICATION @"CANCEL_BUTTON_PRESSED_NOTIFICATION"
 #define BUY_POWER_CONFIRM_BUTTON_PRESSED_NOTIFICATION @"BUY_POWER_CONFIRM_BUTTON_PRESSED_NOTIFICATION"
 
-@interface ConfirmMenu : XibDialogView
+@interface ConfirmMenu : AnimatingDialogView
+
 @property (strong, nonatomic) IBOutlet UIButton *confirmButton;
 @property (strong, nonatomic) IBOutlet UIButton *cancelButton;
 @property (strong, nonatomic) IBOutlet UILabel *itemCost;

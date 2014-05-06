@@ -7,10 +7,10 @@
 //
 
 #import "XibDialogView.h"
+#import "AnimatingDialogView.h"
 
-@interface ErrorDialogView : XibDialogView
+@interface ErrorDialogView : AnimatingDialogView
 
 @property (strong, nonatomic) IBOutlet UIView *contentView;
-
 
 @end

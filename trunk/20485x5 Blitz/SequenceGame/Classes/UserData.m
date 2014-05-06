@@ -37,6 +37,7 @@
 }
 
 - (void)retrieveUserCoin {
+    //self.currentCoin = 1000;
     self.currentCoin = [[[NSUserDefaults standardUserDefaults] objectForKey:@"coin"] intValue];
 }
 

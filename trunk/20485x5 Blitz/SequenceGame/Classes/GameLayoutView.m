@@ -50,7 +50,8 @@
     [[UserData instance] addObserver:self forKeyPath:@"currentCoin" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(displayGameEnd) name:NO_MORE_MOVE_NOTIFICATION object:nil];
     //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(buyPowerUp:) name:BUTTON_VIEW_PRESSED object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(buttonPressed:) name:BUY_POWER_CONFIRM_BUTTON_PRESSED_NOTIFICATION object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(buttonPowerPressed:) name:BUY_POWER_CONFIRM_BUTTON_PRESSED_NOTIFICATION object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(afterPurchasePowerUp) name:PURCHASE_SUCCESS_NOTIFICATION object:nil];
     
     [[GameData instance] resetCost];
     [self.buttonView1 setupWithType:ButtonViewTypeShuffle];
@@ -136,9 +137,8 @@
     self.confirmMenu.hidden = NO;
 }
 
-- (void)buttonPressed:(NSNotification *)notification {
-    ButtonView *buttonView = notification.object;
-    
+- (void)applyPowerUp:(ButtonView *)buttonView {
+
     switch (buttonView.type) {
             
         case ButtonViewTypeShuffle:
@@ -164,6 +164,7 @@
             break;
             
         case ButtonViewTypeLostShuffle:
+            self.queuedPowerUp = buttonView;
             if([[PurchaseManager instance] purchasePowerUp:PowerUpTypeRevive]) {
                 [self.boardView shuffleTiles];
                 [self hideGameEnd];
@@ -171,8 +172,9 @@
             break;
             
         case ButtonViewTypeLostBomb2:
+            self.queuedPowerUp = buttonView;
             if([self.boardView testTilesWith:2]){
-           if([[PurchaseManager instance] purchasePowerUp:PowerUpTypeRevive]) {
+                if([[PurchaseManager instance] purchasePowerUp:PowerUpTypeRevive]) {
                     [self.boardView destroyTilesWith:2];
                     [self hideGameEnd];
                 }
@@ -180,8 +182,9 @@
             break;
             
         case ButtonViewTypeLostBomb4:
+            self.queuedPowerUp = buttonView;
             if([self.boardView testTilesWith:4]){
-          if([[PurchaseManager instance] purchasePowerUp:PowerUpTypeRevive]) {
+                if([[PurchaseManager instance] purchasePowerUp:PowerUpTypeRevive]) {
                     [self.boardView destroyTilesWith:4];
                     [self hideGameEnd];
                 }
@@ -192,8 +195,13 @@
             break;
     }
     [self refreshButtonViews];
-}
 
+}
+- (void)buttonPowerPressed:(NSNotification *)notification {
+    ButtonView *buttonView = notification.object;
+    [self applyPowerUp:buttonView];
+    
+}
 - (void)panRecognized:(UIPanGestureRecognizer *)sender
 {
     if (sender.state == UIGestureRecognizerStateBegan) {
@@ -226,6 +234,13 @@
             }
         }
     }
+}
+
+- (void)afterPurchasePowerUp {
+    if (!self.queuedPowerUp) {
+        [self applyPowerUp:self.queuedPowerUp];
+    }
+    self.queuedPowerUp = nil;
 }
 
 - (void)testRun {

@@ -8,16 +8,20 @@
 
 #import "XibDialogView.h"
 #import "Utils.h"
+#import "DialogViewManager.h"
 
 @implementation XibDialogView
 
 - (void)show {
-    [[Utils rootViewController].view addSubview:self];
-    self.frame = [Utils rootViewController].view.frame;
+    [[DialogViewManager instance] show:self];
+}
+
+- (void)showWithNoOverlay {
+    [[DialogViewManager instance] showWithNoOverlay:self];
 }
 
 - (IBAction)dismissed:(id)sender {
-    [self removeFromSuperview];
+    [[DialogViewManager instance] dismissed:self];
 }
 
 @end

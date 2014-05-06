@@ -17,8 +17,8 @@
 #import "TrackUtils.h"
 #import "PromoDialogView.h"
 
-#define BOARD_ROWS 5
-#define BOARD_COLS 5
+#define BOARD_ROWS 1
+#define BOARD_COLS 1
 #define DELAY_MERGE 0.4f
 #define DELAY_NOMERGE 0.2f
 

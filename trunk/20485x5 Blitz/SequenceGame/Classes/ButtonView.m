@@ -68,13 +68,13 @@
     }
     
     if (cost > 0) {
-        self.quantityLabel.text = [NSString stringWithFormat:@"%d",[GameData instance].shuffleCost];
+        self.quantityLabel.text = [NSString stringWithFormat:@"%d",cost];
     } else {
         self.quantityLabel.text = @"FREE";
     }
 }
 
-- (int)priceCheck{
+- (int)priceCheck {
     switch (self.type) {
         case ButtonViewTypeShuffle:
             return [GameData instance].shuffleCost;
@@ -86,13 +86,13 @@
             return [GameData instance].bomb4Cost;
             break;
         case ButtonViewTypeLostShuffle:
-            return [GameData instance].shuffleCostLost;
+            return [GameData instance].lostGameCost;
             break;
         case ButtonViewTypeLostBomb2:
-            return [GameData instance].bomb2CostLost;
+            return [GameData instance].lostGameCost;
             break;
         case ButtonViewTypeLostBomb4:
-            return [GameData instance].bomb4CostLost;
+            return [GameData instance].lostGameCost;
             break;
         default:
             break;

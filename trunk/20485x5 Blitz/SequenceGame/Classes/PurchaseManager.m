@@ -20,7 +20,7 @@
 
 - (BOOL)purchasePowerUp:(PowerUpType)type {
     BOOL validation = NO;
-
+    
     switch (type) {
         case PowerUpTypeShuffle:
             if([UserData instance].currentCoin >= [GameData instance].shuffleCost) {
@@ -31,21 +31,21 @@
             break;
         case PowerUpTypeBomb2:
             if([UserData instance].currentCoin >= [GameData instance].bomb2Cost) {
-                [UserData instance].currentCoin = [UserData instance].currentCoin - [GameData instance].shuffleCost;
+                [UserData instance].currentCoin = [UserData instance].currentCoin - [GameData instance].bomb2Cost;
                 [[GameData instance] bomb2CostUpgrade];
                 validation = YES;
             }
             break;
         case PowerUpTypeBomb4:
             if([UserData instance].currentCoin >= [GameData instance].bomb4Cost) {
-                [UserData instance].currentCoin = [UserData instance].currentCoin - [GameData instance].shuffleCost;
+                [UserData instance].currentCoin = [UserData instance].currentCoin - [GameData instance].bomb4Cost;
                 [[GameData instance] bomb4CostUpgrade];
                 validation = YES;
             }
             break;
         case PowerUpTypeRevive:
             if([UserData instance].currentCoin >= [GameData instance].lostGameCost) {
-                [UserData instance].currentCoin = [UserData instance].currentCoin - [GameData instance].shuffleCost;
+                [UserData instance].currentCoin = [UserData instance].currentCoin - [GameData instance].lostGameCost;
                 [[GameData instance] lostGameCostUpgrade];
                 validation = YES;
             }

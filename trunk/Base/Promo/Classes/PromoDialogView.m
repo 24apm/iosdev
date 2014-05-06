@@ -71,7 +71,7 @@ static int promoPressedCount = 0;
 }
 
 - (void)show {
-    [super show];
+    [super showWithNoOverlay];
     self.overlay.alpha = 0.f;
     self.headerLabel.alpha = 0.f;
     self.closeButton.alpha = 0.f;
