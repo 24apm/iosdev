@@ -27,6 +27,7 @@
                 [UserData instance].currentCoin = [UserData instance].currentCoin - [GameData instance].shuffleCost;
                 [[GameData instance] shuffleCostUpgrade];
                 validation = YES;
+                [TrackUtils trackAction:@"purchaseTier1" label:@""];
             }
             break;
         case PowerUpTypeBomb2:
@@ -34,6 +35,7 @@
                 [UserData instance].currentCoin = [UserData instance].currentCoin - [GameData instance].bomb2Cost;
                 [[GameData instance] bomb2CostUpgrade];
                 validation = YES;
+                [TrackUtils trackAction:@"purchaseTier2" label:@""];
             }
             break;
         case PowerUpTypeBomb4:
@@ -41,6 +43,7 @@
                 [UserData instance].currentCoin = [UserData instance].currentCoin - [GameData instance].bomb4Cost;
                 [[GameData instance] bomb4CostUpgrade];
                 validation = YES;
+                [TrackUtils trackAction:@"purchaseTier3" label:@""];
             }
             break;
         case PowerUpTypeRevive:
@@ -48,6 +51,7 @@
                 [UserData instance].currentCoin = [UserData instance].currentCoin - [GameData instance].lostGameCost;
                 [[GameData instance] lostGameCostUpgrade];
                 validation = YES;
+                [TrackUtils trackAction:@"purchaseTier4" label:@""];
             }
             break;
             

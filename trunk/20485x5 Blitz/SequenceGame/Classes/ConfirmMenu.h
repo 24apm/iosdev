@@ -11,15 +11,18 @@
 #import "GameData.h"
 #import "UserData.h"
 #import "AnimatingDialogView.h"
+#import "THLabel.h"
 
 #define CANCEL_BUTTON_PRESSED_NOTIFICATION @"CANCEL_BUTTON_PRESSED_NOTIFICATION"
 #define BUY_POWER_CONFIRM_BUTTON_PRESSED_NOTIFICATION @"BUY_POWER_CONFIRM_BUTTON_PRESSED_NOTIFICATION"
 
 @interface ConfirmMenu : AnimatingDialogView
 
+@property (strong, nonatomic) IBOutlet UIImageView *applyingImage;
+@property (strong, nonatomic) IBOutlet UIImageView *afterImage;
 @property (strong, nonatomic) IBOutlet UIButton *confirmButton;
 @property (strong, nonatomic) IBOutlet UIButton *cancelButton;
-@property (strong, nonatomic) IBOutlet UILabel *itemCost;
+@property (strong, nonatomic) IBOutlet THLabel *itemCost;
 @property (strong, nonatomic) IBOutlet UILabel *Operation;
 @property (strong, nonatomic) IBOutlet UILabel *currentCoin;
 @property (strong, nonatomic) IBOutlet UILabel *result;

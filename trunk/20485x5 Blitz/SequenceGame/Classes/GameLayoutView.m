@@ -48,10 +48,10 @@
     self.panNumbers = 0;
     [[UserData instance] addObserver:self forKeyPath:@"currentScore" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
     [[UserData instance] addObserver:self forKeyPath:@"currentCoin" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(displayGameEnd) name:NO_MORE_MOVE_NOTIFICATION object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gameEnd) name:NO_MORE_MOVE_NOTIFICATION object:nil];
     //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(buyPowerUp:) name:BUTTON_VIEW_PRESSED object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(buttonPowerPressed:) name:BUY_POWER_CONFIRM_BUTTON_PRESSED_NOTIFICATION object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(afterPurchasePowerUp) name:PURCHASE_SUCCESS_NOTIFICATION object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(afterPurchasePowerUp:) name:PURCHASE_SUCCESS_NOTIFICATION object:nil];
     
     [[GameData instance] resetCost];
     [self.buttonView1 setupWithType:ButtonViewTypeShuffle];
@@ -70,6 +70,12 @@
 
 - (IBAction)buyButtonPressed:(UIButton *)sender {
     [[CoinIAPHelper sharedInstance] showCoinMenu];
+}
+
+
+- (void)gameEnd {
+    [self shakeScreen];
+    [self performSelector:@selector(displayGameEnd) withObject:Nil afterDelay:0.7f];
 }
 
 - (void)displayGameEnd {
@@ -236,7 +242,9 @@
     }
 }
 
-- (void)afterPurchasePowerUp {
+- (void)afterPurchasePowerUp:(NSNotification *)notification {
+    NSString *productIdentifier = notification.object;
+    [self animateCoin:[[CoinIAPHelper sharedInstance] valueForProductId:productIdentifier]];
     if (!self.queuedPowerUp) {
         [self applyPowerUp:self.queuedPowerUp];
     }
@@ -275,5 +283,17 @@
         }
         try++;
     }
+}
+
+- (void)animateCoin:(int)value {
+    AnimatedLabel *label = [[AnimatedLabel alloc] init];
+    [self addSubview:label];
+    label.label.text = [NSString stringWithFormat:@"+%d", value];
+    label.center = self.coinLabel.center;
+    [label animate];
+}
+
+- (void)shakeScreen {
+    [AnimUtil wobble:self duration:0.1f angle:M_PI/128.f repeatCount:2];
 }
 @end

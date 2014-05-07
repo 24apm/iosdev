@@ -9,7 +9,7 @@
 #import "CoinIAPHelper.h"
 #import "CoinMenuView.h"
 #import "ErrorDialogView.h"
-
+#import "TrackUtils.h"
 @interface CoinIAPHelper()
 
 @property (nonatomic) BOOL loaded;

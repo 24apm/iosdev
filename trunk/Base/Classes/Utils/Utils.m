@@ -42,4 +42,12 @@
     return formattedInteger;
 }
 
++ (NSString *)formatWithFreeCost:(int)cost {
+    if (cost > 0) {
+        return [NSString stringWithFormat:@"%d",cost];
+    } else {
+        return @"FREE";
+    }
+}
+
 @end

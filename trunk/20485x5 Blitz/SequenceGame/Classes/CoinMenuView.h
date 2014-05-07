@@ -10,6 +10,7 @@
 #import "CoinView.h"
 #import "UserData.h"
 #import "AnimatingDialogView.h"
+#import "TrackUtils.h"
 
 #define PURCHASE_SUCCESS_NOTIFICATION @"PURCHASE_SUCCESS_NOTIFICATION"
 

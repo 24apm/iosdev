@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "GameData.h"
 #import "UserData.h"
+#import "TrackUtils.h"
 
 #define NOT_ENOUGH_COIN_NOTIFICATION @"NOT_ENOUGH_COIN_NOTIFICATION"
 

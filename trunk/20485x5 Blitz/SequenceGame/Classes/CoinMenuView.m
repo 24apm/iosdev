@@ -28,9 +28,10 @@
         [[self.coinViewCollection objectAtIndex:i] setupProduct:[[CoinIAPHelper sharedInstance] productForType:i]];
     }
 }
- 
+
 - (void)buyingProduct:(NSNotification *)notification {
     self.userInteractionEnabled = NO;
+    [TrackUtils trackAction:@"buyingProduct" label:@""];
     CoinView * coinView = notification.object;
     [[CoinIAPHelper sharedInstance] buyProduct:coinView.product];
 }
@@ -40,14 +41,16 @@
     if (productIdentifier) {
         // Unlock answer
         self.userInteractionEnabled = YES;
+        [TrackUtils trackAction:@"buyingProductSuccess" label:@""];
         [UserData instance].currentCoin += [[CoinIAPHelper sharedInstance] valueForProductId:productIdentifier];
         [[UserData instance] saveUserCoin];
         [self dismissed:self];
-        [[NSNotificationCenter defaultCenter]postNotificationName:PURCHASE_SUCCESS_NOTIFICATION object:nil];
+        [[NSNotificationCenter defaultCenter]postNotificationName:PURCHASE_SUCCESS_NOTIFICATION object:productIdentifier];
     }
 }
 
 - (void)productFailed:(NSNotification *)notification {
+    [TrackUtils trackAction:@"buyingProductFail" label:@""];
     self.userInteractionEnabled = YES;
 }
 
@@ -57,6 +60,7 @@
 }
 
 - (IBAction)backButtonPressed:(UIButton *)sender {
+    [TrackUtils trackAction:@"buyingProductBackPressed" label:@""];
     [self dismissed:self];
 }
 @end

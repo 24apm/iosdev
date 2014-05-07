@@ -12,6 +12,7 @@
 #import "PurchaseManager.h"
 #import "ConfirmMenu.h"
 #import "CoinMenuView.h"
+#import "AnimatedLabel.h"
 
 @interface GameLayoutView : XibView <UIGestureRecognizerDelegate>
 @property (strong, nonatomic) IBOutlet UIView *fadeView;

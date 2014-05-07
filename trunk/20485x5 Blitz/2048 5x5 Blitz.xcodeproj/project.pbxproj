@@ -20,6 +20,9 @@
 		D055B91B1918A066007730EB /* tier3coin.png in Resources */ = {isa = PBXBuildFile; fileRef = D055B9191918A066007730EB /* tier3coin.png */; };
 		D055B91D1918A7A4007730EB /* tier4coin.png in Resources */ = {isa = PBXBuildFile; fileRef = D055B91C1918A7A4007730EB /* tier4coin.png */; };
 		D07F418018A4D8C7009680FD /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07F417F18A4D8C7009680FD /* iAd.framework */; };
+		D08CD532191A2C2A003A4F47 /* ConfirmMenu~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D08CD530191A2C2A003A4F47 /* ConfirmMenu~ipad.xib */; };
+		D08CD533191A2C2A003A4F47 /* ConfirmMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D08CD531191A2C2A003A4F47 /* ConfirmMenu.xib */; };
+		D08CD535191A2C7A003A4F47 /* TileView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D08CD534191A2C7A003A4F47 /* TileView~ipad.xib */; };
 		D09124BA18CC55520050B59F /* blop.caf in Resources */ = {isa = PBXBuildFile; fileRef = D09124B718CC55520050B59F /* blop.caf */; };
 		D09124BB18CC55520050B59F /* tick.caf in Resources */ = {isa = PBXBuildFile; fileRef = D09124B818CC55520050B59F /* tick.caf */; };
 		D09124BC18CC55520050B59F /* whoosh.caf in Resources */ = {isa = PBXBuildFile; fileRef = D09124B918CC55520050B59F /* whoosh.caf */; };
@@ -65,6 +68,26 @@
 		D0E30EA518A376E300FFD3CE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E30E8418A376E300FFD3CE /* Foundation.framework */; };
 		D0E30EA618A376E300FFD3CE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E30E8818A376E300FFD3CE /* UIKit.framework */; };
 		D0E30EDF18A37D6400FFD3CE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E30EDE18A37D6400FFD3CE /* QuartzCore.framework */; };
+		D0E33003191A04EA00FB5EB8 /* disconnected.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E32FF7191A04EA00FB5EB8 /* disconnected.png */; };
+		D0E33004191A04EA00FB5EB8 /* globe.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E32FF8191A04EA00FB5EB8 /* globe.png */; };
+		D0E33005191A04EA00FB5EB8 /* iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E32FF9191A04EA00FB5EB8 /* iphone.png */; };
+		D0E33006191A04EA00FB5EB8 /* cross.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E32FFA191A04EA00FB5EB8 /* cross.png */; };
+		D0E33007191A04EA00FB5EB8 /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E32FFB191A04EA00FB5EB8 /* check.png */; };
+		D0E33008191A04EA00FB5EB8 /* arrowdown.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E32FFC191A04EA00FB5EB8 /* arrowdown.png */; };
+		D0E33009191A04EA00FB5EB8 /* applyingshuffle.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E32FFD191A04EA00FB5EB8 /* applyingshuffle.png */; };
+		D0E3300A191A04EA00FB5EB8 /* aftershuffle.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E32FFE191A04EA00FB5EB8 /* aftershuffle.png */; };
+		D0E3300B191A04EA00FB5EB8 /* afterbomb4.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E32FFF191A04EA00FB5EB8 /* afterbomb4.png */; };
+		D0E3300C191A04EA00FB5EB8 /* applyingbomb4.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E33000191A04EA00FB5EB8 /* applyingbomb4.png */; };
+		D0E3300D191A04EA00FB5EB8 /* afterbomb2.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E33001191A04EA00FB5EB8 /* afterbomb2.png */; };
+		D0E3300E191A04EA00FB5EB8 /* applyingbomb2.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E33002191A04EA00FB5EB8 /* applyingbomb2.png */; };
+		D0E33012191A0EEE00FB5EB8 /* CoinView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E33011191A0EEE00FB5EB8 /* CoinView~ipad.xib */; };
+		D0E33016191A140100FB5EB8 /* rating.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E33015191A140100FB5EB8 /* rating.png */; };
+		D0E33018191A155D00FB5EB8 /* LocalLeaderBoardView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E33017191A155D00FB5EB8 /* LocalLeaderBoardView~ipad.xib */; };
+		D0E3301C191A1A9F00FB5EB8 /* plus.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E3301B191A1A9F00FB5EB8 /* plus.png */; };
+		D0E33020191A1B6500FB5EB8 /* ButtonView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E3301F191A1B6500FB5EB8 /* ButtonView~ipad.xib */; };
+		D0E33022191A1D6F00FB5EB8 /* ErrorDialogView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E33021191A1D6F00FB5EB8 /* ErrorDialogView~ipad.xib */; };
+		D0E33024191A1DB200FB5EB8 /* CoinMenuView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E33023191A1DB200FB5EB8 /* CoinMenuView~ipad.xib */; };
+		D0E33026191A20B400FB5EB8 /* GameLayoutView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E33025191A20B400FB5EB8 /* GameLayoutView~ipad.xib */; };
 		D0E36B8B18C2906F00BA56E7 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E36B8A18C2906F00BA56E7 /* StoreKit.framework */; };
 		D0E378FF18D42CF700541404 /* GameManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E378FE18D42CF700541404 /* GameManager.m */; };
 		D0E395B918EE782200FB4D5A /* TileView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E395B818EE782200FB4D5A /* TileView.m */; };
@@ -181,7 +204,6 @@
 		D0EC893519135B3900FE5007 /* GameData.m in Sources */ = {isa = PBXBuildFile; fileRef = D0EC893419135B3900FE5007 /* GameData.m */; };
 		D0EC8938191362F200FE5007 /* PurchaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D0EC8937191362F200FE5007 /* PurchaseManager.m */; };
 		D0ED116618CF04BC00C55BA9 /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = D0ED116518CF04BC00C55BA9 /* heart.png */; };
-		D0ED7C5F1914D60600D0E56D /* ConfirmMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0ED7C5E1914D60600D0E56D /* ConfirmMenu.xib */; };
 		D0ED7C621914D62700D0E56D /* ConfirmMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = D0ED7C611914D62700D0E56D /* ConfirmMenu.m */; };
 		D0ED7C641914F33600D0E56D /* CoinView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0ED7C631914F33600D0E56D /* CoinView.xib */; };
 		D0ED7C661914F46A00D0E56D /* CoinMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0ED7C651914F46A00D0E56D /* CoinMenuView.xib */; };
@@ -255,6 +277,9 @@
 		D055B9191918A066007730EB /* tier3coin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tier3coin.png; sourceTree = "<group>"; };
 		D055B91C1918A7A4007730EB /* tier4coin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tier4coin.png; sourceTree = "<group>"; };
 		D07F417F18A4D8C7009680FD /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
+		D08CD530191A2C2A003A4F47 /* ConfirmMenu~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ConfirmMenu~ipad.xib"; sourceTree = "<group>"; };
+		D08CD531191A2C2A003A4F47 /* ConfirmMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConfirmMenu.xib; sourceTree = "<group>"; };
+		D08CD534191A2C7A003A4F47 /* TileView~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "TileView~ipad.xib"; sourceTree = "<group>"; };
 		D09124B718CC55520050B59F /* blop.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = blop.caf; sourceTree = "<group>"; };
 		D09124B818CC55520050B59F /* tick.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = tick.caf; sourceTree = "<group>"; };
 		D09124B918CC55520050B59F /* whoosh.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = whoosh.caf; sourceTree = "<group>"; };
@@ -316,6 +341,26 @@
 		D0E30EA218A376E300FFD3CE /* 2048 5x5 BlitzTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "2048 5x5 BlitzTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0E30EA318A376E300FFD3CE /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		D0E30EDE18A37D6400FFD3CE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		D0E32FF7191A04EA00FB5EB8 /* disconnected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = disconnected.png; sourceTree = "<group>"; };
+		D0E32FF8191A04EA00FB5EB8 /* globe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = globe.png; sourceTree = "<group>"; };
+		D0E32FF9191A04EA00FB5EB8 /* iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iphone.png; sourceTree = "<group>"; };
+		D0E32FFA191A04EA00FB5EB8 /* cross.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cross.png; sourceTree = "<group>"; };
+		D0E32FFB191A04EA00FB5EB8 /* check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check.png; sourceTree = "<group>"; };
+		D0E32FFC191A04EA00FB5EB8 /* arrowdown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrowdown.png; sourceTree = "<group>"; };
+		D0E32FFD191A04EA00FB5EB8 /* applyingshuffle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = applyingshuffle.png; sourceTree = "<group>"; };
+		D0E32FFE191A04EA00FB5EB8 /* aftershuffle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aftershuffle.png; sourceTree = "<group>"; };
+		D0E32FFF191A04EA00FB5EB8 /* afterbomb4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = afterbomb4.png; sourceTree = "<group>"; };
+		D0E33000191A04EA00FB5EB8 /* applyingbomb4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = applyingbomb4.png; sourceTree = "<group>"; };
+		D0E33001191A04EA00FB5EB8 /* afterbomb2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = afterbomb2.png; sourceTree = "<group>"; };
+		D0E33002191A04EA00FB5EB8 /* applyingbomb2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = applyingbomb2.png; sourceTree = "<group>"; };
+		D0E33011191A0EEE00FB5EB8 /* CoinView~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "CoinView~ipad.xib"; sourceTree = "<group>"; };
+		D0E33015191A140100FB5EB8 /* rating.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rating.png; sourceTree = "<group>"; };
+		D0E33017191A155D00FB5EB8 /* LocalLeaderBoardView~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "LocalLeaderBoardView~ipad.xib"; sourceTree = "<group>"; };
+		D0E3301B191A1A9F00FB5EB8 /* plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plus.png; sourceTree = "<group>"; };
+		D0E3301F191A1B6500FB5EB8 /* ButtonView~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ButtonView~ipad.xib"; sourceTree = "<group>"; };
+		D0E33021191A1D6F00FB5EB8 /* ErrorDialogView~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ErrorDialogView~ipad.xib"; sourceTree = "<group>"; };
+		D0E33023191A1DB200FB5EB8 /* CoinMenuView~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "CoinMenuView~ipad.xib"; sourceTree = "<group>"; };
+		D0E33025191A20B400FB5EB8 /* GameLayoutView~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "GameLayoutView~ipad.xib"; sourceTree = "<group>"; };
 		D0E36B8A18C2906F00BA56E7 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		D0E378FD18D42CF700541404 /* GameManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameManager.h; sourceTree = "<group>"; };
 		D0E378FE18D42CF700541404 /* GameManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameManager.m; sourceTree = "<group>"; };
@@ -484,7 +529,6 @@
 		D0EC8936191362F200FE5007 /* PurchaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurchaseManager.h; sourceTree = "<group>"; };
 		D0EC8937191362F200FE5007 /* PurchaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PurchaseManager.m; sourceTree = "<group>"; };
 		D0ED116518CF04BC00C55BA9 /* heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart.png; sourceTree = "<group>"; };
-		D0ED7C5E1914D60600D0E56D /* ConfirmMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConfirmMenu.xib; sourceTree = "<group>"; };
 		D0ED7C601914D62700D0E56D /* ConfirmMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmMenu.h; sourceTree = "<group>"; };
 		D0ED7C611914D62700D0E56D /* ConfirmMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmMenu.m; sourceTree = "<group>"; };
 		D0ED7C631914F33600D0E56D /* CoinView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CoinView.xib; sourceTree = "<group>"; };
@@ -700,14 +744,21 @@
 		D0E2E99B18D2D288009C757F /* Xib */ = {
 			isa = PBXGroup;
 			children = (
-				D0ED7C5E1914D60600D0E56D /* ConfirmMenu.xib */,
+				D08CD530191A2C2A003A4F47 /* ConfirmMenu~ipad.xib */,
+				D08CD531191A2C2A003A4F47 /* ConfirmMenu.xib */,
 				D0ED7C631914F33600D0E56D /* CoinView.xib */,
+				D0E33011191A0EEE00FB5EB8 /* CoinView~ipad.xib */,
 				D0E871FA1916BA3300FFAFD9 /* ErrorDialogView.xib */,
+				D0E33021191A1D6F00FB5EB8 /* ErrorDialogView~ipad.xib */,
 				D0ED7C651914F46A00D0E56D /* CoinMenuView.xib */,
+				D0E33023191A1DB200FB5EB8 /* CoinMenuView~ipad.xib */,
 				D0F02F1E1910E8740003F759 /* ShopDialogView.xib */,
 				D0E57C0D18E143A900EA4081 /* GameLayoutView.xib */,
+				D0E33025191A20B400FB5EB8 /* GameLayoutView~ipad.xib */,
 				D0EA7ECB18D562A10095DEBD /* LocalLeaderBoardView.xib */,
+				D0E33017191A155D00FB5EB8 /* LocalLeaderBoardView~ipad.xib */,
 				D0E395BA18EE782F00FB4D5A /* TileView.xib */,
+				D08CD534191A2C7A003A4F47 /* TileView~ipad.xib */,
 				D0E395BC18EE789B00FB4D5A /* BoardView.xib */,
 				D0E395C118EE790800FB4D5A /* SlotView.xib */,
 				D0E4576218FE5821009342C9 /* SlotView~ipad.xib */,
@@ -725,6 +776,7 @@
 				D0E0FE1818FBB07F00C49FDF /* AnimatedLabel.xib */,
 				D0E4576818FE5C29009342C9 /* AnimatedLabel~ipad.xib */,
 				D0F02F201910E9E60003F759 /* ButtonView.xib */,
+				D0E3301F191A1B6500FB5EB8 /* ButtonView~ipad.xib */,
 			);
 			path = Xib;
 			sourceTree = "<group>";
@@ -792,6 +844,20 @@
 		D0E50A2818A7349300AA353E /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				D0E3301B191A1A9F00FB5EB8 /* plus.png */,
+				D0E33015191A140100FB5EB8 /* rating.png */,
+				D0E32FF7191A04EA00FB5EB8 /* disconnected.png */,
+				D0E32FF8191A04EA00FB5EB8 /* globe.png */,
+				D0E32FF9191A04EA00FB5EB8 /* iphone.png */,
+				D0E32FFA191A04EA00FB5EB8 /* cross.png */,
+				D0E32FFB191A04EA00FB5EB8 /* check.png */,
+				D0E32FFC191A04EA00FB5EB8 /* arrowdown.png */,
+				D0E32FFD191A04EA00FB5EB8 /* applyingshuffle.png */,
+				D0E32FFE191A04EA00FB5EB8 /* aftershuffle.png */,
+				D0E32FFF191A04EA00FB5EB8 /* afterbomb4.png */,
+				D0E33000191A04EA00FB5EB8 /* applyingbomb4.png */,
+				D0E33001191A04EA00FB5EB8 /* afterbomb2.png */,
+				D0E33002191A04EA00FB5EB8 /* applyingbomb2.png */,
 				D055B91C1918A7A4007730EB /* tier4coin.png */,
 				D055B9181918A066007730EB /* tier2coin.png */,
 				D055B9191918A066007730EB /* tier3coin.png */,
@@ -1194,12 +1260,15 @@
 				D0EADDEC18E769FC0016D2A0 /* NGIcon120.png in Resources */,
 				D0EA871C18DA78DE0034B392 /* kick.caf in Resources */,
 				D0E395BB18EE782F00FB4D5A /* TileView.xib in Resources */,
+				D0E33005191A04EA00FB5EB8 /* iphone.png in Resources */,
 				D0E4576918FE5C29009342C9 /* AnimatedLabel~ipad.xib in Resources */,
 				D0F375D018FA896300D32A10 /* tier2.png in Resources */,
+				D0E3301C191A1A9F00FB5EB8 /* plus.png in Resources */,
 				D0E2E9B818D2D288009C757F /* 2048 5x5 Blitz-Info.plist in Resources */,
 				D0F375E318FA981100D32A10 /* tier6-2.png in Resources */,
 				D0E4BCD418D97BB500132C17 /* swordattack.png in Resources */,
 				D0F375E418FA981100D32A10 /* tier3-2.png in Resources */,
+				D0E33006191A04EA00FB5EB8 /* cross.png in Resources */,
 				D0F375CF18FA896300D32A10 /* tier1.png in Resources */,
 				D0F375D918FA958000D32A10 /* tier9-2.png in Resources */,
 				D0E541C019174EBB00DD7B1A /* button_powerup_bomb_shuffle.png in Resources */,
@@ -1208,9 +1277,11 @@
 				D0E3A0D018E7DA2900C7B63D /* PromoDialogView.xib in Resources */,
 				D033855218EA9C22008D7861 /* defaultbackground.png in Resources */,
 				D0EC757918EBE5E40015AD4C /* cloud2.png in Resources */,
+				D0E3300C191A04EA00FB5EB8 /* applyingbomb4.png in Resources */,
 				D0E6337018FFBA05007C1622 /* bui.caf in Resources */,
 				D09124BC18CC55520050B59F /* whoosh.caf in Resources */,
 				D0E4576318FE5821009342C9 /* SlotView~ipad.xib in Resources */,
+				D0E33009191A04EA00FB5EB8 /* applyingshuffle.png in Resources */,
 				D0DFFCCD18DC1687001424DF /* femalelose.png in Resources */,
 				D0F375C718FA466400D32A10 /* tier12.png in Resources */,
 				D0F375B818FA3D9300D32A10 /* tier0.png in Resources */,
@@ -1227,9 +1298,11 @@
 				D0F375C318FA457100D32A10 /* tier4.png in Resources */,
 				D048A84018ACAAAB00411DF9 /* twitter_share.png in Resources */,
 				D0EADDED18E769FC0016D2A0 /* RushyKnightIcon120.png in Resources */,
+				D0E33018191A155D00FB5EB8 /* LocalLeaderBoardView~ipad.xib in Resources */,
 				D0F375E918FA990100D32A10 /* tier2-2.png in Resources */,
 				D0E541CA191784D100DD7B1A /* iconbackground.png in Resources */,
 				D0E2E9BD18D2D288009C757F /* MainView.xib in Resources */,
+				D0E33003191A04EA00FB5EB8 /* disconnected.png in Resources */,
 				D0E47C2818ED2F9F009CA771 /* refreshbutton.png in Resources */,
 				D0B4663518E9689400334CA2 /* hand.png in Resources */,
 				D0EADDEF18E769FC0016D2A0 /* WTNappicon120x120.png in Resources */,
@@ -1240,6 +1313,7 @@
 				D0DFFCCE18DC1687001424DF /* malelose.png in Resources */,
 				D0E4BCD218D9743700132C17 /* soldier.png in Resources */,
 				D0E48B7518DD9748000EF905 /* InGameMessageView~ipad.xib in Resources */,
+				D08CD533191A2C2A003A4F47 /* ConfirmMenu.xib in Resources */,
 				D0E57C0E18E143A900EA4081 /* GameLayoutView.xib in Resources */,
 				D0F375E218FA981100D32A10 /* tier8-2.png in Resources */,
 				D0EA7EBF18D521C90095DEBD /* shield.png in Resources */,
@@ -1253,6 +1327,7 @@
 				D0E2E9BF18D2D288009C757F /* GamePlayView.xib in Resources */,
 				D0F02F1F1910E8740003F759 /* ShopDialogView.xib in Resources */,
 				D0EA871D18DA78DE0034B392 /* metal_clang.caf in Resources */,
+				D08CD535191A2C7A003A4F47 /* TileView~ipad.xib in Resources */,
 				D0F375D718FA958000D32A10 /* tier11-2.png in Resources */,
 				D0E6336E18FFB9F8007C1622 /* duing.caf in Resources */,
 				D0E4B2CF18FD268A00260ABD /* main.png in Resources */,
@@ -1274,8 +1349,11 @@
 				D0E4BCCE18D95D9200132C17 /* Victory.png in Resources */,
 				D0E47C2118ED29DC009CA771 /* singleplayerbutton.png in Resources */,
 				D0EA7EC418D52FE90095DEBD /* defend.png in Resources */,
+				D08CD532191A2C2A003A4F47 /* ConfirmMenu~ipad.xib in Resources */,
 				D0EADDF118E769FC0016D2A0 /* PromoBannerView.xib in Resources */,
+				D0E33016191A140100FB5EB8 /* rating.png in Resources */,
 				D0F02F211910E9E60003F759 /* ButtonView.xib in Resources */,
+				D0E33012191A0EEE00FB5EB8 /* CoinView~ipad.xib in Resources */,
 				D0E1123318C2ECF300808072 /* ticking.caf in Resources */,
 				D0E871FB1916BA3300FFAFD9 /* ErrorDialogView.xib in Resources */,
 				D0E47C2918ED2F9F009CA771 /* homebutton.png in Resources */,
@@ -1283,41 +1361,51 @@
 				D0F11CB418D83D70007A8963 /* CustomizationView.xib in Resources */,
 				D0EA7EC518D52FE90095DEBD /* attack.png in Resources */,
 				D0E47C2318ED29EA009CA771 /* vsbutton.png in Resources */,
+				D0E33026191A20B400FB5EB8 /* GameLayoutView~ipad.xib in Resources */,
 				D033855318EA9C22008D7861 /* bluebackground.png in Resources */,
 				D0EA7EC118D521C90095DEBD /* monster.png in Resources */,
+				D0E33008191A04EA00FB5EB8 /* arrowdown.png in Resources */,
 				D0F375C118FA457100D32A10 /* tier5.png in Resources */,
+				D0E33024191A1DB200FB5EB8 /* CoinMenuView~ipad.xib in Resources */,
+				D0E33020191A1B6500FB5EB8 /* ButtonView~ipad.xib in Resources */,
+				D0E33022191A1D6F00FB5EB8 /* ErrorDialogView~ipad.xib in Resources */,
 				D055B91A1918A066007730EB /* tier2coin.png in Resources */,
 				D0F375C218FA457100D32A10 /* tier6.png in Resources */,
 				D0EA871E18DA78DE0034B392 /* sharp_punch.caf in Resources */,
 				D0E6336C18FFB9D4007C1622 /* boiling.caf in Resources */,
 				D0F375D818FA958000D32A10 /* tier10-2.png in Resources */,
 				D0EA7EBE18D521C90095DEBD /* arrow.png in Resources */,
+				D0E3300E191A04EA00FB5EB8 /* applyingbomb2.png in Resources */,
 				D0EC756B18EBC3F80015AD4C /* GamePlayOneView.xib in Resources */,
 				D0E3A0D518E8119D00C7B63D /* doorsPerson.png in Resources */,
 				D0F375C818FA466400D32A10 /* tier11.png in Resources */,
 				D055B91B1918A066007730EB /* tier3coin.png in Resources */,
 				D0F375DA18FA958000D32A10 /* tier0-2.png in Resources */,
+				D0E3300D191A04EA00FB5EB8 /* afterbomb2.png in Resources */,
 				D0E1123518C2EDF000808072 /* bling.caf in Resources */,
 				D0F11CB918D8412F007A8963 /* CustomizationItemView.xib in Resources */,
 				D0EADDE918E769FC0016D2A0 /* iRate.bundle in Resources */,
 				D0E7FF6C18E69DEB00896C7B /* person.png in Resources */,
-				D0ED7C5F1914D60600D0E56D /* ConfirmMenu.xib in Resources */,
 				D0E2E9B418D2D288009C757F /* InfoPlist.strings in Resources */,
 				D0E3A0CE18E7D77D00C7B63D /* PromoIconView.xib in Resources */,
 				D0E2E9B918D2D288009C757F /* GameViewController.xib in Resources */,
+				D0E33004191A04EA00FB5EB8 /* globe.png in Resources */,
 				D0ED7C661914F46A00D0E56D /* CoinMenuView.xib in Resources */,
 				D0EA871B18DA78DE0034B392 /* bounceEffect.caf in Resources */,
 				D0F02F1A1910C7640003F759 /* PromoDialogView~ipad.xib in Resources */,
 				D0F375C018FA457100D32A10 /* tier8.png in Resources */,
+				D0E3300B191A04EA00FB5EB8 /* afterbomb4.png in Resources */,
 				D0EA872018DA7D0D0034B392 /* knight_main.png in Resources */,
 				D0EF3FD518D7FB1B00C50442 /* blue_header.png in Resources */,
 				D0E1123218C2ECF300808072 /* pop.caf in Resources */,
 				D0E2E9BB18D2D288009C757F /* InGameMessageView.xib in Resources */,
 				D048A83F18ACAAAB00411DF9 /* facebook_share.png in Resources */,
+				D0E33007191A04EA00FB5EB8 /* check.png in Resources */,
 				D0E3D706190FBBF900701A56 /* backView.png in Resources */,
 				D0E2E9B718D2D288009C757F /* MainWindow.xib in Resources */,
 				D0E2E9C118D2D288009C757F /* ResultView.xib in Resources */,
 				D09124BA18CC55520050B59F /* blop.caf in Resources */,
+				D0E3300A191A04EA00FB5EB8 /* aftershuffle.png in Resources */,
 				D0E4BCD118D9743700132C17 /* bossknight.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

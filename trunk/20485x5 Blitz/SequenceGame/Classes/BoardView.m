@@ -17,8 +17,8 @@
 #import "TrackUtils.h"
 #import "PromoDialogView.h"
 
-#define BOARD_ROWS 1
-#define BOARD_COLS 1
+#define BOARD_ROWS 5
+#define BOARD_COLS 5
 #define DELAY_MERGE 0.4f
 #define DELAY_NOMERGE 0.2f
 
@@ -400,21 +400,21 @@
 - (void)animateDestroyTile:(SlotView *)slot {
     
     CABasicAnimation *animateScale = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
-    animateScale.toValue = [NSNumber numberWithFloat:1.2f];
+    animateScale.toValue = [NSNumber numberWithFloat:1.4f];
     
     CABasicAnimation *animateOpacity = [CABasicAnimation animationWithKeyPath:@"opacity"];
-    animateOpacity.toValue = [NSNumber numberWithFloat:0.6f];
+    animateOpacity.toValue = [NSNumber numberWithFloat:0.3f];
 
     CABasicAnimation *rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
     rotationAnimation.fromValue = [NSNumber numberWithFloat:0.0f];
     rotationAnimation.toValue = [NSNumber numberWithFloat: M_PI * 2.0f];
-    rotationAnimation.duration = 0.3f;
+    rotationAnimation.duration = 0.5f;
     rotationAnimation.cumulative = YES;
     rotationAnimation.repeatCount = HUGE_VAL;
     
     CAAnimationGroup *animateGroup = [CAAnimationGroup animation];
     animateGroup.animations = [NSArray arrayWithObjects:rotationAnimation, animateScale, animateOpacity, nil];
-    animateGroup.duration = TILE_MOVE_ANIMATION_DURATION;
+    animateGroup.duration = TILE_MOVE_ANIMATION_DURATION + .2f;
     animateGroup.fillMode = kCAFillModeForwards;
     animateGroup.removedOnCompletion = NO;
     
@@ -539,7 +539,7 @@
 
 - (void)shuffleTiles {
     NSMutableArray *storedTiles = [self storeCurrentTiles];
-    float delay = .2f;
+    float delay = .4f;
     
     [self performSelector:@selector(_shuffleTiles:) withObject:storedTiles afterDelay:delay];
     
@@ -576,7 +576,14 @@
 }
 
 - (void)destroyTilesWith:(int)number {
+    float delay = .4f;
+
+    [self performSelector:@selector(_destroyTilesWith:) withObject:[NSNumber numberWithInt:number] afterDelay:delay];
     
+}
+
+- (void)_destroyTilesWith:(NSNumber *)numberData {
+    int number = [numberData intValue];
     for (int row = 0; row < BOARD_ROWS; row ++) {
         for (int col = 0; col < BOARD_COLS; col++) {
             SlotView *slot = [self slotAt:row :col];
