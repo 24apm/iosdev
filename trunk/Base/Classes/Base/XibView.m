@@ -15,7 +15,7 @@
 - (id)init {
     self = [super init];
     if (self) {
-        [self setup];
+        [self _setup];
     }
     return self;
 }
@@ -23,12 +23,12 @@
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        [self setup];
+        [self _setup];
     }
     return self; 
 }
 
-- (void)setup {
+- (void)_setup {
     if(!self.loaderView) {
         self.loaderView = [[UIView alloc] init];
         [self addSubview:self.loaderView];

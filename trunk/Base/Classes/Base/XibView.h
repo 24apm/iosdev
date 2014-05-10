@@ -13,6 +13,4 @@
 
 @property (nonatomic, retain) UIView *loaderView;
 
-- (void)setup;
-
 @end

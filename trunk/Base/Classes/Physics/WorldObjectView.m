@@ -20,7 +20,6 @@
 }
 
 - (void)setup {
-    [super setup];
     self.properties = [[WorldObjectProperties alloc] init];
     self.properties.accelerationMin = CGPointMake(-HUGE_VALF, -HUGE_VALF);
     self.properties.accelerationMax = CGPointMake(HUGE_VALF, HUGE_VALF);
