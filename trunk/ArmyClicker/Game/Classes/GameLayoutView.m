@@ -45,6 +45,8 @@
 - (void)createShopView {
     self.shopTableView = [[ShopTableView alloc] init];
     [self addSubview:self.shopTableView];
+    
+    //TODO test
     [self.shopTableView setupWithItems:@[@"1",@"2",@"3"]];
     self.shopTableView.y = self.height;
 }
@@ -82,10 +84,7 @@
 - (IBAction)buyButtonPressed:(UIButton *)sender {
 //    [[CoinIAPHelper sharedInstance] showCoinMenu];
     
-    float yPos = self.height - self.shopTableView.height;
-    [UIView animateWithDuration:0.3f animations:^ {
-        self.shopTableView.y = yPos;
-    }];
+    [self.shopTableView show];
 }
 
 

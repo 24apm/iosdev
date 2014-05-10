@@ -60,6 +60,13 @@
     return self.cellFrame.size.height;
 }
 
+- (void)show {
+    float yOffset = self.superview.height - self.height;
+    [UIView animateWithDuration:0.3f animations:^ {
+        self.y = yOffset;
+    }];
+}
+
 - (IBAction)dismissed:(id)sender {
     float yOffset = self.superview.height;
     [UIView animateWithDuration:0.3f animations:^ {

@@ -12,6 +12,7 @@
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
+- (void)show;
 - (void)refresh;
 - (void)setupWithItems:(NSArray *)items;
 
