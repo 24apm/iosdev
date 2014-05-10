@@ -9,6 +9,7 @@
             <connections>
                 <outlet property="buttonView" destination="cAV-mL-DV3" id="tIp-zG-VMt"/>
                 <outlet property="coinContainerView" destination="J91-lc-hps" id="dOL-WD-qis"/>
+                <outlet property="glowEffect" destination="pJv-I0-xgX" id="TEe-dF-C8R"/>
                 <outlet property="quantityLabel" destination="Wdf-Ah-HDs" id="rK6-jG-uKd"/>
             </connections>
         </placeholder>
@@ -17,6 +18,10 @@
             <rect key="frame" x="0.0" y="0.0" width="60" height="70"/>
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
             <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gloweffect.png" id="pJv-I0-xgX">
+                    <rect key="frame" x="-38" y="-35" width="140" height="140"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="cAV-mL-DV3">
                     <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
@@ -53,5 +58,6 @@
     </objects>
     <resources>
         <image name="coin.png" width="256" height="256"/>
+        <image name="gloweffect.png" width="256" height="256"/>
     </resources>
 </document>

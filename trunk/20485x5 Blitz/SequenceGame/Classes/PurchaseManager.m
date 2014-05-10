@@ -27,7 +27,7 @@
                 [UserData instance].currentCoin = [UserData instance].currentCoin - [GameData instance].shuffleCost;
                 [[GameData instance] shuffleCostUpgrade];
                 validation = YES;
-                [TrackUtils trackAction:@"purchaseTier1" label:@""];
+                [TrackUtils trackAction:@"purchaseShuffle" label:@""];
             }
             break;
         case PowerUpTypeBomb2:
@@ -35,7 +35,7 @@
                 [UserData instance].currentCoin = [UserData instance].currentCoin - [GameData instance].bomb2Cost;
                 [[GameData instance] bomb2CostUpgrade];
                 validation = YES;
-                [TrackUtils trackAction:@"purchaseTier2" label:@""];
+                [TrackUtils trackAction:@"purchaseBomb2" label:@""];
             }
             break;
         case PowerUpTypeBomb4:
@@ -43,25 +43,26 @@
                 [UserData instance].currentCoin = [UserData instance].currentCoin - [GameData instance].bomb4Cost;
                 [[GameData instance] bomb4CostUpgrade];
                 validation = YES;
-                [TrackUtils trackAction:@"purchaseTier3" label:@""];
+                [TrackUtils trackAction:@"purchaseBomb4" label:@""];
             }
             break;
         case PowerUpTypeRevive:
-            if([UserData instance].currentCoin >= [GameData instance].lostGameCost) {
+            if([UserData instance].currentCoin >= [GameData instance].lostGameCost || [GameData instance].lostGameCost <= 0 ) {
                 [UserData instance].currentCoin = [UserData instance].currentCoin - [GameData instance].lostGameCost;
                 [[GameData instance] lostGameCostUpgrade];
                 validation = YES;
-                [TrackUtils trackAction:@"purchaseTier4" label:@""];
+                [TrackUtils trackAction:@"purchaseRevive" label:@""];
             }
             break;
             
         default:
             break;
     }
+
     [[UserData instance] saveUserCoin];
     
     if (validation != YES) {
-        [[NSNotificationCenter defaultCenter]postNotificationName:NOT_ENOUGH_COIN_NOTIFICATION object:nil];
+        [[CoinIAPHelper sharedInstance] showCoinMenu];
     }
     return validation;
 }

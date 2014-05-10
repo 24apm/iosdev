@@ -28,8 +28,8 @@
     if (self) {
       
         if ([[NSUserDefaults standardUserDefaults] objectForKey:@"coin"] == nil) {
-            self.currentCoin = 10;
-            [self saveUserCoin];
+//            self.currentCoin = 10;
+//            [self saveUserCoin];
         }
         [self retrieveUserCoin];
     }
@@ -42,6 +42,11 @@
 }
 
 - (void)saveUserCoin {
+    
+    if ([UserData instance].currentCoin <= 0) {
+        [UserData instance].currentCoin = 0;
+    }
+    
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:@(self.currentCoin) forKey:@"coin"];
     [defaults synchronize];

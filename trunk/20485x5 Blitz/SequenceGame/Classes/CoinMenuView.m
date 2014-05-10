@@ -45,7 +45,6 @@
         [UserData instance].currentCoin += [[CoinIAPHelper sharedInstance] valueForProductId:productIdentifier];
         [[UserData instance] saveUserCoin];
         [self dismissed:self];
-        [[NSNotificationCenter defaultCenter]postNotificationName:PURCHASE_SUCCESS_NOTIFICATION object:productIdentifier];
     }
 }
 

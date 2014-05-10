@@ -18,21 +18,21 @@
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="main.png" id="fF5-K9-APJ">
-                    <rect key="frame" x="0.0" y="0.0" width="767.99999999999989" height="705.99999999999989"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                    <rect key="frame" x="0.0" y="0.0" width="768" height="691.00000000000023"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="cdO-Ed-gAJ">
-                    <rect key="frame" x="17" y="707.99999999999989" width="359.99999999999994" height="107"/>
+                    <rect key="frame" x="79" y="683" width="240" height="213"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <state key="normal" backgroundImage="leaderboardbutton.png"/>
                     <connections>
-                        <action selector="bestScorePressed:" destination="-1" eventType="touchUpInside" id="L3N-Ta-eRX"/>
+                        <action selector="bestScorePressed:" destination="-1" eventType="touchUpInside" id="ljO-Wi-rb8"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="TMK-Uw-EXR">
-                    <rect key="frame" x="396" y="707.99999999999989" width="359.99999999999994" height="106.99999999999999"/>
+                    <rect key="frame" x="442" y="683" width="240" height="213"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
@@ -42,7 +42,7 @@
                     </connections>
                 </button>
                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="DVn-IF-KZ3">
-                    <rect key="frame" x="216" y="869.99999999999989" width="336" height="84.999999999999986"/>
+                    <rect key="frame" x="216" y="870.00000000000023" width="336" height="85.000000000000014"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -52,7 +52,7 @@
                     </connections>
                 </button>
                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Gdn-K4-X4O" userLabel="Button - Reset Achievement">
-                    <rect key="frame" x="0.0" y="43" width="437" height="64"/>
+                    <rect key="frame" x="0.0" y="43.000000000000014" width="437" height="64.000000000000028"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="Reset Achievement">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -62,7 +62,7 @@
                     </connections>
                 </button>
                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="XvA-ui-G9g">
-                    <rect key="frame" x="343" y="43" width="437" height="64"/>
+                    <rect key="frame" x="343" y="43.000000000000007" width="437" height="64.000000000000014"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="Reset Local Score">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -77,8 +77,8 @@
         </view>
     </objects>
     <resources>
-        <image name="leaderboardbutton.png" width="600" height="200"/>
-        <image name="main.png" width="1536" height="1700"/>
-        <image name="playbutton.png" width="600" height="200"/>
+        <image name="leaderboardbutton.png" width="256" height="256"/>
+        <image name="main.png" width="1024" height="1024"/>
+        <image name="playbutton.png" width="256" height="256"/>
     </resources>
 </document>

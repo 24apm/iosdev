@@ -168,6 +168,8 @@
 		D0ED116618CF04BC00C55BA9 /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = D0ED116518CF04BC00C55BA9 /* heart.png */; };
 		D0EF3FD418D7FB1B00C50442 /* red_header.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EF3FD218D7FB1B00C50442 /* red_header.png */; };
 		D0EF3FD518D7FB1B00C50442 /* blue_header.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EF3FD318D7FB1B00C50442 /* blue_header.png */; };
+		D0EFC63D191B5CE6008A54C8 /* AnimatingDialogView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0EFC639191B5CE6008A54C8 /* AnimatingDialogView.m */; };
+		D0EFC63E191B5CE6008A54C8 /* DialogViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D0EFC63A191B5CE6008A54C8 /* DialogViewManager.m */; };
 		D0F02F181910C7450003F759 /* PromoBannerView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0F02F171910C7450003F759 /* PromoBannerView~ipad.xib */; };
 		D0F02F1A1910C7640003F759 /* PromoDialogView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0F02F191910C7640003F759 /* PromoDialogView~ipad.xib */; };
 		D0F0B8FE18E8F4D900809CA2 /* TrackUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F0B8FD18E8F4D900809CA2 /* TrackUtils.m */; };
@@ -439,6 +441,10 @@
 		D0ED116518CF04BC00C55BA9 /* heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart.png; sourceTree = "<group>"; };
 		D0EF3FD218D7FB1B00C50442 /* red_header.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red_header.png; sourceTree = "<group>"; };
 		D0EF3FD318D7FB1B00C50442 /* blue_header.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blue_header.png; sourceTree = "<group>"; };
+		D0EFC639191B5CE6008A54C8 /* AnimatingDialogView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimatingDialogView.m; sourceTree = "<group>"; };
+		D0EFC63A191B5CE6008A54C8 /* DialogViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DialogViewManager.m; sourceTree = "<group>"; };
+		D0EFC63B191B5CE6008A54C8 /* DialogViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DialogViewManager.h; sourceTree = "<group>"; };
+		D0EFC63C191B5CE6008A54C8 /* AnimatingDialogView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatingDialogView.h; sourceTree = "<group>"; };
 		D0F02F171910C7450003F759 /* PromoBannerView~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "PromoBannerView~ipad.xib"; sourceTree = "<group>"; };
 		D0F02F191910C7640003F759 /* PromoDialogView~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "PromoDialogView~ipad.xib"; sourceTree = "<group>"; };
 		D0F0B8FC18E8F4D900809CA2 /* TrackUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackUtils.h; sourceTree = "<group>"; };
@@ -838,6 +844,10 @@
 		D0EADD8218E769FB0016D2A0 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				D0EFC639191B5CE6008A54C8 /* AnimatingDialogView.m */,
+				D0EFC63A191B5CE6008A54C8 /* DialogViewManager.m */,
+				D0EFC63B191B5CE6008A54C8 /* DialogViewManager.h */,
+				D0EFC63C191B5CE6008A54C8 /* AnimatingDialogView.h */,
 				D0EADD8318E769FB0016D2A0 /* AppDelegateBase.h */,
 				D0EADD8418E769FB0016D2A0 /* AppDelegateBase.m */,
 				D0EADD8518E769FC0016D2A0 /* Base-Prefix.pch */,
@@ -1229,6 +1239,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0E2E9A718D2D288009C757F /* GameCenterHelper.m in Sources */,
+				D0EFC63D191B5CE6008A54C8 /* AnimatingDialogView.m in Sources */,
 				D0F1143918D412AF007EB840 /* MonsterView.m in Sources */,
 				D0EADDDD18E769FC0016D2A0 /* WorldObjectProperties.m in Sources */,
 				D0E2E9AC18D2D288009C757F /* MainView.m in Sources */,
@@ -1267,6 +1278,7 @@
 				D0EADDE618E769FC0016D2A0 /* FXLabel.m in Sources */,
 				D0E2E9B018D2D288009C757F /* GamePlayView.m in Sources */,
 				D0EADDF318E769FC0016D2A0 /* PromoGameData.m in Sources */,
+				D0EFC63E191B5CE6008A54C8 /* DialogViewManager.m in Sources */,
 				D0EADDF418E769FC0016D2A0 /* PromoManager.m in Sources */,
 				D0EADDD818E769FC0016D2A0 /* NotificationManagerBase.m in Sources */,
 				D0EADDDB18E769FC0016D2A0 /* AppInfoHTTPRequest.m in Sources */,
@@ -1400,7 +1412,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				BUNDLE_IDENTIFIER = com.jeffrwan.20485x5;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Jeffrey Wan (YS47XTCZZB)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jeffrey Wan (MT34DA8UCA)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jeffrey Wan (YS47XTCZZB)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SequenceGame/2048 5x5-Prefix.pch";
@@ -1410,7 +1422,7 @@
 					/Users/15inch/Desktop/tut/iosdev/trunk/Base/Analytics/Library,
 				);
 				PRODUCT_NAME = "2048 5x5";
-				PROVISIONING_PROFILE = "D8C20BC0-3989-4BDF-8966-9783344E7EDF";
+				PROVISIONING_PROFILE = "CB4532C1-7837-4A67-A8D6-32AA044757BD";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1422,7 +1434,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				BUNDLE_IDENTIFIER = com.jeffrwan.20485x5;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Jeffrey Wan (YS47XTCZZB)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jeffrey Wan (MT34DA8UCA)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jeffrey Wan (YS47XTCZZB)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SequenceGame/2048 5x5-Prefix.pch";
@@ -1432,7 +1444,7 @@
 					/Users/15inch/Desktop/tut/iosdev/trunk/Base/Analytics/Library,
 				);
 				PRODUCT_NAME = "2048 5x5";
-				PROVISIONING_PROFILE = "D8C20BC0-3989-4BDF-8966-9783344E7EDF";
+				PROVISIONING_PROFILE = "CB4532C1-7837-4A67-A8D6-32AA044757BD";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};

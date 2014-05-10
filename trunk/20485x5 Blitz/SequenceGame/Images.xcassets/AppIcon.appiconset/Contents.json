@@ -18,19 +18,19 @@
     {
       "size" : "57x57",
       "idiom" : "iphone",
-      "filename" : "20485x557.png",
+      "filename" : "20485x5Blitz57.png",
       "scale" : "1x"
     },
     {
       "size" : "57x57",
       "idiom" : "iphone",
-      "filename" : "20485x5114.png",
+      "filename" : "20485x5Blitz114.png",
       "scale" : "2x"
     },
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "20485x5120.png",
+      "filename" : "20485x5Blitz120.png",
       "scale" : "2x"
     },
     {
@@ -66,25 +66,25 @@
     {
       "size" : "72x72",
       "idiom" : "ipad",
-      "filename" : "20485x572.png",
+      "filename" : "20485x5Blitz72.png",
       "scale" : "1x"
     },
     {
       "size" : "72x72",
       "idiom" : "ipad",
-      "filename" : "20485x5144.png",
+      "filename" : "20485x5Blitz144.png",
       "scale" : "2x"
     },
     {
       "size" : "76x76",
       "idiom" : "ipad",
-      "filename" : "20485x576.png",
+      "filename" : "20485x5Blitz76.png",
       "scale" : "1x"
     },
     {
       "size" : "76x76",
       "idiom" : "ipad",
-      "filename" : "20485x5152.png",
+      "filename" : "20485x5Blitz152.png",
       "scale" : "2x"
     }
   ],

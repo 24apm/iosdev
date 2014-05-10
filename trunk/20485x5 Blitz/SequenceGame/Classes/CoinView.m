@@ -8,7 +8,12 @@
 
 #import "CoinView.h"
 
+@interface CoinView()
+@property (nonatomic) int loop;
+@end
 @implementation CoinView
+
+
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -39,6 +44,19 @@
     [[NSNotificationCenter defaultCenter]postNotificationName:PURCHASE_BUTTON_TAPPED object:self];
 }
 
+- (void)_setupImage {
+    self.loop++;
+    if (self.loop == 1) {
+        self.imageView.image = [UIImage imageNamed:@"tier1Coin"];
+    } else     if (self.loop == 2) {
+        self.imageView.image = [UIImage imageNamed:@"tier2coin"];
+    } else     if (self.loop == 3) {
+        self.imageView.image = [UIImage imageNamed:@"tier3coin"];
+    } else      if (self.loop == 4) {
+        self.imageView.image = [UIImage imageNamed:@"tier4coin"];
+    }
+}
+
 - (void)setupImage {
     if ([self.product.productIdentifier isEqualToString:COIN_IAP_TIER_1]) {
         self.imageView.image = [UIImage imageNamed:@"tier1Coin"];
@@ -50,5 +68,4 @@
         self.imageView.image = [UIImage imageNamed:@"tier4coin"];
     }
 }
-
 @end

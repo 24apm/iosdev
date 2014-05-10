@@ -51,7 +51,6 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gameEnd) name:NO_MORE_MOVE_NOTIFICATION object:nil];
     //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(buyPowerUp:) name:BUTTON_VIEW_PRESSED object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(buttonPowerPressed:) name:BUY_POWER_CONFIRM_BUTTON_PRESSED_NOTIFICATION object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(afterPurchasePowerUp:) name:PURCHASE_SUCCESS_NOTIFICATION object:nil];
     
     [[GameData instance] resetCost];
     [self.buttonView1 setupWithType:ButtonViewTypeShuffle];
@@ -148,52 +147,40 @@
     switch (buttonView.type) {
             
         case ButtonViewTypeShuffle:
-            if([[PurchaseManager instance] purchasePowerUp:PowerUpTypeShuffle]) {
                 [self.boardView shuffleTiles];
-            }
             break;
             
         case ButtonViewTypeBomb2:
             if([self.boardView testTilesWith:2]){
-                if([[PurchaseManager instance] purchasePowerUp:PowerUpTypeBomb2]) {
                     [self.boardView destroyTilesWith:2];
-                }
             }
             break;
             
         case ButtonViewTypeBomb4:
             if([self.boardView testTilesWith:4]){
-                if([[PurchaseManager instance] purchasePowerUp:PowerUpTypeBomb4]) {
                     [self.boardView destroyTilesWith:4];
-                }
             }
             break;
             
         case ButtonViewTypeLostShuffle:
             self.queuedPowerUp = buttonView;
-            if([[PurchaseManager instance] purchasePowerUp:PowerUpTypeRevive]) {
                 [self.boardView shuffleTiles];
                 [self hideGameEnd];
-            }
             break;
             
         case ButtonViewTypeLostBomb2:
             self.queuedPowerUp = buttonView;
             if([self.boardView testTilesWith:2]){
-                if([[PurchaseManager instance] purchasePowerUp:PowerUpTypeRevive]) {
                     [self.boardView destroyTilesWith:2];
                     [self hideGameEnd];
-                }
             }
             break;
             
         case ButtonViewTypeLostBomb4:
             self.queuedPowerUp = buttonView;
             if([self.boardView testTilesWith:4]){
-                if([[PurchaseManager instance] purchasePowerUp:PowerUpTypeRevive]) {
                     [self.boardView destroyTilesWith:4];
                     [self hideGameEnd];
-                }
             }
             break;
             

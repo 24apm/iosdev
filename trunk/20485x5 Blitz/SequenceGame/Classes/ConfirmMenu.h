@@ -17,6 +17,8 @@
 #define BUY_POWER_CONFIRM_BUTTON_PRESSED_NOTIFICATION @"BUY_POWER_CONFIRM_BUTTON_PRESSED_NOTIFICATION"
 
 @interface ConfirmMenu : AnimatingDialogView
+@property (strong, nonatomic) IBOutlet UIImageView *leftImage;
+@property (strong, nonatomic) IBOutlet UIImageView *rightImage;
 
 @property (strong, nonatomic) IBOutlet UIImageView *applyingImage;
 @property (strong, nonatomic) IBOutlet UIImageView *afterImage;
