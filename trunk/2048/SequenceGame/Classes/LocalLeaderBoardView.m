@@ -10,6 +10,8 @@
 #import "UserData.h"
 #import "GameConstants.h"
 #import "GameManager.h"
+#import "iRate.h"
+#import "TrackUtils.h"
 
 @implementation LocalLeaderBoardView
 
@@ -25,7 +27,8 @@
 }
 
 - (IBAction)retryButtonPressed:(UIButton *)sender {
-      [[NSNotificationCenter defaultCenter] postNotificationName:RETRY_BUTTON_NOTIFICATION object:self];
+    [TrackUtils trackAction:@"iRate" label:@"ratePressed"];
+    [[iRate sharedInstance] openRatingsPageInAppStore];
 }
 
 - (IBAction)topButtonPressed:(UIButton *)sender {

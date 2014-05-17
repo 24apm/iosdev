@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>D6DBD20C-CB3E-4EEB-A3F6-E7BF6C9D4D98</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Clicker</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>A0C1E94C-12DD-4353-B34C-1B1D08469EC2</key>
+		<string>https://github.com/24apm/iosdev.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>trunk/ArmyClicker/Clicker.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>A0C1E94C-12DD-4353-B34C-1B1D08469EC2</key>
+		<string>../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/24apm/iosdev.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>A0C1E94C-12DD-4353-B34C-1B1D08469EC2</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>A0C1E94C-12DD-4353-B34C-1B1D08469EC2</string>
+			<key>IDESourceControlWCCName</key>
+			<string>iosdev</string>
+		</dict>
+	</array>
+</dict>
+</plist>

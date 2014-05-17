@@ -8,7 +8,11 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GameLayoutView">
             <connections>
                 <outlet property="currentScoreLabel" destination="19v-2E-3jS" id="DjN-Iz-kF9"/>
-                <outlet property="fadeView" destination="fCg-G9-QnI" id="7Ij-fb-rpU"/>
+                <outlet property="progressBar" destination="e7Z-Na-e6R" id="6jS-4l-CVb"/>
+                <outlet property="shopActiveButton" destination="XE4-fe-6Q4" id="DNo-pv-qYu"/>
+                <outlet property="shopBarView" destination="Tkm-lP-oR6" id="8xC-Mp-t2y"/>
+                <outlet property="shopOfflineButton" destination="fN5-2l-UTn" id="UyA-OK-bce"/>
+                <outlet property="shopPassiveButton" destination="YcZ-M7-5Ta" id="XtO-ir-rhm"/>
                 <outlet property="tapPerSecondLabel" destination="RqB-rS-mkz" id="1Y4-QN-qqB"/>
             </connections>
         </placeholder>
@@ -18,7 +22,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
             <subviews>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="19v-2E-3jS" userLabel="currentScore" customClass="THLabel">
-                    <rect key="frame" x="59" y="22" width="200" height="40"/>
+                    <rect key="frame" x="59" y="57" width="200" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.80392163989999998" green="0.74901962280000001" blue="0.71372550729999995" alpha="1" colorSpace="deviceRGB"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
@@ -34,38 +38,80 @@
                     </userDefinedRuntimeAttributes>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="RqB-rS-mkz" userLabel="TPS">
-                    <rect key="frame" x="115" y="59" width="90" height="28"/>
+                    <rect key="frame" x="115" y="94" width="90" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FlappyBallIcon100x100.png" id="pSk-9g-48G">
-                    <rect key="frame" x="5" y="85" width="310" height="310"/>
+                    <rect key="frame" x="60" y="175" width="200" height="200"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <view contentMode="scaleToFill" id="fCg-G9-QnI" userLabel="Overlay">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                <view contentMode="scaleToFill" id="e7Z-Na-e6R" customClass="ProgressBarComponent">
+                    <rect key="frame" x="15" y="130" width="160" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap to Close" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="WBS-Ib-WrG" customClass="THLabel">
-                            <rect key="frame" x="60.000000000000384" y="380" width="200" height="60"/>
+                        <view contentMode="scaleToFill" id="Z76-Az-4Lt">
+                            <rect key="frame" x="0.0" y="0.0" width="160" height="20"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
+                        <view contentMode="scaleToFill" id="WI5-gK-efK">
+                            <rect key="frame" x="0.0" y="0.0" width="160" height="20"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <color key="backgroundColor" red="1" green="0.60549926840000001" blue="0.3379715646" alpha="1" colorSpace="calibratedRGB"/>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="backgroundView" destination="Z76-Az-4Lt" id="vjJ-8A-fPU"/>
+                        <outlet property="foregroundView" destination="WI5-gK-efK" id="ajk-ZW-TDa"/>
+                    </connections>
+                </view>
+                <view contentMode="scaleToFill" id="Tkm-lP-oR6" userLabel="Shop Bar">
+                    <rect key="frame" x="0.0" y="400" width="320" height="80"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="XE4-fe-6Q4" userLabel="Shop Active Button">
+                            <rect key="frame" x="20" y="0.0" width="80" height="80"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
-                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <nil key="highlightedColor"/>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="color" keyPath="strokeColor">
-                                    <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="number" keyPath="strokeSize">
-                                    <real key="value" value="1.3999999999999999"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
-                        </label>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <state key="normal" backgroundImage="icon_tap.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="activePressed:" destination="-1" eventType="touchUpInside" id="WFM-oY-6Jl"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="YcZ-M7-5Ta" userLabel="Shop Passive Button">
+                            <rect key="frame" x="120" y="0.0" width="80" height="80"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <state key="normal" backgroundImage="icon_clock.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="passivePressed:" destination="-1" eventType="touchUpInside" id="mv0-6C-UeP"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="fN5-2l-UTn" userLabel="Shop Offline Button">
+                            <rect key="frame" x="220" y="0.0" width="80" height="80"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <state key="normal" backgroundImage="icon_offline.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="offlinePressed:" destination="-1" eventType="touchUpInside" id="5g4-Ad-iEV"/>
+                            </connections>
+                        </button>
                     </subviews>
-                    <color key="backgroundColor" white="0.33333333333333331" alpha="0.35999999999999999" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.57270408163265307" green="0.13612472491866429" blue="0.0061987578253683605" alpha="1" colorSpace="calibratedRGB"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </view>
             </subviews>
             <color key="backgroundColor" red="0.98823535439999999" green="0.97254908080000002" blue="0.93725496529999996" alpha="1" colorSpace="deviceRGB"/>
@@ -74,5 +120,8 @@
     </objects>
     <resources>
         <image name="FlappyBallIcon100x100.png" width="100" height="100"/>
+        <image name="icon_clock.png" width="80" height="80"/>
+        <image name="icon_offline.png" width="80" height="80"/>
+        <image name="icon_tap.png" width="80" height="80"/>
     </resources>
 </document>

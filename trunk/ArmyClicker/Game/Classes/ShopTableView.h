@@ -7,13 +7,18 @@
 //
 
 #import "XibView.h"
+#import "ShopManager.h"
+
+#define SHOP_TABLE_VIEW_NOTIFICATION @"ShopTableViewDismissed"
 
 @interface ShopTableView : XibView <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic) PowerUpType currentType;
 
 - (void)show;
 - (void)refresh;
-- (void)setupWithItems:(NSArray *)items;
+- (void)setupWithItemIds:(NSArray *)items;
+- (void)setupWithType:(PowerUpType)type;
 
 @end

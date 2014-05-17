@@ -30,10 +30,17 @@
 - (void)setup {
     ShopRowView *t = [[ShopRowView alloc] init];
     self.cellFrame = t.frame;
+    self.currentType = POWER_UP_TYPE_TAP;
 }
 
-- (void)setupWithItems:(NSArray *)items {
+- (void)setupWithItemIds:(NSArray *)items {
     self.items = items;
+    [self refresh];
+}
+
+- (void)setupWithType:(PowerUpType)type {
+    self.currentType = type;
+    [self setupWithItemIds:[[ShopManager instance] arrayOfitemIdsFor:self.currentType]];
     [self refresh];
 }
 
@@ -46,19 +53,23 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+
     XibTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ShopRowView"];
     if (!cell) {
         cell = [[XibTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ShopRowView" className:@"ShopRowView"];
     }
     ShopRowView *rowView = (ShopRowView *)cell.view;
-    NSString *item = [self.items objectAtIndex:indexPath.row];
-    [rowView setupWithItem:item];
+    NSString *itemId = [self.items objectAtIndex:indexPath.row];
+    ShopItem *shopItem = [[ShopManager instance] shopItemForItemId:itemId dictionary:self.currentType];
+    [rowView setupWithItem:shopItem];
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return self.cellFrame.size.height;
 }
+
+
 
 - (void)show {
     float yOffset = self.superview.height - self.height;
@@ -68,6 +79,7 @@
 }
 
 - (IBAction)dismissed:(id)sender {
+    [[NSNotificationCenter defaultCenter] postNotificationName:SHOP_TABLE_VIEW_NOTIFICATION object:nil];
     float yOffset = self.superview.height;
     [UIView animateWithDuration:0.3f animations:^ {
         self.y = yOffset;

@@ -192,7 +192,7 @@
                             </accessibility>
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.png" id="Xa1-Tu-YYa">
-                            <rect key="frame" x="60.000000000012619" y="74" width="200" height="350"/>
+                            <rect key="frame" x="60.000000000035044" y="74" width="200" height="350"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             <accessibility key="accessibilityConfiguration">
                                 <accessibilityTraits key="traits" none="YES" image="YES" notEnabled="YES"/>
@@ -206,7 +206,7 @@
                             </accessibility>
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="soldier.png" id="FMB-Tg-CC4">
-                            <rect key="frame" x="59.999999999995055" y="30.000000006661338" width="200" height="400"/>
+                            <rect key="frame" x="59.999999999986258" y="30" width="200" height="400"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             <accessibility key="accessibilityConfiguration">
                                 <accessibilityTraits key="traits" none="YES" image="YES" notEnabled="YES"/>

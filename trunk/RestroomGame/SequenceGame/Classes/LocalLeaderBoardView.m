@@ -11,8 +11,10 @@
 #import "GameConstants.h"
 #import "GameManager.h"
 #import "PromoDialogView.h"
+#import "iRate.h"
+#import "TrackUtils.h"
 
-#define TIMES_PLAYED_BEFORE_PROMO 3
+#define TIMES_PLAYED_BEFORE_PROMO 1
 
 @implementation LocalLeaderBoardView
 
@@ -29,7 +31,8 @@
 }
 
 - (IBAction)retryButtonPressed:(UIButton *)sender {
-      [[NSNotificationCenter defaultCenter] postNotificationName:RETRY_BUTTON_NOTIFICATION object:self];
+    [TrackUtils trackAction:@"iRate" label:@"ratePressed"];
+    [[iRate sharedInstance] openRatingsPageInAppStore];
 }
 
 - (IBAction)topButtonPressed:(UIButton *)sender {
@@ -40,11 +43,9 @@
     if ([[GameManager instance].gameMode isEqualToString:GAME_MODE_TIME]) {
         self.leaderBoardLabel.text = @"TIME ATTACK";
         self.leaderBoardLabel.textColor = kCOLOR_RED;
-        self.retryButton.backgroundColor = kCOLOR_RED;
     } else if([[GameManager instance].gameMode isEqualToString:GAME_MODE_DISTANCE]) {
         self.leaderBoardLabel.textColor = kCOLOR_BLUE;
         self.leaderBoardLabel.text = @"DISTANCE ATTACK";
-        self.retryButton.backgroundColor = kCOLOR_BLUE;
     }
 }
 

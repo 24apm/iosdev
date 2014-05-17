@@ -7,7 +7,6 @@
 //
 
 #import "XibView.h"
-#import "MonsterView.h"
 #import "THLabel.h"
 #import "GameLayoutView.h"
 

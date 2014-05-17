@@ -61,6 +61,14 @@
 
 #define TIMES_PLAYED_BEFORE_PROMO 3
 
+#define UPDATE_TIME_PER_TICK 10.f
+#define LEVEL_CAP 10
+typedef enum {
+    POWER_UP_TYPE_TAP,
+    POWER_UP_TYPE_PASSIVE,
+    POWER_UP_TYPE_OFFLINE
+} PowerUpType;
+
 @interface GameConstants : NSObject
 
 @end

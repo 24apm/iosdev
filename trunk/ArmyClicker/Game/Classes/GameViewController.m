@@ -19,19 +19,15 @@
 #import "GameCenterHelper.h"
 #import "UserData.h"
 #import "LocalLeaderBoardView.h"
-#import "GamePlayOneView.h"
 #import "GameManager.h"
-#import "CustomizationView.h"
 
 @interface GameViewController ()
 
 @property (strong, nonatomic) ResultView *resultView;
 @property (strong, nonatomic) MainView *mainView;
 @property (strong, nonatomic) GamePlayView *timeAttackMode;
-@property (strong, nonatomic) GamePlayOneView *singleMode;
 @property (strong, nonatomic) NSArray *products;
 @property (strong, nonatomic) LocalLeaderBoardView *localLeaderBoardView;
-@property (strong, nonatomic) CustomizationView *customizationView;
 
 @end
 
@@ -52,10 +48,6 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gameplayViewCallback) name:GAMEPLAY_VIEW_DISMISSED_NOTIFICATION object:nil];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(customizeViewCallback) name:CUSTOMIZE_VIEW_NOTIFICATION object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gameplayOneViewCallback) name:GAMEPLAY_ONE_VIEW_DISMISSED_NOTIFICATION object:nil];
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(retryCallback) name:RETRY_BUTTON_NOTIFICATION object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(topCallback) name:TOP_BUTTON_NOTIFICATION object:nil];
@@ -65,11 +57,6 @@
     self.mainView.hidden = YES;
     self.mainView.size = self.containerView.size;
     [UserData instance].tutorialModeEnabled = NO;
-    
-    self.customizationView = [[CustomizationView alloc] init];
-    [self.containerView addSubview:self.customizationView ];
-    self.customizationView.hidden = YES;
-    self.customizationView.size = self.containerView.size;
     
     self.timeAttackMode = [[GamePlayView alloc] init];
     [self.containerView addSubview:self.timeAttackMode ];
@@ -81,10 +68,6 @@
 //    self.singleMode.hidden = YES;
 //    self.singleMode.size = self.containerView.size;
     
-    self.resultView = [[ResultView alloc] init];
-    [self.containerView addSubview:self.resultView];
-    self.resultView.hidden = YES;
-    self.resultView.size = self.containerView.size;
 
     self.localLeaderBoardView = [[LocalLeaderBoardView alloc] init];
     [self.containerView addSubview:self.localLeaderBoardView];
@@ -93,6 +76,10 @@
     
     [self preloadSounds];
     [self updateGameState:GameStateMainMode];
+}
+
+- (AdBannerPositionMode)adBannerPositionMode {
+    return AdBannerPositionModeTop;
 }
 
 - (void)preloadSounds {
@@ -171,8 +158,6 @@
     self.mainView.hidden = YES;
     self.timeAttackMode.hidden = YES;
     self.localLeaderBoardView.hidden = YES;
-    self.singleMode.hidden = YES;
-    self.customizationView.hidden = YES;
     
     switch (self.currentGameState) {
         case GameStateMainMode:
@@ -187,17 +172,12 @@
                 [self.timeAttackMode show];
                 self.timeAttackMode.hidden = NO;
             } else if([[GameManager instance].gameMode isEqualToString:GAME_MODE_SINGLE]){
-                [self.singleMode show];
-                self.singleMode.hidden = NO;
+                
             }
             break;
         case GameStateLocalLeaderBoardMode:
             self.localLeaderBoardView.hidden = NO;
             [self.localLeaderBoardView show];
-            break;
-        case GameStateCustomizeMode:
-            self.customizationView.hidden = NO;
-            [self.customizationView show];
             break;
         default:
             break;

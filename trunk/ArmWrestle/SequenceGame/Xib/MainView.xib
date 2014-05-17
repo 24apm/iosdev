@@ -32,7 +32,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="cdO-Ed-gAJ">
-                    <rect key="frame" x="7" y="331" width="150" height="50"/>
+                    <rect key="frame" x="7" y="281" width="150" height="150"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -87,7 +87,7 @@
         </view>
     </objects>
     <resources>
-        <image name="leaderboardbutton.png" width="600" height="200"/>
+        <image name="leaderboardbutton.png" width="256" height="256"/>
         <image name="singleplayerbutton.png" width="600" height="200"/>
         <image name="toilet_main.png" width="1536" height="1500"/>
         <image name="vsbutton.png" width="600" height="200"/>

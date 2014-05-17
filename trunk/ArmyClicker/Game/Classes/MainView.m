@@ -11,9 +11,8 @@
 #import "GameCenterHelper.h"
 #import "GameConstants.h"
 #import "UserData.h"
-#import "GameManager.h"
-#import "CustomizationView.h"
 #import "TrackUtils.h"
+#import "GameManager.h"
 
 @implementation MainView
 
@@ -73,10 +72,6 @@
 - (IBAction)resetLocalScore:(id)sender {
     [[UserData instance] resetLocalLeaderBoard];
     [[UserData instance] resetLocalScore :(NSString *)[GameManager instance].gameMode];
-}
-
-- (IBAction)customizeButtonPressed:(UIButton *)sender {
-    [[NSNotificationCenter defaultCenter] postNotificationName:CUSTOMIZE_VIEW_NOTIFICATION object:self];
 }
 
 - (void)show {

@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D0E30E8018A376E300FFD3CE"
-               BuildableName = "2048 5x5 Blitz.app"
+               BuildableName = "Clicker.app"
                BlueprintName = "Clicker"
                ReferencedContainer = "container:Clicker.xcodeproj">
             </BuildableReference>
@@ -33,7 +33,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D0E30EA118A376E300FFD3CE"
-               BuildableName = "2048 5x5 BlitzTests.xctest"
+               BuildableName = "ClickerTests.xctest"
                BlueprintName = "ClickerTests"
                ReferencedContainer = "container:Clicker.xcodeproj">
             </BuildableReference>
@@ -43,7 +43,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D0E30E8018A376E300FFD3CE"
-            BuildableName = "2048 5x5 Blitz.app"
+            BuildableName = "Clicker.app"
             BlueprintName = "Clicker"
             ReferencedContainer = "container:Clicker.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D0E30E8018A376E300FFD3CE"
-            BuildableName = "2048 5x5 Blitz.app"
+            BuildableName = "Clicker.app"
             BlueprintName = "Clicker"
             ReferencedContainer = "container:Clicker.xcodeproj">
          </BuildableReference>
@@ -80,7 +80,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D0E30E8018A376E300FFD3CE"
-            BuildableName = "2048 5x5 Blitz.app"
+            BuildableName = "Clicker.app"
             BlueprintName = "Clicker"
             ReferencedContainer = "container:Clicker.xcodeproj">
          </BuildableReference>

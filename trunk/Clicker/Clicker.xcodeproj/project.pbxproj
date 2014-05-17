@@ -90,6 +90,9 @@
 		D0E6337018FFBA05007C1622 /* bui.caf in Resources */ = {isa = PBXBuildFile; fileRef = D0E6336F18FFBA05007C1622 /* bui.caf */; };
 		D0E6337218FFBA11007C1622 /* dong.caf in Resources */ = {isa = PBXBuildFile; fileRef = D0E6337118FFBA11007C1622 /* dong.caf */; };
 		D0E6337418FFD8FD007C1622 /* PromoDialogView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E6337318FFD8FD007C1622 /* PromoDialogView~ipad.xib */; };
+		D0E647C1191F2BC800327C07 /* XibTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E647BB191F2BC800327C07 /* XibTableViewCell.m */; };
+		D0E647C2191F2BC800327C07 /* AnimatingDialogView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E647BD191F2BC800327C07 /* AnimatingDialogView.m */; };
+		D0E647C3191F2BC800327C07 /* DialogViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E647BE191F2BC800327C07 /* DialogViewManager.m */; };
 		D0E7628A18D626B7005CDF88 /* MonsterData.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E7628918D626B7005CDF88 /* MonsterData.m */; };
 		D0E7FF6B18E69DEB00896C7B /* opendoor.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E7FF6818E69DEB00896C7B /* opendoor.png */; };
 		D0E7FF6C18E69DEB00896C7B /* person.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E7FF6918E69DEB00896C7B /* person.png */; };
@@ -303,6 +306,12 @@
 		D0E6336F18FFBA05007C1622 /* bui.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = bui.caf; sourceTree = "<group>"; };
 		D0E6337118FFBA11007C1622 /* dong.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = dong.caf; sourceTree = "<group>"; };
 		D0E6337318FFD8FD007C1622 /* PromoDialogView~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "PromoDialogView~ipad.xib"; sourceTree = "<group>"; };
+		D0E647BB191F2BC800327C07 /* XibTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XibTableViewCell.m; sourceTree = "<group>"; };
+		D0E647BC191F2BC800327C07 /* XibTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XibTableViewCell.h; sourceTree = "<group>"; };
+		D0E647BD191F2BC800327C07 /* AnimatingDialogView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimatingDialogView.m; sourceTree = "<group>"; };
+		D0E647BE191F2BC800327C07 /* DialogViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DialogViewManager.m; sourceTree = "<group>"; };
+		D0E647BF191F2BC800327C07 /* DialogViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DialogViewManager.h; sourceTree = "<group>"; };
+		D0E647C0191F2BC800327C07 /* AnimatingDialogView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatingDialogView.h; sourceTree = "<group>"; };
 		D0E7628818D626B7005CDF88 /* MonsterData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonsterData.h; sourceTree = "<group>"; };
 		D0E7628918D626B7005CDF88 /* MonsterData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonsterData.m; sourceTree = "<group>"; };
 		D0E7FF6818E69DEB00896C7B /* opendoor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = opendoor.png; sourceTree = "<group>"; };
@@ -776,6 +785,12 @@
 		D0EADD8218E769FB0016D2A0 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				D0E647BB191F2BC800327C07 /* XibTableViewCell.m */,
+				D0E647BC191F2BC800327C07 /* XibTableViewCell.h */,
+				D0E647BD191F2BC800327C07 /* AnimatingDialogView.m */,
+				D0E647BE191F2BC800327C07 /* DialogViewManager.m */,
+				D0E647BF191F2BC800327C07 /* DialogViewManager.h */,
+				D0E647C0191F2BC800327C07 /* AnimatingDialogView.h */,
 				D0EADD8318E769FB0016D2A0 /* AppDelegateBase.h */,
 				D0EADD8418E769FB0016D2A0 /* AppDelegateBase.m */,
 				D0EADD8518E769FC0016D2A0 /* Base-Prefix.pch */,
@@ -1155,9 +1170,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0E647C2191F2BC800327C07 /* AnimatingDialogView.m in Sources */,
 				D0E2E9A718D2D288009C757F /* GameCenterHelper.m in Sources */,
 				D0EADDDD18E769FC0016D2A0 /* WorldObjectProperties.m in Sources */,
 				D0E2E9AC18D2D288009C757F /* MainView.m in Sources */,
+				D0E647C3191F2BC800327C07 /* DialogViewManager.m in Sources */,
 				D0EA7ECA18D548020095DEBD /* LocalLeaderBoardView.m in Sources */,
 				D0E2E9B218D2D288009C757F /* ResultView.m in Sources */,
 				D0EADDDA18E769FC0016D2A0 /* ProgressBarComponent.m in Sources */,
@@ -1206,6 +1223,7 @@
 				D0EADDE018E769FC0016D2A0 /* SoundEffectHelper.m in Sources */,
 				D0E7628A18D626B7005CDF88 /* MonsterData.m in Sources */,
 				D0EADDE118E769FC0016D2A0 /* SoundManager.m in Sources */,
+				D0E647C1191F2BC800327C07 /* XibTableViewCell.m in Sources */,
 				D0EADDD418E769FC0016D2A0 /* GameCenterHelperBase.m in Sources */,
 				D0EADDD618E769FC0016D2A0 /* GameViewControllerBase.m in Sources */,
 			);

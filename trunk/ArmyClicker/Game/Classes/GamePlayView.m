@@ -7,8 +7,6 @@
 //
 
 #import "GamePlayView.h"
-#import "GameManager.h"
-#import "MonsterView.h"
 #import "GameConstants.h"
 #import "SoundManager.h"
 #import "UserData.h"

@@ -38,8 +38,15 @@
 
 @implementation NumberGameView
 
+- (id)init {
+    self = [super init];
+    if (self) {
+        [self setup];
+    }
+    return self;
+}
+
 - (void)setup {
-    [super setup];
     for (int i = 0; i < self.choiceSlots.count; i++) {
         UIButton *choice = [self.choiceSlots objectAtIndex:i];
         choice.tag = i+1;

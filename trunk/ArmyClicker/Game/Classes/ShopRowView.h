@@ -7,11 +7,24 @@
 //
 
 #import "XibView.h"
+#import "ShopItem.h"
+#import "ShopManager.h"
+
+#define SHOP_BUTTON_PRESSED_NOTIFICATION @"SHOP_BUTTON_PRESSED_NOTIFICATION"
 
 @interface ShopRowView : XibView
 
 @property (strong, nonatomic) IBOutlet UILabel *label;
+@property (strong, nonatomic) IBOutlet UILabel *costLabel;
+@property (strong, nonatomic) IBOutlet UILabel *descriptionLabel;
+@property (strong, nonatomic) IBOutlet UIImageView *imageView;
+@property (nonatomic) int cost;
+@property (nonatomic, strong) ShopItem *item;
+@property (strong, nonatomic) IBOutlet UILabel *levelLabel;
+@property (nonatomic) BOOL itemMaxLevel;
+@property (strong, nonatomic) IBOutlet UIView *overlayView;
+@property (strong, nonatomic) IBOutlet UIButton *costButton;
 
-- (void)setupWithItem:(NSString *)item;
+- (void)setupWithItem:(ShopItem *)item;
 
 @end

@@ -8,295 +8,303 @@
 
 #import "AnimUtil.h"
 #import "GameLayoutView.h"
-#import "GameManager.h"
 #import "SoundManager.h"
 #import "GameConstants.h"
-#import "InGameMessageView.h"
 #import "Utils.h"
 #import "UserData.h"
 #import "PromoDialogView.h"
 #import "iRate.h"
 #import "TrackUtils.h"
-#import "GameData.h"
 #import "CoinIAPHelper.h"
 #import "ShopTableView.h"
+#import "ShopManager.h"
+#import "ShopRowView.h"
+#import "ProgressBarComponent.h"
+
+#define TIME_BONUS_INTERVAL 60.f
+#define TIME_BONUS_ACTIVED_LIMIT 5.f
 
 @interface GameLayoutView()
 
-@property (nonatomic) int panNumbers;
-@property (nonatomic) BOOL swipedBegan;
 @property (nonatomic, retain) ShopTableView *shopTableView;
+
+@property (strong, nonatomic) IBOutlet ProgressBarComponent *progressBar;
+@property (strong, nonatomic) UIButton *previousSelectedButton;
+
+@property (nonatomic) CFTimeInterval startTime;
+@property (nonatomic, strong) NSString *tapPerSecond;
+@property (nonatomic, strong) NSTimer *timer;
+@property (nonatomic, strong)NSMutableArray * tapTotal;
+@property (nonatomic) double displayTPS;
+@property (nonatomic) double oldDisplayTPS;
+@property (nonatomic) double tapBonus;
+@property (nonatomic) double timeBonus;
+@property (nonatomic) double scorePerTap;
+@property (nonatomic) double totalScorePerTap;
+@property (nonatomic) double timeBonusEnd;
+@property (nonatomic) BOOL timeBonusOn;
+@property (nonatomic) double deleteTime;
+@property (nonatomic) BOOL doDecay;
+@property (nonatomic) double delay;
+@property (nonatomic) double tempPassiveLabel;
+@property (nonatomic) int ticks;
 
 @end
 
 @implementation GameLayoutView
+
+static int promoDialogInLeaderBoardCount = 0;
+
+- (void)createShopView {
+    self.shopTableView = [[ShopTableView alloc] init];
+    [self addSubview:self.shopTableView];
+    [self insertSubview:self.shopBarView aboveSubview:self.shopTableView];
+
+    NSArray *itemIds = [[ShopManager instance] arrayOfitemIdsFor:POWER_UP_TYPE_TAP];
+    [self.shopTableView setupWithItemIds:itemIds];
+    self.shopTableView.y = self.height;
+}
+
+- (IBAction)activePressed:(UIButton *)sender {
+    [self showShopTableView:sender powerType:POWER_UP_TYPE_TAP];
+}
+
+- (IBAction)passivePressed:(UIButton *)sender {
+    [self showShopTableView:sender powerType:POWER_UP_TYPE_PASSIVE];
+}
+
+- (IBAction)offlinePressed:(UIButton *)sender {
+    [self showShopTableView:sender powerType:POWER_UP_TYPE_OFFLINE];
+}
+
+- (void)shopTableViewDismissed {
+    self.previousSelectedButton.enabled = YES;
+    self.previousSelectedButton = nil;
+}
+
+- (void)showShopTableView:(UIButton *)button powerType:(PowerUpType)type {
+    self.previousSelectedButton.enabled = YES;
+    self.previousSelectedButton = button;
+    button.enabled = NO;
+    [self.shopTableView setupWithType:type];
+    [self.shopTableView show];
+}
+
+- (void)showPromoDialog {
+    [TrackUtils trackAction:@"Gameplay" label:@"End"];
+    promoDialogInLeaderBoardCount++;
+    
+    if (promoDialogInLeaderBoardCount % TIMES_PLAYED_BEFORE_PROMO == 0) {
+        [PromoDialogView show];
+    }
+    [[iRate sharedInstance] logEvent:NO];
+}
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
         
         // add pan recognizer to the view when initialized
-        
-        self.coinContainer.layer.cornerRadius = 6.f * IPAD_SCALE;
+        UITapGestureRecognizer *tapRecognized = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapRecognized:)];
+        [tapRecognized setDelegate:self];
+        [self addGestureRecognizer:tapRecognized]; // add to the view you want to detect swipe on
+        [[UserData instance] addObserver:self forKeyPath:@"currentScore" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
+        self.backgroundView.layer.cornerRadius = 20.f * IPAD_SCALE;
+        self.backgroundView.clipsToBounds = YES;
+        self.currentScoreLabel.layer.cornerRadius = 20.f * IPAD_SCALE;
+        self.tapTotal = [NSMutableArray array];
+        self.displayTPS = [[UserData instance] totalPointForPassive];
+        self.tapPerSecondLabel.text = [NSString stringWithFormat:@"%.1f", self.displayTPS];
+        self.scorePerTap = 1;
+        self.tapBonus = 0;
+        self.deleteTime = 0;
+        self.delay = 0;
+        self.ticks = 0;
+        self.doDecay = NO;
+        [self.progressBar fillBar:0.f];
+        self.tempPassiveLabel = [UserData instance].currentScore;
+        if (!self.shopTableView) {
+            [self createShopView];
+        }
+        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(shopButtonPressed) name:SHOP_BUTTON_PRESSED_NOTIFICATION object:nil];
+        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(shopTableViewDismissed) name:SHOP_TABLE_VIEW_NOTIFICATION object:nil];
+
     }
     return self;
 }
 
-- (void)createShopView {
-    self.shopTableView = [[ShopTableView alloc] init];
-    [self addSubview:self.shopTableView];
-    
-    //TODO test
-    [self.shopTableView setupWithItems:@[@"1",@"2",@"3"]];
-    self.shopTableView.y = self.height;
+- (void)shopButtonPressed {
+    [self.shopTableView refresh];
+    [self updateTPS];
 }
 
-
-- (void)awakeFromNib {
-    UIPanGestureRecognizer *panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panRecognized:)];
-    [panRecognizer setDelegate:self];
-    [self addGestureRecognizer:panRecognizer]; // add to the view you want to detect swipe on
-    self.panNumbers = 0;
-    [[UserData instance] addObserver:self forKeyPath:@"currentScore" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
-    [[UserData instance] addObserver:self forKeyPath:@"currentCoin" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gameEnd) name:NO_MORE_MOVE_NOTIFICATION object:nil];
-    //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(buyPowerUp:) name:BUTTON_VIEW_PRESSED object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(buttonPowerPressed:) name:BUY_POWER_CONFIRM_BUTTON_PRESSED_NOTIFICATION object:nil];
-    
-    [[GameData instance] resetCost];
-    [self.buttonView1 setupWithType:ButtonViewTypeShuffle];
-    [self.buttonView2 setupWithType:ButtonViewTypeBomb2];
-    [self.buttonView3 setupWithType:ButtonViewTypeBomb4];
-    [self.lostButtonView1 setupWithType:ButtonViewTypeLostShuffle];
-    [self.lostButtonView2 setupWithType:ButtonViewTypeLostBomb2];
-    [self.lostButtonView3 setupWithType:ButtonViewTypeLostBomb4];
-    if (!self.shopTableView) {
-        [self createShopView];
-    }
-}
-
-- (void)buyPowerUp:(NSNotification *)notification {
-    self.confirmMenu.hidden = NO;
-    [[NSNotificationCenter defaultCenter]postNotificationName:CONFIRM_MENU_SHOWING object:notification];
-    
-}
-
-- (IBAction)buyButtonPressed:(UIButton *)sender {
-//    [[CoinIAPHelper sharedInstance] showCoinMenu];
-    
-    [self.shopTableView show];
-}
-
-
-- (void)gameEnd {
-    [self shakeScreen];
-    [self performSelector:@selector(displayGameEnd) withObject:Nil afterDelay:0.7f];
-}
-
-- (void)displayGameEnd {
-    self.fadeView.hidden = NO;
-    self.endGameButton.hidden = NO;
-    self.endGameImg.hidden = NO;
-    
-    self.boardView.anchorPoint = CGPointMake(0.f, 0.f);
-    [UIView animateWithDuration:0.3f animations:^ {
-        self.boardView.transform = CGAffineTransformMakeScale(0.5f, 0.5f);
-    }];
-}
-
-- (void)resetGameBoard {
-    [UIView animateWithDuration:0.3f animations:^ {
-        self.boardView.transform = CGAffineTransformIdentity;
-    }];
-}
-
-- (void)hideGameEnd {
-    self.fadeView.hidden = YES;
-    self.endGameButton.hidden = YES;
-    self.endGameImg.hidden = YES;
-    self.boardView.anchorPoint = CGPointMake(0.f, 0.f);
-    [self resetGameBoard];
-
-}
-
-- (IBAction)endGameButtonPressed:(id)sender {
-    [[UserData instance] addNewScoreLocalLeaderBoard: [UserData instance].currentScore mode:GAME_MODE_VS];
-    [[NSNotificationCenter defaultCenter] postNotificationName:GAME_END_BUTTON_PRESSED_NOTIFICATION object:self];
-}
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-    if([keyPath isEqualToString:@"currentCoin"])
+    if([keyPath isEqualToString:@"currentScore"])
     {
-        float value = [[change objectForKey:NSKeyValueChangeNewKey]floatValue];
-        self.coinLabel.text = [Utils formatWithComma:value];
-    } else if([keyPath isEqualToString:@"currentScore"])
-    {
-        float value = [[change objectForKey:NSKeyValueChangeNewKey]floatValue];
-        self.currentScore.text = [Utils formatWithComma:value];
+        u_int value = [[change objectForKey:NSKeyValueChangeNewKey]intValue];
+        self.currentScoreLabel.text = [Utils formatWithComma:value];
     }
-}
-
--(void)refreshButtonViews {
-    [self.buttonView1 refresh];
-    [self.buttonView2 refresh];
-    [self.buttonView3 refresh];
-    [self.lostButtonView1 refresh];
-    [self.lostButtonView2 refresh];
-    [self.lostButtonView3 refresh];
 }
 
 - (void)generateNewBoard {
-    self.fadeView.hidden = YES;
-    self.endGameButton.hidden = YES;
-    self.endGameImg.hidden = YES;
-    [UserData instance].currentScore = 0;
-    self.boardView.transform = CGAffineTransformIdentity;
-    [self.boardView generateNewBoard];
-    [[GameData instance] resetCost];
-    [self refreshButtonViews];
-    self.confirmMenu.hidden = NO;
-}
-
-- (void)applyPowerUp:(ButtonView *)buttonView {
-
-    switch (buttonView.type) {
-            
-        case ButtonViewTypeShuffle:
-                [self.boardView shuffleTiles];
-            break;
-            
-        case ButtonViewTypeBomb2:
-            if([self.boardView testTilesWith:2]){
-                    [self.boardView destroyTilesWith:2];
-            }
-            break;
-            
-        case ButtonViewTypeBomb4:
-            if([self.boardView testTilesWith:4]){
-                    [self.boardView destroyTilesWith:4];
-            }
-            break;
-            
-        case ButtonViewTypeLostShuffle:
-            self.queuedPowerUp = buttonView;
-                [self.boardView shuffleTiles];
-                [self hideGameEnd];
-            break;
-            
-        case ButtonViewTypeLostBomb2:
-            self.queuedPowerUp = buttonView;
-            if([self.boardView testTilesWith:2]){
-                    [self.boardView destroyTilesWith:2];
-                    [self hideGameEnd];
-            }
-            break;
-            
-        case ButtonViewTypeLostBomb4:
-            self.queuedPowerUp = buttonView;
-            if([self.boardView testTilesWith:4]){
-                    [self.boardView destroyTilesWith:4];
-                    [self hideGameEnd];
-            }
-            break;
-            
-        default:
-            break;
-    }
-    [self refreshButtonViews];
-
-}
-- (void)buttonPowerPressed:(NSNotification *)notification {
-    ButtonView *buttonView = notification.object;
-    [self applyPowerUp:buttonView];
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.f/UPDATE_TIME_PER_TICK target:self selector:@selector(update) userInfo:nil repeats:YES];
+    self.startTime = [UserData instance].startTime;
+    self.timeBonus = [UserData instance].startTime;
+    [self offlinePowerActivate];
+    [self checkIfSavedTimePassedTimeBonus];
     
 }
-- (void)panRecognized:(UIPanGestureRecognizer *)sender
+
+- (void)tapRecognized:(UITapGestureRecognizer *)sender
 {
-    if (sender.state == UIGestureRecognizerStateBegan) {
-        // you might want to do something at the start of the pan
-        self.swipedBegan = YES;
+    if (sender.state == UIGestureRecognizerStateRecognized) {
+        float currentTap = (float)([[UserData instance] totalPointPerTap:self.timeBonusOn]);
+        [[UserData instance]addScore:currentTap];
+        [self updateTPSWithTap:currentTap];
+        self.tapBonus++;
+    }
+}
+
+- (void)updateTPSWithTap:(float)number {
+    if (self.doDecay == NO) {
+        self.delay = 2.f;
+        self.deleteTime = [[NSDate date] timeIntervalSince1970] * 1000;
+    }
+    [self startDecayTPS];
+    self.doDecay = YES;
+    [self.tapTotal addObject:[NSNumber numberWithFloat:number]];
+    if (self.tapTotal.count > 20) {
+        [self.tapTotal removeObjectAtIndex:0];
+    }
+    [self updateTPS];
+}
+
+- (void)updateTPS {
+    self.displayTPS = [self tapTotalCombined] + [[UserData instance] totalPointForPassive];
+    self.tapPerSecondLabel.text = [NSString stringWithFormat:@"%.1f", self.displayTPS];
+}
+
+- (void)checkIfSavedTimePassedTimeBonus {
+    double time = CURRENT_TIME;
+    if (time - self.timeBonus > TIME_BONUS_INTERVAL) {
+        self.timeBonus = time;
+        [[UserData instance] saveUserStartTime:time];
+    } else {
+        double percentage = (time - self.timeBonus) / TIME_BONUS_INTERVAL;
+        [self.progressBar fillBar:percentage];
+    }
+}
+
+- (void)decayTPS {
+    if (self.tapTotal.count > 0) {
+        [self.tapTotal removeObjectAtIndex:0];
+    } else {
+        self.doDecay = NO;
+        [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(decayTPS) object:nil];
+    }
+    [self updateTPS];
+    
+}
+
+- (void)startDecayTPS {
+    
+    if (self.tapTotal.count > 15) {
+        self.delay += .02f;
+    } else if (self.tapTotal.count > 13){
+        self.delay += .05f;
+    } else if (self.tapTotal.count > 8) {
+        self.delay += .1f;
+    } else if (self.tapTotal.count > 5) {
+        self.delay += .2f;
+    }
+    [self performSelector:@selector(decayTPS) withObject:nil afterDelay:self.delay];
+}
+
+- (float)tapTotalCombined {
+    float temp = 0;
+    for (int i = 0; i < self.tapTotal.count; i++) {
+        temp  = temp + [[self.tapTotal objectAtIndex:i]floatValue];
+    }
+    return temp;
+}
+
+- (void)update {
+    double time = CURRENT_TIME;
+    self.ticks++;
+    self.tempPassiveLabel = [[UserData instance] currentScore];
+    self.tempPassiveLabel = self.tempPassiveLabel + [[UserData instance] totalPointForPassive] / UPDATE_TIME_PER_TICK;
+    self.currentScoreLabel.text = [Utils formatWithComma:(int)self.tempPassiveLabel];
+    [[UserData instance] addScoreByPassive];
+    if (self.ticks >= (int)(UPDATE_TIME_PER_TICK)) {
+        self.ticks = 0;
+        [[UserData instance] saveUserCoin];
+        self.startTime = time;
+        [[UserData instance] saveUserLogInTime:time];
     }
     
-    CGPoint distance = [sender translationInView:self]; // get distance of pan/swipe in the view in which the gesture recognizer was added
+    if (self.tapBonus >= 5) {
+        [self tapBonusActivate];
+    }
     
-    if (sender.state == UIGestureRecognizerStateChanged) {
-        [sender cancelsTouchesInView]; // you may or may not need this - check documentation if unsure
+    if (!self.timeBonusOn) {
+        double percentage = (time - self.timeBonus) / TIME_BONUS_INTERVAL;
+        [self.progressBar fillBar:percentage];
         
-        float distanceTreshold = 10.f;
-        if (self.swipedBegan) {
-            if(fabsf(distance.x) > distanceTreshold || fabsf(distance.y) > distanceTreshold) {
-                if (fabsf(distance.x) > fabsf(distance.y)) {
-                    if (distance.x > 0) { // right
-                        [self.boardView shiftTilesRight];
-                    } else if (distance.x < 0) { //left
-                        [self.boardView shiftTilesLeft];
-                    }
-                } else {
-                    if (distance.y > 0) { // down
-                        [self.boardView shiftTilesDown];
-                    } else if (distance.y < 0) { //up
-                        [self.boardView shiftTilesUp];
-                    }
-                }
-                self.swipedBegan = NO;
-            }
-        }
+       // NSLog(@"[CURRENT_TIME; %f ", CURRENT_TIME);
+
+      //  NSLog(@"[self.timeBonus]; %f ", self.timeBonus);
+     //   NSLog(@"(CURRENT_TIME - self.timeBonus) %f ", (CURRENT_TIME - self.timeBonus));
+
+     //   NSLog(@"[self.progressBar fillBar:percentage]; %f ", percentage);
+
+    }
+    
+    if (!self.timeBonusOn && time - self.timeBonus > TIME_BONUS_INTERVAL) {
+        [self timeBonusActivate];
+        [self.progressBar fillBar:1.f];
+    }
+    
+    if (self.timeBonusOn && time - self.timeBonusEnd > 5) {
+        [self timeBonusDeactivate];
+        [self.progressBar fillBar:0.f];
     }
 }
 
-- (void)afterPurchasePowerUp:(NSNotification *)notification {
-    NSString *productIdentifier = notification.object;
-    [self animateCoin:[[CoinIAPHelper sharedInstance] valueForProductId:productIdentifier]];
-    if (!self.queuedPowerUp) {
-        [self applyPowerUp:self.queuedPowerUp];
+- (float)tapTotalAverage:(NSMutableArray *)array {
+    float totalAverage = 0;
+    for (int i = 0; i < array.count; i++) {
+        totalAverage = totalAverage + [[array objectAtIndex:i] floatValue];
     }
-    self.queuedPowerUp = nil;
+    
+    return totalAverage;
 }
 
-- (void)testRun {
-    NSMutableArray *testMove = [[NSMutableArray alloc] init];
-    for (int i = 0; i < 4; i ++) {
-        
-        [testMove addObject:[NSString stringWithFormat:@"%d", i]];
-    }
-    int try = 0;
-    while (try < 2 && !self.boardView.gameEnd) {
-        self.panNumbers++;
-        int testSwipe = [[testMove randomObject]intValue];
-        switch (testSwipe) {
-            case 0:
-                [self.boardView shiftTilesLeft];
-                NSLog(@"user swiped left");
-                break;
-            case 1:
-                [self.boardView shiftTilesRight];
-                NSLog(@"user swiped right");
-                break;
-            case 2:
-                [self.boardView shiftTilesUp];
-                NSLog(@"user swiped up");
-                break;
-            case 3:
-                [self.boardView shiftTilesDown];
-                NSLog(@"user swiped down");
-                break;
-            default:
-                break;
-        }
-        try++;
-    }
+- (void)tapBonusActivate {
+    self.tapBonus = 0;
+    NSLog(@"BONUS");
 }
 
-- (void)animateCoin:(int)value {
-    AnimatedLabel *label = [[AnimatedLabel alloc] init];
-    [self addSubview:label];
-    label.label.text = [NSString stringWithFormat:@"+%d", value];
-    label.center = self.coinLabel.center;
-    [label animate];
+- (void)timeBonusActivate {
+    self.timeBonusEnd = CURRENT_TIME + TIME_BONUS_ACTIVED_LIMIT;
+    self.timeBonusOn = YES;
+    NSLog(@"TIME");
+}
+
+- (void)timeBonusDeactivate {
+    double time = CURRENT_TIME;
+    self.timeBonus = time;
+    [[UserData instance] saveUserStartTime:time];
+    self.timeBonusOn = NO;
+    NSLog(@"TIME END");
 }
 
 - (void)shakeScreen {
     [AnimUtil wobble:self duration:0.1f angle:M_PI/128.f repeatCount:2];
+}
+
+- (void)offlinePowerActivate {
+    [[UserData instance] addScoreByOffline];
+    [[UserData instance] saveUserLogInTime:CURRENT_TIME];
 }
 @end

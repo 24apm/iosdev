@@ -8,7 +8,6 @@
 
 #import "AnimatedLabel.h"
 #import "GameConstants.h"
-#import "BoardView.h"
 
 @implementation AnimatedLabel
 
@@ -23,7 +22,7 @@
 
 - (void)animate {
     self.hidden = YES;
-    [self performSelector:@selector(_animate) withObject:nil afterDelay:TILE_MOVE_ANIMATION_DURATION];
+    [self performSelector:@selector(_animate) withObject:nil afterDelay:.3];
 }
 
 - (void)_animate {
