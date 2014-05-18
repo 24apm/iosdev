@@ -19,5 +19,6 @@
 + (UIViewController *)rootViewController;
 + (NSString *)formatWithComma:(int)integer;
 + (NSString *)formatWithFreeCost:(int)cost;
++ (UIImage *)imageNamed:(UIImage *)img withColor:(UIColor *)color blendMode:(CGBlendMode)blendMode;
 
 @end

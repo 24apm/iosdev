@@ -27,5 +27,6 @@
                     type:(PowerUpType)type;
 
 - (NSString *)formatDescriptionWithValue:(float)value;
+- (UIColor *)tierColor:(int)tier;
 
 @end

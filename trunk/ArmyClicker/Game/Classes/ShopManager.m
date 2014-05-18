@@ -95,7 +95,6 @@
            priceMultiplier:20000
          upgradeMultiplier:20.f];
     
-    
     [self createActiveItem:SHOP_ITEM_ID_ACTIVE_TIER_4
                       name:@"Tap Level UP"
                  imagePath:@"icon_cigarette"
@@ -107,6 +106,8 @@
                  imagePath:@"icon_cigarette"
            priceMultiplier:200000000
          upgradeMultiplier:20.f];
+    
+    
     
     // PASSIVE
     [self createPassiveItem:SHOP_ITEM_ID_PASSIVE_TIER_1
@@ -120,6 +121,8 @@
                   imagePath:@"icon_cigar"
             priceMultiplier:100
           upgradeMultiplier:3.3f];
+    
+    
     
     // OFFLINE
     [self createOfflineItem:SHOP_ITEM_ID_OFFLINE_TIER_1

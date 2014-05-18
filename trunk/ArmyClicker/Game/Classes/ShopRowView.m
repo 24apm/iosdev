@@ -11,10 +11,11 @@
 #import "ShopItem.h"
 #import "ShopManager.h"
 #import "GameConstants.h"
+#import "Utils.h"
 
 @implementation ShopRowView
 
-- (void)setupWithItem:(ShopItem *)item {
+- (void)setupWithItem:(ShopItem *)item tier:(int)tier {
     self.item = item;
     self.label.text = item.name;
     self.costLabel.hidden = NO;
@@ -25,7 +26,11 @@
     self.cost = [[ShopManager instance] priceForItemId:item.itemId type:item.type];
     self.costLabel.text = [NSString stringWithFormat:@"$%d", self.cost];
     [self.costButton setTitle:[NSString stringWithFormat:@"$%d", self.cost] forState:UIControlStateNormal];
-    self.imageView.image = [UIImage imageNamed:item.imagePath];
+    self.imageView.image = [Utils imageNamed:[UIImage imageNamed:item.imagePath]
+                                   withColor:[item tierColor:tier]
+                                   blendMode:kCGBlendModeMultiply];
+    
+    
     self.itemMaxLevel = NO;
     NSMutableDictionary *typeDictionary = [[UserData instance].gameDataDictionary objectForKey:[NSString stringWithFormat:@"%d", item.type]];
     int itemLevel = [[typeDictionary objectForKey:item.itemId]intValue];

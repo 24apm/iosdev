@@ -61,7 +61,7 @@
     ShopRowView *rowView = (ShopRowView *)cell.view;
     NSString *itemId = [self.items objectAtIndex:indexPath.row];
     ShopItem *shopItem = [[ShopManager instance] shopItemForItemId:itemId dictionary:self.currentType];
-    [rowView setupWithItem:shopItem];
+    [rowView setupWithItem:shopItem tier:indexPath.row + 1];
     return cell;
 }
 

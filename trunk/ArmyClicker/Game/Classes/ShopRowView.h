@@ -25,6 +25,6 @@
 @property (strong, nonatomic) IBOutlet UIView *overlayView;
 @property (strong, nonatomic) IBOutlet UIButton *costButton;
 
-- (void)setupWithItem:(ShopItem *)item;
+- (void)setupWithItem:(ShopItem *)item tier:(int)tier;
 
 @end

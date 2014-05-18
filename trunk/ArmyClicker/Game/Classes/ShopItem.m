@@ -45,6 +45,44 @@
     return temp;
 }
 
+- (UIColor *)tierColor:(int)tier {
+    switch (tier) {
+        case 1:
+            return [UIColor whiteColor];
+            break;
+        case 2:
+            return [UIColor yellowColor];
+            break;
+        case 3:
+            return [UIColor orangeColor];
+            break;
+        case 4:
+            return [UIColor greenColor];
+            break;
+        case 5:
+            return [UIColor blueColor];
+            break;
+        case 6:
+            return [UIColor purpleColor];
+            break;
+        case 7:
+            return [UIColor brownColor];
+            break;
+        case 8:
+            return [UIColor redColor];
+            break;
+        case 9:
+            return [UIColor magentaColor];
+            break;
+        case 10:
+            return [UIColor blackColor];
+            break;
+        default:
+            break;
+    }
+    return [UIColor whiteColor];
+}
+
 - (NSString *)descriptionForActive:(float)value {
     return [NSString stringWithFormat:@"+$%d", (int)value];
 }
