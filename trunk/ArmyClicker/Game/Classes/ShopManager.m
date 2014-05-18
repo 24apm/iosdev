@@ -87,19 +87,19 @@
                       name:@"Tap Level UP"
                  imagePath:@"icon_cigarette"
            priceMultiplier:200
-         upgradeMultiplier:20.f];
+         upgradeMultiplier:200.f];
     
     [self createActiveItem:SHOP_ITEM_ID_ACTIVE_TIER_3
                       name:@"Tap Level UP"
                  imagePath:@"icon_cigarette"
            priceMultiplier:20000
-         upgradeMultiplier:20.f];
+         upgradeMultiplier:2000.f];
     
     [self createActiveItem:SHOP_ITEM_ID_ACTIVE_TIER_4
                       name:@"Tap Level UP"
                  imagePath:@"icon_cigarette"
-           priceMultiplier:2000000
-         upgradeMultiplier:20.f];
+           priceMultiplier:200000
+         upgradeMultiplier:50000.f];
     
     [self createActiveItem:SHOP_ITEM_ID_ACTIVE_TIER_10
                       name:@"Tap Level UP"

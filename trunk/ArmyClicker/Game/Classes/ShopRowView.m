@@ -22,7 +22,8 @@
     self.costButton.hidden = NO;
     self.costButton.titleLabel.minimumScaleFactor = 0.5f;
     self.costButton.titleLabel.adjustsFontSizeToFitWidth = YES;
-    self.descriptionLabel.text = [item formatDescriptionWithValue:[[UserData instance] realMultiplier:item]];
+    self.descriptionLabel.text = [item formatDescriptionWithValue:item.upgradeMultiplier];
+    
     self.cost = [[ShopManager instance] priceForItemId:item.itemId type:item.type];
     self.costLabel.text = [NSString stringWithFormat:@"$%d", self.cost];
     [self.costButton setTitle:[NSString stringWithFormat:@"$%d", self.cost] forState:UIControlStateNormal];
