@@ -41,5 +41,6 @@
 - (void)addScore:(float)score;
 - (int)totalPointPerTap:(BOOL)bonusOn;
 - (float)totalPointForPassive;
+- (float)realMultiplier:(ShopItem *)shopItem;
 
 @end

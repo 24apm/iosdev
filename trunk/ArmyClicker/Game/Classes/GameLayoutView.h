@@ -19,6 +19,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *shopActiveButton;
 @property (strong, nonatomic) IBOutlet UIButton *shopPassiveButton;
 @property (strong, nonatomic) IBOutlet UIButton *shopOfflineButton;
+@property (strong, nonatomic) IBOutlet UIImageView *characterImageView;
 
 - (void)generateNewBoard;
 @property (strong, nonatomic) IBOutlet UIView *backgroundView;

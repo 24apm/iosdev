@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GameLayoutView">
             <connections>
+                <outlet property="characterImageView" destination="pSk-9g-48G" id="ICX-jn-D2A"/>
                 <outlet property="currentScoreLabel" destination="19v-2E-3jS" id="DjN-Iz-kF9"/>
                 <outlet property="progressBar" destination="e7Z-Na-e6R" id="6jS-4l-CVb"/>
                 <outlet property="shopActiveButton" destination="XE4-fe-6Q4" id="DNo-pv-qYu"/>
@@ -21,44 +22,64 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
             <subviews>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="19v-2E-3jS" userLabel="currentScore" customClass="THLabel">
-                    <rect key="frame" x="59" y="57" width="200" height="40"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.80392163989999998" green="0.74901962280000001" blue="0.71372550729999995" alpha="1" colorSpace="deviceRGB"/>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <nil key="highlightedColor"/>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="color" keyPath="strokeColor">
-                            <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="number" keyPath="strokeSize">
-                            <integer key="value" value="2"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="RqB-rS-mkz" userLabel="TPS">
-                    <rect key="frame" x="115" y="94" width="90" height="28"/>
+                <view userInteractionEnabled="NO" contentMode="scaleToFill" id="eGw-W2-A6I" customClass="ParticleView">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FlappyBallIcon100x100.png" id="pSk-9g-48G">
-                    <rect key="frame" x="60" y="175" width="200" height="200"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="p6c-UB-ruD" userLabel="Tap Button">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="tapPressed:" destination="-1" eventType="touchUpInside" id="cVA-oH-5Ga"/>
+                        <action selector="tapPressedDown:" destination="-1" eventType="touchDown" id="M9n-2N-n54"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" id="QL0-iX-gb7" userLabel="Display View">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="124"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" id="19v-2E-3jS" userLabel="currentScore">
+                            <rect key="frame" x="60" y="60" width="200" height="40"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.80392163989999998" green="0.74901962280000001" blue="0.71372550729999995" alpha="1" colorSpace="deviceRGB"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" id="RqB-rS-mkz" userLabel="TPS">
+                            <rect key="frame" x="115" y="96" width="90" height="28"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.29999999999999999" colorSpace="calibratedWhite"/>
+                </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clicker_character1.png" id="pSk-9g-48G">
+                    <rect key="frame" x="10" y="80" width="300" height="300"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="money.png" id="tFx-Vh-FNt">
+                    <rect key="frame" x="20" y="51" width="60" height="60"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <view contentMode="scaleToFill" id="e7Z-Na-e6R" customClass="ProgressBarComponent">
-                    <rect key="frame" x="15" y="130" width="160" height="20"/>
+                    <rect key="frame" x="9" y="372" width="300" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <view contentMode="scaleToFill" id="Z76-Az-4Lt">
-                            <rect key="frame" x="0.0" y="0.0" width="160" height="20"/>
+                            <rect key="frame" x="0.0" y="0.0" width="300" height="20"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
                         <view contentMode="scaleToFill" id="WI5-gK-efK">
-                            <rect key="frame" x="0.0" y="0.0" width="160" height="20"/>
+                            <rect key="frame" x="0.0" y="0.0" width="300" height="20"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <color key="backgroundColor" red="1" green="0.60549926840000001" blue="0.3379715646" alpha="1" colorSpace="calibratedRGB"/>
                         </view>
@@ -110,7 +131,7 @@
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" red="0.57270408163265307" green="0.13612472491866429" blue="0.0061987578253683605" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.14659254233223515" green="0.50049824617346939" blue="0.2350689682925437" alpha="1" colorSpace="calibratedRGB"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </view>
             </subviews>
@@ -119,9 +140,10 @@
         </view>
     </objects>
     <resources>
-        <image name="FlappyBallIcon100x100.png" width="100" height="100"/>
+        <image name="clicker_character1.png" width="550" height="550"/>
         <image name="icon_clock.png" width="80" height="80"/>
         <image name="icon_offline.png" width="80" height="80"/>
         <image name="icon_tap.png" width="80" height="80"/>
+        <image name="money.png" width="80" height="80"/>
     </resources>
 </document>

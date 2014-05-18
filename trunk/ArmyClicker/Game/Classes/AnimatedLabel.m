@@ -14,8 +14,6 @@
 - (id)init {
     self = [super init];
     if (self) {
-        self.label.strokeColor = [UIColor blackColor];
-        self.label.strokeSize = 2.f * IPAD_SCALE;
     }
     return self;
 }
@@ -34,7 +32,7 @@
     animatePosition.toValue = [NSNumber valueWithCGPoint:CGPointMake(self.center.x, offset)];
     
     CABasicAnimation *animateAlpha = [CABasicAnimation animationWithKeyPath:@"opacity"];
-    animateAlpha.toValue = [NSNumber numberWithFloat:0.3f];
+    animateAlpha.toValue = [NSNumber numberWithFloat:0.0f];
     
     CAKeyframeAnimation *scaleIn = [CAKeyframeAnimation animationWithKeyPath:@"transform.scale"];
     scaleIn.values = @[@(1.0f),@(1.2f),@(1.0f)];

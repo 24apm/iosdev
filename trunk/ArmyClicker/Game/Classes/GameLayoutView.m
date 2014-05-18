@@ -20,6 +20,7 @@
 #import "ShopManager.h"
 #import "ShopRowView.h"
 #import "ProgressBarComponent.h"
+#import "AnimatedLabel.h"
 
 #define TIME_BONUS_INTERVAL 60.f
 #define TIME_BONUS_ACTIVED_LIMIT 5.f
@@ -104,17 +105,13 @@ static int promoDialogInLeaderBoardCount = 0;
     self = [super initWithCoder:aDecoder];
     if (self) {
         
-        // add pan recognizer to the view when initialized
-        UITapGestureRecognizer *tapRecognized = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapRecognized:)];
-        [tapRecognized setDelegate:self];
-        [self addGestureRecognizer:tapRecognized]; // add to the view you want to detect swipe on
         [[UserData instance] addObserver:self forKeyPath:@"currentScore" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
         self.backgroundView.layer.cornerRadius = 20.f * IPAD_SCALE;
         self.backgroundView.clipsToBounds = YES;
         self.currentScoreLabel.layer.cornerRadius = 20.f * IPAD_SCALE;
         self.tapTotal = [NSMutableArray array];
         self.displayTPS = [[UserData instance] totalPointForPassive];
-        self.tapPerSecondLabel.text = [NSString stringWithFormat:@"%.1f", self.displayTPS];
+        self.tapPerSecondLabel.text = [self timePerSec:self.displayTPS];
         self.scorePerTap = 1;
         self.tapBonus = 0;
         self.deleteTime = 0;
@@ -143,7 +140,7 @@ static int promoDialogInLeaderBoardCount = 0;
     if([keyPath isEqualToString:@"currentScore"])
     {
         u_int value = [[change objectForKey:NSKeyValueChangeNewKey]intValue];
-        self.currentScoreLabel.text = [Utils formatWithComma:value];
+        self.currentScoreLabel.text = [NSString stringWithFormat:@"$%@", [Utils formatWithComma:value]];
     }
 }
 
@@ -156,14 +153,41 @@ static int promoDialogInLeaderBoardCount = 0;
     
 }
 
-- (void)tapRecognized:(UITapGestureRecognizer *)sender
-{
-    if (sender.state == UIGestureRecognizerStateRecognized) {
-        float currentTap = (float)([[UserData instance] totalPointPerTap:self.timeBonusOn]);
-        [[UserData instance]addScore:currentTap];
-        [self updateTPSWithTap:currentTap];
-        self.tapBonus++;
-    }
+- (IBAction)tapPressedDown:(id)sender {
+    self.characterImageView.transform = CGAffineTransformMakeScale(1.02f, 1.02f);
+}
+
+
+- (IBAction)tapPressed:(id)sender {
+    float currentTap = (float)([[UserData instance] totalPointPerTap:self.timeBonusOn]);
+    [[UserData instance]addScore:currentTap];
+    [self updateTPSWithTap:currentTap];
+    self.tapBonus++;
+    [self animateLabel:[[UserData instance] totalPointPerTap:self.timeBonusOn]];
+    
+    self.characterImageView.transform = CGAffineTransformIdentity;
+
+    
+    static int rand = 0;
+    rand = arc4random() % 4 + 1;
+    self.characterImageView.image = [UIImage imageNamed:[self characterImageTier:rand]];
+    
+}
+
+
+- (void)animateLabel:(int)value {
+    AnimatedLabel *label = [[AnimatedLabel alloc] init];
+    [self.characterImageView addSubview:label];
+    label.label.text = [NSString stringWithFormat:@"+%d", value];
+    float marginPercentage = 0.5f;
+    float randX = arc4random() % (int)self.characterImageView.width * marginPercentage + self.characterImageView.width * marginPercentage / 2.f;
+    float randY = arc4random() % (int)self.characterImageView.height * marginPercentage + self.characterImageView.height * marginPercentage / 2.f;
+    label.center = CGPointMake(randX, randY);
+    [label animate];
+}
+
+- (NSString *)characterImageTier:(int)tier {
+    return [NSString stringWithFormat:@"clicker_character%d.png", tier];
 }
 
 - (void)updateTPSWithTap:(float)number {
@@ -182,7 +206,11 @@ static int promoDialogInLeaderBoardCount = 0;
 
 - (void)updateTPS {
     self.displayTPS = [self tapTotalCombined] + [[UserData instance] totalPointForPassive];
-    self.tapPerSecondLabel.text = [NSString stringWithFormat:@"%.1f", self.displayTPS];
+    self.tapPerSecondLabel.text = [self timePerSec:self.displayTPS];
+}
+
+- (NSString *)timePerSec:(int)sec {
+    return [NSString stringWithFormat:@"$%.1f/sec", self.displayTPS];
 }
 
 - (void)checkIfSavedTimePassedTimeBonus {
@@ -233,8 +261,7 @@ static int promoDialogInLeaderBoardCount = 0;
     double time = CURRENT_TIME;
     self.ticks++;
     self.tempPassiveLabel = [[UserData instance] currentScore];
-    self.tempPassiveLabel = self.tempPassiveLabel + [[UserData instance] totalPointForPassive] / UPDATE_TIME_PER_TICK;
-    self.currentScoreLabel.text = [Utils formatWithComma:(int)self.tempPassiveLabel];
+    self.tempPassiveLabel += [[UserData instance] totalPointForPassive] / UPDATE_TIME_PER_TICK;
     [[UserData instance] addScoreByPassive];
     if (self.ticks >= (int)(UPDATE_TIME_PER_TICK)) {
         self.ticks = 0;
