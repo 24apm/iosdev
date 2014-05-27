@@ -31,8 +31,8 @@
 
 - (void)buyingProduct:(NSNotification *)notification {
     self.userInteractionEnabled = NO;
-    [TrackUtils trackAction:@"buyingProduct" label:@""];
     CoinView * coinView = notification.object;
+    [TrackUtils trackAction:@"buyingProduct" label:coinView.product.productIdentifier];
     [[CoinIAPHelper sharedInstance] buyProduct:coinView.product];
 }
 
@@ -41,7 +41,8 @@
     if (productIdentifier) {
         // Unlock answer
         self.userInteractionEnabled = YES;
-        [TrackUtils trackAction:@"buyingProductSuccess" label:@""];
+        [TrackUtils trackAction:@"buyingProductSuccess" label:productIdentifier];
+
         [UserData instance].currentCoin += [[CoinIAPHelper sharedInstance] valueForProductId:productIdentifier];
         [[UserData instance] saveUserCoin];
         [self dismissed:self];

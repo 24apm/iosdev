@@ -9,13 +9,12 @@
 #import "ShopRowView.h"
 #import "UserData.h"
 #import "ShopItem.h"
-#import "ShopManager.h"
 #import "GameConstants.h"
 #import "Utils.h"
 
 @implementation ShopRowView
 
-- (void)setupWithItem:(ShopItem *)item tier:(int)tier {
+- (void)setupWithItem:(ShopItem *)item {
     self.item = item;
     self.label.text = item.name;
     self.costLabel.hidden = NO;
@@ -24,13 +23,7 @@
     self.costButton.titleLabel.adjustsFontSizeToFitWidth = YES;
     self.descriptionLabel.text = [item formatDescriptionWithValue:item.upgradeMultiplier];
     
-    self.cost = [[ShopManager instance] priceForItemId:item.itemId type:item.type];
-    self.costLabel.text = [NSString stringWithFormat:@"$%d", self.cost];
-    [self.costButton setTitle:[NSString stringWithFormat:@"$%d", self.cost] forState:UIControlStateNormal];
-    self.imageView.image = [Utils imageNamed:[UIImage imageNamed:item.imagePath]
-                                   withColor:[item tierColor:tier]
-                                   blendMode:kCGBlendModeMultiply];
-    
+    [self setUpPriceTag];
     
     self.itemMaxLevel = NO;
     NSMutableDictionary *typeDictionary = [[UserData instance].gameDataDictionary objectForKey:[NSString stringWithFormat:@"%d", item.type]];
@@ -46,11 +39,53 @@
     }
 }
 - (IBAction)buttonPressed:(UIButton *)sender {
-    if (!self.itemMaxLevel && [UserData instance].currentScore >= self.cost) {
-        [UserData instance].currentScore = [UserData instance].currentScore - self.cost;
-        [[UserData instance] levelUpPower:self.item];
-        [[NSNotificationCenter defaultCenter]postNotificationName:SHOP_BUTTON_PRESSED_NOTIFICATION object:nil];
+    if (self.item.type == POWER_UP_TYPE_IAP) {
+        
+        [[NSNotificationCenter defaultCenter]postNotificationName:IAP_ITEM_PRESSED_NOTIFICATION object:self];
+        
+    } else {
+        if (!self.itemMaxLevel && [UserData instance].currentScore >= self.cost) {
+            [UserData instance].currentScore = [UserData instance].currentScore - self.cost;
+            [[UserData instance] levelUpPower:self.item];
+            [[NSNotificationCenter defaultCenter]postNotificationName:SHOP_BUTTON_PRESSED_NOTIFICATION object:nil];
+        }
     }
 }
 
+- (void)setUpPriceTag {
+    if (self.item.type == POWER_UP_TYPE_IAP) {
+         self.iapType = [self lookUpTableForIAPWithRank];
+        [self.costButton setTitle:[[CoinIAPHelper sharedInstance] productForType:self.iapType].priceAsString forState:UIControlStateNormal];
+        self.cost = 0;
+        self.imageView.image = [Utils imageNamed:[UIImage imageNamed:self.item.imagePath]
+                                       withColor:[self.item tierColor:self.item.rank]
+                                       blendMode:kCGBlendModeMultiply];
+    } else {
+        self.cost = [[ShopManager instance] priceForItemId:self.item.itemId type:self.item.type];
+        self.imageView.image = [Utils imageNamed:[UIImage imageNamed:self.item.imagePath]
+                                       withColor:[self.item tierColor:self.item.rank]
+                                       blendMode:kCGBlendModeMultiply];
+        [self.costButton setTitle:[NSString stringWithFormat:@"$%d", self.cost] forState:UIControlStateNormal];
+    }
+}
+
+- (IAPType)lookUpTableForIAPWithRank {
+    switch (self.item.rank) {
+        case 4:
+            return IAPTypeFund;
+            break;
+        case 3:
+            return IAPTypeDouble;
+            break;
+        case 2:
+            return IAPTypeQuadruple;
+            break;
+        case 5:
+            return IAPTypeSuper;
+            break;
+        default:
+            break;
+    }
+    return 0;
+}
 @end

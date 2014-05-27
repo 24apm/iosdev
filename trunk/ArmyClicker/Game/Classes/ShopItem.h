@@ -15,18 +15,20 @@
 @property (nonatomic, strong) NSString *imagePath;
 @property (nonatomic) NSString * itemId;
 @property (nonatomic) int priceMultiplier;
-@property (nonatomic) float value;
+@property (nonatomic) double value;
 @property (nonatomic) PowerUpType type;
-@property (nonatomic) float upgradeMultiplier;
+@property (nonatomic) double upgradeMultiplier;
+@property (nonatomic) int rank;
 
 + (ShopItem *)createItem:(NSString *)itemId
                     name:(NSString *)name
                imagePath:(NSString *)imagePath
-         priceMultiplier:(float)priceMultipler
-       upgradeMultiplier:(float)upgradeMultiplier
-                    type:(PowerUpType)type;
+         priceMultiplier:(double)priceMultipler
+       upgradeMultiplier:(double)upgradeMultiplier
+                    type:(PowerUpType)type
+                    rank:(int)rank;
 
-- (NSString *)formatDescriptionWithValue:(float)value;
+- (NSString *)formatDescriptionWithValue:(double)value;
 - (UIColor *)tierColor:(int)tier;
 
 @end

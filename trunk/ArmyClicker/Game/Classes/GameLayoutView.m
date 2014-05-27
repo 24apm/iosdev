@@ -21,6 +21,9 @@
 #import "ShopRowView.h"
 #import "ProgressBarComponent.h"
 #import "AnimatedLabel.h"
+#import "BucketView.h"
+#import "BonusButton.h"
+#import "CoinMenuView.h"
 
 #define TIME_BONUS_INTERVAL 60.f
 #define TIME_BONUS_ACTIVED_LIMIT 5.f
@@ -32,23 +35,34 @@
 @property (strong, nonatomic) IBOutlet ProgressBarComponent *progressBar;
 @property (strong, nonatomic) UIButton *previousSelectedButton;
 
-@property (nonatomic) CFTimeInterval startTime;
-@property (nonatomic, strong) NSString *tapPerSecond;
+@property (nonatomic) double startTime;
 @property (nonatomic, strong) NSTimer *timer;
+@property (nonatomic, strong) NSTimer *timerForBonus;
 @property (nonatomic, strong)NSMutableArray * tapTotal;
+@property (nonatomic, strong)NSMutableArray * tapTotalPoints;
 @property (nonatomic) double displayTPS;
 @property (nonatomic) double oldDisplayTPS;
 @property (nonatomic) double tapBonus;
 @property (nonatomic) double timeBonus;
+@property (nonatomic) double tapsPerSecond;
+@property (nonatomic) double tapsPerSecondPoints;
 @property (nonatomic) double scorePerTap;
 @property (nonatomic) double totalScorePerTap;
 @property (nonatomic) double timeBonusEnd;
 @property (nonatomic) BOOL timeBonusOn;
 @property (nonatomic) double deleteTime;
 @property (nonatomic) BOOL doDecay;
+@property (nonatomic) double previousTime;
 @property (nonatomic) double delay;
 @property (nonatomic) double tempPassiveLabel;
 @property (nonatomic) int ticks;
+@property (nonatomic, strong) BucketView* bucketView;
+@property (nonatomic) double displayAverageTPS;
+@property (nonatomic) int tapBonusLevel;
+@property (nonatomic, strong) NSMutableArray *bonusArray;
+@property (nonatomic) BOOL bonusTapOn;
+@property (nonatomic) double bonusStartTime;
+
 
 @end
 
@@ -60,7 +74,7 @@ static int promoDialogInLeaderBoardCount = 0;
     self.shopTableView = [[ShopTableView alloc] init];
     [self addSubview:self.shopTableView];
     [self insertSubview:self.shopBarView aboveSubview:self.shopTableView];
-
+    
     NSArray *itemIds = [[ShopManager instance] arrayOfitemIdsFor:POWER_UP_TYPE_TAP];
     [self.shopTableView setupWithItemIds:itemIds];
     self.shopTableView.y = self.height;
@@ -75,7 +89,14 @@ static int promoDialogInLeaderBoardCount = 0;
 }
 
 - (IBAction)offlinePressed:(UIButton *)sender {
-    [self showShopTableView:sender powerType:POWER_UP_TYPE_OFFLINE];
+    [self showShopTableView:sender powerType:POWER_UP_TYPE_OFFLINE_CAP];
+}
+- (IBAction)iapPressed:(UIButton *)sender {
+    [self showShopTableView:sender powerType:POWER_UP_TYPE_IAP];
+}
+
+- (IBAction)bucketButtonPressed:(id)sender {
+    [[[BucketView alloc] init] show];
 }
 
 - (void)shopTableViewDismissed {
@@ -110,22 +131,27 @@ static int promoDialogInLeaderBoardCount = 0;
         self.backgroundView.clipsToBounds = YES;
         self.currentScoreLabel.layer.cornerRadius = 20.f * IPAD_SCALE;
         self.tapTotal = [NSMutableArray array];
+        self.tapTotalPoints = [NSMutableArray array];
+        self.bonusArray = [NSMutableArray array];
         self.displayTPS = [[UserData instance] totalPointForPassive];
         self.tapPerSecondLabel.text = [self timePerSec:self.displayTPS];
         self.scorePerTap = 1;
         self.tapBonus = 0;
-        self.deleteTime = 0;
-        self.delay = 0;
-        self.ticks = 0;
+        self.previousTime = CURRENT_TIME;
         self.doDecay = NO;
+        self.tapsPerSecond = 0;
+        self.tapBonusLevel = 1;
         [self.progressBar fillBar:0.f];
+        self.tapsPerSecondPoints = 0;
         self.tempPassiveLabel = [UserData instance].currentScore;
         if (!self.shopTableView) {
             [self createShopView];
         }
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(shopButtonPressed) name:SHOP_BUTTON_PRESSED_NOTIFICATION object:nil];
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(shopTableViewDismissed) name:SHOP_TABLE_VIEW_NOTIFICATION object:nil];
-
+        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(animateLabelForBonus:) name:BONUS_BUTTON_TAPPED_NOTIFICATION object:nil];
+        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(applyPowerUp:) name:BUYING_PRODUCT_SUCCESSFUL_NOTIFICATION object:nil];
+        
     }
     return self;
 }
@@ -148,7 +174,7 @@ static int promoDialogInLeaderBoardCount = 0;
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1.f/UPDATE_TIME_PER_TICK target:self selector:@selector(update) userInfo:nil repeats:YES];
     self.startTime = [UserData instance].startTime;
     self.timeBonus = [UserData instance].startTime;
-    [self offlinePowerActivate];
+    [[UserData instance] updateOfflineTime];
     [self checkIfSavedTimePassedTimeBonus];
     
 }
@@ -159,19 +185,17 @@ static int promoDialogInLeaderBoardCount = 0;
 
 
 - (IBAction)tapPressed:(id)sender {
-    float currentTap = (float)([[UserData instance] totalPointPerTap:self.timeBonusOn]);
+    if ([self tapTotalAverage:self.tapTotal] <= 0) {
+        [self.tapTotal removeAllObjects];
+    }
+    float currentTap = (float)([[UserData instance] totalPointPerTap:self.timeBonusOn] * ((float)self.tapBonusLevel));
     [[UserData instance]addScore:currentTap];
     [self updateTPSWithTap:currentTap];
     self.tapBonus++;
-    [self animateLabel:[[UserData instance] totalPointPerTap:self.timeBonusOn]];
+    self.tapsPerSecond++;
+    [self animateLabel:currentTap];
     
     self.characterImageView.transform = CGAffineTransformIdentity;
-
-    
-    static int rand = 0;
-    rand = arc4random() % 4 + 1;
-    self.characterImageView.image = [UIImage imageNamed:[self characterImageTier:rand]];
-    
 }
 
 
@@ -191,26 +215,28 @@ static int promoDialogInLeaderBoardCount = 0;
 }
 
 - (void)updateTPSWithTap:(float)number {
-    if (self.doDecay == NO) {
-        self.delay = 2.f;
-        self.deleteTime = [[NSDate date] timeIntervalSince1970] * 1000;
-    }
-    [self startDecayTPS];
-    self.doDecay = YES;
-    [self.tapTotal addObject:[NSNumber numberWithFloat:number]];
-    if (self.tapTotal.count > 20) {
-        [self.tapTotal removeObjectAtIndex:0];
-    }
+    self.tapsPerSecondPoints += number;
     [self updateTPS];
 }
 
 - (void)updateTPS {
-    self.displayTPS = [self tapTotalCombined] + [[UserData instance] totalPointForPassive];
-    self.tapPerSecondLabel.text = [self timePerSec:self.displayTPS];
+    self.displayTPS = self.tapsPerSecondPoints + [[UserData instance] totalPointForPassive];
+    if (self.tapTotal.count <= 0) {
+        self.tapPerSecondLabel.text = [self timePerSec:self.displayTPS];
+    }
 }
 
-- (NSString *)timePerSec:(int)sec {
-    return [NSString stringWithFormat:@"$%.1f/sec", self.displayTPS];
+- (void)updateAverageTPS {
+    double average = [self tapTotalAverage:self.tapTotalPoints];
+    if (average <= 0) {
+        average = 0;
+    }
+    self.displayAverageTPS = average + [[UserData instance] totalPointForPassive];
+    self.tapPerSecondLabel.text = [self timePerSec:self.displayAverageTPS];
+}
+
+- (NSString *)timePerSec:(double)sec {
+    return [NSString stringWithFormat:@"$%.1f/sec", sec];
 }
 
 - (void)checkIfSavedTimePassedTimeBonus {
@@ -224,31 +250,6 @@ static int promoDialogInLeaderBoardCount = 0;
     }
 }
 
-- (void)decayTPS {
-    if (self.tapTotal.count > 0) {
-        [self.tapTotal removeObjectAtIndex:0];
-    } else {
-        self.doDecay = NO;
-        [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(decayTPS) object:nil];
-    }
-    [self updateTPS];
-    
-}
-
-- (void)startDecayTPS {
-    
-    if (self.tapTotal.count > 15) {
-        self.delay += .02f;
-    } else if (self.tapTotal.count > 13){
-        self.delay += .05f;
-    } else if (self.tapTotal.count > 8) {
-        self.delay += .1f;
-    } else if (self.tapTotal.count > 5) {
-        self.delay += .2f;
-    }
-    [self performSelector:@selector(decayTPS) withObject:nil afterDelay:self.delay];
-}
-
 - (float)tapTotalCombined {
     float temp = 0;
     for (int i = 0; i < self.tapTotal.count; i++) {
@@ -259,32 +260,59 @@ static int promoDialogInLeaderBoardCount = 0;
 
 - (void)update {
     double time = CURRENT_TIME;
-    self.ticks++;
     self.tempPassiveLabel = [[UserData instance] currentScore];
     self.tempPassiveLabel += [[UserData instance] totalPointForPassive] / UPDATE_TIME_PER_TICK;
     [[UserData instance] addScoreByPassive];
-    if (self.ticks >= (int)(UPDATE_TIME_PER_TICK)) {
-        self.ticks = 0;
+    double gapTime = time - self.previousTime;
+    [[UserData instance] updateOfflineTime];
+    if (gapTime >= 1) {
+        
         [[UserData instance] saveUserCoin];
-        self.startTime = time;
-        [[UserData instance] saveUserLogInTime:time];
+        self.previousTime = time;
+        
+        if (self.tapTotal.count > 0) {
+            [self.tapTotal addObject:[NSNumber numberWithFloat:self.tapsPerSecond]];
+            [self.tapTotalPoints addObject:[NSNumber numberWithFloat:self.tapsPerSecondPoints]];
+        }
+        
+        if (self.tapsPerSecond > 0 && self.tapTotal.count <= 0) {
+            [self.tapTotal addObject:[NSNumber numberWithFloat:self.tapsPerSecond]];
+            [self.tapTotalPoints addObject:[NSNumber numberWithFloat:self.tapsPerSecondPoints]];
+        }
+        
+        if (self.tapTotal.count > 2) {
+            [self.tapTotal removeObjectAtIndex:0];
+            [self.tapTotalPoints removeObjectAtIndex:0];
+        }
+        
+       // [self levelOfTapBonus];
+        
+        if ([self tapTotalAverage:self.tapTotal] <= 0) {
+            [self.tapTotal removeAllObjects];
+            [self.tapTotalPoints removeAllObjects];
+        }
+        
+        self.tapsPerSecond = 0;
+        self.tapsPerSecondPoints = 0;
+        
+        [self updateAverageTPS];
     }
     
-    if (self.tapBonus >= 5) {
+    if (self.tapBonus >= 15) {
         [self tapBonusActivate];
+    }
+    
+    if (self.bonusTapOn) {
+        self.bonusStartTime = CURRENT_TIME;
+        if(!self.timerForBonus){
+            self.timerForBonus = [NSTimer scheduledTimerWithTimeInterval:1.f/UPDATE_TIME_PER_TICK_FOR_BONUS target:self selector:@selector(updateForBonus) userInfo:nil repeats:YES];
+        }
+        self.bonusTapOn = NO;
     }
     
     if (!self.timeBonusOn) {
         double percentage = (time - self.timeBonus) / TIME_BONUS_INTERVAL;
         [self.progressBar fillBar:percentage];
-        
-       // NSLog(@"[CURRENT_TIME; %f ", CURRENT_TIME);
-
-      //  NSLog(@"[self.timeBonus]; %f ", self.timeBonus);
-     //   NSLog(@"(CURRENT_TIME - self.timeBonus) %f ", (CURRENT_TIME - self.timeBonus));
-
-     //   NSLog(@"[self.progressBar fillBar:percentage]; %f ", percentage);
-
     }
     
     if (!self.timeBonusOn && time - self.timeBonus > TIME_BONUS_INTERVAL) {
@@ -298,18 +326,129 @@ static int promoDialogInLeaderBoardCount = 0;
     }
 }
 
+- (void)levelOfTapBonus {
+    
+    float currentTap = [self tapTotalAverage:self.tapTotal];
+    int birthRate;
+    if ( currentTap >= 12) {
+        
+        self.tapBonusLevel = 6;
+        birthRate = 6;
+        
+    } else if (currentTap >= 11) {
+        
+        self.tapBonusLevel = 5;
+        birthRate = 5;
+        
+    } else if (currentTap >= 10) {
+        
+        self.tapBonusLevel = 4;
+        birthRate = 4;
+        
+    } else if (currentTap >= 8) {
+        
+        self.tapBonusLevel = 3;
+        birthRate = 3;
+        
+    } else if (currentTap >= 5) {
+        
+        self.tapBonusLevel = 2;
+        birthRate = 1;
+        
+    } else {
+        
+        self.tapBonusLevel = 1;
+        birthRate = 0;
+        
+    }
+    
+    [self.partcleView updateBirthRate:birthRate];
+    
+    int index = self.tapBonusLevel > 4 ? 4 : self.tapBonusLevel;
+    self.characterImageView.image = [UIImage imageNamed:[self characterImageTier:index]];
+}
+
+- (void)updateForBonus {
+    for (int i = 0; i < self.bonusArray.count; i++) {
+        ((BonusButton *)[self.bonusArray objectAtIndex:i]).x += 3.f;
+        ((BonusButton *)[self.bonusArray objectAtIndex:i]).y += 0.5f;
+    }
+    if (CURRENT_TIME - self.bonusStartTime > 5) {
+        [self.timerForBonus invalidate], self.timerForBonus = nil;
+        [self.bonusArray removeAllObjects];
+    }
+    
+}
+
 - (float)tapTotalAverage:(NSMutableArray *)array {
     float totalAverage = 0;
     for (int i = 0; i < array.count; i++) {
         totalAverage = totalAverage + [[array objectAtIndex:i] floatValue];
     }
     
-    return totalAverage;
+    float temp = totalAverage;
+    
+    if (array.count > 0) {
+        temp = temp/array.count;
+    }
+    return temp;
 }
 
+- (void)startPointDisplacment:(UIView *)view {
+    float x = [Utils randBetweenMin:10.f max:self.bounds.size.width];
+    x = x * -1;
+    view.x = x;
+    
+    float y = [Utils randBetweenMin:1.f max:(self.bounds.size.height/3) + 50];
+    view.y = y;
+    
+}
 - (void)tapBonusActivate {
+    
+    //[self animateArc];
+    for (int i = 0; i < 10; i++) {
+        BonusButton *bonus = [[BonusButton alloc]init];
+        [self startPointDisplacment:bonus];
+        [self.bonusArray addObject:bonus];
+        [self addSubview:bonus];
+    }
     self.tapBonus = 0;
+    self.bonusTapOn = YES;
     NSLog(@"BONUS");
+}
+
+- (void)removeAnimation:(UIView *)view {
+    [view removeFromSuperview];
+}
+
+- (void)animateArc
+{
+    // Create the arc
+    CGPoint arcStart = CGPointMake(0.2 * self.bounds.size.width, 0.5 * self.bounds.size.height);
+    CGPoint arcCenter = CGPointMake(0.5 * self.bounds.size.width, 0.5 * self.bounds.size.height);
+    CGFloat arcRadius = 0.3 * MIN(self.bounds.size.width, self.bounds.size.height);
+    
+    CGMutablePathRef arcPath = CGPathCreateMutable();
+    CGPathMoveToPoint(arcPath, NULL, arcStart.x, arcStart.y);
+    CGPathAddArc(arcPath, NULL, arcCenter.x, arcCenter.y, arcRadius, M_PI, 0, NO);
+    
+    BonusButton *bonus = [[BonusButton alloc]init];
+    [self addSubview: bonus];
+    bonus.center = arcStart;
+    
+    
+    // The animation
+    CAKeyframeAnimation *pathAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+    pathAnimation.calculationMode = kCAAnimationPaced;
+    pathAnimation.duration = 2.0;
+    pathAnimation.path = arcPath;
+    CGPathRelease(arcPath);
+    
+    pathAnimation.fillMode = kCAFillModeForwards;
+    pathAnimation.removedOnCompletion = NO;
+    [bonus.layer addAnimation:pathAnimation forKey:@"arc"];
+    
+    [self performSelector:@selector(removeAnimation:) withObject:bonus afterDelay:20.f];
 }
 
 - (void)timeBonusActivate {
@@ -330,8 +469,38 @@ static int promoDialogInLeaderBoardCount = 0;
     [AnimUtil wobble:self duration:0.1f angle:M_PI/128.f repeatCount:2];
 }
 
-- (void)offlinePowerActivate {
-    [[UserData instance] addScoreByOffline];
-    [[UserData instance] saveUserLogInTime:CURRENT_TIME];
+- (void)animateLabelForBonus:(NSNotification *)notification {
+    BonusButton *button = notification.object;
+    [UserData instance].currentScore += button.currentRewardPoints;
+    
+    CGPoint point = [button.superview convertPoint:button.center toView:self];
+    
+    AnimatedLabel *label = [[AnimatedLabel alloc] init];
+    [self addSubview:label];
+    label.label.text = [NSString stringWithFormat:@"+%.1f", button.currentRewardPoints];
+    label.label.textColor = [UIColor colorWithRed:1.f green:1.f blue:0.f alpha:1.f];
+    label.center = point;
+    [label animate];
 }
+
+- (void)applyPowerUp:(NSNotification *)notification {
+    NSString *productIdentifier = notification.object;
+    
+    if ([productIdentifier isEqualToString:POWER_UP_IAP_FUND]) {
+        [UserData instance].currentScore += 100000;
+        
+    } else if ([productIdentifier isEqualToString:POWER_UP_IAP_DOUBLE]) {
+        [UserData instance].currentScore = [UserData instance].currentScore * 2;
+        
+    } else if ([productIdentifier isEqualToString:POWER_UP_IAP_QUADPLE]) {
+        [UserData instance].currentScore = [UserData instance].currentScore * 4;
+        
+    } else if ([productIdentifier isEqualToString:POWER_UP_IAP_SUPER]) {
+        [UserData instance].currentScore = [UserData instance].currentScore * 100;
+        
+    }
+    [[UserData instance] saveUserCoin];
+    
+}
+
 @end

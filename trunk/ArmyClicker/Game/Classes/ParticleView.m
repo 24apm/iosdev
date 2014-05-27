@@ -1,35 +1,49 @@
 #import "ParticleView.h"
 #import <QuartzCore/QuartzCore.h>
 
-@implementation ParticleView
-{
-    CAEmitterLayer* fireEmitter; //1
-}
+@interface ParticleView()
 
--(void)awakeFromNib
+@property (nonatomic, strong) CAEmitterCell* fire;
+
+@end
+
+@implementation ParticleView 
+
+- (void)awakeFromNib
 {
     //set ref to the layer
-    fireEmitter = (CAEmitterLayer*)self.layer; //2
+    self.fireEmitter = (CAEmitterLayer*)self.layer; //2
     //configure the emitter layer
-    fireEmitter.emitterPosition = CGPointMake(self.center.x, 0);
-    fireEmitter.emitterSize = self.frame.size;
-    fireEmitter.emitterShape = @"line";
-    CAEmitterCell* fire = [CAEmitterCell emitterCell];
-    fire.birthRate = 5;
-    fire.lifetime = 10;
-    fire.contents = (id)[[UIImage imageNamed:@"money"] CGImage];
-    fire.velocity = 50;
-    fire.velocityRange = 20;
-    fire.yAcceleration = 20;
+    self.fireEmitter.emitterPosition = CGPointMake(self.center.x, 0);
+    self.fireEmitter.emitterSize = self.frame.size;
+    self.fireEmitter.emitterShape = @"line";
+    self.fireEmitter.birthRate = 1.f;
+    self.fire = [CAEmitterCell emitterCell];
+    self.fire.birthRate = 5;
+    self.fire.lifetime = 10;
+    self.fire.contents = (id)[[UIImage imageNamed:@"money"] CGImage];
+    self.fire.velocity = 50;
+    self.fire.velocityRange = 20;
+    self.fire.yAcceleration = 20;
     
-    fire.spin = 3.0;
-    fire.spinRange = 5.0;
+    self.fire.spin = 3.0;
+    self.fire.spinRange = 5.0;
 
-    fireEmitter.renderMode = kCAEmitterLayerUnordered;
-    [fire setName:@"fire"];
-    
+    self.fireEmitter.renderMode = kCAEmitterLayerUnordered;
+    [self.fire setName:@"fire"];
+
     //add the cell to the layer and we're done
-    fireEmitter.emitterCells = [NSArray arrayWithObject:fire];
+    self.fireEmitter.emitterCells = [NSArray arrayWithObject:self.fire];
+
+}
+
+-(void)changeAndRenewFireCell {
+}
+
+- (void)updateBirthRate:(int)birthRate {
+    self.fireEmitter.birthRate = birthRate;
+    self.fireEmitter.emitterCells = [NSArray arrayWithObject:self.fire];
+
 }
 
 + (Class) layerClass //3

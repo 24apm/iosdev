@@ -65,7 +65,6 @@
 }
 
 - (IBAction)demoPressed:(UIButton *)sender {
-    [UserData instance].tutorialModeEnabled = YES;
     [self hide];
 }
 

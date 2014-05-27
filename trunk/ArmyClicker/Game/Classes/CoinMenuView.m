@@ -21,12 +21,9 @@
 
 - (void)show {
     [super show];
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(buyingProduct:) name:PURCHASE_BUTTON_TAPPED object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(buyingProduct:) name:IAP_ITEM_PRESSED_NOTIFICATION object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(productPurchased:) name:IAPHelperProductPurchasedNotification object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(productFailed:) name:IAPHelperProductFailedNotification object:nil];
-    for (int i = CostTierType1; i <= CostTierType4; i++) {
-        [[self.coinViewCollection objectAtIndex:i] setupProduct:[[CoinIAPHelper sharedInstance] productForType:i]];
-    }
 }
 
 - (void)buyingProduct:(NSNotification *)notification {
@@ -42,8 +39,9 @@
         // Unlock answer
         self.userInteractionEnabled = YES;
         [TrackUtils trackAction:@"buyingProductSuccess" label:@""];
-        [UserData instance].currentCoin += [[CoinIAPHelper sharedInstance] valueForProductId:productIdentifier];
-        [[UserData instance] saveUserCoin];
+        [[NSNotificationCenter defaultCenter]postNotificationName:BUYING_PRODUCT_SUCCESSFUL_NOTIFICATION object:self];
+        //[UserData instance].currentCoin += [[CoinIAPHelper sharedInstance] valueForProductId:productIdentifier];
+        //[[UserData instance] saveUserCoin];
         [self dismissed:self];
     }
 }

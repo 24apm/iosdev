@@ -92,7 +92,7 @@
 }
 
 - (IBAction)confirmButtonPressed:(UIButton *)sender {
-    [TrackUtils trackAction:@"confirmConfirmButtonPressed" label:@""];
+    [TrackUtils trackAction:[NSString stringWithFormat:@"%@%d", @"confirmConfirmButtonPressedType_", self.buttonView.powerType] label:[Utils formatWithFreeCost:self.buttonView.priceCheck]];
     if ([[PurchaseManager instance] purchasePowerUp:self.buttonView.powerType]){
         [[NSNotificationCenter defaultCenter] postNotificationName:BUY_POWER_CONFIRM_BUTTON_PRESSED_NOTIFICATION object:self.buttonView];
     }

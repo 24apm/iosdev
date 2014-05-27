@@ -8,19 +8,14 @@
 
 #import "IAPHelper.h"
 #import "SKProduct+priceAsString.h"
-
+#import "GameConstants.h"
 
 typedef enum {
-    CostTierType1,
-    CostTierType2,
-    CostTierType3,
-    CostTierType4
-} CostTierType;
-
-#define COIN_IAP_TIER_1 @"com.jeffrwan.20485x5Blitz.tier1coin"
-#define COIN_IAP_TIER_2 @"com.jeffrwan.20485x5Blitz.tier2coin"
-#define COIN_IAP_TIER_3 @"com.jeffrwan.20485x5Blitz.tier3coins"
-#define COIN_IAP_TIER_4 @"com.jeffrwan.20485x5Blitz.tier4coin"
+    IAPTypeFund,
+    IAPTypeDouble,
+    IAPTypeQuadruple,
+    IAPTypeSuper
+} IAPType;
 
 @interface CoinIAPHelper : IAPHelper
 
@@ -30,8 +25,7 @@ typedef enum {
 
 + (CoinIAPHelper *)sharedInstance;
 - (void)loadProduct;
-- (SKProduct *)productForType:(CostTierType)type ;
-- (int)valueForProductId:(NSString *)productId;
+- (SKProduct *)productForType:(IAPType)type ;
 - (void)showCoinMenu;
 
 @end

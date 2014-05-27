@@ -10,6 +10,7 @@
 #import "GameCenterHelper.h"
 #import "ShopManager.h"
 #import "GameConstants.h"
+#import "AnimatedLabel.h"
 
 #define NEW_USER_COIN 10
 
@@ -33,8 +34,8 @@
         }
         [self retrieveUserCoin];
         [self restoreGameData];
-        [self retrieveUserLogInTime];
         [self retrieveUserStartTime];
+        [self retrieveBucketFullTime];
         self.tapBonus = 10;
     }
     return self;
@@ -44,29 +45,28 @@
     self.currentScore = [[[NSUserDefaults standardUserDefaults] objectForKey:@"coin"] floatValue];
 }
 
-- (void)retrieveUserLogInTime {
-    self.logInTime = [[[NSUserDefaults standardUserDefaults] objectForKey:@"logInTime"] doubleValue];
-    NSLog(@"retrieveUserTime %f", self.logInTime);
+- (void)retrieveBucketFullTime {
+    self.bucketFullTime = [[[NSUserDefaults standardUserDefaults] objectForKey:@"bucketFullTime"] floatValue];
 }
 
 - (void)retrieveUserStartTime {
     self.startTime = [[[NSUserDefaults standardUserDefaults] objectForKey:@"startTime"] doubleValue];
-    NSLog(@"retrieveUserTime %f", self.startTime);
-}
-
-- (void)saveUserLogInTime:(double)time {
-    self.logInTime = time;
-   // NSLog(@"saveUserTime %f", self.currentTime);
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:[NSNumber numberWithDouble:self.logInTime] forKey:@"logInTime"];
-    [defaults synchronize];
+    // NSLog(@"retrieveUserTime %f", self.startTime);
 }
 
 - (void)saveUserStartTime:(double)time {
     self.startTime = time;
-   // NSLog(@"saveUserTime %f", self.currentTime);
+    // NSLog(@"saveUserTime %f", self.currentTime);
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:[NSNumber numberWithDouble:self.startTime] forKey:@"startTime"];
+    [defaults synchronize];
+}
+
+- (void)saveUserBucketFullTime:(double)time {
+    self.bucketFullTime = time;
+    // NSLog(@"saveUserTime %f", self.currentTime);
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:[NSNumber numberWithDouble:self.bucketFullTime] forKey:@"bucketFullTime"];
     [defaults synchronize];
 }
 
@@ -82,7 +82,8 @@
             self.gameDataDictionary = [NSMutableDictionary dictionary];
             [self.gameDataDictionary setObject:[NSMutableDictionary dictionary] forKey:[NSString stringWithFormat:@"%d", POWER_UP_TYPE_TAP]];
             [self.gameDataDictionary setObject:[NSMutableDictionary dictionary] forKey:[NSString stringWithFormat:@"%d", POWER_UP_TYPE_PASSIVE]];
-            [self.gameDataDictionary setObject:[NSMutableDictionary dictionary] forKey:[NSString stringWithFormat:@"%d", POWER_UP_TYPE_OFFLINE]];
+            [self.gameDataDictionary setObject:[NSMutableDictionary dictionary] forKey:[NSString stringWithFormat:@"%d", POWER_UP_TYPE_OFFLINE_CAP]];
+            [self.gameDataDictionary setObject:[NSMutableDictionary dictionary] forKey:[NSString stringWithFormat:@"%d", POWER_UP_TYPE_OFFLINE_SPEED]];
             [self saveGameData];
         }
     }
@@ -234,9 +235,17 @@
     return tempMultiplier;
 }
 
-- (float)totalPointForOffline {
+- (float)totalPointForOfflineCap {
+   float points = [self totalPowerUpFor:POWER_UP_TYPE_OFFLINE_CAP];
+    if (points <= 0) {
+        points = 1;
+    }
+    return points;
+}
+
+- (float)totalPointForOfflineSpeed {
     float points = 0;
-    points = [self totalPowerUpFor:POWER_UP_TYPE_OFFLINE];
+    points = [self totalPowerUpFor:POWER_UP_TYPE_OFFLINE_SPEED];
     return points;
 }
 
@@ -256,7 +265,7 @@
     if (!bonusOn) {
         points = 1 * multiplier;
     } else {
-        points = 1 + self.tapBonus;
+        points = 1 * self.tapBonus;
         points = points * multiplier;
     }
     return points;
@@ -271,13 +280,33 @@
     self.currentScore = self.currentScore + [self totalPointForPassive]/UPDATE_TIME_PER_TICK;
 }
 
-- (void)addScoreByOffline {
-    
-    double multiplier = CURRENT_TIME;
-    multiplier -= self.logInTime;
-    multiplier = multiplier * [self totalPointForOffline];
-    self.currentScore = self.currentScore + multiplier;
+- (void)updateOfflineTime {
+    double time = CURRENT_TIME;
+    if (time > self.bucketFullTime) {
+        self.bucketIsFull = YES;
+    } else {
+        self.bucketIsFull = NO;
+    }
+}
+
+- (void)addOfflineScore {
+    self.offlinePoints = 100 * self.currentBucketPoints;
+    self.currentScore += self.offlinePoints;
     [self saveUserCoin];
+}
+
+- (void)renewBucketFullTime {
+    self.currentBucketPoints = [self totalPointForOfflineCap];
+    self.bucketFullTime = CURRENT_TIME + 100 * self.currentBucketPoints;
+    float speedTime = [self totalPointForOfflineSpeed];
+    self.bucketFullTime -= speedTime;
+    self.currentBucketWaitTime = self.bucketFullTime - CURRENT_TIME;
+    if (self.currentBucketWaitTime < 10) {
+        self.currentBucketWaitTime = 10;
+        self.bucketFullTime = CURRENT_TIME + 10;
+    }
+    [self saveUserBucketFullTime:self.bucketFullTime];
+    self.bucketIsFull = NO;
 }
 
 - (void)addScore:(float)score {

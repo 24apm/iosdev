@@ -13,9 +13,10 @@
 + (ShopItem *)createItem:(NSString *)itemId
                     name:(NSString *)name
                imagePath:(NSString *)imagePath
-         priceMultiplier:(float)priceMultipler
-       upgradeMultiplier:(float)upgradeMultiplier
-                    type:(PowerUpType)type {
+         priceMultiplier:(double)priceMultipler
+       upgradeMultiplier:(double)upgradeMultiplier
+                    type:(PowerUpType)type
+                    rank:(int)rank           {
     
     ShopItem *item = [[ShopItem alloc] init];
     item.name = name;
@@ -24,10 +25,11 @@
     item.priceMultiplier = priceMultipler;
     item.upgradeMultiplier = upgradeMultiplier;
     item.type = type;
+    item.rank = rank;
     return item;
 }
 
-- (NSString *)formatDescriptionWithValue:(float)value {
+- (NSString *)formatDescriptionWithValue:(double)value {
     NSString *temp = nil;
     switch (self.type) {
         case POWER_UP_TYPE_TAP:
@@ -36,8 +38,11 @@
         case POWER_UP_TYPE_PASSIVE:
             temp = [self descriptionForPassive:value];
             break;
-        case POWER_UP_TYPE_OFFLINE:
-            temp = [self descriptionForOffline:value];
+        case POWER_UP_TYPE_OFFLINE_CAP:
+            temp = [self descriptionForOfflineCap:value];
+            break;
+        case POWER_UP_TYPE_OFFLINE_SPEED:
+            temp = [self descriptionForOfflineSpeed:value];
             break;
         default:
             break;
@@ -91,9 +96,12 @@
     return [NSString stringWithFormat:@"+$%0.1f/sec", value];
 }
 
-- (NSString *)descriptionForOffline:(float)value {
-    return [NSString stringWithFormat:@"+$%d/hr", (int)value];
+- (NSString *)descriptionForOfflineCap:(float)value {
+    return [NSString stringWithFormat:@"+%.1fhr", value];
 }
 
+- (NSString *)descriptionForOfflineSpeed:(float)value {
+    return [NSString stringWithFormat:@"-%dsec", (int)value];
+}
 
 @end

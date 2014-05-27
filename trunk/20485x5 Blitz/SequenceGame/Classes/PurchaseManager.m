@@ -27,7 +27,7 @@
                 [UserData instance].currentCoin = [UserData instance].currentCoin - [GameData instance].shuffleCost;
                 [[GameData instance] shuffleCostUpgrade];
                 validation = YES;
-                [TrackUtils trackAction:@"purchaseShuffle" label:@""];
+                [TrackUtils trackAction:@"purchaseShuffle" label:[NSString stringWithFormat:@"%d", [GameData instance].shuffleCost]];
             }
             break;
         case PowerUpTypeBomb2:
@@ -35,7 +35,8 @@
                 [UserData instance].currentCoin = [UserData instance].currentCoin - [GameData instance].bomb2Cost;
                 [[GameData instance] bomb2CostUpgrade];
                 validation = YES;
-                [TrackUtils trackAction:@"purchaseBomb2" label:@""];
+                [TrackUtils trackAction:@"purchaseBomb2" label:[NSString stringWithFormat:@"%d", [GameData instance].bomb2Cost]];
+
             }
             break;
         case PowerUpTypeBomb4:
@@ -43,7 +44,7 @@
                 [UserData instance].currentCoin = [UserData instance].currentCoin - [GameData instance].bomb4Cost;
                 [[GameData instance] bomb4CostUpgrade];
                 validation = YES;
-                [TrackUtils trackAction:@"purchaseBomb4" label:@""];
+                [TrackUtils trackAction:@"purchaseBomb4" label:[NSString stringWithFormat:@"%d", [GameData instance].bomb4Cost]];
             }
             break;
         case PowerUpTypeRevive:
@@ -51,7 +52,7 @@
                 [UserData instance].currentCoin = [UserData instance].currentCoin - [GameData instance].lostGameCost;
                 [[GameData instance] lostGameCostUpgrade];
                 validation = YES;
-                [TrackUtils trackAction:@"purchaseRevive" label:@""];
+                [TrackUtils trackAction:@"purchaseRevive" label:[NSString stringWithFormat:@"%d", [GameData instance].lostGameCost]];
             }
             break;
             

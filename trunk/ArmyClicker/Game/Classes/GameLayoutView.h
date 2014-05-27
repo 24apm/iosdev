@@ -7,9 +7,11 @@
 //
 
 #import "XibView.h"
+#import "ParticleView.h"
 
 @interface GameLayoutView : XibView <UIGestureRecognizerDelegate>
 @property (strong, nonatomic) IBOutlet UIView *fadeView;
+@property (strong, nonatomic) IBOutlet ParticleView *partcleView;
 
 @property (strong, nonatomic) IBOutlet UILabel *tapPerSecondLabel;
 @property (strong, nonatomic) IBOutlet UILabel *currentScoreLabel;

@@ -11,6 +11,7 @@
 #import "ResultView.h"
 #import "THLabel.h"
 #import "MainView.h"
+#import "GameViewControllerBase.h"
 
 typedef enum {
     GameStateMainMode,
@@ -26,7 +27,7 @@ typedef enum {
     GameStateCustomizeMode
 } GameState;
 
-@interface GameViewController : UIViewController <ADBannerViewDelegate>
+@interface GameViewController : GameViewControllerBase <ADBannerViewDelegate>
 
 @property (nonatomic) GameState currentGameState;
 @property (strong, nonatomic) IBOutlet UIView *containerView;

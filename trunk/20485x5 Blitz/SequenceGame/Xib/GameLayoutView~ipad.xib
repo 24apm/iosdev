@@ -43,21 +43,21 @@
                     <color key="backgroundColor" red="0.0" green="0.65739924630000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
                 <view contentMode="scaleToFill" id="fCg-G9-QnI" userLabel="Overlay">
-                    <rect key="frame" x="0.0" y="0.0" width="767.99999999999977" height="1025"/>
+                    <rect key="frame" x="0.0" y="0.0" width="767.99999999999977" height="1027"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <view contentMode="scaleToFill" id="Ob5-4J-M2k" customClass="ButtonView">
-                            <rect key="frame" x="71.999999999999972" y="597" width="143.99999999999994" height="148"/>
+                            <rect key="frame" x="71.999999999999972" y="598" width="143.99999999999994" height="148"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" red="0.0" green="0.65739924630000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         </view>
                         <view contentMode="scaleToFill" id="QH7-Y8-GyP" customClass="ButtonView">
-                            <rect key="frame" x="311.99999999999994" y="597" width="143.99999999999994" height="148"/>
+                            <rect key="frame" x="311.99999999999994" y="598" width="143.99999999999994" height="148"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" red="0.0" green="0.65739924630000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         </view>
                         <view contentMode="scaleToFill" id="hkV-qV-Jkg" customClass="ButtonView">
-                            <rect key="frame" x="551.99999999999977" y="597" width="143.99999999999994" height="148"/>
+                            <rect key="frame" x="551.99999999999977" y="598" width="143.99999999999994" height="148"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" red="0.0" green="0.65739924630000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         </view>
@@ -78,7 +78,7 @@
                     <color key="backgroundColor" white="0.0" alpha="0.59999999999999998" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" id="v8d-AM-OHR" userLabel="Button Coin Container">
-                    <rect key="frame" x="10" y="0.0" width="281" height="170"/>
+                    <rect key="frame" x="10" y="0.0" width="281" height="169"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <view contentMode="scaleToFill" id="y2K-hO-LQs" userLabel="Coin Container">
@@ -114,7 +114,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="xUD-Vr-Wfr" userLabel="Button Coin">
-                            <rect key="frame" x="0.0" y="0.0" width="281" height="170"/>
+                            <rect key="frame" x="0.0" y="0.0" width="281" height="169"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>

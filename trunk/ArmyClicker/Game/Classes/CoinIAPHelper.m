@@ -10,6 +10,7 @@
 #import "CoinMenuView.h"
 #import "ErrorDialogView.h"
 #import "TrackUtils.h"
+
 @interface CoinIAPHelper()
 
 @property (nonatomic) BOOL loaded;
@@ -31,10 +32,10 @@
     static CoinIAPHelper * sharedInstance;
     dispatch_once(&once, ^{
         NSSet * productIdentifiers = [NSSet setWithObjects:
-                                      COIN_IAP_TIER_1,
-                                      COIN_IAP_TIER_2,
-                                      COIN_IAP_TIER_3,
-                                      COIN_IAP_TIER_4,
+                                      POWER_UP_IAP_FUND,
+                                      POWER_UP_IAP_DOUBLE,
+                                      POWER_UP_IAP_QUADPLE,
+                                      POWER_UP_IAP_SUPER,
                                       nil];
         sharedInstance = [[self alloc] initWithProductIdentifiers:productIdentifiers];
     });
@@ -63,39 +64,25 @@
     return self.loaded;
 }
 
-- (SKProduct *)productForType:(CostTierType)type {
+- (SKProduct *)productForType:(IAPType)type {
     SKProduct *skProduct = nil;
     switch (type) {
-        case CostTierType1:
-            skProduct = [[CoinIAPHelper sharedInstance].productDictionary objectForKey:COIN_IAP_TIER_1];
+        case IAPTypeFund:
+            skProduct = [[CoinIAPHelper sharedInstance].productDictionary objectForKey:POWER_UP_IAP_FUND];
             break;
-        case CostTierType2:
-            skProduct = [[CoinIAPHelper sharedInstance].productDictionary objectForKey:COIN_IAP_TIER_2];
+        case IAPTypeDouble:
+            skProduct = [[CoinIAPHelper sharedInstance].productDictionary objectForKey:POWER_UP_IAP_DOUBLE];
             break;
-        case CostTierType3:
-            skProduct = [[CoinIAPHelper sharedInstance].productDictionary objectForKey:COIN_IAP_TIER_3];
+        case IAPTypeQuadruple:
+            skProduct = [[CoinIAPHelper sharedInstance].productDictionary objectForKey:POWER_UP_IAP_QUADPLE];
             break;
-        case CostTierType4:
-            skProduct = [[CoinIAPHelper sharedInstance].productDictionary objectForKey:COIN_IAP_TIER_4];
+        case IAPTypeSuper:
+            skProduct = [[CoinIAPHelper sharedInstance].productDictionary objectForKey:POWER_UP_IAP_SUPER];
             break;
         default:
             break;
     }
     return skProduct;
-}
-
-- (int)valueForProductId:(NSString *)productId {
-    int coin = 0;
-    if ([productId isEqualToString:COIN_IAP_TIER_1]) {
-        coin = 10;
-    } else if ([productId isEqualToString:COIN_IAP_TIER_2]) {
-        coin = 50;
-    } else if ([productId isEqualToString:COIN_IAP_TIER_3]) {
-        coin = 200;
-    } else if ([productId isEqualToString:COIN_IAP_TIER_4]) {
-        coin = 1000;
-    }
-    return coin;
 }
 
 @end

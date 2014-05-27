@@ -8,7 +8,6 @@
 
 #import "XibView.h"
 #import "ShopManager.h"
-
 #define SHOP_TABLE_VIEW_NOTIFICATION @"ShopTableViewDismissed"
 
 @interface ShopTableView : XibView <UITableViewDataSource, UITableViewDelegate>

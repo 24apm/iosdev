@@ -8,15 +8,15 @@
 
 #import "XibDialogView.h"
 #import "CoinView.h"
+#import "ShopRowView.h"
 #import "UserData.h"
 #import "AnimatingDialogView.h"
 #import "TrackUtils.h"
 
 #define PURCHASE_SUCCESS_NOTIFICATION @"PURCHASE_SUCCESS_NOTIFICATION"
+#define BUYING_PRODUCT_SUCCESSFUL_NOTIFICATION @"BUYING_PRODUCT_SUCCESSFUL_NOTIFICATION"
 
 @interface CoinMenuView : AnimatingDialogView
-
-@property (strong, nonatomic) IBOutletCollection(CoinView) NSArray *coinViewCollection;
 
 - (void)show;
 

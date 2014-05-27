@@ -43,7 +43,7 @@ static int promoDialogInLeaderBoardCount = 0;
 
 - (IBAction)ratePressed:(id)sender {
     [TrackUtils trackAction:@"iRate" label:@"ratePressed"];
-    [[iRate sharedInstance] openRatingsPageInAppStore];
+    [[iRate sharedInstance] promptIfNetworkAvailable];
 }
 
 - (IBAction)retryButtonPressed:(UIButton *)sender {

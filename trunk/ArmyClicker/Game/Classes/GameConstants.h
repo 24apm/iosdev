@@ -61,12 +61,20 @@
 
 #define TIMES_PLAYED_BEFORE_PROMO 3
 
+#define POWER_UP_IAP_FUND @"com.jeffrwan.makeitswipe.fund"
+#define POWER_UP_IAP_DOUBLE @"com.jeffrwan.makeitswipedouble"
+#define POWER_UP_IAP_QUADPLE @"com.jeffrwan.makeitswipequadruple"
+#define POWER_UP_IAP_SUPER @"com.jeffrwan.makeitswipesuper"
+
 #define UPDATE_TIME_PER_TICK 10.f
+#define UPDATE_TIME_PER_TICK_FOR_BONUS 60.f
 #define LEVEL_CAP 10
 typedef enum {
     POWER_UP_TYPE_TAP,
     POWER_UP_TYPE_PASSIVE,
-    POWER_UP_TYPE_OFFLINE
+    POWER_UP_TYPE_OFFLINE_CAP,
+    POWER_UP_TYPE_OFFLINE_SPEED,
+    POWER_UP_TYPE_IAP
 } PowerUpType;
 
 @interface GameConstants : NSObject
