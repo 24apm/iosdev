@@ -23,17 +23,21 @@
 #import "AnimatedLabel.h"
 #import "BucketView.h"
 #import "BonusButton.h"
-#import "CoinMenuView.h"
+#import "ErrorDialogView.h"
 
-#define TIME_BONUS_INTERVAL 60.f
+#define TIME_BONUS_INTERVAL 300.f
 #define TIME_BONUS_ACTIVED_LIMIT 5.f
+#define MAX_TAP_FOR_BONUS 500.f
+#define DEGREES_TO_RADIANS(x) (x * M_PI/180.0)
 
 @interface GameLayoutView()
 
 @property (nonatomic, retain) ShopTableView *shopTableView;
 
+@property (strong, nonatomic) IBOutlet UIImageView *shinyBackground;
 @property (strong, nonatomic) IBOutlet ProgressBarComponent *progressBar;
 @property (strong, nonatomic) UIButton *previousSelectedButton;
+@property (strong, nonatomic) IBOutlet ProgressBarComponent *progressBarTaps;
 
 @property (nonatomic) double startTime;
 @property (nonatomic, strong) NSTimer *timer;
@@ -62,6 +66,8 @@
 @property (nonatomic, strong) NSMutableArray *bonusArray;
 @property (nonatomic) BOOL bonusTapOn;
 @property (nonatomic) double bonusStartTime;
+@property (strong, nonatomic) IBOutlet UIView *iapOverlay;
+@property (nonatomic) double maxTapScore;
 
 
 @end
@@ -92,7 +98,11 @@ static int promoDialogInLeaderBoardCount = 0;
     [self showShopTableView:sender powerType:POWER_UP_TYPE_OFFLINE_CAP];
 }
 - (IBAction)iapPressed:(UIButton *)sender {
-    [self showShopTableView:sender powerType:POWER_UP_TYPE_IAP];
+    if ([CoinIAPHelper sharedInstance].hasLoaded) {
+        [self showShopTableView:sender powerType:POWER_UP_TYPE_IAP];
+    } else {
+        [[[ErrorDialogView alloc] init] show];
+    }
 }
 
 - (IBAction)bucketButtonPressed:(id)sender {
@@ -113,7 +123,7 @@ static int promoDialogInLeaderBoardCount = 0;
 }
 
 - (void)showPromoDialog {
-    [TrackUtils trackAction:@"Gameplay" label:@"End"];
+    [TrackUtils trackAction:@"PromoShow" label:@"End"];
     promoDialogInLeaderBoardCount++;
     
     if (promoDialogInLeaderBoardCount % TIMES_PLAYED_BEFORE_PROMO == 0) {
@@ -143,6 +153,9 @@ static int promoDialogInLeaderBoardCount = 0;
         self.tapBonusLevel = 1;
         [self.progressBar fillBar:0.f];
         self.tapsPerSecondPoints = 0;
+        self.iapOverlay.hidden = NO;
+        [self.progressBarTaps fillBar:0.f];
+        self.shinyBackground.hidden = YES;
         self.tempPassiveLabel = [UserData instance].currentScore;
         if (!self.shopTableView) {
             [self createShopView];
@@ -151,10 +164,14 @@ static int promoDialogInLeaderBoardCount = 0;
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(shopTableViewDismissed) name:SHOP_TABLE_VIEW_NOTIFICATION object:nil];
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(animateLabelForBonus:) name:BONUS_BUTTON_TAPPED_NOTIFICATION object:nil];
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(applyPowerUp:) name:BUYING_PRODUCT_SUCCESSFUL_NOTIFICATION object:nil];
-        
+        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(buyingProduct:) name:IAP_ITEM_PRESSED_NOTIFICATION object:nil];
+        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(productPurchased:) name:IAPHelperProductPurchasedNotification object:nil];
+        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(productFailed:) name:IAPHelperProductFailedNotification object:nil];
+        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(openIAPOverlay) name:IAP_ITEM_LOADED_NOTIFICATION object:nil];
     }
     return self;
 }
+
 
 - (void)shopButtonPressed {
     [self.shopTableView refresh];
@@ -194,7 +211,7 @@ static int promoDialogInLeaderBoardCount = 0;
     self.tapBonus++;
     self.tapsPerSecond++;
     [self animateLabel:currentTap];
-    
+    [[SoundManager instance]play:SOUND_EFFECT_GUINEA];
     self.characterImageView.transform = CGAffineTransformIdentity;
 }
 
@@ -258,6 +275,32 @@ static int promoDialogInLeaderBoardCount = 0;
     return temp;
 }
 
+- (UIColor *)colorForTier:(int)tier {
+    switch (tier) {
+        case 1:
+            return [UIColor colorWithRed:252.f/255.f green:248.f/255.f blue:239.f/255.f alpha:1.0f];
+            break;
+        case 2:
+            return [UIColor colorWithRed:252.f/255.f green:184.f/255.f blue:156.f/255.f alpha:1.0f];
+            break;
+        case 3:
+            return [UIColor colorWithRed:252.f/255.f green:108.f/255.f blue:51.f/255.f alpha:1.0f];
+            break;
+        case 4:
+            return [UIColor colorWithRed:252.f/255.f green:72.f/255.f blue:0.f/255.f alpha:1.0f];
+            break;
+        case 5:
+            return [UIColor colorWithRed:252.f/255.f green:72.f/255.f blue:0.f/255.f alpha:1.0f];
+            break;
+        case 6:
+            return [UIColor colorWithRed:252.f/255.f green:72.f/255.f blue:0.f/255.f alpha:1.0f];
+            break;
+        default:
+            return nil;
+            break;
+    }
+}
+
 - (void)update {
     double time = CURRENT_TIME;
     self.tempPassiveLabel = [[UserData instance] currentScore];
@@ -269,6 +312,15 @@ static int promoDialogInLeaderBoardCount = 0;
         
         [[UserData instance] saveUserCoin];
         self.previousTime = time;
+        
+        if (self.tapsPerSecondPoints > 0) {
+            if (self.maxTapScore < self.tapsPerSecondPoints + [[UserData instance] totalPointForPassive]) {
+                self.maxTapScore = self.tapsPerSecondPoints + [[UserData instance] totalPointForPassive];
+                if (self.maxTapScore > [UserData instance].currentMaxTapPerSecond) {
+                    [[UserData instance] saveUserCurrentMaxTap:self.maxTapScore];
+                }
+            }
+        }
         
         if (self.tapTotal.count > 0) {
             [self.tapTotal addObject:[NSNumber numberWithFloat:self.tapsPerSecond]];
@@ -285,7 +337,7 @@ static int promoDialogInLeaderBoardCount = 0;
             [self.tapTotalPoints removeObjectAtIndex:0];
         }
         
-       // [self levelOfTapBonus];
+        [self levelOfTapBonus];
         
         if ([self tapTotalAverage:self.tapTotal] <= 0) {
             [self.tapTotal removeAllObjects];
@@ -298,15 +350,19 @@ static int promoDialogInLeaderBoardCount = 0;
         [self updateAverageTPS];
     }
     
-    if (self.tapBonus >= 15) {
+    [self updateTapBar];
+    
+    if (self.tapBonus >= MAX_TAP_FOR_BONUS) {
         [self tapBonusActivate];
+        [self.progressBarTaps fillBar:0.f];
     }
     
     if (self.bonusTapOn) {
-        self.bonusStartTime = CURRENT_TIME;
-        if(!self.timerForBonus){
-            self.timerForBonus = [NSTimer scheduledTimerWithTimeInterval:1.f/UPDATE_TIME_PER_TICK_FOR_BONUS target:self selector:@selector(updateForBonus) userInfo:nil repeats:YES];
-        }
+        //        if(!self.timerForBonus){
+        //            self.timerForBonus = [NSTimer scheduledTimerWithTimeInterval:1.f/UPDATE_TIME_PER_TICK_FOR_BONUS target:self selector:@selector(updateForBonus) userInfo:nil repeats:YES];
+        //        }
+        [[SoundManager instance]play:SOUND_EFFECT_BLING];
+        [self generateBonus];
         self.bonusTapOn = NO;
     }
     
@@ -317,67 +373,126 @@ static int promoDialogInLeaderBoardCount = 0;
     
     if (!self.timeBonusOn && time - self.timeBonus > TIME_BONUS_INTERVAL) {
         [self timeBonusActivate];
+        [[SoundManager instance] play:SOUND_EFFECT_HALLELUJAH];
+        CGAffineTransform rotation = CGAffineTransformMakeRotation( DEGREES_TO_RADIANS(90));
+        [UIView animateWithDuration:15.f delay:0.f options:UIViewAnimationOptionRepeat animations:^{
+            self.shinyBackground.transform = rotation;
+        } completion:^(BOOL complete){
+        }];
+        
+        self.shinyBackground.hidden = NO;
         [self.progressBar fillBar:1.f];
     }
     
     if (self.timeBonusOn && time - self.timeBonusEnd > 5) {
         [self timeBonusDeactivate];
+        self.shinyBackground.hidden = YES;
+        [self showPromoDialog];
         [self.progressBar fillBar:0.f];
     }
+}
+
+#pragma helperFunction
+
+- (void)updateTapBar {
+    float percentage = self.tapBonus / MAX_TAP_FOR_BONUS;
+    [self.progressBarTaps fillBar:percentage];
 }
 
 - (void)levelOfTapBonus {
     
     float currentTap = [self tapTotalAverage:self.tapTotal];
-    int birthRate;
+    
     if ( currentTap >= 12) {
         
         self.tapBonusLevel = 6;
-        birthRate = 6;
-        
-    } else if (currentTap >= 11) {
-        
-        self.tapBonusLevel = 5;
-        birthRate = 5;
         
     } else if (currentTap >= 10) {
         
-        self.tapBonusLevel = 4;
-        birthRate = 4;
+        self.tapBonusLevel = 5;
         
     } else if (currentTap >= 8) {
         
+        self.tapBonusLevel = 4;
+        
+    } else if (currentTap >= 7) {
+        
         self.tapBonusLevel = 3;
-        birthRate = 3;
         
     } else if (currentTap >= 5) {
         
         self.tapBonusLevel = 2;
-        birthRate = 1;
         
     } else {
         
         self.tapBonusLevel = 1;
-        birthRate = 0;
         
     }
     
-    [self.partcleView updateBirthRate:birthRate];
-    
     int index = self.tapBonusLevel > 4 ? 4 : self.tapBonusLevel;
+    
+    UIColor *bgColor = [self colorForTier:self.tapBonusLevel];
+    self.backgroundColor = bgColor;
+//    [UIView animateWithDuration:0.5f
+//                     animations:^ {
+//                         self.backgroundColor = bgColor;
+//                     }];
+//    
     self.characterImageView.image = [UIImage imageNamed:[self characterImageTier:index]];
 }
 
-- (void)updateForBonus {
+- (void)generateBonus {
     for (int i = 0; i < self.bonusArray.count; i++) {
-        ((BonusButton *)[self.bonusArray objectAtIndex:i]).x += 3.f;
-        ((BonusButton *)[self.bonusArray objectAtIndex:i]).y += 0.5f;
+        BonusButton *button = [self.bonusArray objectAtIndex:i];
+        
+        CGPoint startPoint = self.center;
+        CGPoint endPoint = [self randomPoint];
+        CGPoint controlPoint = CGPointMake(self.center.x, 0);
+        
+        CGMutablePathRef path = CGPathCreateMutable();
+        CGPathMoveToPoint(path, NULL, startPoint.x, startPoint.y);
+        
+        CGPathAddQuadCurveToPoint(path, NULL,
+                                  controlPoint.x, controlPoint.y,
+                                  endPoint.x, endPoint.y);
+        
+        CAKeyframeAnimation *anim = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+        anim.path = path;
+        anim.duration = 1.f;
+        anim.keyTimes = @[@(0.0),@(0.3),@(0.9)];
+        [button.layer addAnimation:anim forKey:@"animation"];
+        button.center = endPoint;
+        
+        [self performSelector:@selector(animateButtonOut:) withObject:button afterDelay:anim.duration + 0.5f];
     }
-    if (CURRENT_TIME - self.bonusStartTime > 5) {
-        [self.timerForBonus invalidate], self.timerForBonus = nil;
-        [self.bonusArray removeAllObjects];
-    }
+}
+
+- (void)animateButtonOut:(UIView *)view {
+    [UIView animateWithDuration:0.5f animations:^ {
+        view.center = CGPointMake(view.center.x, view.center.y - view.height);
+        view.alpha = 0.f;
+    } completion: ^(BOOL completed) {
+        [view performSelector:@selector(removeFromSuperview) withObject:nil afterDelay:0.f];
+    }];
     
+}
+
+- (void)updateForBonus {
+    NSMutableArray *temp = [NSMutableArray array];
+    for (int i = 0; i < self.bonusArray.count; i++) {
+        BonusButton *button = [self.bonusArray objectAtIndex:i];
+        CGAffineTransform rotation = CGAffineTransformMakeRotation( DEGREES_TO_RADIANS(180));
+        [UIView animateWithDuration:3.f animations:^{
+            // button.transform = CGAffineTransformMakeScale(0, 0);
+            button.transform = rotation;
+        } completion:^(BOOL complete) {
+            [temp addObject:button];
+        }];
+    }
+    self.bonusArray = temp;
+    if (self.bonusArray <= 0) {
+        [self.timerForBonus invalidate], self.timerForBonus = nil;
+    }
 }
 
 - (float)tapTotalAverage:(NSMutableArray *)array {
@@ -394,23 +509,20 @@ static int promoDialogInLeaderBoardCount = 0;
     return temp;
 }
 
-- (void)startPointDisplacment:(UIView *)view {
-    float x = [Utils randBetweenMin:10.f max:self.bounds.size.width];
-    x = x * -1;
-    view.x = x;
-    
-    float y = [Utils randBetweenMin:1.f max:(self.bounds.size.height/3) + 50];
-    view.y = y;
-    
+- (CGPoint)randomPoint {
+    float x = [Utils randBetweenMin:25.f * IPAD_SCALE max:self.bounds.size.width - 25.f];
+    float y = [Utils randBetweenMin:80.f * IPAD_SCALE max:(self.bounds.size.height/3 * 2)];
+    return CGPointMake(x, y);
 }
 - (void)tapBonusActivate {
     
     //[self animateArc];
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < 5; i++) {
         BonusButton *bonus = [[BonusButton alloc]init];
-        [self startPointDisplacment:bonus];
+        bonus.center = [self randomPoint];
         [self.bonusArray addObject:bonus];
-        [self addSubview:bonus];
+        
+        [self insertSubview:bonus belowSubview:self.shopTableView];
     }
     self.tapBonus = 0;
     self.bonusTapOn = YES;
@@ -477,7 +589,7 @@ static int promoDialogInLeaderBoardCount = 0;
     
     AnimatedLabel *label = [[AnimatedLabel alloc] init];
     [self addSubview:label];
-    label.label.text = [NSString stringWithFormat:@"+%.1f", button.currentRewardPoints];
+    label.label.text = [NSString stringWithFormat:@"+%.f", button.currentRewardPoints];
     label.label.textColor = [UIColor colorWithRed:1.f green:1.f blue:0.f alpha:1.f];
     label.center = point;
     [label animate];
@@ -503,4 +615,28 @@ static int promoDialogInLeaderBoardCount = 0;
     
 }
 
+
+- (void)buyingProduct:(NSNotification *)notification {
+    self.userInteractionEnabled = NO;
+    [TrackUtils trackAction:@"buyingProduct" label:@""];
+    ShopRowView *rowItem = notification.object;
+    [[CoinIAPHelper sharedInstance] buyProduct:rowItem.product];
+}
+
+- (void)productPurchased:(NSNotification *)notification {
+    NSString *productIdentifier = notification.object;
+    if (productIdentifier) {
+        self.userInteractionEnabled = YES;
+        [TrackUtils trackAction:@"buyingProductSuccess" label:@""];
+        [[NSNotificationCenter defaultCenter]postNotificationName:BUYING_PRODUCT_SUCCESSFUL_NOTIFICATION object:productIdentifier];
+    }
+}
+
+- (void)productFailed:(NSNotification *)notification {
+    [TrackUtils trackAction:@"buyingProductFail" label:@""];
+    self.userInteractionEnabled = YES;
+}
+- (void)openIAPOverlay {
+    self.iapOverlay.hidden = YES;
+}
 @end

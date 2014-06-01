@@ -36,6 +36,9 @@
         [self restoreGameData];
         [self retrieveUserStartTime];
         [self retrieveBucketFullTime];
+        [self retrieveCurrentBucketPoints];
+        [self retrieveCurrentBucketWaitTime];
+        [self retrieveUserMaxTap];
         self.tapBonus = 10;
     }
     return self;
@@ -45,13 +48,44 @@
     self.currentScore = [[[NSUserDefaults standardUserDefaults] objectForKey:@"coin"] floatValue];
 }
 
+- (void)retrieveUserMaxTap {
+    self.currentMaxTapPerSecond = [[[NSUserDefaults standardUserDefaults] objectForKey:@"maxTap"] floatValue];
+}
+
 - (void)retrieveBucketFullTime {
     self.bucketFullTime = [[[NSUserDefaults standardUserDefaults] objectForKey:@"bucketFullTime"] floatValue];
+}
+
+- (void)retrieveCurrentBucketPoints {
+    self.currentBucketPoints = [[[NSUserDefaults standardUserDefaults] objectForKey:@"currentBucketPoints"] doubleValue];
 }
 
 - (void)retrieveUserStartTime {
     self.startTime = [[[NSUserDefaults standardUserDefaults] objectForKey:@"startTime"] doubleValue];
     // NSLog(@"retrieveUserTime %f", self.startTime);
+}
+
+- (void)retrieveCurrentBucketWaitTime {
+    self.currentBucketWaitTime = [[[NSUserDefaults standardUserDefaults] objectForKey:@"currentBucketWaitTime"] doubleValue];
+    // NSLog(@"retrieveUserTime %f", self.startTime);
+}
+
+
+- (void)saveUserCurrentBucketWaitTime:(double)gap {
+    self.currentBucketWaitTime = gap;
+    // NSLog(@"saveUserTime %f", self.currentTime);
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:[NSNumber numberWithDouble:self.currentBucketWaitTime] forKey:@"currentBucketWaitTime"];
+    [defaults synchronize];
+}
+
+- (void)saveUserCurrentMaxTap:(double)maxTap {
+    self.currentMaxTapPerSecond = maxTap;
+    // NSLog(@"saveUserTime %f", self.currentTime);
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:[NSNumber numberWithDouble:self.currentMaxTapPerSecond] forKey:@"maxTap"];
+    [defaults synchronize];
+    [[GameCenterHelper instance].gameCenterManager reportScore:maxTap forCategory: kLeaderboardBestScoreID];
 }
 
 - (void)saveUserStartTime:(double)time {
@@ -67,6 +101,14 @@
     // NSLog(@"saveUserTime %f", self.currentTime);
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:[NSNumber numberWithDouble:self.bucketFullTime] forKey:@"bucketFullTime"];
+    [defaults synchronize];
+}
+
+- (void)saveCurrentBucketPoints:(double)points {
+    self.currentBucketPoints = points;
+    // NSLog(@"saveUserTime %f", self.currentTime);
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:[NSNumber numberWithDouble:self.currentBucketPoints] forKey:@"currentBucketPoints"];
     [defaults synchronize];
 }
 
@@ -194,7 +236,7 @@
     NSString *leaderBoardCategory = nil;
     if ([mode isEqualToString:GAME_MODE_VS]) {
         leaderBoardCategory = kLeaderboardBestScoreID;
-    }
+    } 
     
     if(leaderBoardCategory && score > 0) {
         [[GameCenterHelper instance].gameCenterManager reportScore:score forCategory: leaderBoardCategory];
@@ -263,7 +305,7 @@
     }
     
     if (!bonusOn) {
-        points = 1 * multiplier;
+        points = multiplier;
     } else {
         points = 1 * self.tapBonus;
         points = points * multiplier;
@@ -273,7 +315,7 @@
 
 - (void)addScoreByTap:(BOOL)bonusOn {
     float temp = (float)[self totalPointPerTap:bonusOn];
-    self.currentScore = self.currentScore + (1.f * temp);
+    self.currentScore = self.currentScore + (temp);
 }
 
 - (void)addScoreByPassive {
@@ -290,22 +332,29 @@
 }
 
 - (void)addOfflineScore {
-    self.offlinePoints = 100 * self.currentBucketPoints;
+    if (self.currentBucketPoints <= 0) {
+        self.currentBucketPoints = 1;
+    }
+    self.offlinePoints = [self totalPointPerTap:YES] * self.currentBucketPoints;
     self.currentScore += self.offlinePoints;
     [self saveUserCoin];
 }
 
 - (void)renewBucketFullTime {
     self.currentBucketPoints = [self totalPointForOfflineCap];
-    self.bucketFullTime = CURRENT_TIME + 100 * self.currentBucketPoints;
+    [self saveCurrentBucketPoints:self.currentBucketPoints];
+    double newTime = 100 + self.currentBucketPoints;
     float speedTime = [self totalPointForOfflineSpeed];
-    self.bucketFullTime -= speedTime;
+    newTime = newTime * (1 - speedTime);
+    self.bucketFullTime = newTime + CURRENT_TIME;
     self.currentBucketWaitTime = self.bucketFullTime - CURRENT_TIME;
-    if (self.currentBucketWaitTime < 10) {
-        self.currentBucketWaitTime = 10;
-        self.bucketFullTime = CURRENT_TIME + 10;
+    if (newTime <= 0) {
+        self.maxSpeedOn = YES;
+    } else {
+        self.maxSpeedOn = NO;
     }
     [self saveUserBucketFullTime:self.bucketFullTime];
+    [self saveUserCurrentBucketWaitTime:self.currentBucketWaitTime];
     self.bucketIsFull = NO;
 }
 

@@ -8,6 +8,7 @@
 
 #import "XibView.h"
 #import "ParticleView.h"
+#import "CharacterView.h"
 
 @interface GameLayoutView : XibView <UIGestureRecognizerDelegate>
 @property (strong, nonatomic) IBOutlet UIView *fadeView;
@@ -21,7 +22,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *shopActiveButton;
 @property (strong, nonatomic) IBOutlet UIButton *shopPassiveButton;
 @property (strong, nonatomic) IBOutlet UIButton *shopOfflineButton;
-@property (strong, nonatomic) IBOutlet UIImageView *characterImageView;
+@property (strong, nonatomic) IBOutlet CharacterView *characterView;
 @property (strong, nonatomic) IBOutlet UIView *environmentView;
 
 - (void)generateNewBoard;

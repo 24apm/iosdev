@@ -73,6 +73,9 @@
 		D0E1123218C2ECF300808072 /* pop.caf in Resources */ = {isa = PBXBuildFile; fileRef = D0E1123018C2ECF300808072 /* pop.caf */; };
 		D0E1123318C2ECF300808072 /* ticking.caf in Resources */ = {isa = PBXBuildFile; fileRef = D0E1123118C2ECF300808072 /* ticking.caf */; };
 		D0E1123518C2EDF000808072 /* bling.caf in Resources */ = {isa = PBXBuildFile; fileRef = D0E1123418C2EDF000808072 /* bling.caf */; };
+		D0E21E81193AC13C00E53E8B /* UnitBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E21E80193AC13C00E53E8B /* UnitBaseView.m */; };
+		D0E21E84193AC14F00E53E8B /* CharacterView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E21E83193AC14F00E53E8B /* CharacterView.m */; };
+		D0E21E86193AC18500E53E8B /* CharacterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E21E85193AC18500E53E8B /* CharacterView.xib */; };
 		D0E269351933E61E00F25C31 /* UnitView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E269341933E61E00F25C31 /* UnitView.m */; };
 		D0E30E8518A376E300FFD3CE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E30E8418A376E300FFD3CE /* Foundation.framework */; };
 		D0E30E8718A376E300FFD3CE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E30E8618A376E300FFD3CE /* CoreGraphics.framework */; };
@@ -345,6 +348,11 @@
 		D0E1123018C2ECF300808072 /* pop.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = pop.caf; sourceTree = "<group>"; };
 		D0E1123118C2ECF300808072 /* ticking.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ticking.caf; sourceTree = "<group>"; };
 		D0E1123418C2EDF000808072 /* bling.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = bling.caf; sourceTree = "<group>"; };
+		D0E21E7F193AC13C00E53E8B /* UnitBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnitBaseView.h; sourceTree = "<group>"; };
+		D0E21E80193AC13C00E53E8B /* UnitBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnitBaseView.m; sourceTree = "<group>"; };
+		D0E21E82193AC14F00E53E8B /* CharacterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CharacterView.h; sourceTree = "<group>"; };
+		D0E21E83193AC14F00E53E8B /* CharacterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CharacterView.m; sourceTree = "<group>"; };
+		D0E21E85193AC18500E53E8B /* CharacterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CharacterView.xib; sourceTree = "<group>"; };
 		D0E269331933E61E00F25C31 /* UnitView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnitView.h; sourceTree = "<group>"; };
 		D0E269341933E61E00F25C31 /* UnitView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnitView.m; sourceTree = "<group>"; };
 		D0E30E8118A376E300FFD3CE /* Evolution.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Evolution.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -674,7 +682,11 @@
 				D0242C171928829100DBE20A /* BucketView.h */,
 				D0242C181928829100DBE20A /* BucketView.m */,
 				D0E269331933E61E00F25C31 /* UnitView.h */,
+				D0E21E7F193AC13C00E53E8B /* UnitBaseView.h */,
+				D0E21E80193AC13C00E53E8B /* UnitBaseView.m */,
 				D0E269341933E61E00F25C31 /* UnitView.m */,
+				D0E21E82193AC14F00E53E8B /* CharacterView.h */,
+				D0E21E83193AC14F00E53E8B /* CharacterView.m */,
 				D0F03567192C9E0900F0B0BE /* BonusButton.h */,
 				D0F03568192C9E0900F0B0BE /* BonusButton.m */,
 			);
@@ -700,6 +712,7 @@
 				D061820B1934543F001740D4 /* ShopRowView.xib */,
 				D061820C1934543F001740D4 /* ShopTableView.xib */,
 				D061820D1934543F001740D4 /* UnitView.xib */,
+				D0E21E85193AC18500E53E8B /* CharacterView.xib */,
 			);
 			path = Xib;
 			sourceTree = "<group>";
@@ -1274,6 +1287,7 @@
 				D0ED116618CF04BC00C55BA9 /* heart.png in Resources */,
 				D0EADDEB18E769FC0016D2A0 /* FlappyBallIcon100x100.png in Resources */,
 				D0E47C2718ED2F9F009CA771 /* leaderboardbutton.png in Resources */,
+				D0E21E86193AC18500E53E8B /* CharacterView.xib in Resources */,
 				D0DFFCCE18DC1687001424DF /* malelose.png in Resources */,
 				D06182151934543F001740D4 /* GamePlayView.xib in Resources */,
 				D0E4BCD218D9743700132C17 /* soldier.png in Resources */,
@@ -1420,6 +1434,7 @@
 				D0EADDE418E769FC0016D2A0 /* UIView+ViewUtil.m in Sources */,
 				D0EADDDE18E769FC0016D2A0 /* WorldObjectView.m in Sources */,
 				D0EADDE818E769FC0016D2A0 /* IAPHelper.m in Sources */,
+				D0E21E81193AC13C00E53E8B /* UnitBaseView.m in Sources */,
 				D0E647C8191F464900327C07 /* ShopManager.m in Sources */,
 				D0EADDE618E769FC0016D2A0 /* FXLabel.m in Sources */,
 				D0384625191EB12E00265FE1 /* GameLayoutView.m in Sources */,
@@ -1442,6 +1457,7 @@
 				D0384633191EB12E00265FE1 /* ResultView.m in Sources */,
 				D0384629191EB12E00265FE1 /* GameViewController.m in Sources */,
 				D038462C191EB12E00265FE1 /* MainView.m in Sources */,
+				D0E21E84193AC14F00E53E8B /* CharacterView.m in Sources */,
 				D0242C191928829100DBE20A /* BucketView.m in Sources */,
 				D0EADDEA18E769FC0016D2A0 /* iRate.m in Sources */,
 				D0EADDE318E769FC0016D2A0 /* NSArray+Util.m in Sources */,
@@ -1565,7 +1581,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				BUNDLE_IDENTIFIER = com.jeffrwan.makeitswipe;
+				BUNDLE_IDENTIFIER = com.jeffrwan.makeitevolute;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1576,7 +1592,7 @@
 					/Users/15inch/Desktop/tut/iosdev/trunk/Base/Analytics/Library,
 				);
 				PRODUCT_NAME = Evolution;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "CB4532C1-7837-4A67-A8D6-32AA044757BD";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1587,7 +1603,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				BUNDLE_IDENTIFIER = com.jeffrwan.makeitswipe;
+				BUNDLE_IDENTIFIER = com.jeffrwan.makeitevolute;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1598,7 +1614,7 @@
 					/Users/15inch/Desktop/tut/iosdev/trunk/Base/Analytics/Library,
 				);
 				PRODUCT_NAME = Evolution;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "CB4532C1-7837-4A67-A8D6-32AA044757BD";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};

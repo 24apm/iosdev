@@ -15,7 +15,7 @@
 
 // Game Center
 #define kLeaderboardBestTimeID @"com.jeffrwan.restroom2.fastest"
-#define kLeaderboardBestScoreID @"com.jeffrwan.20485x5Blitz.point"
+#define kLeaderboardBestScoreID @"com.jeffrwan.makeitswipe.taps"
 
 #define kAchievementOneStreak @"com.jeffrwan.thenumbergame.level1"
 #define kAchievement5Streak @"com.jeffrwan.thenumbergame.level5"
@@ -48,6 +48,9 @@
 #define SOUND_EFFECT_BUI @"bui"
 #define SOUND_EFFECT_BOILING @"boiling"
 #define SOUND_EFFECT_DUING @"duing"
+#define SOUND_EFFECT_GUINEA @"guinea_pig"
+#define SOUND_EFFECT_ANVIL @"anvil"
+#define SOUND_EFFECT_HALLELUJAH @"Hallelujah"
 
 #define IMAGE_ARROW @"swordattack.png"
 #define IMAGE_MONSTER @"soldier.png"
@@ -67,7 +70,7 @@
 #define POWER_UP_IAP_SUPER @"com.jeffrwan.makeitswipesuper"
 
 #define UPDATE_TIME_PER_TICK 10.f
-#define UPDATE_TIME_PER_TICK_FOR_BONUS 60.f
+#define UPDATE_TIME_PER_TICK_FOR_BONUS 30.f
 #define LEVEL_CAP 10
 typedef enum {
     POWER_UP_TYPE_TAP,

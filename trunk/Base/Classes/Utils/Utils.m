@@ -33,13 +33,17 @@
 }
 
 + (UIViewController *)rootViewController {
-    AppDelegateBase *appDelegateBase = [UIApplication sharedApplication].delegate;
-    return appDelegateBase.window.rootViewController;
+    return [UIApplication sharedApplication].delegate.window.rootViewController;
 }
 
 + (NSString *)formatWithComma:(int)integer {
-    NSString *formattedInteger = [NSNumberFormatter localizedStringFromNumber:@(integer) numberStyle:NSNumberFormatterDecimalStyle];
-    return formattedInteger;
+    static NSNumberFormatter *formattedInteger = nil;
+    if (!formattedInteger) {
+        formattedInteger = [[NSNumberFormatter alloc] init];
+        formattedInteger.numberStyle = NSNumberFormatterDecimalStyle;
+    }
+    //    NSString *formattedInteger = [NSNumberFormatter localizedStringFromNumber:@(integer) numberStyle:NSNumberFormatterDecimalStyle];
+    return [formattedInteger stringFromNumber:@(integer)];
 }
 
 + (NSString *)formatWithFreeCost:(int)cost {

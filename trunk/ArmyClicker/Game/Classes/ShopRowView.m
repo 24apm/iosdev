@@ -40,7 +40,7 @@
 }
 - (IBAction)buttonPressed:(UIButton *)sender {
     if (self.item.type == POWER_UP_TYPE_IAP) {
-        
+
         [[NSNotificationCenter defaultCenter]postNotificationName:IAP_ITEM_PRESSED_NOTIFICATION object:self];
         
     } else {
@@ -65,22 +65,26 @@
         self.imageView.image = [Utils imageNamed:[UIImage imageNamed:self.item.imagePath]
                                        withColor:[self.item tierColor:self.item.rank]
                                        blendMode:kCGBlendModeMultiply];
-        [self.costButton setTitle:[NSString stringWithFormat:@"$%d", self.cost] forState:UIControlStateNormal];
+        [self.costButton setTitle:[NSString stringWithFormat:@"$%lld", self.cost] forState:UIControlStateNormal];
     }
 }
 
 - (IAPType)lookUpTableForIAPWithRank {
     switch (self.item.rank) {
         case 4:
+            self.product = [[CoinIAPHelper sharedInstance] productForType:IAPTypeFund];
             return IAPTypeFund;
             break;
         case 3:
+            self.product = [[CoinIAPHelper sharedInstance] productForType:IAPTypeDouble];
             return IAPTypeDouble;
             break;
         case 2:
+            self.product = [[CoinIAPHelper sharedInstance] productForType:IAPTypeQuadruple];
             return IAPTypeQuadruple;
             break;
         case 5:
+            self.product = [[CoinIAPHelper sharedInstance] productForType:IAPTypeSuper];
             return IAPTypeSuper;
             break;
         default:

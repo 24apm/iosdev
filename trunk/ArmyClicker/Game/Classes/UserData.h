@@ -23,6 +23,8 @@
 @property (nonatomic) int offlinePoints;
 @property (nonatomic) double currentBucketPoints;
 @property (nonatomic) double currentBucketWaitTime;
+@property (nonatomic) double currentMaxTapPerSecond;
+@property (nonatomic) BOOL maxSpeedOn;
 
 + (UserData *)instance;
 - (void)submitScore:(int)score mode:(NSString *)mode;
@@ -45,5 +47,6 @@
 - (float)realMultiplier:(ShopItem *)shopItem;
 - (void)addOfflineScore;
 - (void)renewBucketFullTime;
+- (void)saveUserCurrentMaxTap:(double)maxTap;
 
 @end

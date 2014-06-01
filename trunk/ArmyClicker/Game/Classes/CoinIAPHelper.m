@@ -14,6 +14,7 @@
 @interface CoinIAPHelper()
 
 @property (nonatomic) BOOL loaded;
+@property (nonatomic, strong) NSTimer *loadingTimer;
 
 @end
 
@@ -43,6 +44,11 @@
 }
 
 - (void)loadProduct {
+    self.loadingTimer = [NSTimer scheduledTimerWithTimeInterval:30.f target:self selector:@selector(_loadProduct) userInfo:nil repeats:YES];
+    [self _loadProduct];
+}
+
+- (void)_loadProduct {
     [[CoinIAPHelper sharedInstance] requestProductsWithCompletionHandler:^(BOOL success, NSArray *products) {
         if (success) {
             self.products = products;
@@ -53,14 +59,13 @@
             }
             self.productDictionary = [NSDictionary dictionaryWithDictionary:tempDictionary];
             self.loaded = YES;
+            [self.loadingTimer invalidate], self.loadingTimer = nil;
+            [[NSNotificationCenter defaultCenter]postNotificationName:IAP_ITEM_LOADED_NOTIFICATION object:nil];
         }
     }];
 }
 
 - (BOOL)hasLoaded {
-    if (!self.loaded) {
-        [self loadProduct];
-    }
     return self.loaded;
 }
 

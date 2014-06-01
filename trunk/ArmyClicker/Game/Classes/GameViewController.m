@@ -74,7 +74,7 @@
     self.localLeaderBoardView.size = self.containerView.size;
     
     [self preloadSounds];
-    [self updateGameState:GameStateMainMode];
+    [self updateGameState:GameStateGameMode];
 }
 
 - (AdBannerPositionMode)adBannerPositionMode {
@@ -91,6 +91,9 @@
     [[SoundManager instance] prepare:SOUND_EFFECT_SHARP_PUNCH count:3];
     [[SoundManager instance] prepare:SOUND_EFFECT_BOILING count:3];
     [[SoundManager instance] prepare:SOUND_EFFECT_BUI count:3];
+     [[SoundManager instance] prepare:SOUND_EFFECT_ANVIL count:3];
+    [[SoundManager instance] prepare:SOUND_EFFECT_HALLELUJAH count:2];
+     [[SoundManager instance] prepare:SOUND_EFFECT_GUINEA count:20];
 }
 
 - (void)mainViewCallback {
@@ -167,12 +170,12 @@
             self.containerView.userInteractionEnabled = NO;
             break;
         case GameStateGameMode:
-            if ([[GameManager instance].gameMode isEqualToString:GAME_MODE_VS]) {
+          //  if ([[GameManager instance].gameMode isEqualToString:GAME_MODE_VS]) {
                 [self.timeAttackMode show];
                 self.timeAttackMode.hidden = NO;
-            } else if([[GameManager instance].gameMode isEqualToString:GAME_MODE_SINGLE]){
+         //  } else if([[GameManager instance].gameMode isEqualToString:GAME_MODE_SINGLE]){
                 
-            }
+          //  }
             break;
         case GameStateLocalLeaderBoardMode:
             self.localLeaderBoardView.hidden = NO;

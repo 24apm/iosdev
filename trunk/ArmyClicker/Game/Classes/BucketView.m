@@ -7,6 +7,12 @@
 //
 
 #import "BucketView.h"
+#import "PromoDialogView.h"
+#import "iRate.h"
+#import "TrackUtils.h"
+#import "GameCenterHelper.h"
+
+#define SHOW_LEADERBOARD_NOTIFICATION @"SHOW_LEADERBOARD_NOTIFICATION"
 
 @interface BucketView ()
 @property (nonatomic) NSTimer *timer;
@@ -23,6 +29,15 @@
     return self;
 }
 
+- (IBAction)rateButtonPressed:(UIButton *)sender {
+    [TrackUtils trackAction:@"iRate" label:@"ratePressed"];
+    [[iRate sharedInstance] promptIfNetworkAvailable];
+}
+- (IBAction)leaderBoard:(UIButton *)sender {
+    [GameCenterHelper instance].currentLeaderBoard = kLeaderboardBestScoreID;
+    [[NSNotificationCenter defaultCenter] postNotificationName:SHOW_LEADERBOARD_NOTIFICATION object:self];
+}
+
 - (void)show {
     [super show];
     [self initialize];
@@ -31,25 +46,30 @@
 - (void)initialize {
     [self imageState];
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1.f/UPDATE_TIME_PER_TICK target:self selector:@selector(updateBar) userInfo:nil repeats:YES];
+    self.percentageLabel.text = @"0";
 }
 
 - (void)imageState {
-    if ([UserData instance].bucketIsFull) {
-        self.bucketImage.image = [UIImage imageNamed:@"tier2"];
+    if ([UserData instance].maxSpeedOn || [UserData instance].bucketIsFull) {
+        self.bucketImage.image = [UIImage imageNamed:@"clicker_pig_full"];
     } else {
-        self.bucketImage.image = [UIImage imageNamed:@"tier1"];
+        self.bucketImage.image = [UIImage imageNamed:@"clicker_pig"];
     }
 }
 
 - (void)updateBar {
-    if (![UserData instance].bucketIsFull) {
+    double displayPercetage = 0;
+    if (![UserData instance].maxSpeedOn && ![UserData instance].bucketIsFull) {
         double percentage = 1 - (([UserData instance].bucketFullTime - CURRENT_TIME) / [UserData instance].currentBucketWaitTime);
+        displayPercetage = percentage * 100;
         [self.progressBar fillBar:percentage];
         [self imageState];
     } else {
         [self imageState];
         [self.progressBar fillBar:100.f];
+        displayPercetage = 100;
     }
+    self.percentageLabel.text = [NSString stringWithFormat:@"%.1f%%", displayPercetage];
 }
 
 - (void)dismissed:(id)sender {

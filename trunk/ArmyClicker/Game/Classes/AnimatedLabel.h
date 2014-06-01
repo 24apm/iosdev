@@ -11,7 +11,7 @@
 
 @interface AnimatedLabel : XibView
 
-@property (strong, nonatomic) IBOutlet THLabel *label;
+@property (strong, nonatomic) IBOutlet UILabel *label;
 
 - (void)animate;
 

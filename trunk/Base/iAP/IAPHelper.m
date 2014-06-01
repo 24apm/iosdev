@@ -15,30 +15,30 @@ NSString *const IAPHelperProductFailedNotification = @"IAPHelperProductFailedNot
 
 // 2
 @interface IAPHelper () <SKProductsRequestDelegate, SKPaymentTransactionObserver>
+
+@property (nonatomic, strong) SKProductsRequest * _productsRequest;
+@property (nonatomic, strong) NSSet * _productIdentifiers;
+@property (nonatomic, strong) NSMutableSet * _purchasedProductIdentifiers;
+@property (nonatomic, strong) RequestProductsCompletionHandler _completionHandler;
+
 @end
 
 // 3
-@implementation IAPHelper {
-    SKProductsRequest * _productsRequest;
-    RequestProductsCompletionHandler _completionHandler;
-    
-    NSSet * _productIdentifiers;
-    NSMutableSet * _purchasedProductIdentifiers;
-}
+@implementation IAPHelper
 
 - (id)initWithProductIdentifiers:(NSSet *)productIdentifiers {
     
     if ((self = [super init])) {
         
         // Store product identifiers
-        _productIdentifiers = productIdentifiers;
+        self._productIdentifiers = productIdentifiers;
         
         // Check for previously purchased products
-        _purchasedProductIdentifiers = [NSMutableSet set];
-        for (NSString * productIdentifier in _productIdentifiers) {
+        self._purchasedProductIdentifiers = [NSMutableSet set];
+        for (NSString * productIdentifier in self._productIdentifiers) {
             BOOL productPurchased = [[NSUserDefaults standardUserDefaults] boolForKey:productIdentifier];
             if (productPurchased) {
-                [_purchasedProductIdentifiers addObject:productIdentifier];
+                [self._purchasedProductIdentifiers addObject:productIdentifier];
                 NSLog(@"Previously purchased: %@", productIdentifier);
             } else {
                 NSLog(@"Not purchased: %@", productIdentifier);
@@ -57,17 +57,17 @@ NSString *const IAPHelperProductFailedNotification = @"IAPHelperProductFailedNot
     
     
     // 1
-    _completionHandler = [completionHandler copy];
+    self._completionHandler = [completionHandler copy];
     
     // 2
-    _productsRequest = [[SKProductsRequest alloc] initWithProductIdentifiers:_productIdentifiers];
-    _productsRequest.delegate = self;
-    [_productsRequest start];
+    self._productsRequest = [[SKProductsRequest alloc] initWithProductIdentifiers:self._productIdentifiers];
+    self._productsRequest.delegate = self;
+    [self._productsRequest start];
     
 }
 
 - (BOOL)productPurchased:(NSString *)productIdentifier {
-    return [_purchasedProductIdentifiers containsObject:productIdentifier];
+    return [self._purchasedProductIdentifiers containsObject:productIdentifier];
 }
 
 - (void)buyProduct:(SKProduct *)product {
@@ -84,7 +84,7 @@ NSString *const IAPHelperProductFailedNotification = @"IAPHelperProductFailedNot
 - (void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response {
     
     NSLog(@"Loaded list of products...");
-    _productsRequest = nil;
+    self._productsRequest = nil;
     
     NSArray * skProducts = response.products;
     for (SKProduct * skProduct in skProducts) {
@@ -94,18 +94,18 @@ NSString *const IAPHelperProductFailedNotification = @"IAPHelperProductFailedNot
               skProduct.price.floatValue);
     }
     
-    _completionHandler(YES, skProducts);
-    _completionHandler = nil;
+    self._completionHandler(YES, skProducts);
+    self._completionHandler = nil;
     
 }
 
 - (void)request:(SKRequest *)request didFailWithError:(NSError *)error {
     
     NSLog(@"Failed to load list of products.");
-    _productsRequest = nil;
+    self._productsRequest = nil;
     
-    _completionHandler(NO, nil);
-    _completionHandler = nil;
+    self._completionHandler(NO, nil);
+    self._completionHandler = nil;
     
 }
 
@@ -157,7 +157,7 @@ NSString *const IAPHelperProductFailedNotification = @"IAPHelperProductFailedNot
 
 - (void)provideContentForProductIdentifier:(NSString *)productIdentifier {
     
-    [_purchasedProductIdentifiers addObject:productIdentifier];
+    [self._purchasedProductIdentifiers addObject:productIdentifier];
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:productIdentifier];
     [[NSUserDefaults standardUserDefaults] synchronize];
     [[NSNotificationCenter defaultCenter] postNotificationName:IAPHelperProductPurchasedNotification object:productIdentifier userInfo:nil];

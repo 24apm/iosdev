@@ -10,6 +10,8 @@
 #import "SKProduct+priceAsString.h"
 #import "GameConstants.h"
 
+#define IAP_ITEM_LOADED_NOTIFICATION @"IAP_ITEM_LOADED_NOTIFICATION"
+
 typedef enum {
     IAPTypeFund,
     IAPTypeDouble,

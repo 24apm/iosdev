@@ -9,6 +9,8 @@
 #import "XibView.h"
 #import "ParticleView.h"
 
+#define BUYING_PRODUCT_SUCCESSFUL_NOTIFICATION @"BUYING_PRODUCT_SUCCESSFUL_NOTIFICATION"
+
 @interface GameLayoutView : XibView <UIGestureRecognizerDelegate>
 @property (strong, nonatomic) IBOutlet UIView *fadeView;
 @property (strong, nonatomic) IBOutlet ParticleView *partcleView;

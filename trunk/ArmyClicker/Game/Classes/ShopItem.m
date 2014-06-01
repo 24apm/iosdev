@@ -13,7 +13,7 @@
 + (ShopItem *)createItem:(NSString *)itemId
                     name:(NSString *)name
                imagePath:(NSString *)imagePath
-         priceMultiplier:(double)priceMultipler
+         priceMultiplier:(long long)priceMultipler
        upgradeMultiplier:(double)upgradeMultiplier
                     type:(PowerUpType)type
                     rank:(int)rank           {
@@ -43,6 +43,9 @@
             break;
         case POWER_UP_TYPE_OFFLINE_SPEED:
             temp = [self descriptionForOfflineSpeed:value];
+            break;
+        case POWER_UP_TYPE_IAP:
+            temp = [self descriptionForIAP:value];
             break;
         default:
             break;
@@ -89,7 +92,7 @@
 }
 
 - (NSString *)descriptionForActive:(float)value {
-    return [NSString stringWithFormat:@"+$%d", (int)value];
+    return [NSString stringWithFormat:@"+$%d/tap", (int)value];
 }
 
 - (NSString *)descriptionForPassive:(float)value {
@@ -97,11 +100,34 @@
 }
 
 - (NSString *)descriptionForOfflineCap:(float)value {
-    return [NSString stringWithFormat:@"+%.1fhr", value];
+    return [NSString stringWithFormat:@"+%.fsec to fill", value];
 }
 
 - (NSString *)descriptionForOfflineSpeed:(float)value {
-    return [NSString stringWithFormat:@"-%dsec", (int)value];
+    value = value * 100.f;
+    return [NSString stringWithFormat:@"-%.f%% time to fill", value];
+}
+
+- (NSString *)descriptionForIAP:(float)value {
+    int currentRank = self.rank;
+    switch (currentRank) {
+        case 4:
+            return @"+100000$!";
+            break;
+        case 1:
+            return @"$x2!!";
+            break;
+        case 2:
+            return @"$x4!!!";
+            break;
+        case 3:
+            return @"$x100!!!!";
+            break;
+        default:
+            break;
+    }
+    return @"Item not found error";
+    
 }
 
 @end

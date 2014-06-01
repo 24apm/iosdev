@@ -19,7 +19,7 @@
     self.fireEmitter.emitterShape = @"line";
     self.fireEmitter.birthRate = 1.f;
     self.fire = [CAEmitterCell emitterCell];
-    self.fire.birthRate = 0;
+    self.fire.birthRate = 5;
     self.fire.lifetime = 10;
     self.fire.contents = (id)[[UIImage imageNamed:@"money"] CGImage];
     self.fire.velocity = 50;
@@ -41,6 +41,7 @@
 }
 
 - (void)updateBirthRate:(int)birthRate {
+    birthRate = 5;
     self.fireEmitter.birthRate = birthRate;
     self.fireEmitter.emitterCells = [NSArray arrayWithObject:self.fire];
 

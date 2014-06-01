@@ -166,15 +166,17 @@ static int promoDialogInLeaderBoardCount = 0;
     for (UnitView *unit in self.units) {
         [unit step];
     }
+    [self.characterView step];
 }
 
 - (void)unitPressed:(NSNotification *)notification {
     UnitView *unit = notification.object;
     
-    CGPoint center = [unit.superview convertPoint:unit.center toView:self.characterImageView.superview];
+    CGPoint center = [unit.superview convertPoint:unit.center toView:self.characterView.superview];
+    [self.characterView reset];
     
     [UIView animateWithDuration:0.1f animations:^ {
-        self.characterImageView.center = center;
+        self.characterView.center = center;
     }completion:^(BOOL completed) {
         [self.units removeObject:unit];
         [unit removeFromSuperview];
@@ -222,37 +224,6 @@ static int promoDialogInLeaderBoardCount = 0;
     [[UserData instance] updateOfflineTime];
     [self checkIfSavedTimePassedTimeBonus];
     
-}
-
-- (IBAction)tapPressedDown:(id)sender {
-    self.characterImageView.transform = CGAffineTransformMakeScale(1.02f, 1.02f);
-}
-
-
-- (IBAction)tapPressed:(id)sender {
-    if ([self tapTotalAverage:self.tapTotal] <= 0) {
-        [self.tapTotal removeAllObjects];
-    }
-    float currentTap = (float)([[UserData instance] totalPointPerTap:self.timeBonusOn] * ((float)self.tapBonusLevel));
-    [[UserData instance]addScore:currentTap];
-    [self updateTPSWithTap:currentTap];
-    self.tapBonus++;
-    self.tapsPerSecond++;
-    [self animateLabel:currentTap];
-    
-    self.characterImageView.transform = CGAffineTransformIdentity;
-}
-
-
-- (void)animateLabel:(int)value {
-    AnimatedLabel *label = [[AnimatedLabel alloc] init];
-    [self.characterImageView addSubview:label];
-    label.label.text = [NSString stringWithFormat:@"+%d", value];
-    float marginPercentage = 0.5f;
-    float randX = arc4random() % (int)self.characterImageView.width * marginPercentage + self.characterImageView.width * marginPercentage / 2.f;
-    float randY = arc4random() % (int)self.characterImageView.height * marginPercentage + self.characterImageView.height * marginPercentage / 2.f;
-    label.center = CGPointMake(randX, randY);
-    [label animate];
 }
 
 - (NSString *)characterImageTier:(int)tier {
@@ -303,115 +274,6 @@ static int promoDialogInLeaderBoardCount = 0;
     return temp;
 }
 
-- (void)update {
-    double time = CURRENT_TIME;
-    self.tempPassiveLabel = [[UserData instance] currentScore];
-    self.tempPassiveLabel += [[UserData instance] totalPointForPassive] / UPDATE_TIME_PER_TICK;
-    [[UserData instance] addScoreByPassive];
-    double gapTime = time - self.previousTime;
-    [[UserData instance] updateOfflineTime];
-    if (gapTime >= 1) {
-        
-        [[UserData instance] saveUserCoin];
-        self.previousTime = time;
-        
-        if (self.tapTotal.count > 0) {
-            [self.tapTotal addObject:[NSNumber numberWithFloat:self.tapsPerSecond]];
-            [self.tapTotalPoints addObject:[NSNumber numberWithFloat:self.tapsPerSecondPoints]];
-        }
-        
-        if (self.tapsPerSecond > 0 && self.tapTotal.count <= 0) {
-            [self.tapTotal addObject:[NSNumber numberWithFloat:self.tapsPerSecond]];
-            [self.tapTotalPoints addObject:[NSNumber numberWithFloat:self.tapsPerSecondPoints]];
-        }
-        
-        if (self.tapTotal.count > 2) {
-            [self.tapTotal removeObjectAtIndex:0];
-            [self.tapTotalPoints removeObjectAtIndex:0];
-        }
-        
-        [self levelOfTapBonus];
-        
-        if ([self tapTotalAverage:self.tapTotal] <= 0) {
-            [self.tapTotal removeAllObjects];
-            [self.tapTotalPoints removeAllObjects];
-        }
-        
-        self.tapsPerSecond = 0;
-        self.tapsPerSecondPoints = 0;
-        
-        [self updateAverageTPS];
-    }
-    
-    if (self.tapBonus >= 15) {
-        [self tapBonusActivate];
-    }
-    
-    if (self.bonusTapOn) {
-        self.bonusStartTime = CURRENT_TIME;
-        if(!self.timerForBonus){
-            self.timerForBonus = [NSTimer scheduledTimerWithTimeInterval:1.f/UPDATE_TIME_PER_TICK_FOR_BONUS target:self selector:@selector(updateForBonus) userInfo:nil repeats:YES];
-        }
-        self.bonusTapOn = NO;
-    }
-    
-    if (!self.timeBonusOn) {
-        double percentage = (time - self.timeBonus) / TIME_BONUS_INTERVAL;
-        [self.progressBar fillBar:percentage];
-    }
-    
-    if (!self.timeBonusOn && time - self.timeBonus > TIME_BONUS_INTERVAL) {
-        [self timeBonusActivate];
-        [self.progressBar fillBar:1.f];
-    }
-    
-    if (self.timeBonusOn && time - self.timeBonusEnd > 5) {
-        [self timeBonusDeactivate];
-        [self.progressBar fillBar:0.f];
-    }
-}
-
-- (void)levelOfTapBonus {
-    
-    float currentTap = [self tapTotalAverage:self.tapTotal];
-    int birthRate;
-    if ( currentTap >= 12) {
-        
-        self.tapBonusLevel = 6;
-        birthRate = 6;
-        
-    } else if (currentTap >= 11) {
-        
-        self.tapBonusLevel = 5;
-        birthRate = 5;
-        
-    } else if (currentTap >= 10) {
-        
-        self.tapBonusLevel = 4;
-        birthRate = 4;
-        
-    } else if (currentTap >= 8) {
-        
-        self.tapBonusLevel = 3;
-        birthRate = 3;
-        
-    } else if (currentTap >= 5) {
-        
-        self.tapBonusLevel = 2;
-        birthRate = 1;
-        
-    } else {
-        
-        self.tapBonusLevel = 1;
-        birthRate = 0;
-        
-    }
-    
-    [self.partcleView updateBirthRate:birthRate];
-    
-    int index = self.tapBonusLevel > 4 ? 4 : self.tapBonusLevel;
-    self.characterImageView.image = [UIImage imageNamed:[self characterImageTier:index]];
-}
 
 - (void)updateForBonus {
     for (int i = 0; i < self.bonusArray.count; i++) {

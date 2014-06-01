@@ -14,7 +14,7 @@
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *imagePath;
 @property (nonatomic) NSString * itemId;
-@property (nonatomic) int priceMultiplier;
+@property (nonatomic) long long priceMultiplier;
 @property (nonatomic) double value;
 @property (nonatomic) PowerUpType type;
 @property (nonatomic) double upgradeMultiplier;
@@ -23,7 +23,7 @@
 + (ShopItem *)createItem:(NSString *)itemId
                     name:(NSString *)name
                imagePath:(NSString *)imagePath
-         priceMultiplier:(double)priceMultipler
+         priceMultiplier:(long long)priceMultipler
        upgradeMultiplier:(double)upgradeMultiplier
                     type:(PowerUpType)type
                     rank:(int)rank;

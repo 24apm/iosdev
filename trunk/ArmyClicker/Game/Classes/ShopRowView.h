@@ -20,7 +20,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *costLabel;
 @property (strong, nonatomic) IBOutlet UILabel *descriptionLabel;
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
-@property (nonatomic) int cost;
+@property (nonatomic) long long cost;
 @property (nonatomic) SKProduct *product;
 @property (nonatomic, strong) ShopItem *item;
 @property (strong, nonatomic) IBOutlet UILabel *levelLabel;

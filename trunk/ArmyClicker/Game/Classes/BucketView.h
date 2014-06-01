@@ -16,6 +16,7 @@
 @property (strong, nonatomic) IBOutlet UIView *overlay;
 
 @property (strong, nonatomic) IBOutlet UIImageView *bucketImage;
+@property (strong, nonatomic) IBOutlet UILabel *percentageLabel;
 
 - (void)show;
 @end
