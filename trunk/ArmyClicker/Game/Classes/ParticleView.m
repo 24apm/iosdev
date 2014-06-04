@@ -1,6 +1,6 @@
 #import "ParticleView.h"
 #import <QuartzCore/QuartzCore.h>
-
+#import "GameConstants.h"
 @interface ParticleView()
 
 @property (nonatomic, strong) CAEmitterCell* fire;
@@ -20,12 +20,12 @@
     self.fireEmitter.birthRate = 1.f;
     self.fire = [CAEmitterCell emitterCell];
     self.fire.birthRate = 5;
-    self.fire.lifetime = 10;
+    self.fire.lifetime = 12;
     self.fire.contents = (id)[[UIImage imageNamed:@"money"] CGImage];
-    self.fire.velocity = 50;
-    self.fire.velocityRange = 20;
-    self.fire.yAcceleration = 20;
-    
+    self.fire.velocity = 50 * IPAD_SCALE;
+    self.fire.velocityRange = 20 * IPAD_SCALE;
+    self.fire.yAcceleration = 20 * IPAD_SCALE;
+    self.fire.scale *= IPAD_SCALE;
     self.fire.spin = 3.0;
     self.fire.spinRange = 5.0;
 

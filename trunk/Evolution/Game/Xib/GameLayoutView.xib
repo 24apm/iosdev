@@ -31,12 +31,14 @@
                 <view contentMode="scaleToFill" id="jIF-gC-Vzd" userLabel="environment">
                     <rect key="frame" x="0.0" y="125" width="320" height="276"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" id="ewQ-sO-Qed" customClass="CharacterView">
+                            <rect key="frame" x="110" y="88" width="100" height="100"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
+                    </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                </view>
-                <view contentMode="scaleToFill" id="ewQ-sO-Qed" customClass="CharacterView">
-                    <rect key="frame" x="110" y="205" width="100" height="100"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" id="QL0-iX-gb7" userLabel="Display View">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="124"/>

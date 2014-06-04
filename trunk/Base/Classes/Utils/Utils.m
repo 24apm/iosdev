@@ -46,6 +46,16 @@
     return [formattedInteger stringFromNumber:@(integer)];
 }
 
++ (NSString *)formatLongLongWithComma:(long long)integer {
+    static NSNumberFormatter *formattedInteger = nil;
+    if (!formattedInteger) {
+        formattedInteger = [[NSNumberFormatter alloc] init];
+        formattedInteger.numberStyle = NSNumberFormatterDecimalStyle;
+    }
+    //    NSString *formattedInteger = [NSNumberFormatter localizedStringFromNumber:@(integer) numberStyle:NSNumberFormatterDecimalStyle];
+    return [formattedInteger stringFromNumber:@(integer)];
+}
+
 + (NSString *)formatWithFreeCost:(int)cost {
     if (cost > 0) {
         return [NSString stringWithFormat:@"%d",cost];

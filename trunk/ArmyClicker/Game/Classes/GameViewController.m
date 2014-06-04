@@ -93,7 +93,7 @@
     [[SoundManager instance] prepare:SOUND_EFFECT_BUI count:3];
      [[SoundManager instance] prepare:SOUND_EFFECT_ANVIL count:3];
     [[SoundManager instance] prepare:SOUND_EFFECT_HALLELUJAH count:2];
-     [[SoundManager instance] prepare:SOUND_EFFECT_GUINEA count:20];
+     [[SoundManager instance] prepare:SOUND_EFFECT_GUINEA count:8];
 }
 
 - (void)mainViewCallback {

@@ -96,32 +96,31 @@
 }
 
 - (NSString *)descriptionForPassive:(float)value {
-    return [NSString stringWithFormat:@"+$%0.1f/sec", value];
+    return [NSString stringWithFormat:@"+$%0.f/sec", value];
 }
 
 - (NSString *)descriptionForOfflineCap:(float)value {
-    return [NSString stringWithFormat:@"+%.fsec to fill", value];
+    return [NSString stringWithFormat:@"+%.fsec cap", value];
 }
 
 - (NSString *)descriptionForOfflineSpeed:(float)value {
-    value = value * 100.f;
-    return [NSString stringWithFormat:@"-%.f%% time to fill", value];
+    return @"-1% time";
 }
 
 - (NSString *)descriptionForIAP:(float)value {
     int currentRank = self.rank;
     switch (currentRank) {
         case 4:
-            return @"+100000$!";
+            return @"+$100000!";
             break;
         case 1:
-            return @"$x2!!";
+            return @"$ = x2!!";
             break;
         case 2:
-            return @"$x4!!!";
+            return @"$ = x4!!!";
             break;
         case 3:
-            return @"$x100!!!!";
+            return @"$ = x100!!!!";
             break;
         default:
             break;

@@ -7,19 +7,20 @@
 //
 
 #import "UnitView.h"
+#import "Utils.h"
 
 @implementation UnitView
 
 - (NSArray *)idleImages {
     return
-    @[[UIImage imageNamed:@"clicker_character1.png"],
-      [UIImage imageNamed:@"clicker_character4.png"]];
+    @[[UIImage imageNamed:@"tier9-2.png.png"],
+      [UIImage imageNamed:@"tier9.png.png"]];
 }
 
 - (NSArray *)runningImages {
     return
-    @[[UIImage imageNamed:@"clicker_character1.png"],
-      [UIImage imageNamed:@"clicker_character2.png"]];
+    @[[UIImage imageNamed:@"tier12.png"],
+      [UIImage imageNamed:@"tier12-2.png"]];
 }
 
 - (void)doPressed {
@@ -27,7 +28,11 @@
 }
 
 - (CFTimeInterval)idleDuration {
-    return 3.f;
+    return [Utils randBetweenMin:1.0f max:5.0f];
+}
+
+- (int)speed {
+    return [Utils randBetweenMin:1.0f max:3.0f];
 }
 
 @end

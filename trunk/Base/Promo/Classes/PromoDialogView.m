@@ -12,7 +12,7 @@
 #import "Utils.h"
 #import "TrackUtils.h"
 
-#define PROMO_CANCELLED_COUNT_MAX_REACHED 3
+#define PROMO_CANCELLED_COUNT_MAX_REACHED 2
 
 @interface PromoDialogView()
 
@@ -24,6 +24,7 @@
 
 static int promoCancelledCount = 0;
 static int promoPressedCount = 0;
+static BOOL isShowing;
 
 - (id)init {
     self = [super init];
@@ -31,6 +32,7 @@ static int promoPressedCount = 0;
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(promoIconCallback:) name:PROMO_ICON_CALLBACK object:nil];
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(showCloseButton) name:ICON_PRESSED_NOTIFICATION object:nil];
         [TrackUtils trackAction:@"PromoDialogView" label:@"init"];
+        isShowing = YES;
     }
     return self;
 }
@@ -38,10 +40,14 @@ static int promoPressedCount = 0;
 + (void)show {
     NSArray *promoArray = [[PromoManager instance] nextPromoSetWithSize:1];
     if (promoArray && promoArray.count > 0) {
-        if (promoCancelledCount < PROMO_CANCELLED_COUNT_MAX_REACHED) {
-            [[[PromoDialogView alloc] init] show];
+        if (!isShowing) {
+            if (promoCancelledCount < PROMO_CANCELLED_COUNT_MAX_REACHED) {
+                [[[PromoDialogView alloc] init] show];
+            } else {
+                [TrackUtils trackAction:@"PromoDialogView" label:@"PROMO_CANCELLED_COUNT_MAX_REACHED"];
+            }
         } else {
-            [TrackUtils trackAction:@"PromoDialogView" label:@"PROMO_CANCELLED_COUNT_MAX_REACHED"];
+            [TrackUtils trackAction:@"PromoDialogView" label:@"PROMO_ALREADY_SHOWING"];
         }
     } else {
         [TrackUtils trackAction:@"PromoDialogViewOffline" label:@"PROMO_OFFLINE_PLAY_COUNT"];
@@ -100,6 +106,7 @@ static int promoPressedCount = 0;
 
 - (void)dismissed {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    isShowing = NO;
     [super dismissed:self];
 }
 

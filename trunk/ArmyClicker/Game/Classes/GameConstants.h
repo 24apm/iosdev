@@ -62,7 +62,7 @@
 #define kCOLOR_BLUE [UIColor colorWithRed:0.f/255.f green:168.f/255.f blue:255.f/255.f alpha:1.0f]
 #define kCOLOR_RED [UIColor colorWithRed:208.f/255.f green:50.f/255.f blue:0.f/255.f alpha:1.0f]
 
-#define TIMES_PLAYED_BEFORE_PROMO 3
+#define TIMES_PLAYED_BEFORE_PROMO 2
 
 #define POWER_UP_IAP_FUND @"com.jeffrwan.makeitswipe.fund"
 #define POWER_UP_IAP_DOUBLE @"com.jeffrwan.makeitswipedouble"

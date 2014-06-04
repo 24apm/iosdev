@@ -13,7 +13,6 @@
 
 @interface UnitBaseView()
 
-@property (nonatomic) CFTimeInterval idleTime;
 @property (nonatomic) CGPoint targetPosition;
 @property (nonatomic) CGFloat startTime;
 
@@ -84,24 +83,31 @@
     
     float xNew = self.center.x;
     float yNew = self.center.y;
+    float speed = self.speed;
     
     if (self.targetPosition.x > self.center.x) {
-        xNew += unitX;
+        xNew += unitX * speed;
     } else {
-        xNew -= unitX;
+        xNew -= unitX * speed;
     }
     
     if (self.targetPosition.y > self.center.y) {
-        yNew += unitY;
+        yNew += unitY * speed;
     } else {
-        yNew -= unitY;
+        yNew -= unitY * speed;
     }
     
     self.center = CGPointMake(xNew, yNew);
     
+    self.layer.zPosition = self.y + self.height;
+    
     if ([self isWithinThreshold]) {
         self.state = UnitViewStateAnimateIdle;
     }
+}
+
+- (int)speed {
+    return 1.f;
 }
 
 - (BOOL)isWithinThreshold {

@@ -79,11 +79,11 @@
     [defaults synchronize];
 }
 
-- (void)saveUserCurrentMaxTap:(double)maxTap {
+- (void)saveUserCurrentMaxTap:(long long)maxTap {
     self.currentMaxTapPerSecond = maxTap;
     // NSLog(@"saveUserTime %f", self.currentTime);
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:[NSNumber numberWithDouble:self.currentMaxTapPerSecond] forKey:@"maxTap"];
+    [defaults setObject:[NSNumber numberWithLongLong:self.currentMaxTapPerSecond] forKey:@"maxTap"];
     [defaults synchronize];
     [[GameCenterHelper instance].gameCenterManager reportScore:maxTap forCategory: kLeaderboardBestScoreID];
 }
@@ -104,7 +104,7 @@
     [defaults synchronize];
 }
 
-- (void)saveCurrentBucketPoints:(double)points {
+- (void)saveCurrentBucketPoints:(long long)points {
     self.currentBucketPoints = points;
     // NSLog(@"saveUserTime %f", self.currentTime);
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -112,7 +112,7 @@
     [defaults synchronize];
 }
 
-- (void)setCurrentScore:(float)currentScore {
+- (void)setCurrentScore:(long long)currentScore {
     _currentScore = currentScore;
 }
 
@@ -257,13 +257,13 @@
 }
 
 - (float)totalPowerUpFor:(PowerUpType)type {
-    float totalMultiplier = 0;
+    long long totalMultiplier = 0;
     NSMutableDictionary *typeDictionary = [self.gameDataDictionary objectForKey:[NSString stringWithFormat:@"%d", type]];
     NSArray *arrayOfId = [typeDictionary allKeys];
     for (int i = 0; i < arrayOfId.count; i++) {
         NSString *currentKey = [arrayOfId objectAtIndex:i];
         ShopItem *item =[[ShopManager instance] shopItemForItemId:currentKey dictionary:type];
-        float tempMultiplier = [self realMultiplier:item];
+        long long tempMultiplier = [self realMultiplier:item];
         totalMultiplier += tempMultiplier;
     }
     
@@ -273,12 +273,12 @@
 - (float)realMultiplier:(ShopItem *)shopItem {
     NSMutableDictionary *typeDictionary = [self.gameDataDictionary objectForKey:[NSString stringWithFormat:@"%d", shopItem.type]];
     int itemLevel = [[typeDictionary objectForKey:shopItem.itemId] intValue];
-    float tempMultiplier = shopItem.upgradeMultiplier * (float)itemLevel;
+    long long tempMultiplier = shopItem.upgradeMultiplier * (float)itemLevel;
     return tempMultiplier;
 }
 
 - (float)totalPointForOfflineCap {
-   float points = [self totalPowerUpFor:POWER_UP_TYPE_OFFLINE_CAP];
+   long long points = [self totalPowerUpFor:POWER_UP_TYPE_OFFLINE_CAP];
     if (points <= 0) {
         points = 1;
     }
@@ -292,7 +292,7 @@
 }
 
 - (float)totalPointForPassive {
-    float points = 0;
+    long long points = 0;
     points = [self totalPowerUpFor:POWER_UP_TYPE_PASSIVE];
     return points;
 }
@@ -314,12 +314,13 @@
 }
 
 - (void)addScoreByTap:(BOOL)bonusOn {
-    float temp = (float)[self totalPointPerTap:bonusOn];
+    long long temp = [self totalPointPerTap:bonusOn];
     self.currentScore = self.currentScore + (temp);
 }
 
 - (void)addScoreByPassive {
-    self.currentScore = self.currentScore + [self totalPointForPassive]/UPDATE_TIME_PER_TICK;
+    long long temp = [self totalPointForPassive]/UPDATE_TIME_PER_TICK;
+    self.currentScore = self.currentScore + temp;
 }
 
 - (void)updateOfflineTime {
@@ -358,7 +359,7 @@
     self.bucketIsFull = NO;
 }
 
-- (void)addScore:(float)score {
+- (void)addScore:(long long)score {
     self.currentScore = self.currentScore + score;
 }
 

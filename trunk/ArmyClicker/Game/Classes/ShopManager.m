@@ -49,7 +49,7 @@
                     name:(NSString *)name
                imagePath:(NSString *)imagePath
          priceMultiplier:(long long)priceMultipler
-       upgradeMultiplier:(double)upgradeMultiplier
+       upgradeMultiplier:(long long)upgradeMultiplier
                     rank:(int)rank                 {
     
     ShopItem *item = [ShopItem createItem:itemId name:name imagePath:imagePath priceMultiplier:priceMultipler upgradeMultiplier:upgradeMultiplier type:POWER_UP_TYPE_TAP rank:rank];
@@ -60,7 +60,7 @@
                      name:(NSString *)name
                 imagePath:(NSString *)imagePath
           priceMultiplier:(long long)priceMultipler
-        upgradeMultiplier:(double)upgradeMultiplier
+        upgradeMultiplier:(long long)upgradeMultiplier
                      rank:(int)rank                 {
     
     ShopItem *item = [ShopItem createItem:itemId name:name imagePath:imagePath priceMultiplier:priceMultipler upgradeMultiplier:upgradeMultiplier type:POWER_UP_TYPE_PASSIVE rank:rank];
@@ -71,7 +71,7 @@
                         name:(NSString *)name
                    imagePath:(NSString *)imagePath
              priceMultiplier:(long long)priceMultipler
-           upgradeMultiplier:(double)upgradeMultiplier
+           upgradeMultiplier:(long long)upgradeMultiplier
                         rank:(int)rank                 {
     
     ShopItem *item = [ShopItem createItem:itemId name:name imagePath:imagePath priceMultiplier:priceMultipler upgradeMultiplier:upgradeMultiplier type:POWER_UP_TYPE_OFFLINE_CAP rank:rank];
@@ -82,7 +82,7 @@
                           name:(NSString *)name
                      imagePath:(NSString *)imagePath
                priceMultiplier:(long long)priceMultipler
-             upgradeMultiplier:(double)upgradeMultiplier
+             upgradeMultiplier:(long long)upgradeMultiplier
                           rank:(int)rank                   {
     
     ShopItem *item = [ShopItem createItem:itemId name:name imagePath:imagePath priceMultiplier:priceMultipler upgradeMultiplier:upgradeMultiplier type:POWER_UP_TYPE_OFFLINE_SPEED rank:rank];
@@ -93,7 +93,7 @@
                  name:(NSString *)name
             imagePath:(NSString *)imagePath
       priceMultiplier:(long long)priceMultipler
-    upgradeMultiplier:(double)upgradeMultiplier
+    upgradeMultiplier:(long long)upgradeMultiplier
                  rank:(int)rank                   {
     
     ShopItem *item = [ShopItem createItem:itemId name:name imagePath:imagePath priceMultiplier:priceMultipler upgradeMultiplier:upgradeMultiplier type:POWER_UP_TYPE_IAP rank:rank];
@@ -111,70 +111,70 @@
                       name:@"Lvl 1 Treat"
                  imagePath:@"icon_cigarette"
            priceMultiplier:100
-         upgradeMultiplier:2.f
+         upgradeMultiplier:2
                       rank:1];
     
     [self createActiveItem:SHOP_ITEM_ID_ACTIVE_TIER_2
                       name:@"Lvl 2 Treat"
                  imagePath:@"icon_cigarette"
            priceMultiplier:5000
-         upgradeMultiplier:5.f
+         upgradeMultiplier:5
                       rank:2];
     
     [self createActiveItem:SHOP_ITEM_ID_ACTIVE_TIER_3
                       name:@"Lvl 3 Treat"
                  imagePath:@"icon_cigarette"
            priceMultiplier:20000
-         upgradeMultiplier:10.f
+         upgradeMultiplier:10
                       rank:3];
     
     [self createActiveItem:SHOP_ITEM_ID_ACTIVE_TIER_4
                       name:@"Lvl 4 Treat"
                  imagePath:@"icon_cigarette"
            priceMultiplier:50000
-         upgradeMultiplier:15.f
+         upgradeMultiplier:15
                       rank:4];
     
     [self createActiveItem:SHOP_ITEM_ID_ACTIVE_TIER_5
                       name:@"Lvl 5 Treat"
                  imagePath:@"icon_cigarette"
            priceMultiplier:200000
-         upgradeMultiplier:20.f
+         upgradeMultiplier:20
                       rank:5];
     
     [self createActiveItem:SHOP_ITEM_ID_ACTIVE_TIER_6
                       name:@"Lvl 6 Treat"
                  imagePath:@"icon_cigarette"
            priceMultiplier:500000
-         upgradeMultiplier:30.f
+         upgradeMultiplier:30
                       rank:6];
     
     [self createActiveItem:SHOP_ITEM_ID_ACTIVE_TIER_7
                       name:@"Lvl 7 Treat"
                  imagePath:@"icon_cigarette"
            priceMultiplier:5000000
-         upgradeMultiplier:50.f
+         upgradeMultiplier:100
                       rank:7];
     
     [self createActiveItem:SHOP_ITEM_ID_ACTIVE_TIER_8
                       name:@"Lvl 8 Treat"
                  imagePath:@"icon_cigarette"
            priceMultiplier:60000000
-         upgradeMultiplier:100.f
+         upgradeMultiplier:300
                       rank:8];
     
     [self createActiveItem:SHOP_ITEM_ID_ACTIVE_TIER_9
                       name:@"Lvl 9 Treat"
                  imagePath:@"icon_cigarette"
            priceMultiplier:100000000
-         upgradeMultiplier:500.f
+         upgradeMultiplier:800
                       rank:9];
     
     [self createActiveItem:SHOP_ITEM_ID_ACTIVE_TIER_10
                       name:@"Lvl 10 Treat"
                  imagePath:@"icon_cigarette"
            priceMultiplier:4000000000
-         upgradeMultiplier:2000.f
+         upgradeMultiplier:5000
                       rank:10];
     
     
@@ -182,71 +182,71 @@
     [self createPassiveItem:SHOP_ITEM_ID_PASSIVE_TIER_1
                        name:@"Lvl 1 Food"
                   imagePath:@"icon_cigar"
-            priceMultiplier:100
-          upgradeMultiplier:0.5f
+            priceMultiplier:1000
+          upgradeMultiplier:10
                        rank:1];
     
     [self createPassiveItem:SHOP_ITEM_ID_PASSIVE_TIER_2
                        name:@"Lvl 2 Food"
                   imagePath:@"icon_cigar"
-            priceMultiplier:500
-          upgradeMultiplier:1.f
+            priceMultiplier:5000
+          upgradeMultiplier:20
                        rank:2];
     
     [self createPassiveItem:SHOP_ITEM_ID_PASSIVE_TIER_3
                        name:@"Lvl 3 Food"
                   imagePath:@"icon_cigar"
-            priceMultiplier:3000
-          upgradeMultiplier:2.f
+            priceMultiplier:30000
+          upgradeMultiplier:50
                        rank:3];
     
     [self createPassiveItem:SHOP_ITEM_ID_PASSIVE_TIER_4
                        name:@"Lvl 4 Food"
                   imagePath:@"icon_cigar"
-            priceMultiplier:10000
-          upgradeMultiplier:2.5f
+            priceMultiplier:100000
+          upgradeMultiplier:100
                        rank:4];
     
     [self createPassiveItem:SHOP_ITEM_ID_PASSIVE_TIER_5
                        name:@"Lvl 5 Food"
                   imagePath:@"icon_cigar"
-            priceMultiplier:100000
-          upgradeMultiplier:5.f
+            priceMultiplier:1000000
+          upgradeMultiplier:200
                        rank:5];
     
     [self createPassiveItem:SHOP_ITEM_ID_PASSIVE_TIER_6
                        name:@"Lvl 6 Food"
                   imagePath:@"icon_cigar"
-            priceMultiplier:200000
-          upgradeMultiplier:10.f
+            priceMultiplier:2000000
+          upgradeMultiplier:400
                        rank:6];
     
     [self createPassiveItem:SHOP_ITEM_ID_PASSIVE_TIER_7
                        name:@"Lvl 7 Food"
                   imagePath:@"icon_cigar"
-            priceMultiplier:500000
-          upgradeMultiplier:50.f
+            priceMultiplier:5000000
+          upgradeMultiplier:1000
                        rank:7];
     
     [self createPassiveItem:SHOP_ITEM_ID_PASSIVE_TIER_8
                        name:@"Lvl 8 Food"
                   imagePath:@"icon_cigar"
-            priceMultiplier:1000000
-          upgradeMultiplier:150.0f
+            priceMultiplier:10000000
+          upgradeMultiplier:5000
                        rank:8];
     
     [self createPassiveItem:SHOP_ITEM_ID_PASSIVE_TIER_9
                        name:@"Lvl 9 Food"
                   imagePath:@"icon_cigar"
-            priceMultiplier:15000000
-          upgradeMultiplier:500.f
+            priceMultiplier:150000000
+          upgradeMultiplier:10000
                        rank:9];
     
     [self createPassiveItem:SHOP_ITEM_ID_PASSIVE_TIER_10
                        name:@"Lvl 10 Food"
                   imagePath:@"icon_cigar"
-            priceMultiplier:2000000000
-          upgradeMultiplier:1000.f
+            priceMultiplier:20000000000
+          upgradeMultiplier:50000
                        rank:10];
     
     
@@ -255,70 +255,70 @@
                           name:@"Lvl 1 Piggy"
                      imagePath:@"icon_bucket"
                priceMultiplier:100
-             upgradeMultiplier:2.f
+             upgradeMultiplier:2
                           rank:1];
     
     [self createOfflineCapItem:SHOP_ITEM_ID_OFFLINE_CAP_TIER_2
                           name:@"Lvl 2 Piggy"
                      imagePath:@"icon_bucket"
                priceMultiplier:6000
-             upgradeMultiplier:6.f
+             upgradeMultiplier:6
                           rank:2];
     
     [self createOfflineCapItem:SHOP_ITEM_ID_OFFLINE_CAP_TIER_3
                           name:@"Lvl 3 Piggy"
                      imagePath:@"icon_bucket"
                priceMultiplier:30000
-             upgradeMultiplier:12.f
+             upgradeMultiplier:12
                           rank:3];
     
     [self createOfflineCapItem:SHOP_ITEM_ID_OFFLINE_CAP_TIER_4
                           name:@"Lvl 4 Piggy"
                      imagePath:@"icon_bucket"
                priceMultiplier:60000
-             upgradeMultiplier:20.f
+             upgradeMultiplier:20
                           rank:4];
     
     [self createOfflineCapItem:SHOP_ITEM_ID_OFFLINE_CAP_TIER_5
                           name:@"Lvl 5 Piggy"
                      imagePath:@"icon_bucket"
                priceMultiplier:200000
-             upgradeMultiplier:30.f
+             upgradeMultiplier:30
                           rank:5];
     
     [self createOfflineCapItem:SHOP_ITEM_ID_OFFLINE_CAP_TIER_6
                           name:@"Lvl 6 Piggy"
                      imagePath:@"icon_bucket"
                priceMultiplier:600000
-             upgradeMultiplier:40.f
+             upgradeMultiplier:40
                           rank:6];
     
     [self createOfflineCapItem:SHOP_ITEM_ID_OFFLINE_CAP_TIER_7
                           name:@"Lvl 7 Piggy"
                      imagePath:@"icon_bucket"
                priceMultiplier:7000000
-             upgradeMultiplier:50.f
+             upgradeMultiplier:50
                           rank:7];
     
     [self createOfflineCapItem:SHOP_ITEM_ID_OFFLINE_CAP_TIER_8
                           name:@"Lvl 8 Piggy"
                      imagePath:@"icon_bucket"
                priceMultiplier:80000000
-             upgradeMultiplier:60.f
+             upgradeMultiplier:60
                           rank:8];
     
     [self createOfflineCapItem:SHOP_ITEM_ID_OFFLINE_CAP_TIER_9
                           name:@"Lvl 9 Piggy"
                      imagePath:@"icon_bucket"
                priceMultiplier:120000000
-             upgradeMultiplier:80.f
+             upgradeMultiplier:80
                           rank:9];
     
     [self createOfflineCapItem:SHOP_ITEM_ID_OFFLINE_CAP_TIER_10
                           name:@"Lvl 10 Piggy"
                      imagePath:@"icon_bucket"
                priceMultiplier:2000000000
-             upgradeMultiplier:100.f
+             upgradeMultiplier:100
                           rank:10];
     
     [self createOfflineSpeedItem:SHOP_ITEM_ID_OFFLINE_SPEED_TIER_1
@@ -395,27 +395,27 @@
                    name:@"+100000"
               imagePath:@"icon_iap_funding"
         priceMultiplier:-1
-      upgradeMultiplier:-1.f
+      upgradeMultiplier:-1
                    rank:4];
     
     [self createIAPItem:SHOP_ITEM_ID_IAP_DOUBLE_POINTS
                    name:@"x2!"
               imagePath:@"icon_iap_x2"
         priceMultiplier:-1
-      upgradeMultiplier:-1.f
+      upgradeMultiplier:-1
                    rank:1];
     
     [self createIAPItem:SHOP_ITEM_ID_IAD_QUDRUPLE_POINTS
                    name:@"x4!"
               imagePath:@"icon_iap_x4"
         priceMultiplier:-1
-      upgradeMultiplier:-1.f
+      upgradeMultiplier:-1
                    rank:2];
     [self createIAPItem:SHOP_ITEM_ID_IAD_SUPER_POINTS
                    name:@"SUPER!"
               imagePath:@"icon_iap_super"
         priceMultiplier:-1
-      upgradeMultiplier:-1.f
+      upgradeMultiplier:-1
                    rank:3];
 }
 

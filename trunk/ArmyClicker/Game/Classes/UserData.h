@@ -13,17 +13,17 @@
 
 @interface UserData : NSObject
 
-@property (nonatomic) float currentScore;
+@property (nonatomic) long long currentScore;
 @property (nonatomic) int currentCoin;
 @property (nonatomic, strong) NSMutableDictionary *gameDataDictionary;
 @property (nonatomic) int tapBonus;
 @property (nonatomic) double startTime;
 @property (nonatomic) double bucketFullTime;
 @property (nonatomic) BOOL bucketIsFull;
-@property (nonatomic) int offlinePoints;
-@property (nonatomic) double currentBucketPoints;
+@property (nonatomic) long long offlinePoints;
+@property (nonatomic) long long currentBucketPoints;
 @property (nonatomic) double currentBucketWaitTime;
-@property (nonatomic) double currentMaxTapPerSecond;
+@property (nonatomic) long long currentMaxTapPerSecond;
 @property (nonatomic) BOOL maxSpeedOn;
 
 + (UserData *)instance;
@@ -40,13 +40,13 @@
 - (void)addScoreByTap:(BOOL)bonusOn;
 - (void)addScoreByPassive;
 - (void)updateOfflineTime;
-- (void)addScore:(float)score;
+- (void)addScore:(long long)score;
 - (int)totalPointPerTap:(BOOL)bonusOn;
 - (float)totalPointForPassive;
 - (float)totalPointForOfflineCap;
 - (float)realMultiplier:(ShopItem *)shopItem;
 - (void)addOfflineScore;
 - (void)renewBucketFullTime;
-- (void)saveUserCurrentMaxTap:(double)maxTap;
+- (void)saveUserCurrentMaxTap:(long long)maxTap;
 
 @end

@@ -12,7 +12,9 @@ typedef enum {
     UnitViewStateAnimateIdle,
     UnitViewStateIdle,
     UnitViewStateAnimateRunning,
-    UnitViewStateRunning
+    UnitViewStateRunning,
+    UnitViewStateAnimateAttacking,
+    UnitViewStateAttacking
 } UnitViewState;
 
 @interface UnitBaseView : XibView
@@ -20,6 +22,8 @@ typedef enum {
 @property (strong, nonatomic) IBOutlet UIImageView *characterImageView;
 @property (nonatomic) UnitViewState state;
 @property (nonatomic, readonly) CFTimeInterval idleDuration;
+@property (nonatomic) CFTimeInterval idleTime;
+@property (nonatomic, readonly) int speed;
 
 - (void)step;
 - (void)generateTarget;

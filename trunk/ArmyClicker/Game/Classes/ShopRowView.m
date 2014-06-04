@@ -11,6 +11,7 @@
 #import "ShopItem.h"
 #import "GameConstants.h"
 #import "Utils.h"
+#import "AnimatedLabel.h"
 
 @implementation ShopRowView
 
@@ -46,14 +47,19 @@
     } else {
         if (!self.itemMaxLevel && [UserData instance].currentScore >= self.cost) {
             [UserData instance].currentScore = [UserData instance].currentScore - self.cost;
+            [[UserData instance] saveUserCoin];
             [[UserData instance] levelUpPower:self.item];
-            [[NSNotificationCenter defaultCenter]postNotificationName:SHOP_BUTTON_PRESSED_NOTIFICATION object:nil];
+            [[NSNotificationCenter defaultCenter]postNotificationName:SHOP_BUTTON_PRESSED_NOTIFICATION object:self];
         }
     }
 }
 
+
 - (void)setUpPriceTag {
     if (self.item.type == POWER_UP_TYPE_IAP) {
+        self.levelLabel.hidden = YES;
+        self.levelImage.hidden = YES;
+        [self.costButton setBackgroundImage:[UIImage imageNamed:@"btn_gold_up"] forState:UIControlStateNormal];
          self.iapType = [self lookUpTableForIAPWithRank];
         [self.costButton setTitle:[[CoinIAPHelper sharedInstance] productForType:self.iapType].priceAsString forState:UIControlStateNormal];
         self.cost = 0;
@@ -61,11 +67,15 @@
                                        withColor:[self.item tierColor:self.item.rank]
                                        blendMode:kCGBlendModeMultiply];
     } else {
+        self.levelLabel.hidden = NO;
+        self.levelImage.hidden = NO;
+        [self.costButton setBackgroundImage:[UIImage imageNamed:@"btn_green_up"] forState:UIControlStateNormal];
         self.cost = [[ShopManager instance] priceForItemId:self.item.itemId type:self.item.type];
         self.imageView.image = [Utils imageNamed:[UIImage imageNamed:self.item.imagePath]
                                        withColor:[self.item tierColor:self.item.rank]
                                        blendMode:kCGBlendModeMultiply];
-        [self.costButton setTitle:[NSString stringWithFormat:@"$%lld", self.cost] forState:UIControlStateNormal];
+        NSString *costLabel = [Utils formatLongLongWithComma:self.cost];
+        [self.costButton setTitle:costLabel forState:UIControlStateNormal];
     }
 }
 
@@ -75,7 +85,7 @@
             self.product = [[CoinIAPHelper sharedInstance] productForType:IAPTypeFund];
             return IAPTypeFund;
             break;
-        case 3:
+        case 1:
             self.product = [[CoinIAPHelper sharedInstance] productForType:IAPTypeDouble];
             return IAPTypeDouble;
             break;
@@ -83,7 +93,7 @@
             self.product = [[CoinIAPHelper sharedInstance] productForType:IAPTypeQuadruple];
             return IAPTypeQuadruple;
             break;
-        case 5:
+        case 3:
             self.product = [[CoinIAPHelper sharedInstance] productForType:IAPTypeSuper];
             return IAPTypeSuper;
             break;

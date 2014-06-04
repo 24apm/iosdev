@@ -70,7 +70,7 @@ static int promoDialogInLeaderBoardCount = 0;
     NSString *format;
     if ([[GameManager instance].gameMode isEqualToString:GAME_MODE_SINGLE]) {
         format = @"%.3F";
-         self.currentScore.text = [NSString stringWithFormat:@"Current: %.3F", [UserData instance].currentScore];
+         self.currentScore.text = [NSString stringWithFormat:@"Current: %.lld", [UserData instance].currentScore];
     } else {
         format = @"%.0F";
          self.currentScore.text = [Utils formatWithComma:[UserData instance].currentScore];

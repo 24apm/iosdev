@@ -90,10 +90,10 @@
     
 }
 
-- (void)animateLabel:(int)value {
+- (void)animateLabel:(long long)value {
     AnimatedLabel *label = [[AnimatedLabel alloc] init];
     [self.bucketImage addSubview:label];
-    label.label.text = [NSString stringWithFormat:@"+%d", value];
+    label.label.text = [NSString stringWithFormat:@"+%lld", value];
     label.center = CGPointMake(self.bucketImage.bounds.size.width / 2, self.bucketImage.bounds.size.height / 2);
     [label animate];
 }

@@ -173,7 +173,7 @@ static int promoDialogInLeaderBoardCount = 0;
     UnitView *unit = notification.object;
     
     CGPoint center = [unit.superview convertPoint:unit.center toView:self.characterView.superview];
-    [self.characterView reset];
+    self.characterView.state = UnitViewStateAnimateAttacking;
     
     [UIView animateWithDuration:0.1f animations:^ {
         self.characterView.center = center;

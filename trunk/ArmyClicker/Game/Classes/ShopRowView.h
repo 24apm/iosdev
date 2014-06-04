@@ -16,6 +16,7 @@
 
 @interface ShopRowView : XibView
 
+@property (strong, nonatomic) IBOutlet UIImageView *levelImage;
 @property (strong, nonatomic) IBOutlet UILabel *label;
 @property (strong, nonatomic) IBOutlet UILabel *costLabel;
 @property (strong, nonatomic) IBOutlet UILabel *descriptionLabel;

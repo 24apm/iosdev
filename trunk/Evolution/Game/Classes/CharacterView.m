@@ -10,6 +10,34 @@
 
 @implementation CharacterView
 
+- (void)step {
+    [super step];
+    switch (self.state) {
+        case UnitViewStateAnimateAttacking:   // x1
+            [self animateAttacking];
+            break;
+        case UnitViewStateAttacking:          // x999
+            [self doAttack];
+            break;
+        default:
+            break;
+    }
+}
+
+- (void)animateAttacking {
+    [self.characterImageView stopAnimating];
+    self.characterImageView.image = [UIImage imageNamed:@"RushyKnightIcon120.png"];
+    self.idleTime = CACurrentMediaTime() + 1.0f;
+    self.state = UnitViewStateAttacking;
+}
+
+- (void)doAttack {
+    if (CACurrentMediaTime() > self.idleTime) {
+        self.state = UnitViewStateAnimateIdle;
+    }
+}
+
+
 - (NSArray *)idleImages {
     return
     @[[UIImage imageNamed:@"clicker_character1.png"],
