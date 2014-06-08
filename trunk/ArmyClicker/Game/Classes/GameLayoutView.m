@@ -25,9 +25,9 @@
 #import "BonusButton.h"
 #import "ErrorDialogView.h"
 
-#define TIME_BONUS_INTERVAL 3.f
+#define TIME_BONUS_INTERVAL 300.f
 #define TIME_BONUS_ACTIVED_LIMIT 5.f
-#define MAX_TAP_FOR_BONUS 5.f
+#define MAX_TAP_FOR_BONUS 500.f
 #define DEGREES_TO_RADIANS(x) (x * M_PI/180.0)
 
 @interface GameLayoutView()
