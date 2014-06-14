@@ -1,0 +1,70 @@
+//
+//  BucketView.m
+//  Clicker
+//
+//  Created by MacCoder on 5/17/14.
+//  Copyright (c) 2014 MacCoder. All rights reserved.
+//
+
+#import "BucketView.h"
+#import "PromoDialogView.h"
+#import "iRate.h"
+#import "TrackUtils.h"
+#import "GameCenterHelper.h"
+
+#define SHOW_LEADERBOARD_NOTIFICATION @"SHOW_LEADERBOARD_NOTIFICATION"
+
+@interface BucketView ()
+@property (nonatomic) NSTimer *timer;
+@end
+
+@implementation BucketView
+
+- (id)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        // Initialization code
+    }
+    return self;
+}
+
+- (IBAction)rateButtonPressed:(UIButton *)sender {
+    [TrackUtils trackAction:@"iRate" label:@"ratePressed"];
+    [[iRate sharedInstance] promptIfNetworkAvailable];
+}
+- (IBAction)leaderBoard:(UIButton *)sender {
+    [GameCenterHelper instance].currentLeaderBoard = kLeaderboardBestScoreID;
+    [[NSNotificationCenter defaultCenter] postNotificationName:SHOW_LEADERBOARD_NOTIFICATION object:self];
+}
+
+- (void)show {
+    [super show];
+    [self initialize];
+}
+
+- (void)initialize {
+
+}
+
+
+
+
+- (void)dismissed:(id)sender {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [super dismissed:sender];
+}
+
+- (IBAction)closeButtonPressed:(id)sender {
+    [self dismissed:self];
+}
+
+- (void)animateLabel:(long long)value {
+    AnimatedLabel *label = [[AnimatedLabel alloc] init];
+    [self.bucketImage addSubview:label];
+    label.label.text = [NSString stringWithFormat:@"+%lld", value];
+    label.center = CGPointMake(self.bucketImage.bounds.size.width / 2, self.bucketImage.bounds.size.height / 2);
+    [label animate];
+}
+
+@end
