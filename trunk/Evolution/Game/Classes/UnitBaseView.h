@@ -14,7 +14,8 @@ typedef enum {
     UnitViewStateAnimateRunning,
     UnitViewStateRunning,
     UnitViewStateAnimateAttacking,
-    UnitViewStateAttacking
+    UnitViewStateAttacking,
+    UnitViewStateDeath
 } UnitViewState;
 
 @interface UnitBaseView : XibView

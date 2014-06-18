@@ -11,12 +11,37 @@
 
 #define CURRENT_TIME [[NSDate date] timeIntervalSince1970]
 
+typedef enum {
+    BackgroundTypeFlying,
+    BackgroundTypeFloor,
+    BackgroundTypeFloat,
+    BackgroundTypeTree,
+    BackgroundTypeSky,
+    BackgroundTypeCloud,
+    BackgroundTypeMountain,
+    BackgroundTypeAtmosphere,
+    BackgroundTypeSpace,
+    BackgroundTypeMoon,
+    BackgroundTypeVenus,
+    BackgroundTypeComet,
+    BackgroundTypeMercury,
+    BackgroundTypeSun,
+    BackgroundTypeMars,
+    BackgroundTypeJupiter,
+    BackgroundTypeSaturn,
+    BackgroundTypeUranus,
+    BackgroundTypeNepture,
+    BackgroundTypePluto,
+    BackgroundTypeSolar,
+    BackgroundTypeGalaxy
+} BackgroundType;
+
 @interface UserData : NSObject
 
 @property (nonatomic) long long currentScore;
 @property (nonatomic) int currentCoin;
 @property (nonatomic, strong) NSMutableDictionary *gameDataDictionary;
-@property (nonatomic) int bustCost;
+@property (nonatomic) int burstCost;
 @property (nonatomic) int staminaCost;
 @property (nonatomic) int flappyCost;
 @property (nonatomic) int tapBonus;
@@ -26,6 +51,10 @@
 @property (nonatomic) BOOL maxSpeedOn;
 @property (nonatomic) long long currentMaxAir;
 @property (nonatomic) long long currentAir;
+@property (nonatomic) long long currentHeight;
+@property (nonatomic) long long airResistence;
+@property (nonatomic) BackgroundType currentBackgroundTier;
+@property (nonatomic) int levelBonus;
 
 + (UserData *)instance;
 - (void)submitScore:(int)score mode:(NSString *)mode;
@@ -38,10 +67,12 @@
 - (void)saveGameData;
 - (void)retrieveUserCoin;
 - (void)levelUpPower:(ShopItem *)item;
-- (void)addScoreByTap:(BOOL)bonusOn;
-- (void)addScore:(long long)score;
+- (long long)addScore:(BOOL)bonusOn;
 - (int)totalPointPerTap:(BOOL)bonusOn;
 - (float)realMultiplier:(ShopItem *)shopItem;
 - (void)saveUserCurrentMaxTap:(long long)maxTap;
-
+- (void)addCurrentHeight;
+- (void)fellFromCurrentHeight;
+- (void)heightTierData;
+    
 @end

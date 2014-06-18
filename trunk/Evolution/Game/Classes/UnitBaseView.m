@@ -123,6 +123,15 @@
     float targetRandX = arc4random() % (int)self.superview.width;
     float targetRandY = arc4random() % (int)self.superview.height;
     self.targetPosition = CGPointMake(targetRandX, targetRandY);
+    [self updateOrientation];
+}
+
+- (void)updateOrientation {
+    if (self.targetPosition.x > self.center.x) {
+        self.transform = CGAffineTransformMakeScale(1.f, 1.f);
+    } else {
+        self.transform = CGAffineTransformMakeScale(-1.f, 1.f);
+    }
 }
 
 - (IBAction)buttonPressed:(id)sender {

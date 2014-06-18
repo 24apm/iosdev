@@ -16,6 +16,7 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *tapPerSecondLabel;
 @property (strong, nonatomic) IBOutlet UILabel *currentScoreLabel;
+@property (strong, nonatomic) IBOutlet UILabel *levelLabel;
 @property (strong, nonatomic) IBOutlet UIButton *endGameButton;
 @property (strong, nonatomic) IBOutlet UIImageView *endGameImg;
 @property (strong, nonatomic) IBOutlet UIView *shopBarView;

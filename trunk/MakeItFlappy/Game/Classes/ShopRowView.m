@@ -12,6 +12,7 @@
 #import "GameConstants.h"
 #import "Utils.h"
 #import "AnimatedLabel.h"
+#import "UpgradeView.h"
 
 @implementation ShopRowView
 
@@ -45,11 +46,8 @@
         [[NSNotificationCenter defaultCenter]postNotificationName:IAP_ITEM_PRESSED_NOTIFICATION object:self];
         
     } else {
-        if (!self.itemMaxLevel && [UserData instance].currentScore >= self.cost) {
-            [UserData instance].currentScore = [UserData instance].currentScore - self.cost;
-            [[UserData instance] saveUserCoin];
-            [[UserData instance] levelUpPower:self.item];
-            [[NSNotificationCenter defaultCenter]postNotificationName:SHOP_BUTTON_PRESSED_NOTIFICATION object:self];
+        if (!self.itemMaxLevel) {
+            [[[UpgradeView alloc]init] show:self.item];
         }
     }
 }

@@ -12,4 +12,6 @@
 
 @interface UnitView : UnitBaseView
 
+@property (nonatomic) int value;
+
 @end

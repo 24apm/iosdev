@@ -35,7 +35,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shiny_background.png" id="Ymk-aO-bxr">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="Ymk-aO-bxr">
                             <rect key="frame" x="-140" y="-60" width="600" height="600"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         </imageView>
@@ -194,6 +194,5 @@
         <image name="icon_iap.png" width="80" height="80"/>
         <image name="icon_offline.png" width="80" height="80"/>
         <image name="icon_tap.png" width="80" height="80"/>
-        <image name="shiny_background.png" width="1024" height="1024"/>
     </resources>
 </document>

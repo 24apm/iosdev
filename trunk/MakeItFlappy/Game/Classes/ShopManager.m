@@ -75,14 +75,14 @@
     [self createActiveItem:SHOP_ITEM_ID_UPGRADE_TIER_2
                       name:@"Lvl+ Flappying"
                  imagePath:@"icon_cigarette"
-           priceMultiplier:5000
+           priceMultiplier:500
          upgradeMultiplier:2
                       rank:2];
     
     [self createActiveItem:SHOP_ITEM_ID_UPGRADE_TIER_3
                       name:@"Lvl+ Air"
                  imagePath:@"icon_weed"
-           priceMultiplier:20000
+           priceMultiplier:200
          upgradeMultiplier:2
                       rank:3];
 

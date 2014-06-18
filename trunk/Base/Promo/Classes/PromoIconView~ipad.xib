@@ -34,7 +34,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </view>
                 <view contentMode="scaleToFill" id="B9X-6s-r2C" userLabel="frontView">
-                    <rect key="frame" x="0.0" y="0.0" width="192" height="235"/>
+                    <rect key="frame" x="0.0" y="0.0" width="192" height="234.99999999999997"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="078-N1-sHP">

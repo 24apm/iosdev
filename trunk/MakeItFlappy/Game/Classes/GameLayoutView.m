@@ -26,14 +26,15 @@
 #import "ErrorDialogView.h"
 #import "GameLoopTimer.h"
 
-#define TIME_BONUS_INTERVAL 30.f
+#define TIME_BONUS_INTERVAL 600.f
 #define TIME_BONUS_ACTIVED_LIMIT 5.f
 #define MAX_TAP_FOR_BONUS 500.f
 #define DEGREES_TO_RADIANS(x) (x * M_PI/180.0)
 
 typedef enum {
     GameModeFlying,
-    GameModeFlappy
+    GameModeFlappy,
+    GameModeAnimating
 } GameMode;
 
 @interface GameLayoutView()
@@ -48,6 +49,7 @@ typedef enum {
 @property (strong, nonatomic) IBOutlet ProgressBarComponent *progressBarTaps;
 @property (strong, nonatomic) IBOutlet ProgressBarComponent *airBar;
 
+@property (nonatomic) CGPoint characterStartPoint;
 @property (nonatomic) double startTime;
 @property (nonatomic, strong) NSTimer *timer;
 @property (nonatomic, strong) NSTimer *timerForBonus;
@@ -68,7 +70,6 @@ typedef enum {
 @property (nonatomic) BOOL doDecay;
 @property (nonatomic) double previousTime;
 @property (nonatomic) double delay;
-@property (nonatomic) double tempPassiveLabel;
 @property (nonatomic) int ticks;
 @property (nonatomic, strong) BucketView* bucketView;
 @property (nonatomic) double displayAverageTPS;
@@ -79,6 +80,10 @@ typedef enum {
 @property (nonatomic) long double airRecovery;
 @property (nonatomic) long double airResistence;
 @property (nonatomic) float tempForAnimatingAirBar;
+@property (nonatomic) BOOL onGround;
+@property (nonatomic) PowerUpType currentTableType;
+@property (nonatomic) BOOL tapFlappy;
+@property (nonatomic) double previousTimeForAir;
 
 @property (nonatomic, strong) NSMutableArray *bonusArray;
 @property (nonatomic) BOOL bonusTapOn;
@@ -87,6 +92,7 @@ typedef enum {
 @property (nonatomic) double maxTapScore;
 @property (nonatomic) BOOL flyingModeOn;
 @property (nonatomic) GameMode currentMode;
+@property (nonatomic) BackgroundType currentBackground;
 
 @end
 
@@ -137,7 +143,12 @@ static int promoDialogInLeaderBoardCount = 0;
     self.shopBarView.backgroundColor = [UIColor colorWithRed:37.f/255.f green:128.f/255.f blue:60.f/255.f alpha:alpha];
 }
 
+- (void)refreshTable {
+    [self.shopTableView setupWithType:self.currentTableType];
+}
+
 - (void)showShopTableView:(UIButton *)button powerType:(PowerUpType)type {
+    self.currentTableType = type;
     self.previousSelectedButton.enabled = YES;
     self.previousSelectedButton = button;
     button.enabled = NO;
@@ -164,7 +175,8 @@ static int promoDialogInLeaderBoardCount = 0;
         self.backgroundView.layer.cornerRadius = 20.f * IPAD_SCALE;
         self.backgroundView.clipsToBounds = YES;
         self.flyingModeOn = NO;
-        self.backgroundColorView.image = [self colorForTier:1];
+        self.onGround = YES;
+        self.backgroundColorView.image = [self backgroundImageForTier:BackgroundTypeFloor];
         self.displayView.currentExpLabel.layer.cornerRadius = 20.f * IPAD_SCALE;
         self.distanceUIView.currentDistanceLabel.layer.cornerRadius = 20.f * IPAD_SCALE;
         self.tapTotal = [NSMutableArray array];
@@ -186,21 +198,22 @@ static int promoDialogInLeaderBoardCount = 0;
         [self.airBar fillBar:1.f];
         [self.progressBar fillBar:0.f];
         self.tapsPerSecondPoints = 0;
-        [UserData instance].currentMaxAir = 10;
+        self.previousTimeForAir = 0;
         self.currentMaxAir = [UserData instance].currentMaxAir;
         self.currentAir = self.currentMaxAir;
         self.airRecovery = 1;
         self.tempForAnimatingAirBar = 1.f;
+        self.timeBonus = 0;
         
         self.iapOverlay.hidden = NO;
         [self.progressBarTaps fillBar:0.f];
         self.shinyBackground.hidden = YES;
-        self.tempPassiveLabel = [UserData instance].currentScore;
         if (!self.shopTableView) {
             [self createShopView];
         }
         self.currentMode = GameModeFlappy;
         [self setupGestureHolding];
+        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(refreshTable) name:UPGRADE_ATTEMPT_NOTIFICATION object:nil];
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(shopButtonPressed:) name:SHOP_BUTTON_PRESSED_NOTIFICATION object:nil];
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(shopTableViewDismissed) name:SHOP_TABLE_VIEW_NOTIFICATION object:nil];
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(animateLabelForBonus:) name:BONUS_BUTTON_TAPPED_NOTIFICATION object:nil];
@@ -219,30 +232,31 @@ static int promoDialogInLeaderBoardCount = 0;
 - (void)drawStep {
     
     if (self.currentMode == GameModeFlappy) {
-        [self flappyUpdate];
-    } else {
+        if (!self.onGround) {
+            [self flappyUpdate];
+        } else {
+            [self onGroundUpdate];
+        }
+        
+    } else if (self.currentMode == GameModeFlying){
         [self flyingUpdate];
     }
     
 }
 
+- (void)onGroundUpdate {
+    self.shopBarView.hidden = NO;
+    [self.particleView showSpeedLines:NO];
+    self.characterImageView.image = [UIImage imageNamed:[self characterImageTier:1]];
+}
+
 - (void)shopButtonPressed:(NSNotification*)notification {
-    ShopRowView *item = notification.object;
-    [self animateLabelForShopRow:item];
     self.shopBarView.alpha = 1.f;
     [self.shopTableView refresh];
     [self updateTPS];
 }
 
-- (void)animateLabelForShopRow:(ShopRowView*)item {
-    AnimatedLabel *label = [[AnimatedLabel alloc] init];
-    CGPoint point = [item.superview convertPoint:item.center toView:self];
-    [self addSubview:label];
-    label.label.textColor = [UIColor colorWithRed:1.f green:1.f blue:0.f alpha:1.f];
-    label.label.text = [NSString stringWithFormat:@"-%lld", item.cost];
-    label.center = point;
-    [label animate];
-}
+
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
@@ -260,22 +274,29 @@ static int promoDialogInLeaderBoardCount = 0;
     self.characterImageView.transform = CGAffineTransformMakeScale(1.02f, 1.02f);
 }
 
-
+- (void)animateFlappy {
+    if (self.tapFlappy) {
+        self.characterImageView.image = [UIImage imageNamed:[self characterImageTier:3]];
+    } else {
+        self.characterImageView.image = [UIImage imageNamed:[self characterImageTier:2]];
+    }
+    self.tapFlappy = !self.tapFlappy;
+}
 - (IBAction)tapPressed:(id)sender {
-    if (self.currentMode == GameModeFlappy) {
+    if (!self.onGround && self.currentMode == GameModeFlappy) {
+        
+        [self animateFlappy];
         
         if ([self tapTotalAverage:self.tapTotal] <= 0) {
             [self.tapTotal removeAllObjects];
         }
-        long long currentTap = ([[UserData instance] totalPointPerTap:self.timeBonusOn] * ((float)self.tapBonusLevel));
-        [[UserData instance]addScore:currentTap];
-        [self updateTPSWithTap:currentTap];
+        long long perTap =[[UserData instance]addScore:self.timeBonusOn];
+        [self updateTPSWithTap:perTap];
         
-        self.tapBonus++;
         self.tapsPerSecond++;
         
-        [self animateLabel:currentTap];
-        [[SoundManager instance]play:SOUND_EFFECT_GUINEA];
+        [self animateLabel:perTap];
+        //[[SoundManager instance]play:SOUND_EFFECT_GUINEA];
         self.characterImageView.transform = CGAffineTransformIdentity;
         
         [self recoverAir];
@@ -291,6 +312,7 @@ static int promoDialogInLeaderBoardCount = 0;
     [self.airBar fillBar:percentage];
     [self airBarStatus:percentage];
 }
+
 - (void)setupGestureHolding {
     UILongPressGestureRecognizer *holdGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(holding:)];
     holdGestureRecognizer.delegate = self;
@@ -302,17 +324,27 @@ static int promoDialogInLeaderBoardCount = 0;
     self.currentMode = GameModeFlying;
     self.displayView.hidden = YES;
     self.distanceUIView.hidden = NO;
-    self.backgroundColorView.image = [self colorForTier:6];
+    [self.particleView showSpeedLines:YES];
+    self.backgroundColorView.image = [self backgroundImageForTier:BackgroundTypeFlying];
     self.lastColorIndex = 6;
+    self.characterImageView.image = [UIImage imageNamed:[self characterImageTier:6]];
+    if (self.tapTotal.count > 1) {
+        [self.tapTotal removeObjectAtIndex:0];
+        [self.tapTotalPoints removeObjectAtIndex:0];
+    }
+    
     
 }
 
 - (void)startFlappyMode {
+    [self.particleView showSpeedLines:NO];
+    self.shopBarView.hidden = YES;
     self.currentMode = GameModeFlappy;
     self.displayView.hidden = NO;
     self.distanceUIView.hidden = YES;
-    self.backgroundColorView.image = [self colorForTier:1];
+    self.backgroundColorView.image = [self backgroundImageForTier:self.currentBackground];
     self.lastColorIndex = 1;
+    self.characterImageView.image = [UIImage imageNamed:[self characterImageTier:2]];
 }
 
 - (void)holding:(UIPanGestureRecognizer *)sender {
@@ -400,25 +432,25 @@ static int promoDialogInLeaderBoardCount = 0;
     return temp;
 }
 
-- (UIImage *)colorForTier:(int)tier {
+- (UIImage *)backgroundImageForTier:(BackgroundType)tier {
     switch (tier) {
-        case 1:
+        case BackgroundTypeFlying:
+            return [UIImage imageNamed:@"blackbackground"];
+            break;
+        case BackgroundTypeFloor:
             return [UIImage imageNamed:@"background_tier1"];
             break;
-        case 2:
+        case BackgroundTypeFloat:
             return [UIImage imageNamed:@"background_tier2"];
             break;
-        case 3:
+        case BackgroundTypeTree:
             return [UIImage imageNamed:@"background_tier3"];
             break;
-        case 4:
+        case BackgroundTypeSky:
             return [UIImage imageNamed:@"background_tier4"];
             break;
-        case 5:
+        case BackgroundTypeCloud:
             return [UIImage imageNamed:@"background_tier5"];
-            break;
-        case 6:
-            return [UIImage imageNamed:@"background_tier6"];
             break;
         default:
             return nil;
@@ -428,8 +460,6 @@ static int promoDialogInLeaderBoardCount = 0;
 
 - (void)flappyUpdate {
     double time = CURRENT_TIME;
-    self.tempPassiveLabel = [[UserData instance] currentScore];
-    self.tempPassiveLabel /= UPDATE_TIME_PER_TICK;
     double gapTime = time - self.previousTime;
     if (gapTime >= 1) {
         [[UserData instance] saveUserCoin];
@@ -460,7 +490,7 @@ static int promoDialogInLeaderBoardCount = 0;
             [self.tapTotalPoints removeObjectAtIndex:0];
         }
         
-        [self levelOfTapBonus];
+        //[self levelOfTapBonus];
         
         if ([self tapTotalAverage:self.tapTotal] <= 0) {
             [self.tapTotal removeAllObjects];
@@ -475,23 +505,24 @@ static int promoDialogInLeaderBoardCount = 0;
     
     [self updateTapBar];
     
-    if (self.tapBonus >= MAX_TAP_FOR_BONUS) {
-        [self tapBonusActivate];
-        [self.progressBarTaps fillBar:0.f];
-    }
+    //    if (self.tapBonus >= MAX_TAP_FOR_BONUS) {
+    //        [self tapBonusActivate];
+    //        [self.progressBarTaps fillBar:0.f];
+    //    }
     
-    if (self.bonusTapOn) {
-        [[SoundManager instance]play:SOUND_EFFECT_BLING];
-        [self generateBonus];
-        self.bonusTapOn = NO;
-    }
+    //    if (self.bonusTapOn) {
+    //        [[SoundManager instance]play:SOUND_EFFECT_BLING];
+    //        [self generateBonus];
+    //        self.bonusTapOn = NO;
+    //    }
     
     if (!self.timeBonusOn) {
-        double percentage = (time - self.timeBonus) / TIME_BONUS_INTERVAL;
+        self.timeBonus++;
+        double percentage = self.timeBonus / TIME_BONUS_INTERVAL;
         [self.progressBar fillBar:percentage];
     }
     
-    if (!self.timeBonusOn && time - self.timeBonus > TIME_BONUS_INTERVAL) {
+    if (!self.timeBonusOn && self.timeBonus >= TIME_BONUS_INTERVAL) {
         [self timeBonusActivate];
         [[SoundManager instance] play:SOUND_EFFECT_HALLELUJAH];
         
@@ -504,28 +535,37 @@ static int promoDialogInLeaderBoardCount = 0;
     if (self.timeBonusOn && time - self.timeBonusEnd > 5) {
         [self timeBonusDeactivate];
         self.shinyBackground.hidden = YES;
-        [self showPromoDialog];
+        //[self showPromoDialog];
         [self.progressBar fillBar:0.f];
     }
+    [self decreaseCurrentAir];
 }
 
 - (void)flyingUpdate {
-
+    self.onGround = NO;
+    [self increaseHeight];
     [self decreaseCurrentAir];
-    [self animatingAirbar];
-    [self checkIfTired];
     
+}
+
+- (void)increaseHeight {
+    [[UserData instance] addCurrentHeight];
+    self.distanceUIView.currentDistanceLabel.text = [Utils formatLongLongWithComma:[UserData instance].currentHeight];
+    [[UserData instance] heightTierData];
+    self.airResistence = [UserData instance].airResistence;
+    self.currentBackground = [UserData instance].currentBackgroundTier;
 }
 
 - (void)decreaseCurrentAir {
     double time = CURRENT_TIME;
-    double gapTime = time - self.previousTime;
-    self.previousTime = time;
-    self.airResistence = 1;
+    double gapTime = time - self.previousTimeForAir;
+    self.previousTimeForAir = time;
     self.currentAir -= gapTime * self.airResistence;
+    [self animatingAirbar];
+    [self checkIfTired];
 }
 - (void)animatingAirbar {
-
+    
     float percentage = self.currentAir / self.currentMaxAir;
     [self.airBar fillBar:percentage];
     
@@ -534,8 +574,87 @@ static int promoDialogInLeaderBoardCount = 0;
 
 - (void)checkIfTired {
     if (self.currentAir <= 0) {
-        self.currentMode = GameModeFlappy;
+        self.characterImageView.image = [UIImage imageNamed:[self characterImageTier:4]];
+        self.currentMode = GameModeAnimating;
+        [self animateFalling];
+        
     }
+}
+
+
+- (void)animateFalling {
+    self.characterStartPoint = self.characterImageView.center;
+    self.characterImageView.image = [UIImage imageNamed:[self characterImageTier:4]];
+    CGPoint toPoint;
+    toPoint.x = self.width/2;
+    toPoint.y = self.height*2;
+    
+    CABasicAnimation *position = [CABasicAnimation animationWithKeyPath:@"position"];
+    position.toValue = [NSNumber valueWithCGPoint:toPoint];
+    
+    CABasicAnimation* rotationAnimation;
+    rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
+    rotationAnimation.fromValue = [NSNumber numberWithFloat:0.0f];
+    rotationAnimation.toValue = [NSNumber numberWithFloat: M_PI * 1.0f];
+    rotationAnimation.duration = 0.4f;
+    rotationAnimation.cumulative = YES;
+    rotationAnimation.repeatCount = HUGE_VAL;
+    
+    CAAnimationGroup *groupAnimation = [CAAnimationGroup animation];
+    [groupAnimation setAnimations:[NSArray arrayWithObjects:position, rotationAnimation, nil]];
+    [groupAnimation setDuration:0.6f];
+    [groupAnimation setRemovedOnCompletion:NO];
+    [groupAnimation setFillMode:kCAFillModeForwards];
+    [self.characterImageView.layer addAnimation:groupAnimation forKey:@"animateIn"];
+    [self performSelector:@selector(finishFallAnimiation) withObject:nil afterDelay:groupAnimation.duration + 0.1f];
+    
+}
+
+
+- (void)animateEntering {
+    
+    self.characterImageView.image = [UIImage imageNamed:[self characterImageTier:1]];
+    
+    CGPoint fromPoint;
+    fromPoint.x = self.characterStartPoint.x;
+    fromPoint.y = -self.characterStartPoint.y;
+    
+    CGPoint toPoint;
+    toPoint.x = self.characterStartPoint.x;
+    toPoint.y = self.characterStartPoint.y;
+    
+    
+    CABasicAnimation *position = [CABasicAnimation animationWithKeyPath:@"position"];
+    position.fromValue = [NSNumber valueWithCGPoint:fromPoint];
+    position.toValue = [NSNumber valueWithCGPoint:toPoint];
+    
+    CAAnimationGroup *groupAnimation = [CAAnimationGroup animation];
+    [groupAnimation setAnimations:[NSArray arrayWithObjects:position, nil]];
+    [groupAnimation setDuration:0.6f];
+    [groupAnimation setRemovedOnCompletion:NO];
+    [groupAnimation setFillMode:kCAFillModeForwards];
+    [self.characterImageView.layer addAnimation:groupAnimation forKey:@"animateIn"];
+    [self performSelector:@selector(finishEnterAnimiation) withObject:nil afterDelay:groupAnimation.duration + 0.1f];
+    
+}
+
+- (void)finishFallAnimiation {
+    [self animateEntering];
+}
+
+
+- (void)finishEnterAnimiation {
+    [self restartGame];
+}
+
+- (void)restartGame {
+    self.onGround = YES;
+    self.currentMode = GameModeFlappy;
+    [[UserData instance] fellFromCurrentHeight];
+    self.currentAir = self.currentMaxAir;
+    [self.airBar fillBar:1.f];
+    [self airBarStatus:1.f];
+    self.currentBackground = BackgroundTypeFloor;
 }
 
 - (void)airBarStatus:(float)percentage {
@@ -596,7 +715,7 @@ static int promoDialogInLeaderBoardCount = 0;
     
     if (self.lastColorIndex != self.tapBonusLevel) {
         self.lastColorIndex = self.tapBonusLevel;
-        UIImage *bgColorImage = [self colorForTier:self.lastColorIndex];
+        UIImage *bgColorImage = [self backgroundImageForTier:self.lastColorIndex];
         [UIView animateWithDuration:0.5f
                          animations:^ {
                              self.backgroundColorView.image = bgColorImage;
@@ -737,9 +856,10 @@ static int promoDialogInLeaderBoardCount = 0;
 }
 
 - (void)timeBonusDeactivate {
-    double time = CURRENT_TIME;
-    self.timeBonus = time;
-    [[UserData instance] saveUserStartTime:time];
+    //double time = CURRENT_TIME;
+    //self.timeBonus = time;
+    //[[UserData instance] saveUserStartTime:time];
+    self.timeBonus = 0;
     self.timeBonusOn = NO;
 }
 

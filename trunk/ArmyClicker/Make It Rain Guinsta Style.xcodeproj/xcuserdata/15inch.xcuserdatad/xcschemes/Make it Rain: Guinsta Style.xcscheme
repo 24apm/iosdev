@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D0E30E8018A376E300FFD3CE"
-               BuildableName = "Clicker.app"
+               BuildableName = "Make It Rain Guinsta Style.app"
                BlueprintName = "Make It Rain Guinsta Style"
                ReferencedContainer = "container:Make It Rain Guinsta Style.xcodeproj">
             </BuildableReference>
@@ -33,7 +33,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D0E30EA118A376E300FFD3CE"
-               BuildableName = "ClickerTests.xctest"
+               BuildableName = "Make It Rain Guinsta StyleTests.xctest"
                BlueprintName = "Make It Rain Guinsta StyleTests"
                ReferencedContainer = "container:Make It Rain Guinsta Style.xcodeproj">
             </BuildableReference>
@@ -43,7 +43,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D0E30E8018A376E300FFD3CE"
-            BuildableName = "Clicker.app"
+            BuildableName = "Make It Rain Guinsta Style.app"
             BlueprintName = "Make It Rain Guinsta Style"
             ReferencedContainer = "container:Make It Rain Guinsta Style.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D0E30E8018A376E300FFD3CE"
-            BuildableName = "Clicker.app"
+            BuildableName = "Make It Rain Guinsta Style.app"
             BlueprintName = "Make It Rain Guinsta Style"
             ReferencedContainer = "container:Make It Rain Guinsta Style.xcodeproj">
          </BuildableReference>
@@ -80,7 +80,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D0E30E8018A376E300FFD3CE"
-            BuildableName = "Clicker.app"
+            BuildableName = "Make It Rain Guinsta Style.app"
             BlueprintName = "Make It Rain Guinsta Style"
             ReferencedContainer = "container:Make It Rain Guinsta Style.xcodeproj">
          </BuildableReference>

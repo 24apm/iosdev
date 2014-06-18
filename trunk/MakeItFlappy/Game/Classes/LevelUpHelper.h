@@ -16,4 +16,6 @@ typedef enum {
 
 @interface LevelUpHelper : NSObject
 
++ (int)levelExpCheck:(LevelUpType)type currentLevel:(int)level;
+
 @end

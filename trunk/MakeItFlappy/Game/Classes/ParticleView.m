@@ -19,15 +19,15 @@
     self.fireEmitter.emitterShape = @"line";
     self.fireEmitter.birthRate = 1.f;
     self.fire = [CAEmitterCell emitterCell];
-    self.fire.birthRate = 5;
-    self.fire.lifetime = 12;
-    self.fire.contents = (id)[[UIImage imageNamed:@"money"] CGImage];
-    self.fire.velocity = 50 * IPAD_SCALE;
-    self.fire.velocityRange = 20 * IPAD_SCALE;
+    self.fire.birthRate = 3.f;
+    self.fire.lifetime = 30;
+    self.fire.contents = (id)[[UIImage imageNamed:@"speedline"] CGImage];
+    self.fire.velocity = 150 * IPAD_SCALE;
+    //self.fire.velocityRange = 20 * IPAD_SCALE;
     self.fire.yAcceleration = 20 * IPAD_SCALE;
     self.fire.scale *= IPAD_SCALE;
-    self.fire.spin = 3.0;
-    self.fire.spinRange = 5.0;
+   // self.fire.spin = 3.0;
+   // self.fire.spinRange = 5.0;
 
     self.fireEmitter.renderMode = kCAEmitterLayerUnordered;
     [self.fire setName:@"fire"];
@@ -40,9 +40,13 @@
 -(void)changeAndRenewFireCell {
 }
 
-- (void)updateBirthRate:(int)birthRate {
-    self.fireEmitter.birthRate = birthRate;
-    self.fireEmitter.emitterCells = [NSArray arrayWithObject:self.fire];
+- (void)showSpeedLines:(BOOL)setting {
+   // [self.fireEmitter.emitterCells setValue:[NSNumber numberWithInt:birthRate]
+   //            forKeyPath:@"birthRate"];
+   // self.fire.birthRate = birthRate;
+    self.fireEmitter.hidden = !setting;
+   // self.fireEmitter.birthRate = birthRate;
+    
 
 }
 

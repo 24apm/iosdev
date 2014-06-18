@@ -11,7 +11,6 @@
 #import "ShopManager.h"
 #import "CoinIAPHelper.h"
 
-#define SHOP_BUTTON_PRESSED_NOTIFICATION @"SHOP_BUTTON_PRESSED_NOTIFICATION"
 #define IAP_ITEM_PRESSED_NOTIFICATION @"IAP_ITEM_PRESSED_NOTIFICATION"
 
 @interface ShopRowView : XibView

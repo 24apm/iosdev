@@ -11,6 +11,30 @@
 
 @implementation UnitView
 
+- (id)init {
+    self = [super init];
+    if (self) {
+        self.value = 3;
+    }
+    return self;
+}
+
+- (void)step {
+    [super step];
+    switch (self.state) {
+        case UnitViewStateDeath:
+            [self doDeath];
+            break;
+        default:
+            break;
+    }
+}
+
+- (void)doDeath {
+    [self.characterImageView stopAnimating];
+    self.characterImageView.image = [UIImage imageNamed:@"flash.png"];
+}
+
 - (NSArray *)idleImages {
     return
     @[[UIImage imageNamed:@"tier9-2.png.png"],

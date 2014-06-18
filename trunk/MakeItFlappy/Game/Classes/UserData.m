@@ -35,6 +35,7 @@
         [self retrieveUserCoin];
         [self restoreGameData];
         [self retrieveUserMaxTap];
+        self.currentMaxAir = 10;
         self.tapBonus = 10;
     }
     return self;
@@ -80,7 +81,7 @@
         } else {
             self.gameDataDictionary = [NSMutableDictionary dictionary];
             [self.gameDataDictionary setObject:[NSMutableDictionary dictionary] forKey:[NSString stringWithFormat:@"%d", POWER_UP_TYPE_UPGRADE]];
-                [self saveGameData];
+            [self saveGameData];
         }
     }
 }
@@ -190,7 +191,7 @@
     NSString *leaderBoardCategory = nil;
     if ([mode isEqualToString:GAME_MODE_VS]) {
         leaderBoardCategory = kLeaderboardBestScoreID;
-    } 
+    }
     
     if(leaderBoardCategory && score > 0) {
         [[GameCenterHelper instance].gameCenterManager reportScore:score forCategory: leaderBoardCategory];
@@ -247,13 +248,139 @@
     return points;
 }
 
-- (void)addScoreByTap:(BOOL)bonusOn {
-    long long temp = [self totalPointPerTap:bonusOn];
-    self.currentScore = self.currentScore + (temp);
+- (void)addCurrentHeight {
+    self.currentHeight += 1;
 }
 
-- (void)addScore:(long long)score {
-    self.currentScore = self.currentScore + score;
+- (void)fellFromCurrentHeight {
+    self.currentHeight = 0;
+    [self heightTierData];
+}
+
+- (void)addScoreByTap:(BOOL)bonusOn {
+    long long temp = [self totalPointPerTap:bonusOn];
+    self.currentScore = self.currentScore + (temp) * self.levelBonus;
+}
+
+- (long long)addScore:(BOOL)bonusOn {
+    
+    long long perTapScore = 0;
+    
+    if (bonusOn) {
+        perTapScore = self.levelBonus * 10;
+        
+    } else {
+        perTapScore = self.levelBonus;
+        
+    }
+    
+    self.currentScore += perTapScore;
+    
+    return perTapScore;
+}
+
+- (void)heightTierData {
+    if(self.currentHeight < 100) {
+        self.airResistence = 0;
+        self.currentBackgroundTier = BackgroundTypeFloat;
+        self.levelBonus = 1;
+        
+    } else if(self.currentHeight < 200) {
+        self.airResistence = 1;
+        self.currentBackgroundTier = BackgroundTypeTree;
+        self.levelBonus = 2;
+        
+    } else if(self.currentHeight < 500) {
+        self.airResistence = 2;
+        self.currentBackgroundTier = BackgroundTypeSky;
+        self.levelBonus = 5;
+        
+    } else if(self.currentHeight < 1000) {
+        self.airResistence = 3;
+        self.currentBackgroundTier = BackgroundTypeCloud;
+        self.levelBonus = 10;
+        
+    } else if(self.currentHeight < 2000) {
+        self.airResistence = 8;
+        self.currentBackgroundTier = BackgroundTypeMountain;
+        self.levelBonus = 50;
+        
+    } else if(self.currentHeight < 5000) {
+        self.airResistence = 15;
+        self.currentBackgroundTier = BackgroundTypeAtmosphere;
+        self.levelBonus = 100;
+        
+    } else if(self.currentHeight < 10000) {
+        self.airResistence = 30;
+        self.currentBackgroundTier = BackgroundTypeSpace;
+        self.levelBonus = 400;
+        
+    } else if(self.currentHeight < 30000) {
+        self.airResistence = 70;
+        self.currentBackgroundTier = BackgroundTypeMoon;
+        self.levelBonus = 1000;
+        
+    } else if(self.currentHeight < 50000) {
+        self.airResistence = 100;
+        self.currentBackgroundTier = BackgroundTypeVenus;
+        self.levelBonus = 3000;
+        
+    } else if(self.currentHeight < 100000) {
+        self.airResistence = 300;
+        self.currentBackgroundTier = BackgroundTypeComet;
+        self.levelBonus = 8000;
+        
+    } else if(self.currentHeight < 500000) {
+        self.airResistence = 800;
+        self.currentBackgroundTier = BackgroundTypeMercury;
+        self.levelBonus = 30000;
+        
+    } else if(self.currentHeight < 1000000) {
+        self.airResistence = 1700;
+        self.currentBackgroundTier = BackgroundTypeSun;
+        self.levelBonus = 500000;
+        
+    } else if(self.currentHeight < 10000000) {
+        self.airResistence = 3000;
+        self.currentBackgroundTier = BackgroundTypeMars;
+        self.levelBonus = 1;
+        
+    } else if(self.currentHeight < 100000000) {
+        self.airResistence = 8000;
+        self.currentBackgroundTier = BackgroundTypeJupiter;
+        self.levelBonus = 1;
+        
+    } else if(self.currentHeight < 100000000000) {
+        self.airResistence = 100000;
+        self.currentBackgroundTier = BackgroundTypeSaturn;
+        self.levelBonus = 1;
+        
+    } else if(self.currentHeight < 99999999999999){
+        self.airResistence = 10000000;
+        self.currentBackgroundTier = BackgroundTypeUranus;
+        self.levelBonus = 1;
+        
+    } else if(self.currentHeight < 99999999999999){
+        self.airResistence = 10000000;
+        self.currentBackgroundTier = BackgroundTypeNepture;
+        self.levelBonus = 1;
+        
+    } else if(self.currentHeight < 99999999999999){
+        self.airResistence = 10000000;
+        self.currentBackgroundTier = BackgroundTypePluto;
+        self.levelBonus = 1;
+        
+    } else if(self.currentHeight < 99999999999999){
+        self.airResistence = 10000000;
+        self.currentBackgroundTier = BackgroundTypeSolar;
+        self.levelBonus = 1;
+        
+    } else if(self.currentHeight < 99999999999999){
+        self.airResistence = 10000000;
+        self.currentBackgroundTier = BackgroundTypeGalaxy;
+        self.levelBonus = 1;
+        
+    }
 }
 
 @end

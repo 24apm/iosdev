@@ -11,12 +11,13 @@
 #import "ExpUIView.h"
 #import "DistanceUIView.h"
 
+
 #define BUYING_PRODUCT_SUCCESSFUL_NOTIFICATION @"BUYING_PRODUCT_SUCCESSFUL_NOTIFICATION"
 
 @interface GameLayoutView : XibView <UIGestureRecognizerDelegate>
 @property (strong, nonatomic) IBOutlet UIView *fadeView;
 
-@property (strong, nonatomic) IBOutlet ParticleView *partcleView;
+@property (strong, nonatomic) IBOutlet ParticleView *particleView;
 @property (strong, nonatomic) IBOutlet UIImageView *backgroundColorView;
 
 @property (strong, nonatomic) IBOutlet UIButton *endGameButton;
@@ -26,6 +27,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *achievementButton;
 @property (strong, nonatomic) IBOutlet UIButton *ratingButton;
 @property (strong, nonatomic) IBOutlet UIImageView *characterImageView;
+
 
 - (void)generateNewGame;
 @property (strong, nonatomic) IBOutlet UIView *backgroundView;

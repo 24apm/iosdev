@@ -25,46 +25,22 @@
 #import "BonusButton.h"
 #import "UnitView.h"
 #import "GameLoopTimer.h"
+#import "GameManager.h"
 
 #define TIME_BONUS_INTERVAL 60.f
 #define TIME_BONUS_ACTIVED_LIMIT 5.f
+#define TIME_SPAWN_GAP_WITHIN_CYCLE 1
+#define TIME_SPAWN_GAP_PER_CYCLE 20
+#define NUM_SPAWN 10
 
 @interface GameLayoutView()
 
 @property (nonatomic, retain) ShopTableView *shopTableView;
-
+@property (nonatomic) CFTimeInterval nextSpawnTime;
 @property (strong, nonatomic) IBOutlet ProgressBarComponent *progressBar;
 @property (strong, nonatomic) UIButton *previousSelectedButton;
 
-@property (nonatomic) double startTime;
-@property (nonatomic, strong) NSTimer *timer;
-@property (nonatomic, strong) NSTimer *timerForBonus;
-@property (nonatomic, strong)NSMutableArray * tapTotal;
-@property (nonatomic, strong)NSMutableArray * tapTotalPoints;
-@property (nonatomic) double displayTPS;
-@property (nonatomic) double oldDisplayTPS;
-@property (nonatomic) double tapBonus;
-@property (nonatomic) double timeBonus;
-@property (nonatomic) double tapsPerSecond;
-@property (nonatomic) double tapsPerSecondPoints;
-@property (nonatomic) double scorePerTap;
-@property (nonatomic) double totalScorePerTap;
-@property (nonatomic) double timeBonusEnd;
-@property (nonatomic) BOOL timeBonusOn;
-@property (nonatomic) double deleteTime;
-@property (nonatomic) BOOL doDecay;
-@property (nonatomic) double previousTime;
-@property (nonatomic) double delay;
-@property (nonatomic) double tempPassiveLabel;
-@property (nonatomic) int ticks;
-@property (nonatomic, strong) BucketView* bucketView;
-@property (nonatomic) double displayAverageTPS;
-@property (nonatomic) int tapBonusLevel;
-@property (nonatomic, strong) NSMutableArray *bonusArray;
-@property (nonatomic) BOOL bonusTapOn;
-@property (nonatomic) double bonusStartTime;
 @property (nonatomic, strong) NSMutableArray *units;
-
 
 @end
 
@@ -132,20 +108,7 @@ static int promoDialogInLeaderBoardCount = 0;
         self.backgroundView.layer.cornerRadius = 20.f * IPAD_SCALE;
         self.backgroundView.clipsToBounds = YES;
         self.currentScoreLabel.layer.cornerRadius = 20.f * IPAD_SCALE;
-        self.tapTotal = [NSMutableArray array];
-        self.tapTotalPoints = [NSMutableArray array];
-        self.bonusArray = [NSMutableArray array];
-        self.displayTPS = [[UserData instance] totalPointForPassive];
-        self.tapPerSecondLabel.text = [self timePerSec:self.displayTPS];
-        self.scorePerTap = 1;
-        self.tapBonus = 0;
-        self.previousTime = CURRENT_TIME;
-        self.doDecay = NO;
-        self.tapsPerSecond = 0;
-        self.tapBonusLevel = 1;
         [self.progressBar fillBar:0.f];
-        self.tapsPerSecondPoints = 0;
-        self.tempPassiveLabel = [UserData instance].currentScore;
         if (!self.shopTableView) {
             [self createShopView];
         }
@@ -157,12 +120,21 @@ static int promoDialogInLeaderBoardCount = 0;
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(unitPressed:) name:UNIT_VIEW_TAPPED object:nil];
 
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(drawStep) name:DRAW_STEP_NOTIFICATION object:nil];
-        
+        self.currentScoreLabel.text = [[GameManager instance] scoreString];
+        self.levelLabel.text = [NSString stringWithFormat:@"%d", [[GameManager instance] currentLevel]];
+
     }
     return self;
 }
 
 - (void)drawStep {
+    if (CACurrentMediaTime() > self.nextSpawnTime) {
+        if (self.units.count < NUM_SPAWN) {
+            [self generateUnit];
+            self.nextSpawnTime = CACurrentMediaTime() + TIME_SPAWN_GAP_WITHIN_CYCLE;
+        }
+    }
+    
     for (UnitView *unit in self.units) {
         [unit step];
     }
@@ -175,11 +147,38 @@ static int promoDialogInLeaderBoardCount = 0;
     CGPoint center = [unit.superview convertPoint:unit.center toView:self.characterView.superview];
     self.characterView.state = UnitViewStateAnimateAttacking;
     
-    [UIView animateWithDuration:0.1f animations:^ {
-        self.characterView.center = center;
-    }completion:^(BOOL completed) {
-        [self.units removeObject:unit];
-        [unit removeFromSuperview];
+    if (center.x > self.characterView.center.x) {
+        self.characterView.transform = CGAffineTransformMakeScale(1.f, 1.f);
+    } else {
+        self.characterView.transform = CGAffineTransformMakeScale(-1.f, 1.f);
+    }
+    
+    CGPoint overShootCenter = CGPointMake((center.x - self.characterView.center.x) * 0.1f + center.x,
+                                          (center.y - self.characterView.center.y) * 0.1f + center.y);
+    
+    [UIView animateWithDuration:0.05f animations:^ {
+        self.characterView.center = overShootCenter;
+    } completion:^(BOOL completed) {
+        [UIView animateWithDuration:0.1f animations:^ {
+            self.characterView.center = center;
+        } completion:^(BOOL completed) {
+            if (unit.state == UnitViewStateDeath) {
+                if (self.units.count >= NUM_SPAWN) {
+                    self.nextSpawnTime = CACurrentMediaTime() + TIME_SPAWN_GAP_PER_CYCLE;
+                }
+                [self.units removeObject:unit];
+                [unit removeFromSuperview];
+                [[GameManager instance] addScore:unit.value];
+                self.currentScoreLabel.text = [[GameManager instance] scoreString];
+                self.levelLabel.text = [NSString stringWithFormat:@"%d", [[GameManager instance] currentLevel]];
+
+                [[SoundManager instance] play:SOUND_EFFECT_BUI];
+            } else {
+                [self shakeScreen];
+                [[SoundManager instance] play:SOUND_EFFECT_SHARP_PUNCH];
+                unit.state = UnitViewStateDeath;
+            }
+        }];
     }];
     
 }
@@ -204,7 +203,6 @@ static int promoDialogInLeaderBoardCount = 0;
 
 - (void)shopButtonPressed {
     [self.shopTableView refresh];
-    [self updateTPS];
 }
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
@@ -217,163 +215,16 @@ static int promoDialogInLeaderBoardCount = 0;
 }
 
 - (void)generateNewBoard {
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:10.f target:self selector:@selector(generateUnits) userInfo:nil repeats:YES];
     [self generateUnits];
-    self.startTime = [UserData instance].startTime;
-    self.timeBonus = [UserData instance].startTime;
     [[UserData instance] updateOfflineTime];
-    [self checkIfSavedTimePassedTimeBonus];
-    
-}
-
-- (NSString *)characterImageTier:(int)tier {
-    return [NSString stringWithFormat:@"clicker_character%d.png", tier];
-}
-
-- (void)updateTPSWithTap:(float)number {
-    self.tapsPerSecondPoints += number;
-    [self updateTPS];
-}
-
-- (void)updateTPS {
-    self.displayTPS = self.tapsPerSecondPoints + [[UserData instance] totalPointForPassive];
-    if (self.tapTotal.count <= 0) {
-        self.tapPerSecondLabel.text = [self timePerSec:self.displayTPS];
-    }
-}
-
-- (void)updateAverageTPS {
-    double average = [self tapTotalAverage:self.tapTotalPoints];
-    if (average <= 0) {
-        average = 0;
-    }
-    self.displayAverageTPS = average + [[UserData instance] totalPointForPassive];
-    self.tapPerSecondLabel.text = [self timePerSec:self.displayAverageTPS];
-}
-
-- (NSString *)timePerSec:(double)sec {
-    return [NSString stringWithFormat:@"$%.1f/sec", sec];
-}
-
-- (void)checkIfSavedTimePassedTimeBonus {
-    double time = CURRENT_TIME;
-    if (time - self.timeBonus > TIME_BONUS_INTERVAL) {
-        self.timeBonus = time;
-        [[UserData instance] saveUserStartTime:time];
-    } else {
-        double percentage = (time - self.timeBonus) / TIME_BONUS_INTERVAL;
-        [self.progressBar fillBar:percentage];
-    }
-}
-
-- (float)tapTotalCombined {
-    float temp = 0;
-    for (int i = 0; i < self.tapTotal.count; i++) {
-        temp  = temp + [[self.tapTotal objectAtIndex:i]floatValue];
-    }
-    return temp;
-}
-
-
-- (void)updateForBonus {
-    for (int i = 0; i < self.bonusArray.count; i++) {
-        ((BonusButton *)[self.bonusArray objectAtIndex:i]).x += 3.f;
-        ((BonusButton *)[self.bonusArray objectAtIndex:i]).y += 0.5f;
-    }
-    if (CURRENT_TIME - self.bonusStartTime > 5) {
-        [self.timerForBonus invalidate], self.timerForBonus = nil;
-        [self.bonusArray removeAllObjects];
-    }
-    
-}
-
-- (float)tapTotalAverage:(NSMutableArray *)array {
-    float totalAverage = 0;
-    for (int i = 0; i < array.count; i++) {
-        totalAverage = totalAverage + [[array objectAtIndex:i] floatValue];
-    }
-    
-    float temp = totalAverage;
-    
-    if (array.count > 0) {
-        temp = temp/array.count;
-    }
-    return temp;
-}
-
-- (void)startPointDisplacment:(UIView *)view {
-    float x = [Utils randBetweenMin:10.f max:self.bounds.size.width];
-    x = x * -1;
-    view.x = x;
-    
-    float y = [Utils randBetweenMin:1.f max:(self.bounds.size.height/3) + 50];
-    view.y = y;
-    
-}
-- (void)tapBonusActivate {
-    
-    //[self animateArc];
-    for (int i = 0; i < 10; i++) {
-        BonusButton *bonus = [[BonusButton alloc]init];
-        [self startPointDisplacment:bonus];
-        [self.bonusArray addObject:bonus];
-        [self addSubview:bonus];
-    }
-    self.tapBonus = 0;
-    self.bonusTapOn = YES;
-    NSLog(@"BONUS");
 }
 
 - (void)removeAnimation:(UIView *)view {
     [view removeFromSuperview];
 }
 
-- (void)animateArc
-{
-    // Create the arc
-    CGPoint arcStart = CGPointMake(0.2 * self.bounds.size.width, 0.5 * self.bounds.size.height);
-    CGPoint arcCenter = CGPointMake(0.5 * self.bounds.size.width, 0.5 * self.bounds.size.height);
-    CGFloat arcRadius = 0.3 * MIN(self.bounds.size.width, self.bounds.size.height);
-    
-    CGMutablePathRef arcPath = CGPathCreateMutable();
-    CGPathMoveToPoint(arcPath, NULL, arcStart.x, arcStart.y);
-    CGPathAddArc(arcPath, NULL, arcCenter.x, arcCenter.y, arcRadius, M_PI, 0, NO);
-    
-    BonusButton *bonus = [[BonusButton alloc]init];
-    [self addSubview: bonus];
-    bonus.center = arcStart;
-    
-    
-    // The animation
-    CAKeyframeAnimation *pathAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
-    pathAnimation.calculationMode = kCAAnimationPaced;
-    pathAnimation.duration = 2.0;
-    pathAnimation.path = arcPath;
-    CGPathRelease(arcPath);
-    
-    pathAnimation.fillMode = kCAFillModeForwards;
-    pathAnimation.removedOnCompletion = NO;
-    [bonus.layer addAnimation:pathAnimation forKey:@"arc"];
-    
-    [self performSelector:@selector(removeAnimation:) withObject:bonus afterDelay:20.f];
-}
-
-- (void)timeBonusActivate {
-    self.timeBonusEnd = CURRENT_TIME + TIME_BONUS_ACTIVED_LIMIT;
-    self.timeBonusOn = YES;
-    NSLog(@"TIME");
-}
-
-- (void)timeBonusDeactivate {
-    double time = CURRENT_TIME;
-    self.timeBonus = time;
-    [[UserData instance] saveUserStartTime:time];
-    self.timeBonusOn = NO;
-    NSLog(@"TIME END");
-}
-
 - (void)shakeScreen {
-    [AnimUtil wobble:self duration:0.1f angle:M_PI/128.f repeatCount:2];
+    [AnimUtil wobble:self duration:0.1f angle:M_PI/128.f repeatCount:1];
 }
 
 - (void)animateLabelForBonus:(NSNotification *)notification {

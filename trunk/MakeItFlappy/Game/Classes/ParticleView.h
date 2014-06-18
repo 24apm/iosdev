@@ -13,6 +13,6 @@
 @property (nonatomic, strong) CAEmitterLayer* fireEmitter;
 
 -(void)changeAndRenewFireCell;
-- (void)updateBirthRate:(int)birthRate;
+- (void)showSpeedLines:(BOOL)setting;
 
 @end
