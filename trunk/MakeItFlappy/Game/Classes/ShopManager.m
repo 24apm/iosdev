@@ -65,21 +65,21 @@
     self.itemsForIAP = [NSMutableDictionary dictionary];
     
     // ACTIVE
-    [self createActiveItem:SHOP_ITEM_ID_UPGRADE_TIER_1
+    [self createActiveItem:SHOP_ITEM_ID_UPGRADE_SPEED
                       name:@"Lvl+ Speed"
                  imagePath:@"icon_cigar"
            priceMultiplier:100
          upgradeMultiplier:2
                       rank:1];
     
-    [self createActiveItem:SHOP_ITEM_ID_UPGRADE_TIER_2
-                      name:@"Lvl+ Flappying"
+    [self createActiveItem:SHOP_ITEM_ID_UPGRADE_FLAPPY
+                      name:@"Lvl+ Flappy"
                  imagePath:@"icon_cigarette"
            priceMultiplier:500
          upgradeMultiplier:2
                       rank:2];
     
-    [self createActiveItem:SHOP_ITEM_ID_UPGRADE_TIER_3
+    [self createActiveItem:SHOP_ITEM_ID_UPGRADE_AIR
                       name:@"Lvl+ Air"
                  imagePath:@"icon_weed"
            priceMultiplier:200
@@ -115,11 +115,17 @@
                    rank:3];
 }
 
+- (int)itemLevel:(NSString *)itemId type:(PowerUpType)type {
+    NSDictionary *userTypeDictionary = [[UserData instance].gameDataDictionary objectForKey:[NSString stringWithFormat:@"%d", type]];
+    int lvl = [[userTypeDictionary objectForKey:itemId] integerValue] + 1;
+    return lvl;
+}
+
 - (long long)priceForItemId:(NSString *)itemId type:(PowerUpType)type {
     NSMutableDictionary *tempDictionary = [self dictionaryForType:type];
     ShopItem *shopItem = [tempDictionary objectForKey:itemId];
-    NSDictionary *userTypeDictionary = [[UserData instance].gameDataDictionary objectForKey:[NSString stringWithFormat:@"%d", type]];
-    int lvl = [[userTypeDictionary objectForKey:itemId] integerValue] + 1;
+
+    int lvl = [self itemLevel:itemId type:type];
     
     long long price = shopItem.priceMultiplier * lvl;
     return price;

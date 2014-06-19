@@ -10,9 +10,9 @@
 #import "ShopItem.h"
 #import "GameConstants.h"
 
-#define SHOP_ITEM_ID_UPGRADE_TIER_1 @"SHOP_ITEM_ID_UPGRADE_TIER_1"
-#define SHOP_ITEM_ID_UPGRADE_TIER_2 @"SHOP_ITEM_ID_UPGRADE_TIER_2"
-#define SHOP_ITEM_ID_UPGRADE_TIER_3 @"SHOP_ITEM_ID_UPGRADE_TIER_3"
+#define SHOP_ITEM_ID_UPGRADE_SPEED @"SHOP_ITEM_ID_UPGRADE_SPEED"
+#define SHOP_ITEM_ID_UPGRADE_FLAPPY @"SHOP_ITEM_ID_UPGRADE_FLAPPY"
+#define SHOP_ITEM_ID_UPGRADE_AIR @"SHOP_ITEM_ID_UPGRADE_AIR"
 
 
 #define SHOP_ITEM_ID_IAP_DOUBLE_POINTS @"SHOP_ITEM_ID_IAP_2"
@@ -25,5 +25,6 @@
 - (NSArray *)arrayOfitemIdsFor:(PowerUpType)type;
 - (long long) priceForItemId:(NSString *)itemId type:(PowerUpType)type;
 - (ShopItem *)shopItemForItemId:(NSString *)itemId dictionary:(PowerUpType)type;
+- (int)itemLevel:(NSString *)itemId type:(PowerUpType)type;
 
 @end

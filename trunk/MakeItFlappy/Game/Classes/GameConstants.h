@@ -74,7 +74,7 @@
 
 #define UPDATE_TIME_PER_TICK 10.f
 #define UPDATE_TIME_PER_TICK_FOR_BONUS 30.f
-#define LEVEL_CAP 10
+#define LEVEL_CAP 100
 typedef enum {
     POWER_UP_TYPE_UPGRADE,
     POWER_UP_TYPE_IAP

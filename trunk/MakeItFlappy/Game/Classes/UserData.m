@@ -37,6 +37,8 @@
         [self retrieveUserMaxTap];
         self.currentMaxAir = 10;
         self.tapBonus = 10;
+        self.currentAirRecovery = 1;
+        self.currentSpeed = 1;
     }
     return self;
 }
@@ -81,6 +83,11 @@
         } else {
             self.gameDataDictionary = [NSMutableDictionary dictionary];
             [self.gameDataDictionary setObject:[NSMutableDictionary dictionary] forKey:[NSString stringWithFormat:@"%d", POWER_UP_TYPE_UPGRADE]];
+            
+            NSMutableDictionary *typeDictionary = [self.gameDataDictionary objectForKey:[NSString stringWithFormat:@"%d", POWER_UP_TYPE_UPGRADE]];
+            [typeDictionary setObject:[NSNumber numberWithInt:0] forKey:SHOP_ITEM_ID_UPGRADE_SPEED];
+            [typeDictionary setObject:[NSNumber numberWithInt:0] forKey:SHOP_ITEM_ID_UPGRADE_FLAPPY];
+            [typeDictionary setObject:[NSNumber numberWithInt:0] forKey:SHOP_ITEM_ID_UPGRADE_AIR];
             [self saveGameData];
         }
     }
@@ -211,17 +218,22 @@
     [self saveGameData];
 }
 
-- (float)totalPowerUpFor:(PowerUpType)type {
+- (float)totalPowerUpFor:(PowerUpType)type UpgradeType:(NSString *)upgrade {
     long long totalMultiplier = 0;
     NSMutableDictionary *typeDictionary = [self.gameDataDictionary objectForKey:[NSString stringWithFormat:@"%d", type]];
-    NSArray *arrayOfId = [typeDictionary allKeys];
-    for (int i = 0; i < arrayOfId.count; i++) {
-        NSString *currentKey = [arrayOfId objectAtIndex:i];
-        ShopItem *item =[[ShopManager instance] shopItemForItemId:currentKey dictionary:type];
-        long long tempMultiplier = [self realMultiplier:item];
-        totalMultiplier += tempMultiplier;
+    NSString *currentKey = @"default";
+
+    
+    NSNumber *value = [typeDictionary objectForKey:upgrade];
+    if (value) {
+        currentKey = upgrade;
     }
     
+    ShopItem *item =[[ShopManager instance] shopItemForItemId:currentKey dictionary:type];
+    totalMultiplier = [self realMultiplier:item];
+    if (totalMultiplier <=0) {
+        totalMultiplier = 1;
+    }
     return totalMultiplier;
 }
 
@@ -234,16 +246,9 @@
 
 - (int)totalPointPerTap:(BOOL)bonusOn {
     int points = 1;
-    int multiplier = (int)[self totalPowerUpFor:POWER_UP_TYPE_UPGRADE];
-    if (multiplier <= 0) {
-        multiplier = 1;
-    }
     
-    if (!bonusOn) {
-        points = multiplier;
-    } else {
+    if (bonusOn) {
         points = 1 * self.tapBonus;
-        points = points * multiplier;
     }
     return points;
 }
@@ -252,9 +257,9 @@
     self.currentHeight += 1;
 }
 
-- (void)fellFromCurrentHeight {
-    self.currentHeight = 0;
-    [self heightTierData];
+- (void)fellFromCurrentHeight:(long long)currentHeight {
+    [self heightTierData:currentHeight];
+    [[GameCenterHelper instance].gameCenterManager reportScore:currentHeight forCategory: kLeaderboardBestScoreID];
 }
 
 - (void)addScoreByTap:(BOOL)bonusOn {
@@ -279,7 +284,8 @@
     return perTapScore;
 }
 
-- (void)heightTierData {
+- (void)heightTierData:(long long)currentHeight {
+    self.currentHeight = currentHeight;
     if(self.currentHeight < 100) {
         self.airResistence = 0;
         self.currentBackgroundTier = BackgroundTypeFloat;

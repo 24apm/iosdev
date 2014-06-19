@@ -36,6 +36,12 @@ typedef enum {
     BackgroundTypeGalaxy
 } BackgroundType;
 
+typedef enum {
+    UpgradeTypeSpeed,
+    UpgradeTypeAir,
+    UpgradeTypeFlappy
+} UpgradeType;
+
 @interface UserData : NSObject
 
 @property (nonatomic) long long currentScore;
@@ -50,6 +56,8 @@ typedef enum {
 @property (nonatomic) long long currentMaxTapPerSecond;
 @property (nonatomic) BOOL maxSpeedOn;
 @property (nonatomic) long long currentMaxAir;
+@property (nonatomic) long long currentAirRecovery;
+@property (nonatomic) long long currentSpeed;
 @property (nonatomic) long long currentAir;
 @property (nonatomic) long long currentHeight;
 @property (nonatomic) long long airResistence;
@@ -72,7 +80,8 @@ typedef enum {
 - (float)realMultiplier:(ShopItem *)shopItem;
 - (void)saveUserCurrentMaxTap:(long long)maxTap;
 - (void)addCurrentHeight;
-- (void)fellFromCurrentHeight;
-- (void)heightTierData;
+- (void)fellFromCurrentHeight:(long long)currentHeight;
+- (void)heightTierData:(long long)currentHeight;
+- (float)totalPowerUpFor:(PowerUpType)type UpgradeType:(NSString *)upgrade;
     
 @end

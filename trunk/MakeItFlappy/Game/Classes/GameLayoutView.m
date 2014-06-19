@@ -26,7 +26,7 @@
 #import "ErrorDialogView.h"
 #import "GameLoopTimer.h"
 
-#define TIME_BONUS_INTERVAL 600.f
+#define TIME_BONUS_INTERVAL 1800.f
 #define TIME_BONUS_ACTIVED_LIMIT 5.f
 #define MAX_TAP_FOR_BONUS 500.f
 #define DEGREES_TO_RADIANS(x) (x * M_PI/180.0)
@@ -53,8 +53,10 @@ typedef enum {
 @property (nonatomic) double startTime;
 @property (nonatomic, strong) NSTimer *timer;
 @property (nonatomic, strong) NSTimer *timerForBonus;
-@property (nonatomic, strong)NSMutableArray * tapTotal;
-@property (nonatomic, strong)NSMutableArray * tapTotalPoints;
+@property (nonatomic, strong) NSMutableArray *tapTotal;
+@property (nonatomic, strong) NSMutableArray *tapTotalPoints;
+@property (nonatomic, strong) NSMutableArray *holdingTotal;
+@property (nonatomic, strong) NSMutableArray *holdingTotalPoints;
 @property (nonatomic) double displayTPS;
 @property (nonatomic) int currentIndexForImage;
 @property (nonatomic) double oldDisplayTPS;
@@ -62,6 +64,8 @@ typedef enum {
 @property (nonatomic) double timeBonus;
 @property (nonatomic) double tapsPerSecond;
 @property (nonatomic) double tapsPerSecondPoints;
+@property (nonatomic) double holdingsPerSecond;
+@property (nonatomic) double holdingsPerSecondPoints;
 @property (nonatomic) double scorePerTap;
 @property (nonatomic) double totalScorePerTap;
 @property (nonatomic) double timeBonusEnd;
@@ -84,6 +88,8 @@ typedef enum {
 @property (nonatomic) PowerUpType currentTableType;
 @property (nonatomic) BOOL tapFlappy;
 @property (nonatomic) double previousTimeForAir;
+@property (nonatomic) long long heightDistance;
+@property (nonatomic) long long heightSpeed;
 
 @property (nonatomic, strong) NSMutableArray *bonusArray;
 @property (nonatomic) BOOL bonusTapOn;
@@ -181,6 +187,7 @@ static int promoDialogInLeaderBoardCount = 0;
         self.distanceUIView.currentDistanceLabel.layer.cornerRadius = 20.f * IPAD_SCALE;
         self.tapTotal = [NSMutableArray array];
         self.tapTotalPoints = [NSMutableArray array];
+        self.holdingTotalPoints = [NSMutableArray array];
         self.currentIndexForImage = 1;
         self.airResistence = 1;
         self.bonusArray = [NSMutableArray array];
@@ -194,16 +201,20 @@ static int promoDialogInLeaderBoardCount = 0;
         self.doDecay = NO;
         self.displayView.currentExpLabel.text = [NSString stringWithFormat:@"$%@", [Utils formatLongLongWithComma:[UserData instance].currentScore]];
         self.tapsPerSecond = 0;
+        self.holdingsPerSecondPoints = 0;
         self.tapBonusLevel = 1;
         [self.airBar fillBar:1.f];
         [self.progressBar fillBar:0.f];
         self.tapsPerSecondPoints = 0;
+        self.holdingsPerSecondPoints = 0;
         self.previousTimeForAir = 0;
         self.currentMaxAir = [UserData instance].currentMaxAir;
         self.currentAir = self.currentMaxAir;
         self.airRecovery = 1;
         self.tempForAnimatingAirBar = 1.f;
         self.timeBonus = 0;
+        self.heightDistance = 0;
+        self.heightSpeed = 1;
         
         self.iapOverlay.hidden = NO;
         [self.progressBarTaps fillBar:0.f];
@@ -245,6 +256,11 @@ static int promoDialogInLeaderBoardCount = 0;
 }
 
 - (void)onGroundUpdate {
+    
+    self.currentMaxAir = [UserData instance].currentMaxAir * [[UserData instance] totalPowerUpFor:POWER_UP_TYPE_UPGRADE UpgradeType:SHOP_ITEM_ID_UPGRADE_AIR];
+    self.currentAir = self.currentMaxAir;
+    self.airRecovery = [UserData instance].currentAirRecovery * [[UserData instance] totalPowerUpFor:POWER_UP_TYPE_UPGRADE UpgradeType:SHOP_ITEM_ID_UPGRADE_FLAPPY];
+    self.heightSpeed = [UserData instance].currentSpeed * [[UserData instance] totalPowerUpFor:POWER_UP_TYPE_UPGRADE UpgradeType:SHOP_ITEM_ID_UPGRADE_SPEED];
     self.shopBarView.hidden = NO;
     [self.particleView showSpeedLines:NO];
     self.characterImageView.image = [UIImage imageNamed:[self characterImageTier:1]];
@@ -332,8 +348,6 @@ static int promoDialogInLeaderBoardCount = 0;
         [self.tapTotal removeObjectAtIndex:0];
         [self.tapTotalPoints removeObjectAtIndex:0];
     }
-    
-    
 }
 
 - (void)startFlappyMode {
@@ -345,6 +359,10 @@ static int promoDialogInLeaderBoardCount = 0;
     self.backgroundColorView.image = [self backgroundImageForTier:self.currentBackground];
     self.lastColorIndex = 1;
     self.characterImageView.image = [UIImage imageNamed:[self characterImageTier:2]];
+    if (self.holdingTotal.count > 1) {
+        [self.holdingTotal removeObjectAtIndex:0];
+        [self.holdingTotalPoints removeObjectAtIndex:0];
+    }
 }
 
 - (void)holding:(UIPanGestureRecognizer *)sender {
@@ -354,6 +372,7 @@ static int promoDialogInLeaderBoardCount = 0;
     } else if (sender.state == UIGestureRecognizerStateEnded) {
         self.previousTime = CURRENT_TIME;
         [self startFlappyMode];
+        [self.holdingTotalPoints removeAllObjects];
     }
 }
 
@@ -468,9 +487,6 @@ static int promoDialogInLeaderBoardCount = 0;
         if (self.tapsPerSecondPoints > 0) {
             if (self.maxTapScore < self.tapsPerSecondPoints) {
                 self.maxTapScore = self.tapsPerSecondPoints;
-                if (self.maxTapScore > [UserData instance].currentMaxTapPerSecond) {
-                    [[UserData instance] saveUserCurrentMaxTap:self.maxTapScore];
-                }
             }
         }
         
@@ -542,6 +558,23 @@ static int promoDialogInLeaderBoardCount = 0;
 }
 
 - (void)flyingUpdate {
+    double time = CURRENT_TIME;
+    double gapTime = time - self.previousTime;
+    if (gapTime >= 1) {
+        self.previousTime = time;
+        [self.holdingTotalPoints addObject:[NSNumber numberWithFloat:self.holdingsPerSecondPoints]];
+        if (self.holdingTotalPoints.count > 0) {
+            self.distanceUIView.spsLabel.text = [NSString stringWithFormat:@"%.fft/sec", [self tapTotalAverage:self.holdingTotalPoints]];
+        }
+        if (self.holdingTotalPoints.count > 2) {
+            [self.holdingTotalPoints removeObjectAtIndex:0];
+        }
+        self.holdingsPerSecondPoints = 0.f;
+    }
+    self.holdingsPerSecondPoints++;
+    if (self.holdingTotalPoints.count <= 0) {
+        self.distanceUIView.spsLabel.text = [NSString stringWithFormat:@"%.fft/sec", self.holdingsPerSecondPoints];
+    }
     self.onGround = NO;
     [self increaseHeight];
     [self decreaseCurrentAir];
@@ -549,9 +582,9 @@ static int promoDialogInLeaderBoardCount = 0;
 }
 
 - (void)increaseHeight {
-    [[UserData instance] addCurrentHeight];
+    self.heightDistance += self.heightSpeed;
     self.distanceUIView.currentDistanceLabel.text = [Utils formatLongLongWithComma:[UserData instance].currentHeight];
-    [[UserData instance] heightTierData];
+    [[UserData instance] heightTierData:self.heightDistance];
     self.airResistence = [UserData instance].airResistence;
     self.currentBackground = [UserData instance].currentBackgroundTier;
 }
@@ -640,6 +673,8 @@ static int promoDialogInLeaderBoardCount = 0;
 
 - (void)finishFallAnimiation {
     [self animateEntering];
+    self.currentBackground = BackgroundTypeFloor;
+    self.backgroundColorView.image = [self backgroundImageForTier:self.currentBackground];
 }
 
 
@@ -650,11 +685,11 @@ static int promoDialogInLeaderBoardCount = 0;
 - (void)restartGame {
     self.onGround = YES;
     self.currentMode = GameModeFlappy;
-    [[UserData instance] fellFromCurrentHeight];
+    [[UserData instance] fellFromCurrentHeight:self.heightDistance];
+    self.heightDistance = 0;
     self.currentAir = self.currentMaxAir;
     [self.airBar fillBar:1.f];
     [self airBarStatus:1.f];
-    self.currentBackground = BackgroundTypeFloor;
 }
 
 - (void)airBarStatus:(float)percentage {
@@ -898,7 +933,6 @@ static int promoDialogInLeaderBoardCount = 0;
         
     }
     [[UserData instance] saveUserCoin];
-    
 }
 
 
