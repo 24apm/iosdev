@@ -8,8 +8,6 @@
 
 #import "UpgradeManager.h"
 
-#define ARC4RANDOM_MAX      0x100000000
-
 @implementation UpgradeManager
 
 + (UpgradeManager *)instance {
@@ -27,95 +25,104 @@
 
 
 - (void)attemptUpgrade:(ShopItem *) item {
-    
+    self.item = item;
     [UserData instance].currentScore -= [[ShopManager instance] priceForItemId:item.itemId type:item.type];
     [[UserData instance] saveUserCoin];
     self.chance = [self riskLevel:[[ShopManager instance] itemLevel:item.itemId type:item.type]];
-    double val = ((double)arc4random() / ARC4RANDOM_MAX);
+    int val = (arc4random() % 1000);
     if (val <= self.chance) {
-           [[UserData instance] levelUpPower:item];
+        [[UserData instance] levelUpPower:item];
+        [[NSNotificationCenter defaultCenter]postNotificationName:UPGRADE_ATTEMPT_SUCCESS_NOTIFICATION object:nil];
+    } else {
+        [[NSNotificationCenter defaultCenter]postNotificationName:UPGRADE_ATTEMPT_FAIL_NOTIFICATION object:nil];
     }
-
-    [[NSNotificationCenter defaultCenter]postNotificationName:UPGRADE_ATTEMPT_NOTIFICATION object:nil];
-    [[NSNotificationCenter defaultCenter]postNotificationName:SHOP_BUTTON_PRESSED_NOTIFICATION object:item];
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(successUpgradeAnimationFinish) name:SUCCESS_UPGRADE_ANIMATION_FINISH_NOTIFICATION object:nil];
+    
 }
 
-- (float)riskLevel:(int)lvl {
+- (void)successUpgradeAnimationFinish {
+    [[NSNotificationCenter defaultCenter]postNotificationName:UPGRADE_ATTEMPT_NOTIFICATION object:nil];
+    [[NSNotificationCenter defaultCenter]postNotificationName:SHOP_BUTTON_PRESSED_NOTIFICATION object:self.item];
+    
+}
+
+- (int)riskLevel:(int)lvl {
     switch (lvl) {
         case 1:
-            return 1.f;
+            return 1000;
             break;
         case 2:
-            return 1.f;
+            return 1000;
             break;
         case 3:
-            return 1.f;
+            return 1000;
             break;
         case 4:
-            return 1.f;
+            return 1000;
             break;
         case 5:
-            return 1.f;
+            return 900;
             break;
         case 6:
-            return 0.8f;
+            return 800;
             break;
         case 7:
-            return 0.8f;
+            return 700;
             break;
         case 8:
-            return 0.8f;
+            return 600;
             break;
         case 9:
-            return 0.8f;
+            return 500;
             break;
         case 10:
-            return 0.8f;
+            return 400;
             break;
         case 11:
-            return 0.7f;
+            return 300;
             break;
         case 12:
-            return 0.6f;
+            return 200;
             break;
         case 13:
-            return 0.5f;
+            return 100;
             break;
         case 14:
-            return 0.5f;
+            return 50;
             break;
         case 15:
-            return 0.5f;
+            return 40;
             break;
         case 16:
-            return 0.4f;
+            return 30;
             break;
         case 17:
-            return 0.4f;
+            return 20;
             break;
         case 18:
-            return 0.3f;
+            return 10;
             break;
         case 19:
-            return 0.3f;
+            return 10;
             break;
         case 20:
-            return 0.2f;
+            return 5;
             break;
         case 21:
-            return 0.1f;
+            return 4;
             break;
         case 22:
-            return 0.05f;
+            return 3;
             break;
         case 23:
-            return 0.04f;
+            return 2;
             break;
         case 24:
-            return 0.03f;
+            return 1;
             break;
         default:
-            return 0.01f;
+            return 1;
             break;
     }
 }

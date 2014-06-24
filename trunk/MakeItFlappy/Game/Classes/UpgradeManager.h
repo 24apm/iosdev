@@ -16,6 +16,7 @@
 
 @property (nonatomic) long long cost;
 @property (nonatomic) float chance;
+@property (nonatomic, strong) ShopItem *item;
 
 + (UpgradeManager *)instance;
 

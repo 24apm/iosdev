@@ -10,7 +10,6 @@
 #import "UpgradeManager.h"
 #import "Utils.h"
 #import "UserData.h"
-#import "ShopManager.h"
 
 @interface UpgradeView : XibDialogView
 @property (strong, nonatomic) IBOutlet UILabel *currentExpLabel;

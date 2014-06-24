@@ -44,7 +44,6 @@
 - (void)fadeIn:(UIView *)view {
     [view.layer removeAnimationForKey:@"alphaIn"];
     CABasicAnimation *animateAlpha = [CABasicAnimation animationWithKeyPath:@"opacity"];
-    animateAlpha.fromValue = @(0.f);
     animateAlpha.toValue = @(1.f);
     animateAlpha.duration = 0.2f;
     animateAlpha.removedOnCompletion = NO;
@@ -56,7 +55,6 @@
 - (void)fadeOut:(UIView *)view {
     [view.layer removeAnimationForKey:@"alphaOut"];
     CABasicAnimation *animateAlpha = [CABasicAnimation animationWithKeyPath:@"opacity"];
-    animateAlpha.fromValue = @(1.f);
     animateAlpha.toValue = @(0.f);
     animateAlpha.duration = 0.2f;
     animateAlpha.removedOnCompletion = NO;
@@ -85,7 +83,7 @@
 
 - (void)show:(XibDialogView *)dialogView withOverlay:(BOOL)overlayFlag {
     [self.dialogs addObject:dialogView];
-    if (overlayFlag && self.dialogs.count == 1) {
+    if (overlayFlag) {
         [self showOverlay:YES];
     } else {
         [self showOverlay:NO];

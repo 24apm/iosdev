@@ -66,5 +66,20 @@
     }
 }
 
++ (NSArray *)characterImageForFlapping {
+    return @[@"character_flapdown.png", @"character_flapup.png"];
+}
+
++ (NSString *)characterImageForFlying {
+    return @"character_flying.png";
+}
+
++ (NSString *)characterImageForFalling {
+    return @"character_falling.png";
+}
+
++ (NSString *)characterImageForStanding {
+    return @"character_standing.png";
+}
 
 @end

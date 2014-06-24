@@ -27,6 +27,11 @@ typedef enum {
 @interface GameManager : NSObject
 
 + (GameManager *)instance;
++ (NSArray *)characterImageForFlapping;
++ (NSString *)characterImageForFlying;
++ (NSString *)characterImageForFalling;
++ (NSString *)characterImageForStanding;
+
 - (NSString *)imagePathForUserInput:(UserInput)userInput;
 - (void)addScore:(UserInput)input;
 - (void)resetScore;
