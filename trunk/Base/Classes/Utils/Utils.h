@@ -21,5 +21,5 @@
 + (NSString *)formatWithFreeCost:(int)cost;
 + (UIImage *)imageNamed:(UIImage *)img withColor:(UIColor *)color blendMode:(CGBlendMode)blendMode;
 + (NSString *)formatLongLongWithComma:(long long)integer;
-
++ (NSString *)formatLongLongWithShortHand:(long long)integer;
 @end

@@ -56,6 +56,31 @@
     return [formattedInteger stringFromNumber:@(integer)];
 }
 
++ (NSString *)formatLongLongWithShortHand:(long long)integer {
+    static NSNumberFormatter *formattedInteger = nil;
+    NSString *measurement = @"";
+    if (!formattedInteger) {
+        formattedInteger = [[NSNumberFormatter alloc] init];
+        formattedInteger.numberStyle = NSNumberFormatterDecimalStyle;
+    }
+    
+    double convertedInteger = 0;
+    if (integer > 1000000) {
+        convertedInteger = ((double)integer) / 1000000.f;
+        measurement = @"m";
+    } else if (integer > 1000) {
+        convertedInteger = ((double)integer) / 1000.f;
+        measurement = @"k";
+    } else if (integer > 0) {
+        convertedInteger = ((double)integer);
+        measurement = @"";
+    }
+    
+    NSString *finalFormat = [formattedInteger stringFromNumber:@(convertedInteger)];
+    finalFormat = [finalFormat stringByAppendingString:measurement];
+    return finalFormat;
+}
+
 + (NSString *)formatWithFreeCost:(int)cost {
     if (cost > 0) {
         return [NSString stringWithFormat:@"%d",cost];

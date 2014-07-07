@@ -28,12 +28,14 @@
 }
 
 - (void)showOverlay:(BOOL)show {
+    //[self.overlay.layer removeAllAnimations];
     if (show) {
         if (!self.overlay) {
             self.overlay = [[UIView alloc] init];
             self.overlay.frame = [Utils rootViewController].view.frame;
             self.overlay.backgroundColor = [UIColor colorWithWhite:0.f alpha:0.6f];
             [[Utils rootViewController].view addSubview:self.overlay];
+            self.overlay.alpha = 0.f;
         }
         [self fadeIn:self.overlay];
     } else {
@@ -42,8 +44,9 @@
 }
 
 - (void)fadeIn:(UIView *)view {
-    [view.layer removeAnimationForKey:@"alphaIn"];
+    //[view.layer removeAnimationForKey:@"alphaIn"];
     CABasicAnimation *animateAlpha = [CABasicAnimation animationWithKeyPath:@"opacity"];
+    animateAlpha.fromValue = [NSNumber numberWithFloat:view.alpha];
     animateAlpha.toValue = @(1.f);
     animateAlpha.duration = 0.2f;
     animateAlpha.removedOnCompletion = NO;
@@ -53,7 +56,7 @@
 }
 
 - (void)fadeOut:(UIView *)view {
-    [view.layer removeAnimationForKey:@"alphaOut"];
+    // [view.layer removeAnimationForKey:@"alphaOut"];
     CABasicAnimation *animateAlpha = [CABasicAnimation animationWithKeyPath:@"opacity"];
     animateAlpha.toValue = @(0.f);
     animateAlpha.duration = 0.2f;
@@ -64,6 +67,7 @@
 }
 
 - (void)dismissed:(XibDialogView *)dialogView {
+    [self.overlay.layer removeAllAnimations];
     [self.dialogs removeObject:dialogView];
     if (self.dialogs.count == 0) {
         [self showOverlay:NO];
