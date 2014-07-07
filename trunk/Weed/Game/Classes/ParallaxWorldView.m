@@ -59,14 +59,10 @@
     
     if (recognizer.state == UIGestureRecognizerStateBegan) {
         self.lastScreenXOffset = self.scrollView.x;
-        
     } else if (recognizer.state == UIGestureRecognizerStateChanged) {
         
         CGPoint translation = [recognizer translationInView:self];
-        NSLog(@"translation %@", NSStringFromCGPoint(translation));
         self.scrollView.x = self.lastScreenXOffset - translation.x;
-
-        NSLog(@"translation %f", self.scrollView.x);
 
         if (self.scrollView.x > self.scrollView.width - self.width) {
             self.scrollView.x = self.scrollView.width - self.width;
