@@ -47,6 +47,11 @@
     [self.audio prepareToPlay];
 }
 
+- (void)setNumberOfLoops:(NSInteger)numberOfLoops {
+    _numberOfLoops = numberOfLoops;
+    self.audio.numberOfLoops = numberOfLoops;
+}
+
 - (void)play {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         if (!self.audio.isPlaying) {

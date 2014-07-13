@@ -39,8 +39,8 @@
 - (void)createActiveItem:(NSString *)itemId
                     name:(NSString *)name
                imagePath:(NSString *)imagePath
-         priceMultiplier:(long long)priceMultipler
-       upgradeMultiplier:(long long)upgradeMultiplier
+         priceMultiplier:(long double)priceMultipler
+       upgradeMultiplier:(long double)upgradeMultiplier
                     rank:(int)rank                 {
     
     ShopItem *item = [ShopItem createItem:itemId name:name imagePath:imagePath priceMultiplier:priceMultipler upgradeMultiplier:upgradeMultiplier type:POWER_UP_TYPE_UPGRADE rank:rank];
@@ -68,48 +68,48 @@
     [self createActiveItem:SHOP_ITEM_ID_UPGRADE_SPEED
                       name:@"Lvl+ Speed"
                  imagePath:@"icon_flylvlup"
-           priceMultiplier:100
-         upgradeMultiplier:2
+           priceMultiplier:5000
+         upgradeMultiplier:100
                       rank:1];
     
     [self createActiveItem:SHOP_ITEM_ID_UPGRADE_FLAPPY
                       name:@"Lvl+ Recovery"
                  imagePath:@"icon_hprecoverylvlup"
-           priceMultiplier:500
-         upgradeMultiplier:2
+           priceMultiplier:5000
+         upgradeMultiplier:1.2
                       rank:2];
     
     [self createActiveItem:SHOP_ITEM_ID_UPGRADE_AIR
                       name:@"Lvl+ HP"
                  imagePath:@"icon_hplvlup"
-           priceMultiplier:200
-         upgradeMultiplier:2
+           priceMultiplier:5000
+         upgradeMultiplier:5.0
                       rank:3];
 
     
     [self createIAPItem:SHOP_ITEM_ID_IAP_FUND
                    name:@"+100000"
-              imagePath:@"icon_iap_funding"
+              imagePath:@"tutor"
         priceMultiplier:-1
       upgradeMultiplier:-1
                    rank:4];
     
     [self createIAPItem:SHOP_ITEM_ID_IAP_DOUBLE_POINTS
                    name:@"x2!"
-              imagePath:@"icon_iap_x2"
+              imagePath:@"dream"
         priceMultiplier:-1
       upgradeMultiplier:-1
                    rank:1];
     
     [self createIAPItem:SHOP_ITEM_ID_IAD_QUDRUPLE_POINTS
                    name:@"x4!"
-              imagePath:@"icon_iap_x4"
+              imagePath:@"meditate"
         priceMultiplier:-1
       upgradeMultiplier:-1
                    rank:2];
     [self createIAPItem:SHOP_ITEM_ID_IAD_SUPER_POINTS
                    name:@"SUPER!"
-              imagePath:@"icon_iap_super"
+              imagePath:@"enlightment"
         priceMultiplier:-1
       upgradeMultiplier:-1
                    rank:3];

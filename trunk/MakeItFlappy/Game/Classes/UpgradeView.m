@@ -15,6 +15,7 @@
 @implementation UpgradeView
 
 - (IBAction)LvlButtonPressed:(id)sender {
+    self.tempPrice = [[ShopManager instance] priceForItemId:self.item.itemId type:self.item.type];
     if ([UserData instance].currentScore >= self.cost) {
         [[UpgradeManager instance] attemptUpgrade:self.item];
     }
@@ -32,13 +33,15 @@
 }
 
 - (void)upgradeSuccess {
+    [self performSelector:@selector(animateLabelForUpgrade) withObject:nil afterDelay:7.6f];
     [[[UpgradeResultView alloc] init] showSuccess];
-    [self performSelector:@selector(animateLabelForUpgrade) withObject:nil afterDelay:4.5f];
+
+    [self checkMaxLevel:[self checkItemLevel]];
 }
 
 - (void)upgradeFail {
     [[[UpgradeResultView alloc] init] showFail];
-    [self performSelector:@selector(animateLabelForUpgrade) withObject:nil afterDelay:4.5f];
+    [self performSelector:@selector(animateLabelForUpgrade) withObject:nil afterDelay:4.8f];
     
 }
 - (void)dismissed:(id)sender {
@@ -59,17 +62,26 @@
     long long tempResult = [UserData instance].currentScore;
     tempResult -= self.cost;
     self.afterCostLabel.text = [NSString stringWithFormat:@"%@",[Utils formatLongLongWithComma:tempResult]];
-    NSMutableDictionary *typeDictionary = [[UserData instance].gameDataDictionary objectForKey:[NSString stringWithFormat:@"%d", self.item.type]];
-    int itemLevel = [[typeDictionary objectForKey:self.item.itemId]intValue];
-    self.lvlLabel.text = [NSString stringWithFormat:@"Lvl:%d", itemLevel];
+   
+    self.lvlLabel.text = [NSString stringWithFormat:@"Lvl:%d", [self checkItemLevel]];
 }
 
+- (int)checkItemLevel {
+    NSMutableDictionary *typeDictionary = [[UserData instance].gameDataDictionary objectForKey:[NSString stringWithFormat:@"%d", self.item.type]];
+    return [[typeDictionary objectForKey:self.item.itemId]intValue];
+}
+
+- (void)checkMaxLevel:(int)lvl {
+    if (lvl >= 100) {
+        [self dismissed:self];
+    }
+}
 - (void)animateLabelForUpgrade {
     AnimatedLabel *label = [[AnimatedLabel alloc] init];
     CGPoint point = self.center;
     [self addSubview:label];
     label.label.textColor = [UIColor colorWithRed:0.f green:.8f blue:0.8f alpha:1.f];
-    label.label.text = [NSString stringWithFormat:@"-%lld", [[ShopManager instance] priceForItemId:self.item.itemId type:self.item.type]];
+    label.label.text = [NSString stringWithFormat:@"-%lld", self.tempPrice];
     label.center = point;
     [label animateSlow];
 }

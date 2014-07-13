@@ -155,81 +155,168 @@
             return 40;
             break;
         case 36:
-            return 30;
+            return 35;
             break;
         case 37:
-            return 30;
+            return 35;
             break;
         case 38:
-            return 30;
+            return 35;
             break;
         case 39:
-            return 30;
+            return 35;
             break;
         case 40:
-            return 30;
+            return 35;
             break;
         case 41:
-            return 20;
+            return 35;
             break;
         case 42:
-            return 20;
+            return 35;
             break;
         case 43:
-            return 20;
+            return 35;
             break;
         case 44:
-            return 20;
+            return 35;
             break;
         case 45:
-            return 20;
+            return 35;
             break;
         case 46:
-            return 15;
+            return 30;
             break;
         case 47:
-            return 15;
+            return 30;
             break;
         case 48:
-            return 15;
+            return 30;
             break;
         case 49:
-            return 15;
+            return 30;
             break;
         case 50:
-            return 15;
+            return 30;
             break;
         case 51:
-            return 10;
+            return 25;
             break;
         case 52:
-            return 10;
+            return 25;
             break;
         case 53:
-            return 10;
+            return 25;
             break;
         case 54:
-            return 10;
+            return 25;
             break;
         case 55:
-            return 10;
+            return 25;
             break;
         case 56:
-            return 10;
+            return 20;
             break;
         case 57:
-            return 10;
+            return 20;
             break;
         case 58:
-            return 10;
+            return 20;
             break;
         case 59:
-            return 10;
+            return 20;
             break;
         case 60:
+            return 20;
+            break;
+        case 61:
+            return 20;
+            break;
+        case 62:
+            return 20;
+            break;
+        case 63:
+            return 20;
+            break;
+        case 64:
+            return 20;
+            break;
+        case 65:
+            return 20;
+            break;
+        case 66:
+            return 20;
+            break;
+        case 67:
+            return 20;
+            break;
+        case 68:
+            return 20;
+            break;
+        case 69:
+            return 20;
+            break;
+        case 70:
+            return 15;
+            break;
+        case 71:
+            return 15;
+            break;
+        case 72:
+            return 15;
+            break;
+        case 73:
+            return 15;
+            break;
+        case 74:
+            return 15;
+            break;
+        case 75:
+            return 15;
+            break;
+        case 76:
+            return 15;
+            break;
+        case 77:
+            return 15;
+            break;
+        case 78:
+            return 15;
+            break;
+        case 79:
+            return 15;
+            break;
+        case 80:
             return 10;
             break;
-        default:
+        case 81:
+            return 10;
+            break;
+        case 82:
+            return 10;
+            break;
+        case 83:
+            return 15;
+            break;
+        case 84:
+            return 10;
+            break;
+        case 85:
+            return 10;
+            break;
+        case 86:
+            return 10;
+            break;
+        case 87:
+            return 10;
+            break;
+        case 88:
+            return 10;
+            break;
+        case 89:
+            return 10;
+            break;
+                default:
             return 5;
             break;
 

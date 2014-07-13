@@ -30,11 +30,19 @@
 }
 
 - (void)play:(NSString *)fileName {
+    [self play:fileName numberOfLoops:0];
+}
+
+- (void)play:(NSString *)fileName repeat:(BOOL)repeat {
+    [self play:fileName numberOfLoops:repeat ? -1 : 0];
+}
+
+- (void)play:(NSString *)fileName numberOfLoops:(NSUInteger)numberOfLoops {
     SoundEffectHelper *soundEffect = [self.soundEffects objectForKey:fileName];
     if (!soundEffect) {
         [self prepare:fileName];
     }
-    [soundEffect play];
+    [soundEffect play:numberOfLoops];
 }
 
 - (void)stop:(NSString *)fileName {

@@ -137,16 +137,20 @@
         if ([[NSUserDefaults standardUserDefaults] objectForKey:@"gameData"]) {
             self.gameDataDictionary = [[NSUserDefaults standardUserDefaults] objectForKey:@"gameData"];
         } else {
-            self.gameDataDictionary = [NSMutableDictionary dictionary];
-            [self.gameDataDictionary setObject:[NSMutableDictionary dictionary] forKey:[NSString stringWithFormat:@"%d", POWER_UP_TYPE_UPGRADE]];
-            
-            NSMutableDictionary *typeDictionary = [self.gameDataDictionary objectForKey:[NSString stringWithFormat:@"%d", POWER_UP_TYPE_UPGRADE]];
-            [typeDictionary setObject:[NSNumber numberWithInt:0] forKey:SHOP_ITEM_ID_UPGRADE_SPEED];
-            [typeDictionary setObject:[NSNumber numberWithInt:0] forKey:SHOP_ITEM_ID_UPGRADE_FLAPPY];
-            [typeDictionary setObject:[NSNumber numberWithInt:0] forKey:SHOP_ITEM_ID_UPGRADE_AIR];
-            [self saveGameData];
+            [self resetStats];
         }
     }
+}
+
+- (void)resetStats {
+    self.gameDataDictionary = [NSMutableDictionary dictionary];
+    [self.gameDataDictionary setObject:[NSMutableDictionary dictionary] forKey:[NSString stringWithFormat:@"%d", POWER_UP_TYPE_UPGRADE]];
+    
+    NSMutableDictionary *typeDictionary = [self.gameDataDictionary objectForKey:[NSString stringWithFormat:@"%d", POWER_UP_TYPE_UPGRADE]];
+    [typeDictionary setObject:[NSNumber numberWithInt:0] forKey:SHOP_ITEM_ID_UPGRADE_SPEED];
+    [typeDictionary setObject:[NSNumber numberWithInt:0] forKey:SHOP_ITEM_ID_UPGRADE_FLAPPY];
+    [typeDictionary setObject:[NSNumber numberWithInt:0] forKey:SHOP_ITEM_ID_UPGRADE_AIR];
+    [self saveGameData];
 }
 
 - (void)saveGameData {
@@ -275,7 +279,7 @@
 }
 
 - (float)totalPowerUpFor:(PowerUpType)type UpgradeType:(NSString *)upgrade {
-    long long totalMultiplier = 0;
+    long double totalMultiplier = 0;
     NSMutableDictionary *typeDictionary = [self.gameDataDictionary objectForKey:[NSString stringWithFormat:@"%d", type]];
     NSString *currentKey = @"default";
     
@@ -287,7 +291,7 @@
     
     ShopItem *item =[[ShopManager instance] shopItemForItemId:currentKey dictionary:type];
     totalMultiplier = [self realMultiplier:item];
-    if (totalMultiplier <=0) {
+    if (totalMultiplier <= 0) {
         totalMultiplier = 1;
     }
     return totalMultiplier;
@@ -296,8 +300,7 @@
 - (float)realMultiplier:(ShopItem *)shopItem {
     NSMutableDictionary *typeDictionary = [self.gameDataDictionary objectForKey:[NSString stringWithFormat:@"%d", shopItem.type]];
     int itemLevel = [[typeDictionary objectForKey:shopItem.itemId] intValue];
-    long long tempMultiplier = shopItem.upgradeMultiplier * (float)itemLevel;
-    return tempMultiplier;
+    return shopItem.upgradeMultiplier * (float)itemLevel;
 }
 
 - (int)totalPointPerTap:(BOOL)bonusOn {
@@ -342,130 +345,166 @@
 
 - (void)heightTierData:(long long)currentHeight {
     self.currentHeight = currentHeight;
-    if(self.currentHeight < 100) {
-        self.airResistence = 0;
-        self.currentBackgroundTier = BackgroundTypeFloat;
-        self.levelBonus = 1;
-        
-    } else if(self.currentHeight < 200) {
-        self.airResistence = 1;
-        self.currentBackgroundTier = BackgroundTypeTree;
-        self.levelBonus = 2;
-        
-    } else if(self.currentHeight < 500) {
+    if(self.currentHeight < 300) {
         self.airResistence = 2;
-        self.currentBackgroundTier = BackgroundTypeSky;
-        self.levelBonus = 5;
+        self.currentBackgroundTier = BackgroundTypeFloor;
+        self.levelBonus = 1;
         
     } else if(self.currentHeight < 1000) {
         self.airResistence = 3;
-        self.currentBackgroundTier = BackgroundTypeCloud;
-        self.levelBonus = 10;
+        self.currentBackgroundTier = BackgroundTypeGrass;
+        self.levelBonus = 2;
         
     } else if(self.currentHeight < 2000) {
+        self.airResistence = 4;
+        self.currentBackgroundTier = BackgroundTypeGrassFoot;
+        self.levelBonus = 3;
+        
+    }
+    else if(self.currentHeight < 3000) {
+        self.airResistence = 5;
+        self.currentBackgroundTier = BackgroundTypeGrassLeg;
+        self.levelBonus = 4;
+        
+    }
+    else if(self.currentHeight < 4000) {
+        self.airResistence = 6;
+        self.currentBackgroundTier = BackgroundTypeGrassBody;
+        self.levelBonus = 5;
+        
+    }
+    else if(self.currentHeight < 6000) {
+        self.airResistence = 7;
+        self.currentBackgroundTier = BackgroundTypeGrassHead;
+        self.levelBonus = 6;
+        
+    }
+    else if(self.currentHeight < 8000) {
         self.airResistence = 8;
+        self.currentBackgroundTier = BackgroundTypeFloat;
+        self.levelBonus = 7;
+        
+    }
+    else if(self.currentHeight < 12000) {
+        self.airResistence = 10;
+        self.currentBackgroundTier = BackgroundTypeTree;
+        self.levelBonus = 10;
+        
+    }
+    else if(self.currentHeight < 15000) {
+        self.airResistence = 20;
+        self.currentBackgroundTier = BackgroundTypeSky;
+        self.levelBonus = 15;
+        
+    } else if(self.currentHeight < 16000) {
+        self.airResistence = 25;
+        self.currentBackgroundTier = BackgroundTypeCloud;
+        self.levelBonus = 30;
+        
+    } else if(self.currentHeight < 30000) {
+        self.airResistence = 40;
         self.currentBackgroundTier = BackgroundTypeMountain;
         self.levelBonus = 50;
         
-    } else if(self.currentHeight < 5000) {
-        self.airResistence = 15;
+    } else if(self.currentHeight < 40000) {
+        self.airResistence = 80;
         self.currentBackgroundTier = BackgroundTypeAtmosphere;
         self.levelBonus = 100;
         
-    } else if(self.currentHeight < 10000) {
-        self.airResistence = 30;
-        self.currentBackgroundTier = BackgroundTypeSpace;
-        self.levelBonus = 400;
-        
-    } else if(self.currentHeight < 20000) {
-        self.airResistence = 40;
-        self.currentBackgroundTier = BackgroundTypeMoon;
-        self.levelBonus = 1000;
-        
-    } else if(self.currentHeight < 30000) {
-        self.airResistence = 50;
-        self.currentBackgroundTier = BackgroundTypeVenus;
-        self.levelBonus = 3000;
-        
-    } else if(self.currentHeight < 40000) {
-        self.airResistence = 60;
-        self.currentBackgroundTier = BackgroundTypeMercury;
-        self.levelBonus = 8000;
-        
     } else if(self.currentHeight < 50000) {
-        self.airResistence = 70;
-        self.currentBackgroundTier = BackgroundTypeSun;
-        self.levelBonus = 30000;
+        self.airResistence = 100;
+        self.currentBackgroundTier = BackgroundTypeSpace;
+        self.levelBonus = 120;
         
     } else if(self.currentHeight < 60000) {
-        self.airResistence = 80;
-        self.currentBackgroundTier = BackgroundTypeComet;
-        self.levelBonus = 500000;
-        
-    } else if(self.currentHeight < 70000) {
-        self.airResistence = 90;
-        self.currentBackgroundTier = BackgroundTypeMars;
-        self.levelBonus = 1;
+        self.airResistence = 110;
+        self.currentBackgroundTier = BackgroundTypeMoon;
+        self.levelBonus = 150;
         
     } else if(self.currentHeight < 80000) {
-        self.airResistence = 100;
-        self.currentBackgroundTier = BackgroundTypeAsteroid;
-        self.levelBonus = 1;
-        
-    } else if(self.currentHeight < 90000) {
-        self.airResistence = 100;
-        self.currentBackgroundTier = BackgroundTypeJupiter;
-        self.levelBonus = 1;
+        self.airResistence = 120;
+        self.currentBackgroundTier = BackgroundTypeVenus;
+        self.levelBonus = 200;
         
     } else if(self.currentHeight < 100000) {
-        self.airResistence = 110;
-        self.currentBackgroundTier = BackgroundTypeSaturn;
-        self.levelBonus = 1;
-        
-    } else if(self.currentHeight < 110000){
-        self.airResistence = 120;
-        self.currentBackgroundTier = BackgroundTypeUranus;
-        self.levelBonus = 1;
-        
-    } else if(self.currentHeight < 120000){
         self.airResistence = 130;
-        self.currentBackgroundTier = BackgroundTypeNepture;
-        self.levelBonus = 1;
+        self.currentBackgroundTier = BackgroundTypeMercury;
+        self.levelBonus = 250;
         
-    } else if(self.currentHeight < 130000){
-        self.airResistence = 140;
-        self.currentBackgroundTier = BackgroundTypePluto;
-        self.levelBonus = 1;
-        
-    } else if(self.currentHeight < 140000){
-        self.airResistence = 150;
-        self.currentBackgroundTier = BackgroundTypeSolar;
-        self.levelBonus = 1;
-        
-    } else if(self.currentHeight < 150000){
+    } else if(self.currentHeight < 200000) {
         self.airResistence = 160;
+        self.currentBackgroundTier = BackgroundTypeSun;
+        self.levelBonus = 400;
+        
+    } else if(self.currentHeight < 300000) {
+        self.airResistence = 180;
+        self.currentBackgroundTier = BackgroundTypeComet;
+        self.levelBonus = 450;
+        
+    } else if(self.currentHeight < 400000) {
+        self.airResistence = 200;
+        self.currentBackgroundTier = BackgroundTypeMars;
+        self.levelBonus = 500;
+        
+    } else if(self.currentHeight < 500000) {
+        self.airResistence = 220;
+        self.currentBackgroundTier = BackgroundTypeAsteroid;
+        self.levelBonus = 550;
+        
+    } else if(self.currentHeight < 600000) {
+        self.airResistence = 240;
+        self.currentBackgroundTier = BackgroundTypeJupiter;
+        self.levelBonus = 600;
+        
+    } else if(self.currentHeight < 700000) {
+        self.airResistence = 260;
+        self.currentBackgroundTier = BackgroundTypeSaturn;
+        self.levelBonus = 650;
+        
+    } else if(self.currentHeight < 800000){
+        self.airResistence = 280;
+        self.currentBackgroundTier = BackgroundTypeUranus;
+        self.levelBonus = 700;
+        
+    } else if(self.currentHeight < 900000){
+        self.airResistence = 300;
+        self.currentBackgroundTier = BackgroundTypeNepture;
+        self.levelBonus = 750;
+        
+    } else if(self.currentHeight < 1000000){
+        self.airResistence = 320;
+        self.currentBackgroundTier = BackgroundTypePluto;
+        self.levelBonus = 800;
+        
+    } else if(self.currentHeight < 2800000){
+        self.airResistence = 400;
+        self.currentBackgroundTier = BackgroundTypeSolar;
+        self.levelBonus = 1000;
+        
+    } else if(self.currentHeight < 4500000){
+        self.airResistence = 450;
         self.currentBackgroundTier = BackgroundTypeGalaxy;
-        self.levelBonus = 1;
+        self.levelBonus = 2000;
         
-    } else if(self.currentHeight < 160000) {
-        self.airResistence = 100;
+    } else if(self.currentHeight < 7000000) {
+        self.airResistence = 500;
         self.currentBackgroundTier = BackgroundTypeOuterGalaxy;
-        self.levelBonus = 1;
+        self.levelBonus = 4000;
         
-    } else if(self.currentHeight < 170000) {
-        self.airResistence = 100;
+    } else if(self.currentHeight < 9000000) {
+        self.airResistence = 600;
         self.currentBackgroundTier = BackgroundTypeBlack;
-        self.levelBonus = 1;
+        self.levelBonus = 6000;
         
-    } else if(self.currentHeight < 180000) {
-        self.airResistence = 100;
+    } else if(self.currentHeight < 15000000) {
+        self.airResistence = 700;
         self.currentBackgroundTier = BackgroundTypeBlackEntrance;
-        self.levelBonus = 1;
+        self.levelBonus = 8000;
         
     } else {
-        self.airResistence = 100;
+        self.airResistence = 800;
         self.currentBackgroundTier = BackgroundTypeLast;
-        self.levelBonus = 1;
+        self.levelBonus = 0;
     }
     [self checkSonicBoom];
 }
@@ -473,6 +512,14 @@
 - (int)currentCharacterLevel {
     NSMutableDictionary *typeDictionary = [self.gameDataDictionary objectForKey:[NSString stringWithFormat:@"%d", POWER_UP_TYPE_UPGRADE]];
     return [[typeDictionary objectForKey:SHOP_ITEM_ID_UPGRADE_FLAPPY]intValue] + [[typeDictionary objectForKey:SHOP_ITEM_ID_UPGRADE_SPEED]intValue] + [[typeDictionary objectForKey:SHOP_ITEM_ID_UPGRADE_AIR]intValue];
+}
+
+- (NSString *)windLevelCheck {
+    NSString *windLevel = SOUND_EFFECT_FORESTWIND;
+    if (self.currentHeight > 12000) {
+        windLevel = SOUND_EFFECT_WINDY;
+    }
+    return windLevel;
 }
 
 - (void)checkSonicBoom {

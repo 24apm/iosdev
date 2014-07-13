@@ -8,18 +8,21 @@
 
 #import "UpgradeResultView.h"
 #import "GameConstants.h"
+#import "SoundManager.h"
 
 @implementation UpgradeResultView
 
 - (void)showSuccess {
     [super show];
     self.backgroundOverView.hidden = YES;
+    self.success = YES;
     [self animatingResult:@"character_learningsuccess"];
 }
 
 - (void)showFail {
     [super show];
     self.backgroundOverView.hidden = YES;
+    self.success = NO;
     [self animatingResult:@"character_learningfail"];
     
 }
@@ -30,6 +33,7 @@
 }
 
 - (void)animatingResult:(NSString *)imgName {
+    [[SoundManager instance]play:SOUND_EFFECT_TICKING];
     NSString *img = imgName;
     UIImageView* upgradeProcess = [[UIImageView alloc] initWithFrame:self.imgView.frame];
     upgradeProcess.animationImages = [NSArray arrayWithObjects:
@@ -58,6 +62,16 @@
 }
 
 - (void)finalFrame:(NSString *)img {
+    [[SoundManager instance] stop:SOUND_EFFECT_TICKING];
+    float delay = 4.8f;
+    if (self.success) {
+        [[SoundManager instance]play:SOUND_EFFECT_WINNING];
+    } else {
+        [[SoundManager instance]play:SOUND_EFFECT_BOING];
+        delay = 2.f;
+    }
+    
+    
     [self.imgView stopAnimating];
     self.imgView.layer.opacity = 0.f;
     
@@ -71,7 +85,7 @@
     [groupAnimation setFillMode:kCAFillModeForwards];
     [self.imgView.layer addAnimation:groupAnimation forKey:@"animateIn"];
     self.imgView.image = [UIImage imageNamed:img];
-    [self performSelector:@selector(finalFrameFade:) withObject:nil afterDelay:1.8f];
+    [self performSelector:@selector(finalFrameFade:) withObject:nil afterDelay:delay];
 }
 
 - (void)finalFrameFade:(NSString *)img {

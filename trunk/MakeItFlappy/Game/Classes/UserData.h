@@ -14,6 +14,11 @@
 typedef enum {
     BackgroundTypeFlying,
     BackgroundTypeFloor,
+    BackgroundTypeGrass,
+    BackgroundTypeGrassFoot,
+    BackgroundTypeGrassLeg,
+    BackgroundTypeGrassBody,
+    BackgroundTypeGrassHead,
     BackgroundTypeFloat,
     BackgroundTypeTree,
     BackgroundTypeSky,
@@ -103,5 +108,7 @@ typedef enum {
 - (void)saveMaxTime:(double)time;
 - (void)saveMaxHeight:(long long)height;
 - (int)currentCharacterLevel;
+- (NSString *)windLevelCheck;
+- (void)resetStats;
     
 @end

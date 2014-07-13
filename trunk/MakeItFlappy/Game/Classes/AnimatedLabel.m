@@ -71,7 +71,7 @@
 
     CAAnimationGroup *animateGroup = [CAAnimationGroup animation];
     animateGroup.animations = [NSArray arrayWithObjects:animatePosition, scaleIn, animateAlpha, nil];
-    animateGroup.duration = 2.f;
+    animateGroup.duration = 1.5f;
     animateGroup.fillMode = kCAFillModeForwards;
     animateGroup.removedOnCompletion = NO;
     [self.layer addAnimation:animateGroup forKey:@"animateGroup"];

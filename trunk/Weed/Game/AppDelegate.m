@@ -12,6 +12,7 @@
 #import "NumberGameIAPHelper.h"
 #import "PromoManager.h"
 #import "CoinIAPHelper.h"
+#import "RootViewController.h"
 
 @implementation AppDelegate
 
@@ -25,6 +26,14 @@
     [[NotificationManager instance] registerNotifications];
     [[CoinIAPHelper sharedInstance] loadProduct];
 
+    RootViewController *myViewController = [[RootViewController alloc] init];
+    self.navigationController = [[UINavigationController alloc]
+                            initWithRootViewController:myViewController];
+    self.navigationController.navigationBar.hidden = YES;
+
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.rootViewController = self.navigationController;
+    [self.window makeKeyAndVisible];
     
     return YES;
 }

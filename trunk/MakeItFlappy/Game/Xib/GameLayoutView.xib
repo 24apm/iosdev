@@ -14,7 +14,6 @@
                 <outlet property="characterImageView" destination="pSk-9g-48G" id="ICX-jn-D2A"/>
                 <outlet property="displayView" destination="QL0-iX-gb7" id="59s-UY-she"/>
                 <outlet property="distanceLabel" destination="Hg1-sA-Ypv" id="pNu-PI-m6B"/>
-                <outlet property="distanceUIView" destination="VqQ-KL-jYb" id="4Iu-NQ-ILn"/>
                 <outlet property="iapOverlay" destination="V1X-Im-HY8" id="dk2-jr-ZsR"/>
                 <outlet property="particleView" destination="eGw-W2-A6I" id="bBd-hi-Spg"/>
                 <outlet property="progressBar" destination="e7Z-Na-e6R" id="6jS-4l-CVb"/>
@@ -28,15 +27,15 @@
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="wkQ-lM-asS">
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" id="YyU-Qp-5Uk" userLabel="GameLayoutView">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="Ukw-rQ-0Gn">
                             <rect key="frame" x="-32" y="-44" width="384" height="568"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <view userInteractionEnabled="NO" contentMode="scaleToFill" id="eGw-W2-A6I" customClass="ParticleView">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
@@ -44,8 +43,8 @@
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shiny_background.png" id="Ymk-aO-bxr">
-                            <rect key="frame" x="-140" y="-60" width="600" height="600"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            <rect key="frame" x="-139.99999999999977" y="-60.000000000000284" width="600" height="600"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="character_standing.png" id="pSk-9g-48G">
                             <rect key="frame" x="11" y="112" width="300" height="300"/>
@@ -53,7 +52,7 @@
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="p6c-UB-ruD" userLabel="Tap Button">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <state key="normal">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -65,17 +64,12 @@
                         </button>
                         <view contentMode="scaleToFill" id="QL0-iX-gb7" userLabel="Exp Display View" customClass="ExpUIView">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="124"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.29999999999999999" colorSpace="calibratedWhite"/>
-                        </view>
-                        <view contentMode="scaleToFill" id="VqQ-KL-jYb" userLabel="Distance Display View" customClass="DistanceUIView">
-                            <rect key="frame" x="0.0" y="495" width="320" height="80"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="0.29999999999999999" colorSpace="calibratedWhite"/>
                         </view>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="Hg1-sA-Ypv" userLabel="Distance Label">
                             <rect key="frame" x="10" y="140" width="165" height="40"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="29"/>
                             <color key="textColor" red="0.1346506810592899" green="0.42006094823123119" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -83,16 +77,16 @@
                         </label>
                         <view contentMode="scaleToFill" id="e7Z-Na-e6R" customClass="ProgressBarComponent">
                             <rect key="frame" x="29" y="382" width="286" height="10"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <subviews>
                                 <view contentMode="scaleToFill" id="Z76-Az-4Lt">
                                     <rect key="frame" x="-7" y="0.0" width="300" height="20"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 </view>
                                 <view contentMode="scaleToFill" id="WI5-gK-efK">
                                     <rect key="frame" x="-7" y="0.0" width="300" height="20"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <color key="backgroundColor" red="1" green="0.60549926840000001" blue="0.3379715646" alpha="1" colorSpace="calibratedRGB"/>
                                 </view>
                             </subviews>
@@ -103,8 +97,8 @@
                             </connections>
                         </view>
                         <view contentMode="scaleToFill" id="mEx-6S-3gg" customClass="ProgressBarComponent">
-                            <rect key="frame" x="29" y="131" width="286" height="9.9999999999999964"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
+                            <rect key="frame" x="29" y="131" width="286" height="10"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <view contentMode="scaleToFill" id="ZNS-eQ-hQb">
                                     <rect key="frame" x="0.0" y="0.0" width="300" height="20"/>
@@ -125,11 +119,11 @@
                         </view>
                         <view contentMode="scaleToFill" id="Tkm-lP-oR6" userLabel="Shop Bar">
                             <rect key="frame" x="0.0" y="400" width="320" height="80"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="XE4-fe-6Q4" userLabel="Upgrade Button">
                                     <rect key="frame" x="25" y="10" width="60" height="60"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <state key="normal" backgroundImage="icon_tap.png">
@@ -141,7 +135,7 @@
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="YcZ-M7-5Ta" userLabel="Achievement Button">
                                     <rect key="frame" x="95" y="10" width="60" height="60"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <state key="normal" backgroundImage="icon_clock.png">
@@ -153,7 +147,7 @@
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="fN5-2l-UTn" userLabel="Rating Button">
                                     <rect key="frame" x="165" y="10" width="60" height="60"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <state key="normal" backgroundImage="icon_offline.png">
@@ -165,7 +159,7 @@
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="L8b-ta-saF" userLabel="Shop IAP Button">
                                     <rect key="frame" x="235" y="10" width="60" height="60"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <accessibility key="accessibilityConfiguration">
                                         <accessibilityTraits key="traits" none="YES" button="YES" notEnabled="YES"/>
@@ -180,7 +174,7 @@
                                 </button>
                                 <view userInteractionEnabled="NO" contentMode="scaleToFill" id="V1X-Im-HY8">
                                     <rect key="frame" x="230" y="0.0" width="70" height="80"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.56000000000000005" colorSpace="calibratedWhite"/>
                                     <accessibility key="accessibilityConfiguration">
                                         <accessibilityTraits key="traits" none="YES" notEnabled="YES"/>
@@ -188,7 +182,7 @@
                                 </view>
                                 <view contentMode="scaleToFill" id="cJv-4Z-hg8">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.55000000000000004" colorSpace="calibratedRGB"/>
                                 </view>
                             </subviews>
@@ -197,7 +191,7 @@
                         </view>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="fSe-uZ-j3C">
                             <rect key="frame" x="215" y="143" width="100" height="100"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="health.png" id="4fY-Jg-UvD">
                             <rect key="frame" x="0.0" y="121" width="30" height="30"/>
@@ -205,7 +199,7 @@
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coin.png" id="VzH-As-nVM">
                             <rect key="frame" x="0.0" y="372" width="30" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         </imageView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>

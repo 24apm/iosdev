@@ -11,11 +11,12 @@
 
 - (void)drawRect:(CGRect)rect {
     [super drawRect:rect];
-    [self performSelector:@selector(createParticle) withObject:nil afterDelay:0.5f];
+    [self performSelector:@selector(createParticle) withObject:nil afterDelay:1.f];
 }
 
 - (void)createParticle {
     //set ref to the layer
+    self.hidden = YES;
     self.fireEmitter = (CAEmitterLayer*)self.layer; //2
     //configure the emitter layer
     self.fireEmitter.emitterPosition = CGPointMake(self.center.x, 0);

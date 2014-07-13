@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		D00331231918BA9F008C1834 /* DialogViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D00331221918BA9F008C1834 /* DialogViewManager.m */; };
 		D00331261918C546008C1834 /* AnimatingDialogView.m in Sources */ = {isa = PBXBuildFile; fileRef = D00331251918C546008C1834 /* AnimatingDialogView.m */; };
-		D0242C191928829100DBE20A /* BucketView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0242C181928829100DBE20A /* BucketView.m */; };
 		D033855218EA9C22008D7861 /* defaultbackground.png in Resources */ = {isa = PBXBuildFile; fileRef = D033854F18EA9C22008D7861 /* defaultbackground.png */; };
 		D033855318EA9C22008D7861 /* bluebackground.png in Resources */ = {isa = PBXBuildFile; fileRef = D033855018EA9C22008D7861 /* bluebackground.png */; };
 		D033855418EA9C22008D7861 /* pinkbackground.png in Resources */ = {isa = PBXBuildFile; fileRef = D033855118EA9C22008D7861 /* pinkbackground.png */; };
@@ -21,9 +20,6 @@
 		D0384620191EB12E00265FE1 /* ErrorDialogView.m in Sources */ = {isa = PBXBuildFile; fileRef = D03845BD191EB12D00265FE1 /* ErrorDialogView.m */; };
 		D0384621191EB12E00265FE1 /* GameCenterHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D03845BF191EB12D00265FE1 /* GameCenterHelper.m */; };
 		D0384622191EB12E00265FE1 /* GameConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D03845C1191EB12D00265FE1 /* GameConstants.m */; };
-		D0384625191EB12E00265FE1 /* GameLayoutView.m in Sources */ = {isa = PBXBuildFile; fileRef = D03845C7191EB12D00265FE1 /* GameLayoutView.m */; };
-		D0384628191EB12E00265FE1 /* GamePlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = D03845CD191EB12D00265FE1 /* GamePlayView.m */; };
-		D0384629191EB12E00265FE1 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D03845CF191EB12D00265FE1 /* GameViewController.m */; };
 		D038462B191EB12E00265FE1 /* LocalLeaderBoardView.m in Sources */ = {isa = PBXBuildFile; fileRef = D03845D3191EB12D00265FE1 /* LocalLeaderBoardView.m */; };
 		D038462C191EB12E00265FE1 /* MainView.m in Sources */ = {isa = PBXBuildFile; fileRef = D03845D5191EB12D00265FE1 /* MainView.m */; };
 		D0384630191EB12E00265FE1 /* NotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D03845DD191EB12D00265FE1 /* NotificationManager.m */; };
@@ -34,7 +30,6 @@
 		D038463A191EB12E00265FE1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D03845EF191EB12D00265FE1 /* InfoPlist.strings */; };
 		D038463B191EB12E00265FE1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D03845F1191EB12D00265FE1 /* Images.xcassets */; };
 		D038463C191EB12E00265FE1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D03845F2191EB12D00265FE1 /* main.m */; };
-		D038463D191EB12E00265FE1 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = D03845F3191EB12D00265FE1 /* MainWindow.xib */; };
 		D0384661191EB21000265FE1 /* XibTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D0384660191EB21000265FE1 /* XibTableViewCell.m */; };
 		D0384664191EB36200265FE1 /* ShopTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0384663191EB36200265FE1 /* ShopTableView.m */; };
 		D0384669191EB4F900265FE1 /* ShopRowView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0384668191EB4F900265FE1 /* ShopRowView.m */; };
@@ -42,21 +37,18 @@
 		D048A84018ACAAAB00411DF9 /* twitter_share.png in Resources */ = {isa = PBXBuildFile; fileRef = D048A83E18ACAAAB00411DF9 /* twitter_share.png */; };
 		D048A84618ACB25200411DF9 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D048A84518ACB25200411DF9 /* GameKit.framework */; };
 		D04F704218AA1197000509AA /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D04F704118AA1197000509AA /* Social.framework */; };
+		D051F11819731381000F98DC /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D051F11719731381000F98DC /* RootViewController.xib */; };
+		D051F11B197313A1000F98DC /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D051F11A197313A1000F98DC /* RootViewController.m */; };
 		D052D9331969285D00D13DB0 /* pressandhold.png in Resources */ = {isa = PBXBuildFile; fileRef = D052D9321969285D00D13DB0 /* pressandhold.png */; };
 		D055B91B1918A066007730EB /* tier3coin.png in Resources */ = {isa = PBXBuildFile; fileRef = D055B9191918A066007730EB /* tier3coin.png */; };
 		D055B91D1918A7A4007730EB /* tier4coin.png in Resources */ = {isa = PBXBuildFile; fileRef = D055B91C1918A7A4007730EB /* tier4coin.png */; };
 		D05EF407196173B70016FD96 /* health.png in Resources */ = {isa = PBXBuildFile; fileRef = D05EF406196173B70016FD96 /* health.png */; };
 		D06181ED193453F5001740D4 /* AnimatedLabel.xib in Resources */ = {isa = PBXBuildFile; fileRef = D06181DF193453F5001740D4 /* AnimatedLabel.xib */; };
-		D06181EF193453F5001740D4 /* BonusButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = D06181E1193453F5001740D4 /* BonusButton.xib */; };
-		D06181F0193453F5001740D4 /* BucketView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D06181E2193453F5001740D4 /* BucketView.xib */; };
 		D06181F1193453F5001740D4 /* ErrorDialogView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D06181E3193453F5001740D4 /* ErrorDialogView.xib */; };
-		D06181F3193453F5001740D4 /* GamePlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D06181E5193453F5001740D4 /* GamePlayView.xib */; };
-		D06181F4193453F5001740D4 /* GameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D06181E6193453F5001740D4 /* GameViewController.xib */; };
 		D06181F5193453F5001740D4 /* LocalLeaderBoardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D06181E7193453F5001740D4 /* LocalLeaderBoardView.xib */; };
 		D06181F7193453F5001740D4 /* MainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D06181E9193453F5001740D4 /* MainView.xib */; };
 		D06181F9193453F5001740D4 /* ShopRowView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D06181EB193453F5001740D4 /* ShopRowView.xib */; };
 		D06181FA193453F5001740D4 /* ShopTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D06181EC193453F5001740D4 /* ShopTableView.xib */; };
-		D06181FC19345426001740D4 /* GameLayoutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D06181FB19345426001740D4 /* GameLayoutView.xib */; };
 		D06DB4251939BE9400B33BEC /* guinea_pig.caf in Resources */ = {isa = PBXBuildFile; fileRef = D06DB4231939BE9400B33BEC /* guinea_pig.caf */; };
 		D06DB4261939BE9400B33BEC /* anvil.caf in Resources */ = {isa = PBXBuildFile; fileRef = D06DB4241939BE9400B33BEC /* anvil.caf */; };
 		D06DB4291939C2CD00B33BEC /* Hallelujah-Short.caf in Resources */ = {isa = PBXBuildFile; fileRef = D06DB4271939C2CD00B33BEC /* Hallelujah-Short.caf */; };
@@ -202,7 +194,6 @@
 		D0E7FF6B18E69DEB00896C7B /* opendoor.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E7FF6818E69DEB00896C7B /* opendoor.png */; };
 		D0E7FF6C18E69DEB00896C7B /* person.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E7FF6918E69DEB00896C7B /* person.png */; };
 		D0E7FF7918E6B02700896C7B /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E7FF7818E6B02700896C7B /* CoreImage.framework */; };
-		D0E8A77E1951687E002CD232 /* GameLayoutView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E8A77D1951687E002CD232 /* GameLayoutView~ipad.xib */; };
 		D0E981221968C871001A591F /* icon_lvl.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E981211968C871001A591F /* icon_lvl.png */; };
 		D0EA7EBE18D521C90095DEBD /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EA7EBA18D521C90095DEBD /* arrow.png */; };
 		D0EA7EBF18D521C90095DEBD /* shield.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EA7EBB18D521C90095DEBD /* shield.png */; };
@@ -300,13 +291,8 @@
 		D0F02F181910C7450003F759 /* PromoBannerView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0F02F171910C7450003F759 /* PromoBannerView~ipad.xib */; };
 		D0F02F1A1910C7640003F759 /* PromoDialogView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0F02F191910C7640003F759 /* PromoDialogView~ipad.xib */; };
 		D0F03566192C8D5000F0B0BE /* icon_bucket.png in Resources */ = {isa = PBXBuildFile; fileRef = D0F03565192C8D5000F0B0BE /* icon_bucket.png */; };
-		D0F03569192C9E0900F0B0BE /* BonusButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F03568192C9E0900F0B0BE /* BonusButton.m */; };
 		D0F0B8FE18E8F4D900809CA2 /* TrackUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F0B8FD18E8F4D900809CA2 /* TrackUtils.m */; };
 		D0F357C11946D57C00C26351 /* LevelUpHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F357C01946D57C00C26351 /* LevelUpHelper.m */; };
-		D0F357C51946F25B00C26351 /* ExpUIView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0F357C41946F25B00C26351 /* ExpUIView.xib */; };
-		D0F357C81946F2DC00C26351 /* ExpUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F357C71946F2DC00C26351 /* ExpUIView.m */; };
-		D0F357CA1947048200C26351 /* DistanceUIView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0F357C91947048200C26351 /* DistanceUIView.xib */; };
-		D0F357CD194704B400C26351 /* DistanceUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F357CC194704B400C26351 /* DistanceUIView.m */; };
 		D0F375B818FA3D9300D32A10 /* tier0.png in Resources */ = {isa = PBXBuildFile; fileRef = D0F375B718FA3D9300D32A10 /* tier0.png */; };
 		D0F375BF18FA457100D32A10 /* tier7.png in Resources */ = {isa = PBXBuildFile; fileRef = D0F375B918FA457100D32A10 /* tier7.png */; };
 		D0F375C018FA457100D32A10 /* tier8.png in Resources */ = {isa = PBXBuildFile; fileRef = D0F375BA18FA457100D32A10 /* tier8.png */; };
@@ -352,8 +338,6 @@
 		D00331221918BA9F008C1834 /* DialogViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DialogViewManager.m; sourceTree = "<group>"; };
 		D00331241918C546008C1834 /* AnimatingDialogView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatingDialogView.h; sourceTree = "<group>"; };
 		D00331251918C546008C1834 /* AnimatingDialogView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimatingDialogView.m; sourceTree = "<group>"; };
-		D0242C171928829100DBE20A /* BucketView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BucketView.h; sourceTree = "<group>"; };
-		D0242C181928829100DBE20A /* BucketView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BucketView.m; sourceTree = "<group>"; };
 		D033854F18EA9C22008D7861 /* defaultbackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = defaultbackground.png; sourceTree = "<group>"; };
 		D033855018EA9C22008D7861 /* bluebackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bluebackground.png; sourceTree = "<group>"; };
 		D033855118EA9C22008D7861 /* pinkbackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pinkbackground.png; sourceTree = "<group>"; };
@@ -373,12 +357,6 @@
 		D03845BF191EB12D00265FE1 /* GameCenterHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameCenterHelper.m; sourceTree = "<group>"; };
 		D03845C0191EB12D00265FE1 /* GameConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameConstants.h; sourceTree = "<group>"; };
 		D03845C1191EB12D00265FE1 /* GameConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameConstants.m; sourceTree = "<group>"; };
-		D03845C6191EB12D00265FE1 /* GameLayoutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameLayoutView.h; sourceTree = "<group>"; };
-		D03845C7191EB12D00265FE1 /* GameLayoutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameLayoutView.m; sourceTree = "<group>"; };
-		D03845CC191EB12D00265FE1 /* GamePlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GamePlayView.h; sourceTree = "<group>"; };
-		D03845CD191EB12D00265FE1 /* GamePlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GamePlayView.m; sourceTree = "<group>"; };
-		D03845CE191EB12D00265FE1 /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
-		D03845CF191EB12D00265FE1 /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
 		D03845D2191EB12D00265FE1 /* LocalLeaderBoardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalLeaderBoardView.h; sourceTree = "<group>"; };
 		D03845D3191EB12D00265FE1 /* LocalLeaderBoardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalLeaderBoardView.m; sourceTree = "<group>"; };
 		D03845D4191EB12D00265FE1 /* MainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainView.h; sourceTree = "<group>"; };
@@ -396,7 +374,6 @@
 		D03845F0191EB12D00265FE1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D03845F1191EB12D00265FE1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D03845F2191EB12D00265FE1 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		D03845F3191EB12D00265FE1 /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		D038465F191EB21000265FE1 /* XibTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XibTableViewCell.h; sourceTree = "<group>"; };
 		D0384660191EB21000265FE1 /* XibTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XibTableViewCell.m; sourceTree = "<group>"; };
 		D0384662191EB36200265FE1 /* ShopTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopTableView.h; sourceTree = "<group>"; };
@@ -407,21 +384,19 @@
 		D048A83E18ACAAAB00411DF9 /* twitter_share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twitter_share.png; sourceTree = "<group>"; };
 		D048A84518ACB25200411DF9 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		D04F704118AA1197000509AA /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		D051F11719731381000F98DC /* RootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootViewController.xib; sourceTree = "<group>"; };
+		D051F119197313A1000F98DC /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		D051F11A197313A1000F98DC /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		D052D9321969285D00D13DB0 /* pressandhold.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pressandhold.png; sourceTree = "<group>"; };
 		D055B9191918A066007730EB /* tier3coin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tier3coin.png; sourceTree = "<group>"; };
 		D055B91C1918A7A4007730EB /* tier4coin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tier4coin.png; sourceTree = "<group>"; };
 		D05EF406196173B70016FD96 /* health.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = health.png; sourceTree = "<group>"; };
 		D06181DF193453F5001740D4 /* AnimatedLabel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnimatedLabel.xib; sourceTree = "<group>"; };
-		D06181E1193453F5001740D4 /* BonusButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BonusButton.xib; sourceTree = "<group>"; };
-		D06181E2193453F5001740D4 /* BucketView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BucketView.xib; sourceTree = "<group>"; };
 		D06181E3193453F5001740D4 /* ErrorDialogView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ErrorDialogView.xib; sourceTree = "<group>"; };
-		D06181E5193453F5001740D4 /* GamePlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GamePlayView.xib; sourceTree = "<group>"; };
-		D06181E6193453F5001740D4 /* GameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameViewController.xib; sourceTree = "<group>"; };
 		D06181E7193453F5001740D4 /* LocalLeaderBoardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocalLeaderBoardView.xib; sourceTree = "<group>"; };
 		D06181E9193453F5001740D4 /* MainView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainView.xib; sourceTree = "<group>"; };
 		D06181EB193453F5001740D4 /* ShopRowView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShopRowView.xib; sourceTree = "<group>"; };
 		D06181EC193453F5001740D4 /* ShopTableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShopTableView.xib; sourceTree = "<group>"; };
-		D06181FB19345426001740D4 /* GameLayoutView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameLayoutView.xib; sourceTree = "<group>"; };
 		D06DB4231939BE9400B33BEC /* guinea_pig.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = guinea_pig.caf; sourceTree = "<group>"; };
 		D06DB4241939BE9400B33BEC /* anvil.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = anvil.caf; sourceTree = "<group>"; };
 		D06DB4271939C2CD00B33BEC /* Hallelujah-Short.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Hallelujah-Short.caf"; sourceTree = "<group>"; };
@@ -579,7 +554,6 @@
 		D0E7FF6818E69DEB00896C7B /* opendoor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = opendoor.png; sourceTree = "<group>"; };
 		D0E7FF6918E69DEB00896C7B /* person.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = person.png; sourceTree = "<group>"; };
 		D0E7FF7818E6B02700896C7B /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
-		D0E8A77D1951687E002CD232 /* GameLayoutView~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "GameLayoutView~ipad.xib"; sourceTree = "<group>"; };
 		D0E981211968C871001A591F /* icon_lvl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_lvl.png; sourceTree = "<group>"; };
 		D0EA7EBA18D521C90095DEBD /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
 		D0EA7EBB18D521C90095DEBD /* shield.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shield.png; sourceTree = "<group>"; };
@@ -715,18 +689,10 @@
 		D0F02F171910C7450003F759 /* PromoBannerView~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "PromoBannerView~ipad.xib"; sourceTree = "<group>"; };
 		D0F02F191910C7640003F759 /* PromoDialogView~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "PromoDialogView~ipad.xib"; sourceTree = "<group>"; };
 		D0F03565192C8D5000F0B0BE /* icon_bucket.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_bucket.png; sourceTree = "<group>"; };
-		D0F03567192C9E0900F0B0BE /* BonusButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BonusButton.h; sourceTree = "<group>"; };
-		D0F03568192C9E0900F0B0BE /* BonusButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BonusButton.m; sourceTree = "<group>"; };
 		D0F0B8FC18E8F4D900809CA2 /* TrackUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackUtils.h; sourceTree = "<group>"; };
 		D0F0B8FD18E8F4D900809CA2 /* TrackUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackUtils.m; sourceTree = "<group>"; };
 		D0F357BF1946D57C00C26351 /* LevelUpHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelUpHelper.h; sourceTree = "<group>"; };
 		D0F357C01946D57C00C26351 /* LevelUpHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelUpHelper.m; sourceTree = "<group>"; };
-		D0F357C41946F25B00C26351 /* ExpUIView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExpUIView.xib; sourceTree = "<group>"; };
-		D0F357C61946F2DC00C26351 /* ExpUIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpUIView.h; sourceTree = "<group>"; };
-		D0F357C71946F2DC00C26351 /* ExpUIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpUIView.m; sourceTree = "<group>"; };
-		D0F357C91947048200C26351 /* DistanceUIView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DistanceUIView.xib; sourceTree = "<group>"; };
-		D0F357CB194704B400C26351 /* DistanceUIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DistanceUIView.h; sourceTree = "<group>"; };
-		D0F357CC194704B400C26351 /* DistanceUIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DistanceUIView.m; sourceTree = "<group>"; };
 		D0F375B718FA3D9300D32A10 /* tier0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tier0.png; sourceTree = "<group>"; };
 		D0F375B918FA457100D32A10 /* tier7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tier7.png; sourceTree = "<group>"; };
 		D0F375BA18FA457100D32A10 /* tier8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tier8.png; sourceTree = "<group>"; };
@@ -814,7 +780,6 @@
 				D03845EF191EB12D00265FE1 /* InfoPlist.strings */,
 				D03845F1191EB12D00265FE1 /* Images.xcassets */,
 				D03845F2191EB12D00265FE1 /* main.m */,
-				D03845F3191EB12D00265FE1 /* MainWindow.xib */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -826,6 +791,8 @@
 				D0E52B3E192744610015CD5A /* ParticleView.m */,
 				D07F14E61969F06E009B23CB /* ParallaxBackgroundView.h */,
 				D07F14E71969F06E009B23CB /* ParallaxBackgroundView.m */,
+				D051F119197313A1000F98DC /* RootViewController.h */,
+				D051F11A197313A1000F98DC /* RootViewController.m */,
 				D07F14EB1969F2D8009B23CB /* ParallaxForegroundView.h */,
 				D07F14EC1969F2D8009B23CB /* ParallaxForegroundView.m */,
 				D07F14F01969F3EE009B23CB /* ParallaxWorldView.h */,
@@ -854,14 +821,8 @@
 				D03845BF191EB12D00265FE1 /* GameCenterHelper.m */,
 				D03845C0191EB12D00265FE1 /* GameConstants.h */,
 				D03845C1191EB12D00265FE1 /* GameConstants.m */,
-				D03845C6191EB12D00265FE1 /* GameLayoutView.h */,
-				D03845C7191EB12D00265FE1 /* GameLayoutView.m */,
 				D0F357BF1946D57C00C26351 /* LevelUpHelper.h */,
 				D0F357C01946D57C00C26351 /* LevelUpHelper.m */,
-				D03845CC191EB12D00265FE1 /* GamePlayView.h */,
-				D03845CD191EB12D00265FE1 /* GamePlayView.m */,
-				D03845CE191EB12D00265FE1 /* GameViewController.h */,
-				D03845CF191EB12D00265FE1 /* GameViewController.m */,
 				D03845D2191EB12D00265FE1 /* LocalLeaderBoardView.h */,
 				D03845D3191EB12D00265FE1 /* LocalLeaderBoardView.m */,
 				D03845D4191EB12D00265FE1 /* MainView.h */,
@@ -878,14 +839,6 @@
 				D0E647C7191F464900327C07 /* ShopManager.m */,
 				D0E647C9191F479500327C07 /* ShopItem.h */,
 				D0E647CA191F479500327C07 /* ShopItem.m */,
-				D0242C171928829100DBE20A /* BucketView.h */,
-				D0242C181928829100DBE20A /* BucketView.m */,
-				D0F03567192C9E0900F0B0BE /* BonusButton.h */,
-				D0F03568192C9E0900F0B0BE /* BonusButton.m */,
-				D0F357CB194704B400C26351 /* DistanceUIView.h */,
-				D0F357CC194704B400C26351 /* DistanceUIView.m */,
-				D0F357C61946F2DC00C26351 /* ExpUIView.h */,
-				D0F357C71946F2DC00C26351 /* ExpUIView.m */,
 				D0F7D01E1955709E005BBCEC /* UpgradeResultView.h */,
 				D0F7D01F1955709E005BBCEC /* UpgradeResultView.m */,
 				D088068819652C56001CC7A7 /* InstructionView.h */,
@@ -897,17 +850,9 @@
 		D06181DE193453F5001740D4 /* Xib */ = {
 			isa = PBXGroup;
 			children = (
-				D06181FB19345426001740D4 /* GameLayoutView.xib */,
 				D088068419652ABD001CC7A7 /* InstructionView.xib */,
-				D0E8A77D1951687E002CD232 /* GameLayoutView~ipad.xib */,
-				D0F357C41946F25B00C26351 /* ExpUIView.xib */,
-				D0F357C91947048200C26351 /* DistanceUIView.xib */,
 				D06181DF193453F5001740D4 /* AnimatedLabel.xib */,
-				D06181E1193453F5001740D4 /* BonusButton.xib */,
-				D06181E2193453F5001740D4 /* BucketView.xib */,
 				D06181E3193453F5001740D4 /* ErrorDialogView.xib */,
-				D06181E5193453F5001740D4 /* GamePlayView.xib */,
-				D06181E6193453F5001740D4 /* GameViewController.xib */,
 				D06181E7193453F5001740D4 /* LocalLeaderBoardView.xib */,
 				D06181E9193453F5001740D4 /* MainView.xib */,
 				D06181EB193453F5001740D4 /* ShopRowView.xib */,
@@ -915,6 +860,7 @@
 				D0ED6FDC19500568009F2384 /* UpgradeView.xib */,
 				D0F7D01C1955706A005BBCEC /* UpgradeResultView.xib */,
 				D07F14E41969F05D009B23CB /* ParallaxBackgroundView.xib */,
+				D051F11719731381000F98DC /* RootViewController.xib */,
 				D07F14E91969F2CA009B23CB /* ParallaxForegroundView.xib */,
 				D07F14EE1969F3D5009B23CB /* ParallaxWorldView.xib */,
 			);
@@ -1521,7 +1467,6 @@
 				D0EADDEC18E769FC0016D2A0 /* NGIcon120.png in Resources */,
 				D0EA871C18DA78DE0034B392 /* kick.caf in Resources */,
 				D0E33005191A04EA00FB5EB8 /* iphone.png in Resources */,
-				D0F357CA1947048200C26351 /* DistanceUIView.xib in Resources */,
 				D06DB42C1939C68500B33BEC /* shiny_background.png in Resources */,
 				D0EAB6F7195FF75800C90F0E /* sun.png in Resources */,
 				D0E6B6111956947700940695 /* character_flying.png in Resources */,
@@ -1572,7 +1517,6 @@
 				D0F7D01D1955706A005BBCEC /* UpgradeResultView.xib in Resources */,
 				D033855418EA9C22008D7861 /* pinkbackground.png in Resources */,
 				D0E26B0219580CEB00314A7C /* character_learningsuccess.png in Resources */,
-				D06181FC19345426001740D4 /* GameLayoutView.xib in Resources */,
 				D0BCA0471963D90B006E01B4 /* clock.png in Resources */,
 				D0A79571195BEDE2009270DE /* space.png in Resources */,
 				D0EAB6F0195FF75800C90F0E /* uranus.png in Resources */,
@@ -1629,13 +1573,13 @@
 				D0E52B2919271DAF0015CD5A /* btn_green_up.png in Resources */,
 				D0E6337218FFBA11007C1622 /* dong.caf in Resources */,
 				D0E7FF6B18E69DEB00896C7B /* opendoor.png in Resources */,
-				D0F357C51946F25B00C26351 /* ExpUIView.xib in Resources */,
 				D0E52B3819273C650015CD5A /* icon_weed.png in Resources */,
 				D0F375BF18FA457100D32A10 /* tier7.png in Resources */,
 				D0E4B2CE18FD268A00260ABD /* main2.png in Resources */,
 				D0EA871D18DA78DE0034B392 /* metal_clang.caf in Resources */,
 				D0BCA04D1963DC0B006E01B4 /* icon_flap.png in Resources */,
 				D06181ED193453F5001740D4 /* AnimatedLabel.xib in Resources */,
+				D051F11819731381000F98DC /* RootViewController.xib in Resources */,
 				D0EAB6F6195FF75800C90F0E /* comet.png in Resources */,
 				D0E555F2193B084A00F59DF6 /* background_tier3.png in Resources */,
 				D0F375D718FA958000D32A10 /* tier11-2.png in Resources */,
@@ -1661,14 +1605,12 @@
 				D055B91D1918A7A4007730EB /* tier4coin.png in Resources */,
 				D0E26B0619580CEB00314A7C /* character_learning1.png in Resources */,
 				D0E1122B18C2EC6000808072 /* boing.caf in Resources */,
-				D06181EF193453F5001740D4 /* BonusButton.xib in Resources */,
 				D0EC757A18EBE5E40015AD4C /* cloud1.png in Resources */,
 				D0F375CA18FA78FA00D32A10 /* tier9.png in Resources */,
 				D0E4BCCE18D95D9200132C17 /* Victory.png in Resources */,
 				D06181F9193453F5001740D4 /* ShopRowView.xib in Resources */,
 				D0EDA2A9196686F600989065 /* makeitflappy_profile_stats_dialog.png in Resources */,
 				D0EFC638191B373A008A54C8 /* gloweffect.png in Resources */,
-				D038463D191EB12E00265FE1 /* MainWindow.xib in Resources */,
 				D0E47C2118ED29DC009CA771 /* singleplayerbutton.png in Resources */,
 				D0EFC656191B9083008A54C8 /* tier2coin.png in Resources */,
 				D0EA7EC418D52FE90095DEBD /* defend.png in Resources */,
@@ -1680,7 +1622,6 @@
 				D0E47C2918ED2F9F009CA771 /* homebutton.png in Resources */,
 				D0E48B7718DD9964000EF905 /* toilet_main.png in Resources */,
 				D0EA7EC518D52FE90095DEBD /* attack.png in Resources */,
-				D06181F4193453F5001740D4 /* GameViewController.xib in Resources */,
 				D0E981221968C871001A591F /* icon_lvl.png in Resources */,
 				D0E6B6101956947700940695 /* character_falling.png in Resources */,
 				D0E47C2318ED29EA009CA771 /* vsbutton.png in Resources */,
@@ -1691,7 +1632,6 @@
 				D0F375C118FA457100D32A10 /* tier5.png in Resources */,
 				D0EDA2AA196686F600989065 /* makeitflappy_profile_stats_bar.png in Resources */,
 				D0ED6FDD19500568009F2384 /* UpgradeView.xib in Resources */,
-				D06181F3193453F5001740D4 /* GamePlayView.xib in Resources */,
 				D0F375C218FA457100D32A10 /* tier6.png in Resources */,
 				D0EAB6FB1960049F00C90F0E /* sonicboom.png in Resources */,
 				D0EAB6EF195FF75800C90F0E /* solar.png in Resources */,
@@ -1711,7 +1651,6 @@
 				D0E52B2A19271DAF0015CD5A /* btn_green_down.png in Resources */,
 				D0E3300E191A04EA00FB5EB8 /* applyingbomb2.png in Resources */,
 				D0E3A0D518E8119D00C7B63D /* doorsPerson.png in Resources */,
-				D06181F0193453F5001740D4 /* BucketView.xib in Resources */,
 				D0F375C818FA466400D32A10 /* tier11.png in Resources */,
 				D055B91B1918A066007730EB /* tier3coin.png in Resources */,
 				D0F375DA18FA958000D32A10 /* tier0-2.png in Resources */,
@@ -1721,7 +1660,6 @@
 				D0880683196529E5001CC7A7 /* icon_instruction.png in Resources */,
 				D0EAB6F4195FF75800C90F0E /* saturn.png in Resources */,
 				D0EAB6F5195FF75800C90F0E /* jupiter.png in Resources */,
-				D0E8A77E1951687E002CD232 /* GameLayoutView~ipad.xib in Resources */,
 				D0E1123518C2EDF000808072 /* bling.caf in Resources */,
 				D0E4E2DD195ACCE7009DA44A /* ground.png in Resources */,
 				D0E41C9A1928135500AF68FE /* clicker_character4.png in Resources */,
@@ -1784,7 +1722,7 @@
 				D0384669191EB4F900265FE1 /* ShopRowView.m in Sources */,
 				D0EADDF518E769FC0016D2A0 /* THLabel.m in Sources */,
 				D088068A19652C56001CC7A7 /* InstructionView.m in Sources */,
-				D0F357C81946F2DC00C26351 /* ExpUIView.m in Sources */,
+				D051F11B197313A1000F98DC /* RootViewController.m in Sources */,
 				D0EADDD918E769FC0016D2A0 /* XibView.m in Sources */,
 				D0E647CB191F479500327C07 /* ShopItem.m in Sources */,
 				D0E428E519162D49009E4A22 /* SKProduct+priceAsString.m in Sources */,
@@ -1810,9 +1748,7 @@
 				D0E647C8191F464900327C07 /* ShopManager.m in Sources */,
 				D07F14F21969F3EE009B23CB /* ParallaxWorldView.m in Sources */,
 				D0EADDE618E769FC0016D2A0 /* FXLabel.m in Sources */,
-				D0384625191EB12E00265FE1 /* GameLayoutView.m in Sources */,
 				D038463C191EB12E00265FE1 /* main.m in Sources */,
-				D0F03569192C9E0900F0B0BE /* BonusButton.m in Sources */,
 				D0384631191EB12E00265FE1 /* NumberGameIAPHelper.m in Sources */,
 				D0384616191EB12E00265FE1 /* AppDelegate.m in Sources */,
 				D0EADDF318E769FC0016D2A0 /* PromoGameData.m in Sources */,
@@ -1829,18 +1765,14 @@
 				D0384630191EB12E00265FE1 /* NotificationManager.m in Sources */,
 				D0EADDE218E769FC0016D2A0 /* AnimUtil.m in Sources */,
 				D0384633191EB12E00265FE1 /* ResultView.m in Sources */,
-				D0384629191EB12E00265FE1 /* GameViewController.m in Sources */,
 				D038462C191EB12E00265FE1 /* MainView.m in Sources */,
-				D0242C191928829100DBE20A /* BucketView.m in Sources */,
 				D0EADDEA18E769FC0016D2A0 /* iRate.m in Sources */,
 				D0EADDE318E769FC0016D2A0 /* NSArray+Util.m in Sources */,
 				D0EADDD318E769FC0016D2A0 /* Base.m in Sources */,
 				D0EADDE718E769FC0016D2A0 /* GameCenterManager.m in Sources */,
 				D0EADDE018E769FC0016D2A0 /* SoundEffectHelper.m in Sources */,
-				D0F357CD194704B400C26351 /* DistanceUIView.m in Sources */,
 				D0EADDE118E769FC0016D2A0 /* SoundManager.m in Sources */,
 				D0EADDD418E769FC0016D2A0 /* GameCenterHelperBase.m in Sources */,
-				D0384628191EB12E00265FE1 /* GamePlayView.m in Sources */,
 				D0EADDD618E769FC0016D2A0 /* GameViewControllerBase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

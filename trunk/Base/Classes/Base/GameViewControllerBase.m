@@ -22,10 +22,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.screenName = [[NSBundle mainBundle] bundleIdentifier];
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadNextPromo) name:AppInfoHTTPRequestCallbackNotification object:nil];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     [self createAdBannerView];
     [self loadNextPromo];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadNextPromo) name:AppInfoHTTPRequestCallbackNotification object:nil];
 }
 
 - (AdBannerPositionMode)adBannerPositionMode {

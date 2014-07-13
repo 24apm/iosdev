@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "GameViewController.h"
 #import "AppDelegateBase.h"
 
 @interface AppDelegate : AppDelegateBase
+
+@property (nonatomic, strong) UINavigationController *navigationController;
 
 @end

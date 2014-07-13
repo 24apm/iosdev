@@ -11,7 +11,7 @@
 @interface SoundEffectHelper : NSObject
 
 - (id)initAVSoundNamed:(NSString *)fileName withCount:(int)count;
-- (void)play;
+- (void)play:(NSUInteger)numberOfLoops;
 - (void)stop;
 - (NSTimeInterval)duration;
 

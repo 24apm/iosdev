@@ -51,6 +51,17 @@
 #define SOUND_EFFECT_GUINEA @"guinea_pig"
 #define SOUND_EFFECT_ANVIL @"anvil"
 #define SOUND_EFFECT_HALLELUJAH @"Hallelujah"
+#define SOUND_EFFECT_LAND @"land"
+#define SOUND_EFFECT_FLYUP @"flyingup"
+#define SOUND_EFFECT_FALL @"fall"
+#define SOUND_EFFECT_ELEVATOR @"elevatorMusicLoop"
+#define SOUND_EFFECT_FLAP @"FlappingWings"
+#define SOUND_EFFECT_SONIC @"sonicboom"
+#define SOUND_EFFECT_FORESTWIND @"windy-forest"
+#define SOUND_EFFECT_WINDY @"windy"
+#define SOUND_EFFECT_FINAL @"midnight-ride-01a"
+#define SOUND_EFFECT_ENDING @"heart-of-the-sea-01"
+
 
 #define IMAGE_ARROW @"swordattack.png"
 #define IMAGE_MONSTER @"soldier.png"
@@ -64,10 +75,10 @@
 
 #define TIMES_PLAYED_BEFORE_PROMO 2
 
-#define POWER_UP_IAP_FUND @"com.jeffrwan.makeitswipe.fund"
-#define POWER_UP_IAP_DOUBLE @"com.jeffrwan.makeitswipedouble"
-#define POWER_UP_IAP_QUADPLE @"com.jeffrwan.makeitswipequadruple"
-#define POWER_UP_IAP_SUPER @"com.jeffrwan.makeitswipesuper"
+#define POWER_UP_IAP_FUND @"com.jeffrwan.makeitflappy.fund"
+#define POWER_UP_IAP_DOUBLE @"com.jeffrwan.makeitflappy.double"
+#define POWER_UP_IAP_QUADPLE @"com.jeffrwan.makeitflappy.quadruple"
+#define POWER_UP_IAP_SUPER @"com.jeffrwan.makeitflappy.super"
 
 #define UPGRADE_ATTEMPT_NOTIFICATION @"UPGRADE_ATTEMPT_NOTIFICATION"
 #define SHOP_BUTTON_PRESSED_NOTIFICATION @"SHOP_BUTTON_PRESSED_NOTIFICATION"

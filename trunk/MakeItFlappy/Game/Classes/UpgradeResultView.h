@@ -11,6 +11,7 @@
 @interface UpgradeResultView : XibDialogView
 @property (strong, nonatomic) IBOutlet UIView *backgroundOverView;
 @property (strong, nonatomic) IBOutlet UIImageView *imgView;
+@property (nonatomic) BOOL success;
 
 - (void)showFail;
 - (void)showSuccess;

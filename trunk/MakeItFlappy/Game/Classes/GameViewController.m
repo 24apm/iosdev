@@ -37,11 +37,11 @@
 - (void)initialize {
     self.currentGameState = -1;
     [[GameLoopTimer instance] initialize];
-
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mainViewCallback) name:MAIN_VIEW_DISMISSED_NOTIFICATION object:nil];
-
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showLeaderboard) name:SHOW_LEADERBOARD_NOTIFICATION object:nil];
-
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showAchievements) name: SHOW_ACHIEVEMENT_NOTIFICATION object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resultViewCallback) name:RESULT_VIEW_DISMISSED_NOTIFICATION object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showAnswerCallback) name:RESULT_VIEW_SHOW_ANSWER_NOTIFICATION object:nil];
@@ -64,12 +64,12 @@
     self.timeAttackMode.hidden = YES;
     self.timeAttackMode.size = self.containerView.size;
     
-//    self.singleMode = [[GamePlayOneView alloc] init];
-//    [self.containerView addSubview:self.singleMode ];
-//    self.singleMode.hidden = YES;
-//    self.singleMode.size = self.containerView.size;
+    //    self.singleMode = [[GamePlayOneView alloc] init];
+    //    [self.containerView addSubview:self.singleMode ];
+    //    self.singleMode.hidden = YES;
+    //    self.singleMode.size = self.containerView.size;
     
-
+    
     self.localLeaderBoardView = [[LocalLeaderBoardView alloc] init];
     [self.containerView addSubview:self.localLeaderBoardView];
     self.localLeaderBoardView.hidden = YES;
@@ -86,16 +86,19 @@
 - (void)preloadSounds {
     [[SoundManager instance] prepare:SOUND_EFFECT_TICKING count:1];
     [[SoundManager instance] prepare:SOUND_EFFECT_WINNING count:2];
-    [[SoundManager instance] prepare:SOUND_EFFECT_BOING count:5];
-    [[SoundManager instance] prepare:SOUND_EFFECT_POP count:5];
-    [[SoundManager instance] prepare:SOUND_EFFECT_BLING count:5];
-    [[SoundManager instance] prepare:SOUND_EFFECT_DUING count:3];
-    [[SoundManager instance] prepare:SOUND_EFFECT_SHARP_PUNCH count:3];
-    [[SoundManager instance] prepare:SOUND_EFFECT_BOILING count:3];
-    [[SoundManager instance] prepare:SOUND_EFFECT_BUI count:3];
-     [[SoundManager instance] prepare:SOUND_EFFECT_ANVIL count:3];
+    [[SoundManager instance] prepare:SOUND_EFFECT_BOING count:2];
+    [[SoundManager instance] prepare:SOUND_EFFECT_FLAP count:8];
+    [[SoundManager instance] prepare:SOUND_EFFECT_FLYUP count:1];
+    [[SoundManager instance] prepare:SOUND_EFFECT_FALL count:2];
+    [[SoundManager instance] prepare:SOUND_EFFECT_ELEVATOR count:1];
+    [[SoundManager instance] prepare:SOUND_EFFECT_LAND count:2];
+    [[SoundManager instance] prepare:SOUND_EFFECT_SONIC count:3];
+    [[SoundManager instance] prepare:SOUND_EFFECT_WINDY count:1];
+    [[SoundManager instance] prepare:SOUND_EFFECT_FORESTWIND count:1];
+    [[SoundManager instance] prepare:SOUND_EFFECT_FINAL count:1];
+    [[SoundManager instance] prepare:SOUND_EFFECT_ENDING count:1];
     [[SoundManager instance] prepare:SOUND_EFFECT_HALLELUJAH count:2];
-     [[SoundManager instance] prepare:SOUND_EFFECT_GUINEA count:8];
+    
 }
 
 - (void)mainViewCallback {
@@ -172,12 +175,12 @@
             self.containerView.userInteractionEnabled = NO;
             break;
         case GameStateGameMode:
-          //  if ([[GameManager instance].gameMode isEqualToString:GAME_MODE_VS]) {
-                [self.timeAttackMode show];
-                self.timeAttackMode.hidden = NO;
-         //  } else if([[GameManager instance].gameMode isEqualToString:GAME_MODE_SINGLE]){
-                
-          //  }
+            //  if ([[GameManager instance].gameMode isEqualToString:GAME_MODE_VS]) {
+            [self.timeAttackMode show];
+            self.timeAttackMode.hidden = NO;
+            //  } else if([[GameManager instance].gameMode isEqualToString:GAME_MODE_SINGLE]){
+            
+            //  }
             break;
         case GameStateLocalLeaderBoardMode:
             self.localLeaderBoardView.hidden = NO;
@@ -201,10 +204,10 @@
     [self initialize];
     [self.mainView show];
     
-//    if (!DEBUG_MODE) {
-        [GameCenterHelper instance].currentLeaderBoard = kLeaderboardBestScoreID;
-        [[GameCenterHelper instance] loginToGameCenter];
-//    }
+    //    if (!DEBUG_MODE) {
+    [GameCenterHelper instance].currentLeaderBoard = kLeaderboardBestScoreID;
+    [[GameCenterHelper instance] loginToGameCenter];
+    //    }
 }
 
 - (void)didReceiveMemoryWarning {

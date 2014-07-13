@@ -11,6 +11,8 @@
 
 @interface SoundEffect : NSObject
 
+@property (nonatomic) NSInteger numberOfLoops;
+
 - (id)initAVSoundNamed:(NSString *)fileName;
 - (void)play;
 - (void)stop;

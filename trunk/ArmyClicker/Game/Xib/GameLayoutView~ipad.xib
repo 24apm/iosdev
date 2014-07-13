@@ -27,11 +27,11 @@
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="Ukw-rQ-0Gn">
-                    <rect key="frame" x="0.0" y="0.0" width="768" height="1023.9999999999995"/>
+                    <rect key="frame" x="0.0" y="0.0" width="768" height="1024.0000000000002"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shiny_background.png" id="Ymk-aO-bxr">
-                    <rect key="frame" x="-318.00000000000011" y="-187.99999999999994" width="1400" height="1399.9999999999998"/>
+                    <rect key="frame" x="-318" y="-187.99999999999997" width="1400" height="1400"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <view userInteractionEnabled="NO" contentMode="scaleToFill" id="eGw-W2-A6I" customClass="ParticleView">
@@ -40,7 +40,7 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="p6c-UB-ruD" userLabel="Tap Button">
-                    <rect key="frame" x="0.0" y="0.0" width="768" height="1023.9999999999999"/>
+                    <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <state key="normal">
@@ -64,7 +64,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" id="RqB-rS-mkz" userLabel="TPS">
-                            <rect key="frame" x="276" y="205" width="216.00000000000003" height="60"/>
+                            <rect key="frame" x="275.99999999999994" y="205" width="216" height="60"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="34"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -74,20 +74,20 @@
                     <color key="backgroundColor" white="0.0" alpha="0.29999999999999999" colorSpace="calibratedWhite"/>
                 </view>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="money.png" id="tFx-Vh-FNt">
-                    <rect key="frame" x="0.0" y="109" width="144" height="128"/>
+                    <rect key="frame" x="0.0" y="109.00000000000001" width="144" height="128.00000000000003"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <view contentMode="scaleToFill" id="e7Z-Na-e6R" customClass="ProgressBarComponent">
-                    <rect key="frame" x="22" y="828.99999999999989" width="720.00000000000011" height="21.999999999999996"/>
+                    <rect key="frame" x="22" y="828.99999999999989" width="720" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <view contentMode="scaleToFill" id="Z76-Az-4Lt">
-                            <rect key="frame" x="0.0" y="0.0" width="720.00000000000011" height="21.999999999999996"/>
+                            <rect key="frame" x="0.0" y="0.0" width="720" height="22"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
                         <view contentMode="scaleToFill" id="WI5-gK-efK">
-                            <rect key="frame" x="0.0" y="0.0" width="720.00000000000011" height="21.999999999999996"/>
+                            <rect key="frame" x="0.0" y="0.0" width="720" height="22"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" red="1" green="0.60549926840000001" blue="0.3379715646" alpha="1" colorSpace="calibratedRGB"/>
                         </view>
@@ -99,16 +99,16 @@
                     </connections>
                 </view>
                 <view contentMode="scaleToFill" id="8J1-7f-Na0" userLabel="Progress Bar Component2" customClass="ProgressBarComponent">
-                    <rect key="frame" x="24" y="267.99999999999994" width="720.00000000000011" height="21.999999999999996"/>
+                    <rect key="frame" x="24" y="268" width="720" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <view contentMode="scaleToFill" id="CtW-vE-ycA">
-                            <rect key="frame" x="0.0" y="0.0" width="720.00000000000011" height="21.999999999999996"/>
+                            <rect key="frame" x="0.0" y="0.0" width="720" height="22"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
                         <view contentMode="scaleToFill" id="VgK-AQ-AKP">
-                            <rect key="frame" x="0.0" y="0.0" width="720.00000000000011" height="21.999999999999996"/>
+                            <rect key="frame" x="0.0" y="0.0" width="720" height="22"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" red="0.8013392857142857" green="0.80008420301996919" blue="0.0022753862545942917" alpha="1" colorSpace="calibratedRGB"/>
                         </view>
@@ -120,7 +120,7 @@
                     </connections>
                 </view>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clicker_character1.png" id="pSk-9g-48G">
-                    <rect key="frame" x="24" y="171" width="720.00000000000011" height="640"/>
+                    <rect key="frame" x="24" y="170.99999999999997" width="720" height="640"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <view contentMode="scaleToFill" id="Tkm-lP-oR6" userLabel="Shop Bar">
@@ -191,7 +191,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="NGy-Pm-fBw">
-                    <rect key="frame" x="24" y="706" width="96" height="85"/>
+                    <rect key="frame" x="24" y="705.99999999999989" width="96" height="84.999999999999986"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="1" green="0.25437130749999998" blue="0.28400198770000001" alpha="1" colorSpace="calibratedRGB"/>
                     <state key="normal" backgroundImage="icon_bucket.png">

@@ -31,10 +31,11 @@
     return self;
 }
 
-- (void)play {
+- (void)play:(NSUInteger)numberOfLoops {
     if (self.soundEffects.count <= 0) { return; }
     
     SoundEffect *soundEffect = [self.soundEffects objectAtIndex:self.index];
+    soundEffect.numberOfLoops = numberOfLoops;
     [soundEffect play];
 
     self.index++;

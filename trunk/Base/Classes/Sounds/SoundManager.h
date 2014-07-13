@@ -12,8 +12,9 @@
 
 + (SoundManager *)instance;
 - (void)play:(NSString *)fileName;
-- (void)stop:(NSString *)fileName;
+- (void)play:(NSString *)fileName repeat:(BOOL)repeat;
 - (void)prepare:(NSString *)fileName count:(int)count;
+- (void)stop:(NSString *)fileName;
 - (NSTimeInterval)duration:(NSString *)fileName;
 
 @end

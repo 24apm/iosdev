@@ -65,9 +65,9 @@
     }
     
     double convertedInteger = 0;
-    if (integer > 1000000) {
-        convertedInteger = ((double)integer) / 1000000.f;
-        measurement = @"m";
+    if (integer > 1000000000) {
+        convertedInteger = ((double)integer) / 1000000000.f;
+        measurement = @"b";
     } else if (integer > 1000) {
         convertedInteger = ((double)integer) / 1000.f;
         measurement = @"k";
