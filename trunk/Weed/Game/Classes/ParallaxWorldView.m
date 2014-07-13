@@ -9,6 +9,7 @@
 #import "ParallaxWorldView.h"
 #import "ParallaxBackgroundView.h"
 #import "ParallaxForegroundView.h"
+#import "Utils.h"
 
 @interface ParallaxWorldView()
 
@@ -59,8 +60,16 @@
     
     if (recognizer.state == UIGestureRecognizerStateBegan) {
         self.lastScreenXOffset = self.scrollView.x;
-    } else if (recognizer.state == UIGestureRecognizerStateChanged) {
         
+        // Cancel pervious animation by overriding it with another very short animation
+        CGFloat percentageOffsetX = self.scrollView.x / (self.scrollView.width - self.width);
+        [UIView animateWithDuration:0.001f delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+            for (UIView *view in self.parallaxViews) {
+                view.x = -(view.width - self.width) * percentageOffsetX ;
+            }
+        } completion:nil];
+    } else if (recognizer.state == UIGestureRecognizerStateChanged) {
+        // drag
         CGPoint translation = [recognizer translationInView:self];
         self.scrollView.x = self.lastScreenXOffset - translation.x;
 
@@ -79,6 +88,7 @@
         }
         
     } else if (recognizer.state == UIGestureRecognizerStateEnded) {
+        // animate upon letting go of finger
         CGPoint velocity = [recognizer velocityInView:self];
         CGFloat cappedVelocity = self.width * 2.f;
         if (velocity.x < -cappedVelocity) {
@@ -112,8 +122,8 @@
 
             self.scrollView.x = 0;
         }
-        duration = fabsf(MAX(MIN(duration, 0.5f), 1.0f));
-        
+        duration =  fabsf(CLAMP(duration, 0.5f, 1.0f));
+
         CGFloat percentageOffsetX = self.scrollView.x / (self.scrollView.width - self.width);
 
         [UIView animateWithDuration:duration delay:0 options:UIViewAnimationOptionCurveEaseOut | UIViewKeyframeAnimationOptionBeginFromCurrentState animations:^{
