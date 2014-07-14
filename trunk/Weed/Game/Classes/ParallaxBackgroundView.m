@@ -7,28 +7,24 @@
 //
 
 #import "ParallaxBackgroundView.h"
+#import "VisitorManager.h"
 
 @implementation ParallaxBackgroundView
 
-- (id)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
+- (void)setup {
+    [self refresh];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refresh) name:VisitorViewRefreshNotification object:nil];
+}
+
+- (void)refresh {
+    for (VisitorView *visitor in self.visitorViews) {
+        if (visitor.data == nil) {
+            VisitorData *data = [[VisitorManager instance] nextVisitor];
+            [visitor setupWithData:data];
+            visitor.hidden = NO;
+        }
     }
-    return self;
 }
-
-- (IBAction)buttonTest:(id)sender {
-}
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
 
 @end

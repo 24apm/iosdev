@@ -92,30 +92,4 @@
     return self.layer.anchorPoint;
 }
 
-//- (UIView *)overlapHitTest:(CGPoint)point withEvent:(UIEvent *)event {
-//    // 1
-//    if (!self.userInteractionEnabled || [self isHidden] || self.alpha == 0)
-//        return nil;
-//    
-//    // 2
-//    UIView *hitView = self;
-//    if (![self pointInside:point withEvent:event]) {
-//        if (self.clipsToBounds) return nil;
-//        else hitView = nil;
-//    }
-//    
-//    // 3
-//    for (UIView *subview in [self.subviews reverseObjectEnumerator]) {
-//        CGPoint insideSubview = [self convertPoint:point toView:subview];
-//        UIView *sview = [subview overlapHitTest:insideSubview withEvent:event];
-//        if (sview && ([sview isKindOfClass:[UIButton class]]
-//                      || [sview isKindOfClass:[UIScrollView class]])) {
-//            return sview;
-//        }
-//    }
-//
-//    // 4
-//    return hitView;
-//}
-
 @end

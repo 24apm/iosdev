@@ -8,6 +8,7 @@
 
 #import "XibView.h"
 #import "ProgressBarComponent.h"
+#import "HouseData.h"
 
 typedef enum {
     HouseViewStateEmpty,
@@ -24,6 +25,10 @@ typedef enum {
 
 @property (nonatomic) HouseViewState state;
 
-- (void)setup;
+@property (strong, nonatomic) HouseData *data;
+@property (strong, nonatomic) IBOutlet UIButton *buttonView;
+@property (strong, nonatomic) IBOutlet UILabel *idLabel;
+
+- (void)setupWithData:(HouseData *)data;
 
 @end

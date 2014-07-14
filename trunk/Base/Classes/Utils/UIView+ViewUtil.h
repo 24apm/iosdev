@@ -19,6 +19,5 @@
 @property (nonatomic) CGPoint anchorPoint;
 
 - (UIImage *)blit;
-- (UIView *)overlapHitTest:(CGPoint)point withEvent:(UIEvent *)event;
 
 @end

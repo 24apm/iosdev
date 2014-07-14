@@ -10,8 +10,15 @@
 #import "GameCenterHelper.h"
 #import "GameConstants.h"
 #import "AnimatedLabel.h"
+#import "NSArray+Util.h"
 
 #define NEW_USER_COIN 10
+
+NSString *const UserDataHouseDataChangedNotification = @"UserDataHouseDataChangedNotification";
+
+@interface UserData()
+
+@end
 
 @implementation UserData
 
@@ -26,19 +33,48 @@
 - (id)init {
     self = [super init];
     if (self) {
+        
+        // Coin
         if ([[NSUserDefaults standardUserDefaults] objectForKey:@"coin"] == nil) {
-            self.coin = 10;
+            self.coin = NEW_USER_COIN;
             [self saveUserCoin];
+        } else {
+            self.coin = [[[NSUserDefaults standardUserDefaults] objectForKey:@"coin"] integerValue];
         }
         
-        [self retrieveUserData];
-
+        // House
+        self.houses = [NSMutableArray array];
+        
+        if ([[NSUserDefaults standardUserDefaults] objectForKey:@"houses"] == nil) {
+            [self.houses addObject:[HouseData defaultData]];
+        } else {
+            NSString *json = [[NSUserDefaults standardUserDefaults] objectForKey:@"houses"];
+            
+            NSStringEncoding  encoding = NSUTF8StringEncoding;
+            NSData * jsonData = [json dataUsingEncoding:encoding];
+            NSError * error=nil;
+            NSDictionary * parsedData = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:&error];
+            
+            for (NSDictionary *dict in parsedData) {
+                HouseData *houseData = [[HouseData alloc] init];
+                [houseData setupWithDict:dict];
+                [self.houses addObject:houseData];
+            }
+        }
+        
+        if ([[NSUserDefaults standardUserDefaults] objectForKey:@"houseIndex"] == nil) {
+            self.houseIndex = 0;
+        } else {
+            self.houseIndex = [[[NSUserDefaults standardUserDefaults] objectForKey:@"houseIndex"] integerValue];
+        }
     }
     return self;
 }
 
-- (void)retrieveUserData {
-    self.coin = [[[NSUserDefaults standardUserDefaults] objectForKey:@"coin"] integerValue];
+- (void)saveData:(NSObject *)obj forKey:(NSString *)key {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:obj forKey:key];
+    [defaults synchronize];
 }
 
 - (void)saveUserCoin {
@@ -46,12 +82,10 @@
         self.coin = 0;
     }
     
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:@(self.coin) forKey:@"coin"];
-    [defaults synchronize];
+    [self saveData:@(self.coin) forKey:@"coin"];
 }
 
-- (void)incrementCoin:(int)coin {
+- (void)incrementCoin:(long long)coin {
     if (self.coin <= 0) {
         self.coin = 0;
     }
@@ -63,7 +97,7 @@
     [defaults synchronize];
 }
 
-- (void)decrementCoin:(int)coin {
+- (void)decrementCoin:(long long)coin {
     if (self.coin <= 0) {
         self.coin = 0;
     }
@@ -73,6 +107,45 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:@(self.coin) forKey:@"coin"];
     [defaults synchronize];
+}
+
+- (void)saveHouse {
+    NSMutableArray *houses = [NSMutableArray array];
+    for (HouseData *houseData in self.houses) {
+        [houses addObject:[houseData dictionary]];
+    }
+    
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:houses options:NSJSONWritingPrettyPrinted error:nil];
+    NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:jsonString forKey:@"houses"];
+    [defaults synchronize];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:UserDataHouseDataChangedNotification object:nil];
+}
+
+- (void)addHouse:(HouseData *)houseData {
+    self.houseIndex++;
+    houseData.id = self.houseIndex;
+    [self saveData:@(self.houseIndex) forKey:@"houseIndex"];
+    
+    [self.houses addObject:houseData];
+    [self saveHouse];
+}
+
+- (void)removeHouse:(HouseData *)houseData {
+    for (HouseData *data in self.houses) {
+        if (data.id == houseData.id) {
+            [self.houses removeObject:data];
+            break;
+        }
+    }
+    [self saveHouse];
+}
+
+- (HouseData *)randomUserHouse {
+    return [self.houses randomObject];
 }
 
 @end

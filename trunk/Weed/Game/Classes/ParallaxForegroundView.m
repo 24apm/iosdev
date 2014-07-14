@@ -8,10 +8,11 @@
 
 #import "ParallaxForegroundView.h"
 #import "HouseView.h"
+#import "UserData.h"
 
 @interface ParallaxForegroundView()
 
-@property (strong, nonatomic) NSMutableArray *houses;
+@property (strong, nonatomic) NSMutableArray *houseViews;
 @property (nonatomic) CGRect houseFrame;
 
 @end
@@ -21,7 +22,7 @@
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        self.houses = [NSMutableArray array];
+        self.houseViews = [NSMutableArray array];
         HouseView *house = [[HouseView alloc] init];
         self.houseFrame = house.frame;
     }
@@ -30,14 +31,26 @@
 
 - (void)setup {
     self.scrollView.contentSize = self.frame.size;
+    [self refreshHouses];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshHouses) name:UserDataHouseDataChangedNotification object:nil];
+}
 
+- (void)refreshHouses {
+    // clean out old houses
+    [self.scrollView.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
+    [self.houseViews removeAllObjects];
+    
+    NSArray *housesData = [UserData instance].houses;
+    
     HouseView *house;
-    for (int i = 0; i < 10; i++) {
+    for (HouseData *data in housesData) {
         house = [[HouseView alloc] init];
         [self.scrollView addSubview:house];
-        [self.houses addObject:house];
-        [house setup];
+        [self.houseViews addObject:house];
+        [house setupWithData:data];
     }
+    
     [self layoutHouses];
 }
 
@@ -45,7 +58,7 @@
     CGFloat spacing = self.houseFrame.size.width * 0.5f;
     CGFloat xOffset = spacing;
 
-    for (HouseView *house in self.houses) {
+    for (HouseView *house in self.houseViews) {
         house.y = self.height - self.houseFrame.size.height;
         house.x = xOffset;
         xOffset += house.width + spacing;

@@ -42,13 +42,13 @@
 }
 
 - (void)setup {
+    [self.backgroundView setup];
     [self.foregroundView setup];
-    self.coinLabel.text = [NSString stringWithFormat:@"%d", [UserData instance].coin];
-    [[UserData instance] addObserver:self forKeyPath:@"coin" options:0 context:nil];
+    self.coinLabel.text = [NSString stringWithFormat:@"%lld", [UserData instance].coin];
+    [[UserData instance] addObserver:self forKeyPath:@"coin" options:NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew context:nil];
 }
 
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
-{
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     if ([keyPath isEqual:@"coin"]) {
         id newValue = [object valueForKeyPath:keyPath];
         self.coinLabel.text = [NSString stringWithFormat:@"%d", [newValue integerValue]];

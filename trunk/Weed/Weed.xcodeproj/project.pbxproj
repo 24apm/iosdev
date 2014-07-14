@@ -39,6 +39,18 @@
 		D051F12019732ABE000F98DC /* HouseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D051F11F19732ABE000F98DC /* HouseView.xib */; };
 		D051F12219732B6C000F98DC /* House.png in Resources */ = {isa = PBXBuildFile; fileRef = D051F12119732B6C000F98DC /* House.png */; };
 		D051F125197342B7000F98DC /* CustomGameLoopTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = D051F124197342B7000F98DC /* CustomGameLoopTimer.m */; };
+		D051F1281973A740000F98DC /* VisitorView.m in Sources */ = {isa = PBXBuildFile; fileRef = D051F1271973A740000F98DC /* VisitorView.m */; };
+		D051F12E1973A7D6000F98DC /* VisitorData.m in Sources */ = {isa = PBXBuildFile; fileRef = D051F12D1973A7D6000F98DC /* VisitorData.m */; };
+		D051F1311973A7F9000F98DC /* RealEstateVisitorData.m in Sources */ = {isa = PBXBuildFile; fileRef = D051F1301973A7F9000F98DC /* RealEstateVisitorData.m */; };
+		D051F1341973A969000F98DC /* VisitorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D051F1331973A969000F98DC /* VisitorManager.m */; };
+		D051F1361973ADFB000F98DC /* VisitorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D051F1351973ADFB000F98DC /* VisitorView.xib */; };
+		D051F1391973AF76000F98DC /* RealEstateDialogView.m in Sources */ = {isa = PBXBuildFile; fileRef = D051F1381973AF76000F98DC /* RealEstateDialogView.m */; };
+		D051F13B1973AF83000F98DC /* RealEstateDialogView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D051F13A1973AF83000F98DC /* RealEstateDialogView.xib */; };
+		D051F13E1973B118000F98DC /* RealEstateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D051F13D1973B118000F98DC /* RealEstateManager.m */; };
+		D051F1411973B9DB000F98DC /* HouseData.m in Sources */ = {isa = PBXBuildFile; fileRef = D051F1401973B9DB000F98DC /* HouseData.m */; };
+		D051F1441973E587000F98DC /* BuyerVisitorData.m in Sources */ = {isa = PBXBuildFile; fileRef = D051F1431973E587000F98DC /* BuyerVisitorData.m */; };
+		D051F1471973E5B8000F98DC /* BuyerVisitorDialogView.m in Sources */ = {isa = PBXBuildFile; fileRef = D051F1461973E5B8000F98DC /* BuyerVisitorDialogView.m */; };
+		D051F1491973E5C3000F98DC /* BuyerVisitorDialogView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D051F1481973E5C3000F98DC /* BuyerVisitorDialogView.xib */; };
 		D052D9331969285D00D13DB0 /* pressandhold.png in Resources */ = {isa = PBXBuildFile; fileRef = D052D9321969285D00D13DB0 /* pressandhold.png */; };
 		D055B91B1918A066007730EB /* tier3coin.png in Resources */ = {isa = PBXBuildFile; fileRef = D055B9191918A066007730EB /* tier3coin.png */; };
 		D055B91D1918A7A4007730EB /* tier4coin.png in Resources */ = {isa = PBXBuildFile; fileRef = D055B91C1918A7A4007730EB /* tier4coin.png */; };
@@ -373,6 +385,27 @@
 		D051F12119732B6C000F98DC /* House.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = House.png; sourceTree = "<group>"; };
 		D051F123197342B7000F98DC /* CustomGameLoopTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomGameLoopTimer.h; sourceTree = "<group>"; };
 		D051F124197342B7000F98DC /* CustomGameLoopTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomGameLoopTimer.m; sourceTree = "<group>"; };
+		D051F1261973A740000F98DC /* VisitorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VisitorView.h; sourceTree = "<group>"; };
+		D051F1271973A740000F98DC /* VisitorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VisitorView.m; sourceTree = "<group>"; };
+		D051F12C1973A7D6000F98DC /* VisitorData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VisitorData.h; sourceTree = "<group>"; };
+		D051F12D1973A7D6000F98DC /* VisitorData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VisitorData.m; sourceTree = "<group>"; };
+		D051F12F1973A7F9000F98DC /* RealEstateVisitorData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RealEstateVisitorData.h; sourceTree = "<group>"; };
+		D051F1301973A7F9000F98DC /* RealEstateVisitorData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RealEstateVisitorData.m; sourceTree = "<group>"; };
+		D051F1321973A969000F98DC /* VisitorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VisitorManager.h; sourceTree = "<group>"; };
+		D051F1331973A969000F98DC /* VisitorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VisitorManager.m; sourceTree = "<group>"; };
+		D051F1351973ADFB000F98DC /* VisitorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VisitorView.xib; sourceTree = "<group>"; };
+		D051F1371973AF76000F98DC /* RealEstateDialogView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RealEstateDialogView.h; sourceTree = "<group>"; };
+		D051F1381973AF76000F98DC /* RealEstateDialogView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RealEstateDialogView.m; sourceTree = "<group>"; };
+		D051F13A1973AF83000F98DC /* RealEstateDialogView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RealEstateDialogView.xib; sourceTree = "<group>"; };
+		D051F13C1973B118000F98DC /* RealEstateManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RealEstateManager.h; sourceTree = "<group>"; };
+		D051F13D1973B118000F98DC /* RealEstateManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RealEstateManager.m; sourceTree = "<group>"; };
+		D051F13F1973B9DB000F98DC /* HouseData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HouseData.h; sourceTree = "<group>"; };
+		D051F1401973B9DB000F98DC /* HouseData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HouseData.m; sourceTree = "<group>"; };
+		D051F1421973E587000F98DC /* BuyerVisitorData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyerVisitorData.h; sourceTree = "<group>"; };
+		D051F1431973E587000F98DC /* BuyerVisitorData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyerVisitorData.m; sourceTree = "<group>"; };
+		D051F1451973E5B8000F98DC /* BuyerVisitorDialogView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyerVisitorDialogView.h; sourceTree = "<group>"; };
+		D051F1461973E5B8000F98DC /* BuyerVisitorDialogView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyerVisitorDialogView.m; sourceTree = "<group>"; };
+		D051F1481973E5C3000F98DC /* BuyerVisitorDialogView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BuyerVisitorDialogView.xib; sourceTree = "<group>"; };
 		D052D9321969285D00D13DB0 /* pressandhold.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pressandhold.png; sourceTree = "<group>"; };
 		D055B9191918A066007730EB /* tier3coin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tier3coin.png; sourceTree = "<group>"; };
 		D055B91C1918A7A4007730EB /* tier4coin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tier4coin.png; sourceTree = "<group>"; };
@@ -780,7 +813,11 @@
 				D03845B4191EB12D00265FE1 /* CoinView.h */,
 				D03845B5191EB12D00265FE1 /* CoinView.m */,
 				D03845BC191EB12D00265FE1 /* ErrorDialogView.h */,
+				D051F1371973AF76000F98DC /* RealEstateDialogView.h */,
+				D051F1381973AF76000F98DC /* RealEstateDialogView.m */,
 				D03845BD191EB12D00265FE1 /* ErrorDialogView.m */,
+				D051F1451973E5B8000F98DC /* BuyerVisitorDialogView.h */,
+				D051F1461973E5B8000F98DC /* BuyerVisitorDialogView.m */,
 				D03845BE191EB12D00265FE1 /* GameCenterHelper.h */,
 				D03845BF191EB12D00265FE1 /* GameCenterHelper.m */,
 				D03845C0191EB12D00265FE1 /* GameConstants.h */,
@@ -795,6 +832,20 @@
 				D03845EC191EB12D00265FE1 /* UserData.m */,
 				D088068819652C56001CC7A7 /* InstructionView.h */,
 				D088068919652C56001CC7A7 /* InstructionView.m */,
+				D051F1321973A969000F98DC /* VisitorManager.h */,
+				D051F1331973A969000F98DC /* VisitorManager.m */,
+				D051F13C1973B118000F98DC /* RealEstateManager.h */,
+				D051F13D1973B118000F98DC /* RealEstateManager.m */,
+				D051F13F1973B9DB000F98DC /* HouseData.h */,
+				D051F1401973B9DB000F98DC /* HouseData.m */,
+				D051F1261973A740000F98DC /* VisitorView.h */,
+				D051F1271973A740000F98DC /* VisitorView.m */,
+				D051F12C1973A7D6000F98DC /* VisitorData.h */,
+				D051F12D1973A7D6000F98DC /* VisitorData.m */,
+				D051F12F1973A7F9000F98DC /* RealEstateVisitorData.h */,
+				D051F1301973A7F9000F98DC /* RealEstateVisitorData.m */,
+				D051F1421973E587000F98DC /* BuyerVisitorData.h */,
+				D051F1431973E587000F98DC /* BuyerVisitorData.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -805,11 +856,14 @@
 				D088068419652ABD001CC7A7 /* InstructionView.xib */,
 				D06181DF193453F5001740D4 /* AnimatedLabel.xib */,
 				D06181E3193453F5001740D4 /* ErrorDialogView.xib */,
+				D051F13A1973AF83000F98DC /* RealEstateDialogView.xib */,
+				D051F1481973E5C3000F98DC /* BuyerVisitorDialogView.xib */,
 				D07F14E41969F05D009B23CB /* ParallaxBackgroundView.xib */,
 				D051F11F19732ABE000F98DC /* HouseView.xib */,
 				D051F11719731381000F98DC /* RootViewController.xib */,
 				D07F14E91969F2CA009B23CB /* ParallaxForegroundView.xib */,
 				D07F14EE1969F3D5009B23CB /* ParallaxWorldView.xib */,
+				D051F1351973ADFB000F98DC /* VisitorView.xib */,
 			);
 			path = Xib;
 			sourceTree = "<group>";
@@ -1444,6 +1498,7 @@
 				D0EC757918EBE5E40015AD4C /* cloud2.png in Resources */,
 				D0E3300C191A04EA00FB5EB8 /* applyingbomb4.png in Resources */,
 				D0E6337018FFBA05007C1622 /* bui.caf in Resources */,
+				D051F1361973ADFB000F98DC /* VisitorView.xib in Resources */,
 				D038463A191EB12E00265FE1 /* InfoPlist.strings in Resources */,
 				D0EAB6E8195FF75800C90F0E /* last.png in Resources */,
 				D09124BC18CC55520050B59F /* whoosh.caf in Resources */,
@@ -1525,6 +1580,7 @@
 				D0E4B2CE18FD268A00260ABD /* main2.png in Resources */,
 				D0EA871D18DA78DE0034B392 /* metal_clang.caf in Resources */,
 				D0BCA04D1963DC0B006E01B4 /* icon_flap.png in Resources */,
+				D051F1491973E5C3000F98DC /* BuyerVisitorDialogView.xib in Resources */,
 				D06181ED193453F5001740D4 /* AnimatedLabel.xib in Resources */,
 				D051F11819731381000F98DC /* RootViewController.xib in Resources */,
 				D0EAB6F6195FF75800C90F0E /* comet.png in Resources */,
@@ -1542,6 +1598,7 @@
 				D0E6B6141956947700940695 /* character_standing.png in Resources */,
 				D0EA7ED018D58B0E0095DEBD /* boss.png in Resources */,
 				D0E52B2C1927221D0015CD5A /* bubble.png in Resources */,
+				D051F13B1973AF83000F98DC /* RealEstateDialogView.xib in Resources */,
 				D0E541C219174EBB00DD7B1A /* button_powerup_bomb4.png in Resources */,
 				D0F375CC18FA7FA600D32A10 /* tier10.png in Resources */,
 				D0F375DB18FA958000D32A10 /* tier1-2.png in Resources */,
@@ -1657,6 +1714,7 @@
 				D0EADDE518E769FC0016D2A0 /* Utils.m in Sources */,
 				D0E52B3F192744610015CD5A /* ParticleView.m in Sources */,
 				D0E3A0CC18E7D75B00C7B63D /* PromoIconView.m in Sources */,
+				D051F1281973A740000F98DC /* VisitorView.m in Sources */,
 				D0EADDDF18E769FC0016D2A0 /* SoundEffect.m in Sources */,
 				D0E3A0C918E7D6C200C7B63D /* PromoDialogView.m in Sources */,
 				D0EADDD218E769FC0016D2A0 /* AppDelegateBase.m in Sources */,
@@ -1668,9 +1726,12 @@
 				D0EADDD918E769FC0016D2A0 /* XibView.m in Sources */,
 				D0E428E519162D49009E4A22 /* SKProduct+priceAsString.m in Sources */,
 				D038461A191EB12E00265FE1 /* CoinIAPHelper.m in Sources */,
+				D051F1391973AF76000F98DC /* RealEstateDialogView.m in Sources */,
 				D0EADDDC18E769FC0016D2A0 /* HTTPRequest.m in Sources */,
+				D051F13E1973B118000F98DC /* RealEstateManager.m in Sources */,
 				D0E3A0D318E7DD4900C7B63D /* XibDialogView.m in Sources */,
 				D0EADDD718E769FC0016D2A0 /* Hex.m in Sources */,
+				D051F1411973B9DB000F98DC /* HouseData.m in Sources */,
 				D0384622191EB12E00265FE1 /* GameConstants.m in Sources */,
 				D038461C191EB12E00265FE1 /* CoinView.m in Sources */,
 				D051F11E19732AAE000F98DC /* HouseView.m in Sources */,
@@ -1685,9 +1746,12 @@
 				D0E3461519220DFA0081797A /* GameManager.m in Sources */,
 				D0EADDE418E769FC0016D2A0 /* UIView+ViewUtil.m in Sources */,
 				D0EADDDE18E769FC0016D2A0 /* WorldObjectView.m in Sources */,
+				D051F12E1973A7D6000F98DC /* VisitorData.m in Sources */,
+				D051F1471973E5B8000F98DC /* BuyerVisitorDialogView.m in Sources */,
 				D0EADDE818E769FC0016D2A0 /* IAPHelper.m in Sources */,
 				D07F14F21969F3EE009B23CB /* ParallaxWorldView.m in Sources */,
 				D0EADDE618E769FC0016D2A0 /* FXLabel.m in Sources */,
+				D051F1341973A969000F98DC /* VisitorManager.m in Sources */,
 				D038463C191EB12E00265FE1 /* main.m in Sources */,
 				D0384631191EB12E00265FE1 /* NumberGameIAPHelper.m in Sources */,
 				D0384616191EB12E00265FE1 /* AppDelegate.m in Sources */,
@@ -1702,8 +1766,10 @@
 				D0384630191EB12E00265FE1 /* NotificationManager.m in Sources */,
 				D0EADDE218E769FC0016D2A0 /* AnimUtil.m in Sources */,
 				D0384633191EB12E00265FE1 /* ResultView.m in Sources */,
+				D051F1441973E587000F98DC /* BuyerVisitorData.m in Sources */,
 				D0EADDEA18E769FC0016D2A0 /* iRate.m in Sources */,
 				D0EADDE318E769FC0016D2A0 /* NSArray+Util.m in Sources */,
+				D051F1311973A7F9000F98DC /* RealEstateVisitorData.m in Sources */,
 				D0EADDD318E769FC0016D2A0 /* Base.m in Sources */,
 				D0EADDE718E769FC0016D2A0 /* GameCenterManager.m in Sources */,
 				D0EADDE018E769FC0016D2A0 /* SoundEffectHelper.m in Sources */,

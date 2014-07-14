@@ -7,7 +7,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HouseView">
             <connections>
+                <outlet property="buttonView" destination="2fR-VH-gT0" id="Trg-oB-4wf"/>
                 <outlet property="completedView" destination="JJa-yQ-86i" id="9nA-ET-bpl"/>
+                <outlet property="idLabel" destination="vKp-2m-rgc" id="sEY-3R-z2h"/>
                 <outlet property="inProgressView" destination="Ast-HI-7cW" id="z0U-2D-bjm"/>
                 <outlet property="progressBar" destination="LuJ-Q0-6mR" id="dkG-Uh-iDq"/>
             </connections>
@@ -21,7 +23,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <state key="normal" backgroundImage="House.png">
+                    <state key="normal">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -67,13 +69,19 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vKp-2m-rgc">
+                    <rect key="frame" x="50" y="156" width="100" height="40"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="22"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>
     </objects>
     <resources>
-        <image name="House.png" width="250" height="256"/>
         <image name="coin.png" width="256" height="256"/>
     </resources>
 </document>
