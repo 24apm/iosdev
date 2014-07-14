@@ -10,6 +10,8 @@
 
 @interface ParallaxWorldView : XibView <UIScrollViewDelegate>
 
+@property (strong, nonatomic) IBOutlet UIView *containerView;
+@property (strong, nonatomic) IBOutlet UILabel *coinLabel;
 - (void)setup;
 
 @end

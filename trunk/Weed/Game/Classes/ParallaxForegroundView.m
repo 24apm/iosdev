@@ -7,7 +7,6 @@
 //
 
 #import "ParallaxForegroundView.h"
-#import "UpgradeResultView.h"
 #import "HouseView.h"
 
 @interface ParallaxForegroundView()
@@ -51,11 +50,6 @@
         house.x = xOffset;
         xOffset += house.width + spacing;
     }
-}
-
-- (IBAction)testPressed:(id)sender {
-    [[[UpgradeResultView alloc] init] showSuccess];
-
 }
 
 @end

@@ -8,7 +8,6 @@
 
 #import "UserData.h"
 #import "GameCenterHelper.h"
-#import "ShopManager.h"
 #import "GameConstants.h"
 #import "AnimatedLabel.h"
 
@@ -27,460 +26,53 @@
 - (id)init {
     self = [super init];
     if (self) {
-        
         if ([[NSUserDefaults standardUserDefaults] objectForKey:@"coin"] == nil) {
-            //            self.currentCoin = 10;
-            //            [self saveUserCoin];
+            self.coin = 10;
+            [self saveUserCoin];
         }
-        self.sonicBoom = NO;
-        [self retrieveUserCoin];
-        [self restoreGameData];
-        [self retrieveUserMaxTap];
-        self.currentMaxAir = 10;
-        self.tapBonus = 10;
-        self.currentAirRecovery = 1;
-        self.currentSpeed = 1;
-        [self retrieveFellNumber];
-        [self retrieveMaxHeight];
-        [self retrieveMaxTime];
-        [self retrieveTotalTap];
+        
+        [self retrieveUserData];
+
     }
     return self;
 }
 
-- (void)retrieveUserCoin {
-    self.currentScore = [[[NSUserDefaults standardUserDefaults] objectForKey:@"coin"] floatValue];
-}
-
-- (void)retrieveUserMaxTap {
-    self.currentMaxTapPerSecond = [[[NSUserDefaults standardUserDefaults] objectForKey:@"maxTap"] floatValue];
-}
-
-- (void)retrieveUserStartTime {
-    self.startTime = [[[NSUserDefaults standardUserDefaults] objectForKey:@"startTime"] floatValue];
-}
-
-- (void)retrieveMaxTime {
-    self.maxTime = [[[NSUserDefaults standardUserDefaults] objectForKey:@"maxTime"] floatValue];
-}
-
-- (void)retrieveMaxHeight {
-    self.maxHeight = [[[NSUserDefaults standardUserDefaults] objectForKey:@"maxHeight"] floatValue];
-}
-
-- (void)retrieveFellNumber {
-    self.fellNumber = [[[NSUserDefaults standardUserDefaults] objectForKey:@"fellNumber"] floatValue];
-}
-
-- (void)retrieveTotalTap {
-    self.totalTap = [[[NSUserDefaults standardUserDefaults] objectForKey:@"totalTap"] floatValue];
-}
-
-- (void)saveUserCurrentMaxTap:(long long)maxTap {
-    self.currentMaxTapPerSecond = maxTap;
-    // NSLog(@"saveUserTime %f", self.currentTime);
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:[NSNumber numberWithLongLong:self.currentMaxTapPerSecond] forKey:@"maxTap"];
-    [defaults synchronize];
-}
-
-- (void)saveUserStartTime:(double)time {
-    self.startTime = time;
-    // NSLog(@"saveUserTime %f", self.currentTime);
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:[NSNumber numberWithDouble:self.startTime] forKey:@"startTime"];
-    [defaults synchronize];
-}
-
-- (void)saveMaxHeight:(long long)height {
-    if (self.maxHeight < height) {
-        self.maxHeight = height;
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        [defaults setObject:[NSNumber numberWithLongLong:self.maxHeight] forKey:@"maxHeight"];
-        [defaults synchronize];
-        [[GameCenterHelper instance].gameCenterManager reportScore:height forCategory: kLeaderboardBestScoreID];
-    }
-}
-
-- (void)saveMaxTime:(double)time {
-    if (self.maxTime < time) {
-        self.maxTime = time;
-        // NSLog(@"saveUserTime %f", self.currentTime);
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        [defaults setObject:[NSNumber numberWithDouble:self.maxTime] forKey:@"maxTime"];
-        [defaults synchronize];
-    }
-}
-
-- (void)savefellNumber {
-    self.fellNumber++;
-    // NSLog(@"saveUserTime %f", self.currentTime);
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:[NSNumber numberWithInt:self.fellNumber] forKey:@"fellNumber"];
-    [defaults synchronize];
-}
-
-- (void)saveTotalTap:(long long)tap {
-    self.totalTap += tap;
-    // NSLog(@"saveUserTime %f", self.currentTime);
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:[NSNumber numberWithLongLong:self.totalTap] forKey:@"totalTap"];
-    [defaults synchronize];
-}
-
-- (void)setCurrentScore:(long long)currentScore {
-    _currentScore = currentScore;
-}
-
-- (void)restoreGameData {
-    if(!self.gameDataDictionary) {
-        if ([[NSUserDefaults standardUserDefaults] objectForKey:@"gameData"]) {
-            self.gameDataDictionary = [[NSUserDefaults standardUserDefaults] objectForKey:@"gameData"];
-        } else {
-            self.gameDataDictionary = [NSMutableDictionary dictionary];
-            [self.gameDataDictionary setObject:[NSMutableDictionary dictionary] forKey:[NSString stringWithFormat:@"%d", POWER_UP_TYPE_UPGRADE]];
-            
-            NSMutableDictionary *typeDictionary = [self.gameDataDictionary objectForKey:[NSString stringWithFormat:@"%d", POWER_UP_TYPE_UPGRADE]];
-            [typeDictionary setObject:[NSNumber numberWithInt:0] forKey:SHOP_ITEM_ID_UPGRADE_SPEED];
-            [typeDictionary setObject:[NSNumber numberWithInt:0] forKey:SHOP_ITEM_ID_UPGRADE_FLAPPY];
-            [typeDictionary setObject:[NSNumber numberWithInt:0] forKey:SHOP_ITEM_ID_UPGRADE_AIR];
-            [self saveGameData];
-        }
-    }
-}
-
-- (void)saveGameData {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:self.gameDataDictionary forKey:@"gameData"];
-    [defaults synchronize];
+- (void)retrieveUserData {
+    self.coin = [[[NSUserDefaults standardUserDefaults] objectForKey:@"coin"] integerValue];
 }
 
 - (void)saveUserCoin {
-    
-    if ([UserData instance].currentScore <= 0) {
-        [UserData instance].currentScore = 0;
+    if (self.coin <= 0) {
+        self.coin = 0;
     }
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:@(self.currentScore) forKey:@"coin"];
+    [defaults setObject:@(self.coin) forKey:@"coin"];
     [defaults synchronize];
 }
 
-- (NSArray *)loadLocalLeaderBoard:(NSString *)mode {
-    NSArray *localLeaderboard = [[NSUserDefaults standardUserDefaults] objectForKey:mode];
-    if (!localLeaderboard) {
-        localLeaderboard = [NSArray array];
+- (void)incrementCoin:(int)coin {
+    if (self.coin <= 0) {
+        self.coin = 0;
     }
-    return localLeaderboard;
-}
-
-- (void)saveLocalLeaderBoard:(NSArray *)array mode:(NSString *)mode {
+    
+    self.coin += coin;
+    
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:array forKey:mode];
+    [defaults setObject:@(self.coin) forKey:@"coin"];
     [defaults synchronize];
 }
 
-- (NSMutableArray *)sortingArrayDecending:(NSMutableArray *)array newNumber:(double)newNumber{
-    int index = -1;
-    for (int i = 0; i < array.count; i++) {
-        if (newNumber > [[array objectAtIndex:i] doubleValue]) {
-            index = i;
-            break;
-        }
-    }
-    if (index < 0) {
-        index = array.count;
+- (void)decrementCoin:(int)coin {
+    if (self.coin <= 0) {
+        self.coin = 0;
     }
     
-    [array insertObject:[NSNumber numberWithDouble:newNumber] atIndex:index];
-    return array;
-}
-
-- (NSMutableArray *)sortingArrayAcending:(NSMutableArray *)array newNumber:(double)newNumber{
-    int index = -1;
-    for (int i = 0; i < array.count; i++) {
-        if (newNumber < [[array objectAtIndex:i] doubleValue]) {
-            index = i;
-            break;
-        }
-    }
-    if (index < 0) {
-        index = array.count;
-    }
+    self.coin -= coin;
     
-    [array insertObject:[NSNumber numberWithDouble:newNumber] atIndex:index];
-    return array;
-}
-
--(void)resetLocalLeaderBoard {
-    NSArray *array = [NSArray array];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:array forKey:GAME_MODE_SINGLE];
-    //[defaults setObject:array forKey:GAME_MODE_DISTANCE];
+    [defaults setObject:@(self.coin) forKey:@"coin"];
     [defaults synchronize];
 }
 
-- (void)addNewScoreLocalLeaderBoard:(double)newScores mode:(NSString *)mode {
-    // load local leaderboard
-    // insert new score into leaderboard
-    // sort it
-    // take the top x range (truncate if neccessarily)
-    // save new leaderboard
-    NSMutableArray *sortedArray = sortedArray = [NSMutableArray arrayWithArray:[self loadLocalLeaderBoard :(NSString *)mode]];
-    if ([mode isEqualToString:GAME_MODE_VS]) {
-        sortedArray = [self sortingArrayDecending:sortedArray newNumber:newScores];
-        double highestScore = [[sortedArray objectAtIndex:0] doubleValue];
-        [self submitScore:highestScore mode:mode];    //gamecenter submition
-    }
-    NSArray *finalArray = [self truncateArray:sortedArray];
-    [self saveLocalLeaderBoard:finalArray mode:(NSString *)mode];
-    self.currentScore = newScores;
-    // save newScores member to self.currentScore
-}
-
-- (NSArray *)truncateArray:(NSMutableArray *)array {
-    NSRange range = NSMakeRange(0, MIN(array.count, 100));
-    return [array subarrayWithRange:range];
-}
-
-- (void)resetLocalScore :(NSString *)mode {
-    
-    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    [defaults setObject:nil forKey:@"currentLevelData"];
-    [defaults synchronize];
-}
-
-- (void)submitScore:(int)score mode:(NSString *)mode {
-    NSString *leaderBoardCategory = nil;
-    if ([mode isEqualToString:GAME_MODE_VS]) {
-        leaderBoardCategory = kLeaderboardBestScoreID;
-    }
-    
-    if(leaderBoardCategory && score > 0) {
-        [[GameCenterHelper instance].gameCenterManager reportScore:score forCategory: leaderBoardCategory];
-    }
-}
-- (void)levelUpPower:(ShopItem *)item {
-    NSMutableDictionary *typeDictionary = [self.gameDataDictionary objectForKey:[NSString stringWithFormat:@"%d", item.type]];
-    NSNumber *number = [typeDictionary objectForKey:item.itemId];
-    int level = 0;
-    if (number != nil) {
-        level = [number intValue];
-    }
-    if (level < LEVEL_CAP) {
-        level++;
-    }
-    [typeDictionary setObject:[NSNumber numberWithInt:level] forKey:item.itemId];
-    [self saveGameData];
-}
-
-- (float)totalPowerUpFor:(PowerUpType)type UpgradeType:(NSString *)upgrade {
-    long long totalMultiplier = 0;
-    NSMutableDictionary *typeDictionary = [self.gameDataDictionary objectForKey:[NSString stringWithFormat:@"%d", type]];
-    NSString *currentKey = @"default";
-    
-    
-    NSNumber *value = [typeDictionary objectForKey:upgrade];
-    if (value) {
-        currentKey = upgrade;
-    }
-    
-    ShopItem *item =[[ShopManager instance] shopItemForItemId:currentKey dictionary:type];
-    totalMultiplier = [self realMultiplier:item];
-    if (totalMultiplier <=0) {
-        totalMultiplier = 1;
-    }
-    return totalMultiplier;
-}
-
-- (float)realMultiplier:(ShopItem *)shopItem {
-    NSMutableDictionary *typeDictionary = [self.gameDataDictionary objectForKey:[NSString stringWithFormat:@"%d", shopItem.type]];
-    int itemLevel = [[typeDictionary objectForKey:shopItem.itemId] intValue];
-    long long tempMultiplier = shopItem.upgradeMultiplier * (float)itemLevel;
-    return tempMultiplier;
-}
-
-- (int)totalPointPerTap:(BOOL)bonusOn {
-    int points = 1;
-    
-    if (bonusOn) {
-        points = 1 * self.tapBonus;
-    }
-    return points;
-}
-
-- (void)addCurrentHeight {
-    self.currentHeight += 1;
-}
-
-- (void)fellFromCurrentHeight:(long long)currentHeight {
-    [self heightTierData:currentHeight];
-    [[GameCenterHelper instance].gameCenterManager reportScore:currentHeight forCategory: kLeaderboardBestScoreID];
-}
-
-- (void)addScoreByTap:(BOOL)bonusOn {
-    long long temp = [self totalPointPerTap:bonusOn];
-    self.currentScore = self.currentScore + (temp) * self.levelBonus;
-}
-
-- (long long)addScore:(BOOL)bonusOn {
-    
-    long long perTapScore = 0;
-    
-    if (bonusOn) {
-        perTapScore = self.levelBonus * 10;
-        
-    } else {
-        perTapScore = self.levelBonus;
-        
-    }
-    
-    self.currentScore += perTapScore;
-    
-    return perTapScore;
-}
-
-- (void)heightTierData:(long long)currentHeight {
-    self.currentHeight = currentHeight;
-    if(self.currentHeight < 100) {
-        self.airResistence = 0;
-        self.currentBackgroundTier = BackgroundTypeFloat;
-        self.levelBonus = 1;
-        
-    } else if(self.currentHeight < 200) {
-        self.airResistence = 1;
-        self.currentBackgroundTier = BackgroundTypeTree;
-        self.levelBonus = 2;
-        
-    } else if(self.currentHeight < 500) {
-        self.airResistence = 2;
-        self.currentBackgroundTier = BackgroundTypeSky;
-        self.levelBonus = 5;
-        
-    } else if(self.currentHeight < 1000) {
-        self.airResistence = 3;
-        self.currentBackgroundTier = BackgroundTypeCloud;
-        self.levelBonus = 10;
-        
-    } else if(self.currentHeight < 2000) {
-        self.airResistence = 8;
-        self.currentBackgroundTier = BackgroundTypeMountain;
-        self.levelBonus = 50;
-        
-    } else if(self.currentHeight < 5000) {
-        self.airResistence = 15;
-        self.currentBackgroundTier = BackgroundTypeAtmosphere;
-        self.levelBonus = 100;
-        
-    } else if(self.currentHeight < 10000) {
-        self.airResistence = 30;
-        self.currentBackgroundTier = BackgroundTypeSpace;
-        self.levelBonus = 400;
-        
-    } else if(self.currentHeight < 20000) {
-        self.airResistence = 40;
-        self.currentBackgroundTier = BackgroundTypeMoon;
-        self.levelBonus = 1000;
-        
-    } else if(self.currentHeight < 30000) {
-        self.airResistence = 50;
-        self.currentBackgroundTier = BackgroundTypeVenus;
-        self.levelBonus = 3000;
-        
-    } else if(self.currentHeight < 40000) {
-        self.airResistence = 60;
-        self.currentBackgroundTier = BackgroundTypeMercury;
-        self.levelBonus = 8000;
-        
-    } else if(self.currentHeight < 50000) {
-        self.airResistence = 70;
-        self.currentBackgroundTier = BackgroundTypeSun;
-        self.levelBonus = 30000;
-        
-    } else if(self.currentHeight < 60000) {
-        self.airResistence = 80;
-        self.currentBackgroundTier = BackgroundTypeComet;
-        self.levelBonus = 500000;
-        
-    } else if(self.currentHeight < 70000) {
-        self.airResistence = 90;
-        self.currentBackgroundTier = BackgroundTypeMars;
-        self.levelBonus = 1;
-        
-    } else if(self.currentHeight < 80000) {
-        self.airResistence = 100;
-        self.currentBackgroundTier = BackgroundTypeAsteroid;
-        self.levelBonus = 1;
-        
-    } else if(self.currentHeight < 90000) {
-        self.airResistence = 100;
-        self.currentBackgroundTier = BackgroundTypeJupiter;
-        self.levelBonus = 1;
-        
-    } else if(self.currentHeight < 100000) {
-        self.airResistence = 110;
-        self.currentBackgroundTier = BackgroundTypeSaturn;
-        self.levelBonus = 1;
-        
-    } else if(self.currentHeight < 110000){
-        self.airResistence = 120;
-        self.currentBackgroundTier = BackgroundTypeUranus;
-        self.levelBonus = 1;
-        
-    } else if(self.currentHeight < 120000){
-        self.airResistence = 130;
-        self.currentBackgroundTier = BackgroundTypeNepture;
-        self.levelBonus = 1;
-        
-    } else if(self.currentHeight < 130000){
-        self.airResistence = 140;
-        self.currentBackgroundTier = BackgroundTypePluto;
-        self.levelBonus = 1;
-        
-    } else if(self.currentHeight < 140000){
-        self.airResistence = 150;
-        self.currentBackgroundTier = BackgroundTypeSolar;
-        self.levelBonus = 1;
-        
-    } else if(self.currentHeight < 150000){
-        self.airResistence = 160;
-        self.currentBackgroundTier = BackgroundTypeGalaxy;
-        self.levelBonus = 1;
-        
-    } else if(self.currentHeight < 160000) {
-        self.airResistence = 100;
-        self.currentBackgroundTier = BackgroundTypeOuterGalaxy;
-        self.levelBonus = 1;
-        
-    } else if(self.currentHeight < 170000) {
-        self.airResistence = 100;
-        self.currentBackgroundTier = BackgroundTypeBlack;
-        self.levelBonus = 1;
-        
-    } else if(self.currentHeight < 180000) {
-        self.airResistence = 100;
-        self.currentBackgroundTier = BackgroundTypeBlackEntrance;
-        self.levelBonus = 1;
-        
-    } else {
-        self.airResistence = 100;
-        self.currentBackgroundTier = BackgroundTypeLast;
-        self.levelBonus = 1;
-    }
-    [self checkSonicBoom];
-}
-
-- (int)currentCharacterLevel {
-    NSMutableDictionary *typeDictionary = [self.gameDataDictionary objectForKey:[NSString stringWithFormat:@"%d", POWER_UP_TYPE_UPGRADE]];
-    return [[typeDictionary objectForKey:SHOP_ITEM_ID_UPGRADE_FLAPPY]intValue] + [[typeDictionary objectForKey:SHOP_ITEM_ID_UPGRADE_SPEED]intValue] + [[typeDictionary objectForKey:SHOP_ITEM_ID_UPGRADE_AIR]intValue];
-}
-
-- (void)checkSonicBoom {
-    if (self.currentBackgroundTier != self.prevBackgroundTier) {
-        self.prevBackgroundTier = self.currentBackgroundTier;
-        self.sonicBoom = YES;
-    } else {
-        self.sonicBoom = NO;
-    }
-}
 @end

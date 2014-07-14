@@ -11,6 +11,7 @@
 #import "ParallaxForegroundView.h"
 #import "Utils.h"
 #import "CustomGameLoopTimer.h"
+#import "UserData.h"
 
 @interface ParallaxWorldView()
 
@@ -35,10 +36,10 @@
         
         self.backgroundView = [[ParallaxBackgroundView alloc] init];
         [self.parallaxViews addObject:self.backgroundView];
-        [self addSubview:self.backgroundView];
+        [self.containerView addSubview:self.backgroundView];
 
         self.foregroundView = [[ParallaxForegroundView alloc] init];
-        [self addSubview:self.foregroundView];
+        [self.containerView addSubview:self.foregroundView];
 
         self.foregroundView.scrollView.delegate = self;
    
@@ -48,6 +49,16 @@
 
 - (void)setup {
     [self.foregroundView setup];
+    self.coinLabel.text = [NSString stringWithFormat:@"%d", [UserData instance].coin];
+    [[UserData instance] addObserver:self forKeyPath:@"coin" options:0 context:nil];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if ([keyPath isEqual:@"coin"]) {
+        id newValue = [object valueForKeyPath:keyPath];
+        self.coinLabel.text = [NSString stringWithFormat:@"%d", [newValue integerValue]];
+    }
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {

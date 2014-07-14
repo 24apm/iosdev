@@ -12,7 +12,6 @@
 
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 
-- (IBAction)testPressed:(id)sender;
 - (void)setup;
 
 @end

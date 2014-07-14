@@ -20,8 +20,6 @@
 		D0384620191EB12E00265FE1 /* ErrorDialogView.m in Sources */ = {isa = PBXBuildFile; fileRef = D03845BD191EB12D00265FE1 /* ErrorDialogView.m */; };
 		D0384621191EB12E00265FE1 /* GameCenterHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D03845BF191EB12D00265FE1 /* GameCenterHelper.m */; };
 		D0384622191EB12E00265FE1 /* GameConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D03845C1191EB12D00265FE1 /* GameConstants.m */; };
-		D038462B191EB12E00265FE1 /* LocalLeaderBoardView.m in Sources */ = {isa = PBXBuildFile; fileRef = D03845D3191EB12D00265FE1 /* LocalLeaderBoardView.m */; };
-		D038462C191EB12E00265FE1 /* MainView.m in Sources */ = {isa = PBXBuildFile; fileRef = D03845D5191EB12D00265FE1 /* MainView.m */; };
 		D0384630191EB12E00265FE1 /* NotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D03845DD191EB12D00265FE1 /* NotificationManager.m */; };
 		D0384631191EB12E00265FE1 /* NumberGameIAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D03845DF191EB12D00265FE1 /* NumberGameIAPHelper.m */; };
 		D0384633191EB12E00265FE1 /* ResultView.m in Sources */ = {isa = PBXBuildFile; fileRef = D03845E3191EB12D00265FE1 /* ResultView.m */; };
@@ -31,8 +29,6 @@
 		D038463B191EB12E00265FE1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D03845F1191EB12D00265FE1 /* Images.xcassets */; };
 		D038463C191EB12E00265FE1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D03845F2191EB12D00265FE1 /* main.m */; };
 		D0384661191EB21000265FE1 /* XibTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D0384660191EB21000265FE1 /* XibTableViewCell.m */; };
-		D0384664191EB36200265FE1 /* ShopTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0384663191EB36200265FE1 /* ShopTableView.m */; };
-		D0384669191EB4F900265FE1 /* ShopRowView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0384668191EB4F900265FE1 /* ShopRowView.m */; };
 		D048A83F18ACAAAB00411DF9 /* facebook_share.png in Resources */ = {isa = PBXBuildFile; fileRef = D048A83D18ACAAAB00411DF9 /* facebook_share.png */; };
 		D048A84018ACAAAB00411DF9 /* twitter_share.png in Resources */ = {isa = PBXBuildFile; fileRef = D048A83E18ACAAAB00411DF9 /* twitter_share.png */; };
 		D048A84618ACB25200411DF9 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D048A84518ACB25200411DF9 /* GameKit.framework */; };
@@ -49,10 +45,6 @@
 		D05EF407196173B70016FD96 /* health.png in Resources */ = {isa = PBXBuildFile; fileRef = D05EF406196173B70016FD96 /* health.png */; };
 		D06181ED193453F5001740D4 /* AnimatedLabel.xib in Resources */ = {isa = PBXBuildFile; fileRef = D06181DF193453F5001740D4 /* AnimatedLabel.xib */; };
 		D06181F1193453F5001740D4 /* ErrorDialogView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D06181E3193453F5001740D4 /* ErrorDialogView.xib */; };
-		D06181F5193453F5001740D4 /* LocalLeaderBoardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D06181E7193453F5001740D4 /* LocalLeaderBoardView.xib */; };
-		D06181F7193453F5001740D4 /* MainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D06181E9193453F5001740D4 /* MainView.xib */; };
-		D06181F9193453F5001740D4 /* ShopRowView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D06181EB193453F5001740D4 /* ShopRowView.xib */; };
-		D06181FA193453F5001740D4 /* ShopTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D06181EC193453F5001740D4 /* ShopTableView.xib */; };
 		D06DB4251939BE9400B33BEC /* guinea_pig.caf in Resources */ = {isa = PBXBuildFile; fileRef = D06DB4231939BE9400B33BEC /* guinea_pig.caf */; };
 		D06DB4261939BE9400B33BEC /* anvil.caf in Resources */ = {isa = PBXBuildFile; fileRef = D06DB4241939BE9400B33BEC /* anvil.caf */; };
 		D06DB4291939C2CD00B33BEC /* Hallelujah-Short.caf in Resources */ = {isa = PBXBuildFile; fileRef = D06DB4271939C2CD00B33BEC /* Hallelujah-Short.caf */; };
@@ -188,8 +180,6 @@
 		D0E6336E18FFB9F8007C1622 /* duing.caf in Resources */ = {isa = PBXBuildFile; fileRef = D0E6336D18FFB9F8007C1622 /* duing.caf */; };
 		D0E6337018FFBA05007C1622 /* bui.caf in Resources */ = {isa = PBXBuildFile; fileRef = D0E6336F18FFBA05007C1622 /* bui.caf */; };
 		D0E6337218FFBA11007C1622 /* dong.caf in Resources */ = {isa = PBXBuildFile; fileRef = D0E6337118FFBA11007C1622 /* dong.caf */; };
-		D0E647C8191F464900327C07 /* ShopManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E647C7191F464900327C07 /* ShopManager.m */; };
-		D0E647CB191F479500327C07 /* ShopItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E647CA191F479500327C07 /* ShopItem.m */; };
 		D0E6B6101956947700940695 /* character_falling.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E6B60B1956947700940695 /* character_falling.png */; };
 		D0E6B6111956947700940695 /* character_flying.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E6B60C1956947700940695 /* character_flying.png */; };
 		D0E6B6121956947700940695 /* character_flapdown.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E6B60D1956947700940695 /* character_flapdown.png */; };
@@ -278,9 +268,6 @@
 		D0EC757918EBE5E40015AD4C /* cloud2.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EC757718EBE5E40015AD4C /* cloud2.png */; };
 		D0EC757A18EBE5E40015AD4C /* cloud1.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EC757818EBE5E40015AD4C /* cloud1.png */; };
 		D0ED116618CF04BC00C55BA9 /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = D0ED116518CF04BC00C55BA9 /* heart.png */; };
-		D0ED6FD819500533009F2384 /* UpgradeView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0ED6FD719500533009F2384 /* UpgradeView.m */; };
-		D0ED6FDB1950054D009F2384 /* UpgradeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D0ED6FDA1950054D009F2384 /* UpgradeManager.m */; };
-		D0ED6FDD19500568009F2384 /* UpgradeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0ED6FDC19500568009F2384 /* UpgradeView.xib */; };
 		D0ED6FDF19501FAE009F2384 /* speedline.png in Resources */ = {isa = PBXBuildFile; fileRef = D0ED6FDE19501FAE009F2384 /* speedline.png */; };
 		D0ED6FE1195020D3009F2384 /* blackbackground.png in Resources */ = {isa = PBXBuildFile; fileRef = D0ED6FE0195020D3009F2384 /* blackbackground.png */; };
 		D0EDA2A419667ADC00989065 /* icon_flylvlup.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EDA2A119667ADC00989065 /* icon_flylvlup.png */; };
@@ -296,7 +283,6 @@
 		D0F02F1A1910C7640003F759 /* PromoDialogView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0F02F191910C7640003F759 /* PromoDialogView~ipad.xib */; };
 		D0F03566192C8D5000F0B0BE /* icon_bucket.png in Resources */ = {isa = PBXBuildFile; fileRef = D0F03565192C8D5000F0B0BE /* icon_bucket.png */; };
 		D0F0B8FE18E8F4D900809CA2 /* TrackUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F0B8FD18E8F4D900809CA2 /* TrackUtils.m */; };
-		D0F357C11946D57C00C26351 /* LevelUpHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F357C01946D57C00C26351 /* LevelUpHelper.m */; };
 		D0F375B818FA3D9300D32A10 /* tier0.png in Resources */ = {isa = PBXBuildFile; fileRef = D0F375B718FA3D9300D32A10 /* tier0.png */; };
 		D0F375BF18FA457100D32A10 /* tier7.png in Resources */ = {isa = PBXBuildFile; fileRef = D0F375B918FA457100D32A10 /* tier7.png */; };
 		D0F375C018FA457100D32A10 /* tier8.png in Resources */ = {isa = PBXBuildFile; fileRef = D0F375BA18FA457100D32A10 /* tier8.png */; };
@@ -323,8 +309,6 @@
 		D0F375E818FA990100D32A10 /* tier4-2.png in Resources */ = {isa = PBXBuildFile; fileRef = D0F375E518FA990100D32A10 /* tier4-2.png */; };
 		D0F375E918FA990100D32A10 /* tier2-2.png in Resources */ = {isa = PBXBuildFile; fileRef = D0F375E618FA990100D32A10 /* tier2-2.png */; };
 		D0F375EA18FA990100D32A10 /* tier5-2.png in Resources */ = {isa = PBXBuildFile; fileRef = D0F375E718FA990100D32A10 /* tier5-2.png */; };
-		D0F7D01D1955706A005BBCEC /* UpgradeResultView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0F7D01C1955706A005BBCEC /* UpgradeResultView.xib */; };
-		D0F7D0201955709E005BBCEC /* UpgradeResultView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F7D01F1955709E005BBCEC /* UpgradeResultView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -361,10 +345,6 @@
 		D03845BF191EB12D00265FE1 /* GameCenterHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameCenterHelper.m; sourceTree = "<group>"; };
 		D03845C0191EB12D00265FE1 /* GameConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameConstants.h; sourceTree = "<group>"; };
 		D03845C1191EB12D00265FE1 /* GameConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameConstants.m; sourceTree = "<group>"; };
-		D03845D2191EB12D00265FE1 /* LocalLeaderBoardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalLeaderBoardView.h; sourceTree = "<group>"; };
-		D03845D3191EB12D00265FE1 /* LocalLeaderBoardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalLeaderBoardView.m; sourceTree = "<group>"; };
-		D03845D4191EB12D00265FE1 /* MainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainView.h; sourceTree = "<group>"; };
-		D03845D5191EB12D00265FE1 /* MainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainView.m; sourceTree = "<group>"; };
 		D03845DC191EB12D00265FE1 /* NotificationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationManager.h; sourceTree = "<group>"; };
 		D03845DD191EB12D00265FE1 /* NotificationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationManager.m; sourceTree = "<group>"; };
 		D03845DE191EB12D00265FE1 /* NumberGameIAPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumberGameIAPHelper.h; sourceTree = "<group>"; };
@@ -380,10 +360,6 @@
 		D03845F2191EB12D00265FE1 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D038465F191EB21000265FE1 /* XibTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XibTableViewCell.h; sourceTree = "<group>"; };
 		D0384660191EB21000265FE1 /* XibTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XibTableViewCell.m; sourceTree = "<group>"; };
-		D0384662191EB36200265FE1 /* ShopTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopTableView.h; sourceTree = "<group>"; };
-		D0384663191EB36200265FE1 /* ShopTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopTableView.m; sourceTree = "<group>"; };
-		D0384667191EB4F900265FE1 /* ShopRowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopRowView.h; sourceTree = "<group>"; };
-		D0384668191EB4F900265FE1 /* ShopRowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopRowView.m; sourceTree = "<group>"; };
 		D048A83D18ACAAAB00411DF9 /* facebook_share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebook_share.png; sourceTree = "<group>"; };
 		D048A83E18ACAAAB00411DF9 /* twitter_share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twitter_share.png; sourceTree = "<group>"; };
 		D048A84518ACB25200411DF9 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
@@ -403,10 +379,6 @@
 		D05EF406196173B70016FD96 /* health.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = health.png; sourceTree = "<group>"; };
 		D06181DF193453F5001740D4 /* AnimatedLabel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnimatedLabel.xib; sourceTree = "<group>"; };
 		D06181E3193453F5001740D4 /* ErrorDialogView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ErrorDialogView.xib; sourceTree = "<group>"; };
-		D06181E7193453F5001740D4 /* LocalLeaderBoardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocalLeaderBoardView.xib; sourceTree = "<group>"; };
-		D06181E9193453F5001740D4 /* MainView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainView.xib; sourceTree = "<group>"; };
-		D06181EB193453F5001740D4 /* ShopRowView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShopRowView.xib; sourceTree = "<group>"; };
-		D06181EC193453F5001740D4 /* ShopTableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShopTableView.xib; sourceTree = "<group>"; };
 		D06DB4231939BE9400B33BEC /* guinea_pig.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = guinea_pig.caf; sourceTree = "<group>"; };
 		D06DB4241939BE9400B33BEC /* anvil.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = anvil.caf; sourceTree = "<group>"; };
 		D06DB4271939C2CD00B33BEC /* Hallelujah-Short.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Hallelujah-Short.caf"; sourceTree = "<group>"; };
@@ -552,10 +524,6 @@
 		D0E6336D18FFB9F8007C1622 /* duing.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = duing.caf; sourceTree = "<group>"; };
 		D0E6336F18FFBA05007C1622 /* bui.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = bui.caf; sourceTree = "<group>"; };
 		D0E6337118FFBA11007C1622 /* dong.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = dong.caf; sourceTree = "<group>"; };
-		D0E647C6191F464900327C07 /* ShopManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopManager.h; sourceTree = "<group>"; };
-		D0E647C7191F464900327C07 /* ShopManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopManager.m; sourceTree = "<group>"; };
-		D0E647C9191F479500327C07 /* ShopItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopItem.h; sourceTree = "<group>"; };
-		D0E647CA191F479500327C07 /* ShopItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopItem.m; sourceTree = "<group>"; };
 		D0E6B60B1956947700940695 /* character_falling.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = character_falling.png; sourceTree = "<group>"; };
 		D0E6B60C1956947700940695 /* character_flying.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = character_flying.png; sourceTree = "<group>"; };
 		D0E6B60D1956947700940695 /* character_flapdown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = character_flapdown.png; sourceTree = "<group>"; };
@@ -680,11 +648,6 @@
 		D0EC757718EBE5E40015AD4C /* cloud2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cloud2.png; sourceTree = "<group>"; };
 		D0EC757818EBE5E40015AD4C /* cloud1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cloud1.png; sourceTree = "<group>"; };
 		D0ED116518CF04BC00C55BA9 /* heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart.png; sourceTree = "<group>"; };
-		D0ED6FD619500533009F2384 /* UpgradeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpgradeView.h; sourceTree = "<group>"; };
-		D0ED6FD719500533009F2384 /* UpgradeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpgradeView.m; sourceTree = "<group>"; };
-		D0ED6FD91950054D009F2384 /* UpgradeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpgradeManager.h; sourceTree = "<group>"; };
-		D0ED6FDA1950054D009F2384 /* UpgradeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpgradeManager.m; sourceTree = "<group>"; };
-		D0ED6FDC19500568009F2384 /* UpgradeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UpgradeView.xib; sourceTree = "<group>"; };
 		D0ED6FDE19501FAE009F2384 /* speedline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = speedline.png; sourceTree = "<group>"; };
 		D0ED6FE0195020D3009F2384 /* blackbackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blackbackground.png; sourceTree = "<group>"; };
 		D0EDA2A119667ADC00989065 /* icon_flylvlup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_flylvlup.png; sourceTree = "<group>"; };
@@ -701,8 +664,6 @@
 		D0F03565192C8D5000F0B0BE /* icon_bucket.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_bucket.png; sourceTree = "<group>"; };
 		D0F0B8FC18E8F4D900809CA2 /* TrackUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackUtils.h; sourceTree = "<group>"; };
 		D0F0B8FD18E8F4D900809CA2 /* TrackUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackUtils.m; sourceTree = "<group>"; };
-		D0F357BF1946D57C00C26351 /* LevelUpHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelUpHelper.h; sourceTree = "<group>"; };
-		D0F357C01946D57C00C26351 /* LevelUpHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelUpHelper.m; sourceTree = "<group>"; };
 		D0F375B718FA3D9300D32A10 /* tier0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tier0.png; sourceTree = "<group>"; };
 		D0F375B918FA457100D32A10 /* tier7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tier7.png; sourceTree = "<group>"; };
 		D0F375BA18FA457100D32A10 /* tier8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tier8.png; sourceTree = "<group>"; };
@@ -729,9 +690,6 @@
 		D0F375E518FA990100D32A10 /* tier4-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tier4-2.png"; sourceTree = "<group>"; };
 		D0F375E618FA990100D32A10 /* tier2-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tier2-2.png"; sourceTree = "<group>"; };
 		D0F375E718FA990100D32A10 /* tier5-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tier5-2.png"; sourceTree = "<group>"; };
-		D0F7D01C1955706A005BBCEC /* UpgradeResultView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UpgradeResultView.xib; sourceTree = "<group>"; };
-		D0F7D01E1955709E005BBCEC /* UpgradeResultView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpgradeResultView.h; sourceTree = "<group>"; };
-		D0F7D01F1955709E005BBCEC /* UpgradeResultView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpgradeResultView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -814,14 +772,6 @@
 				D0E3461319220DFA0081797A /* GameManager.h */,
 				D0E3461419220DFA0081797A /* GameManager.m */,
 				D03845AA191EB12D00265FE1 /* AnimatedLabel.h */,
-				D0384662191EB36200265FE1 /* ShopTableView.h */,
-				D0384663191EB36200265FE1 /* ShopTableView.m */,
-				D0384667191EB4F900265FE1 /* ShopRowView.h */,
-				D0384668191EB4F900265FE1 /* ShopRowView.m */,
-				D0ED6FD619500533009F2384 /* UpgradeView.h */,
-				D0ED6FD719500533009F2384 /* UpgradeView.m */,
-				D0ED6FD91950054D009F2384 /* UpgradeManager.h */,
-				D0ED6FDA1950054D009F2384 /* UpgradeManager.m */,
 				D03845AB191EB12D00265FE1 /* AnimatedLabel.m */,
 				D03845B0191EB12D00265FE1 /* CoinIAPHelper.h */,
 				D03845B1191EB12D00265FE1 /* CoinIAPHelper.m */,
@@ -835,12 +785,6 @@
 				D03845BF191EB12D00265FE1 /* GameCenterHelper.m */,
 				D03845C0191EB12D00265FE1 /* GameConstants.h */,
 				D03845C1191EB12D00265FE1 /* GameConstants.m */,
-				D0F357BF1946D57C00C26351 /* LevelUpHelper.h */,
-				D0F357C01946D57C00C26351 /* LevelUpHelper.m */,
-				D03845D2191EB12D00265FE1 /* LocalLeaderBoardView.h */,
-				D03845D3191EB12D00265FE1 /* LocalLeaderBoardView.m */,
-				D03845D4191EB12D00265FE1 /* MainView.h */,
-				D03845D5191EB12D00265FE1 /* MainView.m */,
 				D03845DC191EB12D00265FE1 /* NotificationManager.h */,
 				D03845DD191EB12D00265FE1 /* NotificationManager.m */,
 				D03845DE191EB12D00265FE1 /* NumberGameIAPHelper.h */,
@@ -849,12 +793,6 @@
 				D03845E3191EB12D00265FE1 /* ResultView.m */,
 				D03845EB191EB12D00265FE1 /* UserData.h */,
 				D03845EC191EB12D00265FE1 /* UserData.m */,
-				D0E647C6191F464900327C07 /* ShopManager.h */,
-				D0E647C7191F464900327C07 /* ShopManager.m */,
-				D0E647C9191F479500327C07 /* ShopItem.h */,
-				D0E647CA191F479500327C07 /* ShopItem.m */,
-				D0F7D01E1955709E005BBCEC /* UpgradeResultView.h */,
-				D0F7D01F1955709E005BBCEC /* UpgradeResultView.m */,
 				D088068819652C56001CC7A7 /* InstructionView.h */,
 				D088068919652C56001CC7A7 /* InstructionView.m */,
 			);
@@ -867,12 +805,6 @@
 				D088068419652ABD001CC7A7 /* InstructionView.xib */,
 				D06181DF193453F5001740D4 /* AnimatedLabel.xib */,
 				D06181E3193453F5001740D4 /* ErrorDialogView.xib */,
-				D06181E7193453F5001740D4 /* LocalLeaderBoardView.xib */,
-				D06181E9193453F5001740D4 /* MainView.xib */,
-				D06181EB193453F5001740D4 /* ShopRowView.xib */,
-				D06181EC193453F5001740D4 /* ShopTableView.xib */,
-				D0ED6FDC19500568009F2384 /* UpgradeView.xib */,
-				D0F7D01C1955706A005BBCEC /* UpgradeResultView.xib */,
 				D07F14E41969F05D009B23CB /* ParallaxBackgroundView.xib */,
 				D051F11F19732ABE000F98DC /* HouseView.xib */,
 				D051F11719731381000F98DC /* RootViewController.xib */,
@@ -1531,7 +1463,6 @@
 				D0E1122F18C2EC6000808072 /* winningEffect.caf in Resources */,
 				D07F14EA1969F2CA009B23CB /* ParallaxForegroundView.xib in Resources */,
 				D0EADDEE18E769FC0016D2A0 /* ToiletRush120.png in Resources */,
-				D0F7D01D1955706A005BBCEC /* UpgradeResultView.xib in Resources */,
 				D033855418EA9C22008D7861 /* pinkbackground.png in Resources */,
 				D0E26B0219580CEB00314A7C /* character_learningsuccess.png in Resources */,
 				D0BCA0471963D90B006E01B4 /* clock.png in Resources */,
@@ -1582,7 +1513,6 @@
 				D0E428FA193700B200210F85 /* icon_iap.png in Resources */,
 				D0EBC78619596F190023EF01 /* icon_wing in Resources */,
 				D0A79574195BEDE2009270DE /* mountain.png in Resources */,
-				D06181F7193453F5001740D4 /* MainView.xib in Resources */,
 				D0EF3FD418D7FB1B00C50442 /* red_header.png in Resources */,
 				D0EBC78319596F190023EF01 /* button_default.png in Resources */,
 				D0F03566192C8D5000F0B0BE /* icon_bucket.png in Resources */,
@@ -1625,7 +1555,6 @@
 				D0EC757A18EBE5E40015AD4C /* cloud1.png in Resources */,
 				D0F375CA18FA78FA00D32A10 /* tier9.png in Resources */,
 				D0E4BCCE18D95D9200132C17 /* Victory.png in Resources */,
-				D06181F9193453F5001740D4 /* ShopRowView.xib in Resources */,
 				D0EDA2A9196686F600989065 /* makeitflappy_profile_stats_dialog.png in Resources */,
 				D0EFC638191B373A008A54C8 /* gloweffect.png in Resources */,
 				D0E47C2118ED29DC009CA771 /* singleplayerbutton.png in Resources */,
@@ -1649,7 +1578,6 @@
 				D0E33008191A04EA00FB5EB8 /* arrowdown.png in Resources */,
 				D0F375C118FA457100D32A10 /* tier5.png in Resources */,
 				D0EDA2AA196686F600989065 /* makeitflappy_profile_stats_bar.png in Resources */,
-				D0ED6FDD19500568009F2384 /* UpgradeView.xib in Resources */,
 				D0F375C218FA457100D32A10 /* tier6.png in Resources */,
 				D0EAB6FB1960049F00C90F0E /* sonicboom.png in Resources */,
 				D0EAB6EF195FF75800C90F0E /* solar.png in Resources */,
@@ -1660,9 +1588,7 @@
 				D0E6336C18FFB9D4007C1622 /* boiling.caf in Resources */,
 				D0F375D818FA958000D32A10 /* tier10-2.png in Resources */,
 				D0EA7EBE18D521C90095DEBD /* arrow.png in Resources */,
-				D06181FA193453F5001740D4 /* ShopTableView.xib in Resources */,
 				D0E555F1193B084A00F59DF6 /* background_tier4.png in Resources */,
-				D06181F5193453F5001740D4 /* LocalLeaderBoardView.xib in Resources */,
 				D06DB42A1939C2CD00B33BEC /* Hallelujah.caf in Resources */,
 				D05EF407196173B70016FD96 /* health.png in Resources */,
 				D0BCA04B1963DAB6006E01B4 /* icon_fly.png in Resources */,
@@ -1736,18 +1662,14 @@
 				D0EADDD218E769FC0016D2A0 /* AppDelegateBase.m in Sources */,
 				D00331231918BA9F008C1834 /* DialogViewManager.m in Sources */,
 				D0384617191EB12E00265FE1 /* AnimatedLabel.m in Sources */,
-				D0ED6FDB1950054D009F2384 /* UpgradeManager.m in Sources */,
-				D0384669191EB4F900265FE1 /* ShopRowView.m in Sources */,
 				D0EADDF518E769FC0016D2A0 /* THLabel.m in Sources */,
 				D088068A19652C56001CC7A7 /* InstructionView.m in Sources */,
 				D051F11B197313A1000F98DC /* RootViewController.m in Sources */,
 				D0EADDD918E769FC0016D2A0 /* XibView.m in Sources */,
-				D0E647CB191F479500327C07 /* ShopItem.m in Sources */,
 				D0E428E519162D49009E4A22 /* SKProduct+priceAsString.m in Sources */,
 				D038461A191EB12E00265FE1 /* CoinIAPHelper.m in Sources */,
 				D0EADDDC18E769FC0016D2A0 /* HTTPRequest.m in Sources */,
 				D0E3A0D318E7DD4900C7B63D /* XibDialogView.m in Sources */,
-				D0F7D0201955709E005BBCEC /* UpgradeResultView.m in Sources */,
 				D0EADDD718E769FC0016D2A0 /* Hex.m in Sources */,
 				D0384622191EB12E00265FE1 /* GameConstants.m in Sources */,
 				D038461C191EB12E00265FE1 /* CoinView.m in Sources */,
@@ -1761,21 +1683,16 @@
 				D0384661191EB21000265FE1 /* XibTableViewCell.m in Sources */,
 				D0EADDD518E769FC0016D2A0 /* GameLoopTimer.m in Sources */,
 				D0E3461519220DFA0081797A /* GameManager.m in Sources */,
-				D0F357C11946D57C00C26351 /* LevelUpHelper.m in Sources */,
 				D0EADDE418E769FC0016D2A0 /* UIView+ViewUtil.m in Sources */,
 				D0EADDDE18E769FC0016D2A0 /* WorldObjectView.m in Sources */,
 				D0EADDE818E769FC0016D2A0 /* IAPHelper.m in Sources */,
-				D0E647C8191F464900327C07 /* ShopManager.m in Sources */,
 				D07F14F21969F3EE009B23CB /* ParallaxWorldView.m in Sources */,
 				D0EADDE618E769FC0016D2A0 /* FXLabel.m in Sources */,
 				D038463C191EB12E00265FE1 /* main.m in Sources */,
 				D0384631191EB12E00265FE1 /* NumberGameIAPHelper.m in Sources */,
 				D0384616191EB12E00265FE1 /* AppDelegate.m in Sources */,
 				D0EADDF318E769FC0016D2A0 /* PromoGameData.m in Sources */,
-				D0ED6FD819500533009F2384 /* UpgradeView.m in Sources */,
 				D0EADDF418E769FC0016D2A0 /* PromoManager.m in Sources */,
-				D0384664191EB36200265FE1 /* ShopTableView.m in Sources */,
-				D038462B191EB12E00265FE1 /* LocalLeaderBoardView.m in Sources */,
 				D0EADDD818E769FC0016D2A0 /* NotificationManagerBase.m in Sources */,
 				D07F14E81969F06E009B23CB /* ParallaxBackgroundView.m in Sources */,
 				D0EADDDB18E769FC0016D2A0 /* AppInfoHTTPRequest.m in Sources */,
@@ -1785,7 +1702,6 @@
 				D0384630191EB12E00265FE1 /* NotificationManager.m in Sources */,
 				D0EADDE218E769FC0016D2A0 /* AnimUtil.m in Sources */,
 				D0384633191EB12E00265FE1 /* ResultView.m in Sources */,
-				D038462C191EB12E00265FE1 /* MainView.m in Sources */,
 				D0EADDEA18E769FC0016D2A0 /* iRate.m in Sources */,
 				D0EADDE318E769FC0016D2A0 /* NSArray+Util.m in Sources */,
 				D0EADDD318E769FC0016D2A0 /* Base.m in Sources */,

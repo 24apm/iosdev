@@ -7,7 +7,6 @@
 //
 
 #import "ParallaxBackgroundView.h"
-#import "UpgradeResultView.h"
 
 @implementation ParallaxBackgroundView
 
@@ -21,7 +20,6 @@
 }
 
 - (IBAction)buttonTest:(id)sender {
-    [[[UpgradeResultView alloc] init] showSuccess];
 }
 
 /*

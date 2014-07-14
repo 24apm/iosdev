@@ -8,7 +8,6 @@
 
 #import "XibDialogView.h"
 #import "CoinView.h"
-#import "ShopRowView.h"
 #import "UserData.h"
 #import "AnimatingDialogView.h"
 #import "TrackUtils.h"

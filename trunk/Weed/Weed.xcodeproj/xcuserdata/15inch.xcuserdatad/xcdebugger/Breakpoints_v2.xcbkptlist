@@ -308,11 +308,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Game/Classes/ParallaxForegroundView.m"
-            timestampString = "427003875.208729"
+            timestampString = "427007764.169641"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
             landmarkName = "-layoutHouses"
             landmarkType = "5">
          </BreakpointContent>

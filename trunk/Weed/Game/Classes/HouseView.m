@@ -7,9 +7,9 @@
 //
 
 #import "HouseView.h"
-#import "UpgradeResultView.h"
 #import "Utils.h"
 #import "GameLoopTimer.h"
+#import "UserData.h"
 
 @interface HouseView()
 
@@ -54,6 +54,7 @@
 - (IBAction)buttonPressed:(id)sender {
     if (CURRENT_TIME > self.expiredTime) {
         self.expiredTime = CURRENT_TIME + self.timerDuration;
+        [[UserData instance] incrementCoin:30];
     }
 }
 
