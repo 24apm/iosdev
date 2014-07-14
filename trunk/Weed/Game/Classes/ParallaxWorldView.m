@@ -16,12 +16,6 @@
 @interface ParallaxWorldView()
 
 @property (strong, nonatomic) NSMutableArray *parallaxViews;
-@property (nonatomic) CGFloat lastScreenXOffset;
-@property (nonatomic) CGPoint velocity;
-@property (nonatomic) CGPoint lastSnapShotVelocity;
-
-@property (nonatomic) double lastTime;
-
 @property (strong, nonatomic) ParallaxBackgroundView *backgroundView;
 @property (strong, nonatomic) ParallaxForegroundView *foregroundView;
 
