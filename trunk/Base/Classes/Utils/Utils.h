@@ -10,6 +10,7 @@
 #import "NSArray+Util.h"
 
 #define DegreesToRadians(x)     (M_PI * (x) / 180.0)
+#define CURRENT_TIME [[NSDate date] timeIntervalSince1970]
 
 #define CLAMP(x, low, high) ({\
 __typeof__(x) __x = (x); \

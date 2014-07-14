@@ -17,5 +17,6 @@
 
 + (GameLoopTimer *)instance;
 - (void) initialize;
+- (CGFloat)loopInterval;
 
 @end

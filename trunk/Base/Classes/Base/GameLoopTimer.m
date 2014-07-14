@@ -34,12 +34,16 @@
 #pragma mark Private Methods
 
 - (void)initializeTimerWithNSTimer {
-    CGFloat interval = 1.0f / 60.0f;
+    CGFloat interval = [self loopInterval];
     [NSTimer scheduledTimerWithTimeInterval:interval
                                      target:self
                                    selector:@selector(performStepNSTimer:)
                                    userInfo:nil
                                     repeats:YES];
+}
+
+- (CGFloat)loopInterval {
+    return 1.0f / 60.0f;
 }
 
 - (void)initializeTimerWithCADisplayLink {

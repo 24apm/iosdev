@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RootViewController">
             <connections>
+                <outlet property="parallaxWorldView" destination="6fs-VC-o1a" id="aSQ-dI-d09"/>
                 <outlet property="view" destination="4IH-6w-ATw" id="F59-mW-SxE"/>
             </connections>
         </placeholder>

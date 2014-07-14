@@ -10,4 +10,6 @@
 
 @interface ParallaxWorldView : XibView <UIScrollViewDelegate>
 
+- (void)setup;
+
 @end

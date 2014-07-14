@@ -8,7 +8,7 @@
 
 #import "RootViewController.h"
 #import "SoundManager.h"
-#import "GameLoopTimer.h"
+#import "CustomGameLoopTimer.h"
 #import "GameConstants.h"
 #import "GameCenterHelper.h"
 #import "ParallaxWorldView.h"
@@ -43,7 +43,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [[GameLoopTimer instance] initialize];
+    [[CustomGameLoopTimer instance] initialize];
     
     [self preloadSounds];
     [GameCenterHelper instance].currentLeaderBoard = kLeaderboardBestScoreID;
@@ -52,6 +52,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [self.parallaxWorldView setup];
 }
 
 - (void)didReceiveMemoryWarning {

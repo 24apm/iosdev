@@ -9,8 +9,6 @@
 #import "GameConstants.h"
 #import "ShopItem.h"
 
-#define CURRENT_TIME [[NSDate date] timeIntervalSince1970]
-
 typedef enum {
     BackgroundTypeFlying,
     BackgroundTypeFloor,

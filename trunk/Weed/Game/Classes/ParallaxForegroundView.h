@@ -11,5 +11,6 @@
 @interface ParallaxForegroundView : XibView
 
 - (IBAction)testPressed:(id)sender;
+- (void)setup;
 
 @end

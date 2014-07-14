@@ -39,6 +39,10 @@
 		D04F704218AA1197000509AA /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D04F704118AA1197000509AA /* Social.framework */; };
 		D051F11819731381000F98DC /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D051F11719731381000F98DC /* RootViewController.xib */; };
 		D051F11B197313A1000F98DC /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D051F11A197313A1000F98DC /* RootViewController.m */; };
+		D051F11E19732AAE000F98DC /* HouseView.m in Sources */ = {isa = PBXBuildFile; fileRef = D051F11D19732AAE000F98DC /* HouseView.m */; };
+		D051F12019732ABE000F98DC /* HouseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D051F11F19732ABE000F98DC /* HouseView.xib */; };
+		D051F12219732B6C000F98DC /* House.png in Resources */ = {isa = PBXBuildFile; fileRef = D051F12119732B6C000F98DC /* House.png */; };
+		D051F125197342B7000F98DC /* CustomGameLoopTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = D051F124197342B7000F98DC /* CustomGameLoopTimer.m */; };
 		D052D9331969285D00D13DB0 /* pressandhold.png in Resources */ = {isa = PBXBuildFile; fileRef = D052D9321969285D00D13DB0 /* pressandhold.png */; };
 		D055B91B1918A066007730EB /* tier3coin.png in Resources */ = {isa = PBXBuildFile; fileRef = D055B9191918A066007730EB /* tier3coin.png */; };
 		D055B91D1918A7A4007730EB /* tier4coin.png in Resources */ = {isa = PBXBuildFile; fileRef = D055B91C1918A7A4007730EB /* tier4coin.png */; };
@@ -387,6 +391,12 @@
 		D051F11719731381000F98DC /* RootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootViewController.xib; sourceTree = "<group>"; };
 		D051F119197313A1000F98DC /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		D051F11A197313A1000F98DC /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		D051F11C19732AAE000F98DC /* HouseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HouseView.h; sourceTree = "<group>"; };
+		D051F11D19732AAE000F98DC /* HouseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HouseView.m; sourceTree = "<group>"; };
+		D051F11F19732ABE000F98DC /* HouseView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HouseView.xib; sourceTree = "<group>"; };
+		D051F12119732B6C000F98DC /* House.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = House.png; sourceTree = "<group>"; };
+		D051F123197342B7000F98DC /* CustomGameLoopTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomGameLoopTimer.h; sourceTree = "<group>"; };
+		D051F124197342B7000F98DC /* CustomGameLoopTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomGameLoopTimer.m; sourceTree = "<group>"; };
 		D052D9321969285D00D13DB0 /* pressandhold.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pressandhold.png; sourceTree = "<group>"; };
 		D055B9191918A066007730EB /* tier3coin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tier3coin.png; sourceTree = "<group>"; };
 		D055B91C1918A7A4007730EB /* tier4coin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tier4coin.png; sourceTree = "<group>"; };
@@ -788,10 +798,14 @@
 			isa = PBXGroup;
 			children = (
 				D0E52B3D192744610015CD5A /* ParticleView.h */,
+				D051F123197342B7000F98DC /* CustomGameLoopTimer.h */,
+				D051F124197342B7000F98DC /* CustomGameLoopTimer.m */,
 				D0E52B3E192744610015CD5A /* ParticleView.m */,
 				D07F14E61969F06E009B23CB /* ParallaxBackgroundView.h */,
 				D07F14E71969F06E009B23CB /* ParallaxBackgroundView.m */,
 				D051F119197313A1000F98DC /* RootViewController.h */,
+				D051F11C19732AAE000F98DC /* HouseView.h */,
+				D051F11D19732AAE000F98DC /* HouseView.m */,
 				D051F11A197313A1000F98DC /* RootViewController.m */,
 				D07F14EB1969F2D8009B23CB /* ParallaxForegroundView.h */,
 				D07F14EC1969F2D8009B23CB /* ParallaxForegroundView.m */,
@@ -860,6 +874,7 @@
 				D0ED6FDC19500568009F2384 /* UpgradeView.xib */,
 				D0F7D01C1955706A005BBCEC /* UpgradeResultView.xib */,
 				D07F14E41969F05D009B23CB /* ParallaxBackgroundView.xib */,
+				D051F11F19732ABE000F98DC /* HouseView.xib */,
 				D051F11719731381000F98DC /* RootViewController.xib */,
 				D07F14E91969F2CA009B23CB /* ParallaxForegroundView.xib */,
 				D07F14EE1969F3D5009B23CB /* ParallaxWorldView.xib */,
@@ -959,6 +974,7 @@
 		D0E50A2818A7349300AA353E /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				D051F12119732B6C000F98DC /* House.png */,
 				D052D9321969285D00D13DB0 /* pressandhold.png */,
 				D0E981211968C871001A591F /* icon_lvl.png */,
 				D0EDA2A119667ADC00989065 /* icon_flylvlup.png */,
@@ -1469,6 +1485,7 @@
 				D0E33005191A04EA00FB5EB8 /* iphone.png in Resources */,
 				D06DB42C1939C68500B33BEC /* shiny_background.png in Resources */,
 				D0EAB6F7195FF75800C90F0E /* sun.png in Resources */,
+				D051F12219732B6C000F98DC /* House.png in Resources */,
 				D0E6B6111956947700940695 /* character_flying.png in Resources */,
 				D0F375D018FA896300D32A10 /* tier2.png in Resources */,
 				D0E3301C191A1A9F00FB5EB8 /* plus.png in Resources */,
@@ -1615,6 +1632,7 @@
 				D0EFC656191B9083008A54C8 /* tier2coin.png in Resources */,
 				D0EA7EC418D52FE90095DEBD /* defend.png in Resources */,
 				D0EADDF118E769FC0016D2A0 /* PromoBannerView.xib in Resources */,
+				D051F12019732ABE000F98DC /* HouseView.xib in Resources */,
 				D0E33016191A140100FB5EB8 /* rating.png in Resources */,
 				D0EAB6EB195FF75800C90F0E /* blackholeentrance.png in Resources */,
 				D0E555F6193B084A00F59DF6 /* clicker_character6.png in Resources */,
@@ -1733,8 +1751,10 @@
 				D0EADDD718E769FC0016D2A0 /* Hex.m in Sources */,
 				D0384622191EB12E00265FE1 /* GameConstants.m in Sources */,
 				D038461C191EB12E00265FE1 /* CoinView.m in Sources */,
+				D051F11E19732AAE000F98DC /* HouseView.m in Sources */,
 				D0384620191EB12E00265FE1 /* ErrorDialogView.m in Sources */,
 				D0384638191EB12E00265FE1 /* UserData.m in Sources */,
+				D051F125197342B7000F98DC /* CustomGameLoopTimer.m in Sources */,
 				D038461B191EB12E00265FE1 /* CoinMenuView.m in Sources */,
 				D07F14ED1969F2D8009B23CB /* ParallaxForegroundView.m in Sources */,
 				D0EADDF018E769FC0016D2A0 /* PromoBannerView.m in Sources */,

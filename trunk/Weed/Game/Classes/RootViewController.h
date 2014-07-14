@@ -7,7 +7,9 @@
 //
 
 #import "GameViewControllerBase.h"
+#import "ParallaxWorldView.h"
 
 @interface RootViewController : GameViewControllerBase
+@property (strong, nonatomic) IBOutlet ParallaxWorldView *parallaxWorldView;
 
 @end
