@@ -13,6 +13,7 @@
 @interface VisitorManager : NSObject
 
 + (VisitorManager *)instance;
+
 - (VisitorData *)nextVisitor;
 - (XibDialogView *)dialogFor:(VisitorData *)visitorData;
 

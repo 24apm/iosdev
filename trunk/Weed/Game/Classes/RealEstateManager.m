@@ -33,6 +33,10 @@
     }
 }
 
+- (BOOL)canSellHouse:(HouseData *)data {
+    return [UserData instance].houses.count > 1;
+}
+
 - (void)sellHouse:(HouseData *)data {
     [[UserData instance] incrementCoin:data.cost];
     [[UserData instance] removeHouse:data];

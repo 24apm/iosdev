@@ -62,6 +62,7 @@ NSString *const UserDataHouseDataChangedNotification = @"UserDataHouseDataChange
             }
         }
         
+        // house index
         if ([[NSUserDefaults standardUserDefaults] objectForKey:@"houseIndex"] == nil) {
             self.houseIndex = 0;
         } else {
