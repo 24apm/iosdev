@@ -23,7 +23,7 @@
 - (void)setup {
     self.state = HouseViewStateInProgress;
     [self refresh];
-    self.timerDuration = 30;
+    self.timerDuration = 5;
     
     self.expiredTime = CURRENT_TIME + self.timerDuration;
     

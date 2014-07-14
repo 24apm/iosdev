@@ -25,16 +25,17 @@
         self.houses = [NSMutableArray array];
         HouseView *house = [[HouseView alloc] init];
         self.houseFrame = house.frame;
-
     }
     return self;
 }
 
 - (void)setup {
+    self.scrollView.contentSize = self.frame.size;
+
     HouseView *house;
     for (int i = 0; i < 10; i++) {
         house = [[HouseView alloc] init];
-        [self addSubview:house];
+        [self.scrollView addSubview:house];
         [self.houses addObject:house];
         [house setup];
     }

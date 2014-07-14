@@ -15,7 +15,6 @@
 @interface ParallaxWorldView()
 
 @property (strong, nonatomic) NSMutableArray *parallaxViews;
-@property (strong, nonatomic) UIScrollView *scrollView;
 @property (nonatomic) CGFloat lastScreenXOffset;
 @property (nonatomic) CGPoint velocity;
 @property (nonatomic) CGPoint lastSnapShotVelocity;
@@ -36,23 +35,13 @@
         
         self.backgroundView = [[ParallaxBackgroundView alloc] init];
         [self.parallaxViews addObject:self.backgroundView];
-        
-        self.foregroundView = [[ParallaxForegroundView alloc] init];
-        [self.parallaxViews addObject:self.foregroundView];
-        self.scrollView = [[UIScrollView alloc] init];
+        [self addSubview:self.backgroundView];
 
-        self.scrollView.frame = self.frame;
-        self.scrollView.contentSize = self.foregroundView.frame.size;
-        self.scrollView.autoresizingMask = self.foregroundView.
-        autoresizingMask;
-        self.scrollView.delegate = self;
-        self.scrollView.bounces = NO;
-        
-        for (UIView *view in self.parallaxViews) {
-            [self addSubview:view];
-        }
-        [self addSubview:self.scrollView];
-        
+        self.foregroundView = [[ParallaxForegroundView alloc] init];
+        [self addSubview:self.foregroundView];
+
+        self.foregroundView.scrollView.delegate = self;
+   
     }
     return self;
 }
@@ -62,10 +51,10 @@
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    CGFloat percentageOffsetX = self.scrollView.contentOffset.x / (self.scrollView.contentSize.width - self.scrollView.width);
+    CGFloat percentageOffsetX = scrollView.contentOffset.x / (scrollView.contentSize.width - scrollView.width);
     
     for (UIView *view in self.parallaxViews) {
-        view.x = -(view.width - self.scrollView.width) * percentageOffsetX ;
+        view.x = -(view.width - scrollView.width) * percentageOffsetX ;
     }
 }
 
