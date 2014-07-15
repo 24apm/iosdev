@@ -18,4 +18,14 @@
     return self;
 }
 
++ (RealEstateVisitorData *)dummyData {
+    RealEstateVisitorData *data = [[RealEstateVisitorData alloc] init];
+    data.houseData = [HouseData dummyData];
+    data.imagePath = @"ToiletRush120.png";
+    data.name = @"Some Seller";
+    data.occupation = @"Realtor";
+    return data;
+}
+
+
 @end

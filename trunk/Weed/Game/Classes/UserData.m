@@ -46,12 +46,12 @@ NSString *const UserDataHouseDataChangedNotification = @"UserDataHouseDataChange
         self.houses = [NSMutableArray array];
         
         if ([[NSUserDefaults standardUserDefaults] objectForKey:@"houses"] == nil) {
-            [self.houses addObject:[HouseData defaultData]];
+            [self addHouse:[HouseData dummyData]];
         } else {
-            NSString *json = [[NSUserDefaults standardUserDefaults] objectForKey:@"houses"];
+            NSString *jsonString = [[NSUserDefaults standardUserDefaults] objectForKey:@"houses"];
             
             NSStringEncoding  encoding = NSUTF8StringEncoding;
-            NSData * jsonData = [json dataUsingEncoding:encoding];
+            NSData * jsonData = [jsonString dataUsingEncoding:encoding];
             NSError * error=nil;
             NSDictionary * parsedData = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:&error];
             
@@ -119,9 +119,7 @@ NSString *const UserDataHouseDataChangedNotification = @"UserDataHouseDataChange
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:houses options:NSJSONWritingPrettyPrinted error:nil];
     NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
     
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:jsonString forKey:@"houses"];
-    [defaults synchronize];
+    [self saveData:jsonString forKey:@"houses"];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:UserDataHouseDataChangedNotification object:nil];
 }

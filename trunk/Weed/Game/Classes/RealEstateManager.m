@@ -8,6 +8,7 @@
 
 #import "RealEstateManager.h"
 #import "UserData.h"
+#import "Utils.h"
 
 @implementation RealEstateManager
 
@@ -40,6 +41,12 @@
 - (void)sellHouse:(HouseData *)data {
     [[UserData instance] incrementCoin:data.cost];
     [[UserData instance] removeHouse:data];
+}
+
+- (void)collectMoney:(HouseData *)data {
+    data.renterData.timeDue = CURRENT_TIME + data.renterData.duration;
+    [[UserData instance] incrementCoin:data.renterData.cost];
+    [[UserData instance] saveHouse];
 }
 
 @end

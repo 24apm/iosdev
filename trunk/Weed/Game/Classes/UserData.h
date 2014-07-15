@@ -20,6 +20,7 @@ extern NSString *const UserDataHouseDataChangedNotification;
 
 - (void)addHouse:(HouseData *)houseData;
 - (void)removeHouse:(HouseData *)houseData;
+- (void)saveHouse;
 - (HouseData *)randomUserHouse;
 
 @property (nonatomic) long long coin;

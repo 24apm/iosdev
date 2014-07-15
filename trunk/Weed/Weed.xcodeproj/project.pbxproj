@@ -29,6 +29,10 @@
 		D038463B191EB12E00265FE1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D03845F1191EB12D00265FE1 /* Images.xcassets */; };
 		D038463C191EB12E00265FE1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D03845F2191EB12D00265FE1 /* main.m */; };
 		D0384661191EB21000265FE1 /* XibTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D0384660191EB21000265FE1 /* XibTableViewCell.m */; };
+		D03D41511974EBFC00D6823C /* RenterData.m in Sources */ = {isa = PBXBuildFile; fileRef = D03D41501974EBFC00D6823C /* RenterData.m */; };
+		D03D41541974ED6600D6823C /* RenterVisitorData.m in Sources */ = {isa = PBXBuildFile; fileRef = D03D41531974ED6600D6823C /* RenterVisitorData.m */; };
+		D03D41571974EE3700D6823C /* RenterVisitorDialogView.m in Sources */ = {isa = PBXBuildFile; fileRef = D03D41561974EE3700D6823C /* RenterVisitorDialogView.m */; };
+		D03D41591974EE4000D6823C /* RenterVisitorDialogView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D03D41581974EE4000D6823C /* RenterVisitorDialogView.xib */; };
 		D048A83F18ACAAAB00411DF9 /* facebook_share.png in Resources */ = {isa = PBXBuildFile; fileRef = D048A83D18ACAAAB00411DF9 /* facebook_share.png */; };
 		D048A84018ACAAAB00411DF9 /* twitter_share.png in Resources */ = {isa = PBXBuildFile; fileRef = D048A83E18ACAAAB00411DF9 /* twitter_share.png */; };
 		D048A84618ACB25200411DF9 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D048A84518ACB25200411DF9 /* GameKit.framework */; };
@@ -372,6 +376,13 @@
 		D03845F2191EB12D00265FE1 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D038465F191EB21000265FE1 /* XibTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XibTableViewCell.h; sourceTree = "<group>"; };
 		D0384660191EB21000265FE1 /* XibTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XibTableViewCell.m; sourceTree = "<group>"; };
+		D03D414F1974EBFC00D6823C /* RenterData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RenterData.h; sourceTree = "<group>"; };
+		D03D41501974EBFC00D6823C /* RenterData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RenterData.m; sourceTree = "<group>"; };
+		D03D41521974ED6600D6823C /* RenterVisitorData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RenterVisitorData.h; sourceTree = "<group>"; };
+		D03D41531974ED6600D6823C /* RenterVisitorData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RenterVisitorData.m; sourceTree = "<group>"; };
+		D03D41551974EE3700D6823C /* RenterVisitorDialogView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RenterVisitorDialogView.h; sourceTree = "<group>"; };
+		D03D41561974EE3700D6823C /* RenterVisitorDialogView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RenterVisitorDialogView.m; sourceTree = "<group>"; };
+		D03D41581974EE4000D6823C /* RenterVisitorDialogView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RenterVisitorDialogView.xib; sourceTree = "<group>"; };
 		D048A83D18ACAAAB00411DF9 /* facebook_share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebook_share.png; sourceTree = "<group>"; };
 		D048A83E18ACAAAB00411DF9 /* twitter_share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twitter_share.png; sourceTree = "<group>"; };
 		D048A84518ACB25200411DF9 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
@@ -818,6 +829,8 @@
 				D03845BD191EB12D00265FE1 /* ErrorDialogView.m */,
 				D051F1451973E5B8000F98DC /* BuyerVisitorDialogView.h */,
 				D051F1461973E5B8000F98DC /* BuyerVisitorDialogView.m */,
+				D03D41551974EE3700D6823C /* RenterVisitorDialogView.h */,
+				D03D41561974EE3700D6823C /* RenterVisitorDialogView.m */,
 				D03845BE191EB12D00265FE1 /* GameCenterHelper.h */,
 				D03845BF191EB12D00265FE1 /* GameCenterHelper.m */,
 				D03845C0191EB12D00265FE1 /* GameConstants.h */,
@@ -846,6 +859,10 @@
 				D051F1301973A7F9000F98DC /* RealEstateVisitorData.m */,
 				D051F1421973E587000F98DC /* BuyerVisitorData.h */,
 				D051F1431973E587000F98DC /* BuyerVisitorData.m */,
+				D03D414F1974EBFC00D6823C /* RenterData.h */,
+				D03D41501974EBFC00D6823C /* RenterData.m */,
+				D03D41521974ED6600D6823C /* RenterVisitorData.h */,
+				D03D41531974ED6600D6823C /* RenterVisitorData.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -858,6 +875,7 @@
 				D06181E3193453F5001740D4 /* ErrorDialogView.xib */,
 				D051F13A1973AF83000F98DC /* RealEstateDialogView.xib */,
 				D051F1481973E5C3000F98DC /* BuyerVisitorDialogView.xib */,
+				D03D41581974EE4000D6823C /* RenterVisitorDialogView.xib */,
 				D07F14E41969F05D009B23CB /* ParallaxBackgroundView.xib */,
 				D051F11F19732ABE000F98DC /* HouseView.xib */,
 				D051F11719731381000F98DC /* RootViewController.xib */,
@@ -1630,6 +1648,7 @@
 				D0E6B6101956947700940695 /* character_falling.png in Resources */,
 				D0E47C2318ED29EA009CA771 /* vsbutton.png in Resources */,
 				D033855318EA9C22008D7861 /* bluebackground.png in Resources */,
+				D03D41591974EE4000D6823C /* RenterVisitorDialogView.xib in Resources */,
 				D0EA7EC118D521C90095DEBD /* monster.png in Resources */,
 				D0A79573195BEDE2009270DE /* atmosphere.png in Resources */,
 				D0E33008191A04EA00FB5EB8 /* arrowdown.png in Resources */,
@@ -1734,12 +1753,15 @@
 				D051F1411973B9DB000F98DC /* HouseData.m in Sources */,
 				D0384622191EB12E00265FE1 /* GameConstants.m in Sources */,
 				D038461C191EB12E00265FE1 /* CoinView.m in Sources */,
+				D03D41511974EBFC00D6823C /* RenterData.m in Sources */,
 				D051F11E19732AAE000F98DC /* HouseView.m in Sources */,
 				D0384620191EB12E00265FE1 /* ErrorDialogView.m in Sources */,
 				D0384638191EB12E00265FE1 /* UserData.m in Sources */,
 				D051F125197342B7000F98DC /* CustomGameLoopTimer.m in Sources */,
+				D03D41541974ED6600D6823C /* RenterVisitorData.m in Sources */,
 				D038461B191EB12E00265FE1 /* CoinMenuView.m in Sources */,
 				D07F14ED1969F2D8009B23CB /* ParallaxForegroundView.m in Sources */,
+				D03D41571974EE3700D6823C /* RenterVisitorDialogView.m in Sources */,
 				D0EADDF018E769FC0016D2A0 /* PromoBannerView.m in Sources */,
 				D0384661191EB21000265FE1 /* XibTableViewCell.m in Sources */,
 				D0EADDD518E769FC0016D2A0 /* GameLoopTimer.m in Sources */,

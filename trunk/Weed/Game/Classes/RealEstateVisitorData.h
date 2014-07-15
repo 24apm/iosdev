@@ -13,4 +13,6 @@
 
 @property (strong, nonatomic) HouseData *houseData;
 
++ (RealEstateVisitorData *)dummyData;
+
 @end

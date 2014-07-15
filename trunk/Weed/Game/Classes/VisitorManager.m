@@ -13,6 +13,8 @@
 #import "BuyerVisitorDialogView.h"
 #import "BuyerVisitorData.h"
 #import "UserData.h"
+#import "RenterVisitorData.h"
+#import "RenterVisitorDialogView.h"
 
 @interface VisitorManager()
 
@@ -55,28 +57,20 @@
     // buyer
     // real estate
     // tenant
-    int randVisitor = arc4random() % 2;
+    int randVisitor = arc4random() % 3;
     switch (randVisitor) {
         case 0:
-            return [self generateRealEstateVisitor];
+            return [RealEstateVisitorData dummyData];
             break;
         case 1:
             return [self generateBuyerVisitor];
             break;
+        case 2:
+            return [RenterVisitorData dummyData];
         default:
             break;
     }
-    return [self generateRealEstateVisitor];
-}
-
-- (RealEstateVisitorData *)generateRealEstateVisitor {
-    RealEstateVisitorData *data = [[RealEstateVisitorData alloc] init];
-    data.houseData.cost = 10;
-    data.houseData.imagePath = @"House.png";
-    data.imagePath = @"ToiletRush120.png";
-    data.name = @"Some Seller";
-    data.occupation = @"Realtor";
-    return data;
+    return [RealEstateVisitorData dummyData];
 }
 
 - (BuyerVisitorData *)generateBuyerVisitor {
@@ -94,6 +88,8 @@
         return [[RealEstateDialogView alloc] initWithData:(RealEstateVisitorData *)visitorData];
     } else if ([visitorData isKindOfClass:[BuyerVisitorData class]]) {
         return [[BuyerVisitorDialogView alloc] initWithData:(BuyerVisitorData *)visitorData];
+    } else if ([visitorData isKindOfClass:[RenterVisitorData class]]) {
+        return [[RenterVisitorDialogView alloc] initWithData:(RenterVisitorData *)visitorData];
     }
     return nil;
 }

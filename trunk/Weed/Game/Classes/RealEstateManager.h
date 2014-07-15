@@ -20,4 +20,6 @@
 - (BOOL)canSellHouse:(HouseData *)data;
 - (void)sellHouse:(HouseData *)data;
 
+- (void)collectMoney:(HouseData *)data;
+
 @end

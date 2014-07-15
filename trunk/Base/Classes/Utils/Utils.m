@@ -81,6 +81,41 @@
     return finalFormat;
 }
 
++ (NSString *)formatTime:(double)time {
+    NSString *timeString = nil;
+    
+    int duration = time;
+    int hours = duration / 3600;
+    int minutes = duration / 60;
+    int seconds = duration % 60;
+    
+    if (seconds > 0) {
+        timeString = [NSString stringWithFormat:@"%ds",seconds];
+    }
+    
+    if (minutes > 0) {
+        if (timeString) {
+            timeString = [NSString stringWithFormat:@"%dm %@", minutes, timeString];
+        } else {
+            timeString = [NSString stringWithFormat:@"%dm", minutes];
+        }
+    }
+    
+    if (hours > 0) {
+        if (timeString) {
+            timeString = [NSString stringWithFormat:@"%dh %@", hours, timeString];
+        } else {
+            timeString = [NSString stringWithFormat:@"%dh", hours];
+        }
+    }
+    
+    if (!timeString) {
+        timeString = @"0s";
+    }
+    
+    return timeString;
+}
+
 + (NSString *)formatWithFreeCost:(int)cost {
     if (cost > 0) {
         return [NSString stringWithFormat:@"%d",cost];

@@ -18,16 +18,23 @@ typedef enum {
 
 @interface HouseView : XibView
 
+// empty
+@property (strong, nonatomic) IBOutlet UIView *emptyView;
+
+// in progress
 @property (strong, nonatomic) IBOutlet UIView *inProgressView;
+@property (strong, nonatomic) IBOutlet UILabel *timeLabel;
 @property (strong, nonatomic) IBOutlet ProgressBarComponent *progressBar;
 
+// completed
 @property (strong, nonatomic) IBOutlet UIView *completedView;
 
-@property (nonatomic) HouseViewState state;
-
-@property (strong, nonatomic) HouseData *data;
 @property (strong, nonatomic) IBOutlet UIButton *buttonView;
 @property (strong, nonatomic) IBOutlet UILabel *idLabel;
+
+@property (strong, nonatomic) HouseData *data;
+
+@property (nonatomic) HouseViewState state;
 
 - (void)setupWithData:(HouseData *)data;
 
