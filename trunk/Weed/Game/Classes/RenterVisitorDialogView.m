@@ -8,6 +8,7 @@
 
 #import "RenterVisitorDialogView.h"
 #import "Utils.h"
+#import "RealEstateManager.h"
 
 @implementation RenterVisitorDialogView
 
@@ -27,6 +28,8 @@
 }
 
 - (IBAction)yesButton:(id)sender {
+    [RealEstateManager instance].state = RealEstateManagerStateEdit;
+    [RealEstateManager instance].currentRenterData = self.data;
     [self dismissed:sender];
 }
 

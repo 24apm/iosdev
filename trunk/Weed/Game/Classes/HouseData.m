@@ -15,7 +15,7 @@
     houseData.id = 0;
     houseData.cost = 10;
     houseData.imagePath = @"House.png";
-    houseData.renterData = [RenterData dummyData];
+    houseData.renterData = nil;
     return houseData;
 }
 
@@ -37,7 +37,11 @@
     self.id = [[dict objectForKey:@"id"] integerValue];
     self.cost = [[dict objectForKey:@"cost"] longLongValue];
     self.imagePath = [dict objectForKey:@"imagePath"];
-    self.renterData = [[RenterData alloc] initWithDict:[dict objectForKey:@"renterData"]];
+    if ([dict objectForKey:@"renterData"]) {
+        self.renterData = [[RenterData alloc] initWithDict:[dict objectForKey:@"renterData"]];
+    } else {
+        self.renterData = nil;
+    }
 }
 
 @end

@@ -49,4 +49,16 @@
     [[UserData instance] saveHouse];
 }
 
+- (void)addRenter:(HouseData *)data {
+    data.renterData = [RealEstateManager instance].currentRenterData.renterData;
+    data.renterData.timeDue = CURRENT_TIME + data.renterData.duration;
+    [RealEstateManager instance].currentRenterData = nil;
+    [[UserData instance] saveHouse];
+}
+
+- (void)removeRenter:(HouseData *)data {
+    data.renterData = nil;
+    [[UserData instance] saveHouse];
+}
+
 @end

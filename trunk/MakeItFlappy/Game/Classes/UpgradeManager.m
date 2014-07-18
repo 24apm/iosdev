@@ -49,6 +49,9 @@
 
 - (int)riskLevel:(int)lvl {
     switch (lvl) {
+        case 0:
+            return 100;
+            break;
         case 1:
             return 100;
             break;
@@ -233,7 +236,7 @@
             return 20;
             break;
         case 62:
-            return 20;
+            return 40;
             break;
         case 63:
             return 20;
@@ -248,7 +251,7 @@
             return 20;
             break;
         case 67:
-            return 20;
+            return 30;
             break;
         case 68:
             return 20;
@@ -278,7 +281,7 @@
             return 15;
             break;
         case 77:
-            return 15;
+            return 30;
             break;
         case 78:
             return 15;
@@ -296,7 +299,7 @@
             return 10;
             break;
         case 83:
-            return 15;
+            return 30;
             break;
         case 84:
             return 10;
@@ -308,13 +311,13 @@
             return 10;
             break;
         case 87:
-            return 10;
+            return 30;
             break;
         case 88:
             return 10;
             break;
         case 89:
-            return 10;
+            return 50;
             break;
                 default:
             return 5;

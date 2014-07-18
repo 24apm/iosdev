@@ -15,7 +15,7 @@
 
 // Game Center
 #define kLeaderboardBestTimeID @"com.jeffrwan.restroom2.fastest"
-#define kLeaderboardBestScoreID @"com.jeffrwan.makeitflappy.height"
+#define kLeaderboardBestScoreID @"com.jeffrwan.makeitflappy.highest"
 
 #define kAchievementOneStreak @"com.jeffrwan.thenumbergame.level1"
 #define kAchievement5Streak @"com.jeffrwan.thenumbergame.level5"
@@ -73,7 +73,7 @@
 #define kCOLOR_BLUE [UIColor colorWithRed:0.f/255.f green:168.f/255.f blue:255.f/255.f alpha:1.0f]
 #define kCOLOR_RED [UIColor colorWithRed:208.f/255.f green:50.f/255.f blue:0.f/255.f alpha:1.0f]
 
-#define TIMES_PLAYED_BEFORE_PROMO 2
+#define TIMES_PLAYED_BEFORE_PROMO 3
 
 #define POWER_UP_IAP_FUND @"com.jeffrwan.makeitflappy.fund"
 #define POWER_UP_IAP_DOUBLE @"com.jeffrwan.makeitflappy.double"

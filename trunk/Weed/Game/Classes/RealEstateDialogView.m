@@ -8,7 +8,8 @@
 
 #import "RealEstateDialogView.h"
 #import "RealEstateManager.h"
-#import "ErrorDialogView.h"
+#import "MessageDialogView.h"
+#import "AppString.h"
 
 @implementation RealEstateDialogView
 
@@ -32,7 +33,7 @@
     if ([[RealEstateManager instance] purchaseHouse:self.data.houseData]) {
         [self dismissed:sender];
     } else {
-        [[[ErrorDialogView alloc] init] show];
+        [[[MessageDialogView alloc] initWithHeaderText:VISITOR_REAL_ESTATE_FAILED_HEADER bodyText:VISITOR_REAL_ESTATE_FAILED_MESSAGE] show];
     }
 }
 

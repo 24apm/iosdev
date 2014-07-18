@@ -82,7 +82,7 @@
                           name:(NSString *)name
                      imagePath:(NSString *)imagePath
                priceMultiplier:(long long)priceMultipler
-             upgradeMultiplier:(long long)upgradeMultiplier
+             upgradeMultiplier:(long double)upgradeMultiplier
                           rank:(int)rank                   {
     
     ShopItem *item = [ShopItem createItem:itemId name:name imagePath:imagePath priceMultiplier:priceMultipler upgradeMultiplier:upgradeMultiplier type:POWER_UP_TYPE_OFFLINE_SPEED rank:rank];

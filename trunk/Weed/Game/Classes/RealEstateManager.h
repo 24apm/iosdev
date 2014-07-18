@@ -8,7 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import "RealEstateVisitorData.h"
+#import "RenterVisitorData.h"
 #import "HouseData.h"
+
+typedef enum {
+    RealEstateManagerStateNormal,
+    RealEstateManagerStateEdit
+} RealEstateManagerState;
 
 @interface RealEstateManager : NSObject
 
@@ -21,5 +27,11 @@
 - (void)sellHouse:(HouseData *)data;
 
 - (void)collectMoney:(HouseData *)data;
+
+- (void)addRenter:(HouseData *)data;
+- (void)removeRenter:(HouseData *)data;
+
+@property (nonatomic) RealEstateManagerState state;
+@property (strong, nonatomic) RenterVisitorData *currentRenterData;
 
 @end

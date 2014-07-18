@@ -56,7 +56,7 @@
             return [UIColor whiteColor];
             break;
         case 4:
-            return [UIColor greenColor];
+            return [UIColor whiteColor];
             break;
         case 5:
             return [UIColor blueColor];
@@ -86,13 +86,13 @@
     int currentRank = self.rank;
     switch (currentRank) {
         case 1:
-            return @"x2 ft/sec!";
+            return @"Fly faster!";
             break;
         case 2:
-            return @"x2 Recovery!";
+            return @"Recover faster!";
             break;
         case 3:
-            return @"x2 Air!";
+            return @"Fly longer!";
             break;
         default:
             break;
@@ -106,16 +106,16 @@
     int currentRank = self.rank;
     switch (currentRank) {
         case 4:
-            return @"+$100000!";
+            return @"+100000EXP!";
             break;
         case 1:
-            return @"$ = x2!!";
+            return @"Current EXP = x2!!";
             break;
         case 2:
-            return @"$ = x4!!!";
+            return @"Current EXP = x4!!!";
             break;
         case 3:
-            return @"$ = x100!!!!";
+            return @"Current EXP = x100!!!!";
             break;
         default:
             break;

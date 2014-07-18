@@ -33,43 +33,55 @@ NSString *const UserDataHouseDataChangedNotification = @"UserDataHouseDataChange
 - (id)init {
     self = [super init];
     if (self) {
-        
-        // Coin
-        if ([[NSUserDefaults standardUserDefaults] objectForKey:@"coin"] == nil) {
-            self.coin = NEW_USER_COIN;
-            [self saveUserCoin];
-        } else {
-            self.coin = [[[NSUserDefaults standardUserDefaults] objectForKey:@"coin"] integerValue];
-        }
-        
-        // House
-        self.houses = [NSMutableArray array];
-        
-        if ([[NSUserDefaults standardUserDefaults] objectForKey:@"houses"] == nil) {
-            [self addHouse:[HouseData dummyData]];
-        } else {
-            NSString *jsonString = [[NSUserDefaults standardUserDefaults] objectForKey:@"houses"];
-            
-            NSStringEncoding  encoding = NSUTF8StringEncoding;
-            NSData * jsonData = [jsonString dataUsingEncoding:encoding];
-            NSError * error=nil;
-            NSDictionary * parsedData = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:&error];
-            
-            for (NSDictionary *dict in parsedData) {
-                HouseData *houseData = [[HouseData alloc] init];
-                [houseData setupWithDict:dict];
-                [self.houses addObject:houseData];
-            }
-        }
-        
-        // house index
-        if ([[NSUserDefaults standardUserDefaults] objectForKey:@"houseIndex"] == nil) {
-            self.houseIndex = 0;
-        } else {
-            self.houseIndex = [[[NSUserDefaults standardUserDefaults] objectForKey:@"houseIndex"] integerValue];
-        }
+        [self setup];
     }
     return self;
+}
+
+- (void)setup {
+    // house index
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"houseIndex"] == nil) {
+        self.houseIndex = 0;
+    } else {
+        self.houseIndex = [[[NSUserDefaults standardUserDefaults] objectForKey:@"houseIndex"] integerValue];
+    }
+    
+    // Coin
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"coin"] == nil) {
+        self.coin = NEW_USER_COIN;
+        [self saveUserCoin];
+    } else {
+        self.coin = [[[NSUserDefaults standardUserDefaults] objectForKey:@"coin"] integerValue];
+    }
+    
+    // House
+    self.houses = [NSMutableArray array];
+    
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"houses"] == nil) {
+        [self addHouse:[HouseData dummyData]];
+    } else {
+        NSString *jsonString = [[NSUserDefaults standardUserDefaults] objectForKey:@"houses"];
+        
+        NSStringEncoding  encoding = NSUTF8StringEncoding;
+        NSData * jsonData = [jsonString dataUsingEncoding:encoding];
+        NSError * error=nil;
+        NSDictionary * parsedData = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:&error];
+        
+        for (NSDictionary *dict in parsedData) {
+            HouseData *houseData = [[HouseData alloc] init];
+            [houseData setupWithDict:dict];
+            [self.houses addObject:houseData];
+        }
+    }
+}
+
+- (void)resetUserData {
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"coin"];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"houses"];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"houseIndex"];
+
+    [self setup];
+    [[NSNotificationCenter defaultCenter] postNotificationName:UserDataHouseDataChangedNotification object:nil];
 }
 
 - (void)saveData:(NSObject *)obj forKey:(NSString *)key {

@@ -257,13 +257,13 @@
 }
 
 - (float)totalPowerUpFor:(PowerUpType)type {
-    long long totalMultiplier = 0;
+    float totalMultiplier = 0;
     NSMutableDictionary *typeDictionary = [self.gameDataDictionary objectForKey:[NSString stringWithFormat:@"%d", type]];
     NSArray *arrayOfId = [typeDictionary allKeys];
     for (int i = 0; i < arrayOfId.count; i++) {
         NSString *currentKey = [arrayOfId objectAtIndex:i];
         ShopItem *item =[[ShopManager instance] shopItemForItemId:currentKey dictionary:type];
-        long long tempMultiplier = [self realMultiplier:item];
+        float tempMultiplier = [self realMultiplier:item];
         totalMultiplier += tempMultiplier;
     }
     
@@ -273,7 +273,7 @@
 - (float)realMultiplier:(ShopItem *)shopItem {
     NSMutableDictionary *typeDictionary = [self.gameDataDictionary objectForKey:[NSString stringWithFormat:@"%d", shopItem.type]];
     int itemLevel = [[typeDictionary objectForKey:shopItem.itemId] intValue];
-    long long tempMultiplier = shopItem.upgradeMultiplier * (float)itemLevel;
+    float tempMultiplier = shopItem.upgradeMultiplier * (float)itemLevel;
     return tempMultiplier;
 }
 

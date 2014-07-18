@@ -15,6 +15,8 @@
 
 @property (nonatomic, strong) NSMutableDictionary *itemsForIAP;
 
+@property (nonatomic, strong) NSMutableDictionary *priceDictionary;
+
 @end
 
 @implementation ShopManager
@@ -61,75 +63,127 @@
 
 - (void)setupItems {
     self.itemsForUpgrade = [NSMutableDictionary dictionary];
-
+    
     self.itemsForIAP = [NSMutableDictionary dictionary];
+    
+    self.priceDictionary = [NSMutableDictionary dictionary];
+    [self createDictionaryForPrice];
     
     // ACTIVE
     [self createActiveItem:SHOP_ITEM_ID_UPGRADE_SPEED
                       name:@"Lvl+ Speed"
                  imagePath:@"icon_flylvlup"
-           priceMultiplier:5000
+           priceMultiplier:30
          upgradeMultiplier:100
                       rank:1];
     
     [self createActiveItem:SHOP_ITEM_ID_UPGRADE_FLAPPY
                       name:@"Lvl+ Recovery"
                  imagePath:@"icon_hprecoverylvlup"
-           priceMultiplier:5000
-         upgradeMultiplier:1.2
+           priceMultiplier:30
+         upgradeMultiplier:1.5
                       rank:2];
     
     [self createActiveItem:SHOP_ITEM_ID_UPGRADE_AIR
                       name:@"Lvl+ HP"
                  imagePath:@"icon_hplvlup"
-           priceMultiplier:5000
+           priceMultiplier:30
          upgradeMultiplier:5.0
                       rank:3];
-
+    
     
     [self createIAPItem:SHOP_ITEM_ID_IAP_FUND
-                   name:@"+100000"
+                   name:@"+Private Tutor"
               imagePath:@"tutor"
         priceMultiplier:-1
       upgradeMultiplier:-1
                    rank:4];
     
     [self createIAPItem:SHOP_ITEM_ID_IAP_DOUBLE_POINTS
-                   name:@"x2!"
+                   name:@"Sleeping"
               imagePath:@"dream"
         priceMultiplier:-1
       upgradeMultiplier:-1
                    rank:1];
     
     [self createIAPItem:SHOP_ITEM_ID_IAD_QUDRUPLE_POINTS
-                   name:@"x4!"
+                   name:@"Meditate"
               imagePath:@"meditate"
         priceMultiplier:-1
       upgradeMultiplier:-1
                    rank:2];
     [self createIAPItem:SHOP_ITEM_ID_IAD_SUPER_POINTS
-                   name:@"SUPER!"
+                   name:@"Enlightment"
               imagePath:@"enlightment"
         priceMultiplier:-1
       upgradeMultiplier:-1
                    rank:3];
+    
 }
 
 - (int)itemLevel:(NSString *)itemId type:(PowerUpType)type {
     NSDictionary *userTypeDictionary = [[UserData instance].gameDataDictionary objectForKey:[NSString stringWithFormat:@"%d", type]];
-    int lvl = [[userTypeDictionary objectForKey:itemId] integerValue] + 1;
+    int lvl = [[userTypeDictionary objectForKey:itemId] intValue];
     return lvl;
 }
 
 - (long long)priceForItemId:(NSString *)itemId type:(PowerUpType)type {
     NSMutableDictionary *tempDictionary = [self dictionaryForType:type];
     ShopItem *shopItem = [tempDictionary objectForKey:itemId];
-
-    int lvl = [self itemLevel:itemId type:type];
     
-    long long price = shopItem.priceMultiplier * lvl;
+    int lvl = [self itemLevel:itemId type:type];
+    long long price = shopItem.priceMultiplier * [self lookUpDictionaryForLvl:lvl];
+    price = [self trucateNumber:price numOfDigits:price > 100 ? 2 : 1];
     return price;
 }
+
+
+- (double)lookUpDictionaryForLvl:(int)lvl {
+    return [[self.priceDictionary objectForKey:[NSString stringWithFormat:@"%d", lvl]] doubleValue];
+}
+
+
+- (void)createDictionaryForPrice {
+    [self lvlModifier];
+}
+
+- (double)lvlModifier {
+    float basePower = 1.09;
+    float finalPower = 1.01;
+    float offsetPower = 0.6;
+    float base = 0;
+    
+    double compound = 1;
+    for (int i = 0; i <= 100; i++) {
+        base = ((basePower - (basePower - finalPower)/100.f * i) + offsetPower);
+        offsetPower -= 0.03;
+        if (offsetPower <= 0) {
+            offsetPower = 0;
+        }
+        compound *= base;
+        [self.priceDictionary setObject:[NSNumber numberWithDouble:compound] forKey:[NSString stringWithFormat:@"%d", i ]];
+    }
+    return compound;
+}
+
+- (double)trucateNumber:(double)number numOfDigits:(int)numOfDigits {
+    // 7
+    int length = (number == 0) ? 1 : (int)log10(number) + 1;
+    
+    // 1,000,000
+    int dividend = pow(10, length - numOfDigits);
+    
+    // 7,234,567 / 1,000,000
+    // 7
+    int remainder = number / dividend;
+    
+    // 7 * 1,000,000
+    // 7,000,000
+    int truncatedCost = remainder * dividend;
+    
+    return truncatedCost;
+}
+
 
 - (NSMutableDictionary *)dictionaryForType:(PowerUpType)type {
     switch (type) {

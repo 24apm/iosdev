@@ -12,6 +12,7 @@
 #import "Utils.h"
 #import "CustomGameLoopTimer.h"
 #import "UserData.h"
+#import "RealEstateManager.h"
 
 @interface ParallaxWorldView()
 
@@ -45,14 +46,42 @@
     [self.backgroundView setup];
     [self.foregroundView setup];
     self.coinLabel.text = [NSString stringWithFormat:@"%lld", [UserData instance].coin];
+    
+    self.exitEditModebutton.hidden = YES;
+    
     [[UserData instance] addObserver:self forKeyPath:@"coin" options:NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew context:nil];
+    [[RealEstateManager instance] addObserver:self forKeyPath:@"state" options:NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew context:nil];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     if ([keyPath isEqual:@"coin"]) {
         id newValue = [object valueForKeyPath:keyPath];
         self.coinLabel.text = [NSString stringWithFormat:@"%d", [newValue integerValue]];
+    } else if ([keyPath isEqual:@"state"]) {
+        RealEstateManagerState newValue = [[object valueForKeyPath:keyPath] integerValue];
+        self.coinLabel.hidden = YES;
+        self.exitEditModebutton.hidden = YES;
+        
+        switch (newValue) {
+            case RealEstateManagerStateNormal:
+                self.coinLabel.hidden = NO;
+                break;
+            case RealEstateManagerStateEdit:
+                self.exitEditModebutton.hidden = NO;
+                break;
+            default:
+                break;
+        }
+        [self.foregroundView refreshHouses];
     }
+}
+- (IBAction)resetUserData:(id)sender {
+    [[UserData instance] resetUserData];
+}
+
+- (IBAction)exitEditModebuttonPressed:(id)sender {
+    [RealEstateManager instance].state = RealEstateManagerStateNormal;
+    [RealEstateManager instance].currentRenterData = nil;
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {

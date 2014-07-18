@@ -7,8 +7,9 @@
 //
 
 #import "BuyerVisitorDialogView.h"
-#import "ErrorDialogView.h"
 #import "RealEstateManager.h"
+#import "MessageDialogView.h"
+#import "AppString.h"
 
 @implementation BuyerVisitorDialogView
 
@@ -30,7 +31,12 @@
 }
 
 - (IBAction)yesButton:(id)sender {
-    [[RealEstateManager instance] sellHouse:self.data.houseData];
+    if ([[RealEstateManager instance] canSellHouse:self.data.houseData]) {
+        [[RealEstateManager instance] sellHouse:self.data.houseData];
+    } else {
+        [[[MessageDialogView alloc] initWithHeaderText:VISITOR_BUYER_FAILED_HEADER bodyText:VISITOR_BUYER_FAILED_MESSAGE] show];
+
+    }
     [self dismissed:sender];
 }
 

@@ -130,6 +130,12 @@
 		D0E3301C191A1A9F00FB5EB8 /* plus.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E3301B191A1A9F00FB5EB8 /* plus.png */; };
 		D0E3461519220DFA0081797A /* GameManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E3461419220DFA0081797A /* GameManager.m */; };
 		D0E36B8B18C2906F00BA56E7 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E36B8A18C2906F00BA56E7 /* StoreKit.framework */; };
+		D0E37D941978D98D00CAED14 /* for_sale_sign.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E37D931978D98D00CAED14 /* for_sale_sign.png */; };
+		D0E37D961978DB3800CAED14 /* MessageDialogView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E37D951978DB3800CAED14 /* MessageDialogView.xib */; };
+		D0E37D991978DB5600CAED14 /* MessageDialogView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E37D981978DB5600CAED14 /* MessageDialogView.m */; };
+		D0E37D9C1978DE9200CAED14 /* AppString.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E37D9B1978DE9200CAED14 /* AppString.m */; };
+		D0E37D9F1978F06700CAED14 /* ConfirmDialogView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E37D9E1978F06700CAED14 /* ConfirmDialogView.m */; };
+		D0E37DA11978F0DB00CAED14 /* ConfirmDialogView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E37DA01978F0DB00CAED14 /* ConfirmDialogView.xib */; };
 		D0E3A0C918E7D6C200C7B63D /* PromoDialogView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E3A0C818E7D6C200C7B63D /* PromoDialogView.m */; };
 		D0E3A0CC18E7D75B00C7B63D /* PromoIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E3A0CB18E7D75B00C7B63D /* PromoIconView.m */; };
 		D0E3A0CE18E7D77D00C7B63D /* PromoIconView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E3A0CD18E7D77D00C7B63D /* PromoIconView.xib */; };
@@ -497,6 +503,15 @@
 		D0E3461319220DFA0081797A /* GameManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameManager.h; sourceTree = "<group>"; };
 		D0E3461419220DFA0081797A /* GameManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameManager.m; sourceTree = "<group>"; };
 		D0E36B8A18C2906F00BA56E7 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		D0E37D931978D98D00CAED14 /* for_sale_sign.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = for_sale_sign.png; sourceTree = "<group>"; };
+		D0E37D951978DB3800CAED14 /* MessageDialogView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageDialogView.xib; sourceTree = "<group>"; };
+		D0E37D971978DB5600CAED14 /* MessageDialogView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageDialogView.h; sourceTree = "<group>"; };
+		D0E37D981978DB5600CAED14 /* MessageDialogView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageDialogView.m; sourceTree = "<group>"; };
+		D0E37D9A1978DE9200CAED14 /* AppString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppString.h; sourceTree = "<group>"; };
+		D0E37D9B1978DE9200CAED14 /* AppString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppString.m; sourceTree = "<group>"; };
+		D0E37D9D1978F06700CAED14 /* ConfirmDialogView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmDialogView.h; sourceTree = "<group>"; };
+		D0E37D9E1978F06700CAED14 /* ConfirmDialogView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmDialogView.m; sourceTree = "<group>"; };
+		D0E37DA01978F0DB00CAED14 /* ConfirmDialogView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConfirmDialogView.xib; sourceTree = "<group>"; };
 		D0E3A0C718E7D6C200C7B63D /* PromoDialogView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PromoDialogView.h; sourceTree = "<group>"; };
 		D0E3A0C818E7D6C200C7B63D /* PromoDialogView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PromoDialogView.m; sourceTree = "<group>"; };
 		D0E3A0CA18E7D75B00C7B63D /* PromoIconView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PromoIconView.h; sourceTree = "<group>"; };
@@ -831,6 +846,8 @@
 				D051F1461973E5B8000F98DC /* BuyerVisitorDialogView.m */,
 				D03D41551974EE3700D6823C /* RenterVisitorDialogView.h */,
 				D03D41561974EE3700D6823C /* RenterVisitorDialogView.m */,
+				D0E37D9A1978DE9200CAED14 /* AppString.h */,
+				D0E37D9B1978DE9200CAED14 /* AppString.m */,
 				D03845BE191EB12D00265FE1 /* GameCenterHelper.h */,
 				D03845BF191EB12D00265FE1 /* GameCenterHelper.m */,
 				D03845C0191EB12D00265FE1 /* GameConstants.h */,
@@ -876,6 +893,8 @@
 				D051F13A1973AF83000F98DC /* RealEstateDialogView.xib */,
 				D051F1481973E5C3000F98DC /* BuyerVisitorDialogView.xib */,
 				D03D41581974EE4000D6823C /* RenterVisitorDialogView.xib */,
+				D0E37D951978DB3800CAED14 /* MessageDialogView.xib */,
+				D0E37DA01978F0DB00CAED14 /* ConfirmDialogView.xib */,
 				D07F14E41969F05D009B23CB /* ParallaxBackgroundView.xib */,
 				D051F11F19732ABE000F98DC /* HouseView.xib */,
 				D051F11719731381000F98DC /* RootViewController.xib */,
@@ -1143,6 +1162,7 @@
 				D0E4BCCF18D9743700132C17 /* bossknight.png */,
 				D0EDA2A7196686F600989065 /* makeitflappy_profile_stats_dialog.png */,
 				D0EDA2A8196686F600989065 /* makeitflappy_profile_stats_bar.png */,
+				D0E37D931978D98D00CAED14 /* for_sale_sign.png */,
 				D0E4BCD018D9743700132C17 /* soldier.png */,
 				D0E4BCCD18D95D9200132C17 /* Victory.png */,
 				D0EF3FD218D7FB1B00C50442 /* red_header.png */,
@@ -1240,6 +1260,10 @@
 				D0EADD9118E769FC0016D2A0 /* NotificationManagerBase.m */,
 				D0EADD9218E769FC0016D2A0 /* XibView.h */,
 				D00331211918BA9F008C1834 /* DialogViewManager.h */,
+				D0E37D971978DB5600CAED14 /* MessageDialogView.h */,
+				D0E37D981978DB5600CAED14 /* MessageDialogView.m */,
+				D0E37D9D1978F06700CAED14 /* ConfirmDialogView.h */,
+				D0E37D9E1978F06700CAED14 /* ConfirmDialogView.m */,
 				D00331221918BA9F008C1834 /* DialogViewManager.m */,
 				D0EADD9318E769FC0016D2A0 /* XibView.m */,
 				D00331241918C546008C1834 /* AnimatingDialogView.h */,
@@ -1543,6 +1567,7 @@
 				D0EAB6F0195FF75800C90F0E /* uranus.png in Resources */,
 				D0E52B2E192724AC0015CD5A /* icon_tap.png in Resources */,
 				D0E4B2CB18FCEEE700260ABD /* playbutton.png in Resources */,
+				D0E37D961978DB3800CAED14 /* MessageDialogView.xib in Resources */,
 				D038463B191EB12E00265FE1 /* Images.xcassets in Resources */,
 				D0ED6FDF19501FAE009F2384 /* speedline.png in Resources */,
 				D0E3D702190FB82400701A56 /* PromoIconView~ipad.xib in Resources */,
@@ -1579,6 +1604,7 @@
 				D0E4BCD218D9743700132C17 /* soldier.png in Resources */,
 				D0E6B6131956947700940695 /* character_flapup.png in Resources */,
 				D0EAB6EE195FF75800C90F0E /* galaxy.png in Resources */,
+				D0E37DA11978F0DB00CAED14 /* ConfirmDialogView.xib in Resources */,
 				D0F375E218FA981100D32A10 /* tier8-2.png in Resources */,
 				D0EA7EBF18D521C90095DEBD /* shield.png in Resources */,
 				D0E428FE1937124400210F85 /* clicker_pig_full.png in Resources */,
@@ -1703,6 +1729,7 @@
 				D0E52B3619273C650015CD5A /* icon_cigar.png in Resources */,
 				D048A83F18ACAAAB00411DF9 /* facebook_share.png in Resources */,
 				D0E52B4319274A220015CD5A /* money.png in Resources */,
+				D0E37D941978D98D00CAED14 /* for_sale_sign.png in Resources */,
 				D0EBC78419596F190023EF01 /* button_press.png in Resources */,
 				D0E33007191A04EA00FB5EB8 /* check.png in Resources */,
 				D0E3D706190FBBF900701A56 /* backView.png in Resources */,
@@ -1734,6 +1761,7 @@
 				D0E52B3F192744610015CD5A /* ParticleView.m in Sources */,
 				D0E3A0CC18E7D75B00C7B63D /* PromoIconView.m in Sources */,
 				D051F1281973A740000F98DC /* VisitorView.m in Sources */,
+				D0E37D9C1978DE9200CAED14 /* AppString.m in Sources */,
 				D0EADDDF18E769FC0016D2A0 /* SoundEffect.m in Sources */,
 				D0E3A0C918E7D6C200C7B63D /* PromoDialogView.m in Sources */,
 				D0EADDD218E769FC0016D2A0 /* AppDelegateBase.m in Sources */,
@@ -1761,6 +1789,8 @@
 				D03D41541974ED6600D6823C /* RenterVisitorData.m in Sources */,
 				D038461B191EB12E00265FE1 /* CoinMenuView.m in Sources */,
 				D07F14ED1969F2D8009B23CB /* ParallaxForegroundView.m in Sources */,
+				D0E37D9F1978F06700CAED14 /* ConfirmDialogView.m in Sources */,
+				D0E37D991978DB5600CAED14 /* MessageDialogView.m in Sources */,
 				D03D41571974EE3700D6823C /* RenterVisitorDialogView.m in Sources */,
 				D0EADDF018E769FC0016D2A0 /* PromoBannerView.m in Sources */,
 				D0384661191EB21000265FE1 /* XibTableViewCell.m in Sources */,

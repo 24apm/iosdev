@@ -12,6 +12,7 @@
 
 typedef enum {
     HouseViewStateEmpty,
+    HouseViewStateOccupied,
     HouseViewStateInProgress,
     HouseViewStateCompleted
 } HouseViewState;
@@ -20,6 +21,9 @@ typedef enum {
 
 // empty
 @property (strong, nonatomic) IBOutlet UIView *emptyView;
+
+// occupied
+@property (strong, nonatomic) IBOutlet UIView *occupiedView;
 
 // in progress
 @property (strong, nonatomic) IBOutlet UIView *inProgressView;

@@ -13,5 +13,6 @@
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 
 - (void)setup;
+- (void)refreshHouses;
 
 @end

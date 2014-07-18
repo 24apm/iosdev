@@ -2050,7 +2050,7 @@
 					/Users/15inch/Desktop/tut/iosdev/trunk/Base/Analytics/Library,
 				);
 				PRODUCT_NAME = "Make It Flappy";
-				PROVISIONING_PROFILE = "CB4532C1-7837-4A67-A8D6-32AA044757BD";
+				PROVISIONING_PROFILE = "EC9B093A-C2DC-46A9-B6E3-56C113F224B4";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -2072,7 +2072,7 @@
 					/Users/15inch/Desktop/tut/iosdev/trunk/Base/Analytics/Library,
 				);
 				PRODUCT_NAME = "Make It Flappy";
-				PROVISIONING_PROFILE = "CB4532C1-7837-4A67-A8D6-32AA044757BD";
+				PROVISIONING_PROFILE = "EC9B093A-C2DC-46A9-B6E3-56C113F224B4";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};

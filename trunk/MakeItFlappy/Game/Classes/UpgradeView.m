@@ -11,12 +11,14 @@
 #import "ShopManager.h"
 #import "UpgradeResultView.h"
 #import "GameConstants.h"
+#import "TrackUtils.h"
 
 @implementation UpgradeView
 
 - (IBAction)LvlButtonPressed:(id)sender {
     self.tempPrice = [[ShopManager instance] priceForItemId:self.item.itemId type:self.item.type];
     if ([UserData instance].currentScore >= self.cost) {
+        [TrackUtils trackAction:self.item.itemId label:@"End"];
         [[UpgradeManager instance] attemptUpgrade:self.item];
     }
 }
@@ -33,13 +35,15 @@
 }
 
 - (void)upgradeSuccess {
+    [TrackUtils trackAction:@"UpgradeSuccess" label:@"End"];
     [self performSelector:@selector(animateLabelForUpgrade) withObject:nil afterDelay:7.6f];
     [[[UpgradeResultView alloc] init] showSuccess];
-
+    
     [self checkMaxLevel:[self checkItemLevel]];
 }
 
 - (void)upgradeFail {
+    [TrackUtils trackAction:@"UpgradeFail" label:@"End"];
     [[[UpgradeResultView alloc] init] showFail];
     [self performSelector:@selector(animateLabelForUpgrade) withObject:nil afterDelay:4.8f];
     
@@ -62,7 +66,7 @@
     long long tempResult = [UserData instance].currentScore;
     tempResult -= self.cost;
     self.afterCostLabel.text = [NSString stringWithFormat:@"%@",[Utils formatLongLongWithComma:tempResult]];
-   
+    
     self.lvlLabel.text = [NSString stringWithFormat:@"Lvl:%d", [self checkItemLevel]];
 }
 
@@ -73,6 +77,7 @@
 
 - (void)checkMaxLevel:(int)lvl {
     if (lvl >= 100) {
+        [TrackUtils trackAction:@"UpgradeMAXED" label:@"End"];
         [self dismissed:self];
     }
 }

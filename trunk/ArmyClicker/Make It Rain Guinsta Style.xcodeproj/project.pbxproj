@@ -1660,7 +1660,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				BUNDLE_IDENTIFIER = com.jeffrwan.makeitswipe;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Game/Make It Rain Guinsta Style-Prefix.pch";
@@ -1670,7 +1670,7 @@
 					/Users/15inch/Desktop/tut/iosdev/trunk/Base/Analytics/Library,
 				);
 				PRODUCT_NAME = "Make It Rain Guinsta Style";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "816EFBB3-8AB6-4E18-8CE8-8E88DF53A635";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1682,7 +1682,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				BUNDLE_IDENTIFIER = com.jeffrwan.makeitswipe;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Game/Make It Rain Guinsta Style-Prefix.pch";
@@ -1692,7 +1692,7 @@
 					/Users/15inch/Desktop/tut/iosdev/trunk/Base/Analytics/Library,
 				);
 				PRODUCT_NAME = "Make It Rain Guinsta Style";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "816EFBB3-8AB6-4E18-8CE8-8E88DF53A635";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};

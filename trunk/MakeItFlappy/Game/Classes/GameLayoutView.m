@@ -146,6 +146,7 @@ static int promoDialogInLeaderBoardCount = 0;
 }
 
 - (IBAction)achievementPressed:(UIButton *)sender {
+    [TrackUtils trackAction:@"StatsScreenPressed" label:@"End"];
     [[[BucketView alloc] init] show];
 }
 
@@ -909,9 +910,11 @@ static int promoDialogInLeaderBoardCount = 0;
 }
 
 - (void)restartGame {
+    [TrackUtils trackAction:@"restartGame" label:@"End"];
     if (self.timeBonusOn) {
         [self timeBonusDeactivate];
     }
+    [self showPromoDialog];
     self.distanceLabel.text = @"0";
     self.buttonAnimatedForTap = NO;
     self.buttonAnimatedForHold = NO;
@@ -1119,7 +1122,7 @@ static int promoDialogInLeaderBoardCount = 0;
     [[SoundManager instance]play:SOUND_EFFECT_FLYUP];
     self.characterImageView.image = [UIImage imageNamed:[GameManager characterImageForFlying]];
     [self.characterImageView.layer removeAllAnimations];
-    self.characterImageView.y += -FLYANIMATIONSPEED * 2 * IPAD_SCALE;;
+    self.characterImageView.y += -FLYANIMATIONSPEED * 3 * IPAD_SCALE;;
     //  NSLog(@"self.characterImageView %@", NSStringFromCGRect(self.characterImageView.frame));
     
     if (self.characterImageView.center.y <  -self.characterDefaultPoint.y/2) {
@@ -1206,6 +1209,7 @@ static int promoDialogInLeaderBoardCount = 0;
 }
 
 - (void)timeBonusActivate {
+    [TrackUtils trackAction:@"BonusActivated" label:@"End"];
     self.timeBonusEnd = CURRENT_TIME + TIME_BONUS_ACTIVED_LIMIT;
     [self animateLabelWithStringCenter:@"X10"];
     self.timeBonusOn = YES;
@@ -1215,7 +1219,6 @@ static int promoDialogInLeaderBoardCount = 0;
     self.timeBonus = 0;
     self.timeBonusOn = NO;
     self.shinyBackground.hidden = YES;
-    //[self showPromoDialog];
     [self.progressBar fillBar:0.f];
 }
 
@@ -1241,15 +1244,19 @@ static int promoDialogInLeaderBoardCount = 0;
     NSString *productIdentifier = notification.object;
     
     if ([productIdentifier isEqualToString:POWER_UP_IAP_FUND]) {
+        [TrackUtils trackAction:@"FundApplied" label:@"End"];
         [UserData instance].currentScore += 100000;
         
     } else if ([productIdentifier isEqualToString:POWER_UP_IAP_DOUBLE]) {
+        [TrackUtils trackAction:@"x2Applied" label:@"End"];
         [UserData instance].currentScore = [UserData instance].currentScore * 2;
         
     } else if ([productIdentifier isEqualToString:POWER_UP_IAP_QUADPLE]) {
+        [TrackUtils trackAction:@"x4Applied" label:@"End"];
         [UserData instance].currentScore = [UserData instance].currentScore * 4;
         
     } else if ([productIdentifier isEqualToString:POWER_UP_IAP_SUPER]) {
+        [TrackUtils trackAction:@"SuperApplied" label:@"End"];
         [UserData instance].currentScore = [UserData instance].currentScore * 100;
         
     }

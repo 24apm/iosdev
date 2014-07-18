@@ -12,6 +12,7 @@
                 <outlet property="emptyView" destination="cqO-zX-9ce" id="Pjp-a8-KYe"/>
                 <outlet property="idLabel" destination="vKp-2m-rgc" id="sEY-3R-z2h"/>
                 <outlet property="inProgressView" destination="Ast-HI-7cW" id="z0U-2D-bjm"/>
+                <outlet property="occupiedView" destination="eli-D0-vIc" id="TcB-Hd-fdb"/>
                 <outlet property="progressBar" destination="LuJ-Q0-6mR" id="dkG-Uh-iDq"/>
                 <outlet property="timeLabel" destination="N8g-O4-YuB" id="9MF-Wa-UMl"/>
             </connections>
@@ -36,13 +37,21 @@
                     <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="For Rent!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gJL-0x-Kuu">
-                            <rect key="frame" x="50" y="20" width="100" height="40"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="for_sale_sign.png" id="4EP-dU-aAa">
+                            <rect key="frame" x="121" y="95" width="79" height="100"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="22"/>
-                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </view>
+                <view userInteractionEnabled="NO" contentMode="scaleToFill" id="eli-D0-vIc" userLabel="Occupied">
+                    <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ToiletRush120.png" id="uN7-Qm-8Cl">
+                            <rect key="frame" x="61" y="-10" width="79" height="100"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
@@ -93,7 +102,7 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vKp-2m-rgc">
-                    <rect key="frame" x="50" y="156" width="100" height="40"/>
+                    <rect key="frame" x="45" y="156" width="100" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="22"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -105,6 +114,8 @@
         </view>
     </objects>
     <resources>
+        <image name="ToiletRush120.png" width="120" height="120"/>
         <image name="coin.png" width="256" height="256"/>
+        <image name="for_sale_sign.png" width="223" height="300"/>
     </resources>
 </document>

@@ -23,6 +23,8 @@ extern NSString *const UserDataHouseDataChangedNotification;
 - (void)saveHouse;
 - (HouseData *)randomUserHouse;
 
+- (void)resetUserData;
+
 @property (nonatomic) long long coin;
 @property (strong, nonatomic) NSMutableArray *houses;
 @property (nonatomic) int houseIndex;

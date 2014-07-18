@@ -8,6 +8,7 @@
 
 #import "InstructionView.h"
 #import "GameConstants.h"
+#import "TrackUtils.h"
 
 @implementation InstructionView
 
@@ -22,6 +23,7 @@
 
 
 - (void)show {
+    [TrackUtils trackAction:@"ManualShow" label:@"End"];
     [super show];
     [[NSNotificationCenter defaultCenter]postNotificationName:UPGRADE_VIEW_OPEN_NOTIFICATION object:nil];
 }
