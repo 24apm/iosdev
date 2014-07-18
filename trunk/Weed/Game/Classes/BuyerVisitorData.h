@@ -12,5 +12,9 @@
 @interface BuyerVisitorData : VisitorData
 
 @property (strong, nonatomic) HouseData *houseData;
+@property (nonatomic) double priceModifier;
+
++ (BuyerVisitorData *)dummyData;
+- (int)buyerPrice;
 
 @end

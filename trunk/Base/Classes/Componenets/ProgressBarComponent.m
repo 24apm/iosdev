@@ -7,6 +7,7 @@
 //
 
 #import "ProgressBarComponent.h"
+#import "UIView+ViewUtil.h"
 
 @implementation ProgressBarComponent
 
@@ -19,6 +20,29 @@
 - (void)fillBar:(CGFloat)percentage animated:(BOOL)animated {
     CGRect frame = self.backgroundView.frame;
     frame.size.width = self.backgroundView.frame.size.width * percentage;
+    
+    if (animated) {
+        [UIView animateWithDuration:1.0f animations:^ {
+            self.foregroundView.frame = frame;
+        }];
+    } else {
+        self.foregroundView.frame = frame;
+    }
+}
+
+- (void)fillBar:(CGFloat)percentage {
+    [self fillBar:percentage animated:NO];
+}
+
+@end
+
+
+@implementation VerticalProgressBarComponent
+
+- (void)fillBar:(CGFloat)percentage animated:(BOOL)animated {
+    CGRect frame = self.backgroundView.frame;
+    frame.size.height = self.backgroundView.frame.size.height * percentage;
+    frame.origin.y = self.backgroundView.height - frame.size.height;
     
     if (animated) {
         [UIView animateWithDuration:1.0f animations:^ {

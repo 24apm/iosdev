@@ -13,6 +13,7 @@
 #import "CustomGameLoopTimer.h"
 #import "UserData.h"
 #import "RealEstateManager.h"
+#import "AppString.h"
 
 @interface ParallaxWorldView()
 
@@ -46,7 +47,7 @@
     [self.backgroundView setup];
     [self.foregroundView setup];
     self.coinLabel.text = [NSString stringWithFormat:@"%lld", [UserData instance].coin];
-    
+    self.editModeMessage.hidden = YES;
     self.exitEditModebutton.hidden = YES;
     
     [[UserData instance] addObserver:self forKeyPath:@"coin" options:NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew context:nil];
@@ -61,14 +62,27 @@
         RealEstateManagerState newValue = [[object valueForKeyPath:keyPath] integerValue];
         self.coinLabel.hidden = YES;
         self.exitEditModebutton.hidden = YES;
+        self.editModeMessage.hidden = YES;
         
         switch (newValue) {
             case RealEstateManagerStateNormal:
                 self.coinLabel.hidden = NO;
                 break;
-            case RealEstateManagerStateEdit:
+            case RealEstateManagerStateEdit: {
                 self.exitEditModebutton.hidden = NO;
+                self.editModeMessage.hidden = NO;
+                RenterData *renterData = [RealEstateManager instance].currentRenterData.renterData;
+                HouseView *firstEmptyHouse = [self.foregroundView firstEmptyHouseUnder:renterData.count];
+                [self.foregroundView.scrollView scrollRectToVisible:CGRectMake(firstEmptyHouse.center.x - self.width * 0.5f, self.foregroundView.scrollView.y, self.foregroundView.scrollView.width, self.foregroundView.scrollView.height) animated:YES];
+                
+                NSString *rentalRate = [NSString stringWithFormat:@"$%lld per %@", renterData.cost, [Utils formatTime:renterData.duration]];
+
+                self.editModeMessage.text = [NSString stringWithFormat:EDIT_MODE_MESSAGE,
+                                             [RealEstateManager instance].currentRenterData.renterData.count,
+                                             rentalRate];
+
                 break;
+            }
             default:
                 break;
         }

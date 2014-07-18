@@ -58,7 +58,7 @@ NSString *const UserDataHouseDataChangedNotification = @"UserDataHouseDataChange
     self.houses = [NSMutableArray array];
     
     if ([[NSUserDefaults standardUserDefaults] objectForKey:@"houses"] == nil) {
-        [self addHouse:[HouseData dummyData]];
+        [self addHouse:[HouseData defaultData]];
     } else {
         NSString *jsonString = [[NSUserDefaults standardUserDefaults] objectForKey:@"houses"];
         

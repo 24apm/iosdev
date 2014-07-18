@@ -18,7 +18,8 @@
         self.data = data;
         self.nameLabel.text = data.name;
         self.occupationLabel.text = data.occupation;
-        self.rentRateLabel.text = [NSString stringWithFormat:@"$%lld per %@", data.renterData.cost, [Utils formatTime:data.renterData.duration]];
+        self.rentRateLabel.text = [NSString stringWithFormat:@"Rent: $%lld per %@", data.renterData.cost, [Utils formatTime:data.renterData.duration]];
+        self.requirementLabel.text = [NSString stringWithFormat: @"Looking for %d rooms", data.renterData.count];
     }
     return self;
 }
@@ -28,8 +29,8 @@
 }
 
 - (IBAction)yesButton:(id)sender {
-    [RealEstateManager instance].state = RealEstateManagerStateEdit;
     [RealEstateManager instance].currentRenterData = self.data;
+    [RealEstateManager instance].state = RealEstateManagerStateEdit;
     [self dismissed:sender];
 }
 

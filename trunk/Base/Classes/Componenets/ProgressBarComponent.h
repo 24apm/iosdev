@@ -17,3 +17,7 @@
 - (void)fillBar:(CGFloat)percentage animated:(BOOL)animated;
 
 @end
+
+@interface VerticalProgressBarComponent : ProgressBarComponent
+
+@end

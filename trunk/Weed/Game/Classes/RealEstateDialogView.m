@@ -19,8 +19,9 @@
         self.data = data;
         self.nameLabel.text = data.name;
         self.occupationLabel.text = data.occupation;
-        self.costLabel.text = [NSString stringWithFormat:@"%lld", data.houseData.cost ];
-        self.imageView.image = [UIImage imageNamed:data.houseData.imagePath];
+        self.costLabel.text = [NSString stringWithFormat:@"$%lld", data.houseData.cost];
+        self.imageView.image = [UIImage imageNamed:[[RealEstateManager instance] imageForHouseUnitSize:data.houseData.unitSize]];
+        self.roomCountLabel.text = [NSString stringWithFormat:@"%d", self.data.houseData.unitSize];
     }
     return self;
 }
@@ -31,6 +32,7 @@
 
 - (IBAction)yesButton:(id)sender {
     if ([[RealEstateManager instance] purchaseHouse:self.data.houseData]) {
+        [[[MessageDialogView alloc] initWithHeaderText:VISITOR_REAL_ESTATE_SUCCESS_HEADER bodyText:VISITOR_REAL_ESTATE_SUCCESS_MESSAGE] show];
         [self dismissed:sender];
     } else {
         [[[MessageDialogView alloc] initWithHeaderText:VISITOR_REAL_ESTATE_FAILED_HEADER bodyText:VISITOR_REAL_ESTATE_FAILED_MESSAGE] show];

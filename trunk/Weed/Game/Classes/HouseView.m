@@ -28,9 +28,11 @@
     [self refresh];
     
     self.idLabel.text = [NSString stringWithFormat:@"%d", self.data.id];
-    
-    [self.buttonView setBackgroundImage:[UIImage imageNamed:self.data.imagePath] forState:UIControlStateNormal];
-    
+    [self.buttonView setBackgroundImage:[UIImage imageNamed:[[RealEstateManager instance] imageForHouseUnitSize:data.unitSize]] forState:UIControlStateNormal];
+    self.rentalRateLabel.text = [NSString stringWithFormat:@"$%lld per %@", data.renterData.cost, [Utils formatTime:data.renterData.duration]];
+
+    self.houseSizeLabel.text = [NSString stringWithFormat:@"%d", data.unitSize];
+
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refresh) name:DRAW_STEP_NOTIFICATION object:nil];
 }
 
@@ -95,8 +97,6 @@
         case HouseViewStateEmpty:
             if ([RealEstateManager instance].state == RealEstateManagerStateEdit) {
                 [self confirmAddRenter];
-                [[[MessageDialogView alloc] initWithHeaderText:HOUSE_RENTER_ADDED_HEADER
-                                                      bodyText:HOUSE_RENTER_ADDED_MESSAGE] show];
             } else {
                 [[[MessageDialogView alloc] initWithHeaderText:HOUSE_EMPTY_HEADER
                                                       bodyText:HOUSE_EMPTY_MESSAGE] show];
@@ -128,8 +128,14 @@
 }
 
 - (void)confirmAddRenter {
-    [[RealEstateManager instance] addRenter:self.data];
-    [RealEstateManager instance].state = RealEstateManagerStateNormal;
+    if ([[RealEstateManager instance] addRenter:self.data]) {
+        [RealEstateManager instance].state = RealEstateManagerStateNormal;
+        [[[MessageDialogView alloc] initWithHeaderText:HOUSE_RENTER_ADDED_HEADER
+                                              bodyText:HOUSE_RENTER_ADDED_MESSAGE] show];
+    } else {
+        [[[MessageDialogView alloc] initWithHeaderText:HOUSE_RENTER_HOUSE_NOT_LARGE_ENOUGH_HEADER
+                                              bodyText:HOUSE_RENTER_HOUSE_NOT_LARGE_ENOUGH_MESSAGE] show];
+    }
 }
 
 - (void)removeFromSuperview {

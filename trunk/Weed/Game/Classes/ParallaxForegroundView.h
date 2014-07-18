@@ -7,6 +7,7 @@
 //
 
 #import "XibView.h"
+#import "HouseView.h"
 
 @interface ParallaxForegroundView : XibView
 
@@ -14,5 +15,6 @@
 
 - (void)setup;
 - (void)refreshHouses;
+- (HouseView *)firstEmptyHouseUnder:(int)rooms;
 
 @end

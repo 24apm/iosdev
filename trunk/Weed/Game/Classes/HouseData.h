@@ -14,11 +14,12 @@
 @property (strong, nonatomic) RenterData *renterData;
 @property (nonatomic) int id;
 @property (nonatomic) long long cost;
-@property (strong, nonatomic) NSString *imagePath;
+@property (nonatomic) int unitSize;
 
 - (void)setupWithDict:(NSDictionary *)dict;
 - (NSDictionary *)dictionary;
 
++ (HouseData *)defaultData;
 + (HouseData *)dummyData;
 
 @end

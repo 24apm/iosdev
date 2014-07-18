@@ -7,14 +7,18 @@
 //
 
 #import "RenterData.h"
+#import "Utils.h"
+#import "RealEstateManager.h"
 
 @implementation RenterData
 
 + (RenterData *)dummyData {
     RenterData *data = [[RenterData alloc] init];
-    data.duration = 2 * 60; // 2 mins
-    data.cost = 1000;
-    data.count = 3;
+    
+    int maxRand = CLAMP([[RealEstateManager instance] userMaxHouseSize] + 1, 1, 9);
+    data.count = [Utils randBetweenMinInt:1 max:maxRand];
+    data.cost = [Utils randBetweenMinInt:10 max:100] * pow(data.count, 2);
+    data.duration = pow(2,data.count) * 60; // 2 - 10 mins
     return data;
 }
 

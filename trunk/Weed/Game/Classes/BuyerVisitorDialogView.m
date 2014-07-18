@@ -19,9 +19,9 @@
         self.data = data;
         self.nameLabel.text = data.name;
         self.occupationLabel.text = data.occupation;
-        self.costLabel.text = [NSString stringWithFormat:@"%lld", data.houseData.cost ];
+        self.costLabel.text = [NSString stringWithFormat:@"%@ is bidding $%d for your house! You purchased it for $%lld. Are you willing to accept the offer?", data.name, [self.data buyerPrice], data.houseData.cost];
         self.idLabel.text = [NSString stringWithFormat:@"%d", self.data.houseData.id];
-        self.imageView.image = [UIImage imageNamed:data.houseData.imagePath];
+        self.imageView.image = [UIImage imageNamed:[[RealEstateManager instance] imageForHouseUnitSize:data.houseData.unitSize]];
     }
     return self;
 }
@@ -32,7 +32,9 @@
 
 - (IBAction)yesButton:(id)sender {
     if ([[RealEstateManager instance] canSellHouse:self.data.houseData]) {
-        [[RealEstateManager instance] sellHouse:self.data.houseData];
+        [[RealEstateManager instance] sellHouse:self.data.houseData buyerPrice:[self.data buyerPrice]];
+        [[[MessageDialogView alloc] initWithHeaderText:VISITOR_BUYER_SUCCESS_HEADER bodyText:VISITOR_BUYER_SUCCESS_MESSAGE] show];
+
     } else {
         [[[MessageDialogView alloc] initWithHeaderText:VISITOR_BUYER_FAILED_HEADER bodyText:VISITOR_BUYER_FAILED_MESSAGE] show];
 

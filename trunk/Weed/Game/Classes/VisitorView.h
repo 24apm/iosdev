@@ -9,13 +9,13 @@
 #import "XibView.h"
 #import "VisitorData.h"
 
-extern NSString *const VisitorViewRefreshNotification;
-
 @interface VisitorView : XibView
 
 @property (strong, nonatomic) VisitorData *data;
 @property (strong, nonatomic) IBOutlet UIButton *imageButton;
 
 - (void)setupWithData:(VisitorData *)data;
+- (void)animateIn;
+- (void)animateOut;
 
 @end

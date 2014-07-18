@@ -16,6 +16,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *nameLabel;
 @property (strong, nonatomic) IBOutlet UILabel *occupationLabel;
 @property (strong, nonatomic) IBOutlet UILabel *rentRateLabel;
+@property (strong, nonatomic) IBOutlet UILabel *requirementLabel;
 
 - (IBAction)noPressed:(id)sender;
 - (IBAction)yesButton:(id)sender;

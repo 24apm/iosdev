@@ -28,7 +28,7 @@ typedef enum {
 // in progress
 @property (strong, nonatomic) IBOutlet UIView *inProgressView;
 @property (strong, nonatomic) IBOutlet UILabel *timeLabel;
-@property (strong, nonatomic) IBOutlet ProgressBarComponent *progressBar;
+@property (strong, nonatomic) IBOutlet VerticalProgressBarComponent *progressBar;
 
 // completed
 @property (strong, nonatomic) IBOutlet UIView *completedView;
@@ -37,6 +37,8 @@ typedef enum {
 @property (strong, nonatomic) IBOutlet UILabel *idLabel;
 
 @property (strong, nonatomic) HouseData *data;
+@property (strong, nonatomic) IBOutlet UILabel *rentalRateLabel;
+@property (strong, nonatomic) IBOutlet UILabel *houseSizeLabel;
 
 @property (nonatomic) HouseViewState state;
 

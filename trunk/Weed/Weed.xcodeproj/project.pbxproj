@@ -136,6 +136,9 @@
 		D0E37D9C1978DE9200CAED14 /* AppString.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E37D9B1978DE9200CAED14 /* AppString.m */; };
 		D0E37D9F1978F06700CAED14 /* ConfirmDialogView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E37D9E1978F06700CAED14 /* ConfirmDialogView.m */; };
 		D0E37DA11978F0DB00CAED14 /* ConfirmDialogView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E37DA01978F0DB00CAED14 /* ConfirmDialogView.xib */; };
+		D0E37DA519790D7C00CAED14 /* House1.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E37DA219790D7C00CAED14 /* House1.png */; };
+		D0E37DA619790D7C00CAED14 /* House2.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E37DA319790D7C00CAED14 /* House2.png */; };
+		D0E37DA719790D7C00CAED14 /* House3.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E37DA419790D7C00CAED14 /* House3.png */; };
 		D0E3A0C918E7D6C200C7B63D /* PromoDialogView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E3A0C818E7D6C200C7B63D /* PromoDialogView.m */; };
 		D0E3A0CC18E7D75B00C7B63D /* PromoIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E3A0CB18E7D75B00C7B63D /* PromoIconView.m */; };
 		D0E3A0CE18E7D77D00C7B63D /* PromoIconView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E3A0CD18E7D77D00C7B63D /* PromoIconView.xib */; };
@@ -512,6 +515,9 @@
 		D0E37D9D1978F06700CAED14 /* ConfirmDialogView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmDialogView.h; sourceTree = "<group>"; };
 		D0E37D9E1978F06700CAED14 /* ConfirmDialogView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmDialogView.m; sourceTree = "<group>"; };
 		D0E37DA01978F0DB00CAED14 /* ConfirmDialogView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConfirmDialogView.xib; sourceTree = "<group>"; };
+		D0E37DA219790D7C00CAED14 /* House1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = House1.png; sourceTree = "<group>"; };
+		D0E37DA319790D7C00CAED14 /* House2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = House2.png; sourceTree = "<group>"; };
+		D0E37DA419790D7C00CAED14 /* House3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = House3.png; sourceTree = "<group>"; };
 		D0E3A0C718E7D6C200C7B63D /* PromoDialogView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PromoDialogView.h; sourceTree = "<group>"; };
 		D0E3A0C818E7D6C200C7B63D /* PromoDialogView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PromoDialogView.m; sourceTree = "<group>"; };
 		D0E3A0CA18E7D75B00C7B63D /* PromoIconView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PromoIconView.h; sourceTree = "<group>"; };
@@ -998,6 +1004,9 @@
 			isa = PBXGroup;
 			children = (
 				D051F12119732B6C000F98DC /* House.png */,
+				D0E37DA219790D7C00CAED14 /* House1.png */,
+				D0E37DA319790D7C00CAED14 /* House2.png */,
+				D0E37DA419790D7C00CAED14 /* House3.png */,
 				D052D9321969285D00D13DB0 /* pressandhold.png */,
 				D0E981211968C871001A591F /* icon_lvl.png */,
 				D0EDA2A119667ADC00989065 /* icon_flylvlup.png */,
@@ -1525,6 +1534,7 @@
 				D0EAB6F9195FF75800C90F0E /* venus.png in Resources */,
 				D0E33006191A04EA00FB5EB8 /* cross.png in Resources */,
 				D0BCA0451963CD34006E01B4 /* instruction.png in Resources */,
+				D0E37DA519790D7C00CAED14 /* House1.png in Resources */,
 				D06DB4251939BE9400B33BEC /* guinea_pig.caf in Resources */,
 				D0F375CF18FA896300D32A10 /* tier1.png in Resources */,
 				D0E555F0193B084A00F59DF6 /* background_tier5.png in Resources */,
@@ -1535,6 +1545,7 @@
 				D0F02F181910C7450003F759 /* PromoBannerView~ipad.xib in Resources */,
 				D0E3A0D018E7DA2900C7B63D /* PromoDialogView.xib in Resources */,
 				D0E555EF193B084A00F59DF6 /* background_tier6.png in Resources */,
+				D0E37DA619790D7C00CAED14 /* House2.png in Resources */,
 				D0E26B0319580CEB00314A7C /* character_learning4.png in Resources */,
 				D033855218EA9C22008D7861 /* defaultbackground.png in Resources */,
 				D0EC757918EBE5E40015AD4C /* cloud2.png in Resources */,
@@ -1575,6 +1586,7 @@
 				D0F375C318FA457100D32A10 /* tier4.png in Resources */,
 				D088068519652ABD001CC7A7 /* InstructionView.xib in Resources */,
 				D048A84018ACAAAB00411DF9 /* twitter_share.png in Resources */,
+				D0E37DA719790D7C00CAED14 /* House3.png in Resources */,
 				D0EADDED18E769FC0016D2A0 /* RushyKnightIcon120.png in Resources */,
 				D0A79572195BEDE2009270DE /* moon.png in Resources */,
 				D06DB4261939BE9400B33BEC /* anvil.caf in Resources */,

@@ -7,8 +7,8 @@
 //
 
 #import "ParallaxForegroundView.h"
-#import "HouseView.h"
 #import "UserData.h"
+#import "NSArray+Util.h"
 
 @interface ParallaxForegroundView()
 
@@ -64,5 +64,17 @@
         xOffset += house.width + spacing;
     }
 }
+
+- (HouseView *)firstEmptyHouseUnder:(int)rooms {    
+    HouseView *firstEmptyHouse = [self.houseViews randomObject];
+    for (HouseView *house in self.houseViews) {
+        if (!house.data.renterData && house.data.unitSize >= rooms) {
+            firstEmptyHouse = house;
+            break;
+        }
+    }
+    return firstEmptyHouse;
+}
+
 
 @end

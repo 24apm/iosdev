@@ -63,7 +63,7 @@
             return [RealEstateVisitorData dummyData];
             break;
         case 1:
-            return [self generateBuyerVisitor];
+            return [BuyerVisitorData dummyData];
             break;
         case 2:
             return [RenterVisitorData dummyData];
@@ -72,16 +72,6 @@
     }
     return [RealEstateVisitorData dummyData];
 }
-
-- (BuyerVisitorData *)generateBuyerVisitor {
-    BuyerVisitorData *data = [[BuyerVisitorData alloc] init];
-    data.houseData = [[UserData instance] randomUserHouse];
-    data.imagePath = @"NGIcon120.png";
-    data.name = @"Some Buyer";
-    data.occupation = @"Doctor";
-    return data;
-}
-
 
 - (XibDialogView *)dialogFor:(VisitorData *)visitorData {
     if ([visitorData isKindOfClass:[RealEstateVisitorData class]]) {

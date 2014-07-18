@@ -9,6 +9,7 @@
             <connections>
                 <outlet property="coinLabel" destination="ZND-tt-h4x" id="Gwt-Xw-3EF"/>
                 <outlet property="containerView" destination="e5H-Jy-pVg" id="aip-El-jpQ"/>
+                <outlet property="editModeMessage" destination="628-wW-aXF" id="A3k-rr-0VN"/>
                 <outlet property="exitEditModebutton" destination="oer-gU-Rl1" id="q7B-dx-Msw"/>
             </connections>
         </placeholder>
@@ -33,6 +34,13 @@
                     <color key="backgroundColor" red="0.80392163989999998" green="0.74901962280000001" blue="0.71372550729999995" alpha="1" colorSpace="deviceRGB"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a house for this potential tenant!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="628-wW-aXF">
+                    <rect key="frame" x="60" y="46" width="200" height="164"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="19"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="4M3-pj-X4o">
