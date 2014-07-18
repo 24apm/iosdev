@@ -25,8 +25,16 @@
     HouseData *houseData = [[HouseData alloc] init];
     houseData.id = 0;
     houseData.renterData = nil;
-    int maxRand = CLAMP([[RealEstateManager instance] userMaxHouseSize] + 1, 1, 9);
-    houseData.unitSize = [Utils randBetweenMinInt:1 max:maxRand];
+    
+    float showNextLevelContentThreshold = [Utils randBetweenMin:0.f max:1.0f];
+    int count = 0;
+    int userMaxHouseSize = [[RealEstateManager instance] userMaxHouseSize];
+    if (showNextLevelContentThreshold > 0.9f) {
+        count = userMaxHouseSize + 1;
+    } else {
+        count = [Utils randBetweenMinInt:1 max:userMaxHouseSize];
+    }
+    houseData.unitSize = CLAMP(count, 1, 9);
     houseData.cost = [Utils randBetweenMinInt:100 max:1000] * pow(houseData.unitSize, 3);
     return houseData;
 }

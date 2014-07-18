@@ -15,8 +15,16 @@
 + (RenterData *)dummyData {
     RenterData *data = [[RenterData alloc] init];
     
-    int maxRand = CLAMP([[RealEstateManager instance] userMaxHouseSize] + 1, 1, 9);
-    data.count = [Utils randBetweenMinInt:1 max:maxRand];
+    float showNextLevelContentThreshold = [Utils randBetweenMin:0.f max:1.0f];
+    int count = 0;
+    int userMaxHouseSize = [[RealEstateManager instance] userMaxHouseSize];
+    if (showNextLevelContentThreshold > 0.9f) {
+        count = userMaxHouseSize + 1;
+    } else {
+        count = [Utils randBetweenMinInt:1 max:userMaxHouseSize];
+    }
+    
+    data.count = CLAMP(count, 1, 9);
     data.cost = [Utils randBetweenMinInt:10 max:100] * pow(data.count, 2);
     data.duration = pow(2,data.count) * 60; // 2 - 10 mins
     return data;
