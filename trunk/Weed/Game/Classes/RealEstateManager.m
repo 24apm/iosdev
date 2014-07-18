@@ -21,7 +21,7 @@
 }
 
 - (BOOL)canPurchaseHouse:(HouseData *)data {
-    return [UserData instance].coin >= data.cost && [UserData instance].houses.count < 20;
+    return [UserData instance].coin >= data.cost && [UserData instance].houses.count < 10;
 }
 
 - (BOOL)purchaseHouse:(HouseData *)data {
@@ -74,7 +74,7 @@
 }
 
 - (NSString *)imageForHouseUnitSize:(int)unitSize {
-    return [NSString stringWithFormat:@"House%d.png",CLAMP(unitSize / 3, 1, 3)];
+    return [NSString stringWithFormat:@"House%d.png",CLAMP((int)ceil((float)unitSize / 3.f), 1, 3)];
 }
 
 - (int)userMaxHouseSize {

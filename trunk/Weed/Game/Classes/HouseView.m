@@ -40,6 +40,12 @@
     double timeLeft = self.data.renterData.timeDue - CURRENT_TIME;
     double percentage = 1.f - timeLeft / self.data.renterData.duration;
     
+    self.alpha = 1.0f;
+    self.emptyView.hidden = YES;
+    self.inProgressView.hidden = YES;
+    self.completedView.hidden = YES;
+    self.occupiedView.hidden = YES;
+    
     switch ([RealEstateManager instance].state) {
         // NORMAL Mode
         case RealEstateManagerStateNormal:
@@ -56,6 +62,12 @@
             break;
         // EDIT Mode
         case RealEstateManagerStateEdit:
+            if ([RealEstateManager instance].currentRenterData.renterData.count > self.data.unitSize) {
+                self.alpha = 0.5f;
+            } else {
+                self.alpha = 1.0f;
+            }
+            
             if (self.data.renterData) {
                 self.state = HouseViewStateOccupied;
             } else {
@@ -65,11 +77,7 @@
         default:
             break;
     }
-    
-    self.emptyView.hidden = YES;
-    self.inProgressView.hidden = YES;
-    self.completedView.hidden = YES;
-    self.occupiedView.hidden = YES;
+
    
     switch (self.state) {
         case HouseViewStateEmpty:

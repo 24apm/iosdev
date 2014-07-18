@@ -29,7 +29,7 @@
     float showNextLevelContentThreshold = [Utils randBetweenMin:0.f max:1.0f];
     int count = 0;
     int userMaxHouseSize = [[RealEstateManager instance] userMaxHouseSize];
-    if (showNextLevelContentThreshold > 0.9f) {
+    if (showNextLevelContentThreshold > 0.8f) {
         count = userMaxHouseSize + 1;
     } else {
         count = [Utils randBetweenMinInt:1 max:userMaxHouseSize];

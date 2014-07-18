@@ -18,7 +18,7 @@
     data.imagePath = @"NGIcon120.png";
     data.name = @"Some Buyer";
     data.occupation = @"Doctor";
-    data.priceModifier = [Utils randBetweenMin:0.2 max:2.0];
+    data.priceModifier = [Utils randBetweenMin:0.5 max:1.2];
     return data;
 }
 
