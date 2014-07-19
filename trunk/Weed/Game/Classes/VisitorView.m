@@ -17,7 +17,7 @@
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(animateOut) object:nil];
     self.data = data;
     [self.imageButton setBackgroundImage:[UIImage imageNamed:data.imagePath] forState:UIControlStateNormal];
-    [self performSelector:@selector(animateOut) withObject:nil afterDelay:[Utils randBetweenMin:30.f max:60.f]];
+    [self performSelector:@selector(animateOut) withObject:nil afterDelay:[Utils randBetweenMin:20.f max:30.f]];
 }
 
 - (IBAction)buttonPressed:(id)sender {
@@ -29,7 +29,6 @@
 }
 
 - (void)animateIn {
-    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(animateOut) object:nil];
     self.hidden = NO;
     self.transform = CGAffineTransformMakeTranslation(self.width * 2, 0);
     [UIView animateWithDuration:0.5f animations:^ {
