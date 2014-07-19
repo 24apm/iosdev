@@ -17,6 +17,8 @@ typedef enum {
     HouseViewStateCompleted
 } HouseViewState;
 
+extern NSString *const kHouseViewCollectedNotification;
+
 @interface HouseView : XibView
 
 // empty
@@ -32,6 +34,7 @@ typedef enum {
 
 // completed
 @property (strong, nonatomic) IBOutlet UIView *completedView;
+@property (strong, nonatomic) IBOutlet UIImageView *coinImageView;
 
 @property (strong, nonatomic) IBOutlet UIButton *buttonView;
 @property (strong, nonatomic) IBOutlet UILabel *idLabel;

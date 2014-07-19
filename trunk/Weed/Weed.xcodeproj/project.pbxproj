@@ -193,6 +193,7 @@
 		D0E541C41917527700DD7B1A /* coin.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E541C31917527700DD7B1A /* coin.png */; };
 		D0E541C819177A9E00DD7B1A /* tier1Coin.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E541C719177A9E00DD7B1A /* tier1Coin.png */; };
 		D0E541CA191784D100DD7B1A /* iconbackground.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E541C9191784D100DD7B1A /* iconbackground.png */; };
+		D0E5501C197A20DF000DCC39 /* LevelManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E5501B197A20DF000DCC39 /* LevelManager.m */; };
 		D0E555EF193B084A00F59DF6 /* background_tier6.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E555E7193B084A00F59DF6 /* background_tier6.png */; };
 		D0E555F0193B084A00F59DF6 /* background_tier5.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E555E8193B084A00F59DF6 /* background_tier5.png */; };
 		D0E555F1193B084A00F59DF6 /* background_tier4.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E555E9193B084A00F59DF6 /* background_tier4.png */; };
@@ -577,6 +578,8 @@
 		D0E541C31917527700DD7B1A /* coin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coin.png; sourceTree = "<group>"; };
 		D0E541C719177A9E00DD7B1A /* tier1Coin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tier1Coin.png; sourceTree = "<group>"; };
 		D0E541C9191784D100DD7B1A /* iconbackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconbackground.png; sourceTree = "<group>"; };
+		D0E5501A197A20DF000DCC39 /* LevelManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelManager.h; sourceTree = "<group>"; };
+		D0E5501B197A20DF000DCC39 /* LevelManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelManager.m; sourceTree = "<group>"; };
 		D0E555E7193B084A00F59DF6 /* background_tier6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background_tier6.png; sourceTree = "<group>"; };
 		D0E555E8193B084A00F59DF6 /* background_tier5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background_tier5.png; sourceTree = "<group>"; };
 		D0E555E9193B084A00F59DF6 /* background_tier4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background_tier4.png; sourceTree = "<group>"; };
@@ -821,6 +824,8 @@
 			isa = PBXGroup;
 			children = (
 				D0E52B3D192744610015CD5A /* ParticleView.h */,
+				D0E5501A197A20DF000DCC39 /* LevelManager.h */,
+				D0E5501B197A20DF000DCC39 /* LevelManager.m */,
 				D051F123197342B7000F98DC /* CustomGameLoopTimer.h */,
 				D051F124197342B7000F98DC /* CustomGameLoopTimer.m */,
 				D0E52B3E192744610015CD5A /* ParticleView.m */,
@@ -1781,6 +1786,7 @@
 				D0384617191EB12E00265FE1 /* AnimatedLabel.m in Sources */,
 				D0EADDF518E769FC0016D2A0 /* THLabel.m in Sources */,
 				D088068A19652C56001CC7A7 /* InstructionView.m in Sources */,
+				D0E5501C197A20DF000DCC39 /* LevelManager.m in Sources */,
 				D051F11B197313A1000F98DC /* RootViewController.m in Sources */,
 				D0EADDD918E769FC0016D2A0 /* XibView.m in Sources */,
 				D0E428E519162D49009E4A22 /* SKProduct+priceAsString.m in Sources */,

@@ -8,7 +8,7 @@
 
 #import "HouseData.h"
 #import "Utils.h"
-#import "RealEstateManager.h"
+#import "LevelManager.h"
 
 @implementation HouseData
 
@@ -25,17 +25,8 @@
     HouseData *houseData = [[HouseData alloc] init];
     houseData.id = 0;
     houseData.renterData = nil;
-    
-    float showNextLevelContentThreshold = [Utils randBetweenMin:0.f max:1.0f];
-    int count = 0;
-    int userMaxHouseSize = [[RealEstateManager instance] userMaxHouseSize];
-    if (showNextLevelContentThreshold > 0.8f) {
-        count = userMaxHouseSize + 1;
-    } else {
-        count = [Utils randBetweenMinInt:1 max:userMaxHouseSize];
-    }
-    houseData.unitSize = CLAMP(count, 1, 9);
-    houseData.cost = [Utils randBetweenMinInt:100 max:1000] * pow(houseData.unitSize, 3);
+    houseData.unitSize = [[LevelManager instance] generateHouseSize];
+    houseData.cost = [[LevelManager instance] generateHouseCost:houseData.unitSize];
     return houseData;
 }
 

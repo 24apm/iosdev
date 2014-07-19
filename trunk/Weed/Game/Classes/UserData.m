@@ -12,7 +12,7 @@
 #import "AnimatedLabel.h"
 #import "NSArray+Util.h"
 
-#define NEW_USER_COIN 10
+#define NEW_USER_COIN 1000
 
 NSString *const UserDataHouseDataChangedNotification = @"UserDataHouseDataChangedNotification";
 

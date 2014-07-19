@@ -18,6 +18,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *costLabel;
 @property (strong, nonatomic) IBOutlet UILabel *idLabel;
 
+@property (strong, nonatomic) IBOutlet UILabel *coinLabel;
 - (id)initWithData:(BuyerVisitorData *)data;
 
 - (IBAction)noPressed:(id)sender;

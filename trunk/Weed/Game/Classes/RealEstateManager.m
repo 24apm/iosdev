@@ -21,7 +21,15 @@
 }
 
 - (BOOL)canPurchaseHouse:(HouseData *)data {
-    return [UserData instance].coin >= data.cost && [UserData instance].houses.count < 10;
+    return [self canPurchaseHouseWithHouseLimit:data] && [self canPurchaseHouseWithMoney:data];
+}
+
+- (BOOL)canPurchaseHouseWithMoney:(HouseData *)data {
+    return [UserData instance].coin >= data.cost;
+}
+
+- (BOOL)canPurchaseHouseWithHouseLimit:(HouseData *)data {
+    return [UserData instance].houses.count < 10;
 }
 
 - (BOOL)purchaseHouse:(HouseData *)data {
@@ -43,10 +51,19 @@
     [[UserData instance] removeHouse:data];
 }
 
-- (void)collectMoney:(HouseData *)data {
-    data.renterData.timeDue = CURRENT_TIME + data.renterData.duration;
-    [[UserData instance] incrementCoin:data.renterData.cost];
-    [[UserData instance] saveHouse];
+- (BOOL)canCollectMoney:(HouseData *)data {
+    return CURRENT_TIME > data.renterData.timeDue;
+}
+
+- (BOOL)collectMoney:(HouseData *)data {
+    if ([self canCollectMoney:data]) {
+        data.renterData.timeDue = CURRENT_TIME + data.renterData.duration;
+        [[UserData instance] incrementCoin:data.renterData.cost];
+        [[UserData instance] saveHouse];
+        return YES;
+    } else {
+        return NO;
+    }
 }
 
 - (BOOL)canAddRenter:(HouseData *)data {

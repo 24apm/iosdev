@@ -19,7 +19,7 @@
         self.nameLabel.text = data.name;
         self.occupationLabel.text = data.occupation;
         self.rentRateLabel.text = [NSString stringWithFormat:@"Rent: $%lld per %@", data.renterData.cost, [Utils formatTime:data.renterData.duration]];
-        self.requirementLabel.text = [NSString stringWithFormat: @"Looking for %d rooms", data.renterData.count];
+        self.requirementLabel.text = [NSString stringWithFormat: @"Looking for %d room(s)", data.renterData.count];
     }
     return self;
 }

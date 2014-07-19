@@ -21,12 +21,15 @@ typedef enum {
 + (RealEstateManager *)instance;
 
 - (BOOL)canPurchaseHouse:(HouseData *)data;
+- (BOOL)canPurchaseHouseWithMoney:(HouseData *)data;
+- (BOOL)canPurchaseHouseWithHouseLimit:(HouseData *)data;
 - (BOOL)purchaseHouse:(HouseData *)data;
 
 - (BOOL)canSellHouse:(HouseData *)data;
 - (void)sellHouse:(HouseData *)data buyerPrice:(double)buyerPrice;
 
-- (void)collectMoney:(HouseData *)data;
+- (BOOL)canCollectMoney:(HouseData *)data;
+- (BOOL)collectMoney:(HouseData *)data;
 
 - (BOOL)canAddRenter:(HouseData *)data;
 - (BOOL)addRenter:(HouseData *)data;

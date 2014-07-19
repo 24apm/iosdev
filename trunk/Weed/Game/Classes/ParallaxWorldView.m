@@ -47,11 +47,53 @@
     [self.backgroundView setup];
     [self.foregroundView setup];
     self.coinLabel.text = [NSString stringWithFormat:@"%lld", [UserData instance].coin];
+    self.coinGainLabel.alpha = 0.f;
     self.editModeMessage.hidden = YES;
     self.exitEditModebutton.hidden = YES;
     
     [[UserData instance] addObserver:self forKeyPath:@"coin" options:NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew context:nil];
     [[RealEstateManager instance] addObserver:self forKeyPath:@"state" options:NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew context:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animateCoinToHud:) name:kHouseViewCollectedNotification object:nil];
+}
+
+- (void)animateCoinToHud:(NSNotification *)notification {
+    HouseView *houseView = notification.object;
+
+    UIImageView *tempCoinImageView = [[UIImageView alloc] init];
+    tempCoinImageView.frame = houseView.coinImageView.frame;
+    tempCoinImageView.image = houseView.coinImageView.image;
+    [self addSubview:tempCoinImageView];
+    
+    CGPoint startPosition = [houseView.coinImageView.superview convertPoint:houseView.coinImageView.center toView:tempCoinImageView.superview];
+    tempCoinImageView.center = startPosition;
+
+    CGPoint targetView = [self.coinImageView.superview convertPoint:self.coinImageView.center toView:tempCoinImageView.superview];
+    
+    self.coinGainLabel.text = [NSString stringWithFormat:@"+%lld", houseView.data.renterData.cost];
+    [self.coinGainLabel.layer removeAllAnimations];
+    
+    [UIView animateWithDuration:0.5f animations:^ {
+        tempCoinImageView.center = targetView;
+    }completion:^(BOOL completed) {
+        [tempCoinImageView removeFromSuperview];
+        [self animateCoinLabel];
+    }];
+    
+}
+
+- (void)animateCoinLabel {
+    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+    animation.duration = 0.25f;
+    animation.toValue = @(1.6f);
+    animation.autoreverses = YES;
+    [self.coinGainLabel.layer addAnimation:animation forKey:@"popIn"];
+    
+    CABasicAnimation *alphaAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+    alphaAnimation.duration = 0.8f;
+    alphaAnimation.toValue = @(1);
+    alphaAnimation.autoreverses = YES;
+    [self.coinGainLabel.layer addAnimation:alphaAnimation forKey:@"alphaIn"];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
@@ -60,13 +102,13 @@
         self.coinLabel.text = [NSString stringWithFormat:@"%d", [newValue integerValue]];
     } else if ([keyPath isEqual:@"state"]) {
         RealEstateManagerState newValue = [[object valueForKeyPath:keyPath] integerValue];
-        self.coinLabel.hidden = YES;
+        self.headerView.hidden = YES;
         self.exitEditModebutton.hidden = YES;
         self.editModeMessage.hidden = YES;
         
         switch (newValue) {
             case RealEstateManagerStateNormal:
-                self.coinLabel.hidden = NO;
+                self.headerView.hidden = NO;
                 break;
             case RealEstateManagerStateEdit: {
                 self.exitEditModebutton.hidden = NO;
@@ -113,6 +155,18 @@
     } else {
         return [super hitTest:point withEvent:event];
     }
+}
+- (IBAction)leftPressed:(id)sender {
+    CGRect rect = self.foregroundView.scrollView.frame;
+    rect.origin.x = 0;
+    [self.foregroundView.scrollView scrollRectToVisible:rect animated:YES];
+}
+
+- (IBAction)rightPressed:(id)sender {
+    CGRect rect = self.foregroundView.scrollView.frame;
+    rect.origin.x = self.foregroundView.scrollView.contentSize.width - self.foregroundView.scrollView.frame.size.width;
+    [self.foregroundView.scrollView scrollRectToVisible:rect animated:YES];
+
 }
 
 - (UIView *)hitTest:(UIView *)someView point:(CGPoint)point withEvent:(UIEvent *)event {

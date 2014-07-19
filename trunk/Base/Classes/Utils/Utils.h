@@ -30,6 +30,6 @@ __x > __high ? __high : (__x < __low ? __low : __x);\
 + (UIImage *)imageNamed:(UIImage *)img withColor:(UIColor *)color blendMode:(CGBlendMode)blendMode;
 + (NSString *)formatLongLongWithComma:(long long)integer;
 + (NSString *)formatLongLongWithShortHand:(long long)integer;
-+ (NSString *)formatTime:(double)time;
++ (NSString *)formatTime:(int)time;
 
 @end

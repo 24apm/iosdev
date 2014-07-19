@@ -81,12 +81,12 @@
     return finalFormat;
 }
 
-+ (NSString *)formatTime:(double)time {
++ (NSString *)formatTime:(int)time {
     NSString *timeString = nil;
     
     int duration = time;
     int hours = duration / 3600;
-    int minutes = duration / 60;
+    int minutes = duration % 3600 / 60;
     int seconds = duration % 60;
     
     if (seconds > 0) {

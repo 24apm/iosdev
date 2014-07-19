@@ -14,7 +14,8 @@
     RenterVisitorData *data = [[RenterVisitorData alloc] init];
     data.renterData = [RenterData dummyData];
     data.imagePath = @"FlappyBallIcon100x100.png";
-
+    data.name = @"Some Renter";
+    data.occupation = @"Student";
     return data;
 }
 

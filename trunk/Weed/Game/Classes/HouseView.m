@@ -16,6 +16,8 @@
 #import "AppString.h"
 #import "ConfirmDialogView.h"
 
+NSString *const kHouseViewCollectedNotification = @"kHouseViewCollectedNotification";
+
 @interface HouseView()
 
 @end
@@ -124,11 +126,12 @@
             }
             break;
         case HouseViewStateInProgress:
-            [[[MessageDialogView alloc] initWithHeaderText:HOUSE_COLLECT_FAILED_HEADER
-                                                  bodyText:HOUSE_COLLECT_FAILED_MESSAGE] show];
             break;
         case HouseViewStateCompleted:
-            [[RealEstateManager instance] collectMoney:self.data];
+            if ([[RealEstateManager instance] canCollectMoney:self.data]) {
+                [[NSNotificationCenter defaultCenter] postNotificationName:kHouseViewCollectedNotification object:self];
+                [[RealEstateManager instance] collectMoney:self.data];
+            }
             break;
         default:
             break;

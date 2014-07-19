@@ -10,6 +10,7 @@
 #import "RealEstateManager.h"
 #import "MessageDialogView.h"
 #import "AppString.h"
+#import "UserData.h"
 
 @implementation RealEstateDialogView
 
@@ -22,6 +23,7 @@
         self.costLabel.text = [NSString stringWithFormat:@"$%lld", data.houseData.cost];
         self.imageView.image = [UIImage imageNamed:[[RealEstateManager instance] imageForHouseUnitSize:data.houseData.unitSize]];
         self.roomCountLabel.text = [NSString stringWithFormat:@"%d", self.data.houseData.unitSize];
+        self.coinLabel.text = [NSString stringWithFormat:@"%lld", [UserData instance].coin];
     }
     return self;
 }
@@ -31,11 +33,21 @@
 }
 
 - (IBAction)yesButton:(id)sender {
+    if (![[RealEstateManager instance] canPurchaseHouseWithHouseLimit:self.data.houseData]) {
+        [[[MessageDialogView alloc] initWithHeaderText:VISITOR_REAL_ESTATE_FAILED_HOUSE_LIMIT_HEADER
+                                              bodyText:VISITOR_REAL_ESTATE_FAILED_HOUSE_LIMIT_MESSAGE] show];
+        return;
+    }
+    
+    if (![[RealEstateManager instance] canPurchaseHouseWithMoney:self.data.houseData]) {
+        [[[MessageDialogView alloc] initWithHeaderText:VISITOR_REAL_ESTATE_FAILED_MONEY_HEADER
+                                              bodyText:VISITOR_REAL_ESTATE_FAILED_MONEY_MESSAGE] show];
+        return;
+    }
+    
     if ([[RealEstateManager instance] purchaseHouse:self.data.houseData]) {
         [[[MessageDialogView alloc] initWithHeaderText:VISITOR_REAL_ESTATE_SUCCESS_HEADER bodyText:VISITOR_REAL_ESTATE_SUCCESS_MESSAGE] show];
         [self dismissed:sender];
-    } else {
-        [[[MessageDialogView alloc] initWithHeaderText:VISITOR_REAL_ESTATE_FAILED_HEADER bodyText:VISITOR_REAL_ESTATE_FAILED_MESSAGE] show];
     }
 }
 

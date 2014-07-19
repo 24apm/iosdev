@@ -11,14 +11,20 @@
 #define VISITOR_BUYER_SUCCESS_HEADER @"YAY!"
 #define VISITOR_BUYER_SUCCESS_MESSAGE @"You just sold your house!"
 
+#define VISITOR_BUYER_CONFIRM_HEADER @"Confirm"
+#define VISITOR_BUYER_CONFIRM_MESSAGE @"Are you sure you want to sell this house?"
+
 #define VISITOR_BUYER_FAILED_HEADER @"Uh oh!"
 #define VISITOR_BUYER_FAILED_MESSAGE @"You don't have anymore house to sell!"
 
 #define VISITOR_REAL_ESTATE_SUCCESS_HEADER @"YAY!"
 #define VISITOR_REAL_ESTATE_SUCCESS_MESSAGE @"You just purchased the house! Once tenants move in, you will start to earn rent!"
 
-#define VISITOR_REAL_ESTATE_FAILED_HEADER @"Uh oh!"
-#define VISITOR_REAL_ESTATE_FAILED_MESSAGE @"The house is too expensive!"
+#define VISITOR_REAL_ESTATE_FAILED_MONEY_HEADER @"Uh oh!"
+#define VISITOR_REAL_ESTATE_FAILED_MONEY_MESSAGE @"The house is too expensive!"
+
+#define VISITOR_REAL_ESTATE_FAILED_HOUSE_LIMIT_HEADER @"Uh oh!"
+#define VISITOR_REAL_ESTATE_FAILED_HOUSE_LIMIT_MESSAGE @"You have no more room for this house! You must sell one of your houses to make more room!"
 
 #define HOUSE_COLLECT_FAILED_HEADER @"Uh oh!"
 #define HOUSE_COLLECT_FAILED_MESSAGE @"Rent is not ready yet!"

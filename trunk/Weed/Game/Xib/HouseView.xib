@@ -8,6 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HouseView">
             <connections>
                 <outlet property="buttonView" destination="2fR-VH-gT0" id="Trg-oB-4wf"/>
+                <outlet property="coinImageView" destination="8FF-vU-AhB" id="3HW-td-EqK"/>
                 <outlet property="completedView" destination="JJa-yQ-86i" id="9nA-ET-bpl"/>
                 <outlet property="emptyView" destination="cqO-zX-9ce" id="Pjp-a8-KYe"/>
                 <outlet property="houseSizeLabel" destination="Sga-4V-T6o" id="s9S-PL-viR"/>
