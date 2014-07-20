@@ -15,4 +15,6 @@
 @property (strong, nonatomic) NSString *description;
 @property (strong, nonatomic) NSString *imagePath;
 
+@property (strong, nonatomic) NSString *messageBubble;
+
 @end

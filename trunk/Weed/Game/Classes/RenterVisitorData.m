@@ -16,6 +16,7 @@
     data.imagePath = @"FlappyBallIcon100x100.png";
     data.name = @"Some Renter";
     data.occupation = @"Student";
+    data.messageBubble = [NSString stringWithFormat:@"Looking for %d room(s)", data.renterData.count];
     return data;
 }
 

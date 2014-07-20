@@ -42,6 +42,7 @@
                                                 [[RealEstateManager instance] sellHouse:self.data.houseData buyerPrice:[self.data buyerPrice]];
                                                 [[[MessageDialogView alloc] initWithHeaderText:VISITOR_BUYER_SUCCESS_HEADER bodyText:VISITOR_BUYER_SUCCESS_MESSAGE] show];
                                                 [self dismissed:sender];
+                                                [self yesCallback];
 
                                             } noPressed:nil] show];
         

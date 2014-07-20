@@ -7,6 +7,7 @@
 //
 
 #import "XibView.h"
+#import "Utils.h"
 
 @interface XibDialogView : XibView
 

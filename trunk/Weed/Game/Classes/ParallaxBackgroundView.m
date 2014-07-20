@@ -13,28 +13,26 @@
 @implementation ParallaxBackgroundView
 
 - (void)setup {
-    for (VisitorView *visitor in self.visitorViews) {
-        visitor.hidden = YES;
-    }
     [self refresh];
 }
 
 - (void)refresh {
-    NSMutableArray *emptyVisitors = [NSMutableArray array];
-    for (VisitorView *visitor in self.visitorViews) {
-        if (visitor.data == nil) {
-            [emptyVisitors addObject:visitor];
-        }
-    }
-    if (emptyVisitors.count > 0) {
-        VisitorView *randVisitor = [emptyVisitors randomObject];
-        VisitorData *data = [[VisitorManager instance] nextVisitor];
-        [randVisitor setupWithData:data];
-        [randVisitor animateIn];
-    }
+    VisitorView *sampleVisitor = [self.visitorViews firstObject];
     
+    VisitorView *randVisitor = [[VisitorView alloc] init];
+    randVisitor.frame = sampleVisitor.frame;
+    VisitorData *data = [[VisitorManager instance] nextVisitor];
+    [randVisitor setupWithData:data];
+    [self addSubview:randVisitor];
+    [randVisitor generateTarget];
+    [randVisitor animateIn];
+    float randX = arc4random() % (int)randVisitor.superview.width;
+    float randY = arc4random() % (int)randVisitor.height;
+    randVisitor.center = CGPointMake(randX, sampleVisitor.center.y - randY);
+
     float delay = [Utils randBetweenMin:2 max:10];
     [self performSelector:@selector(refresh) withObject:nil afterDelay:delay];
 }
+
 
 @end

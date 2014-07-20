@@ -8,8 +8,9 @@
 
 #import "AnimatingDialogView.h"
 #import "RenterVisitorData.h"
+#import "ConfirmDialogView.h"
 
-@interface RenterVisitorDialogView : AnimatingDialogView
+@interface RenterVisitorDialogView : ConfirmDialogView
 
 @property (strong, nonatomic) RenterVisitorData *data;
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
@@ -18,8 +19,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *rentRateLabel;
 @property (strong, nonatomic) IBOutlet UILabel *requirementLabel;
 
-- (IBAction)noPressed:(id)sender;
-- (IBAction)yesButton:(id)sender;
 - (id)initWithData:(RenterVisitorData *)data;
 
 @end

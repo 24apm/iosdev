@@ -31,6 +31,7 @@
 - (IBAction)yesButton:(id)sender {
     [RealEstateManager instance].currentRenterData = self.data;
     [RealEstateManager instance].state = RealEstateManagerStateEdit;
+    [self yesCallback];
     [self dismissed:sender];
 }
 

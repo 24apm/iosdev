@@ -8,8 +8,9 @@
 
 #import "AnimatingDialogView.h"
 #import "BuyerVisitorData.h"
+#import "ConfirmDialogView.h"
 
-@interface BuyerVisitorDialogView : AnimatingDialogView
+@interface BuyerVisitorDialogView : ConfirmDialogView
 
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
 @property (strong, nonatomic) BuyerVisitorData *data;
@@ -20,8 +21,5 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *coinLabel;
 - (id)initWithData:(BuyerVisitorData *)data;
-
-- (IBAction)noPressed:(id)sender;
-- (IBAction)yesButton:(id)sender;
 
 @end

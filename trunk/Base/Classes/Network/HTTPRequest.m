@@ -11,6 +11,7 @@
 @interface HTTPRequest()
 
 @property (nonatomic, strong) NSString *requestURL;
+@property (nonatomic, strong) NSURLConnection *connection;
 
 @end
 
@@ -28,7 +29,7 @@
     self.responseData = [NSMutableData data];
     NSURLRequest *request = [NSURLRequest requestWithURL:
                              [NSURL URLWithString:self.requestURL]];
-    [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    self.connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {

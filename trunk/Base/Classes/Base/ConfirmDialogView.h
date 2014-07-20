@@ -7,8 +7,8 @@
 //
 
 #import "MessageDialogView.h"
+#import "Utils.h"
 
-typedef void (^BLOCK)(void);
 
 @interface ConfirmDialogView : MessageDialogView
 
@@ -16,6 +16,11 @@ typedef void (^BLOCK)(void);
                 bodyText:(NSString *)bodyText
               yesPressed:(BLOCK)yesPressed
                noPressed:(BLOCK)noPressed;
+
+- (IBAction)yesPressed:(id)sender;
+- (IBAction)noPressed:(id)sender;
+- (void)yesCallback;
+- (void)noCallback;
 
 @property (nonatomic, copy) BLOCK yesPressedSelector;
 @property (nonatomic, copy) BLOCK noPressedSelector;

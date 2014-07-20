@@ -48,6 +48,7 @@
     if ([[RealEstateManager instance] purchaseHouse:self.data.houseData]) {
         [[[MessageDialogView alloc] initWithHeaderText:VISITOR_REAL_ESTATE_SUCCESS_HEADER bodyText:VISITOR_REAL_ESTATE_SUCCESS_MESSAGE] show];
         [self dismissed:sender];
+        [self yesCallback];
     }
 }
 

@@ -23,17 +23,23 @@
 }
 
 - (IBAction)yesPressed:(id)sender {
-    if (self.yesPressedSelector) {
-        self.yesPressedSelector();
-    }
-    [self dismissed:self];
+    [self yesCallback];
 }
 
 - (IBAction)noPressed:(id)sender {
+    [self noCallback];
+}
+
+- (void)yesCallback {
+    if (self.yesPressedSelector) {
+        self.yesPressedSelector();
+    }
+}
+
+- (void)noCallback {
     if (self.noPressedSelector) {
         self.noPressedSelector();
     }
-    [self dismissed:self];
 }
 
 @end

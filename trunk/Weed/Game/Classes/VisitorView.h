@@ -8,11 +8,13 @@
 
 #import "XibView.h"
 #import "VisitorData.h"
+#import "UnitBaseView.h"
 
-@interface VisitorView : XibView
+@interface VisitorView : UnitBaseView
 
 @property (strong, nonatomic) VisitorData *data;
 @property (strong, nonatomic) IBOutlet UIButton *imageButton;
+@property (strong, nonatomic) IBOutlet UILabel *messageBubbleLabel;
 
 - (void)setupWithData:(VisitorData *)data;
 - (void)animateIn;

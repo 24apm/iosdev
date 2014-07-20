@@ -19,6 +19,8 @@
     data.name = @"Some Buyer";
     data.occupation = @"Doctor";
     data.priceModifier = [Utils randBetweenMin:0.5 max:1.2];
+    data.messageBubble = [NSString stringWithFormat:@"Offer for #%d house", data.houseData.id];
+
     return data;
 }
 

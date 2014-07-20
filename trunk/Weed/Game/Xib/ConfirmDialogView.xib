@@ -42,7 +42,7 @@
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
-                                <action selector="dismissed:" destination="-1" eventType="touchUpInside" id="bhB-EE-zxD"/>
+                                <action selector="dismissed:" destination="-1" eventType="touchUpInside" id="r2S-a0-vC3"/>
                                 <action selector="yesPressed:" destination="-1" eventType="touchUpInside" id="i7s-dd-fvn"/>
                             </connections>
                         </button>
@@ -54,6 +54,7 @@
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
+                                <action selector="dismissed:" destination="-1" eventType="touchUpInside" id="Xw8-WP-qMb"/>
                                 <action selector="noPressed:" destination="-1" eventType="touchUpInside" id="QDU-Tw-WFo"/>
                             </connections>
                         </button>

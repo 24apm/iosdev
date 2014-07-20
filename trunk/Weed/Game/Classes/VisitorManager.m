@@ -73,7 +73,7 @@
     return [RealEstateVisitorData dummyData];
 }
 
-- (XibDialogView *)dialogFor:(VisitorData *)visitorData {
+- (ConfirmDialogView *)dialogFor:(VisitorData *)visitorData {
     if ([visitorData isKindOfClass:[RealEstateVisitorData class]]) {
         return [[RealEstateDialogView alloc] initWithData:(RealEstateVisitorData *)visitorData];
     } else if ([visitorData isKindOfClass:[BuyerVisitorData class]]) {

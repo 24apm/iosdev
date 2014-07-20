@@ -8,8 +8,9 @@
 
 #import "AnimatingDialogView.h"
 #import "RealEstateVisitorData.h"
+#import "ConfirmDialogView.h"
 
-@interface RealEstateDialogView : AnimatingDialogView
+@interface RealEstateDialogView : ConfirmDialogView
 
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
 @property (strong, nonatomic) RealEstateVisitorData *data;

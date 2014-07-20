@@ -25,32 +25,24 @@
                     <rect key="frame" x="0.0" y="280" width="1000" height="200"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="NhT-Xv-GVj">
-                    <rect key="frame" x="45" y="130" width="200" height="200"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <state key="normal" backgroundImage="character_learning4.png">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blackholeentrance.png" id="JCL-f7-ftz">
                     <rect key="frame" x="760" y="0.0" width="240" height="480"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <view contentMode="scaleToFill" id="Fxj-PR-FnW" customClass="VisitorView">
-                    <rect key="frame" x="830" y="60" width="100" height="100"/>
+                <view hidden="YES" contentMode="scaleToFill" id="Fxj-PR-FnW" customClass="VisitorView">
+                    <rect key="frame" x="830" y="186" width="100" height="100"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
-                <view contentMode="scaleToFill" id="Spn-PH-nUZ" customClass="VisitorView">
+                <view hidden="YES" contentMode="scaleToFill" id="Spn-PH-nUZ" customClass="VisitorView">
                     <rect key="frame" x="830" y="190" width="100" height="100"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
-                <view contentMode="scaleToFill" id="hEa-lo-Rq2" customClass="VisitorView">
+                <view hidden="YES" contentMode="scaleToFill" id="hEa-lo-Rq2" customClass="VisitorView">
                     <rect key="frame" x="830" y="320" width="100" height="100"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -61,6 +53,5 @@
         <image name="background_tier1.png" width="400" height="400"/>
         <image name="background_tier5.png" width="400" height="400"/>
         <image name="blackholeentrance.png" width="768" height="1136"/>
-        <image name="character_learning4.png" width="900" height="900"/>
     </resources>
 </document>

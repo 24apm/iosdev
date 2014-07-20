@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "NSArray+Util.h"
 
+typedef void (^BLOCK)(void);
+
 #define DegreesToRadians(x)     (M_PI * (x) / 180.0)
 #define CURRENT_TIME [[NSDate date] timeIntervalSince1970]
 

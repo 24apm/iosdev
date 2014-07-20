@@ -24,6 +24,7 @@
     data.imagePath = @"ToiletRush120.png";
     data.name = @"Some Seller";
     data.occupation = @"Realtor";
+    data.messageBubble = [NSString stringWithFormat:@"Selling %d bedroom(s) house!", data.houseData.unitSize];
     return data;
 }
 

@@ -9,12 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "VisitorData.h"
 #import "XibDialogView.h"
+#import "ConfirmDialogView.h"
 
 @interface VisitorManager : NSObject
 
 + (VisitorManager *)instance;
 
 - (VisitorData *)nextVisitor;
-- (XibDialogView *)dialogFor:(VisitorData *)visitorData;
+- (ConfirmDialogView *)dialogFor:(VisitorData *)visitorData;
 
 @end
