@@ -92,7 +92,7 @@ NSString *const kHouseViewCollectedNotification = @"kHouseViewCollectedNotificat
             self.inProgressView.hidden = NO;
             percentage = CLAMP(percentage, 0, 1.f);
             [self.progressBar fillBar:percentage];
-            self.timeLabel.text = [Utils formatTime:timeLeft];
+            self.timeLabel.text = [Utils formatTime:timeLeft + 1];
             break;
         case HouseViewStateCompleted:
             self.completedView.hidden = NO;
