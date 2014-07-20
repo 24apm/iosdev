@@ -38,7 +38,7 @@
 
 - (void)refreshHouses {
     // clean out old houses
-    [self.scrollView.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
+    [self.houseViews makeObjectsPerformSelector: @selector(removeFromSuperview)];
     [self.houseViews removeAllObjects];
     
     NSArray *housesData = [UserData instance].houses;
