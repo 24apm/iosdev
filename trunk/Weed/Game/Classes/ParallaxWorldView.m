@@ -20,6 +20,7 @@
 @property (strong, nonatomic) NSMutableArray *parallaxViews;
 @property (strong, nonatomic) ParallaxBackgroundView *backgroundView;
 @property (strong, nonatomic) ParallaxForegroundView *foregroundView;
+@property (strong, nonatomic) NSTimer *userPassiveTimer;
 
 @end
 
@@ -36,7 +37,7 @@
 
         self.foregroundView = [[ParallaxForegroundView alloc] init];
         [self.containerView addSubview:self.foregroundView];
-
+        
         self.foregroundView.scrollView.delegate = self;
    
     }
@@ -55,6 +56,12 @@
     [[RealEstateManager instance] addObserver:self forKeyPath:@"state" options:NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew context:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animateCoinToHud:) name:kHouseViewCollectedNotification object:nil];
+    
+    self.userPassiveTimer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(updateUserPassive) userInfo:nil repeats:YES];
+}
+
+- (void)updateUserPassive {
+    [[UserData instance] addUserPassive];
 }
 
 - (void)animateCoinToHud:(NSNotification *)notification {

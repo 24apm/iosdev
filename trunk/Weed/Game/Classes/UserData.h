@@ -25,7 +25,12 @@ extern NSString *const UserDataHouseDataChangedNotification;
 
 - (void)resetUserData;
 
+- (void)addUserPassive;
+
 @property (nonatomic) long long coin;
+
+@property (nonatomic) int userPassive;
+
 @property (strong, nonatomic) NSMutableArray *houses;
 @property (nonatomic) int houseIndex;
 

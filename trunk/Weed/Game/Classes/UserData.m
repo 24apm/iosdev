@@ -73,12 +73,21 @@ NSString *const UserDataHouseDataChangedNotification = @"UserDataHouseDataChange
             [self.houses addObject:houseData];
         }
     }
+    
+    // User Passive
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"userPassive"] == nil) {
+        self.userPassive = 1;
+        [self saveUserCoin];
+    } else {
+        self.userPassive = [[[NSUserDefaults standardUserDefaults] objectForKey:@"userPassive"] integerValue];
+    }
 }
 
 - (void)resetUserData {
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"coin"];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"houses"];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"houseIndex"];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"userPassive"];
 
     [self setup];
     [[NSNotificationCenter defaultCenter] postNotificationName:UserDataHouseDataChangedNotification object:nil];
@@ -89,6 +98,15 @@ NSString *const UserDataHouseDataChangedNotification = @"UserDataHouseDataChange
     [defaults setObject:obj forKey:key];
     [defaults synchronize];
 }
+
+- (void)saveUserPassive{
+    if (self.userPassive <= 0) {
+        self.userPassive = 0;
+    }
+    
+    [self saveData:@(self.userPassive) forKey:@"userPassive"];
+}
+
 
 - (void)saveUserCoin {
     if (self.coin <= 0) {
@@ -157,6 +175,10 @@ NSString *const UserDataHouseDataChangedNotification = @"UserDataHouseDataChange
 
 - (HouseData *)randomUserHouse {
     return [self.houses randomObject];
+}
+
+- (void)addUserPassive {
+    [self incrementCoin:self.userPassive];
 }
 
 @end

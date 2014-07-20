@@ -213,6 +213,7 @@
 		D0E7FF6C18E69DEB00896C7B /* person.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E7FF6918E69DEB00896C7B /* person.png */; };
 		D0E7FF7918E6B02700896C7B /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E7FF7818E6B02700896C7B /* CoreImage.framework */; };
 		D0E981221968C871001A591F /* icon_lvl.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E981211968C871001A591F /* icon_lvl.png */; };
+		D0E9F3E5197B6EF400037FCE /* speech_bubble.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E9F3E4197B6EF400037FCE /* speech_bubble.png */; };
 		D0EA7EBE18D521C90095DEBD /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EA7EBA18D521C90095DEBD /* arrow.png */; };
 		D0EA7EBF18D521C90095DEBD /* shield.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EA7EBB18D521C90095DEBD /* shield.png */; };
 		D0EA7EC018D521C90095DEBD /* sword.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EA7EBC18D521C90095DEBD /* sword.png */; };
@@ -599,6 +600,7 @@
 		D0E7FF6918E69DEB00896C7B /* person.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = person.png; sourceTree = "<group>"; };
 		D0E7FF7818E6B02700896C7B /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		D0E981211968C871001A591F /* icon_lvl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_lvl.png; sourceTree = "<group>"; };
+		D0E9F3E4197B6EF400037FCE /* speech_bubble.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = speech_bubble.png; sourceTree = "<group>"; };
 		D0EA7EBA18D521C90095DEBD /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
 		D0EA7EBB18D521C90095DEBD /* shield.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shield.png; sourceTree = "<group>"; };
 		D0EA7EBC18D521C90095DEBD /* sword.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sword.png; sourceTree = "<group>"; };
@@ -1019,6 +1021,7 @@
 				D0EDA2A119667ADC00989065 /* icon_flylvlup.png */,
 				D0EDA2A219667ADC00989065 /* icon_hprecoverylvlup.png */,
 				D0EDA2A319667ADC00989065 /* icon_hplvlup.png */,
+				D0E9F3E4197B6EF400037FCE /* speech_bubble.png */,
 				D0880682196529E5001CC7A7 /* icon_instruction.png */,
 				D0BCA04C1963DC0B006E01B4 /* icon_flap.png */,
 				D0BCA04A1963DAB6006E01B4 /* icon_fly.png */,
@@ -1718,6 +1721,7 @@
 				D0F375DA18FA958000D32A10 /* tier0-2.png in Resources */,
 				D0E3300D191A04EA00FB5EB8 /* afterbomb2.png in Resources */,
 				D0E26B0119580CEB00314A7C /* character_learningfail.png in Resources */,
+				D0E9F3E5197B6EF400037FCE /* speech_bubble.png in Resources */,
 				D0EBC78519596F190023EF01 /* button_hold.png in Resources */,
 				D0880683196529E5001CC7A7 /* icon_instruction.png in Resources */,
 				D0EAB6F4195FF75800C90F0E /* saturn.png in Resources */,

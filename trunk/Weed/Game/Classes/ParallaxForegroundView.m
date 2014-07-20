@@ -60,6 +60,7 @@
 
     for (HouseView *house in self.houseViews) {
         house.y = self.height - self.houseFrame.size.height;
+//        house.y = self.center.y - self.height / 2.f;
         house.x = xOffset;
         xOffset += house.width + spacing;
     }

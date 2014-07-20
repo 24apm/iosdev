@@ -22,5 +22,4 @@
 - (long long)generateRenterDuration;
 - (long long)generateRenterRate:(int)count duration:(long long)duration;
 
-
 @end

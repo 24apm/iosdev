@@ -48,12 +48,13 @@
 }
 
 - (void)animateOut {
+
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(animateOut) object:nil];
     [UIView animateWithDuration:0.5f animations:^ {
         self.alpha = 0.f;
     } completion:^(BOOL completed) {
-        [self removeFromSuperview];
+        self.data = nil;
     }];
 }
 

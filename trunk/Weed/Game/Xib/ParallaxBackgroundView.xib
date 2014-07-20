@@ -8,50 +8,46 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ParallaxBackgroundView">
             <connections>
                 <outletCollection property="visitorViews" destination="Fxj-PR-FnW" id="VTU-GF-yo2"/>
-                <outletCollection property="visitorViews" destination="Spn-PH-nUZ" id="QZu-UY-7RI"/>
-                <outletCollection property="visitorViews" destination="hEa-lo-Rq2" id="ZHE-z2-jqI"/>
+                <outletCollection property="visitorViews" destination="DHb-JW-aEH" id="6pe-rl-4nE"/>
+                <outletCollection property="visitorViews" destination="GeB-mv-JVx" id="Lnc-hg-bwG"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="pPa-po-zC3">
-            <rect key="frame" x="0.0" y="0.0" width="1000" height="480"/>
+        <view userInteractionEnabled="NO" contentMode="scaleToFill" id="pPa-po-zC3">
+            <rect key="frame" x="0.0" y="0.0" width="720" height="480"/>
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_tier1.png" id="nNW-Ew-wYL">
-                    <rect key="frame" x="0.0" y="0.0" width="1000" height="480"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_tier5.png" id="3mk-1s-6Ju">
-                    <rect key="frame" x="0.0" y="280" width="1000" height="200"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bluebackground.png" id="jtz-nT-LJh">
+                    <rect key="frame" x="0.0" y="0.0" width="720" height="480"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blackholeentrance.png" id="JCL-f7-ftz">
-                    <rect key="frame" x="760" y="0.0" width="240" height="480"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                </imageView>
+                <view contentMode="scaleToFill" id="wmH-Eh-dl6" userLabel="ground">
+                    <rect key="frame" x="0.0" y="320" width="720" height="160"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <color key="backgroundColor" red="0.20434111960000001" green="0.69766422189999999" blue="0.32767189520000001" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
                 <view hidden="YES" contentMode="scaleToFill" id="Fxj-PR-FnW" customClass="VisitorView">
-                    <rect key="frame" x="830" y="186" width="100" height="100"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                    <rect key="frame" x="570" y="120" width="120" height="120"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
-                <view hidden="YES" contentMode="scaleToFill" id="Spn-PH-nUZ" customClass="VisitorView">
-                    <rect key="frame" x="830" y="190" width="100" height="100"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                <view hidden="YES" contentMode="scaleToFill" id="DHb-JW-aEH" customClass="VisitorView">
+                    <rect key="frame" x="570" y="240" width="120" height="120"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
-                <view hidden="YES" contentMode="scaleToFill" id="hEa-lo-Rq2" customClass="VisitorView">
-                    <rect key="frame" x="830" y="320" width="100" height="100"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                <view hidden="YES" contentMode="scaleToFill" id="GeB-mv-JVx" customClass="VisitorView">
+                    <rect key="frame" x="570" y="360" width="120" height="120"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>
     </objects>
     <resources>
-        <image name="background_tier1.png" width="400" height="400"/>
-        <image name="background_tier5.png" width="400" height="400"/>
-        <image name="blackholeentrance.png" width="768" height="1136"/>
+        <image name="bluebackground.png" width="1017" height="960"/>
     </resources>
 </document>
