@@ -60,7 +60,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" id="adB-uc-dJo">
-                    <rect key="frame" x="2" y="232" width="30" height="66"/>
+                    <rect key="frame" x="1.9999999917786697" y="232" width="30" height="66"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.89032605229591832" green="0.89032605229591832" blue="0.89032605229591832" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="30"/>

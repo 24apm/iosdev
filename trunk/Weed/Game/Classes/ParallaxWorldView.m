@@ -149,7 +149,7 @@
 }
 
 - (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
-    UIView *view = [self hitTest:self.backgroundView point:point withEvent:event];
+    UIView *view = [self hitTest:self point:point withEvent:event];
     if (view) {
         return view;
     } else {
@@ -170,22 +170,26 @@
 }
 
 - (UIView *)hitTest:(UIView *)someView point:(CGPoint)point withEvent:(UIEvent *)event {
-    if ([someView isKindOfClass:[UIButton class]]) {
-        CGPoint pointInButton = [someView convertPoint:point fromView:self];
-        if ([someView pointInside:pointInButton withEvent:event]) {
-            return someView;
+    
+    NSMutableArray *queue = [NSMutableArray array];
+    [queue addObject:someView];
+
+    UIView *rootView;
+    while (queue.count > 0) {
+        rootView = [queue firstObject];
+        [queue removeObjectAtIndex:0];
+
+        for (UIView *view in rootView.subviews) {
+            [queue addObject:view];
+        }
+        
+        if ([rootView isKindOfClass:[UIButton class]]) {
+            CGPoint pointInButton = [rootView convertPoint:point fromView:self];
+            if ([rootView pointInside:pointInButton withEvent:event]) {
+                return rootView;
+            }
         }
     }
-    
-    UIView *hitView;
-    
-    for (UIView *view in someView.subviews) {
-        hitView = [self hitTest:view point:point withEvent:event];
-        if (hitView) {
-            return hitView;
-        }
-    }
-    
     return nil;
 }
 

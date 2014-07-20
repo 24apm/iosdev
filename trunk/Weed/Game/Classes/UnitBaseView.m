@@ -109,7 +109,7 @@
     float targetRandX = arc4random() % (int)self.superview.width;
     self.targetPosition = CGPointMake(targetRandX, self.center.y);
 //    [self updateOrientation];
-    self.speed = [Utils randBetweenMin:0.8f max:1.2f];
+    self.speed = [Utils randBetweenMin:0.5f max:2.0f];
 }
 
 - (void)updateOrientation {
