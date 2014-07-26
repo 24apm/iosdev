@@ -1,0 +1,107 @@
+//
+//  NotificationManager.m
+//  NumberGame
+//
+//  Created by MacCoder on 2/10/14.
+//  Copyright (c) 2014 MacCoder. All rights reserved.
+//
+
+#import "NotificationManagerBase.h"
+#import "Utils.h"
+
+@implementation NotificationManagerBase
+
++ (NotificationManagerBase *)instance {
+    static NotificationManagerBase *instance = nil;
+    if (!instance) {
+        instance = [[NotificationManagerBase alloc] init];
+    }
+    return instance;
+}
+
+- (void)registerNotifications {
+    [[UIApplication sharedApplication] cancelAllLocalNotifications];
+    
+    NSArray *dates = [self notificationDates];
+    NSArray *bodyTexts = [self notificationBodyTexts];
+    NSArray *actionTexts = [self notificationActionTexts];
+
+    for (int i = 0; i < dates.count; i++) {
+        [self registerLocalNotification:[[dates objectAtIndex:i] intValue]
+                               bodyText:[bodyTexts randomObject]
+                             actionText:[actionTexts randomObject]];
+    }
+}
+
+- (NSArray *)notificationDates {
+    int min = 60;
+    int hour = 60 * min;
+    int day = 24 * hour;
+    int week = 7 * day;
+    int month = 30 * day;
+    
+    NSMutableArray *array = [NSMutableArray arrayWithObjects:
+            @(3 * hour),
+            @(8 * hour),
+            @(12 * hour),
+            @(1 * day),
+            @(2 * day),
+            @(3 * day),
+            @(1 * week),
+            @(2 * week),
+            @(3 * week),
+            @(1 * month),
+            nil];
+    
+    for (int i = 1; i < 12; i++) {
+        [array addObject:@((i * month) + (1 * week))];
+        [array addObject:@((i * month) + (2 * week))];
+        [array addObject:@((i * month) + (3 * week))];
+        [array addObject:@((i + 1) * month)];
+    }
+    return [NSArray arrayWithArray:array];
+}
+
+- (NSArray *)notificationBodyTexts{
+    return [NSArray arrayWithObjects:
+            @"^_____________^",
+            @"^_____________^Y",
+            @"@____@",
+            @"@o@",
+            @"^o^",
+            @"^.^Y",
+            @"@.@",
+            @"T_____T",
+            @"<.<",
+            @">.>",
+            @">_<",
+            @">____<",
+            @">.<",
+            @">_>",
+            @"<_<",
+            @"O_____O",
+            @"O_O",
+            @"O.O",
+            @"ToT",
+            @"Y^o^Y",
+            @"Y^_^Y",
+            nil];
+}
+
+- (NSArray *)notificationActionTexts {
+    return [NSArray arrayWithObjects:
+            @"Let's go!",
+            nil];
+}
+
+- (void)registerLocalNotification:(NSTimeInterval)sec bodyText:(NSString *)bodyText actionText:(NSString *)actionText{
+    UILocalNotification* localNotification = [[UILocalNotification alloc] init];
+    localNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow:sec];
+    localNotification.alertBody = bodyText;
+    localNotification.alertAction = actionText;
+    localNotification.timeZone = [NSTimeZone defaultTimeZone];
+    localNotification.applicationIconBadgeNumber = 1;
+    [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+}
+
+@end

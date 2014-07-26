@@ -1,0 +1,23 @@
+//
+//  UIView+ViewUtil.h
+//  Base
+//
+//  Created by MacCoder on 2/8/14.
+//  Copyright (c) 2014 MacCoder. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@interface UIView (ViewUtil)
+
+@property (nonatomic) float x;
+@property (nonatomic) float y;
+@property (nonatomic) float width;
+@property (nonatomic) float height;
+@property (nonatomic) CGSize size;
+@property (nonatomic) CGPoint origin;
+@property (nonatomic) CGPoint anchorPoint;
+
+- (UIImage *)blit;
+
+@end
