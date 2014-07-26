@@ -295,6 +295,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		D053173A1983BCD900B6D3C5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D097A6651983A09900A6EB7A /* BaseLibrary.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = D097A5721983A00D00A6EB7A;
+			remoteInfo = BaseLibrary;
+		};
 		D097A66A1983A09A00A6EB7A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D097A6651983A09900A6EB7A /* BaseLibrary.xcodeproj */;
@@ -1109,6 +1116,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				D053173B1983BCD900B6D3C5 /* PBXTargetDependency */,
 			);
 			name = Weed;
 			productName = Bird;
@@ -1492,6 +1500,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		D053173B1983BCD900B6D3C5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = BaseLibrary;
+			targetProxy = D053173A1983BCD900B6D3C5 /* PBXContainerItemProxy */;
+		};
 		D0E30EA818A376E300FFD3CE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D0E30E8018A376E300FFD3CE /* Weed */;
@@ -1597,6 +1610,11 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Game/Weed-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					$SOURCE_ROOT/include,
+				);
 				INFOPLIST_FILE = "Game/Weed-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1606,6 +1624,7 @@
 				PRODUCT_NAME = Weed;
 				PROVISIONING_PROFILE = "CB4532C1-7837-4A67-A8D6-32AA044757BD";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "$(inherited) /Users/15inch/Desktop/tut/iosdev/trunk/Base/Analytics/Library $SOURCE_ROOT/../BaseLibrary/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1620,6 +1639,11 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Game/Weed-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					$SOURCE_ROOT/include,
+				);
 				INFOPLIST_FILE = "Game/Weed-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1629,6 +1653,7 @@
 				PRODUCT_NAME = Weed;
 				PROVISIONING_PROFILE = "CB4532C1-7837-4A67-A8D6-32AA044757BD";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "$(inherited) /Users/15inch/Desktop/tut/iosdev/trunk/Base/Analytics/Library $SOURCE_ROOT/../BaseLibrary/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
