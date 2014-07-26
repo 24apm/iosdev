@@ -25,7 +25,7 @@ typedef enum {
 } Winner;
 
 @interface GameManager : NSObject
-
+  
 + (GameManager *)instance;
 + (NSArray *)characterImageForFlapping;
 + (NSString *)characterImageForFlying;
