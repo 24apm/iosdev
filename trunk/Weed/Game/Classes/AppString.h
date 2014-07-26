@@ -15,7 +15,7 @@
 #define VISITOR_BUYER_CONFIRM_MESSAGE @"Are you sure you want to sell this house?"
 
 #define VISITOR_BUYER_FAILED_HEADER @"Uh oh!"
-#define VISITOR_BUYER_FAILED_MESSAGE @"You don't have anymore house to sell!"
+#define VISITOR_BUYER_FAILED_MESSAGE @"Don't sell away your last house!"
 
 #define VISITOR_REAL_ESTATE_SUCCESS_HEADER @"YAY!"
 #define VISITOR_REAL_ESTATE_SUCCESS_MESSAGE @"You just purchased the house! Once tenants move in, you will start to earn rent!"
@@ -34,6 +34,9 @@
 
 #define HOUSE_RENTER_ADDED_HEADER @"YAY!"
 #define HOUSE_RENTER_ADDED_MESSAGE @"Your new tenant has moved into this house. You can now start to collect rent!!"
+
+#define HOUSE_RENTER_CONTRACT_EXPIRED_HEADER @"Oh no!"
+#define HOUSE_RENTER_CONTRACT_EXPIRED_MESSAGE @"Tenant has moved out of house #%d"
 
 #define HOUSE_RENTER_HOUSE_NOT_LARGE_ENOUGH_HEADER @"Uh oh!"
 #define HOUSE_RENTER_HOUSE_NOT_LARGE_ENOUGH_MESSAGE @"This house is not large enough!!"

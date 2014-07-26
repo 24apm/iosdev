@@ -21,7 +21,20 @@
         self.data = data;
         self.nameLabel.text = data.name;
         self.occupationLabel.text = data.occupation;
-        self.costLabel.text = [NSString stringWithFormat:@"%@ is bidding $%d for your %d bedroom house! You purchased it for $%lld. Are you willing to accept the offer?", data.name, [self.data buyerPrice], self.data.houseData.unitSize, data.houseData.cost];
+
+        long long houseCost = data.houseData.cost;
+        int offeredPrice = [self.data buyerPrice];
+        
+        self.roomLabel.text = [NSString stringWithFormat:@"%d", self.data.houseData.unitSize];
+        self.purchasedPriceLabel.text = [NSString stringWithFormat:@"$%lld", houseCost];
+        self.offeredPriceLabel.text = [NSString stringWithFormat:@"$%d", offeredPrice];
+
+        if (offeredPrice >= houseCost) {
+            self.offeredPriceLabel.textColor = [UIColor greenColor];
+        } else {
+            self.offeredPriceLabel.textColor = [UIColor redColor];
+        }
+        
         self.idLabel.text = [NSString stringWithFormat:@"%d", self.data.houseData.id];
         self.imageView.image = [UIImage imageNamed:[[RealEstateManager instance] imageForHouseUnitSize:data.houseData.unitSize]];
         self.coinLabel.text = [NSString stringWithFormat:@"%lld", [UserData instance].coin];
@@ -35,7 +48,7 @@
 }
 
 - (IBAction)yesButton:(id)sender {
-    if ([[RealEstateManager instance] canSellHouse:self.data.houseData]) {
+    if ([[RealEstateManager instance] canSellHouse]) {
         [[[ConfirmDialogView alloc] initWithHeaderText:VISITOR_BUYER_CONFIRM_HEADER
                                               bodyText:VISITOR_BUYER_CONFIRM_MESSAGE
                                             yesPressed:^ {

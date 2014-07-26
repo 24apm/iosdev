@@ -27,17 +27,16 @@
 - (IBAction)buttonPressed:(id)sender {
     if ([RealEstateManager instance].state == RealEstateManagerStateNormal) {
         ConfirmDialogView *dialog = [[VisitorManager instance] dialogFor:self.data];
-        dialog.yesPressedSelector = ^ {
-            [self animateOut];
-        };
+//        dialog.yesPressedSelector = ^ {
+//            [self animateOut];
+//        };
+        [self animateOut];
+
         [dialog show];
     }
 }
 
 - (void)animateIn {
-    self.state = UnitViewStateAnimateRunning;
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(step) name:DRAW_STEP_NOTIFICATION object:nil];
-
     self.hidden = NO;
     self.alpha = 0.f;
     [UIView animateWithDuration:0.5f animations:^ {
@@ -48,8 +47,6 @@
 }
 
 - (void)animateOut {
-
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(animateOut) object:nil];
     [UIView animateWithDuration:0.5f animations:^ {
         self.alpha = 0.f;

@@ -29,15 +29,15 @@
                     </connections>
                 </button>
                 <view userInteractionEnabled="NO" contentMode="scaleToFill" id="Lci-9e-Yc6" userLabel="Message Bubble">
-                    <rect key="frame" x="-93" y="-66" width="240" height="140"/>
+                    <rect key="frame" x="-153" y="-16" width="240" height="140"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="speech_bubble.png" id="8G0-1d-XpQ">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="makeitflappy_profile_stats_dialog.png" id="8G0-1d-XpQ">
                             <rect key="frame" x="20" y="20" width="200" height="100"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Blurp" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" id="Eid-uw-d14">
-                            <rect key="frame" x="43" y="41" width="160" height="30"/>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Blurp" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="6" id="Eid-uw-d14">
+                            <rect key="frame" x="43" y="31" width="160" height="60"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="17"/>
@@ -55,6 +55,6 @@
         </view>
     </objects>
     <resources>
-        <image name="speech_bubble.png" width="800" height="565"/>
+        <image name="makeitflappy_profile_stats_dialog.png" width="300" height="200"/>
     </resources>
 </document>

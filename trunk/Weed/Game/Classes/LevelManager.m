@@ -56,12 +56,12 @@
     float showNextLevelContentThreshold = [Utils randBetweenMin:0.f max:1.0f];
     int count = 0;
     int userMaxHouseSize = [[RealEstateManager instance] userMaxHouseSize];
-    if (showNextLevelContentThreshold > 0.5f) {
+    if (showNextLevelContentThreshold > 0.7f) {
         count = userMaxHouseSize + 1;
     } else {
         count = [Utils randBetweenMinInt:1 max:userMaxHouseSize];
     }
-    houseSize = CLAMP(count, 1, 9);
+    houseSize = CLAMP(count, 1, MAX_HOUSES);
     return houseSize;
 }
 
@@ -71,16 +71,7 @@
 
 #pragma mark - Renter
 - (int)generateRenterCount {
-    float showNextLevelContentThreshold = [Utils randBetweenMin:0.f max:1.0f];
-    int count = 0;
-    int userMaxHouseSize = [[RealEstateManager instance] userMaxHouseSize];
-    if (showNextLevelContentThreshold > 0.8f) {
-        count = userMaxHouseSize + 1;
-    } else {
-        count = [Utils randBetweenMinInt:1 max:userMaxHouseSize];
-    }
-    
-    return CLAMP(count, 1, 9);
+    return [Utils randBetweenMinInt:1 max:[[RealEstateManager instance] userMaxHouseSize]];
 }
 
 - (long long)generateRenterRate:(int)count duration:(long long)duration {
@@ -103,5 +94,14 @@
     long long duration = [[self.durationTypes objectAtIndex:durationTypeIndex] longLongValue];
     return duration;
 }
+
+- (int)generateRenterContractExpired {
+    return [Utils randBetweenMinInt:3 max:10];
+}
+
+- (NSString *)generateRenterImagePath {
+    return arc4random() % 2 == 0 ? @"male.png" : @"female.png";
+}
+
 
 @end

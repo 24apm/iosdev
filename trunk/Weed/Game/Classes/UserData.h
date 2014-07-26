@@ -9,6 +9,8 @@
 #import "GameConstants.h"
 #import "HouseData.h"
 
+#define MAX_HOUSES 9
+
 extern NSString *const UserDataHouseDataChangedNotification;
 
 @interface UserData : NSObject

@@ -10,7 +10,7 @@
 #import "VisitorData.h"
 #import "UnitBaseView.h"
 
-@interface VisitorView : UnitBaseView
+@interface VisitorView : XibView
 
 @property (strong, nonatomic) VisitorData *data;
 @property (strong, nonatomic) IBOutlet UIButton *imageButton;

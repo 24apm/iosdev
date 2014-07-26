@@ -17,6 +17,9 @@
     data.count = [[LevelManager instance] generateRenterCount];
     data.duration = [[LevelManager instance] generateRenterDuration];
     data.cost =  [[LevelManager instance] generateRenterRate:data.count duration:data.duration];
+    data.contractCurrentCount = 0;
+    data.contractExpired = [[LevelManager instance] generateRenterContractExpired];
+    data.imagePath = [[LevelManager instance] generateRenterImagePath];
     return data;
 }
 
@@ -30,7 +33,10 @@
     return @{@"duration": @(self.duration),
              @"cost": @(self.cost),
              @"count": @(self.count),
-             @"timeDue":@(self.timeDue)};
+             @"timeDue":@(self.timeDue),
+             @"contractExpired":@(self.contractExpired),
+             @"contractCurrentCount":@(self.contractCurrentCount),
+             @"imagePath":self.imagePath};
 }
 
 - (void)setupWithDict:(NSDictionary *)dict {
@@ -38,6 +44,9 @@
     self.cost = [[dict objectForKey:@"cost"] longLongValue];
     self.count = [[dict objectForKey:@"count"] integerValue];
     self.timeDue = [[dict objectForKey:@"timeDue"] doubleValue];
+    self.contractExpired = [[dict objectForKey:@"contractExpired"] integerValue];
+    self.contractCurrentCount = [[dict objectForKey:@"contractCurrentCount"] integerValue];
+    self.imagePath = [dict objectForKey:@"imagePath"];
 }
 
 @end

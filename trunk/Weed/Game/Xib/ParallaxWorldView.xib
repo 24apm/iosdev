@@ -7,11 +7,13 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ParallaxWorldView">
             <connections>
+                <outlet property="coinAlertButton" destination="ceb-dI-khQ" id="vkI-0f-89N"/>
                 <outlet property="coinGainLabel" destination="8at-Vf-qDF" id="69X-bC-98a"/>
                 <outlet property="coinImageView" destination="geW-WE-F9z" id="8KO-tK-pNq"/>
                 <outlet property="coinLabel" destination="ZND-tt-h4x" id="Gwt-Xw-3EF"/>
                 <outlet property="containerView" destination="e5H-Jy-pVg" id="aip-El-jpQ"/>
                 <outlet property="editModeMessage" destination="628-wW-aXF" id="A3k-rr-0VN"/>
+                <outlet property="editModeView" destination="19O-YK-bXE" id="cXx-l7-MtD"/>
                 <outlet property="exitEditModebutton" destination="oer-gU-Rl1" id="q7B-dx-Msw"/>
                 <outlet property="headerView" destination="VH2-xf-gH9" id="Otx-uw-tB6"/>
             </connections>
@@ -31,15 +33,26 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a house for this potential tenant!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="628-wW-aXF">
+                <view userInteractionEnabled="NO" contentMode="scaleToFill" id="19O-YK-bXE" userLabel="Message View">
                     <rect key="frame" x="60" y="46" width="200" height="164"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="19"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="makeitflappy_profile_stats_dialog.png" id="Axd-P6-YaG">
+                            <rect key="frame" x="-50" y="12" width="300" height="150"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a house for this potential tenant!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="628-wW-aXF">
+                            <rect key="frame" x="0.0" y="0.0" width="200" height="164"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="19"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="4M3-pj-X4o">
-                    <rect key="frame" x="5" y="160" width="60" height="30"/>
+                    <rect key="frame" x="5" y="445" width="60" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="RESET">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -60,7 +73,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" id="adB-uc-dJo">
-                    <rect key="frame" x="1.9999999917786697" y="232" width="30" height="66"/>
+                    <rect key="frame" x="2" y="232" width="30" height="66"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.89032605229591832" green="0.89032605229591832" blue="0.89032605229591832" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="30"/>
@@ -103,12 +116,25 @@
                             <rect key="frame" x="0.0" y="41" width="90" height="80"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="30"/>
-                            <color key="textColor" red="0.20434111960000001" green="0.69766422189999999" blue="0.32767189520000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textColor" red="0.14921427063701251" green="0.50968590561224492" blue="0.24608082547940208" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
+                            <color key="shadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <size key="shadowOffset" width="1" height="1"/>
                         </label>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ceb-dI-khQ" userLabel="Coin Alert Button">
+                    <rect key="frame" x="2" y="180" width="30" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal" backgroundImage="coin.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="scrollToFirstCollectableHouse:" destination="-1" eventType="touchUpInside" id="Ccz-AQ-VBV"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
@@ -117,5 +143,6 @@
     <resources>
         <image name="coin.png" width="256" height="256"/>
         <image name="cross.png" width="256" height="256"/>
+        <image name="makeitflappy_profile_stats_dialog.png" width="300" height="200"/>
     </resources>
 </document>

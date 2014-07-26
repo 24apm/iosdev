@@ -9,6 +9,7 @@
 #import "ParallaxForegroundView.h"
 #import "UserData.h"
 #import "NSArray+Util.h"
+#import "RealEstateManager.h"
 
 @interface ParallaxForegroundView()
 
@@ -22,7 +23,6 @@
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        self.houseViews = [NSMutableArray array];
         HouseView *house = [[HouseView alloc] init];
         self.houseFrame = house.frame;
     }
@@ -31,31 +31,37 @@
 
 - (void)setup {
     self.scrollView.contentSize = self.frame.size;
+    self.houseViews = [NSMutableArray array];
+    for (int i = 0; i < MAX_HOUSES; i++) {
+        HouseView *house = [[HouseView alloc] init];
+        [self.scrollView addSubview:house];
+        [self.houseViews addObject:house];
+    }
+    
     [self refreshHouses];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshHouses) name:UserDataHouseDataChangedNotification object:nil];
 }
 
 - (void)refreshHouses {
-    // clean out old houses
-    [self.houseViews makeObjectsPerformSelector: @selector(removeFromSuperview)];
-    [self.houseViews removeAllObjects];
-    
     NSArray *housesData = [UserData instance].houses;
     
-    HouseView *house;
-    for (HouseData *data in housesData) {
-        house = [[HouseView alloc] init];
-        [self.scrollView addSubview:house];
-        [self.houseViews addObject:house];
-        [house setupWithData:data];
+    for (int i = 0; i < self.houseViews.count; i++) {
+        HouseView *house = [self.houseViews objectAtIndex:i];
+        if (i < housesData.count) {
+            [house setupWithData:[housesData objectAtIndex:i]];
+            house.hidden = NO;
+        } else {
+            [house cleanedUp];
+            house.hidden = YES;
+        }
     }
     
     [self layoutHouses];
 }
 
 - (void)layoutHouses {
-    CGFloat spacing = self.houseFrame.size.width * 0.5f;
+    CGFloat spacing = 0;//self.houseFrame.size.width * 0.5f;
     CGFloat xOffset = spacing;
 
     for (HouseView *house in self.houseViews) {
@@ -66,15 +72,60 @@
     }
 }
 
-- (HouseView *)firstEmptyHouseUnder:(int)rooms {    
-    HouseView *firstEmptyHouse = [self.houseViews randomObject];
-    for (HouseView *house in self.houseViews) {
+- (HouseView *)firstEmptyHouseUnder:(int)rooms {
+    NSMutableArray *availableHouseViews = [self allVisibleHouses];
+    
+    // Look for first empty house AND fit room size
+    HouseView *firstEmptyHouse = nil;
+    for (HouseView *house in availableHouseViews) {
         if (!house.data.renterData && house.data.unitSize >= rooms) {
             firstEmptyHouse = house;
             break;
         }
     }
+    
+    // Look for fit room size
+    if (!firstEmptyHouse) {
+        for (HouseView *house in availableHouseViews) {
+            if (house.data.unitSize >= rooms) {
+                firstEmptyHouse = house;
+                break;
+            }
+        }
+    }
+    
+    // Put random one if nothing was found
+    if (!firstEmptyHouse) {
+        firstEmptyHouse = [availableHouseViews randomObject];
+    }
     return firstEmptyHouse;
+}
+
+- (HouseView *)firstCollectableHouse {
+    NSMutableArray *availableHouseViews = [self allVisibleHouses];
+    
+    // Look for first empty house AND fit room size
+    HouseView *firstEmptyHouse = nil;
+    for (HouseView *house in availableHouseViews) {
+        if ([[RealEstateManager instance] canCollectMoney:house.data]) {
+            firstEmptyHouse = house;
+            break;
+        }
+    }
+    if (!firstEmptyHouse) {
+        firstEmptyHouse = [availableHouseViews randomObject];
+    }
+    return firstEmptyHouse;
+}
+
+- (NSMutableArray *)allVisibleHouses {
+    NSMutableArray *availableHouseViews = [NSMutableArray array];
+    for (HouseView *house in self.houseViews) {
+        if (!house.hidden) {
+            [availableHouseViews addObject:house];
+        }
+    }
+    return availableHouseViews;
 }
 
 

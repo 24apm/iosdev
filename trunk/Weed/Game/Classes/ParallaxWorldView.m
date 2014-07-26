@@ -34,12 +34,12 @@
         self.backgroundView = [[ParallaxBackgroundView alloc] init];
         [self.parallaxViews addObject:self.backgroundView];
         [self.containerView addSubview:self.backgroundView];
-
+        
         self.foregroundView = [[ParallaxForegroundView alloc] init];
         [self.containerView addSubview:self.foregroundView];
         
         self.foregroundView.scrollView.delegate = self;
-   
+        
     }
     return self;
 }
@@ -49,8 +49,9 @@
     [self.foregroundView setup];
     self.coinLabel.text = [NSString stringWithFormat:@"%lld", [UserData instance].coin];
     self.coinGainLabel.alpha = 0.f;
-    self.editModeMessage.hidden = YES;
+    self.editModeView.hidden = YES;
     self.exitEditModebutton.hidden = YES;
+    self.coinAlertButton.hidden = YES;
     
     [[UserData instance] addObserver:self forKeyPath:@"coin" options:NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew context:nil];
     [[RealEstateManager instance] addObserver:self forKeyPath:@"state" options:NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew context:nil];
@@ -58,15 +59,31 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animateCoinToHud:) name:kHouseViewCollectedNotification object:nil];
     
     self.userPassiveTimer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(updateUserPassive) userInfo:nil repeats:YES];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refresh) name:DRAW_STEP_NOTIFICATION object:nil];
 }
 
 - (void)updateUserPassive {
+    // update passive
     [[UserData instance] addUserPassive];
+}
+
+- (void)refresh {
+    // pulse coin
+    if ([[RealEstateManager instance] canCollectAnyHouseMoney]) {
+        if (self.coinAlertButton.hidden) {
+            [self pulseCoinAlert];
+        }
+    } else {
+        if (!self.coinAlertButton.hidden) {
+            [self hideCoinAlert];
+        }
+    }
 }
 
 - (void)animateCoinToHud:(NSNotification *)notification {
     HouseView *houseView = notification.object;
-
+    
     UIImageView *tempCoinImageView = [[UIImageView alloc] init];
     tempCoinImageView.frame = houseView.coinImageView.frame;
     tempCoinImageView.image = houseView.coinImageView.image;
@@ -74,7 +91,7 @@
     
     CGPoint startPosition = [houseView.coinImageView.superview convertPoint:houseView.coinImageView.center toView:tempCoinImageView.superview];
     tempCoinImageView.center = startPosition;
-
+    
     CGPoint targetView = [self.coinImageView.superview convertPoint:self.coinImageView.center toView:tempCoinImageView.superview];
     
     self.coinGainLabel.text = [NSString stringWithFormat:@"+%lld", houseView.data.renterData.cost];
@@ -87,6 +104,33 @@
         [self animateCoinLabel];
     }];
     
+}
+
+- (void)hideCoinAlert {
+    self.coinAlertButton.hidden = YES;
+    [self.coinAlertButton.layer removeAllAnimations];
+}
+
+- (IBAction)scrollToFirstCollectableHouse:(id)sender {
+    HouseView *house = [self.foregroundView firstCollectableHouse];
+    [self scrollToHouse:house];
+}
+
+- (void)pulseCoinAlert {
+    self.coinAlertButton.hidden = NO;
+    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+    animation.duration = 0.25f;
+    animation.toValue = @(1.2f);
+    animation.autoreverses = YES;
+    animation.repeatCount = HUGE_VALF;
+    [self.coinAlertButton.layer addAnimation:animation forKey:@"popIn"];
+    
+    CABasicAnimation *alphaAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+    alphaAnimation.duration = 0.8f;
+    alphaAnimation.toValue = @(1);
+    alphaAnimation.repeatCount = HUGE_VALF;
+    alphaAnimation.autoreverses = YES;
+    [self.coinAlertButton.layer addAnimation:alphaAnimation forKey:@"alphaIn"];
 }
 
 - (void)animateCoinLabel {
@@ -103,6 +147,11 @@
     [self.coinGainLabel.layer addAnimation:alphaAnimation forKey:@"alphaIn"];
 }
 
+- (void)scrollToHouse:(HouseView *)houseView {
+    [self.foregroundView.scrollView scrollRectToVisible:CGRectMake(houseView.center.x - self.width * 0.5f, self.foregroundView.scrollView.y, self.foregroundView.scrollView.width, self.foregroundView.scrollView.height) animated:YES];
+    
+}
+
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     if ([keyPath isEqual:@"coin"]) {
         id newValue = [object valueForKeyPath:keyPath];
@@ -111,7 +160,7 @@
         RealEstateManagerState newValue = [[object valueForKeyPath:keyPath] integerValue];
         self.headerView.hidden = YES;
         self.exitEditModebutton.hidden = YES;
-        self.editModeMessage.hidden = YES;
+        self.editModeView.hidden = YES;
         
         switch (newValue) {
             case RealEstateManagerStateNormal:
@@ -119,17 +168,15 @@
                 break;
             case RealEstateManagerStateEdit: {
                 self.exitEditModebutton.hidden = NO;
-                self.editModeMessage.hidden = NO;
+                self.editModeView.hidden = NO;
                 RenterData *renterData = [RealEstateManager instance].currentRenterData.renterData;
                 HouseView *firstEmptyHouse = [self.foregroundView firstEmptyHouseUnder:renterData.count];
-                [self.foregroundView.scrollView scrollRectToVisible:CGRectMake(firstEmptyHouse.center.x - self.width * 0.5f, self.foregroundView.scrollView.y, self.foregroundView.scrollView.width, self.foregroundView.scrollView.height) animated:YES];
-                
+                [self scrollToHouse:firstEmptyHouse];
                 NSString *rentalRate = [NSString stringWithFormat:@"$%lld per %@", renterData.cost, [Utils formatTime:renterData.duration]];
-
+                
                 self.editModeMessage.text = [NSString stringWithFormat:EDIT_MODE_MESSAGE,
                                              [RealEstateManager instance].currentRenterData.renterData.count,
                                              rentalRate];
-
                 break;
             }
             default:
@@ -173,19 +220,19 @@
     CGRect rect = self.foregroundView.scrollView.frame;
     rect.origin.x = self.foregroundView.scrollView.contentSize.width - self.foregroundView.scrollView.frame.size.width;
     [self.foregroundView.scrollView scrollRectToVisible:rect animated:YES];
-
+    
 }
 
 - (UIView *)hitTest:(UIView *)someView point:(CGPoint)point withEvent:(UIEvent *)event {
     
     NSMutableArray *queue = [NSMutableArray array];
     [queue addObject:someView];
-
+    
     UIView *rootView;
     while (queue.count > 0) {
         rootView = [queue firstObject];
         [queue removeObjectAtIndex:0];
-
+        
         for (UIView *view in rootView.subviews) {
             [queue addObject:view];
         }

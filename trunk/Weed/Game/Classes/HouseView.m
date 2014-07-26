@@ -28,11 +28,12 @@ NSString *const kHouseViewCollectedNotification = @"kHouseViewCollectedNotificat
     self.data = data;
     
     [self refresh];
-    
-    self.idLabel.text = [NSString stringWithFormat:@"%d", self.data.id];
-    [self.buttonView setBackgroundImage:[UIImage imageNamed:[[RealEstateManager instance] imageForHouseUnitSize:data.unitSize]] forState:UIControlStateNormal];
-    self.rentalRateLabel.text = [NSString stringWithFormat:@"$%lld per %@", data.renterData.cost, [Utils formatTime:data.renterData.duration]];
 
+    self.idLabel.text = [NSString stringWithFormat:@"%d", self.data.id];
+    self.rentalRateLabel.text = [NSString stringWithFormat:@"$%lld per %@", data.renterData.cost, [Utils formatTime:data.renterData.duration]];
+    
+    self.personView.image = [UIImage imageNamed:
+    data.renterData.imagePath];
     self.houseSizeLabel.text = [NSString stringWithFormat:@"%d", data.unitSize];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refresh) name:DRAW_STEP_NOTIFICATION object:nil];
@@ -47,7 +48,9 @@ NSString *const kHouseViewCollectedNotification = @"kHouseViewCollectedNotificat
     self.inProgressView.hidden = YES;
     self.completedView.hidden = YES;
     self.occupiedView.hidden = YES;
-    
+    self.personView.hidden = YES;
+    [self.buttonView setBackgroundImage:[[RealEstateManager instance] imageForHouseUnitSize:self.data.unitSize tinted:NO] forState:UIControlStateNormal];
+
     switch ([RealEstateManager instance].state) {
         // NORMAL Mode
         case RealEstateManagerStateNormal:
@@ -84,18 +87,23 @@ NSString *const kHouseViewCollectedNotification = @"kHouseViewCollectedNotificat
     switch (self.state) {
         case HouseViewStateEmpty:
             self.emptyView.hidden = NO;
+            self.rentalRateLabel.text = @"Empty";
+            [self.buttonView setBackgroundImage:[[RealEstateManager instance] imageForHouseUnitSize:self.data.unitSize tinted:YES] forState:UIControlStateNormal];
             break;
         case HouseViewStateOccupied:
             self.occupiedView.hidden = NO;
+            self.personView.hidden = NO;
             break;
         case HouseViewStateInProgress:
             self.inProgressView.hidden = NO;
             percentage = CLAMP(percentage, 0, 1.f);
             [self.progressBar fillBar:percentage];
             self.timeLabel.text = [Utils formatTime:timeLeft + 1];
+            self.personView.hidden = NO;
             break;
         case HouseViewStateCompleted:
             self.completedView.hidden = NO;
+            self.personView.hidden = NO;
             break;
         default:
             break;
@@ -103,6 +111,8 @@ NSString *const kHouseViewCollectedNotification = @"kHouseViewCollectedNotificat
 }
 
 - (IBAction)buttonPressed:(id)sender {
+    if (self.hidden) return;
+    
     switch (self.state) {
         case HouseViewStateEmpty:
             if ([RealEstateManager instance].state == RealEstateManagerStateEdit) {
@@ -131,6 +141,11 @@ NSString *const kHouseViewCollectedNotification = @"kHouseViewCollectedNotificat
             if ([[RealEstateManager instance] canCollectMoney:self.data]) {
                 [[NSNotificationCenter defaultCenter] postNotificationName:kHouseViewCollectedNotification object:self];
                 [[RealEstateManager instance] collectMoney:self.data];
+                if ([[RealEstateManager instance] hasRenterContractExpired:self.data]) {
+                    [[[MessageDialogView alloc] initWithHeaderText:HOUSE_RENTER_CONTRACT_EXPIRED_HEADER
+                                                          bodyText:[NSString stringWithFormat:HOUSE_RENTER_CONTRACT_EXPIRED_MESSAGE,self.data.id]] show];
+                    [[RealEstateManager instance] removeRenter:self.data];
+                }
             }
             break;
         default:
@@ -149,9 +164,8 @@ NSString *const kHouseViewCollectedNotification = @"kHouseViewCollectedNotificat
     }
 }
 
-- (void)removeFromSuperview {
+- (void)cleanedUp {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    [super removeFromSuperview];
 }
 
 @end

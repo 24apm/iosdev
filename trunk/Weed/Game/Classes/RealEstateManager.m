@@ -10,7 +10,21 @@
 #import "UserData.h"
 #import "Utils.h"
 
+@interface RealEstateManager()
+
+@property (strong, nonatomic) NSMutableDictionary *cachedHouseImages;
+
+@end
+
 @implementation RealEstateManager
+
+- (id)init {
+    self = [super init];
+    if (self) {
+        self.cachedHouseImages = [NSMutableDictionary dictionary];
+    }
+    return self;
+}
 
 + (RealEstateManager *)instance {
     static RealEstateManager *instance = nil;
@@ -42,7 +56,7 @@
     }
 }
 
-- (BOOL)canSellHouse:(HouseData *)data {
+- (BOOL)canSellHouse {
     return [UserData instance].houses.count > 1;
 }
 
@@ -52,18 +66,33 @@
 }
 
 - (BOOL)canCollectMoney:(HouseData *)data {
-    return CURRENT_TIME > data.renterData.timeDue;
+    return data.renterData && CURRENT_TIME > data.renterData.timeDue;
 }
 
 - (BOOL)collectMoney:(HouseData *)data {
     if ([self canCollectMoney:data]) {
         data.renterData.timeDue = CURRENT_TIME + data.renterData.duration;
+        data.renterData.contractCurrentCount++;
         [[UserData instance] incrementCoin:data.renterData.cost];
         [[UserData instance] saveHouse];
         return YES;
     } else {
         return NO;
     }
+}
+
+- (BOOL)canCollectAnyHouseMoney {
+    NSArray *houses = [UserData instance].houses;
+    for (HouseData *house in houses) {
+        if ([self canCollectMoney:house]) {
+            return YES;
+        }
+    }
+    return NO;
+}
+
+- (BOOL)hasRenterContractExpired:(HouseData *)data {
+    return data.renterData.contractCurrentCount >= data.renterData.contractExpired;
 }
 
 - (BOOL)canAddRenter:(HouseData *)data {
@@ -91,7 +120,24 @@
 }
 
 - (NSString *)imageForHouseUnitSize:(int)unitSize {
-    return [NSString stringWithFormat:@"House%d.png",CLAMP((int)ceil((float)unitSize / 3.f), 1, 3)];
+    return [NSString stringWithFormat:@"House%d.png",unitSize];
+}
+
+- (UIImage *)imageForHouseUnitSize:(int)unitSize tinted:(BOOL)tinted {
+    NSString *key = [NSString stringWithFormat:@"%d_%d", unitSize, tinted];
+    
+    UIImage *image = [self.cachedHouseImages objectForKey:key];
+    if (!image) {
+        UIImage *originalImage = [UIImage imageNamed:[self imageForHouseUnitSize:unitSize]];
+        [self.cachedHouseImages setObject:originalImage forKey:[NSString stringWithFormat:@"%d_%d", unitSize, NO]];
+        
+        UIImage *tintedImage = [Utils imageNamed:originalImage withColor:[UIColor colorWithWhite:0.f alpha:0.5f] blendMode:kCGBlendModeMultiply];
+        
+        [self.cachedHouseImages setObject:tintedImage forKey:[NSString stringWithFormat:@"%d_%d", unitSize, YES]];
+        image = [self.cachedHouseImages objectForKey:key];
+    }
+    
+    return image;
 }
 
 - (int)userMaxHouseSize {

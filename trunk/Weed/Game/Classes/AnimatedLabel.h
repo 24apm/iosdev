@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 MacCoder. All rights reserved.
 //
 
-#import "XibView.h"
-#import "THLabel.h"
+#import "Base/XibView.h"
+#import "Base/THLabel.h"
 
 @interface AnimatedLabel : XibView
 

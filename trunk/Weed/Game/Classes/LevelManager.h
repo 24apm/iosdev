@@ -21,5 +21,7 @@
 - (int)generateRenterCount;
 - (long long)generateRenterDuration;
 - (long long)generateRenterRate:(int)count duration:(long long)duration;
+- (int)generateRenterContractExpired;
+- (NSString *)generateRenterImagePath;
 
 @end

@@ -35,6 +35,7 @@ extern NSString *const kHouseViewCollectedNotification;
 // completed
 @property (strong, nonatomic) IBOutlet UIView *completedView;
 @property (strong, nonatomic) IBOutlet UIImageView *coinImageView;
+@property (strong, nonatomic) IBOutlet UIView *rateView;
 
 @property (strong, nonatomic) IBOutlet UIButton *buttonView;
 @property (strong, nonatomic) IBOutlet UILabel *idLabel;
@@ -42,9 +43,11 @@ extern NSString *const kHouseViewCollectedNotification;
 @property (strong, nonatomic) HouseData *data;
 @property (strong, nonatomic) IBOutlet UILabel *rentalRateLabel;
 @property (strong, nonatomic) IBOutlet UILabel *houseSizeLabel;
+@property (strong, nonatomic) IBOutlet UIImageView *personView;
 
 @property (nonatomic) HouseViewState state;
 
 - (void)setupWithData:(HouseData *)data;
+- (void)cleanedUp;
 
 @end

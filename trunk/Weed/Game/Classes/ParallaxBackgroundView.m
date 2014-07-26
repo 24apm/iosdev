@@ -9,6 +9,9 @@
 #import "ParallaxBackgroundView.h"
 #import "VisitorManager.h"
 #import "Utils.h"
+#import "BuyerVisitorData.h"
+#import "RealEstateManager.h"
+#import "AppString.h"
 
 @implementation ParallaxBackgroundView
 
@@ -59,6 +62,13 @@
     [self performSelector:@selector(refresh) withObject:nil afterDelay:delay];
 }
 
+- (IBAction)buyerVisitorPressed:(id)sender {
+    if ([[RealEstateManager instance] canSellHouse]) {
+        [[[VisitorManager instance] dialogFor:[BuyerVisitorData dummyData]] show];
+    } else {
+        [[[MessageDialogView alloc] initWithHeaderText:VISITOR_BUYER_FAILED_HEADER bodyText:VISITOR_BUYER_FAILED_MESSAGE] show];
+    }
+}
 
 
 @end

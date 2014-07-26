@@ -78,6 +78,15 @@
 		D09124BA18CC55520050B59F /* blop.caf in Resources */ = {isa = PBXBuildFile; fileRef = D09124B718CC55520050B59F /* blop.caf */; };
 		D09124BB18CC55520050B59F /* tick.caf in Resources */ = {isa = PBXBuildFile; fileRef = D09124B818CC55520050B59F /* tick.caf */; };
 		D09124BC18CC55520050B59F /* whoosh.caf in Resources */ = {isa = PBXBuildFile; fileRef = D09124B918CC55520050B59F /* whoosh.caf */; };
+		D097A56119839F7800A6EB7A /* infoBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = D097A55819839F7800A6EB7A /* infoBackground.png */; };
+		D097A56219839F7800A6EB7A /* House4.png in Resources */ = {isa = PBXBuildFile; fileRef = D097A55919839F7800A6EB7A /* House4.png */; };
+		D097A56319839F7800A6EB7A /* House5.png in Resources */ = {isa = PBXBuildFile; fileRef = D097A55A19839F7800A6EB7A /* House5.png */; };
+		D097A56419839F7800A6EB7A /* House6.png in Resources */ = {isa = PBXBuildFile; fileRef = D097A55B19839F7800A6EB7A /* House6.png */; };
+		D097A56519839F7800A6EB7A /* House7.png in Resources */ = {isa = PBXBuildFile; fileRef = D097A55C19839F7800A6EB7A /* House7.png */; };
+		D097A56619839F7800A6EB7A /* House8.png in Resources */ = {isa = PBXBuildFile; fileRef = D097A55D19839F7800A6EB7A /* House8.png */; };
+		D097A56719839F7800A6EB7A /* House9.png in Resources */ = {isa = PBXBuildFile; fileRef = D097A55E19839F7800A6EB7A /* House9.png */; };
+		D097A56819839F7800A6EB7A /* female.png in Resources */ = {isa = PBXBuildFile; fileRef = D097A55F19839F7800A6EB7A /* female.png */; };
+		D097A56919839F7800A6EB7A /* male.png in Resources */ = {isa = PBXBuildFile; fileRef = D097A56019839F7800A6EB7A /* male.png */; };
 		D0A7956A195BCF6F009270DE /* tree.png in Resources */ = {isa = PBXBuildFile; fileRef = D0A79569195BCF6F009270DE /* tree.png */; };
 		D0A79571195BEDE2009270DE /* space.png in Resources */ = {isa = PBXBuildFile; fileRef = D0A7956B195BEDE2009270DE /* space.png */; };
 		D0A79572195BEDE2009270DE /* moon.png in Resources */ = {isa = PBXBuildFile; fileRef = D0A7956C195BEDE2009270DE /* moon.png */; };
@@ -169,8 +178,6 @@
 		D0E4B2CF18FD268A00260ABD /* main.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E4B2CD18FD268A00260ABD /* main.png */; };
 		D0E4BCCE18D95D9200132C17 /* Victory.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E4BCCD18D95D9200132C17 /* Victory.png */; };
 		D0E4BCD118D9743700132C17 /* bossknight.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E4BCCF18D9743700132C17 /* bossknight.png */; };
-		D0E4BCD218D9743700132C17 /* soldier.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E4BCD018D9743700132C17 /* soldier.png */; };
-		D0E4BCD418D97BB500132C17 /* swordattack.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E4BCD318D97BB500132C17 /* swordattack.png */; };
 		D0E4E2DD195ACCE7009DA44A /* ground.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E4E2DC195ACCE7009DA44A /* ground.png */; };
 		D0E52B2919271DAF0015CD5A /* btn_green_up.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E52B2719271DAF0015CD5A /* btn_green_up.png */; };
 		D0E52B2A19271DAF0015CD5A /* btn_green_down.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E52B2819271DAF0015CD5A /* btn_green_down.png */; };
@@ -455,6 +462,15 @@
 		D09124B718CC55520050B59F /* blop.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = blop.caf; sourceTree = "<group>"; };
 		D09124B818CC55520050B59F /* tick.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = tick.caf; sourceTree = "<group>"; };
 		D09124B918CC55520050B59F /* whoosh.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = whoosh.caf; sourceTree = "<group>"; };
+		D097A55819839F7800A6EB7A /* infoBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = infoBackground.png; sourceTree = "<group>"; };
+		D097A55919839F7800A6EB7A /* House4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = House4.png; sourceTree = "<group>"; };
+		D097A55A19839F7800A6EB7A /* House5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = House5.png; sourceTree = "<group>"; };
+		D097A55B19839F7800A6EB7A /* House6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = House6.png; sourceTree = "<group>"; };
+		D097A55C19839F7800A6EB7A /* House7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = House7.png; sourceTree = "<group>"; };
+		D097A55D19839F7800A6EB7A /* House8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = House8.png; sourceTree = "<group>"; };
+		D097A55E19839F7800A6EB7A /* House9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = House9.png; sourceTree = "<group>"; };
+		D097A55F19839F7800A6EB7A /* female.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = female.png; sourceTree = "<group>"; };
+		D097A56019839F7800A6EB7A /* male.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = male.png; sourceTree = "<group>"; };
 		D0A79569195BCF6F009270DE /* tree.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tree.png; sourceTree = "<group>"; };
 		D0A7956B195BEDE2009270DE /* space.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = space.png; sourceTree = "<group>"; };
 		D0A7956C195BEDE2009270DE /* moon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = moon.png; sourceTree = "<group>"; };
@@ -554,8 +570,6 @@
 		D0E4B2CD18FD268A00260ABD /* main.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = main.png; sourceTree = "<group>"; };
 		D0E4BCCD18D95D9200132C17 /* Victory.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Victory.png; sourceTree = "<group>"; };
 		D0E4BCCF18D9743700132C17 /* bossknight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bossknight.png; sourceTree = "<group>"; };
-		D0E4BCD018D9743700132C17 /* soldier.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = soldier.png; sourceTree = "<group>"; };
-		D0E4BCD318D97BB500132C17 /* swordattack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = swordattack.png; sourceTree = "<group>"; };
 		D0E4E2DC195ACCE7009DA44A /* ground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ground.png; sourceTree = "<group>"; };
 		D0E52B2719271DAF0015CD5A /* btn_green_up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_green_up.png; sourceTree = "<group>"; };
 		D0E52B2819271DAF0015CD5A /* btn_green_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_green_down.png; sourceTree = "<group>"; };
@@ -1019,6 +1033,15 @@
 				D052D9321969285D00D13DB0 /* pressandhold.png */,
 				D0E981211968C871001A591F /* icon_lvl.png */,
 				D0EDA2A119667ADC00989065 /* icon_flylvlup.png */,
+				D097A55819839F7800A6EB7A /* infoBackground.png */,
+				D097A55919839F7800A6EB7A /* House4.png */,
+				D097A55A19839F7800A6EB7A /* House5.png */,
+				D097A55B19839F7800A6EB7A /* House6.png */,
+				D097A55C19839F7800A6EB7A /* House7.png */,
+				D097A55D19839F7800A6EB7A /* House8.png */,
+				D097A55E19839F7800A6EB7A /* House9.png */,
+				D097A55F19839F7800A6EB7A /* female.png */,
+				D097A56019839F7800A6EB7A /* male.png */,
 				D0EDA2A219667ADC00989065 /* icon_hprecoverylvlup.png */,
 				D0EDA2A319667ADC00989065 /* icon_hplvlup.png */,
 				D0E9F3E4197B6EF400037FCE /* speech_bubble.png */,
@@ -1176,12 +1199,10 @@
 				D0E48B7618DD9964000EF905 /* toilet_main.png */,
 				D0DFFCCB18DC1687001424DF /* femalelose.png */,
 				D0DFFCCC18DC1687001424DF /* malelose.png */,
-				D0E4BCD318D97BB500132C17 /* swordattack.png */,
 				D0E4BCCF18D9743700132C17 /* bossknight.png */,
 				D0EDA2A7196686F600989065 /* makeitflappy_profile_stats_dialog.png */,
 				D0EDA2A8196686F600989065 /* makeitflappy_profile_stats_bar.png */,
 				D0E37D931978D98D00CAED14 /* for_sale_sign.png */,
-				D0E4BCD018D9743700132C17 /* soldier.png */,
 				D0E4BCCD18D95D9200132C17 /* Victory.png */,
 				D0EF3FD218D7FB1B00C50442 /* red_header.png */,
 				D0EA871F18DA7D0D0034B392 /* knight_main.png */,
@@ -1535,7 +1556,6 @@
 				D0F375D018FA896300D32A10 /* tier2.png in Resources */,
 				D0E3301C191A1A9F00FB5EB8 /* plus.png in Resources */,
 				D0F375E318FA981100D32A10 /* tier6-2.png in Resources */,
-				D0E4BCD418D97BB500132C17 /* swordattack.png in Resources */,
 				D0EAB6F2195FF75800C90F0E /* flappybackgroundart.png in Resources */,
 				D0F375E418FA981100D32A10 /* tier3-2.png in Resources */,
 				D07F14EF1969F3D5009B23CB /* ParallaxWorldView.xib in Resources */,
@@ -1579,11 +1599,13 @@
 				D0E1122F18C2EC6000808072 /* winningEffect.caf in Resources */,
 				D07F14EA1969F2CA009B23CB /* ParallaxForegroundView.xib in Resources */,
 				D0EADDEE18E769FC0016D2A0 /* ToiletRush120.png in Resources */,
+				D097A56519839F7800A6EB7A /* House7.png in Resources */,
 				D033855418EA9C22008D7861 /* pinkbackground.png in Resources */,
 				D0E26B0219580CEB00314A7C /* character_learningsuccess.png in Resources */,
 				D0BCA0471963D90B006E01B4 /* clock.png in Resources */,
 				D0A79571195BEDE2009270DE /* space.png in Resources */,
 				D0EAB6F0195FF75800C90F0E /* uranus.png in Resources */,
+				D097A56919839F7800A6EB7A /* male.png in Resources */,
 				D0E52B2E192724AC0015CD5A /* icon_tap.png in Resources */,
 				D0E4B2CB18FCEEE700260ABD /* playbutton.png in Resources */,
 				D0E37D961978DB3800CAED14 /* MessageDialogView.xib in Resources */,
@@ -1608,6 +1630,7 @@
 				D0E541CA191784D100DD7B1A /* iconbackground.png in Resources */,
 				D0E33003191A04EA00FB5EB8 /* disconnected.png in Resources */,
 				D0EDA2A419667ADC00989065 /* icon_flylvlup.png in Resources */,
+				D097A56119839F7800A6EB7A /* infoBackground.png in Resources */,
 				D0EDA2A619667ADC00989065 /* icon_hplvlup.png in Resources */,
 				D0A79576195BEDE2009270DE /* sky.png in Resources */,
 				D0E47C2818ED2F9F009CA771 /* refreshbutton.png in Resources */,
@@ -1620,7 +1643,6 @@
 				D0EADDEB18E769FC0016D2A0 /* FlappyBallIcon100x100.png in Resources */,
 				D0E47C2718ED2F9F009CA771 /* leaderboardbutton.png in Resources */,
 				D0DFFCCE18DC1687001424DF /* malelose.png in Resources */,
-				D0E4BCD218D9743700132C17 /* soldier.png in Resources */,
 				D0E6B6131956947700940695 /* character_flapup.png in Resources */,
 				D0EAB6EE195FF75800C90F0E /* galaxy.png in Resources */,
 				D0E37DA11978F0DB00CAED14 /* ConfirmDialogView.xib in Resources */,
@@ -1631,6 +1653,7 @@
 				D0E428FA193700B200210F85 /* icon_iap.png in Resources */,
 				D0EBC78619596F190023EF01 /* icon_wing in Resources */,
 				D0A79574195BEDE2009270DE /* mountain.png in Resources */,
+				D097A56619839F7800A6EB7A /* House8.png in Resources */,
 				D0EF3FD418D7FB1B00C50442 /* red_header.png in Resources */,
 				D0EBC78319596F190023EF01 /* button_default.png in Resources */,
 				D0F03566192C8D5000F0B0BE /* icon_bucket.png in Resources */,
@@ -1640,6 +1663,7 @@
 				D0E7FF6B18E69DEB00896C7B /* opendoor.png in Resources */,
 				D0E52B3819273C650015CD5A /* icon_weed.png in Resources */,
 				D0F375BF18FA457100D32A10 /* tier7.png in Resources */,
+				D097A56319839F7800A6EB7A /* House5.png in Resources */,
 				D0E4B2CE18FD268A00260ABD /* main2.png in Resources */,
 				D0EA871D18DA78DE0034B392 /* metal_clang.caf in Resources */,
 				D0BCA04D1963DC0B006E01B4 /* icon_flap.png in Resources */,
@@ -1665,6 +1689,7 @@
 				D0E541C219174EBB00DD7B1A /* button_powerup_bomb4.png in Resources */,
 				D0F375CC18FA7FA600D32A10 /* tier10.png in Resources */,
 				D0F375DB18FA958000D32A10 /* tier1-2.png in Resources */,
+				D097A56819839F7800A6EB7A /* female.png in Resources */,
 				D0E541C119174EBB00DD7B1A /* button_powerup_bomb2.png in Resources */,
 				D0E541C41917527700DD7B1A /* coin.png in Resources */,
 				D0F375DC18FA958000D32A10 /* tier12-2.png in Resources */,
@@ -1675,10 +1700,13 @@
 				D0EC757A18EBE5E40015AD4C /* cloud1.png in Resources */,
 				D0F375CA18FA78FA00D32A10 /* tier9.png in Resources */,
 				D0E4BCCE18D95D9200132C17 /* Victory.png in Resources */,
+				D097A56419839F7800A6EB7A /* House6.png in Resources */,
 				D0EDA2A9196686F600989065 /* makeitflappy_profile_stats_dialog.png in Resources */,
 				D0EFC638191B373A008A54C8 /* gloweffect.png in Resources */,
+				D097A56219839F7800A6EB7A /* House4.png in Resources */,
 				D0E47C2118ED29DC009CA771 /* singleplayerbutton.png in Resources */,
 				D0EFC656191B9083008A54C8 /* tier2coin.png in Resources */,
+				D097A56719839F7800A6EB7A /* House9.png in Resources */,
 				D0EA7EC418D52FE90095DEBD /* defend.png in Resources */,
 				D0EADDF118E769FC0016D2A0 /* PromoBannerView.xib in Resources */,
 				D051F12019732ABE000F98DC /* HouseView.xib in Resources */,

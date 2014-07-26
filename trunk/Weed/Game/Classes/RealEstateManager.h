@@ -24,13 +24,14 @@ typedef enum {
 - (BOOL)canPurchaseHouseWithMoney:(HouseData *)data;
 - (BOOL)canPurchaseHouseWithHouseLimit:(HouseData *)data;
 - (BOOL)purchaseHouse:(HouseData *)data;
-
-- (BOOL)canSellHouse:(HouseData *)data;
+- (BOOL)canSellHouse;
 - (void)sellHouse:(HouseData *)data buyerPrice:(double)buyerPrice;
 
 - (BOOL)canCollectMoney:(HouseData *)data;
 - (BOOL)collectMoney:(HouseData *)data;
+- (BOOL)canCollectAnyHouseMoney;
 
+- (BOOL)hasRenterContractExpired:(HouseData *)data;
 - (BOOL)canAddRenter:(HouseData *)data;
 - (BOOL)addRenter:(HouseData *)data;
 - (void)removeRenter:(HouseData *)data;
@@ -38,6 +39,7 @@ typedef enum {
 - (NSString *)imageForHouseUnitSize:(int)unitSize;
 
 - (int)userMaxHouseSize;
+- (UIImage *)imageForHouseUnitSize:(int)unitSize tinted:(BOOL)tinted;
 
 @property (nonatomic) RealEstateManagerState state;
 @property (strong, nonatomic) RenterVisitorData *currentRenterData;

@@ -16,6 +16,8 @@
 @property (strong, nonatomic) IBOutlet UILabel *coinLabel;
 @property (strong, nonatomic) IBOutlet UIView *headerView;
 @property (strong, nonatomic) IBOutlet UIButton *exitEditModebutton;
+@property (strong, nonatomic) IBOutlet UIButton *coinAlertButton;
+@property (strong, nonatomic) IBOutlet UIView *editModeView;
 @property (strong, nonatomic) IBOutlet UILabel *editModeMessage;
 
 - (void)setup;
