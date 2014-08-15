@@ -15,7 +15,7 @@
 + (BuyerVisitorData *)dummyData {
     BuyerVisitorData *data = [[BuyerVisitorData alloc] init];
     data.houseData = [[UserData instance] randomUserHouse];
-    data.imagePath = @"NGIcon120.png";
+    data.imagePath = @"bubble.png";
     data.name = @"Some Buyer";
     data.occupation = @"Doctor";
     data.priceModifier = [Utils randBetweenMin:0.5 max:1.2];

@@ -38,6 +38,9 @@
 #define HOUSE_RENTER_CONTRACT_EXPIRED_HEADER @"Oh no!"
 #define HOUSE_RENTER_CONTRACT_EXPIRED_MESSAGE @"Tenant has moved out of house #%d"
 
+#define HOUSE_FINDER @"HOUSE FINDER!"
+#define HOUSE_FINDER_MESSAGE @"Want to instantly go to the house and collet rent? Buy the power up forever for %d!"
+
 #define HOUSE_RENTER_HOUSE_NOT_LARGE_ENOUGH_HEADER @"Uh oh!"
 #define HOUSE_RENTER_HOUSE_NOT_LARGE_ENOUGH_MESSAGE @"This house is not large enough!!"
 

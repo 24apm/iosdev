@@ -14,6 +14,48 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "D097A5721983A00D00A6EB7A"
+               BuildableName = "libBaseLibrary.a"
+               BlueprintName = "BaseLibrary"
+               ReferencedContainer = "container:../BaseLibrary/BaseLibrary.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "D0E21AD2199DD20600358DE5"
+               BuildableName = "BaseLibraryResource.bundle"
+               BlueprintName = "BaseLibraryResource"
+               ReferencedContainer = "container:../BaseLibrary/BaseLibrary.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "D097A66E1983A0BD00A6EB7A"
+               BuildableName = "UniversalLib"
+               BlueprintName = "UniversalLib"
+               ReferencedContainer = "container:../BaseLibrary/BaseLibrary.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "D0E30E8018A376E300FFD3CE"
                BuildableName = "Weed.app"
                BlueprintName = "Weed"

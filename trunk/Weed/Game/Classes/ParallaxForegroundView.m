@@ -63,10 +63,10 @@
 - (void)layoutHouses {
     CGFloat spacing = 0;//self.houseFrame.size.width * 0.5f;
     CGFloat xOffset = spacing;
-
+    
     for (HouseView *house in self.houseViews) {
         house.y = self.height - self.houseFrame.size.height;
-//        house.y = self.center.y - self.height / 2.f;
+        //        house.y = self.center.y - self.height / 2.f;
         house.x = xOffset;
         xOffset += house.width + spacing;
     }
@@ -77,10 +77,12 @@
     
     // Look for first empty house AND fit room size
     HouseView *firstEmptyHouse = nil;
-    for (HouseView *house in availableHouseViews) {
-        if (!house.data.renterData && house.data.unitSize >= rooms) {
-            firstEmptyHouse = house;
-            break;
+    for (int i = rooms; i <= 9; i++) {
+        for (HouseView *house in availableHouseViews) {
+            if (!house.data.renterData && house.data.unitSize == i) {
+                firstEmptyHouse = house;
+                break;
+            }
         }
     }
     
@@ -116,6 +118,12 @@
         firstEmptyHouse = [availableHouseViews randomObject];
     }
     return firstEmptyHouse;
+}
+
+- (HouseView *)newestHouse {
+    NSMutableArray *availableHouseViews = [self allVisibleHouses];
+    HouseView *house = [availableHouseViews lastObject];
+    return house;
 }
 
 - (NSMutableArray *)allVisibleHouses {

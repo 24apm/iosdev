@@ -92,7 +92,7 @@
                     </connections>
                 </button>
                 <view userInteractionEnabled="NO" contentMode="scaleToFill" id="u4Y-6d-202" userLabel="HeaderView">
-                    <rect key="frame" x="0.0" y="2" width="137" height="34"/>
+                    <rect key="frame" x="0.0" y="1.9999999999999998" width="137" height="34"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="dOB-6c-rFY" userLabel="Coin Label">

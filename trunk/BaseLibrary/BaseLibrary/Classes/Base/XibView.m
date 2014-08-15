@@ -7,6 +7,7 @@
 //
 
 #import "XibView.h"
+#import "NSBundle+BundleUtil.h"
 
 @implementation XibView
 
@@ -64,7 +65,12 @@
         NSArray *nibObjects = nil;
         Class UINibClass = NSClassFromString(@"UINib");
         if (UINibClass && [UINibClass respondsToSelector:@selector(nibWithNibName:bundle:)]) {
-            UINib *nib = [UINibClass nibWithNibName:nibName bundle:nil];
+            UINib *nib;
+            if ([[NSBundle mainBundle] pathForResource:nibName ofType:@"nib"]) {
+                nib = [UINibClass nibWithNibName:nibName bundle:nil];
+            } else {
+                nib = [UINibClass nibWithNibName:nibName bundle:[NSBundle myLibraryResourcesBundle]];
+            }
             nibObjects = [nib instantiateWithOwner:self options:nil];
         } else {
             nibObjects = [[NSBundle mainBundle] loadNibNamed:nibName owner:self options:nil];

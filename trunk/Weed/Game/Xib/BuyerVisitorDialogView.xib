@@ -19,11 +19,11 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="yQZ-Rq-Wka">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="480.00000000000011"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="480.00000000000006"/>
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" id="7yz-Od-7ff">
-                    <rect key="frame" x="10" y="39.999999999999346" width="300" height="400"/>
+                    <rect key="frame" x="10" y="39.999999999558923" width="300" height="400"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.8741398454" green="0.80592191219999998" blue="0.73915219310000002" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
@@ -139,7 +139,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coin.png" id="Rfc-a6-QKo">
-                            <rect key="frame" x="10" y="1.9999999999999991" width="30.000000000000025" height="28"/>
+                            <rect key="frame" x="10" y="2" width="30.000000000000025" height="28.000000000000004"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
                         </imageView>
                     </subviews>

@@ -14,6 +14,7 @@
 #import "RealEstateManager.h"
 #import "MessageDialogView.h"
 #import "AppString.h"
+#import "AnimatedLabel.h"
 #import "ConfirmDialogView.h"
 
 NSString *const kHouseViewCollectedNotification = @"kHouseViewCollectedNotification";
@@ -28,15 +29,20 @@ NSString *const kHouseViewCollectedNotification = @"kHouseViewCollectedNotificat
     self.data = data;
     
     [self refresh];
-
+    
     self.idLabel.text = [NSString stringWithFormat:@"%d", self.data.id];
     self.rentalRateLabel.text = [NSString stringWithFormat:@"$%lld per %@", data.renterData.cost, [Utils formatTime:data.renterData.duration]];
     
     self.personView.image = [UIImage imageNamed:
-    data.renterData.imagePath];
+                             data.renterData.imagePath];
     self.houseSizeLabel.text = [NSString stringWithFormat:@"%d", data.unitSize];
-
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refresh) name:DRAW_STEP_NOTIFICATION object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(displayMessageForNewHouse) name:VIEWING_NEW_HOUSE_NOTIFICATION object:nil];
+}
+
+- (void)displayMessageForNewHouse {
+    [self animateLabelWithStringNew:@"Congratulation: New house"];
 }
 
 - (void)refresh {
@@ -50,9 +56,9 @@ NSString *const kHouseViewCollectedNotification = @"kHouseViewCollectedNotificat
     self.occupiedView.hidden = YES;
     self.personView.hidden = YES;
     [self.buttonView setBackgroundImage:[[RealEstateManager instance] imageForHouseUnitSize:self.data.unitSize tinted:NO] forState:UIControlStateNormal];
-
+    
     switch ([RealEstateManager instance].state) {
-        // NORMAL Mode
+            // NORMAL Mode
         case RealEstateManagerStateNormal:
             // has renter
             if (self.data.renterData) {
@@ -65,7 +71,7 @@ NSString *const kHouseViewCollectedNotification = @"kHouseViewCollectedNotificat
                 self.state = HouseViewStateEmpty;
             }
             break;
-        // EDIT Mode
+            // EDIT Mode
         case RealEstateManagerStateEdit:
             if ([RealEstateManager instance].currentRenterData.renterData.count > self.data.unitSize) {
                 self.alpha = 0.5f;
@@ -82,8 +88,8 @@ NSString *const kHouseViewCollectedNotification = @"kHouseViewCollectedNotificat
         default:
             break;
     }
-
-   
+    
+    
     switch (self.state) {
         case HouseViewStateEmpty:
             self.emptyView.hidden = NO;
@@ -117,6 +123,7 @@ NSString *const kHouseViewCollectedNotification = @"kHouseViewCollectedNotificat
         case HouseViewStateEmpty:
             if ([RealEstateManager instance].state == RealEstateManagerStateEdit) {
                 [self confirmAddRenter];
+                [self animateLabelWithStringIn:@"Moving in!"];
             } else {
                 [[[MessageDialogView alloc] initWithHeaderText:HOUSE_EMPTY_HEADER
                                                       bodyText:HOUSE_EMPTY_MESSAGE] show];
@@ -142,8 +149,7 @@ NSString *const kHouseViewCollectedNotification = @"kHouseViewCollectedNotificat
                 [[NSNotificationCenter defaultCenter] postNotificationName:kHouseViewCollectedNotification object:self];
                 [[RealEstateManager instance] collectMoney:self.data];
                 if ([[RealEstateManager instance] hasRenterContractExpired:self.data]) {
-                    [[[MessageDialogView alloc] initWithHeaderText:HOUSE_RENTER_CONTRACT_EXPIRED_HEADER
-                                                          bodyText:[NSString stringWithFormat:HOUSE_RENTER_CONTRACT_EXPIRED_MESSAGE,self.data.id]] show];
+                    [self animateLabelWithStringOut:@"Moving out!"];
                     [[RealEstateManager instance] removeRenter:self.data];
                 }
             }
@@ -153,11 +159,39 @@ NSString *const kHouseViewCollectedNotification = @"kHouseViewCollectedNotificat
     }
 }
 
+- (void)animateLabelWithStringIn:(NSString *)string {
+    [self.layer removeAllAnimations];
+    AnimatedLabel *label = [[AnimatedLabel alloc] init];
+    [self addSubview:label];
+    label.label.textColor = [UIColor colorWithRed:1.f green:1.f blue:0.f alpha:1.f];
+    label.label.text = string;
+    label.center = self.center;
+    [label animateSlow];
+}
+
+- (void)animateLabelWithStringOut:(NSString *)string {
+    [self.layer removeAllAnimations];
+    AnimatedLabel *label = [[AnimatedLabel alloc] init];
+    [self addSubview:label];
+    label.label.textColor = [UIColor colorWithRed:1.f green:0.f blue:0.f alpha:1.f];
+    label.label.text = string;
+    label.center = self.center;
+    [label animateSlow];
+}
+
+- (void)animateLabelWithStringNew:(NSString *)string {
+    [self.layer removeAllAnimations];
+    AnimatedLabel *label = [[AnimatedLabel alloc] init];
+    [self addSubview:label];
+    label.label.textColor = [UIColor colorWithRed:0.f green:0.f blue:1.f alpha:1.f];
+    label.label.text = string;
+    label.center = self.center;
+    [label animateSlow];
+}
+
 - (void)confirmAddRenter {
     if ([[RealEstateManager instance] addRenter:self.data]) {
         [RealEstateManager instance].state = RealEstateManagerStateNormal;
-        [[[MessageDialogView alloc] initWithHeaderText:HOUSE_RENTER_ADDED_HEADER
-                                              bodyText:HOUSE_RENTER_ADDED_MESSAGE] show];
     } else {
         [[[MessageDialogView alloc] initWithHeaderText:HOUSE_RENTER_HOUSE_NOT_LARGE_ENOUGH_HEADER
                                               bodyText:HOUSE_RENTER_HOUSE_NOT_LARGE_ENOUGH_MESSAGE] show];

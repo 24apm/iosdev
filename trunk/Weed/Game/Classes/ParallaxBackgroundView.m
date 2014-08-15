@@ -21,7 +21,7 @@
 
 //- (void)refresh {
 //    VisitorView *sampleVisitor = [self.visitorViews firstObject];
-//    
+//
 //    VisitorView *randVisitor = [[VisitorView alloc] init];
 //    randVisitor.frame = sampleVisitor.frame;
 //    VisitorData *data = [[VisitorManager instance] nextVisitor];
@@ -61,14 +61,5 @@
     float delay = [Utils randBetweenMin:1 max:5];
     [self performSelector:@selector(refresh) withObject:nil afterDelay:delay];
 }
-
-- (IBAction)buyerVisitorPressed:(id)sender {
-    if ([[RealEstateManager instance] canSellHouse]) {
-        [[[VisitorManager instance] dialogFor:[BuyerVisitorData dummyData]] show];
-    } else {
-        [[[MessageDialogView alloc] initWithHeaderText:VISITOR_BUYER_FAILED_HEADER bodyText:VISITOR_BUYER_FAILED_MESSAGE] show];
-    }
-}
-
 
 @end

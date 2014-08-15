@@ -17,5 +17,6 @@
 - (void)refreshHouses;
 - (HouseView *)firstEmptyHouseUnder:(int)rooms;
 - (HouseView *)firstCollectableHouse;
+- (HouseView *)newestHouse;
 
 @end

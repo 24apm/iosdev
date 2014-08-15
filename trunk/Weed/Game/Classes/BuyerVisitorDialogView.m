@@ -21,14 +21,14 @@
         self.data = data;
         self.nameLabel.text = data.name;
         self.occupationLabel.text = data.occupation;
-
+        
         long long houseCost = data.houseData.cost;
         int offeredPrice = [self.data buyerPrice];
         
         self.roomLabel.text = [NSString stringWithFormat:@"%d", self.data.houseData.unitSize];
         self.purchasedPriceLabel.text = [NSString stringWithFormat:@"$%lld", houseCost];
         self.offeredPriceLabel.text = [NSString stringWithFormat:@"$%d", offeredPrice];
-
+        
         if (offeredPrice >= houseCost) {
             self.offeredPriceLabel.textColor = [UIColor greenColor];
         } else {
@@ -38,7 +38,7 @@
         self.idLabel.text = [NSString stringWithFormat:@"%d", self.data.houseData.id];
         self.imageView.image = [UIImage imageNamed:[[RealEstateManager instance] imageForHouseUnitSize:data.houseData.unitSize]];
         self.coinLabel.text = [NSString stringWithFormat:@"%lld", [UserData instance].coin];
-
+        
     }
     return self;
 }
@@ -53,10 +53,11 @@
                                               bodyText:VISITOR_BUYER_CONFIRM_MESSAGE
                                             yesPressed:^ {
                                                 [[RealEstateManager instance] sellHouse:self.data.houseData buyerPrice:[self.data buyerPrice]];
-                                                [[[MessageDialogView alloc] initWithHeaderText:VISITOR_BUYER_SUCCESS_HEADER bodyText:VISITOR_BUYER_SUCCESS_MESSAGE] show];
+                                                //[[[MessageDialogView alloc] initWithHeaderText:VISITOR_BUYER_SUCCESS_HEADER bodyText:VISITOR_BUYER_SUCCESS_MESSAGE] show];
+                                                [[NSNotificationCenter defaultCenter]postNotificationName:SOLD_HOUSE_NOTIFICATION object:[NSString stringWithFormat:@"%d",[self.data buyerPrice]]];
                                                 [self dismissed:sender];
                                                 [self yesCallback];
-
+                                                
                                             } noPressed:nil] show];
         
     } else {

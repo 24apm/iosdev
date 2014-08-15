@@ -148,7 +148,7 @@
     [self.gameDataDictionary setObject:[NSMutableDictionary dictionary] forKey:[NSString stringWithFormat:@"%d", POWER_UP_TYPE_UPGRADE]];
     
     NSMutableDictionary *typeDictionary = [self.gameDataDictionary objectForKey:[NSString stringWithFormat:@"%d", POWER_UP_TYPE_UPGRADE]];
-    [typeDictionary setObject:[NSNumber numberWithInt:1] forKey:SHOP_ITEM_ID_UPGRADE_SPEED];
+    [typeDictionary setObject:[NSNumber numberWithInt:0] forKey:SHOP_ITEM_ID_UPGRADE_SPEED];
     [typeDictionary setObject:[NSNumber numberWithInt:0] forKey:SHOP_ITEM_ID_UPGRADE_FLAPPY];
     [typeDictionary setObject:[NSNumber numberWithInt:0] forKey:SHOP_ITEM_ID_UPGRADE_AIR];
     [self saveGameData];

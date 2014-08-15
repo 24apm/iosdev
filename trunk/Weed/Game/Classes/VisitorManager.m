@@ -36,7 +36,7 @@
     self = [super init];
     if (self) {
         self.visitors = [NSMutableArray array];
-//        [self generateVisitors];
+        //        [self generateVisitors];
     }
     return self;
 }
@@ -60,14 +60,14 @@
     int randVisitor = arc4random() % 2;
     switch (randVisitor) {
         case 0:
-            return [RealEstateVisitorData dummyData];
-            break;
+            //            return [RealEstateVisitorData dummyData];
+            //            break;
         case 1:
             return [RenterVisitorData dummyData];
             break;
-//        case 2:
-//            return [BuyerVisitorData dummyData];
-//            break;
+            //        case 2:
+            //            return [BuyerVisitorData dummyData];
+            //            break;
         default:
             break;
     }

@@ -32,6 +32,14 @@
 		D048A83F18ACAAAB00411DF9 /* facebook_share.png in Resources */ = {isa = PBXBuildFile; fileRef = D048A83D18ACAAAB00411DF9 /* facebook_share.png */; };
 		D048A84018ACAAAB00411DF9 /* twitter_share.png in Resources */ = {isa = PBXBuildFile; fileRef = D048A83E18ACAAAB00411DF9 /* twitter_share.png */; };
 		D048A84618ACB25200411DF9 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D048A84518ACB25200411DF9 /* GameKit.framework */; };
+		D04F6BA6199B15A8009930A7 /* ShopTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D04F6BA4199B15A8009930A7 /* ShopTableView.xib */; };
+		D04F6BA7199B15A8009930A7 /* ShopRowView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D04F6BA5199B15A8009930A7 /* ShopRowView.xib */; };
+		D04F6BAD199B15D4009930A7 /* ShopTableView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D04F6BAC199B15D4009930A7 /* ShopTableView~ipad.xib */; };
+		D04F6BAF199B15DD009930A7 /* ShopRowView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D04F6BAE199B15DD009930A7 /* ShopRowView~ipad.xib */; };
+		D04F6BB8199B1649009930A7 /* ShopItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D04F6BB1199B1649009930A7 /* ShopItem.m */; };
+		D04F6BB9199B1649009930A7 /* ShopManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D04F6BB3199B1649009930A7 /* ShopManager.m */; };
+		D04F6BBA199B1649009930A7 /* ShopRowView.m in Sources */ = {isa = PBXBuildFile; fileRef = D04F6BB5199B1649009930A7 /* ShopRowView.m */; };
+		D04F6BBB199B1649009930A7 /* ShopTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = D04F6BB7199B1649009930A7 /* ShopTableView.m */; };
 		D04F704218AA1197000509AA /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D04F704118AA1197000509AA /* Social.framework */; };
 		D051F11819731381000F98DC /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D051F11719731381000F98DC /* RootViewController.xib */; };
 		D051F11B197313A1000F98DC /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D051F11A197313A1000F98DC /* RootViewController.m */; };
@@ -108,6 +116,7 @@
 		D0E1123218C2ECF300808072 /* pop.caf in Resources */ = {isa = PBXBuildFile; fileRef = D0E1123018C2ECF300808072 /* pop.caf */; };
 		D0E1123318C2ECF300808072 /* ticking.caf in Resources */ = {isa = PBXBuildFile; fileRef = D0E1123118C2ECF300808072 /* ticking.caf */; };
 		D0E1123518C2EDF000808072 /* bling.caf in Resources */ = {isa = PBXBuildFile; fileRef = D0E1123418C2EDF000808072 /* bling.caf */; };
+		D0E21AFB199DD64800358DE5 /* BaseLibraryResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D0E21AFA199DD64800358DE5 /* BaseLibraryResource.bundle */; };
 		D0E21E88193AD87500E53E8B /* btn_gold_up.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E21E87193AD87500E53E8B /* btn_gold_up.png */; };
 		D0E26B0119580CEB00314A7C /* character_learningfail.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E26AFB19580CEA00314A7C /* character_learningfail.png */; };
 		D0E26B0219580CEB00314A7C /* character_learningsuccess.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E26AFC19580CEA00314A7C /* character_learningsuccess.png */; };
@@ -316,6 +325,13 @@
 			remoteGlobalIDString = D097A5831983A00D00A6EB7A;
 			remoteInfo = BaseLibraryTests;
 		};
+		D0E21AF9199DD64800358DE5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D097A6651983A09900A6EB7A /* BaseLibrary.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D0E21AD3199DD20600358DE5;
+			remoteInfo = BaseLibraryResource;
+		};
 		D0E30EA718A376E300FFD3CE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D0E30E7918A376E300FFD3CE /* Project object */;
@@ -368,6 +384,18 @@
 		D048A83D18ACAAAB00411DF9 /* facebook_share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebook_share.png; sourceTree = "<group>"; };
 		D048A83E18ACAAAB00411DF9 /* twitter_share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twitter_share.png; sourceTree = "<group>"; };
 		D048A84518ACB25200411DF9 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		D04F6BA4199B15A8009930A7 /* ShopTableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShopTableView.xib; sourceTree = "<group>"; };
+		D04F6BA5199B15A8009930A7 /* ShopRowView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShopRowView.xib; sourceTree = "<group>"; };
+		D04F6BAC199B15D4009930A7 /* ShopTableView~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ShopTableView~ipad.xib"; sourceTree = "<group>"; };
+		D04F6BAE199B15DD009930A7 /* ShopRowView~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ShopRowView~ipad.xib"; sourceTree = "<group>"; };
+		D04F6BB0199B1649009930A7 /* ShopItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopItem.h; sourceTree = "<group>"; };
+		D04F6BB1199B1649009930A7 /* ShopItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopItem.m; sourceTree = "<group>"; };
+		D04F6BB2199B1649009930A7 /* ShopManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopManager.h; sourceTree = "<group>"; };
+		D04F6BB3199B1649009930A7 /* ShopManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopManager.m; sourceTree = "<group>"; };
+		D04F6BB4199B1649009930A7 /* ShopRowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopRowView.h; sourceTree = "<group>"; };
+		D04F6BB5199B1649009930A7 /* ShopRowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopRowView.m; sourceTree = "<group>"; };
+		D04F6BB6199B1649009930A7 /* ShopTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopTableView.h; sourceTree = "<group>"; };
+		D04F6BB7199B1649009930A7 /* ShopTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopTableView.m; sourceTree = "<group>"; };
 		D04F704118AA1197000509AA /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		D051F11719731381000F98DC /* RootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootViewController.xib; sourceTree = "<group>"; };
 		D051F119197313A1000F98DC /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
@@ -716,6 +744,14 @@
 		D03845A9191EB12D00265FE1 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				D04F6BB0199B1649009930A7 /* ShopItem.h */,
+				D04F6BB1199B1649009930A7 /* ShopItem.m */,
+				D04F6BB2199B1649009930A7 /* ShopManager.h */,
+				D04F6BB3199B1649009930A7 /* ShopManager.m */,
+				D04F6BB4199B1649009930A7 /* ShopRowView.h */,
+				D04F6BB5199B1649009930A7 /* ShopRowView.m */,
+				D04F6BB6199B1649009930A7 /* ShopTableView.h */,
+				D04F6BB7199B1649009930A7 /* ShopTableView.m */,
 				D0E52B3D192744610015CD5A /* ParticleView.h */,
 				D0E5501A197A20DF000DCC39 /* LevelManager.h */,
 				D0E5501B197A20DF000DCC39 /* LevelManager.m */,
@@ -793,6 +829,10 @@
 		D06181DE193453F5001740D4 /* Xib */ = {
 			isa = PBXGroup;
 			children = (
+				D04F6BAE199B15DD009930A7 /* ShopRowView~ipad.xib */,
+				D04F6BAC199B15D4009930A7 /* ShopTableView~ipad.xib */,
+				D04F6BA4199B15A8009930A7 /* ShopTableView.xib */,
+				D04F6BA5199B15A8009930A7 /* ShopRowView.xib */,
 				D088068419652ABD001CC7A7 /* InstructionView.xib */,
 				D06181DF193453F5001740D4 /* AnimatedLabel.xib */,
 				D06181E3193453F5001740D4 /* ErrorDialogView.xib */,
@@ -816,6 +856,7 @@
 			children = (
 				D097A66B1983A09A00A6EB7A /* libBaseLibrary.a */,
 				D097A66D1983A09A00A6EB7A /* BaseLibraryTests.xctest */,
+				D0E21AFA199DD64800358DE5 /* BaseLibraryResource.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1198,6 +1239,13 @@
 			remoteRef = D097A66C1983A09A00A6EB7A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		D0E21AFA199DD64800358DE5 /* BaseLibraryResource.bundle */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = BaseLibraryResource.bundle;
+			remoteRef = D0E21AF9199DD64800358DE5 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -1205,6 +1253,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0E21AFB199DD64800358DE5 /* BaseLibraryResource.bundle in Resources */,
 				D0E42904193722EF00210F85 /* icon_iap_x2.png in Resources */,
 				D0F375C418FA457100D32A10 /* tier3.png in Resources */,
 				D0EA871C18DA78DE0034B392 /* kick.caf in Resources */,
@@ -1286,6 +1335,7 @@
 				D0E33003191A04EA00FB5EB8 /* disconnected.png in Resources */,
 				D0EDA2A419667ADC00989065 /* icon_flylvlup.png in Resources */,
 				D097A56119839F7800A6EB7A /* infoBackground.png in Resources */,
+				D04F6BAF199B15DD009930A7 /* ShopRowView~ipad.xib in Resources */,
 				D0EDA2A619667ADC00989065 /* icon_hplvlup.png in Resources */,
 				D0A79576195BEDE2009270DE /* sky.png in Resources */,
 				D0E47C2818ED2F9F009CA771 /* refreshbutton.png in Resources */,
@@ -1318,6 +1368,8 @@
 				D0F375BF18FA457100D32A10 /* tier7.png in Resources */,
 				D097A56319839F7800A6EB7A /* House5.png in Resources */,
 				D0E4B2CE18FD268A00260ABD /* main2.png in Resources */,
+				D04F6BA7199B15A8009930A7 /* ShopRowView.xib in Resources */,
+				D04F6BA6199B15A8009930A7 /* ShopTableView.xib in Resources */,
 				D0EA871D18DA78DE0034B392 /* metal_clang.caf in Resources */,
 				D0BCA04D1963DC0B006E01B4 /* icon_flap.png in Resources */,
 				D051F1491973E5C3000F98DC /* BuyerVisitorDialogView.xib in Resources */,
@@ -1370,6 +1422,7 @@
 				D0EA7EC518D52FE90095DEBD /* attack.png in Resources */,
 				D0E981221968C871001A591F /* icon_lvl.png in Resources */,
 				D0E6B6101956947700940695 /* character_falling.png in Resources */,
+				D04F6BAD199B15D4009930A7 /* ShopTableView~ipad.xib in Resources */,
 				D0E47C2318ED29EA009CA771 /* vsbutton.png in Resources */,
 				D033855318EA9C22008D7861 /* bluebackground.png in Resources */,
 				D03D41591974EE4000D6823C /* RenterVisitorDialogView.xib in Resources */,
@@ -1456,6 +1509,7 @@
 				D0384617191EB12E00265FE1 /* AnimatedLabel.m in Sources */,
 				D088068A19652C56001CC7A7 /* InstructionView.m in Sources */,
 				D0E5501C197A20DF000DCC39 /* LevelManager.m in Sources */,
+				D04F6BB8199B1649009930A7 /* ShopItem.m in Sources */,
 				D051F11B197313A1000F98DC /* RootViewController.m in Sources */,
 				D038461A191EB12E00265FE1 /* CoinIAPHelper.m in Sources */,
 				D051F1391973AF76000F98DC /* RealEstateDialogView.m in Sources */,
@@ -1471,6 +1525,7 @@
 				D03D41541974ED6600D6823C /* RenterVisitorData.m in Sources */,
 				D038461B191EB12E00265FE1 /* CoinMenuView.m in Sources */,
 				D07F14ED1969F2D8009B23CB /* ParallaxForegroundView.m in Sources */,
+				D04F6BB9199B1649009930A7 /* ShopManager.m in Sources */,
 				D03D41571974EE3700D6823C /* RenterVisitorDialogView.m in Sources */,
 				D0E3461519220DFA0081797A /* GameManager.m in Sources */,
 				D051F12E1973A7D6000F98DC /* VisitorData.m in Sources */,
@@ -1483,8 +1538,10 @@
 				D0384616191EB12E00265FE1 /* AppDelegate.m in Sources */,
 				D07F14E81969F06E009B23CB /* ParallaxBackgroundView.m in Sources */,
 				D0384621191EB12E00265FE1 /* GameCenterHelper.m in Sources */,
+				D04F6BBB199B1649009930A7 /* ShopTableView.m in Sources */,
 				D0384630191EB12E00265FE1 /* NotificationManager.m in Sources */,
 				D0384633191EB12E00265FE1 /* ResultView.m in Sources */,
+				D04F6BBA199B1649009930A7 /* ShopRowView.m in Sources */,
 				D051F1441973E587000F98DC /* BuyerVisitorData.m in Sources */,
 				D051F1311973A7F9000F98DC /* RealEstateVisitorData.m in Sources */,
 			);
@@ -1605,7 +1662,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				BUNDLE_IDENTIFIER = com.jeffrwan.weed;
+				BUNDLE_IDENTIFIER = com.jeffrwan.renthouse;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Jeffrey Wan (MT34DA8UCA)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1616,10 +1673,7 @@
 					$SOURCE_ROOT/include,
 				);
 				INFOPLIST_FILE = "Game/Weed-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					/Users/15inch/Desktop/tut/iosdev/trunk/Base/Analytics/Library,
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = Weed;
 				PROVISIONING_PROFILE = "CB4532C1-7837-4A67-A8D6-32AA044757BD";
@@ -1634,7 +1688,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				BUNDLE_IDENTIFIER = com.jeffrwan.weed;
+				BUNDLE_IDENTIFIER = com.jeffrwan.renthouse;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Jeffrey Wan (MT34DA8UCA)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1645,10 +1699,7 @@
 					$SOURCE_ROOT/include,
 				);
 				INFOPLIST_FILE = "Game/Weed-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					/Users/15inch/Desktop/tut/iosdev/trunk/Base/Analytics/Library,
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = Weed;
 				PROVISIONING_PROFILE = "CB4532C1-7837-4A67-A8D6-32AA044757BD";

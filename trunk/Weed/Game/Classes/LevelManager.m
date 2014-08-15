@@ -96,7 +96,7 @@
 }
 
 - (int)generateRenterContractExpired {
-    return [Utils randBetweenMinInt:3 max:10];
+    return [Utils randBetweenMinInt:1 max:1];
 }
 
 - (NSString *)generateRenterImagePath {

@@ -21,7 +21,7 @@
 + (RealEstateVisitorData *)dummyData {
     RealEstateVisitorData *data = [[RealEstateVisitorData alloc] init];
     data.houseData = [HouseData dummyData];
-    data.imagePath = @"ToiletRush120.png";
+    data.imagePath = @"bubble.png";
     data.name = @"Some Seller";
     data.occupation = @"Realtor";
     data.messageBubble = [NSString stringWithFormat:@"Selling %d bedroom(s) house!", data.houseData.unitSize];

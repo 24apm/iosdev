@@ -14,6 +14,13 @@
 #import "UserData.h"
 #import "RealEstateManager.h"
 #import "AppString.h"
+#import "MessageDialogView.h"
+#import "VisitorManager.h"
+#import "BuyerVisitorData.h"
+#import "ErrorDialogView.h"
+#import "CoinIAPHelper.h"
+#import "ShopTableView.h"
+#import "AnimatedLabel.h"
 
 @interface ParallaxWorldView()
 
@@ -21,6 +28,7 @@
 @property (strong, nonatomic) ParallaxBackgroundView *backgroundView;
 @property (strong, nonatomic) ParallaxForegroundView *foregroundView;
 @property (strong, nonatomic) NSTimer *userPassiveTimer;
+@property (nonatomic, retain) ShopTableView *shopTableView;
 
 @end
 
@@ -57,6 +65,10 @@
     [[RealEstateManager instance] addObserver:self forKeyPath:@"state" options:NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew context:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animateCoinToHud:) name:kHouseViewCollectedNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(scrollToNewHouse) name:PURCHASED_HOUSE_NOTIFICATION object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(soldHouse:) name:SOLD_HOUSE_NOTIFICATION object:nil];
     
     self.userPassiveTimer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(updateUserPassive) userInfo:nil repeats:YES];
     
@@ -112,8 +124,22 @@
 }
 
 - (IBAction)scrollToFirstCollectableHouse:(id)sender {
-    HouseView *house = [self.foregroundView firstCollectableHouse];
+    // [[[MessageDialogView alloc] initWithHeaderText:HOUSE_FINDER
+    //                                     bodyText:[NSString stringWithFormat:HOUSE_FINDER_MESSAGE,10]] show];
+    //    HouseView *house = [self.foregroundView firstCollectableHouse];
+    //    [self scrollToHouse:house];
+}
+
+- (void)scrollToNewHouse {
+    HouseView *house = [self.foregroundView newestHouse];
     [self scrollToHouse:house];
+    [[NSNotificationCenter defaultCenter] postNotificationName:VIEWING_NEW_HOUSE_NOTIFICATION object:nil];
+}
+
+- (void)soldHouse:(NSNotification *)notification {
+    NSString *houseCost = notification.object;
+    self.coinGainLabel.text = houseCost;
+    [self animateCoinLabel];
 }
 
 - (void)pulseCoinAlert {
@@ -147,9 +173,22 @@
     [self.coinGainLabel.layer addAnimation:alphaAnimation forKey:@"alphaIn"];
 }
 
+- (void)animateCoinLabelForHouse {
+    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+    animation.duration = 0.25f;
+    animation.toValue = @(1.6f);
+    animation.autoreverses = YES;
+    [self.coinGainLabel.layer addAnimation:animation forKey:@"popIn"];
+    
+    CABasicAnimation *alphaAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+    alphaAnimation.duration = 0.8f;
+    alphaAnimation.toValue = @(1);
+    alphaAnimation.autoreverses = YES;
+    [self.coinGainLabel.layer addAnimation:alphaAnimation forKey:@"alphaIn"];
+}
+
 - (void)scrollToHouse:(HouseView *)houseView {
     [self.foregroundView.scrollView scrollRectToVisible:CGRectMake(houseView.center.x - self.width * 0.5f, self.foregroundView.scrollView.y, self.foregroundView.scrollView.width, self.foregroundView.scrollView.height) animated:YES];
-    
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
@@ -221,6 +260,32 @@
     rect.origin.x = self.foregroundView.scrollView.contentSize.width - self.foregroundView.scrollView.frame.size.width;
     [self.foregroundView.scrollView scrollRectToVisible:rect animated:YES];
     
+}
+- (IBAction)sellerVistorPressed:(id)sender {
+    if (self.editModeView.hidden == NO) {
+        return;
+    }
+    [[[VisitorManager instance] dialogFor:[RealEstateVisitorData dummyData]] show];
+}
+- (IBAction)buyerVisitorPressed:(id)sender {
+    if (self.editModeView.hidden == NO) {
+        return;
+    }
+    if ([[RealEstateManager instance] canSellHouse]) {
+        [[[VisitorManager instance] dialogFor:[BuyerVisitorData dummyData]] show];
+    } else {
+        [[[MessageDialogView alloc] initWithHeaderText:VISITOR_BUYER_FAILED_HEADER bodyText:VISITOR_BUYER_FAILED_MESSAGE] show];
+    }
+}
+- (IBAction)powerPressed:(id)sender {
+    if (self.editModeView.hidden == NO) {
+        return;
+    }
+    if ([CoinIAPHelper sharedInstance].hasLoaded) {
+        [self.shopTableView setupWithType:POWER_UP_TYPE_IAP];
+    } else {
+        [[[ErrorDialogView alloc] init] show];
+    }
 }
 
 - (UIView *)hitTest:(UIView *)someView point:(CGPoint)point withEvent:(UIEvent *)event {

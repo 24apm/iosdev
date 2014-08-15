@@ -12,13 +12,14 @@
 #import "Utils.h"
 #import "GameLoopTimer.h"
 #import "ConfirmDialogView.h"
+#import "NSBundle+BundleUtil.h"
 
 @implementation VisitorView
 
 - (void)setupWithData:(VisitorData *)data {
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(animateOut) object:nil];
     self.data = data;
-    [self.imageButton setBackgroundImage:[UIImage imageNamed:data.imagePath] forState:UIControlStateNormal];
+    [self.imageButton setBackgroundImage:[UIImage myLibraryImageNamed:data.imagePath] forState:UIControlStateNormal];
     [self performSelector:@selector(animateOut) withObject:nil afterDelay:[Utils randBetweenMin:20.f max:30.f]];
     
     self.messageBubbleLabel.text = data.messageBubble;
