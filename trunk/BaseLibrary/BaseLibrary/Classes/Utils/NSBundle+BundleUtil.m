@@ -12,11 +12,11 @@
 
 + (NSBundle*)myLibraryResourcesBundle {
     static dispatch_once_t onceToken;
-    static NSBundle *myLibraryResourcesBundle = nil;
+    static NSBundle *_myLibraryResourcesBundle = nil;
     dispatch_once(&onceToken, ^{
-        myLibraryResourcesBundle = [NSBundle bundleWithURL:[[NSBundle mainBundle] URLForResource:@"BaseLibraryResource" withExtension:@"bundle"]];
+        _myLibraryResourcesBundle = [NSBundle bundleWithURL:[[NSBundle mainBundle] URLForResource:@"BaseLibraryResource" withExtension:@"bundle"]];
     });
-    return myLibraryResourcesBundle;
+    return _myLibraryResourcesBundle;
 }
 
 @end
