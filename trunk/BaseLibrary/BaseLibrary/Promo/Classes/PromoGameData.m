@@ -12,13 +12,13 @@
 
 + (PromoGameData *)setupWithBundleId:(NSString *)bundleId
                            imagePath:(NSString *)imagePath
-                         description:(NSString *)description
+                         description:(NSString *)title
                            actionURL:(NSString *)actionURL {
     
     PromoGameData *promoGameData = [[PromoGameData alloc] init];
     promoGameData.bundleId = bundleId;
     promoGameData.imagePath = imagePath;
-    promoGameData.description = description;
+    promoGameData.title = title;
     promoGameData.actionURL = actionURL;
     return promoGameData;
 }

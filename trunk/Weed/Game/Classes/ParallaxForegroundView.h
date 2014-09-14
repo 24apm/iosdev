@@ -8,10 +8,13 @@
 
 #import "XibView.h"
 #import "HouseView.h"
+#import "VisitorView.h"
 
 @interface ParallaxForegroundView : XibView
 
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (strong, nonatomic) IBOutletCollection(VisitorView) NSArray *vistorCollection;
+
 
 - (void)setup;
 - (void)refreshHouses;

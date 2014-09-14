@@ -7,14 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "GameConstants.h"
 
 @interface VisitorData : NSObject
 
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSString *occupation;
-@property (strong, nonatomic) NSString *description;
+@property (strong, nonatomic) NSString *descriptionText;
 @property (strong, nonatomic) NSString *imagePath;
-
+@property (nonatomic) Gender gender;
 @property (strong, nonatomic) NSString *messageBubble;
 
 @end

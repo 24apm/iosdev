@@ -19,6 +19,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *costLabel;
 @property (strong, nonatomic) IBOutlet UILabel *roomCountLabel;
 @property (strong, nonatomic) IBOutlet UILabel *coinLabel;
+@property (strong, nonatomic) IBOutlet UIImageView *personFace;
 
 - (id)initWithData:(RealEstateVisitorData *)data;
 

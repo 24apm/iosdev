@@ -85,18 +85,18 @@
     }
     
     double durationMultiplier = duration * modifer / 60.f;
-    return [Utils randBetweenMinInt:10 max:20] * pow(2, count * 2) * durationMultiplier;
+    return [Utils randBetweenMinInt:10 max:20] * pow(1.8, count * 2) * durationMultiplier;
 }
 
 - (long long)generateRenterDuration {
-    int durationTypes = CLAMP(self.durationTypes.count, 1, [UserData instance].houses.count) ;
+    int durationTypes = (int)CLAMP(self.durationTypes.count, 1, [UserData instance].houses.count) ;
     int durationTypeIndex = arc4random() % durationTypes;
     long long duration = [[self.durationTypes objectAtIndex:durationTypeIndex] longLongValue];
     return duration;
 }
 
 - (int)generateRenterContractExpired {
-    return [Utils randBetweenMinInt:1 max:1];
+    return [Utils randBetweenMinInt:1 max:3];
 }
 
 - (NSString *)generateRenterImagePath {

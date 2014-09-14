@@ -21,6 +21,7 @@
 #import "CoinIAPHelper.h"
 #import "ShopTableView.h"
 #import "AnimatedLabel.h"
+#import "SoundManager.h"
 
 @interface ParallaxWorldView()
 
@@ -28,7 +29,8 @@
 @property (strong, nonatomic) ParallaxBackgroundView *backgroundView;
 @property (strong, nonatomic) ParallaxForegroundView *foregroundView;
 @property (strong, nonatomic) NSTimer *userPassiveTimer;
-@property (nonatomic, retain) ShopTableView *shopTableView;
+@property (strong, nonatomic) ShopTableView *shopTableView;
+@property (strong, nonatomic) IBOutlet UIView *screenBlocker;
 
 @end
 
@@ -38,7 +40,7 @@
     self = [super initWithCoder:aDecoder];
     if (self) {
         self.parallaxViews = [NSMutableArray array];
-        
+        self.screenBlocker.hidden = YES;
         self.backgroundView = [[ParallaxBackgroundView alloc] init];
         [self.parallaxViews addObject:self.backgroundView];
         [self.containerView addSubview:self.backgroundView];
@@ -53,7 +55,6 @@
 }
 
 - (void)setup {
-    [self.backgroundView setup];
     [self.foregroundView setup];
     self.coinLabel.text = [NSString stringWithFormat:@"%lld", [UserData instance].coin];
     self.coinGainLabel.alpha = 0.f;
@@ -73,6 +74,32 @@
     self.userPassiveTimer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(updateUserPassive) userInfo:nil repeats:YES];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refresh) name:DRAW_STEP_NOTIFICATION object:nil];
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(openBlockScreen) name:SHOP_TABLE_VIEW_NOTIFICATION_OPEN object:nil];
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(closeBlockScreen) name:SHOP_TABLE_VIEW_NOTIFICATION_CLOSE object:nil];
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(scrollToRenter) name:FIND_HOUSE_NOTIFICATION object:nil];
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(blockUserInput) name:IAP_ITEM_PRESSED_NOTIFICATION object:nil];
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(openUserInput) name:BUYING_PRODUCT_ENDED_NOTIFICATION object:nil];
+}
+
+- (void)blockUserInput {
+    self.userInteractionEnabled = NO;
+}
+
+- (void)openUserInput {
+    self.userInteractionEnabled = YES;
+}
+
+- (void)closeBlockScreen {
+    self.screenBlocker.hidden = YES;
+}
+
+- (void)openBlockScreen {
+    self.screenBlocker.hidden = NO;
 }
 
 - (void)updateUserPassive {
@@ -91,6 +118,13 @@
             [self hideCoinAlert];
         }
     }
+}
+
+
+- (void)scrollToRenter {
+    CGRect rect = self.foregroundView.scrollView.frame;
+    rect.origin.x = self.foregroundView.scrollView.contentSize.width - self.foregroundView.scrollView.frame.size.width;
+    [self.foregroundView.scrollView scrollRectToVisible:rect animated:YES];
 }
 
 - (void)animateCoinToHud:(NSNotification *)notification {
@@ -140,9 +174,11 @@
     NSString *houseCost = notification.object;
     self.coinGainLabel.text = houseCost;
     [self animateCoinLabel];
+    [[SoundManager instance]play:SOUND_EFFECT_ANVIL];
 }
 
 - (void)pulseCoinAlert {
+    [[SoundManager instance]play:SOUND_EFFECT_POP];
     self.coinAlertButton.hidden = NO;
     CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
     animation.duration = 0.25f;
@@ -194,9 +230,9 @@
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     if ([keyPath isEqual:@"coin"]) {
         id newValue = [object valueForKeyPath:keyPath];
-        self.coinLabel.text = [NSString stringWithFormat:@"%d", [newValue integerValue]];
+        self.coinLabel.text = [NSString stringWithFormat:@"%lld",(long long)[newValue integerValue]];
     } else if ([keyPath isEqual:@"state"]) {
-        RealEstateManagerState newValue = [[object valueForKeyPath:keyPath] integerValue];
+        RealEstateManagerState newValue = (int)[[object valueForKeyPath:keyPath] integerValue];
         self.headerView.hidden = YES;
         self.exitEditModebutton.hidden = YES;
         self.editModeView.hidden = YES;
@@ -241,14 +277,14 @@
     }
 }
 
-- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
-    UIView *view = [self hitTest:self point:point withEvent:event];
-    if (view) {
-        return view;
-    } else {
-        return [super hitTest:point withEvent:event];
-    }
-}
+//- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
+//    UIView *view = [self hitTest:self point:point withEvent:event];
+//    if (view) {
+//        return view;
+//    } else {
+//        return [super hitTest:point withEvent:event];
+//    }
+//}
 - (IBAction)leftPressed:(id)sender {
     CGRect rect = self.foregroundView.scrollView.frame;
     rect.origin.x = 0;
@@ -256,10 +292,7 @@
 }
 
 - (IBAction)rightPressed:(id)sender {
-    CGRect rect = self.foregroundView.scrollView.frame;
-    rect.origin.x = self.foregroundView.scrollView.contentSize.width - self.foregroundView.scrollView.frame.size.width;
-    [self.foregroundView.scrollView scrollRectToVisible:rect animated:YES];
-    
+    [self scrollToRenter];
 }
 - (IBAction)sellerVistorPressed:(id)sender {
     if (self.editModeView.hidden == NO) {
@@ -282,34 +315,45 @@
         return;
     }
     if ([CoinIAPHelper sharedInstance].hasLoaded) {
+        if (!self.shopTableView) {
+            [self createShopView];
+        }
         [self.shopTableView setupWithType:POWER_UP_TYPE_IAP];
+        [self.shopTableView show];
     } else {
         [[[ErrorDialogView alloc] init] show];
     }
 }
 
-- (UIView *)hitTest:(UIView *)someView point:(CGPoint)point withEvent:(UIEvent *)event {
-    
-    NSMutableArray *queue = [NSMutableArray array];
-    [queue addObject:someView];
-    
-    UIView *rootView;
-    while (queue.count > 0) {
-        rootView = [queue firstObject];
-        [queue removeObjectAtIndex:0];
-        
-        for (UIView *view in rootView.subviews) {
-            [queue addObject:view];
-        }
-        
-        if ([rootView isKindOfClass:[UIButton class]]) {
-            CGPoint pointInButton = [rootView convertPoint:point fromView:self];
-            if ([rootView pointInside:pointInButton withEvent:event]) {
-                return rootView;
-            }
-        }
-    }
-    return nil;
+- (void)createShopView {
+    self.shopTableView = [[ShopTableView alloc] init];
+    [self addSubview:self.shopTableView];
+    [self.shopTableView setupWithType:POWER_UP_TYPE_IAP];
+    self.shopTableView.y = self.height;
 }
+
+//- (UIView *)hitTest:(UIView *)someView point:(CGPoint)point withEvent:(UIEvent *)event {
+//
+//    NSMutableArray *queue = [NSMutableArray array];
+//    [queue addObject:someView];
+//
+//    UIView *rootView;
+//    while (queue.count > 0) {
+//        rootView = [queue firstObject];
+//        [queue removeObjectAtIndex:0];
+//
+//        for (UIView *view in rootView.subviews) {
+//            [queue addObject:view];
+//        }
+//
+//        if ([rootView isKindOfClass:[UIButton class]]) {
+//            CGPoint pointInButton = [rootView convertPoint:point fromView:self];
+//            if ([rootView pointInside:pointInButton withEvent:event]) {
+//                return rootView;
+//            }
+//        }
+//    }
+//    return nil;
+//}
 
 @end

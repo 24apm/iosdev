@@ -32,9 +32,6 @@
 - (NSString *)formatDescriptionWithValue:(double)value {
     NSString *temp = nil;
     switch (self.type) {
-        case POWER_UP_TYPE_UPGRADE:
-            temp = [self descriptionForUpgrade:value];
-            break;
         case POWER_UP_TYPE_IAP:
             temp = [self descriptionForIAP:value];
             break;
@@ -82,40 +79,20 @@
     return [UIColor whiteColor];
 }
 
-- (NSString *)descriptionForUpgrade:(float)value {
-    int currentRank = self.rank;
-    switch (currentRank) {
-        case 1:
-            return @"Fly faster!";
-            break;
-        case 2:
-            return @"Recover faster!";
-            break;
-        case 3:
-            return @"Fly longer!";
-            break;
-        default:
-            break;
-    }
-    return @"Item not found error";
-    
-}
-
-
 - (NSString *)descriptionForIAP:(float)value {
     int currentRank = self.rank;
     switch (currentRank) {
         case 4:
-            return @"+100000EXP!";
+            return @"+$5,000!";
             break;
         case 1:
-            return @"Current EXP = x2!!";
+            return @"+$20,000!!";
             break;
         case 2:
-            return @"Current EXP = x4!!!";
+            return @"+$100,000!!!";
             break;
         case 3:
-            return @"Current EXP = x100!!!!";
+            return @"+$10,000,000!!!!";
             break;
         default:
             break;

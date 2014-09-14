@@ -9,6 +9,7 @@
 #import "XibView.h"
 #import "ProgressBarComponent.h"
 #import "HouseData.h"
+#import "GameConstants.h"
 
 typedef enum {
     HouseViewStateEmpty,
@@ -26,6 +27,7 @@ extern NSString *const kHouseViewCollectedNotification;
 
 // occupied
 @property (strong, nonatomic) IBOutlet UIView *occupiedView;
+@property (nonatomic) NSString *genderImagePath;
 
 // in progress
 @property (strong, nonatomic) IBOutlet UIView *inProgressView;

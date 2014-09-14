@@ -10,6 +10,7 @@
                 <outlet property="imageView" destination="BVC-Ec-PL1" id="x5f-Jk-LDo"/>
                 <outlet property="nameLabel" destination="niy-iU-m4u" id="aqf-U2-V3o"/>
                 <outlet property="occupationLabel" destination="8TO-Ek-9Pe" id="cH0-Uh-Hto"/>
+                <outlet property="personFace" destination="BVC-Ec-PL1" id="ift-5R-Zz0"/>
                 <outlet property="rentRateLabel" destination="Ke3-qR-8K9" id="AN3-mD-MzZ"/>
                 <outlet property="requirementLabel" destination="Zca-KZ-wwa" id="5bd-hY-pBQ"/>
             </connections>
@@ -22,21 +23,21 @@
                 <view contentMode="scaleToFill" id="atm-rd-cOs">
                     <rect key="frame" x="10" y="40" width="300" height="400"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.2426788597" green="0.82894212369999998" blue="0.37826882379999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.70284109088409297" green="0.82894212369999998" blue="0.65205828368385843" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ToiletRush120.png" id="BVC-Ec-PL1">
-                    <rect key="frame" x="60.000000000004036" y="100" width="200" height="200"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="galaxy.png" id="BVC-Ec-PL1">
+                    <rect key="frame" x="59.999999999855888" y="100" width="200" height="200"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NAME" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="niy-iU-m4u">
-                    <rect key="frame" x="60.000000000008754" y="44" width="200" height="30"/>
+                    <rect key="frame" x="60" y="34" width="200" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="26"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OCCUPATION" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" id="8TO-Ek-9Pe">
-                    <rect key="frame" x="60.000000000008754" y="70" width="200" height="30"/>
+                    <rect key="frame" x="10" y="60" width="300" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="26"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -79,13 +80,13 @@
                     </connections>
                 </button>
             </subviews>
-            <color key="backgroundColor" red="0.22352942824363708" green="0.82745105028152466" blue="0.43921571969985962" alpha="1" colorSpace="deviceRGB"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>
     </objects>
     <resources>
-        <image name="ToiletRush120.png" width="120" height="120"/>
         <image name="check.png" width="256" height="256"/>
         <image name="cross.png" width="256" height="256"/>
+        <image name="galaxy.png" width="768" height="1136"/>
     </resources>
 </document>

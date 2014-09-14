@@ -77,6 +77,7 @@
     [UIView animateWithDuration:0.3f animations:^ {
         self.y = yOffset;
     }];
+    [[NSNotificationCenter defaultCenter] postNotificationName:SHOP_TABLE_VIEW_NOTIFICATION_OPEN object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(hideButton) name:UPGRADE_VIEW_OPEN_NOTIFICATION object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(showButton) name:UPGRADE_VIEW_CLOSED_NOTIFICATION object:nil];
 }
@@ -90,7 +91,7 @@
 }
 
 - (IBAction)dismissed:(id)sender {
-    [[NSNotificationCenter defaultCenter] postNotificationName:SHOP_TABLE_VIEW_NOTIFICATION object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:SHOP_TABLE_VIEW_NOTIFICATION_CLOSE object:nil];
     float yOffset = self.superview.height;
     [UIView animateWithDuration:0.3f animations:^ {
         self.y = yOffset;

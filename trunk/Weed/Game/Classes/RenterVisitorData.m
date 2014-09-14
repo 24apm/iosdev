@@ -7,16 +7,20 @@
 //
 
 #import "RenterVisitorData.h"
+#import "PeopleData.h"
 
 @implementation RenterVisitorData
 
 + (RenterVisitorData *)dummyData {
     RenterVisitorData *data = [[RenterVisitorData alloc] init];
     data.renterData = [RenterData dummyData];
-    data.imagePath = @"FlappyBallIcon100x100.png";
-    data.name = @"Some Renter";
-    data.occupation = @"Student";
+    Gender gender = [[PeopleData randomGender] intValue];
+    data.RenterData = [RenterData dummyData];
+    data.imagePath = [PeopleData generateFace:gender];
+    data.name = [PeopleData randomName:gender];
+    data.occupation = [PeopleData randomJob];
     data.messageBubble = [NSString stringWithFormat:@"Looking for %d room(s)", data.renterData.count];
+    data.gender = gender;
     return data;
 }
 

@@ -33,7 +33,7 @@
             return;
         dispatch_async(dispatch_get_main_queue(), ^{
             self.iconView.image = [UIImage imageWithData: data];
-            self.nameLabel.text = self.promoGameData.description;
+            self.nameLabel.text = self.promoGameData.title;
             [self setupLabel];
         });
     });

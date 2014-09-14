@@ -95,10 +95,10 @@
 }
 
 - (void)promoPressed:(PromoGameData *)promoGameData {
-    [TrackUtils trackAction:@"xpromo_banner_pressed" label:promoGameData.description];
+    [TrackUtils trackAction:@"xpromo_banner_pressed" label:promoGameData.title];
 
     if (![self launchInstalledApp:promoGameData]) {
-        [TrackUtils trackAction:@"xpromo_banner_goToAppStore" label:promoGameData.description];
+        [TrackUtils trackAction:@"xpromo_banner_goToAppStore" label:promoGameData.title];
         [[PromoManager instance] goToAppStore:promoGameData.actionURL];
     }
     // [self setupWithPromoGameData:[[PromoManager instance] nextPromo]];
@@ -112,7 +112,7 @@
     NSURL *ourURL = [NSURL URLWithString:ourPath];
     if ([ourApplication canOpenURL:ourURL]) {
         [ourApplication openURL:ourURL];
-        [TrackUtils trackAction:@"xpromo_banner_launchInstalledApp" label:promoGameData.description];
+        [TrackUtils trackAction:@"xpromo_banner_launchInstalledApp" label:promoGameData.title];
         return YES;
     } else {
         return NO;

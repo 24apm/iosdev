@@ -29,7 +29,7 @@
                 return;
             dispatch_async(dispatch_get_main_queue(), ^{
                 self.iconView.image = [UIImage imageWithData: data];
-                self.descriptionLabel.text = gameData.description;
+                self.descriptionLabel.text = gameData.title;
             });
         });
         self.hidden = NO;

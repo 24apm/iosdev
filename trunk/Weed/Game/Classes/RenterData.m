@@ -42,10 +42,10 @@
 - (void)setupWithDict:(NSDictionary *)dict {
     self.duration = [[dict objectForKey:@"duration"] doubleValue];
     self.cost = [[dict objectForKey:@"cost"] longLongValue];
-    self.count = [[dict objectForKey:@"count"] integerValue];
+    self.count = (int)[[dict objectForKey:@"count"] integerValue];
     self.timeDue = [[dict objectForKey:@"timeDue"] doubleValue];
-    self.contractExpired = [[dict objectForKey:@"contractExpired"] integerValue];
-    self.contractCurrentCount = [[dict objectForKey:@"contractCurrentCount"] integerValue];
+    self.contractExpired = (int)[[dict objectForKey:@"contractExpired"] integerValue];
+    self.contractCurrentCount = (int)[[dict objectForKey:@"contractCurrentCount"] integerValue];
     self.imagePath = [dict objectForKey:@"imagePath"];
 }
 

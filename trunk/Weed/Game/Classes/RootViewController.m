@@ -27,12 +27,12 @@
 
 - (void)preloadSounds {
     [[SoundManager instance] prepare:SOUND_EFFECT_TICKING count:1];
-    [[SoundManager instance] prepare:SOUND_EFFECT_WINNING count:2];
+    [[SoundManager instance] prepare:SOUND_EFFECT_WINNING count:3];
     [[SoundManager instance] prepare:SOUND_EFFECT_BOING count:5];
     [[SoundManager instance] prepare:SOUND_EFFECT_POP count:5];
     [[SoundManager instance] prepare:SOUND_EFFECT_BLING count:5];
     [[SoundManager instance] prepare:SOUND_EFFECT_DUING count:3];
-    [[SoundManager instance] prepare:SOUND_EFFECT_SHARP_PUNCH count:3];
+    [[SoundManager instance] prepare:SOUND_EFFECT_CLANG count:3];
     [[SoundManager instance] prepare:SOUND_EFFECT_BOILING count:3];
     [[SoundManager instance] prepare:SOUND_EFFECT_BUI count:3];
     [[SoundManager instance] prepare:SOUND_EFFECT_ANVIL count:3];

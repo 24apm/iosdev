@@ -7,6 +7,7 @@
 //
 
 #import "CoinMenuView.h"
+#import "UserData.h"
 
 @implementation CoinMenuView
 
@@ -14,10 +15,12 @@
     static CoinMenuView *instance = nil;
     if (!instance) {
         instance = [[CoinMenuView alloc] init];
-        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(productPurchased:) name:IAPHelperProductPurchasedNotification object:nil];
-        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(productFailed:) name:IAPHelperProductFailedNotification object:nil];
     }
     return instance;
+}
+
+- (void)show{
+
 }
 
 - (void)buyingProduct:(NSNotification *)notification {
@@ -40,14 +43,33 @@
     }
 }
 
-- (void)productFailed:(NSNotification *)notification {
-    [TrackUtils trackAction:@"buyingProductFail" label:@""];
-    self.userInteractionEnabled = YES;
-}
+
 
 - (void)dismissed:(id)sender {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [super dismissed:sender];
+}
+
+- (void)applyPowerUp:(NSNotification *)notification {
+    NSString *productIdentifier = notification.object;
+    
+    if ([productIdentifier isEqualToString:POWER_UP_IAP_FUND]) {
+        [TrackUtils trackAction:@"+5000" label:@"End"];
+        [[UserData instance] incrementCoin:5000];
+        
+    } else if ([productIdentifier isEqualToString:POWER_UP_IAP_DOUBLE]) {
+        [TrackUtils trackAction:@"+20000" label:@"End"];
+        [[UserData instance] incrementCoin:20000];
+        
+    } else if ([productIdentifier isEqualToString:POWER_UP_IAP_QUADPLE]) {
+        [TrackUtils trackAction:@"+50000" label:@"End"];
+        [[UserData instance] incrementCoin:80000];
+        
+    } else if ([productIdentifier isEqualToString:POWER_UP_IAP_SUPER]) {
+        [TrackUtils trackAction:@"+1000000" label:@"End"];
+        [[UserData instance] incrementCoin:1000000];
+        
+    }
 }
 
 - (IBAction)backButtonPressed:(UIButton *)sender {

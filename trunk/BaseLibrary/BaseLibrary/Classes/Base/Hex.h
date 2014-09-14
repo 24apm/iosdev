@@ -23,7 +23,7 @@
 
 - (NSUInteger)colorCode
 {
-    float red, green, blue;
+    CGFloat red, green, blue;
     if ([self getRed:&red green:&green blue:&blue alpha:NULL])
     {
         NSUInteger redInt = (NSUInteger)(red * 255 + 0.5);

@@ -7,17 +7,50 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ParallaxForegroundView">
             <connections>
+                <outlet property="contentView" destination="o4S-ah-h7b" id="sp9-bp-9P8"/>
                 <outlet property="scrollView" destination="vss-dL-n9q" id="qea-fz-QWL"/>
+                <outletCollection property="vistorCollection" destination="KJK-UP-fku" id="YcZ-86-D30"/>
+                <outletCollection property="vistorCollection" destination="72z-Rb-9sc" id="5NA-05-QDA"/>
+                <outletCollection property="vistorCollection" destination="tFn-gd-t6P" id="lKe-Lc-SQZ"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="1">
-            <rect key="frame" x="0.0" y="0.0" width="4000.0000000000005" height="480"/>
-            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+            <rect key="frame" x="0.0" y="0.0" width="4000" height="480"/>
+            <autoresizingMask key="autoresizingMask" flexibleMinY="YES" heightSizable="YES"/>
             <subviews>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" id="vss-dL-n9q">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" heightSizable="YES"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="housebackground.png" id="Aq3-Wu-m1R">
+                            <rect key="frame" x="0.0" y="392" width="4000" height="90.000000000000028"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" heightSizable="YES"/>
+                        </imageView>
+                        <view contentMode="scaleToFill" id="o4S-ah-h7b">
+                            <rect key="frame" x="0.0" y="0.0" width="4000" height="480"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" id="KJK-UP-fku" customClass="VisitorView">
+                                    <rect key="frame" x="3920" y="180" width="80" height="80"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                </view>
+                                <view contentMode="scaleToFill" id="72z-Rb-9sc" customClass="VisitorView">
+                                    <rect key="frame" x="3920" y="260" width="80" height="80"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                </view>
+                                <view contentMode="scaleToFill" id="tFn-gd-t6P" customClass="VisitorView">
+                                    <rect key="frame" x="3920" y="340" width="80" height="80"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                </view>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                        </view>
+                    </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </scrollView>
             </subviews>
@@ -25,4 +58,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>
     </objects>
+    <resources>
+        <image name="housebackground.png" width="4000" height="130"/>
+    </resources>
 </document>

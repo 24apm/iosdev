@@ -16,10 +16,16 @@
 #import "AppString.h"
 #import "AnimatedLabel.h"
 #import "ConfirmDialogView.h"
+#import "SoundManager.h"
+#import "GameConstants.h"
 
 NSString *const kHouseViewCollectedNotification = @"kHouseViewCollectedNotification";
 
 @interface HouseView()
+
+@property (strong, nonatomic) IBOutlet UIImageView *rentSign;
+@property (nonatomic) BOOL animateSignState;
+@property (nonatomic) BOOL animatingSign;
 
 @end
 
@@ -27,22 +33,34 @@ NSString *const kHouseViewCollectedNotification = @"kHouseViewCollectedNotificat
 
 - (void)setupWithData:(HouseData *)data {
     self.data = data;
-    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(setGender:) name:CONFIRMED_RENTER_NOTIFICATION object:nil];
     [self refresh];
     
     self.idLabel.text = [NSString stringWithFormat:@"%d", self.data.id];
     self.rentalRateLabel.text = [NSString stringWithFormat:@"$%lld per %@", data.renterData.cost, [Utils formatTime:data.renterData.duration]];
     
     self.personView.image = [UIImage imageNamed:
-                             data.renterData.imagePath];
+                             self.genderImagePath];
     self.houseSizeLabel.text = [NSString stringWithFormat:@"%d", data.unitSize];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refresh) name:DRAW_STEP_NOTIFICATION object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(displayMessageForNewHouse) name:VIEWING_NEW_HOUSE_NOTIFICATION object:nil];
 }
 
+- (void)setGender:(NSNotification *)notification {
+    Gender gender = [notification.object intValue];
+    NSString *imagePath = @"";
+    if (gender == GenderMale) {
+        imagePath = @"male.png";
+    } else if (gender == GenderFemale) {
+        imagePath = @"female.png";
+    }
+    self.genderImagePath = imagePath;
+}
+
 - (void)displayMessageForNewHouse {
-    [self animateLabelWithStringNew:@"Congratulation: New house"];
+    [self animateLabelWithStringNew:@"Congratulation"];
+    [[SoundManager instance]play:SOUND_EFFECT_WINNING];
 }
 
 - (void)refresh {
@@ -94,6 +112,7 @@ NSString *const kHouseViewCollectedNotification = @"kHouseViewCollectedNotificat
         case HouseViewStateEmpty:
             self.emptyView.hidden = NO;
             self.rentalRateLabel.text = @"Empty";
+            self.animateSignState = YES;
             [self.buttonView setBackgroundImage:[[RealEstateManager instance] imageForHouseUnitSize:self.data.unitSize tinted:YES] forState:UIControlStateNormal];
             break;
         case HouseViewStateOccupied:
@@ -114,6 +133,20 @@ NSString *const kHouseViewCollectedNotification = @"kHouseViewCollectedNotificat
         default:
             break;
     }
+    
+    [self animationOfSign:self.animateSignState];
+    
+    if (self.state != HouseViewStateEmpty) {
+        [self removeAnimateSign];
+        self.animateSignState = NO;
+    }
+}
+
+- (void)animationOfSign:(BOOL)state {
+    if (state && !self.animatingSign) {
+        [self animateSign];
+        self.animatingSign = YES;
+    }
 }
 
 - (IBAction)buttonPressed:(id)sender {
@@ -123,10 +156,10 @@ NSString *const kHouseViewCollectedNotification = @"kHouseViewCollectedNotificat
         case HouseViewStateEmpty:
             if ([RealEstateManager instance].state == RealEstateManagerStateEdit) {
                 [self confirmAddRenter];
-                [self animateLabelWithStringIn:@"Moving in!"];
             } else {
                 [[[MessageDialogView alloc] initWithHeaderText:HOUSE_EMPTY_HEADER
                                                       bodyText:HOUSE_EMPTY_MESSAGE] show];
+                [[NSNotificationCenter defaultCenter]postNotificationName:FIND_HOUSE_NOTIFICATION object:nil];
             }
             break;
         case HouseViewStateOccupied:
@@ -150,6 +183,7 @@ NSString *const kHouseViewCollectedNotification = @"kHouseViewCollectedNotificat
                 [[RealEstateManager instance] collectMoney:self.data];
                 if ([[RealEstateManager instance] hasRenterContractExpired:self.data]) {
                     [self animateLabelWithStringOut:@"Moving out!"];
+                    [[SoundManager instance]play:SOUND_EFFECT_BOING];
                     [[RealEstateManager instance] removeRenter:self.data];
                 }
             }
@@ -159,13 +193,29 @@ NSString *const kHouseViewCollectedNotification = @"kHouseViewCollectedNotificat
     }
 }
 
+- (void)animateSign {
+    self.rentSign.anchorPoint = CGPointMake(0.5, 0);
+    
+    CABasicAnimation* animation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
+    animation.fromValue = [NSNumber numberWithFloat:-0.03f];
+    animation.toValue = [NSNumber numberWithFloat: 0.03f];
+    animation.duration = 1.0f;
+    animation.repeatCount = HUGE_VAL;
+    animation.autoreverses = YES;
+    [self.rentSign.layer addAnimation:animation forKey:@"MyAnimation"];
+}
+
+- (void)removeAnimateSign {
+    [self.rentSign.layer removeAllAnimations];
+}
+
 - (void)animateLabelWithStringIn:(NSString *)string {
     [self.layer removeAllAnimations];
     AnimatedLabel *label = [[AnimatedLabel alloc] init];
     [self addSubview:label];
-    label.label.textColor = [UIColor colorWithRed:1.f green:1.f blue:0.f alpha:1.f];
+    label.label.textColor = [UIColor colorWithRed:0.f green:1.f blue:0.f alpha:1.f];
     label.label.text = string;
-    label.center = self.center;
+    label.center = CGPointMake(self.width/2.f, self.height/3.f * 2.f);
     [label animateSlow];
 }
 
@@ -175,7 +225,7 @@ NSString *const kHouseViewCollectedNotification = @"kHouseViewCollectedNotificat
     [self addSubview:label];
     label.label.textColor = [UIColor colorWithRed:1.f green:0.f blue:0.f alpha:1.f];
     label.label.text = string;
-    label.center = self.center;
+    label.center = CGPointMake(self.width/2.f, self.height/3.f * 2.f);
     [label animateSlow];
 }
 
@@ -185,12 +235,14 @@ NSString *const kHouseViewCollectedNotification = @"kHouseViewCollectedNotificat
     [self addSubview:label];
     label.label.textColor = [UIColor colorWithRed:0.f green:0.f blue:1.f alpha:1.f];
     label.label.text = string;
-    label.center = self.center;
+    label.center = CGPointMake(self.width/2.f, self.height/3.f * 2.f);
     [label animateSlow];
 }
 
 - (void)confirmAddRenter {
     if ([[RealEstateManager instance] addRenter:self.data]) {
+        [self animateLabelWithStringIn:@"Moving in!"];
+        [[SoundManager instance]play:SOUND_EFFECT_BLING];
         [RealEstateManager instance].state = RealEstateManagerStateNormal;
     } else {
         [[[MessageDialogView alloc] initWithHeaderText:HOUSE_RENTER_HOUSE_NOT_LARGE_ENOUGH_HEADER

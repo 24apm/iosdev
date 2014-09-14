@@ -11,8 +11,6 @@
 #import "ShopManager.h"
 #import "CoinIAPHelper.h"
 
-#define IAP_ITEM_PRESSED_NOTIFICATION @"IAP_ITEM_PRESSED_NOTIFICATION"
-
 @interface ShopRowView : XibView
 
 @property (strong, nonatomic) IBOutlet UIImageView *levelImage;

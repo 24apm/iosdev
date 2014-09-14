@@ -45,9 +45,9 @@
 }
 
 - (void)setupWithDict:(NSDictionary *)dict {
-    self.id = [[dict objectForKey:@"id"] integerValue];
+    self.id = (int)[[dict objectForKey:@"id"] integerValue];
     self.cost = [[dict objectForKey:@"cost"] longLongValue];
-    self.unitSize = [[dict objectForKey:@"unitSize"] integerValue];
+    self.unitSize = (int)[[dict objectForKey:@"unitSize"] integerValue];
 
     if ([dict objectForKey:@"renterData"]) {
         self.renterData = [[RenterData alloc] initWithDict:[dict objectForKey:@"renterData"]];

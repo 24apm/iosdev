@@ -18,6 +18,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *occupationLabel;
 @property (strong, nonatomic) IBOutlet UILabel *rentRateLabel;
 @property (strong, nonatomic) IBOutlet UILabel *requirementLabel;
+@property (strong, nonatomic) IBOutlet UIImageView *personFace;
 
 - (id)initWithData:(RenterVisitorData *)data;
 

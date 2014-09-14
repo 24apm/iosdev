@@ -7,6 +7,7 @@
 //
 
 #import "RealEstateVisitorData.h"
+#import "PeopleData.h"
 
 @implementation RealEstateVisitorData
 
@@ -20,13 +21,13 @@
 
 + (RealEstateVisitorData *)dummyData {
     RealEstateVisitorData *data = [[RealEstateVisitorData alloc] init];
+    Gender gender = [[PeopleData randomGender] intValue];
     data.houseData = [HouseData dummyData];
-    data.imagePath = @"bubble.png";
-    data.name = @"Some Seller";
-    data.occupation = @"Realtor";
+    data.imagePath = [PeopleData generateFace:gender];
+    data.name = [PeopleData randomName:gender];
+    data.occupation = @"is selling this house";
     data.messageBubble = [NSString stringWithFormat:@"Selling %d bedroom(s) house!", data.houseData.unitSize];
     return data;
 }
-
 
 @end

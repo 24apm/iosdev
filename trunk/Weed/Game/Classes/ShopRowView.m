@@ -11,6 +11,7 @@
 #import "ShopItem.h"
 #import "GameConstants.h"
 #import "Utils.h"
+#import "CoinIAPHelper.h"
 
 @implementation ShopRowView
 
@@ -39,23 +40,21 @@
 }
 - (IBAction)buttonPressed:(UIButton *)sender {
     if (self.item.type == POWER_UP_TYPE_IAP) {
-
         [[NSNotificationCenter defaultCenter]postNotificationName:IAP_ITEM_PRESSED_NOTIFICATION object:self];
-        
     }
 }
 
 
 - (void)setUpPriceTag {
-        self.levelLabel.hidden = NO;
-        self.levelImage.hidden = NO;
-        [self.costButton setBackgroundImage:[UIImage imageNamed:@"btn_green_up"] forState:UIControlStateNormal];
-        self.cost = [[ShopManager instance] priceForItemId:self.item.itemId type:self.item.type];
-        self.imageView.image = [Utils imageNamed:[UIImage imageNamed:self.item.imagePath]
-                                       withColor:[self.item tierColor:self.item.rank]
-                                       blendMode:kCGBlendModeMultiply];
-        NSString *costLabel = [Utils formatLongLongWithComma:self.cost];
-        [self.costButton setTitle:costLabel forState:UIControlStateNormal];
+    self.levelLabel.hidden = YES;
+    self.levelImage.hidden = YES;
+    [self.costButton setBackgroundImage:[UIImage imageNamed:@"btn_gold_up"] forState:UIControlStateNormal];
+    self.iapType = [self lookUpTableForIAPWithRank];
+    [self.costButton setTitle:[[CoinIAPHelper sharedInstance] productForType:self.iapType].priceAsString forState:UIControlStateNormal];
+    self.cost = 0;
+    self.imageView.image = [Utils imageNamed:[UIImage imageNamed:self.item.imagePath]
+                                   withColor:[self.item tierColor:self.item.rank]
+                                   blendMode:kCGBlendModeMultiply];
 }
 
 - (IAPType)lookUpTableForIAPWithRank {

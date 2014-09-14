@@ -71,28 +71,28 @@
     
     
     [self createIAPItem:SHOP_ITEM_ID_IAP_FUND
-                   name:@"+Private Tutor"
-              imagePath:@"tutor"
+                   name:@"Stack of Cash"
+              imagePath:@"stackmoney"
         priceMultiplier:-1
       upgradeMultiplier:-1
                    rank:4];
     
-    [self createIAPItem:SHOP_ITEM_ID_IAP_DOUBLE_POINTS
-                   name:@"Sleeping"
-              imagePath:@"dream"
+    [self createIAPItem:SHOP_ITEM_ID_IAD_FUND2
+                   name:@"Bag of Cash"
+              imagePath:@"bagmoney"
         priceMultiplier:-1
       upgradeMultiplier:-1
                    rank:1];
     
-    [self createIAPItem:SHOP_ITEM_ID_IAD_QUDRUPLE_POINTS
-                   name:@"Meditate"
-              imagePath:@"meditate"
+    [self createIAPItem:SHOP_ITEM_ID_IAD_FUND3
+                   name:@"Case of Cash"
+              imagePath:@"casemoney"
         priceMultiplier:-1
       upgradeMultiplier:-1
                    rank:2];
-    [self createIAPItem:SHOP_ITEM_ID_IAD_SUPER_POINTS
-                   name:@"Enlightment"
-              imagePath:@"enlightment"
+    [self createIAPItem:SHOP_ITEM_ID_IAD_FUND4
+                   name:@"Cash Bath"
+              imagePath:@"moneybath"
         priceMultiplier:-1
       upgradeMultiplier:-1
                    rank:3];

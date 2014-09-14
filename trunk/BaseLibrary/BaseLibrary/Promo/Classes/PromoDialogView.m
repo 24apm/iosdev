@@ -88,7 +88,7 @@ static BOOL isShowing;
 }
 
 - (void)setupPromos {
-    self.promoArray = [[PromoManager instance] nextPromoSetWithSize:self.promoIcons.count];
+    self.promoArray = [[PromoManager instance] nextPromoSetWithSize:(int)self.promoIcons.count];
     for (int i = 0; i < self.promoArray.count; i++) {
         PromoIconView *promoIconView = [self.promoIcons objectAtIndex:i];
         [promoIconView setupWithPromoGameData:[self.promoArray objectAtIndex:i]];

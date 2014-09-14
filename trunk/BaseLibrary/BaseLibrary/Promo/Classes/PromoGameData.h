@@ -10,10 +10,10 @@
 
 @interface PromoGameData : NSObject
 
-@property (retain, nonatomic) NSString *bundleId;
-@property (retain, nonatomic) NSString *imagePath;
-@property (retain, nonatomic) NSString *description;
-@property (retain, nonatomic) NSString *actionURL;
+@property (strong, nonatomic) NSString *bundleId;
+@property (strong, nonatomic) NSString *imagePath;
+@property (strong, nonatomic) NSString *title;
+@property (strong, nonatomic) NSString *actionURL;
 
 + (PromoGameData *)setupWithBundleId:(NSString *)bundleId
                            imagePath:(NSString *)imagePath

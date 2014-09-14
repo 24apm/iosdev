@@ -16,8 +16,8 @@
     BuyerVisitorData *data = [[BuyerVisitorData alloc] init];
     data.houseData = [[UserData instance] randomUserHouse];
     data.imagePath = @"bubble.png";
-    data.name = @"Some Buyer";
-    data.occupation = @"Doctor";
+    data.name = @"Your Agent";
+    data.occupation = @"can sell this house";
     data.priceModifier = [Utils randBetweenMin:0.5 max:1.2];
     data.messageBubble = [NSString stringWithFormat:@"Offer for #%d house", data.houseData.id];
 

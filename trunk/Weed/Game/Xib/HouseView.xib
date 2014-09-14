@@ -17,6 +17,7 @@
                 <outlet property="personView" destination="28z-qy-4uV" id="c0A-26-6hb"/>
                 <outlet property="progressBar" destination="LuJ-Q0-6mR" id="dkG-Uh-iDq"/>
                 <outlet property="rateView" destination="Zsw-0M-gFS" id="xZW-jc-sad"/>
+                <outlet property="rentSign" destination="4EP-dU-aAa" id="R9D-Ip-nAz"/>
                 <outlet property="rentalRateLabel" destination="vbx-z1-ey2" id="HG4-9Z-kGL"/>
                 <outlet property="timeLabel" destination="N8g-O4-YuB" id="9MF-Wa-UMl"/>
             </connections>
@@ -41,8 +42,8 @@
                     <rect key="frame" x="0.0" y="0.0" width="400" height="400"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="for_sale_sign.png" id="4EP-dU-aAa">
-                            <rect key="frame" x="301" y="295" width="79" height="100"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="houseopen.png" id="4EP-dU-aAa" userLabel="Image View">
+                            <rect key="frame" x="160" y="211" width="79" height="100"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                         </imageView>
                     </subviews>
@@ -106,7 +107,7 @@
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="female.png" id="28z-qy-4uV">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="female.png" id="28z-qy-4uV">
                     <rect key="frame" x="228" y="278" width="25" height="75"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
@@ -132,12 +133,12 @@
                     <rect key="frame" x="0.0" y="0.0" width="400" height="400"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coin.png" id="8FF-vU-AhB">
-                            <rect key="frame" x="210" y="215" width="60" height="60"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="renterpayment.png" id="8FF-vU-AhB">
+                            <rect key="frame" x="122" y="175" width="120" height="120"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="COLLECT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" id="LEb-OQ-c6O">
-                            <rect key="frame" x="140" y="230" width="200" height="60"/>
+                            <rect key="frame" x="100" y="230" width="200" height="60"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="28"/>
                             <color key="textColor" red="0.99215692280000001" green="0.81176477670000002" blue="0.2823529541" alpha="1" colorSpace="deviceRGB"/>
@@ -155,9 +156,9 @@
     </objects>
     <resources>
         <image name="ToiletRush120.png" width="120" height="120"/>
-        <image name="coin.png" width="256" height="256"/>
         <image name="female.png" width="320" height="530"/>
-        <image name="for_sale_sign.png" width="223" height="300"/>
+        <image name="houseopen.png" width="200" height="200"/>
         <image name="infoBackground.png" width="200" height="41"/>
+        <image name="renterpayment.png" width="200" height="200"/>
     </resources>
 </document>

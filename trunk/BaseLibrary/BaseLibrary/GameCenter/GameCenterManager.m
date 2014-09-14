@@ -93,12 +93,15 @@
 	{
 		if(arg != NULL)
 		{
-			[delegate performSelector: selector withObject: arg withObject: err];
+            IMP imp = [(NSObject *)delegate methodForSelector:selector];
+            void (*func)(id, SEL, id, NSError *) = (void *)imp;
+            func(delegate, selector, arg, err);            
 		}
 		else
 		{
-			[delegate performSelector: selector withObject: err];
-		}
+            IMP imp = [(NSObject *)delegate methodForSelector:selector];
+            void (*func)(id, SEL, NSError *) = (void *)imp;
+            func(delegate, selector, err); 		}
 	}
 	else
 	{

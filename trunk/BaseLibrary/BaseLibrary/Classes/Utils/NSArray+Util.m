@@ -33,7 +33,7 @@
     if ([self count] == 0) {
         return;
     }
-    int totalNumber = [self count];
+    int totalNumber = (int)[self count];
     for (int i = 0; i < totalNumber; i++) {
         int index = [Utils randBetweenMinInt:0 max:totalNumber - 1];
         id oldElement = [self objectAtIndex:i];

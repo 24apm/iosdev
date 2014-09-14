@@ -10,9 +10,11 @@
 #import "UserData.h"
 #import "NSArray+Util.h"
 #import "RealEstateManager.h"
+#import "VisitorManager.h"
 
 @interface ParallaxForegroundView()
 
+@property (strong, nonatomic) IBOutlet UIView *contentView;
 @property (strong, nonatomic) NSMutableArray *houseViews;
 @property (nonatomic) CGRect houseFrame;
 
@@ -30,14 +32,18 @@
 }
 
 - (void)setup {
-    self.scrollView.contentSize = self.frame.size;
+    for (VisitorView *visitor in self.vistorCollection) {
+        visitor.hidden = YES;
+    }
+    self.scrollView.contentSize = self.contentView.frame.size;
+    self.scrollView.delaysContentTouches = YES;
     self.houseViews = [NSMutableArray array];
     for (int i = 0; i < MAX_HOUSES; i++) {
         HouseView *house = [[HouseView alloc] init];
         [self.scrollView addSubview:house];
         [self.houseViews addObject:house];
     }
-    
+    [self refreshVisitors];
     [self refreshHouses];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshHouses) name:UserDataHouseDataChangedNotification object:nil];
@@ -75,18 +81,26 @@
 - (HouseView *)firstEmptyHouseUnder:(int)rooms {
     NSMutableArray *availableHouseViews = [self allVisibleHouses];
     
-    // Look for first empty house AND fit room size
+    // Look for first empty house AND exact fit room size
     HouseView *firstEmptyHouse = nil;
-    for (int i = rooms; i <= 9; i++) {
+    for (HouseView *house in availableHouseViews) {
+        if (!house.data.renterData && house.data.unitSize == rooms) {
+            firstEmptyHouse = house;
+            break;
+        }
+    }
+    
+    // Look for 1st empty AND greater fit room size
+    if (!firstEmptyHouse) {
         for (HouseView *house in availableHouseViews) {
-            if (!house.data.renterData && house.data.unitSize == i) {
+            if (!house.data.renterData && house.data.unitSize >= rooms) {
                 firstEmptyHouse = house;
                 break;
             }
         }
     }
     
-    // Look for fit room size
+    // Look for greater fit room size
     if (!firstEmptyHouse) {
         for (HouseView *house in availableHouseViews) {
             if (house.data.unitSize >= rooms) {
@@ -136,5 +150,21 @@
     return availableHouseViews;
 }
 
-
+- (void)refreshVisitors {
+    NSMutableArray *emptyVisitors = [NSMutableArray array];
+    for (VisitorView *visitor in self.vistorCollection) {
+        if (visitor.data == nil) {
+            [emptyVisitors addObject:visitor];
+        }
+    }
+    if (emptyVisitors.count > 0) {
+        VisitorView *randVisitor = [emptyVisitors randomObject];
+        VisitorData *data = [[VisitorManager instance] nextVisitor];
+        [randVisitor setupWithData:data];
+        [randVisitor animateIn];
+    }
+    
+    float delay = [Utils randBetweenMin:1 max:5];
+    [self performSelector:@selector(refreshVisitors) withObject:nil afterDelay:delay];
+}
 @end

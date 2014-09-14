@@ -87,7 +87,7 @@
                     <color key="backgroundColor" white="0.0" alpha="0.59999999999999998" colorSpace="calibratedWhite"/>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="0.96099728954081631" green="0.2284172505168803" blue="0.010401513905256019" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="0.66438137755102034" green="0.60861475830536249" blue="0.38569376625338875" alpha="1" colorSpace="calibratedRGB"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>
     </objects>

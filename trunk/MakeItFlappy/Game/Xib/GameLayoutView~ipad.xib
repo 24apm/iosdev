@@ -38,7 +38,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <view userInteractionEnabled="NO" contentMode="scaleToFill" id="eGw-W2-A6I" customClass="ParticleView">
-                            <rect key="frame" x="5.6843418860808015e-14" y="0.0" width="768" height="1024"/>
+                            <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
@@ -63,7 +63,7 @@
                             </connections>
                         </button>
                         <view contentMode="scaleToFill" id="QL0-iX-gb7" userLabel="Exp Display View" customClass="ExpUIView">
-                            <rect key="frame" x="5.6843418860808015e-14" y="0.0" width="768" height="265"/>
+                            <rect key="frame" x="0.0" y="0.0" width="768" height="265"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="0.29999999999999999" colorSpace="calibratedWhite"/>
                         </view>

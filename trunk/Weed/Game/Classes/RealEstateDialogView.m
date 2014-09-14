@@ -25,6 +25,7 @@
         self.imageView.image = [UIImage imageNamed:[[RealEstateManager instance] imageForHouseUnitSize:data.houseData.unitSize]];
         self.roomCountLabel.text = [NSString stringWithFormat:@"%d", self.data.houseData.unitSize];
         self.coinLabel.text = [NSString stringWithFormat:@"%lld", [UserData instance].coin];
+        self.personFace.image = [UIImage imageNamed:data.imagePath];
     }
     return self;
 }

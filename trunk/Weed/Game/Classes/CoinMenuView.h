@@ -17,5 +17,6 @@
 @interface CoinMenuView : AnimatingDialogView
 
 + (CoinMenuView *)instance;
+-(void)show;
 
 @end

@@ -19,7 +19,8 @@
 - (void)setupWithData:(VisitorData *)data {
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(animateOut) object:nil];
     self.data = data;
-    [self.imageButton setBackgroundImage:[UIImage myLibraryImageNamed:data.imagePath] forState:UIControlStateNormal];
+    //[self.imageButton setBackgroundImage:[UIImage myLibraryImageNamed:data.imagePath] forState:UIControlStateNormal];
+    [self.imageButton setBackgroundImage:[UIImage imageNamed:@"renterunknown"] forState:UIControlStateNormal];
     [self performSelector:@selector(animateOut) withObject:nil afterDelay:[Utils randBetweenMin:20.f max:30.f]];
     
     self.messageBubbleLabel.text = data.messageBubble;

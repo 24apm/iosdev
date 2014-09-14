@@ -12,6 +12,8 @@
 #import "AnimatedLabel.h"
 #import "NSArray+Util.h"
 #import "TrackUtils.h"
+#import "CoinIAPHelper.h"
+#import "CoinView.h"
 
 #define NEW_USER_COIN 1000
 
@@ -40,13 +42,12 @@ NSString *const UserDataHouseDataChangedNotification = @"UserDataHouseDataChange
 }
 
 - (void)setup {
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(applyPowerUp:) name:BUYING_PRODUCT_SUCCESSFUL_NOTIFICATION object:nil];
     
     // house index
     if ([[NSUserDefaults standardUserDefaults] objectForKey:@"houseIndex"] == nil) {
         self.houseIndex = 0;
     } else {
-        self.houseIndex = [[[NSUserDefaults standardUserDefaults] objectForKey:@"houseIndex"] integerValue];
+        self.houseIndex = (int)[[[NSUserDefaults standardUserDefaults] objectForKey:@"houseIndex"] integerValue];
     }
     
     // Coin
@@ -82,7 +83,7 @@ NSString *const UserDataHouseDataChangedNotification = @"UserDataHouseDataChange
         self.userPassive = 1;
         [self saveUserCoin];
     } else {
-        self.userPassive = [[[NSUserDefaults standardUserDefaults] objectForKey:@"userPassive"] integerValue];
+        self.userPassive = (int)[[[NSUserDefaults standardUserDefaults] objectForKey:@"userPassive"] integerValue];
     }
 }
 
@@ -91,7 +92,7 @@ NSString *const UserDataHouseDataChangedNotification = @"UserDataHouseDataChange
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"houses"];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"houseIndex"];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"userPassive"];
-
+    
     [self setup];
     [[NSNotificationCenter defaultCenter] postNotificationName:UserDataHouseDataChangedNotification object:nil];
 }
@@ -184,27 +185,10 @@ NSString *const UserDataHouseDataChangedNotification = @"UserDataHouseDataChange
     [self incrementCoin:self.userPassive];
 }
 
-- (void)applyPowerUp:(NSNotification *)notification {
-    NSString *productIdentifier = notification.object;
-    
-    if ([productIdentifier isEqualToString:POWER_UP_IAP_FUND]) {
-        [TrackUtils trackAction:@"+5000" label:@"End"];
-        self.coin += 5000;
-        
-    } else if ([productIdentifier isEqualToString:POWER_UP_IAP_DOUBLE]) {
-        [TrackUtils trackAction:@"+20000" label:@"End"];
-        self.coin += 20000;
-        
-    } else if ([productIdentifier isEqualToString:POWER_UP_IAP_QUADPLE]) {
-        [TrackUtils trackAction:@"+50000" label:@"End"];
-        self.coin += 50000;
-        
-    } else if ([productIdentifier isEqualToString:POWER_UP_IAP_SUPER]) {
-        [TrackUtils trackAction:@"+1000000" label:@"End"];
-        self.coin += 1000000;
-        
-    }
-    [[UserData instance] saveUserCoin];
+- (void)buyingProduct:(NSNotification *)notification {
+    [TrackUtils trackAction:@"buyingProduct" label:@""];
+    CoinView * coinView = notification.object;
+    [[CoinIAPHelper sharedInstance] buyProduct:coinView.product];
 }
 
 @end
