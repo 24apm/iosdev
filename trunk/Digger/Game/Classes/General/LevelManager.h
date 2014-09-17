@@ -12,4 +12,6 @@
 
 + (LevelManager *)instance;
 
+- (NSArray *)levelDataTypeFor:(int)tiles;
+- (NSArray *)levelDataTierFor:(int)tiles;
 @end

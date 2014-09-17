@@ -100,9 +100,11 @@ typedef enum {
 } PowerUpType;
 
 typedef enum {
-    GenderMale,
-    GenderFemale
-} Gender;
+    BlockTypeObstacle,
+    BlockTypeTreasure,
+    BlockTypePlayer
+} BlockType;
+
 @interface GameConstants : NSObject
 
 @end

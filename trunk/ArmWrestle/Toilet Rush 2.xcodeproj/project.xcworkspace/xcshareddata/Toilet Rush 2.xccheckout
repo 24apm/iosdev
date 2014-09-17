@@ -10,29 +10,29 @@
 	<string>Toilet Rush 2</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>F99F55E7-9B5F-4B68-AE92-42C2D0A84F5E</key>
+		<key>A2B1578C3192BC95B06E83E9B6B4697B4269BF4A</key>
 		<string>https://github.com/24apm/iosdev.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>trunk/ArmWrestle/Toilet Rush 2.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>F99F55E7-9B5F-4B68-AE92-42C2D0A84F5E</key>
+		<key>A2B1578C3192BC95B06E83E9B6B4697B4269BF4A</key>
 		<string>../../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/24apm/iosdev.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>F99F55E7-9B5F-4B68-AE92-42C2D0A84F5E</string>
+	<string>A2B1578C3192BC95B06E83E9B6B4697B4269BF4A</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>F99F55E7-9B5F-4B68-AE92-42C2D0A84F5E</string>
+			<string>A2B1578C3192BC95B06E83E9B6B4697B4269BF4A</string>
 			<key>IDESourceControlWCCName</key>
 			<string>iosdev</string>
 		</dict>

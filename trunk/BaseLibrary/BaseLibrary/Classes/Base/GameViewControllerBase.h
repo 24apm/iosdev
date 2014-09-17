@@ -18,6 +18,7 @@ typedef enum {
 @interface GameViewControllerBase : GAITrackedViewController <ADBannerViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UIView *containerView;
+@property (strong, nonatomic) ADBannerView *adBannerView;
 
 
 // override ad position

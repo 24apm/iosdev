@@ -55,6 +55,11 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    self.diggerView.frame = CGRectMake(0,
+                                       self.adBannerView.height,
+                                       self.view.width,
+                                       self.view.height - self.adBannerView.height);
+    
     [self.diggerView setup];
 }
 

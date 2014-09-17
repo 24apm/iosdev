@@ -9,6 +9,7 @@
 #import "LevelManager.h"
 #import "Utils.h"
 #import "UserData.h"
+#import "GameConstants.h"
 
 @interface LevelManager()
 
@@ -36,4 +37,20 @@
     
 }
 
+- (NSArray *)levelDataTypeFor:(int)tiles {
+    NSMutableArray *levelDataType = [NSMutableArray array];
+    for (int i = 0; i < tiles; i++) {
+        [levelDataType addObject:[NSNumber numberWithInt:[Utils randBetweenMinInt:BlockTypeObstacle max:BlockTypePlayer]]];
+    }
+    return levelDataType;
+}
+
+
+- (NSArray *)levelDataTierFor:(int)tiles {
+    NSMutableArray *levelDataTier = [NSMutableArray array];
+    for (int i = 0; i < tiles; i++) {
+        [levelDataTier addObject:[NSNumber numberWithInt:[Utils randBetweenMinInt:0 max:3]]];
+    }
+    return levelDataTier;
+}
 @end

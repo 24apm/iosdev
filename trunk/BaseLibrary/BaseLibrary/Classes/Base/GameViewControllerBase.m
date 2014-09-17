@@ -12,7 +12,6 @@
 
 @interface GameViewControllerBase ()
 
-@property (nonatomic, retain) ADBannerView *adBannerView;
 @property (strong, nonatomic) PromoBannerView *promoBannerView;
 
 @end
