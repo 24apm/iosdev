@@ -8,6 +8,10 @@
 
 #import "XibView.h"
 
+@class BlockView;
+
 @interface TileView : XibView
+
+@property (strong, nonatomic) BlockView *blockView;
 
 @end

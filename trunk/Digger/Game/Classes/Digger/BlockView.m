@@ -10,5 +10,13 @@
 
 @implementation BlockView
 
+- (void)setupWithTier:(int)tier
+{
+    
+}
+
+- (IBAction)buttonPressed:(id)sender {
+    [[NSNotificationCenter defaultCenter] postNotificationName:BLOCK_PRESSED_NOTIFICATION object:self];
+}
 
 @end

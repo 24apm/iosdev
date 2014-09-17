@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "XibView.h"
 
-@interface DiggerView : UIView
+@interface DiggerView : XibView
 
 - (void)setup;
 

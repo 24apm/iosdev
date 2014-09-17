@@ -8,7 +8,13 @@
 
 #import "XibView.h"
 
+#define BLOCK_PRESSED_NOTIFICATION @"BLOCK_PRESSED_NOTIFICATION"
+
+@class TileView;
+
 @interface BlockView : XibView
+
+@property (strong, nonatomic) TileView *tileView;
 
 @property (strong, nonatomic) IBOutlet UIView *block;
 

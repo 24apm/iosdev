@@ -11,8 +11,8 @@
 
 @implementation XibView
 
-- (id)init {
-    self = [super init];
+- (id)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
     if (self) {
         [self _setup];
     }
