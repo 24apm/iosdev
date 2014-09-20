@@ -12,8 +12,10 @@
 #import "BoardView.h"
 
 #define NUM_COL 5
-#define NUM_ROW 20
+#define NUM_ROW 7
 #define MARGIN_BLOCK 10 * IPAD_SCALE
+
+@class GridPoint;
 
 @interface BoardManager : NSObject
 
@@ -22,7 +24,7 @@
 
 - (TileView *)tileAtRow:(int)r column:(int)c;
 - (NSArray *)tilesAtRow:(int)r;
-- (CGPoint)pointForTile:(TileView *)tileView;
+- (GridPoint *)pointForTile:(TileView *)tileView;
 
 - (BOOL)isOccupied:(TileView *)tileView;
 

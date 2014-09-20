@@ -125,6 +125,7 @@
 		D0E21AEB199DD27800358DE5 /* PromoIconView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E21AC4199DCB9B00358DE5 /* PromoIconView.xib */; };
 		D0E21AEC199DD27800358DE5 /* PromoIconView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E21AC5199DCB9B00358DE5 /* PromoIconView~ipad.xib */; };
 		D0E21AF1199DD3E400358DE5 /* NSBundle+BundleUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E21AF0199DD3E400358DE5 /* NSBundle+BundleUtil.m */; };
+		D0EEF2A519CABCB20026376F /* GridPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = D0EEF2A419CABCB20026376F /* GridPoint.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -307,6 +308,8 @@
 		D0E21ADC199DD20600358DE5 /* BaseLibraryResource-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BaseLibraryResource-Prefix.pch"; sourceTree = "<group>"; };
 		D0E21AEF199DD3E400358DE5 /* NSBundle+BundleUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+BundleUtil.h"; sourceTree = "<group>"; };
 		D0E21AF0199DD3E400358DE5 /* NSBundle+BundleUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+BundleUtil.m"; sourceTree = "<group>"; };
+		D0EEF2A319CABCB20026376F /* GridPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridPoint.h; sourceTree = "<group>"; };
+		D0EEF2A419CABCB20026376F /* GridPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GridPoint.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -572,6 +575,8 @@
 			children = (
 				D097A5E71983A04800A6EB7A /* AnimUtil.h */,
 				D097A5E81983A04800A6EB7A /* AnimUtil.m */,
+				D0EEF2A319CABCB20026376F /* GridPoint.h */,
+				D0EEF2A419CABCB20026376F /* GridPoint.m */,
 				D097A5E91983A04800A6EB7A /* NSArray+Util.h */,
 				D097A5EA1983A04800A6EB7A /* NSArray+Util.m */,
 				D097A5EB1983A04800A6EB7A /* UIView+ViewUtil.h */,
@@ -849,6 +854,7 @@
 				D097A6261983A04800A6EB7A /* HTTPRequest.m in Sources */,
 				D0E21AC9199DCB9B00358DE5 /* PromoDialogView.m in Sources */,
 				D097A6291983A04800A6EB7A /* SoundEffect.m in Sources */,
+				D0EEF2A519CABCB20026376F /* GridPoint.m in Sources */,
 				D097A61D1983A04800A6EB7A /* GameViewControllerBase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

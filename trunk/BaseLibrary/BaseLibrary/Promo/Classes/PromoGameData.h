@@ -14,10 +14,12 @@
 @property (strong, nonatomic) NSString *imagePath;
 @property (strong, nonatomic) NSString *title;
 @property (strong, nonatomic) NSString *actionURL;
+@property (strong, nonatomic) NSString *trackId;
 
 + (PromoGameData *)setupWithBundleId:(NSString *)bundleId
                            imagePath:(NSString *)imagePath
                          description:(NSString *)description
-                           actionURL:(NSString *)actionURL;
+                           actionURL:(NSString *)actionURL
+                             trackId:(NSString *)trackId;
 
 @end

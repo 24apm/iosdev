@@ -17,6 +17,7 @@
 @property (strong, nonatomic) TileView *tileView;
 
 @property (strong, nonatomic) IBOutlet UIView *block;
+@property (strong, nonatomic) IBOutlet UIView *blocker;
 
 - (void)setupWithTier:(int)tier;
 

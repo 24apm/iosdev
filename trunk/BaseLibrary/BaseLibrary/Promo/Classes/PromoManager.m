@@ -90,8 +90,8 @@
     return self.currentPromo;
 }
 
-- (void)goToAppStore:(NSString *)actionURL {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:actionURL]];
+- (void)goToAppStore:(PromoGameData *)promoGameData {
+    [self openAppStore:promoGameData];
 }
 
 - (void)promoPressed:(PromoGameData *)promoGameData {
@@ -99,9 +99,30 @@
 
     if (![self launchInstalledApp:promoGameData]) {
         [TrackUtils trackAction:@"xpromo_banner_goToAppStore" label:promoGameData.title];
-        [[PromoManager instance] goToAppStore:promoGameData.actionURL];
+        [self goToAppStore:promoGameData];
     }
     // [self setupWithPromoGameData:[[PromoManager instance] nextPromo]];
+}
+
+- (void)openAppStore:(PromoGameData *)promoGameData {
+    // Initialize Product View Controller
+    SKStoreProductViewController *storeProductViewController = [[SKStoreProductViewController alloc] init];
+    
+    // Configure View Controller
+    [storeProductViewController setDelegate:self];
+    [storeProductViewController loadProductWithParameters:@{SKStoreProductParameterITunesItemIdentifier : promoGameData.trackId} completionBlock:^(BOOL result, NSError *error) {
+        if (error) {
+            NSLog(@"Error %@ with User Info %@.", error, [error userInfo]);
+            
+        } else {
+            // Present Store Product View Controller
+            [[Utils rootViewController] presentViewController:storeProductViewController animated:YES completion:nil];
+        }
+    }];
+}
+
+- (void)productViewControllerDidFinish:(SKStoreProductViewController *)viewController {
+    [[Utils rootViewController] dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (BOOL)launchInstalledApp:(PromoGameData *)promoGameData {

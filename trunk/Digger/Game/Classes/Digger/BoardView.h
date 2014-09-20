@@ -18,4 +18,8 @@
 @property (strong, nonatomic) UIScrollView *scrollView;
 @property (strong, nonatomic) PlayerView *playerView;
 
+- (void)refreshBoard;
+- (void)refreshBoardLocalOpen;
+- (void)refreshBoardLocalLock;
+- (void)shiftUp;
 @end

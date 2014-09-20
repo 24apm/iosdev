@@ -657,6 +657,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0E36B8B18C2906F00BA56E7 /* StoreKit.framework in Frameworks */,
 				D08D835319C6405200627228 /* libBaseLibrary.a in Frameworks */,
 				D0EE3DBA19C2EBAD0028E728 /* libsqlite3.0.dylib in Frameworks */,
 				D097A67B1983A2E200A6EB7A /* AVFoundation.framework in Frameworks */,
@@ -667,7 +668,6 @@
 				D0EADDF918E76A500016D2A0 /* SystemConfiguration.framework in Frameworks */,
 				D0EADDF718E76A430016D2A0 /* libz.dylib in Frameworks */,
 				D0E7FF7918E6B02700896C7B /* CoreImage.framework in Frameworks */,
-				D0E36B8B18C2906F00BA56E7 /* StoreKit.framework in Frameworks */,
 				D048A84618ACB25200411DF9 /* GameKit.framework in Frameworks */,
 				D04F704218AA1197000509AA /* Social.framework in Frameworks */,
 				D07F418018A4D8C7009680FD /* iAd.framework in Frameworks */,
@@ -1636,8 +1636,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				BUNDLE_IDENTIFIER = com.jeffrwan.digger;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Jeffrey Wan (YS47XTCZZB)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jeffrey Wan (YS47XTCZZB)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jeffrey Wan (MT34DA8UCA)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jeffrey Wan (MT34DA8UCA)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Game/Digger-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -1646,11 +1646,12 @@
 					$SOURCE_ROOT/include,
 				);
 				INFOPLIST_FILE = "Game/Digger-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = Digger;
-				PROVISIONING_PROFILE = "bdbf547c-f6d7-4a12-80d0-02608f7cb0b2";
+				PROVISIONING_PROFILE = "CB4532C1-7837-4A67-A8D6-32AA044757BD";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(inherited) /Users/15inch/Desktop/tut/iosdev/trunk/Base/Analytics/Library $SOURCE_ROOT/../BaseLibrary/**";
 				VALID_ARCHS = "arm64 armv7 armv7s i386 x86_64";
@@ -1664,8 +1665,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				BUNDLE_IDENTIFIER = com.jeffrwan.digger;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Jeffrey Wan (YS47XTCZZB)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jeffrey Wan (YS47XTCZZB)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jeffrey Wan (MT34DA8UCA)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jeffrey Wan (MT34DA8UCA)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Game/Digger-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -1674,11 +1675,12 @@
 					$SOURCE_ROOT/include,
 				);
 				INFOPLIST_FILE = "Game/Digger-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = Digger;
-				PROVISIONING_PROFILE = "bdbf547c-f6d7-4a12-80d0-02608f7cb0b2";
+				PROVISIONING_PROFILE = "CB4532C1-7837-4A67-A8D6-32AA044757BD";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(inherited) /Users/15inch/Desktop/tut/iosdev/trunk/Base/Analytics/Library $SOURCE_ROOT/../BaseLibrary/**";
 				VALID_ARCHS = "arm64 armv7 armv7s i386 x86_64";

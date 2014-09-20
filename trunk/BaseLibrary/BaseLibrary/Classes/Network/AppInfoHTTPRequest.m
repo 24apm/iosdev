@@ -41,6 +41,7 @@
         NSString *actionURL = [result objectForKey:@"trackViewUrl"];
         NSString *appName = [result objectForKey:@"trackName"];
         NSString *appBundleId = [result objectForKey:@"bundleId"];
+        NSString *trackId = [result objectForKey:@"trackId"];
         
         actionURL = [self replaceScheme:actionURL];
         
@@ -55,7 +56,8 @@
         PromoGameData *promoData = [PromoGameData setupWithBundleId:appBundleId
                                                           imagePath:icon
                                                         description:appName
-                                                          actionURL:actionURL];
+                                                          actionURL:actionURL
+                                                            trackId:trackId];
         
         [[PromoManager instance] addPromo:promoData];
         

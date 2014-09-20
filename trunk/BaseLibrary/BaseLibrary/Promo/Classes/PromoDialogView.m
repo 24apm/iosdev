@@ -100,8 +100,15 @@ static BOOL isShowing;
     PromoIconView *promoIconView = notification.object;
     [TrackUtils trackAction:@"PromoDialogView_promoIconPressed" label:promoIconView.promoGameData.bundleId];
     [[PromoManager instance] promoPressed:promoIconView.promoGameData];
+    [self animateDismissed];
+}
 
-    [self dismissed];
+- (void)animateDismissed {
+    [UIView animateWithDuration:0.3f animations:^ {
+        self.alpha = 0.f;
+    } completion:^(BOOL completed) {
+        [self dismissed];
+    }];
 }
 
 - (void)dismissed {
@@ -114,7 +121,7 @@ static BOOL isShowing;
 - (IBAction)closePressed:(id)sender {
     [TrackUtils trackAction:@"PromoDialogView_closed" label:@"closeButtonPressed"];
     promoCancelledCount++;
-    [self dismissed];
+    [self animateDismissed];
 }
 
 #pragma mark - Animations

@@ -8,13 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import "PromoGameData.h"
+#import <StoreKit/StoreKit.h>
 
-@interface PromoManager : NSObject
+@interface PromoManager : NSObject <SKStoreProductViewControllerDelegate>
 
 + (PromoManager *)instance;
 
 - (void)addPromo:(PromoGameData *)gameData;
-- (void)goToAppStore:(NSString *)actionURL;
+- (void)goToAppStore:(PromoGameData *)actionURL;
 - (PromoGameData *)nextPromo;
 - (NSArray *)nextPromoSetWithSize:(int)size;
 - (void)promoPressed:(PromoGameData *)promoGameData;

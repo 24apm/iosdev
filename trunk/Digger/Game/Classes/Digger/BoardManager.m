@@ -8,6 +8,7 @@
 
 #import "BoardManager.h"
 #import "Utils.h"
+#import "GridPoint.h"
 
 @interface BoardManager()
 
@@ -44,7 +45,7 @@
 #pragma mark - board functions
 - (TileView *)tileAtRow:(int)r column:(int)c {
     int index = r * NUM_COL + c;
-    if (0 < index && index < NUM_ROW * NUM_COL) {
+    if (index >= 0  && index < self.tiles.count) {
         return [self.tiles objectAtIndex:index];
     } else {
         return nil;
@@ -55,11 +56,11 @@
     return [self.tiles subarrayWithRange:NSMakeRange(r * NUM_COL, NUM_COL)];
 }
 
-- (CGPoint)pointForTile:(TileView *)tileView {
+- (GridPoint *)pointForTile:(TileView *)tileView {
     int index = [self.tiles indexOfObject:tileView];
     int r = index / NUM_COL;
     int c = index % NUM_COL;
-    return CGPointMake(r, c);
+    return [GridPoint gridPointWithRow:r col:c];
 }
 
 - (void)replaceBlock:(BlockView *)blockView onTile:(TileView *)tileView {
@@ -77,7 +78,7 @@
     tileView.blockView = blockView;
     blockView.frame = tileView.frame;
     blockView.tileView = tileView;
-    [self.boardView.scrollView addSubview:blockView];
+    [tileView.superview addSubview:blockView];
 }
 
 - (BOOL)isOccupied:(TileView *)tileView {
@@ -92,5 +93,6 @@
 - (void)movePlayerBlock:(TileView *)tileView {
     [self moveBlock:self.boardView.playerView toTile:tileView];
 }
+
 
 @end
