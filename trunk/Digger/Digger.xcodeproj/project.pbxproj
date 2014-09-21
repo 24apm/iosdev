@@ -294,6 +294,7 @@
 		D0F624BD19C81FFF00E4BDB9 /* PlayerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0F624BC19C81FFF00E4BDB9 /* PlayerView.xib */; };
 		D0F624BF19C8200D00E4BDB9 /* TreasureView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0F624BE19C8200D00E4BDB9 /* TreasureView.xib */; };
 		D0F624C119C8202300E4BDB9 /* ObstacleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0F624C019C8202300E4BDB9 /* ObstacleView.xib */; };
+		D0F724C519CEB04D0083FE07 /* BufferedBoardView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F724C419CEB04D0083FE07 /* BufferedBoardView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -655,6 +656,8 @@
 		D0F624BC19C81FFF00E4BDB9 /* PlayerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayerView.xib; sourceTree = "<group>"; };
 		D0F624BE19C8200D00E4BDB9 /* TreasureView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TreasureView.xib; sourceTree = "<group>"; };
 		D0F624C019C8202300E4BDB9 /* ObstacleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ObstacleView.xib; sourceTree = "<group>"; };
+		D0F724C319CEB04D0083FE07 /* BufferedBoardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BufferedBoardView.h; sourceTree = "<group>"; };
+		D0F724C419CEB04D0083FE07 /* BufferedBoardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BufferedBoardView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -712,6 +715,8 @@
 				D0EAE38B19C954B900E59FC3 /* BoardManager.m */,
 				D0EAE38419C9482700E59FC3 /* BoardView.h */,
 				D0EAE38519C9482700E59FC3 /* BoardView.m */,
+				D0F724C319CEB04D0083FE07 /* BufferedBoardView.h */,
+				D0F724C419CEB04D0083FE07 /* BufferedBoardView.m */,
 				D0F624A519C64FA100E4BDB9 /* BlockView.h */,
 				D0F624A619C64FA100E4BDB9 /* BlockView.m */,
 				D0F624AD19C667D100E4BDB9 /* SlotView.h */,
@@ -1505,6 +1510,7 @@
 				D02B963419C6317E00F565C1 /* NumberGameIAPHelper.m in Sources */,
 				D0EAE38C19C954B900E59FC3 /* BoardManager.m in Sources */,
 				D0F624AF19C667D100E4BDB9 /* SlotView.m in Sources */,
+				D0F724C519CEB04D0083FE07 /* BufferedBoardView.m in Sources */,
 				D02B964E19C632A500F565C1 /* ShopTableView.m in Sources */,
 				D02B963A19C6317E00F565C1 /* ResultView.m in Sources */,
 				D02B962419C6317E00F565C1 /* AnimatedLabel.m in Sources */,

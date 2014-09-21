@@ -18,17 +18,21 @@
 #import "BoardManager.h"
 #import "GridPoint.h"
 #import "PowerView.h"
-
+#import "BufferedBoardView.h"
 
 
 @interface BoardView()
 
 @property (nonatomic) CGSize slotSize;
 
-@property (strong, nonatomic) UIView *view1;
-@property (strong, nonatomic) UIView *view2;
+@property (strong, nonatomic) BufferedBoardView *view1;
+@property (strong, nonatomic) BufferedBoardView *view2;
 @property (strong, nonatomic) NSMutableArray *viewsSlotsCount;
 @property (nonatomic) CGFloat view2Start;
+
+
+@property (nonatomic) NSInteger depth;
+@property (strong, nonatomic) BufferedBoardView *currentBufferedView;
 
 @end
 
@@ -58,14 +62,14 @@
     
     self.viewsSlotsCount = [NSMutableArray array];
     
-    self.view1 = [[UIView alloc] init];
+    self.view1 = [[BufferedBoardView alloc] init];
     self.view1.frame = CGRectMake(0,
                                   0,
                                   self.width,
                                   self.slotSize.height * NUM_ROW);
     self.view1.backgroundColor = [UIColor redColor];
     
-    self.view2 = [[UIView alloc] init];
+    self.view2 = [[BufferedBoardView alloc] init];
     self.view2.frame = CGRectMake(0,
                                   self.view1.height,
                                   self.width,
@@ -76,8 +80,11 @@
     [self.scrollView addSubview:self.view1];
     [self.scrollView addSubview:self.view2];
     
-    [self generateSlots:self.view1];
-    [self generateSlots:self.view2];
+    
+    [self.view1 generateSlots];
+    [self.view2 generateSlots];
+    
+    [BoardManager instance].slots = [self.view1.slots arrayByAddingObjectsFromArray:self.view2.slots];
     
     [self newGame];
     
@@ -94,27 +101,44 @@
                                   self.view1.height,
                                   self.width,
                                   self.slotSize.height * NUM_ROW);
-    [self generateBlocks];
+    
+    [self.view1 generateBlocks];
+    [self.view2 generateBlocks];
     [self generatePlayer];
+    self.currentBufferedView = self.view2;
+    [self.currentBufferedView reset];
+    
+    self.depth = 0;
 }
 
 - (void)shiftUp {
-    self.view1.y -= self.slotSize.height;
-    self.view2.y -= self.slotSize.height;
-    
+    [UIView animateWithDuration:0.3f animations:^ {
+        self.view1.y -= self.slotSize.height;
+        self.view2.y -= self.slotSize.height;
+    }];    
 }
 
 - (void)generateBoardIfNecessary {
-    CGFloat boardSize = self.view2Start - self.slotSize.height;
-    CGFloat boardSizeCheckLimit = -self.view2Start - self.slotSize.height + 1;
-    if (self.view1.y <= boardSizeCheckLimit) {
-        self.view1.y = boardSize;
-        [self generateBlocksForView:self.view1];
+    self.depth++;
+
+    if (self.depth < 3) return;
+    
+    NSInteger numRows = [BoardManager instance].slots.count / NUM_COL;
+    
+    NSInteger buffer = 1;
+    if (self.depth % numRows == numRows / 2 + buffer) {
+        self.currentBufferedView = self.view1;
+        [self.currentBufferedView reset];
+        self.view1.y = self.view2.y + self.view2.height;
+
     }
-    if (self.view2.y <= boardSizeCheckLimit) {
-        self.view2.y = boardSize;
-        [self generateBlocksForView:self.view2];
+    if (self.depth % numRows == 0 + buffer) {
+        self.currentBufferedView = self.view2;
+        [self.currentBufferedView reset];
+        self.view2.y = self.view1.y + self.view1.height;
+
     }
+    [self.currentBufferedView generateNextRow];
 }
 
 - (void)generatePlayer {
@@ -124,54 +148,6 @@
     [[BoardManager instance] movePlayerBlock:startingSlot];
 }
 
-- (void)generateBlocks {
-    
-    NSArray *currentLevelTypes = [[LevelManager instance] levelDataTypeFor:[BoardManager instance].slots.count];
-    NSArray *currentLevelTiers = [[LevelManager instance] levelDataTierFor:[BoardManager instance].slots.count];
-    NSUInteger index = 0;
-    
-    for (SlotView *slot in [BoardManager instance].slots) {
-        NSUInteger currentType = [[currentLevelTypes objectAtIndex:index]intValue];
-        NSUInteger currentTier = [[currentLevelTiers objectAtIndex:index]intValue];
-        index++;
-        BlockView *blockView = [[BoardManager instance] blockViewForType:currentType];
-        [blockView setupWithTier:currentTier];
-        [[BoardManager instance] moveBlock:blockView toSlot:slot];
-    }
-}
-- (void)generateBlocksForView:(UIView *)view {
-    
-    NSArray *currentLevelTypes = [[LevelManager instance] levelDataTypeFor:view.subviews.count];
-    NSArray *currentLevelTiers = [[LevelManager instance] levelDataTierFor:view.subviews.count];
-    NSUInteger index = 0;
-    
-    for (SlotView *slot in view.subviews) {
-        NSUInteger currentType = [[currentLevelTypes objectAtIndex:index]intValue];
-        NSUInteger currentTier = [[currentLevelTiers objectAtIndex:index]intValue];
-        index++;
-        
-        
-        BlockView *blockView = [[BoardManager instance] blockViewForType:currentType];
-        [blockView setupWithTier:currentTier];
-        [[BoardManager instance] moveBlock:blockView toSlot:slot];
-    }
-}
-
-- (void)generateSlots:(UIView *)view {
-    NSUInteger slotsCount = 0;
-    for (int r = 0; r < NUM_ROW; r++) {
-        for (int c = 0; c < NUM_COL; c++) {
-            SlotView *slotView = [[SlotView alloc] init];
-            slotView.frame = CGRectIntegral(CGRectMake(c * self.slotSize.width,
-                                                       r * self.slotSize.height,
-                                                       self.slotSize.width,
-                                                       self.slotSize.height));
-            [[BoardManager instance].slots addObject:slotView];
-            [view addSubview:slotView];
-        }
-    }
-    [self.viewsSlotsCount addObject:[NSNumber numberWithInteger:slotsCount - 1]];
-}
 
 - (void)refreshBoardLocalLock {
     

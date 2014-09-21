@@ -15,7 +15,7 @@
 #import "PromoDialogView.h"
 #import "ProgressBarComponent.h"
 
-#define MAX_LIFE 10.f
+#define MAX_LIFE 100.f
 
 typedef enum {
     DirectionLeft,
@@ -67,15 +67,14 @@ typedef enum {
         NSLog(@"%d",currentDirection);
         [self.boardView refreshBoardLocalLock];
         [[BoardManager instance] movePlayerBlock:blockView.slotView];
-        [UIView animateWithDuration:0.3f animations:^ {
-            [self.boardView refreshBoardLocalOpen];
-            if (currentDirection == DirectionDown && self.playerMargin >= 1) {
-                [self.boardView shiftUp];
-            }
-        }];
+        [self.boardView refreshBoardLocalOpen];
+        if (currentDirection == DirectionDown && self.playerMargin >= 1) {
+            [self.boardView generateBoardIfNecessary];
+            [self.boardView shiftUp];
+        }
+        
         self.playerMargin++;
         [self actionByBlockType:blockView.type];
-        [self.boardView generateBoardIfNecessary];
         if (self.stamina <= 0) {
             [self newGame];
         }

@@ -11,8 +11,8 @@
 #import "SlotView.h"
 #import "BoardView.h"
 
-#define NUM_COL 5
-#define NUM_ROW 7
+#define NUM_COL 10
+#define NUM_ROW 6
 #define MARGIN_BLOCK 10 * IPAD_SCALE
 
 @class GridPoint;
@@ -34,6 +34,6 @@
 - (BlockView *)blockViewForType:(BlockType)currentType;
 
 @property (nonatomic) CGSize slotSize;
-@property (strong, nonatomic) NSMutableArray *slots;
+@property (strong, nonatomic) NSArray *slots;
 
 @end
