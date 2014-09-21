@@ -7,7 +7,7 @@
 //
 
 #import "BoardView.h"
-#import "TileView.h"
+#import "SlotView.h"
 #import "ObstacleView.h"
 #import "PlayerView.h"
 #import "TreasureView.h"
@@ -17,15 +17,17 @@
 #import "NSArray+Util.h"
 #import "BoardManager.h"
 #import "GridPoint.h"
+#import "PowerView.h"
 
 
 
 @interface BoardView()
 
-@property (nonatomic) CGSize tileSize;
+@property (nonatomic) CGSize slotSize;
 
 @property (strong, nonatomic) UIView *view1;
 @property (strong, nonatomic) UIView *view2;
+@property (strong, nonatomic) NSMutableArray *viewsSlotsCount;
 @property (nonatomic) CGFloat view2Start;
 
 @end
@@ -52,150 +54,172 @@
     
     self.scrollView.size = self.size;
     
-    self.tileSize = [BoardManager instance].tileSize;
+    self.slotSize = [BoardManager instance].slotSize;
     
-    
+    self.viewsSlotsCount = [NSMutableArray array];
     
     self.view1 = [[UIView alloc] init];
     self.view1.frame = CGRectMake(0,
                                   0,
                                   self.width,
-                                  self.tileSize.height * NUM_ROW);
+                                  self.slotSize.height * NUM_ROW);
     self.view1.backgroundColor = [UIColor redColor];
     
     self.view2 = [[UIView alloc] init];
     self.view2.frame = CGRectMake(0,
                                   self.view1.height,
                                   self.width,
-                                  self.tileSize.height * NUM_ROW);
+                                  self.slotSize.height * NUM_ROW);
     
     self.view2.backgroundColor = [UIColor blueColor];
     
     [self.scrollView addSubview:self.view1];
     [self.scrollView addSubview:self.view2];
     
-    [self generateTiles:self.view1];
-    [self generateTiles:self.view2];
+    [self generateSlots:self.view1];
+    [self generateSlots:self.view2];
     
+    [self newGame];
+    
+    self.scrollView.contentSize = CGSizeMake(self.width, self.view1.height);
+    self.view2Start = [BoardManager instance].slots.count/NUM_COL * self.slotSize.height/2;
+}
+
+- (void)newGame {
+    self.view1.frame = CGRectMake(0,
+                                  0,
+                                  self.width,
+                                  self.slotSize.height * NUM_ROW);
+    self.view2.frame = CGRectMake(0,
+                                  self.view1.height,
+                                  self.width,
+                                  self.slotSize.height * NUM_ROW);
     [self generateBlocks];
     [self generatePlayer];
-    self.scrollView.contentSize = CGSizeMake(self.width, self.view1.height);
-    self.view2Start = [BoardManager instance].tiles.count/NUM_COL * self.tileSize.height/2;
 }
 
 - (void)shiftUp {
-    self.view1.y -= self.tileSize.height;
-    self.view2.y -= self.tileSize.height;
-    CGFloat boardSize = self.view2Start * -1 + 1;
-    if (self.view1.y <= boardSize) {
-        self.view1.y = self.view2Start;
-        
+    self.view1.y -= self.slotSize.height;
+    self.view2.y -= self.slotSize.height;
+    
+}
+
+- (void)generateBoardIfNecessary {
+    CGFloat boardSize = self.view2Start - self.slotSize.height;
+    CGFloat boardSizeCheckLimit = -self.view2Start - self.slotSize.height + 1;
+    if (self.view1.y <= boardSizeCheckLimit) {
+        self.view1.y = boardSize;
+        [self generateBlocksForView:self.view1];
     }
-    if (self.view2.y <= boardSize) {
-        self.view2.y = self.view2Start;
+    if (self.view2.y <= boardSizeCheckLimit) {
+        self.view2.y = boardSize;
+        [self generateBlocksForView:self.view2];
     }
 }
 
 - (void)generatePlayer {
     self.playerView = [[PlayerView alloc] init];
-    NSArray *tiles = [[BoardManager instance] tilesAtRow:0];
-    TileView *startingTile = [tiles randomObject];
-    [[BoardManager instance] moveBlock:self.playerView toTile:startingTile];
+    NSArray *slots = [[BoardManager instance] slotsAtRow:0];
+    SlotView *startingSlot = [slots randomObject];
+    [[BoardManager instance] movePlayerBlock:startingSlot];
 }
 
 - (void)generateBlocks {
     
-    NSArray *currentLevelTypes = [[LevelManager instance] levelDataTypeFor:[BoardManager instance].tiles.count];
-    NSArray *currentLevelTiers = [[LevelManager instance] levelDataTierFor:[BoardManager instance].tiles.count];
+    NSArray *currentLevelTypes = [[LevelManager instance] levelDataTypeFor:[BoardManager instance].slots.count];
+    NSArray *currentLevelTiers = [[LevelManager instance] levelDataTierFor:[BoardManager instance].slots.count];
+    NSUInteger index = 0;
     
-    int index = 0;
-    for (TileView *tile in [BoardManager instance].tiles) {
-        int currentType = [[currentLevelTypes objectAtIndex:index]intValue];
-        int currentTier = [[currentLevelTiers objectAtIndex:index]intValue];
+    for (SlotView *slot in [BoardManager instance].slots) {
+        NSUInteger currentType = [[currentLevelTypes objectAtIndex:index]intValue];
+        NSUInteger currentTier = [[currentLevelTiers objectAtIndex:index]intValue];
+        index++;
+        BlockView *blockView = [[BoardManager instance] blockViewForType:currentType];
+        [blockView setupWithTier:currentTier];
+        [[BoardManager instance] moveBlock:blockView toSlot:slot];
+    }
+}
+- (void)generateBlocksForView:(UIView *)view {
+    
+    NSArray *currentLevelTypes = [[LevelManager instance] levelDataTypeFor:view.subviews.count];
+    NSArray *currentLevelTiers = [[LevelManager instance] levelDataTierFor:view.subviews.count];
+    NSUInteger index = 0;
+    
+    for (SlotView *slot in view.subviews) {
+        NSUInteger currentType = [[currentLevelTypes objectAtIndex:index]intValue];
+        NSUInteger currentTier = [[currentLevelTiers objectAtIndex:index]intValue];
         index++;
         
-        BlockView *blockView;
         
-        switch (currentType) {
-            case BlockTypeObstacle: {
-                blockView = [[ObstacleView alloc] init];
-                break;
-            }
-            case BlockTypeTreasure: {
-                blockView = [[TreasureView alloc] init];
-                break;
-            }
-            default: {
-                blockView = [[BlockView alloc] init];
-                break;
-            }
-        }
+        BlockView *blockView = [[BoardManager instance] blockViewForType:currentType];
         [blockView setupWithTier:currentTier];
-        [[BoardManager instance] moveBlock:blockView toTile:tile];
+        [[BoardManager instance] moveBlock:blockView toSlot:slot];
     }
 }
 
-- (void)generateTiles:(UIView *)view {
+- (void)generateSlots:(UIView *)view {
+    NSUInteger slotsCount = 0;
     for (int r = 0; r < NUM_ROW; r++) {
         for (int c = 0; c < NUM_COL; c++) {
-            TileView *tileView = [[TileView alloc] init];
-            tileView.frame = CGRectIntegral(CGRectMake(c * self.tileSize.width,
-                                                       r * self.tileSize.height,
-                                                       self.tileSize.width,
-                                                       self.tileSize.height));
-            [[BoardManager instance].tiles addObject:tileView];
-            [view addSubview:tileView];
+            SlotView *slotView = [[SlotView alloc] init];
+            slotView.frame = CGRectIntegral(CGRectMake(c * self.slotSize.width,
+                                                       r * self.slotSize.height,
+                                                       self.slotSize.width,
+                                                       self.slotSize.height));
+            [[BoardManager instance].slots addObject:slotView];
+            [view addSubview:slotView];
         }
     }
+    [self.viewsSlotsCount addObject:[NSNumber numberWithInteger:slotsCount - 1]];
 }
 
 - (void)refreshBoardLocalLock {
     
-    GridPoint *playerPoint = [[BoardManager instance] pointForTile:self.playerView.tileView];
+    GridPoint *playerPoint = [[BoardManager instance] pointForSlot:self.playerView.slotView];
     
     if (playerPoint.col > 0) {
         
-        TileView *openTile = [[BoardManager instance] tileAtRow:playerPoint.row column:playerPoint.col-1];
-        openTile.blockView.blocker.hidden = NO;
+        SlotView *openSlot = [[BoardManager instance] slotAtRow:playerPoint.row column:playerPoint.col-1];
+        openSlot.blockView.blocker.hidden = NO;
     }
     if (playerPoint.col < NUM_COL-1) {
-        TileView *openTile = [[BoardManager instance] tileAtRow:playerPoint.row column:playerPoint.col+1];
-        openTile.blockView.blocker.hidden = NO;
+        SlotView *openSlot = [[BoardManager instance] slotAtRow:playerPoint.row column:playerPoint.col+1];
+        openSlot.blockView.blocker.hidden = NO;
     }
-    if (playerPoint.row >= [BoardManager instance].tiles.count/NUM_COL-1 ) {
-        TileView *openTile = [[BoardManager instance] tileAtRow:0 column:playerPoint.col];
-        openTile.blockView.blocker.hidden = NO;
+    if (playerPoint.row >= [BoardManager instance].slots.count/NUM_COL-1 ) {
+        SlotView *openSlot = [[BoardManager instance] slotAtRow:0 column:playerPoint.col];
+        openSlot.blockView.blocker.hidden = NO;
     } else {
-        TileView *openTile = [[BoardManager instance] tileAtRow:playerPoint.row+1 column:playerPoint.col];
-        openTile.blockView.blocker.hidden = NO;
+        SlotView *openSlot = [[BoardManager instance] slotAtRow:playerPoint.row+1 column:playerPoint.col];
+        openSlot.blockView.blocker.hidden = NO;
     }
 }
 
 - (void)refreshBoardLocalOpen {
     
-    GridPoint *playerPoint = [[BoardManager instance] pointForTile:self.playerView.tileView];
+    GridPoint *playerPoint = [[BoardManager instance] pointForSlot:self.playerView.slotView];
     
     if (playerPoint.col > 0) {
-        TileView *openTile = [[BoardManager instance] tileAtRow:playerPoint.row column:playerPoint.col-1];
-        openTile.blockView.blocker.hidden = YES;
+        SlotView *openSlot = [[BoardManager instance] slotAtRow:playerPoint.row column:playerPoint.col-1];
+        openSlot.blockView.blocker.hidden = YES;
     }
     if (playerPoint.col < NUM_COL-1) {
-        TileView *openTile = [[BoardManager instance] tileAtRow:playerPoint.row column:playerPoint.col+1];
-        openTile.blockView.blocker.hidden = YES;
+        SlotView *openSlot = [[BoardManager instance] slotAtRow:playerPoint.row column:playerPoint.col+1];
+        openSlot.blockView.blocker.hidden = YES;
     }
-    if (playerPoint.row >= [BoardManager instance].tiles.count/NUM_COL-1 ) {
-        TileView *openTile = [[BoardManager instance] tileAtRow:0 column:playerPoint.col];
-        openTile.blockView.blocker.hidden = YES;
+    if (playerPoint.row >= [BoardManager instance].slots.count/NUM_COL-1 ) {
+        SlotView *openSlot = [[BoardManager instance] slotAtRow:0 column:playerPoint.col];
+        openSlot.blockView.blocker.hidden = YES;
     } else {
-        TileView *openTile = [[BoardManager instance] tileAtRow:playerPoint.row+1 column:playerPoint.col];
-        openTile.blockView.blocker.hidden = YES;
+        SlotView *openSlot = [[BoardManager instance] slotAtRow:playerPoint.row+1 column:playerPoint.col];
+        openSlot.blockView.blocker.hidden = YES;
     }
     
 }
 
 - (void)refreshBoard {
-    for (TileView *tile in [BoardManager instance].tiles) {
-        tile.blockView.blocker.hidden = NO;
+    for (SlotView *slot in [BoardManager instance].slots) {
+        slot.blockView.blocker.hidden = NO;
     }
 }
 

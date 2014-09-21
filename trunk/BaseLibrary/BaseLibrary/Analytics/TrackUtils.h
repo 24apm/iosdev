@@ -11,5 +11,6 @@
 @interface TrackUtils : NSObject
 
 + (void)trackAction:(NSString *)action label:(NSString *)label;
++ (void)trackDevice;
 
 @end

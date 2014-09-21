@@ -7,18 +7,20 @@
 //
 
 #import "XibView.h"
+#import "GameConstants.h"
 
 #define BLOCK_PRESSED_NOTIFICATION @"BLOCK_PRESSED_NOTIFICATION"
 
-@class TileView;
+@class SlotView;
 
 @interface BlockView : XibView
 
-@property (strong, nonatomic) TileView *tileView;
+@property (strong, nonatomic) SlotView *slotView;
 
 @property (strong, nonatomic) IBOutlet UIView *block;
 @property (strong, nonatomic) IBOutlet UIView *blocker;
+@property (nonatomic) BlockType type;
 
-- (void)setupWithTier:(int)tier;
+- (void)setupWithTier:(NSUInteger)tier;
 
 @end

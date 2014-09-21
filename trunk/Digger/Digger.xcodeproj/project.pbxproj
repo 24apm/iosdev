@@ -31,6 +31,8 @@
 		D02B964C19C632A500F565C1 /* ShopManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D02B964619C632A500F565C1 /* ShopManager.m */; };
 		D02B964D19C632A500F565C1 /* ShopRowView.m in Sources */ = {isa = PBXBuildFile; fileRef = D02B964819C632A500F565C1 /* ShopRowView.m */; };
 		D02B964E19C632A500F565C1 /* ShopTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = D02B964A19C632A500F565C1 /* ShopTableView.m */; };
+		D031B7A519CD827900711845 /* PowerView.m in Sources */ = {isa = PBXBuildFile; fileRef = D031B7A419CD827900711845 /* PowerView.m */; };
+		D031B7A719CD82B100711845 /* PowerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D031B7A619CD82B100711845 /* PowerView.xib */; };
 		D033855218EA9C22008D7861 /* defaultbackground.png in Resources */ = {isa = PBXBuildFile; fileRef = D033854F18EA9C22008D7861 /* defaultbackground.png */; };
 		D033855318EA9C22008D7861 /* bluebackground.png in Resources */ = {isa = PBXBuildFile; fileRef = D033855018EA9C22008D7861 /* bluebackground.png */; };
 		D033855418EA9C22008D7861 /* pinkbackground.png in Resources */ = {isa = PBXBuildFile; fileRef = D033855118EA9C22008D7861 /* pinkbackground.png */; };
@@ -284,8 +286,8 @@
 		D0F5D15419C965D000ADB923 /* DiggerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0F5D15319C965D000ADB923 /* DiggerView.xib */; };
 		D0F624A719C64FA100E4BDB9 /* BlockView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F624A619C64FA100E4BDB9 /* BlockView.m */; };
 		D0F624AC19C6500900E4BDB9 /* BlockView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0F624AB19C6500900E4BDB9 /* BlockView.xib */; };
-		D0F624AF19C667D100E4BDB9 /* TileView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F624AE19C667D100E4BDB9 /* TileView.m */; };
-		D0F624B119C667E700E4BDB9 /* TileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0F624B019C667E700E4BDB9 /* TileView.xib */; };
+		D0F624AF19C667D100E4BDB9 /* SlotView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F624AE19C667D100E4BDB9 /* SlotView.m */; };
+		D0F624B119C667E700E4BDB9 /* SlotView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0F624B019C667E700E4BDB9 /* SlotView.xib */; };
 		D0F624B419C8160900E4BDB9 /* ObstacleView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F624B319C8160900E4BDB9 /* ObstacleView.m */; };
 		D0F624B819C81C2800E4BDB9 /* TreasureView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F624B719C81C2800E4BDB9 /* TreasureView.m */; };
 		D0F624BB19C81C3B00E4BDB9 /* PlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F624BA19C81C3B00E4BDB9 /* PlayerView.m */; };
@@ -379,6 +381,9 @@
 		D02B964819C632A500F565C1 /* ShopRowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopRowView.m; sourceTree = "<group>"; };
 		D02B964919C632A500F565C1 /* ShopTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopTableView.h; sourceTree = "<group>"; };
 		D02B964A19C632A500F565C1 /* ShopTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopTableView.m; sourceTree = "<group>"; };
+		D031B7A319CD827900711845 /* PowerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PowerView.h; sourceTree = "<group>"; };
+		D031B7A419CD827900711845 /* PowerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PowerView.m; sourceTree = "<group>"; };
+		D031B7A619CD82B100711845 /* PowerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PowerView.xib; sourceTree = "<group>"; };
 		D033854F18EA9C22008D7861 /* defaultbackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = defaultbackground.png; sourceTree = "<group>"; };
 		D033855018EA9C22008D7861 /* bluebackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bluebackground.png; sourceTree = "<group>"; };
 		D033855118EA9C22008D7861 /* pinkbackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pinkbackground.png; sourceTree = "<group>"; };
@@ -638,9 +643,9 @@
 		D0F624A519C64FA100E4BDB9 /* BlockView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockView.h; sourceTree = "<group>"; };
 		D0F624A619C64FA100E4BDB9 /* BlockView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlockView.m; sourceTree = "<group>"; };
 		D0F624AB19C6500900E4BDB9 /* BlockView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BlockView.xib; sourceTree = "<group>"; };
-		D0F624AD19C667D100E4BDB9 /* TileView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TileView.h; sourceTree = "<group>"; };
-		D0F624AE19C667D100E4BDB9 /* TileView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TileView.m; sourceTree = "<group>"; };
-		D0F624B019C667E700E4BDB9 /* TileView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TileView.xib; sourceTree = "<group>"; };
+		D0F624AD19C667D100E4BDB9 /* SlotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlotView.h; sourceTree = "<group>"; };
+		D0F624AE19C667D100E4BDB9 /* SlotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlotView.m; sourceTree = "<group>"; };
+		D0F624B019C667E700E4BDB9 /* SlotView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SlotView.xib; sourceTree = "<group>"; };
 		D0F624B219C8160900E4BDB9 /* ObstacleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObstacleView.h; sourceTree = "<group>"; };
 		D0F624B319C8160900E4BDB9 /* ObstacleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObstacleView.m; sourceTree = "<group>"; };
 		D0F624B619C81C2800E4BDB9 /* TreasureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TreasureView.h; sourceTree = "<group>"; };
@@ -709,14 +714,16 @@
 				D0EAE38519C9482700E59FC3 /* BoardView.m */,
 				D0F624A519C64FA100E4BDB9 /* BlockView.h */,
 				D0F624A619C64FA100E4BDB9 /* BlockView.m */,
-				D0F624AD19C667D100E4BDB9 /* TileView.h */,
-				D0F624AE19C667D100E4BDB9 /* TileView.m */,
+				D0F624AD19C667D100E4BDB9 /* SlotView.h */,
+				D0F624AE19C667D100E4BDB9 /* SlotView.m */,
 				D0F624B219C8160900E4BDB9 /* ObstacleView.h */,
 				D0F624B319C8160900E4BDB9 /* ObstacleView.m */,
 				D0F624B919C81C3B00E4BDB9 /* PlayerView.h */,
 				D0F624BA19C81C3B00E4BDB9 /* PlayerView.m */,
 				D0F624B619C81C2800E4BDB9 /* TreasureView.h */,
 				D0F624B719C81C2800E4BDB9 /* TreasureView.m */,
+				D031B7A319CD827900711845 /* PowerView.h */,
+				D031B7A419CD827900711845 /* PowerView.m */,
 			);
 			path = Digger;
 			sourceTree = "<group>";
@@ -814,8 +821,9 @@
 				D0F624AB19C6500900E4BDB9 /* BlockView.xib */,
 				D0F624C019C8202300E4BDB9 /* ObstacleView.xib */,
 				D0F624BE19C8200D00E4BDB9 /* TreasureView.xib */,
+				D031B7A619CD82B100711845 /* PowerView.xib */,
 				D0F624BC19C81FFF00E4BDB9 /* PlayerView.xib */,
-				D0F624B019C667E700E4BDB9 /* TileView.xib */,
+				D0F624B019C667E700E4BDB9 /* SlotView.xib */,
 			);
 			path = Xib;
 			sourceTree = "<group>";
@@ -1322,7 +1330,7 @@
 				D0ED116618CF04BC00C55BA9 /* heart.png in Resources */,
 				D0E26B0519580CEB00314A7C /* character_learning2.png in Resources */,
 				D0E555F5193B084A00F59DF6 /* clicker_character5.png in Resources */,
-				D0F624B119C667E700E4BDB9 /* TileView.xib in Resources */,
+				D0F624B119C667E700E4BDB9 /* SlotView.xib in Resources */,
 				D0E47C2718ED2F9F009CA771 /* leaderboardbutton.png in Resources */,
 				D0DFFCCE18DC1687001424DF /* malelose.png in Resources */,
 				D0EBCBDA19B1AF6C00933AD2 /* moneycoin.png in Resources */,
@@ -1454,6 +1462,7 @@
 				D0E1123218C2ECF300808072 /* pop.caf in Resources */,
 				D0156ECB19C64692002D3D22 /* BaseLibraryResource.bundle in Resources */,
 				D0E52B3619273C650015CD5A /* icon_cigar.png in Resources */,
+				D031B7A719CD82B100711845 /* PowerView.xib in Resources */,
 				D048A83F18ACAAAB00411DF9 /* facebook_share.png in Resources */,
 				D0E52B4319274A220015CD5A /* money.png in Resources */,
 				D0E37D941978D98D00CAED14 /* for_sale_sign.png in Resources */,
@@ -1495,7 +1504,7 @@
 				D02B962919C6317E00F565C1 /* CoinIAPHelper.m in Sources */,
 				D02B963419C6317E00F565C1 /* NumberGameIAPHelper.m in Sources */,
 				D0EAE38C19C954B900E59FC3 /* BoardManager.m in Sources */,
-				D0F624AF19C667D100E4BDB9 /* TileView.m in Sources */,
+				D0F624AF19C667D100E4BDB9 /* SlotView.m in Sources */,
 				D02B964E19C632A500F565C1 /* ShopTableView.m in Sources */,
 				D02B963A19C6317E00F565C1 /* ResultView.m in Sources */,
 				D02B962419C6317E00F565C1 /* AnimatedLabel.m in Sources */,
@@ -1504,6 +1513,7 @@
 				D02B963519C6317E00F565C1 /* ParticleView.m in Sources */,
 				D038463C191EB12E00265FE1 /* main.m in Sources */,
 				D0F624BB19C81C3B00E4BDB9 /* PlayerView.m in Sources */,
+				D031B7A519CD827900711845 /* PowerView.m in Sources */,
 				D02B964D19C632A500F565C1 /* ShopRowView.m in Sources */,
 				D0384616191EB12E00265FE1 /* AppDelegate.m in Sources */,
 				D02B963219C6317E00F565C1 /* LevelManager.m in Sources */,

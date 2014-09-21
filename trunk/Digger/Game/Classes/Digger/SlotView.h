@@ -1,5 +1,5 @@
 //
-//  TileView.h
+//  SlotView.h
 //  Digger
 //
 //  Created by MacCoder on 9/14/14.
@@ -10,7 +10,7 @@
 
 @class BlockView;
 
-@interface TileView : XibView
+@interface SlotView : XibView
 
 @property (strong, nonatomic) BlockView *blockView;
 

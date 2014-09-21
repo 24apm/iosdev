@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "PlayerView.h"
 
-@class TileView;
+@class SlotView;
 
 @interface BoardView : UIView
 
@@ -22,4 +22,6 @@
 - (void)refreshBoardLocalOpen;
 - (void)refreshBoardLocalLock;
 - (void)shiftUp;
+- (void)generateBoardIfNecessary;
+- (void)newGame;
 @end

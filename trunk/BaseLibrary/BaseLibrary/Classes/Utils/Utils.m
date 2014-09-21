@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 __MyCompanyName__. All rights reserved.
 //
 
+#import <sys/utsname.h>
 #import "Utils.h"
 #import "AppDelegateBase.h"
 
@@ -161,5 +162,12 @@
     return coloredImg;
 }
 
++ (NSString*)deviceModel {
+    struct utsname systemInfo;
+    uname(&systemInfo);
+    
+    return [NSString stringWithCString:systemInfo.machine
+                              encoding:NSUTF8StringEncoding];
+}
 
 @end

@@ -33,5 +33,6 @@ __x > __high ? __high : (__x < __low ? __low : __x);\
 + (NSString *)formatLongLongWithComma:(long long)integer;
 + (NSString *)formatLongLongWithShortHand:(long long)integer;
 + (NSString *)formatTime:(int)time;
++ (NSString*)deviceModel;
 
 @end

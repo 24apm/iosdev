@@ -10,7 +10,7 @@
 
 @implementation BlockView
 
-- (void)setupWithTier:(int)tier
+- (void)setupWithTier:(NSUInteger)tier
 {
     
 }

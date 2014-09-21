@@ -101,6 +101,8 @@
     [[GAI sharedInstance] trackerWithTrackingId:@"UA-49468052-2"];
     
     [TrackUtils trackAction:@"game_impression" label:@"AppDelegateBase"];
+    [TrackUtils trackDevice];
+    
 
     [[GAI sharedInstance] dispatch];
 }

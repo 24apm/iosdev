@@ -19,7 +19,7 @@
 }
 
 
-- (void)setupWithTier:(int)tier {
+- (void)setupWithTier:(NSUInteger)tier {
     switch (tier) {
         case 0:
             self.block.backgroundColor = [UIColor brownColor];

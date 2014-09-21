@@ -101,6 +101,7 @@ typedef enum {
 
 typedef enum {
     BlockTypeObstacle,
+    BlockTypePower,
     BlockTypeTreasure,
     BlockTypePlayer
 } BlockType;

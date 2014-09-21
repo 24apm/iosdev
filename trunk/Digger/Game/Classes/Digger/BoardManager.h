@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "BlockView.h"
-#import "TileView.h"
+#import "SlotView.h"
 #import "BoardView.h"
 
 #define NUM_COL 5
@@ -22,16 +22,18 @@
 + (BoardManager *)instance;
 - (void)setupWithBoard:(BoardView *)boardView;
 
-- (TileView *)tileAtRow:(int)r column:(int)c;
-- (NSArray *)tilesAtRow:(int)r;
-- (GridPoint *)pointForTile:(TileView *)tileView;
+- (SlotView *)slotAtRow:(NSUInteger)r column:(NSUInteger)c;
+- (NSArray *)slotsAtRow:(NSUInteger)r;
+- (GridPoint *)pointForSlot:(SlotView *)slotView;
 
-- (BOOL)isOccupied:(TileView *)tileView;
+- (BOOL)isOccupied:(SlotView *)slotView;
 
-- (void)moveBlock:(BlockView *)blockView toTile:(TileView *)tileView;
-- (void)movePlayerBlock:(TileView *)tileView;
+- (void)moveBlock:(BlockView *)blockView toSlot:(SlotView *)slotView;
+- (void)movePlayerBlock:(SlotView *)slotView;
 
-@property (nonatomic) CGSize tileSize;
-@property (strong, nonatomic) NSMutableArray *tiles;
+- (BlockView *)blockViewForType:(BlockType)currentType;
+
+@property (nonatomic) CGSize slotSize;
+@property (strong, nonatomic) NSMutableArray *slots;
 
 @end
