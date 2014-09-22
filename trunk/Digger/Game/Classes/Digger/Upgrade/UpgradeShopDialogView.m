@@ -8,6 +8,8 @@
 
 #import "UpgradeShopDialogView.h"
 #import "UserData.h"
+#import "LevelManager.h"
+#import "MessageDialogView.h"
 
 #define UPGRADE_STAMINA_INCREMENT 2
 
@@ -15,6 +17,7 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *staminaLabel;
 @property (strong, nonatomic) IBOutlet UILabel *staminaNextLvlLabel;
+@property (strong, nonatomic) IBOutlet UIButton *staminaBuyButton;
 
 @end
 
@@ -30,16 +33,22 @@
 }
 
 - (IBAction)upgradeStaminaPressed:(id)sender {
-    if ([[UserData instance] hasCoin:10]) {
-        [[UserData instance] incrementStaminaCapacity:UPGRADE_STAMINA_INCREMENT];
-        [[UserData instance] decrementCoin:10];
+    if ([[LevelManager instance] purchaseStaminaUpgrade]) {
         [self refresh];
+    } else {
+        [[[MessageDialogView alloc] initWithHeaderText:@"Uh oh" bodyText:@"Don't have enough gold!" ] show];
     }
 }
 
 - (void)refresh {
     self.staminaLabel.text = [NSString stringWithFormat:@"%lld",  [UserData instance].staminaCapacity];
-    self.staminaNextLvlLabel.text = [NSString stringWithFormat:@"%lld",  [UserData instance].staminaCapacity + UPGRADE_STAMINA_INCREMENT];
+    
+    long long nextStaminaCapacity = [[LevelManager instance] staminaCapacityForLevel:[UserData instance].staminaCapcityLevel + 1];
+    self.staminaNextLvlLabel.text = [NSString stringWithFormat:@"%lld", nextStaminaCapacity];
+    
+     long long cost = [[LevelManager instance] staminaUpgradeCostForLevel:[UserData instance].staminaCapcityLevel + 1];
+    
+    [self.staminaBuyButton setTitle: [NSString stringWithFormat:@"%lld", cost] forState:UIControlStateNormal];
 }
 
 @end

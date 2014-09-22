@@ -8,6 +8,8 @@
 
 #import "XibView.h"
 
+#define SLOTS_PRESSED_NOTIFICATION @"SLOTS_PRESSED_NOTIFICATION"
+
 @class BlockView;
 
 @interface SlotView : XibView

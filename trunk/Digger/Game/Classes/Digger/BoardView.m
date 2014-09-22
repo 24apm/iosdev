@@ -146,6 +146,35 @@
     [[BoardManager instance] movePlayerBlock:startingSlot];
 }
 
+- (BOOL)isNeighboringSlot:(SlotView *)slotView {
+    GridPoint *playerPoint = [[BoardManager instance] pointForSlot:self.playerView.slotView];
+    
+    if (playerPoint.col > 0) {
+        
+        SlotView *openSlot = [[BoardManager instance] slotAtRow:playerPoint.row column:playerPoint.col-1];
+        if (slotView == openSlot) {
+            return YES;
+        }
+    }
+    if (playerPoint.col < NUM_COL-1) {
+        SlotView *openSlot = [[BoardManager instance] slotAtRow:playerPoint.row column:playerPoint.col+1];
+        if (slotView == openSlot) {
+            return YES;
+        }
+    }
+    if (playerPoint.row >= [BoardManager instance].slots.count/NUM_COL-1 ) {
+        SlotView *openSlot = [[BoardManager instance] slotAtRow:0 column:playerPoint.col];
+        if (slotView == openSlot) {
+            return YES;
+        }
+    } else {
+        SlotView *openSlot = [[BoardManager instance] slotAtRow:playerPoint.row+1 column:playerPoint.col];
+        if (slotView == openSlot) {
+            return YES;
+        }
+    }
+    return NO;
+}
 
 - (void)refreshBoardLocalLock {
     

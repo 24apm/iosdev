@@ -10,4 +10,8 @@
 
 @implementation SlotView
 
+- (IBAction)buttonPressed:(id)sender {
+    [[NSNotificationCenter defaultCenter] postNotificationName:SLOTS_PRESSED_NOTIFICATION object:self];
+}
+
 @end

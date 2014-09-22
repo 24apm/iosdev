@@ -14,8 +14,10 @@
 #import "TrackUtils.h"
 #import "CoinIAPHelper.h"
 #import "CoinView.h"
+#import "LevelManager.h"
 
 #define NEW_USER_COIN 1000
+#define DEFAULT_STAMINA_LEVEL 1
 
 NSString *const UserDataHouseDataChangedNotification = @"UserDataHouseDataChangedNotification";
 
@@ -51,26 +53,29 @@ NSString *const UserDataHouseDataChangedNotification = @"UserDataHouseDataChange
     }
     
     // Stamina Capacity
-    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"staminaCapacity"] == nil) {
-        self.staminaCapacity = DEFAULT_STAMINA;
-        [self saveData:@(self.staminaCapacity) forKey:@"staminaCapacity"];
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"staminaCapcityLevel"] == nil) {
+        self.staminaCapcityLevel = DEFAULT_STAMINA_LEVEL;
+        [self saveData:@(self.staminaCapcityLevel) forKey:@"staminaCapcityLevel"];
     } else {
-        self.staminaCapacity = [[[NSUserDefaults standardUserDefaults] objectForKey:@"staminaCapacity"] integerValue];
+        self.staminaCapcityLevel = [[[NSUserDefaults standardUserDefaults] objectForKey:@"staminaCapcityLevel"] integerValue];
     }
     
-    // Stamina Capacity
+    // Stamina
     if ([[NSUserDefaults standardUserDefaults] objectForKey:@"stamina"] == nil) {
-        self.stamina = self.staminaCapacity;
-        [self saveData:@(self.stamina) forKey:@"stamina"];
+        [self refillStamina];
     } else {
         self.stamina = [[[NSUserDefaults standardUserDefaults] objectForKey:@"stamina"] integerValue];
     }
 }
 
-- (void)incrementStaminaCapacity:(long long)stamina {
-    self.staminaCapacity += stamina;
+- (void)incrementLevelStaminaCapacity {
+    self.staminaCapcityLevel++;;
 
-    [self saveData:@(self.staminaCapacity) forKey:@"staminaCapacity"];
+    [self saveData:@(self.staminaCapcityLevel) forKey:@"staminaCapcityLevel"];
+}
+
+- (long long)staminaCapacity {
+    return [[LevelManager instance] staminaCapacityForLevel:self.staminaCapcityLevel];
 }
 
 - (void)incrementStamina:(long long)stamina {

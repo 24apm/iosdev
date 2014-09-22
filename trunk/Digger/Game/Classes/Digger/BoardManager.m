@@ -125,6 +125,7 @@
             break;
         }
     }
+    blockView.userInteractionEnabled = NO;
     return blockView;
 }
 

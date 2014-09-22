@@ -25,4 +25,6 @@
 - (void)shiftUp;
 - (void)generateBoardIfNecessary;
 - (void)newGame;
+- (BOOL)isNeighboringSlot:(SlotView *)slotView;
+
 @end

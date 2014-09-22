@@ -42,7 +42,7 @@ typedef enum {
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(blockPressed:) name:BLOCK_PRESSED_NOTIFICATION object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(slotPressed:) name:SLOTS_PRESSED_NOTIFICATION object:nil];
     }
     return self;
 }
@@ -79,8 +79,8 @@ typedef enum {
     [self refreshStamina];
 }
 
-- (void)blockPressed:(NSNotification *)notification {
-    BlockView *blockView = notification.object;
+- (void)slotPressed:(NSNotification *)notification {
+    SlotView *slotView = notification.object;
     //    CGPoint point = [[BoardManager instance] pointForSlot:self.boardView.playerView.slotView];
     //    SlotView *slotView = [[BoardManager instance] slotAtRow:point.x column:point.y];
    
@@ -132,22 +132,17 @@ typedef enum {
 //    } else {
 //        [self handlePressed:blockView];
 //    }
-    [self handlePressed:blockView];
+    [self handlePressed:slotView];
 
 }
 
-- (void)animateDownHandlePressed:(BlockView *)blockView {
-   
-    
-}
-
-- (void)handlePressed:(BlockView *)blockView {
-    if (blockView.slotView) {
-        if ([self actionByBlockType:blockView]) {
-            Direction currentDirection = [self drillDirectionTo:blockView];
+- (void)handlePressed:(SlotView *)slotView {
+    if ([self.boardView isNeighboringSlot:slotView]) {
+        if ([self actionByBlockType:slotView]) {
+            Direction currentDirection = [self drillDirectionTo:slotView];
             NSLog(@"%d",currentDirection);
             [self.boardView refreshBoardLocalLock];
-            [[BoardManager instance] movePlayerBlock:blockView.slotView];
+            [[BoardManager instance] movePlayerBlock:slotView];
             [self.boardView refreshBoardLocalOpen];
             if (currentDirection == DirectionDown && self.playerMargin >= 1) {
                 [self.boardView generateBoardIfNecessary];
@@ -173,36 +168,40 @@ typedef enum {
     }];
 }
 
-- (BOOL)actionByBlockType:(BlockView *)blockView {
-    switch (blockView.type) {
-        case BlockTypeObstacle: {
-            ObstacleView *obstacleView = (ObstacleView *)blockView;
-            obstacleView.hp--;
-            [self staminaBarDecrease:1.f];
-            if (obstacleView.hp > 0) {
-                return NO;
-            } else {
-                return YES;
+- (BOOL)actionByBlockType:(SlotView *)slotView {
+    if (slotView.blockView) {
+        switch (slotView.blockView.type) {
+            case BlockTypeObstacle: {
+                ObstacleView *obstacleView = (ObstacleView *)slotView.blockView;
+                obstacleView.hp--;
+                [self staminaBarDecrease:1.f];
+                if (obstacleView.hp > 0) {
+                    return NO;
+                } else {
+                    return YES;
+                }
+                break;
             }
-            break;
+            case BlockTypePower: {
+                [self staminaBarIncrease:2.f];
+                [self flyIconFrom:slotView.blockView.imageView toView:self.staminaImageView];
+                return YES;
+                break;
+            }
+            case BlockTypeTreasure: {
+                [[UserData instance] incrementCoin:1];
+                [self flyIconFrom:slotView.blockView.imageView toView:self.coinImageView];
+                return YES;
+                
+                break;
+            }
+            default: {
+                return YES;
+                break;
+            }
         }
-        case BlockTypePower: {
-            [self staminaBarIncrease:2.f];
-            [self flyIconFrom:blockView.imageView toView:self.staminaImageView];
-            return YES;
-            break;
-        }
-        case BlockTypeTreasure: {
-            [[UserData instance] incrementCoin:1];
-            [self flyIconFrom:blockView.imageView toView:self.coinImageView];
-            return YES;
-
-            break;
-        }
-        default: {
-            return YES;
-            break;
-        }
+    } else {
+        return YES;
     }
 }
 
@@ -239,10 +238,10 @@ typedef enum {
     }
 }
 
-- (Direction)drillDirectionTo:(BlockView *)block {
+- (Direction)drillDirectionTo:(SlotView *)slotView {
     Direction direction = DirectionDown;
     GridPoint *playerPoint = [[BoardManager instance] pointForSlot:self.boardView.playerView.slotView];
-    GridPoint *targetPoint = [[BoardManager instance] pointForSlot:block.slotView];
+    GridPoint *targetPoint = [[BoardManager instance] pointForSlot:slotView];
     if (playerPoint.col > targetPoint.col) {
         direction = DirectionLeft;
     } else if (playerPoint.col < targetPoint.col) {

@@ -14,4 +14,9 @@
 
 - (NSArray *)levelDataTypeFor:(NSUInteger)slots;
 - (NSArray *)levelDataTierFor:(NSUInteger)slots;
+
+- (long long)staminaCapacityForLevel:(long long)level;
+- (long long)staminaUpgradeCostForLevel:(long long)level;
+- (BOOL)purchaseStaminaUpgrade;
+
 @end

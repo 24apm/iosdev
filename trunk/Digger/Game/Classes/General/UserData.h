@@ -8,7 +8,6 @@
 
 #import "GameConstants.h"
 
-#define DEFAULT_STAMINA 10.f
 
 extern NSString *const UserDataHouseDataChangedNotification;
 
@@ -22,12 +21,13 @@ extern NSString *const UserDataHouseDataChangedNotification;
 
 - (void)incrementStamina:(long long)stamina;
 - (void)decrementStamina:(long long)stamina;
-- (void)incrementStaminaCapacity:(long long)stamina;
+- (void)incrementLevelStaminaCapacity;
 - (float)formatPercentageStamina;
 - (void)refillStamina;
 
 @property (nonatomic) long long coin;
 @property (nonatomic) long long stamina;
 @property (nonatomic) long long staminaCapacity;
+@property (nonatomic) long long staminaCapcityLevel;
 
 @end

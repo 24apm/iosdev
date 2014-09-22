@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UpgradeShopDialogView">
             <connections>
+                <outlet property="staminaBuyButton" destination="lIE-ej-pNK" id="G4O-Tg-i1n"/>
                 <outlet property="staminaLabel" destination="UPC-DD-Xtm" id="dBD-Ms-anr"/>
                 <outlet property="staminaNextLvlLabel" destination="IdR-tf-dQx" id="Kjh-cf-u6T"/>
             </connections>

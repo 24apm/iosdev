@@ -79,4 +79,32 @@
     }
     return levelDataTier;
 }
+
+- (BOOL)purchaseStaminaUpgrade {
+    long long cost = [self staminaUpgradeCostForLevel:[UserData instance].staminaCapcityLevel + 1];
+    if ([[UserData instance] hasCoin:cost]) {
+        [[UserData instance] incrementLevelStaminaCapacity];
+        [[UserData instance] decrementCoin:cost];
+        return YES;
+    } else {
+        return NO;
+    }
+}
+
+- (long long)staminaUpgradeCostForLevel:(long long)level {
+    // lvl 1 = 5
+    // lvl 2 = 10
+    // lvl 3 = 15
+    // lvl 4 = 20
+    return 5 + (level - 1) * 5;
+}
+
+- (long long)staminaCapacityForLevel:(long long)level {
+    // lvl 1 = 10
+    // lvl 2 = 12
+    // lvl 3 = 14
+    // lvl 4 = 16 ...
+    return 10 + (level - 1) * 2;
+}
+
 @end
