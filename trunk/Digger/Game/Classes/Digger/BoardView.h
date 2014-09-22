@@ -17,6 +17,7 @@
 
 @property (strong, nonatomic) UIScrollView *scrollView;
 @property (strong, nonatomic) PlayerView *playerView;
+@property (nonatomic) NSInteger depth;
 
 - (void)refreshBoard;
 - (void)refreshBoardLocalOpen;

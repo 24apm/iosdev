@@ -70,13 +70,12 @@
     }
     
     return leveDataWithGoods;
-    
 }
 
 - (NSArray *)levelDataTierFor:(NSUInteger)slots {
     NSMutableArray *levelDataTier = [NSMutableArray array];
     for (int i = 0; i < slots; i++) {
-        [levelDataTier addObject:[NSNumber numberWithInt:[Utils randBetweenMinInt:0 max:3]]];
+        [levelDataTier addObject:[NSNumber numberWithInt:[Utils randBetweenMinInt:1 max:3]]];
     }
     return levelDataTier;
 }

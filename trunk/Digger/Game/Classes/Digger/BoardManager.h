@@ -11,8 +11,8 @@
 #import "SlotView.h"
 #import "BoardView.h"
 
-#define NUM_COL 10
-#define NUM_ROW 6
+#define NUM_COL 5
+#define NUM_ROW 10
 #define MARGIN_BLOCK 10 * IPAD_SCALE
 
 @class GridPoint;

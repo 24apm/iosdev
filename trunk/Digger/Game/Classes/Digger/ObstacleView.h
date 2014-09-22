@@ -12,4 +12,7 @@
 
 - (void)setupWithTier:(NSUInteger)tier;
 
+@property (strong, nonatomic) IBOutlet UILabel *tierLabel;
+@property (nonatomic) NSInteger hp;
+
 @end

@@ -20,7 +20,11 @@
 
 
 - (void)setupWithTier:(NSUInteger)tier {
-    switch (tier) {
+    self.hp = tier;
+}
+
+- (void)refresh {
+    switch (self.hp) {
         case 0:
             self.block.backgroundColor = [UIColor redColor];
             break;
@@ -55,6 +59,14 @@
         default:
             break;
     }
+    self.tierLabel.text = [NSString stringWithFormat:@"%d", self.hp];
+
+}
+
+- (void)setHp:(NSInteger)hp {
+    _hp = hp;
+    [self refresh];
+    
 }
 
 @end

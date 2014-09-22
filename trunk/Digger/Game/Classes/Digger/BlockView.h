@@ -20,6 +20,7 @@
 @property (strong, nonatomic) IBOutlet UIView *block;
 @property (strong, nonatomic) IBOutlet UIView *blocker;
 @property (nonatomic) BlockType type;
+@property (strong, nonatomic) IBOutlet UIImageView *imageView;
 
 - (void)setupWithTier:(NSUInteger)tier;
 

@@ -123,7 +123,6 @@
 		D0E33016191A140100FB5EB8 /* rating.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E33015191A140100FB5EB8 /* rating.png */; };
 		D0E3301C191A1A9F00FB5EB8 /* plus.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E3301B191A1A9F00FB5EB8 /* plus.png */; };
 		D0E36B8B18C2906F00BA56E7 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E36B8A18C2906F00BA56E7 /* StoreKit.framework */; };
-		D0E37D941978D98D00CAED14 /* for_sale_sign.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E37D931978D98D00CAED14 /* for_sale_sign.png */; };
 		D0E37D961978DB3800CAED14 /* MessageDialogView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E37D951978DB3800CAED14 /* MessageDialogView.xib */; };
 		D0E37DA11978F0DB00CAED14 /* ConfirmDialogView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E37DA01978F0DB00CAED14 /* ConfirmDialogView.xib */; };
 		D0E3A0D518E8119D00C7B63D /* doorsPerson.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E3A0D418E8119D00C7B63D /* doorsPerson.png */; };
@@ -230,6 +229,8 @@
 		D0EADDFD18E76A8A0016D2A0 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0EADDFC18E76A8A0016D2A0 /* CoreData.framework */; };
 		D0EAE38619C9482700E59FC3 /* BoardView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0EAE38519C9482700E59FC3 /* BoardView.m */; };
 		D0EAE38C19C954B900E59FC3 /* BoardManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D0EAE38B19C954B900E59FC3 /* BoardManager.m */; };
+		D0EB9F6E19CF74CA005CC229 /* UpgradeShopDialogView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0EB9F6D19CF74CA005CC229 /* UpgradeShopDialogView.m */; };
+		D0EB9F7019CF7582005CC229 /* UpgradeShopDialogView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0EB9F6F19CF7582005CC229 /* UpgradeShopDialogView.xib */; };
 		D0EBC77E195951A40023EF01 /* icon_lvlup in Resources */ = {isa = PBXBuildFile; fileRef = D0EBC77D195951A30023EF01 /* icon_lvlup */; };
 		D0EBC78319596F190023EF01 /* button_default.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EBC77F19596F190023EF01 /* button_default.png */; };
 		D0EBC78419596F190023EF01 /* button_press.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EBC78019596F190023EF01 /* button_press.png */; };
@@ -478,7 +479,6 @@
 		D0E33015191A140100FB5EB8 /* rating.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rating.png; sourceTree = "<group>"; };
 		D0E3301B191A1A9F00FB5EB8 /* plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plus.png; sourceTree = "<group>"; };
 		D0E36B8A18C2906F00BA56E7 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		D0E37D931978D98D00CAED14 /* for_sale_sign.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = for_sale_sign.png; sourceTree = "<group>"; };
 		D0E37D951978DB3800CAED14 /* MessageDialogView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageDialogView.xib; sourceTree = "<group>"; };
 		D0E37DA01978F0DB00CAED14 /* ConfirmDialogView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConfirmDialogView.xib; sourceTree = "<group>"; };
 		D0E3A0D418E8119D00C7B63D /* doorsPerson.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = doorsPerson.png; sourceTree = "<group>"; };
@@ -587,6 +587,9 @@
 		D0EAE38519C9482700E59FC3 /* BoardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoardView.m; sourceTree = "<group>"; };
 		D0EAE38A19C954B900E59FC3 /* BoardManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoardManager.h; sourceTree = "<group>"; };
 		D0EAE38B19C954B900E59FC3 /* BoardManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoardManager.m; sourceTree = "<group>"; };
+		D0EB9F6C19CF74CA005CC229 /* UpgradeShopDialogView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpgradeShopDialogView.h; sourceTree = "<group>"; };
+		D0EB9F6D19CF74CA005CC229 /* UpgradeShopDialogView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpgradeShopDialogView.m; sourceTree = "<group>"; };
+		D0EB9F6F19CF7582005CC229 /* UpgradeShopDialogView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UpgradeShopDialogView.xib; sourceTree = "<group>"; };
 		D0EBC77D195951A30023EF01 /* icon_lvlup */ = {isa = PBXFileReference; lastKnownFileType = file; path = icon_lvlup; sourceTree = "<group>"; };
 		D0EBC77F19596F190023EF01 /* button_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_default.png; sourceTree = "<group>"; };
 		D0EBC78019596F190023EF01 /* button_press.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_press.png; sourceTree = "<group>"; };
@@ -709,6 +712,7 @@
 		D02B95E319C62FD200F565C1 /* Digger */ = {
 			isa = PBXGroup;
 			children = (
+				D0EB9F6819CF7476005CC229 /* Upgrade */,
 				D02B95E419C62FD200F565C1 /* DiggerView.h */,
 				D02B95E519C62FD200F565C1 /* DiggerView.m */,
 				D0EAE38A19C954B900E59FC3 /* BoardManager.h */,
@@ -829,6 +833,7 @@
 				D031B7A619CD82B100711845 /* PowerView.xib */,
 				D0F624BC19C81FFF00E4BDB9 /* PlayerView.xib */,
 				D0F624B019C667E700E4BDB9 /* SlotView.xib */,
+				D0EB9F6F19CF7582005CC229 /* UpgradeShopDialogView.xib */,
 			);
 			path = Xib;
 			sourceTree = "<group>";
@@ -1104,7 +1109,6 @@
 				D0E4BCCF18D9743700132C17 /* bossknight.png */,
 				D0EDA2A7196686F600989065 /* makeitflappy_profile_stats_dialog.png */,
 				D0EDA2A8196686F600989065 /* makeitflappy_profile_stats_bar.png */,
-				D0E37D931978D98D00CAED14 /* for_sale_sign.png */,
 				D0E4BCCD18D95D9200132C17 /* Victory.png */,
 				D0EF3FD218D7FB1B00C50442 /* red_header.png */,
 				D0EA871F18DA7D0D0034B392 /* knight_main.png */,
@@ -1133,6 +1137,15 @@
 				D02B95E319C62FD200F565C1 /* Digger */,
 			);
 			path = Classes;
+			sourceTree = "<group>";
+		};
+		D0EB9F6819CF7476005CC229 /* Upgrade */ = {
+			isa = PBXGroup;
+			children = (
+				D0EB9F6C19CF74CA005CC229 /* UpgradeShopDialogView.h */,
+				D0EB9F6D19CF74CA005CC229 /* UpgradeShopDialogView.m */,
+			);
+			path = Upgrade;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1434,6 +1447,7 @@
 				D06DB42A1939C2CD00B33BEC /* Hallelujah.caf in Resources */,
 				D05EF407196173B70016FD96 /* health.png in Resources */,
 				D0BCA04B1963DAB6006E01B4 /* icon_fly.png in Resources */,
+				D0EB9F7019CF7582005CC229 /* UpgradeShopDialogView.xib in Resources */,
 				D0E52B2A19271DAF0015CD5A /* btn_green_down.png in Resources */,
 				D0E3300E191A04EA00FB5EB8 /* applyingbomb2.png in Resources */,
 				D0E3A0D518E8119D00C7B63D /* doorsPerson.png in Resources */,
@@ -1470,7 +1484,6 @@
 				D031B7A719CD82B100711845 /* PowerView.xib in Resources */,
 				D048A83F18ACAAAB00411DF9 /* facebook_share.png in Resources */,
 				D0E52B4319274A220015CD5A /* money.png in Resources */,
-				D0E37D941978D98D00CAED14 /* for_sale_sign.png in Resources */,
 				D0EBC78419596F190023EF01 /* button_press.png in Resources */,
 				D0E33007191A04EA00FB5EB8 /* check.png in Resources */,
 				D0E41C9B1928135500AF68FE /* clicker_character3.png in Resources */,
@@ -1507,6 +1520,7 @@
 				D02B962D19C6317E00F565C1 /* ErrorDialogView.m in Sources */,
 				D02B964119C6317E00F565C1 /* UserData.m in Sources */,
 				D02B962919C6317E00F565C1 /* CoinIAPHelper.m in Sources */,
+				D0EB9F6E19CF74CA005CC229 /* UpgradeShopDialogView.m in Sources */,
 				D02B963419C6317E00F565C1 /* NumberGameIAPHelper.m in Sources */,
 				D0EAE38C19C954B900E59FC3 /* BoardManager.m in Sources */,
 				D0F624AF19C667D100E4BDB9 /* SlotView.m in Sources */,

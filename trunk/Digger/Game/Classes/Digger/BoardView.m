@@ -31,7 +31,6 @@
 @property (nonatomic) CGFloat view2Start;
 
 
-@property (nonatomic) NSInteger depth;
 @property (strong, nonatomic) BufferedBoardView *currentBufferedView;
 
 @end
@@ -67,15 +66,12 @@
                                   0,
                                   self.width,
                                   self.slotSize.height * NUM_ROW);
-    self.view1.backgroundColor = [UIColor redColor];
     
     self.view2 = [[BufferedBoardView alloc] init];
     self.view2.frame = CGRectMake(0,
                                   self.view1.height,
                                   self.width,
                                   self.slotSize.height * NUM_ROW);
-    
-    self.view2.backgroundColor = [UIColor blueColor];
     
     [self.scrollView addSubview:self.view1];
     [self.scrollView addSubview:self.view2];
@@ -98,12 +94,12 @@
                                   self.width,
                                   self.slotSize.height * NUM_ROW);
     self.view2.frame = CGRectMake(0,
-                                  self.view1.height,
+                                  self.view1.height + 20,
                                   self.width,
                                   self.slotSize.height * NUM_ROW);
     
     [self.view1 generateBlocks];
-    [self.view2 generateBlocks];
+//    [self.view2 generateBlocks];
     [self generatePlayer];
     self.currentBufferedView = self.view2;
     [self.currentBufferedView reset];
@@ -112,16 +108,18 @@
 }
 
 - (void)shiftUp {
-    [UIView animateWithDuration:0.3f animations:^ {
+    [UIView animateWithDuration:0.3f delay:0.f
+                        options:UIViewAnimationOptionCurveEaseInOut
+                     animations:^ {
         self.view1.y -= self.slotSize.height;
         self.view2.y -= self.slotSize.height;
+    } completion:^(BOOL completed) {
+        
     }];    
 }
 
 - (void)generateBoardIfNecessary {
     self.depth++;
-
-    if (self.depth < 3) return;
     
     NSInteger numRows = [BoardManager instance].slots.count / NUM_COL;
     

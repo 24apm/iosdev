@@ -14,6 +14,8 @@
 #import "GridPoint.h"
 #import "PromoDialogView.h"
 #import "ProgressBarComponent.h"
+#import "ObstacleView.h"
+#import "UserData.h"
 
 #define MAX_LIFE 100.f
 
@@ -30,6 +32,10 @@ typedef enum {
 @property (strong, nonatomic) IBOutlet ProgressBarComponent *staminaBar;
 @property (nonatomic) double stamina;
 @property (nonatomic) double playerMargin;
+@property (strong, nonatomic) IBOutlet UILabel *depthLabel;
+@property (strong, nonatomic) IBOutlet UILabel *coinLabel;
+@property (strong, nonatomic) IBOutlet UIImageView *coinImageView;
+@property (strong, nonatomic) IBOutlet UIImageView *staminaImageView;
 @end
 
 @implementation DiggerView
@@ -46,6 +52,22 @@ typedef enum {
     self.boardView = [[BoardView alloc] initWithFrame:CGRectMake(0, 0, self.boardLayer.size.width, self.boardLayer.size.height)];
     [self.boardLayer addSubview:self.boardView];
     [self newGame];
+    
+    [self.boardView addObserver:self forKeyPath:@"depth" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
+    [[UserData instance] addObserver:self forKeyPath:@"coin" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
+    
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    if ([keyPath isEqualToString:@"depth"]) {
+        NSInteger newC = [[change valueForKey:NSKeyValueChangeNewKey] integerValue];
+
+        self.depthLabel.text = [NSString stringWithFormat:@"Depth: %ld", (long)newC];
+    } else if ([keyPath isEqualToString:@"coin"]) {
+        NSInteger newC = [[change valueForKey:NSKeyValueChangeNewKey] integerValue];
+        
+        self.coinLabel.text = [NSString stringWithFormat:@"%ld", (long)newC];
+    }
 }
 
 - (void)newGame {
@@ -62,42 +84,124 @@ typedef enum {
     BlockView *blockView = notification.object;
     //    CGPoint point = [[BoardManager instance] pointForSlot:self.boardView.playerView.slotView];
     //    SlotView *slotView = [[BoardManager instance] slotAtRow:point.x column:point.y];
+   
+//    if (blockView.type == BlockTypeObstacle) {
+//        Direction currentDirection = [self drillDirectionTo:blockView];
+//        CGFloat duration = 0.3f;
+//        int steps = 20;
+//        NSMutableArray *values = [NSMutableArray arrayWithCapacity:steps];
+//        double value = 0;
+//        float e = 2.71;
+//        CGFloat distance;
+//        if (currentDirection == DirectionDown) {
+//            distance = self.boardView.playerView.height / 2;
+//            for (int t = 0; t < steps; t++) {
+//                value = distance * pow(e, -0.055*t) * sin(-0.08*t) + distance / 2;
+//                [values addObject:[NSNumber numberWithFloat:value]];
+//            }
+//            
+//            CAKeyframeAnimation *bounceAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position.y"];
+//            bounceAnimation.values = values;
+//            bounceAnimation.duration = duration;
+//            [self.boardView.playerView.layer addAnimation:bounceAnimation forKey:@"bounceAnimation"];
+//        } else if (currentDirection == DirectionLeft) {
+//            distance = self.boardView.playerView.width / 2;
+//            for (int t = 0; t < steps; t++) {
+//                value = distance * pow(e, -0.055*t) * (1 - cos(-0.08*t)) + distance / 2;
+//                [values addObject:[NSNumber numberWithFloat:value]];
+//            }
+//            
+//            CAKeyframeAnimation *bounceAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position.x"];
+//            bounceAnimation.values = values;
+//            bounceAnimation.duration = duration;
+//            [self.boardView.playerView.layer addAnimation:bounceAnimation forKey:@"bounceAnimation"];
+//        } else if (currentDirection == DirectionRight) {
+//            distance = self.boardView.playerView.width / 2;
+//
+//            for (int t = 0; t < steps; t++) {
+//                value = distance * pow(e, -0.055*t) * cos(-0.08*t) + distance / 2;
+//                [values addObject:[NSNumber numberWithFloat:value]];
+//            }
+//            
+//            CAKeyframeAnimation *bounceAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position.x"];
+//            bounceAnimation.values = values;
+//            bounceAnimation.duration = duration;
+//            [self.boardView.playerView.layer addAnimation:bounceAnimation forKey:@"bounceAnimation"];
+//        }
+//        [self performSelector:@selector(handlePressed:) withObject:blockView afterDelay:duration + 0.2f];
+//
+//    } else {
+//        [self handlePressed:blockView];
+//    }
+    [self handlePressed:blockView];
+
+}
+
+- (void)animateDownHandlePressed:(BlockView *)blockView {
+   
+    
+}
+
+- (void)handlePressed:(BlockView *)blockView {
     if (blockView.slotView) {
-        Direction currentDirection = [self drillDirectionTo:blockView];
-        NSLog(@"%d",currentDirection);
-        [self.boardView refreshBoardLocalLock];
-        [[BoardManager instance] movePlayerBlock:blockView.slotView];
-        [self.boardView refreshBoardLocalOpen];
-        if (currentDirection == DirectionDown && self.playerMargin >= 1) {
-            [self.boardView generateBoardIfNecessary];
-            [self.boardView shiftUp];
-        }
-        
-        self.playerMargin++;
-        [self actionByBlockType:blockView.type];
-        if (self.stamina <= 0) {
-            [self newGame];
+        if ([self actionByBlockType:blockView]) {
+            Direction currentDirection = [self drillDirectionTo:blockView];
+            NSLog(@"%d",currentDirection);
+            [self.boardView refreshBoardLocalLock];
+            [[BoardManager instance] movePlayerBlock:blockView.slotView];
+            [self.boardView refreshBoardLocalOpen];
+            if (currentDirection == DirectionDown && self.playerMargin >= 1) {
+                [self.boardView generateBoardIfNecessary];
+                [self.boardView shiftUp];
+            }
+            
+            self.playerMargin++;
+            if (self.stamina <= 0) {
+                [self newGame];
+            }
         }
     }
 }
 
-- (void)actionByBlockType:(BlockType)type {
-    switch (type) {
+- (void)flyIconFrom:(UIImageView *)fromView toView:(UIImageView *)toView {
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:fromView.image];
+    [self addSubview:imageView];
+    imageView.frame = [fromView.superview convertRect:fromView.frame toView:imageView.superview];
+    [UIView animateWithDuration:0.5f delay:0.f options:UIViewAnimationOptionCurveEaseInOut animations:^ {
+        imageView.frame = [toView.superview convertRect:toView.frame toView:imageView.superview];
+    } completion:^(BOOL complete) {
+        [imageView removeFromSuperview];
+    }];
+}
+
+- (BOOL)actionByBlockType:(BlockView *)blockView {
+    switch (blockView.type) {
         case BlockTypeObstacle: {
+            ObstacleView *obstacleView = (ObstacleView *)blockView;
+            obstacleView.hp--;
             [self staminaBarDecrease:1.f];
+            if (obstacleView.hp > 0) {
+                return NO;
+            } else {
+                return YES;
+            }
             break;
         }
         case BlockTypePower: {
             [self staminaBarIncrease:2.f];
-            
+            [self flyIconFrom:blockView.imageView toView:self.staminaImageView];
+            return YES;
             break;
         }
         case BlockTypeTreasure: {
-            
+            [[UserData instance] incrementCoin:1];
+            [self flyIconFrom:blockView.imageView toView:self.coinImageView];
+            return YES;
+
             break;
         }
         default: {
-            
+            return YES;
             break;
         }
     }
