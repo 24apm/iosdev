@@ -7,7 +7,8 @@
 //
 
 #import "XibDialogView.h"
+#import "AnimatingDialogView.h"
 
-@interface UpgradeShopDialogView : XibDialogView
+@interface UpgradeShopDialogView : AnimatingDialogView
 
 @end

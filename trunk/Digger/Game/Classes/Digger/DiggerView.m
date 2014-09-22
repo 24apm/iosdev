@@ -16,8 +16,7 @@
 #import "ProgressBarComponent.h"
 #import "ObstacleView.h"
 #import "UserData.h"
-
-#define MAX_LIFE 100.f
+#import "UpgradeShopDialogView.h"
 
 typedef enum {
     DirectionLeft,
@@ -30,12 +29,12 @@ typedef enum {
 @property (strong, nonatomic) BoardView *boardView;
 @property (strong, nonatomic) IBOutlet UIView *boardLayer;
 @property (strong, nonatomic) IBOutlet ProgressBarComponent *staminaBar;
-@property (nonatomic) double stamina;
 @property (nonatomic) double playerMargin;
 @property (strong, nonatomic) IBOutlet UILabel *depthLabel;
 @property (strong, nonatomic) IBOutlet UILabel *coinLabel;
 @property (strong, nonatomic) IBOutlet UIImageView *coinImageView;
 @property (strong, nonatomic) IBOutlet UIImageView *staminaImageView;
+@property (strong, nonatomic) IBOutlet UILabel *staminaLabel;
 @end
 
 @implementation DiggerView
@@ -52,7 +51,8 @@ typedef enum {
     self.boardView = [[BoardView alloc] initWithFrame:CGRectMake(0, 0, self.boardLayer.size.width, self.boardLayer.size.height)];
     [self.boardLayer addSubview:self.boardView];
     [self newGame];
-    
+    self.coinLabel.text = [NSString stringWithFormat:@"%lld", [UserData instance].coin];
+
     [self.boardView addObserver:self forKeyPath:@"depth" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
     [[UserData instance] addObserver:self forKeyPath:@"coin" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
     
@@ -75,9 +75,8 @@ typedef enum {
     [self.boardView newGame];
     [self.boardView refreshBoard];
     [self.boardView refreshBoardLocalOpen];
-    [self.staminaBar fillBar:1.f];
-    self.stamina = MAX_LIFE;
-    [self staminaBarStatus:1.f];
+    [[UserData instance] refillStamina];
+    [self refreshStamina];
 }
 
 - (void)blockPressed:(NSNotification *)notification {
@@ -156,7 +155,7 @@ typedef enum {
             }
             
             self.playerMargin++;
-            if (self.stamina <= 0) {
+            if ([UserData instance].stamina <= 0) {
                 [self newGame];
             }
         }
@@ -208,20 +207,22 @@ typedef enum {
 }
 
 - (void)staminaBarDecrease:(NSUInteger)points {
-    self.stamina -= points;
-    double percentage = self.stamina/MAX_LIFE;
-    [self staminaBarStatus:percentage];
-    [self animateStaminaBar:percentage];
+    [[UserData instance] decrementStamina:points];
+    [self refreshStamina];
 }
 
 - (void)staminaBarIncrease:(NSUInteger)points {
-    self.stamina += points;
-    if (self.stamina >= MAX_LIFE) {
-        self.stamina = MAX_LIFE;
-    }
-    double percentage = self.stamina/MAX_LIFE;
+    [[UserData instance] incrementStamina:points];
+    [self refreshStamina];
+}
+
+- (void)refreshStamina {
+    self.staminaLabel.text = [NSString stringWithFormat:@"%lld/%lld", [UserData instance].stamina,[UserData instance].staminaCapacity];
+    double percentage = [[UserData instance] formatPercentageStamina];
+
     [self staminaBarStatus:percentage];
     [self animateStaminaBar:percentage];
+
 }
 
 - (void)animateStaminaBar:(double)percentage {
@@ -253,8 +254,7 @@ typedef enum {
 }
 
 - (IBAction)testButtonPressed:(id)sender {
-    NSLog(@"test");
-    [PromoDialogView show];
+    [[[UpgradeShopDialogView alloc] init] show];
 }
 
 - (void)positionBlocks {
