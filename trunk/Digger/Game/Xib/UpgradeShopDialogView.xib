@@ -7,7 +7,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UpgradeShopDialogView">
             <connections>
+                <outlet property="drillBuyButton" destination="M9s-qJ-pAt" id="8nv-PH-pmp"/>
+                <outlet property="drillDisplayLabel" destination="fyt-UW-Rzx" id="k7T-7c-WlR"/>
+                <outlet property="drillLvlLabel" destination="HCk-1V-XYW" id="TYx-al-aET"/>
+                <outlet property="drillNextLvlLabel" destination="0QV-Vi-z3u" id="dBG-hB-tLZ"/>
                 <outlet property="staminaBuyButton" destination="lIE-ej-pNK" id="G4O-Tg-i1n"/>
+                <outlet property="staminaDisplayLabel" destination="qvX-67-MR2" id="Wsq-Xe-XEh"/>
                 <outlet property="staminaLabel" destination="UPC-DD-Xtm" id="dBD-Ms-anr"/>
                 <outlet property="staminaNextLvlLabel" destination="IdR-tf-dQx" id="Kjh-cf-u6T"/>
             </connections>
@@ -56,6 +61,13 @@
                                 <action selector="upgradeStaminaPressed:" destination="-1" eventType="touchUpInside" id="pcf-Gd-DHh"/>
                             </connections>
                         </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lvl 1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qvX-67-MR2">
+                            <rect key="frame" x="36" y="32" width="100" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coin.png" id="KJn-Fv-kTp">
                             <rect key="frame" x="166" y="12" width="30" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
@@ -101,6 +113,9 @@
                                 <color key="titleColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="upgradeDrillPressed:" destination="-1" eventType="touchUpInside" id="9p0-vR-rKm"/>
+                            </connections>
                         </button>
                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coin.png" id="LcB-Re-mmH">
                             <rect key="frame" x="166" y="12" width="30" height="30"/>

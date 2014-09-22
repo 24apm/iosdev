@@ -17,6 +17,11 @@
 
 - (long long)staminaCapacityForLevel:(long long)level;
 - (long long)staminaUpgradeCostForLevel:(long long)level;
+
+- (long long)drillPowerForLevel:(long long)level;
+- (long long)drillUpgradeCostForLevel:(long long)level;
+
 - (BOOL)purchaseStaminaUpgrade;
+- (BOOL)purchaseDrillUpgrade;
 
 @end

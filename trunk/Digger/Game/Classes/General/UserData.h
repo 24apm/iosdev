@@ -25,9 +25,12 @@ extern NSString *const UserDataHouseDataChangedNotification;
 - (float)formatPercentageStamina;
 - (void)refillStamina;
 
+- (void)incrementLevelDrill;
+
 @property (nonatomic) long long coin;
 @property (nonatomic) long long stamina;
 @property (nonatomic) long long staminaCapacity;
-@property (nonatomic) long long staminaCapcityLevel;
+@property (nonatomic) long long staminaCapacityLevel;
+@property (nonatomic) long long drillLevel;
 
 @end

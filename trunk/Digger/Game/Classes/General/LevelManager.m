@@ -75,13 +75,13 @@
 - (NSArray *)levelDataTierFor:(NSUInteger)slots {
     NSMutableArray *levelDataTier = [NSMutableArray array];
     for (int i = 0; i < slots; i++) {
-        [levelDataTier addObject:[NSNumber numberWithInt:[Utils randBetweenMinInt:1 max:3]]];
+        [levelDataTier addObject:[NSNumber numberWithInt:[Utils randBetweenMinInt:1 max:9]]];
     }
     return levelDataTier;
 }
 
 - (BOOL)purchaseStaminaUpgrade {
-    long long cost = [self staminaUpgradeCostForLevel:[UserData instance].staminaCapcityLevel + 1];
+    long long cost = [self staminaUpgradeCostForLevel:[UserData instance].staminaCapacityLevel + 1];
     if ([[UserData instance] hasCoin:cost]) {
         [[UserData instance] incrementLevelStaminaCapacity];
         [[UserData instance] decrementCoin:cost];
@@ -89,6 +89,33 @@
     } else {
         return NO;
     }
+}
+
+- (BOOL)purchaseDrillUpgrade {
+    long long cost = [self drillUpgradeCostForLevel:[UserData instance].drillLevel + 1];
+    if ([[UserData instance] hasCoin:cost]) {
+        [[UserData instance] incrementLevelDrill];
+        [[UserData instance] decrementCoin:cost];
+        return YES;
+    } else {
+        return NO;
+    }
+}
+
+- (long long)drillUpgradeCostForLevel:(long long)level {
+    // lvl 1 = 9
+    // lvl 2 = 16
+    // lvl 3 = 25
+    // lvl 4 = 36
+    return ((level + 2) * (level + 2));
+}
+
+- (long long)drillPowerForLevel:(long long)level {
+    // lvl 1 = 1
+    // lvl 2 = 2
+    // lvl 3 = 3
+    // lvl 4 = 4 ...
+    return level;
 }
 
 - (long long)staminaUpgradeCostForLevel:(long long)level {

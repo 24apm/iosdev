@@ -52,12 +52,12 @@ NSString *const UserDataHouseDataChangedNotification = @"UserDataHouseDataChange
         self.coin = [[[NSUserDefaults standardUserDefaults] objectForKey:@"coin"] integerValue];
     }
     
-    // Stamina Capacity
-    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"staminaCapcityLevel"] == nil) {
-        self.staminaCapcityLevel = DEFAULT_STAMINA_LEVEL;
-        [self saveData:@(self.staminaCapcityLevel) forKey:@"staminaCapcityLevel"];
+    // Stamina Capacity Level
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"staminaCapacityLevel"] == nil) {
+        self.staminaCapacityLevel = DEFAULT_STAMINA_LEVEL;
+        [self saveData:@(self.staminaCapacityLevel) forKey:@"staminaCapacityLevel"];
     } else {
-        self.staminaCapcityLevel = [[[NSUserDefaults standardUserDefaults] objectForKey:@"staminaCapcityLevel"] integerValue];
+        self.staminaCapacityLevel = [[[NSUserDefaults standardUserDefaults] objectForKey:@"staminaCapacityLevel"] integerValue];
     }
     
     // Stamina
@@ -66,16 +66,30 @@ NSString *const UserDataHouseDataChangedNotification = @"UserDataHouseDataChange
     } else {
         self.stamina = [[[NSUserDefaults standardUserDefaults] objectForKey:@"stamina"] integerValue];
     }
+    
+    // Drill Level
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"drillLevel"] == nil) {
+        self.drillLevel = 1;
+        [self saveData:@(self.drillLevel) forKey:@"drillLevel"];
+    } else {
+        self.drillLevel = [[[NSUserDefaults standardUserDefaults] objectForKey:@"drillLevel"] integerValue];
+    }
+}
+
+- (void)incrementLevelDrill {
+    self.drillLevel++;;
+    
+    [self saveData:@(self.drillLevel) forKey:@"drillLevel"];
 }
 
 - (void)incrementLevelStaminaCapacity {
-    self.staminaCapcityLevel++;;
+    self.staminaCapacityLevel++;;
 
-    [self saveData:@(self.staminaCapcityLevel) forKey:@"staminaCapcityLevel"];
+    [self saveData:@(self.staminaCapacityLevel) forKey:@"staminaCapacityLevel"];
 }
 
 - (long long)staminaCapacity {
-    return [[LevelManager instance] staminaCapacityForLevel:self.staminaCapcityLevel];
+    return [[LevelManager instance] staminaCapacityForLevel:self.staminaCapacityLevel];
 }
 
 - (void)incrementStamina:(long long)stamina {

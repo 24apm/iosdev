@@ -173,7 +173,7 @@ typedef enum {
         switch (slotView.blockView.type) {
             case BlockTypeObstacle: {
                 ObstacleView *obstacleView = (ObstacleView *)slotView.blockView;
-                obstacleView.hp--;
+                obstacleView.hp -= (NSUInteger)[UserData instance].drillLevel;
                 [self staminaBarDecrease:1.f];
                 if (obstacleView.hp > 0) {
                     return NO;
