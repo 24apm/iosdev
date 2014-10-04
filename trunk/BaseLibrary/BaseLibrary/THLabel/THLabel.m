@@ -146,6 +146,9 @@
 	
 	UIGraphicsBeginImageContextWithOptions(rect.size, NO, 0.0);
 	CGContextRef context = UIGraphicsGetCurrentContext();
+    if (context == nil) {
+        NSLog(@"*** context: %s", __PRETTY_FUNCTION__);
+    }
 	CGImageRef alphaMask = NULL;
 	CGRect textRect;
 	CTFrameRef frameRef = [self setupFrameForDrawingOutTextRect:&textRect];

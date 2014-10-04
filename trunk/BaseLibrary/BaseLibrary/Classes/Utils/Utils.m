@@ -7,6 +7,7 @@
 //
 
 #import <sys/utsname.h>
+#import <objc/runtime.h>
 #import "Utils.h"
 #import "AppDelegateBase.h"
 
@@ -127,7 +128,7 @@
 
 + (UIImage *)imageNamed:(UIImage *)img withColor:(UIColor *)color blendMode:(CGBlendMode)blendMode {
     
-    
+    if (!img) return nil;
     // load the image
     
     // begin a new image context, to draw our colored image onto
@@ -135,7 +136,9 @@
     
     // get a reference to that context we created
     CGContextRef context = UIGraphicsGetCurrentContext();
-    
+    if (context == nil) {
+        NSLog(@"*** context: %s", __PRETTY_FUNCTION__);
+    }
     // set the fill color
     [color setFill];
     

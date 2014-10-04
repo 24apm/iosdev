@@ -21,6 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		D0139FA419DFC2AC00875248 /* CAEmitterHelperLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D0139FA319DFC2AC00875248 /* CAEmitterHelperLayer.m */; };
 		D097A5771983A00D00A6EB7A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D097A5761983A00D00A6EB7A /* Foundation.framework */; };
 		D097A5851983A00D00A6EB7A /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D097A5841983A00D00A6EB7A /* XCTest.framework */; };
 		D097A5861983A00D00A6EB7A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D097A5761983A00D00A6EB7A /* Foundation.framework */; };
@@ -191,6 +192,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D0139FA219DFC2AC00875248 /* CAEmitterHelperLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAEmitterHelperLayer.h; sourceTree = "<group>"; };
+		D0139FA319DFC2AC00875248 /* CAEmitterHelperLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAEmitterHelperLayer.m; sourceTree = "<group>"; };
 		D097A5731983A00D00A6EB7A /* libBaseLibrary.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libBaseLibrary.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D097A5761983A00D00A6EB7A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D097A57A1983A00D00A6EB7A /* BaseLibrary-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BaseLibrary-Prefix.pch"; sourceTree = "<group>"; };
@@ -585,6 +588,8 @@
 				D097A5EE1983A04800A6EB7A /* Utils.m */,
 				D0E21AEF199DD3E400358DE5 /* NSBundle+BundleUtil.h */,
 				D0E21AF0199DD3E400358DE5 /* NSBundle+BundleUtil.m */,
+				D0139FA219DFC2AC00875248 /* CAEmitterHelperLayer.h */,
+				D0139FA319DFC2AC00875248 /* CAEmitterHelperLayer.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -849,6 +854,7 @@
 				D097A6361983A04800A6EB7A /* iRate.m in Sources */,
 				D097A62E1983A04800A6EB7A /* UIView+ViewUtil.m in Sources */,
 				D097A61B1983A04800A6EB7A /* GameCenterHelperBase.m in Sources */,
+				D0139FA419DFC2AC00875248 /* CAEmitterHelperLayer.m in Sources */,
 				D0E21ACB199DCB9B00358DE5 /* PromoIconView.m in Sources */,
 				D0E21ACA199DCB9B00358DE5 /* PromoGameData.m in Sources */,
 				D097A6261983A04800A6EB7A /* HTTPRequest.m in Sources */,

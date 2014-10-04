@@ -1,0 +1,501 @@
+WORD,DEFINITION,GROUPING,
+1,abate,lessen,size: amount: location
+2,aberration,deviation: not normal,politics and tradition
+3,abhor: abhorrence,hatred,friends and enemies
+4,abstruse,difficult to understand,argument and language
+5,accost,confront,politics and tradition
+6,acrimony,bitter animosity,friends and enemies
+7,acumen,insightfulness,knowledge and skill
+8,adamant,not yielding,politics and tradition
+9,adept,skillful,knowledge and skill
+10,adroit,skillful,knowledge and skill
+11,affected,haughty,pride
+12,alacrity,eagerness,energy
+13,allocate,assign: portion,size: amount: location
+14,altruistic: altruism,generous,money
+15,amenable,yielding,give up?
+16,amiable,friendly,friends and enemies
+17,amicable,friendly,friends and enemies
+18,antediluvian,very old,time
+19,anthropology,study of human beings,knowledge and skill
+20,antipathy,dislike,friends and enemies
+21,apathetic: apathy,lacking interest,politics and tradition
+22,apt,appropriate: inclined,argument and language
+23,arcane,mysterious: known only by a few,truth
+24,ascendancy,influence: domination,politics and tradition
+25,ascetic: asceticism,one who practices self-denial as a spiritual discipline,politics and tradition
+26,aspire,strive for,give up?
+27,assail,belittle,praise and criticism
+28,assiduous,diligent,give up?
+29,assuage,relieve: appease,give up?
+30,atrophy,waste away,size: amount: location
+31,attenuate,weaken: reduce,size: amount: location
+32,august,dignified,politics and tradition
+33,aura,air: feeling,emotions
+34,auspicious,favorable,war and peace
+35,autocrat: autocratic,dictator: dictatorial,politics and tradition
+36,automaton,a person who acts like a robot,politics and tradition
+37,avarice,greed,money
+38,banal,common,politics and tradition
+39,barrage,bombardment: torrent,war and peace
+40,belie,give a false impression,truth
+41,belligerent,aggressive: warlike,war and peace
+42,benevolent,generous,money
+43,bequeath,hand down (through a will),money
+44,berate,scold harshly,praise and criticism
+45,bipartisanship,supported by two opposing groups (political parties),politics and tradition
+46,blighted,destroyed,war and peace
+47,bog,marsh: swamp,science
+48,bolster,support,war and peace
+49,bombastic,pompous,emotions
+50,boorish: boorishness,crude,knowledge and skill
+51,buoyant,cheerful: floating,emotions
+52,burgeon,grow: flourish,size: amount: location
+53,buttress,support,war and peace
+54,byzantine,convoluted: complex,the senses
+55,cacophonous: cacophony,discordant sound,the senses
+56,cajole,coax,argument and language
+57,callous,insensitive,emotions
+58,cantankerous(ness),irritable,emotions
+59,capricious,fickle,emotions
+60,castigate,belittle,praise and criticism
+61,caustic,bitter,emotions
+62,censorious,harshly critical,praise and criticism
+63,censure,scold,praise and criticism
+64,cerebral,intellectual,knowledge and skill
+65,chagrin,mortification,pride
+66,charlatan,swindler,truth
+67,chastise,belittle,praise and criticism
+68,chide,belittle,praise and criticism
+69,churlish,vulgar: boorish,knowledge and skill
+70,circuitous,indirect,truth
+71,circumscribe,restrict,size: amount: location
+72,circumvent,escape: avoid,war and peace
+73,clandestine,secretive,truth
+74,coalesce,blend: fuse,science
+75,compendious,succinct,argument and language
+76,complacency: complacent,self-satisfaction: smugness,pride
+77,compliant: compliance,yielding,give up?
+78,conciliate: conciliatory,compromising: apologizing,pride
+79,concur,agree,argument and language
+80,conflagration,large destructive fire,war and peace
+81,confluence,a place where things merge or flow together,science
+82,congenial,pleasant,friends and enemies
+83,conscientious,careful,knowledge and skill
+84,consternation,dismay,praise and criticism
+85,contempt(uous),disdainful,praise and criticism
+86,contemptible,despicable,praise and criticism
+87,contentious,belligerent: quarrelsome,war and peace
+88,convivial,sociable: lively,emotions
+89,copious,abundant,size: amount: location
+90,corroborate,strengthen or support with additional evidence,law and order
+91,cosmopolitan,sophisticated: urbane,knowledge and skill
+92,credulity: credulous,the trait of trusting others too much,knowledge and skill
+93,culpable,blameworthy,praise and criticism
+94,cursory,hasty: superficial,the senses
+95,dauntless,courageous,give up?
+96,dearth,scarcity,size: amount: location
+97,debacle,failure,give up?
+98,debilitate(d),weaken(ed),give up?
+99,debunk,prove wrong,give up?
+100,decimate,destroy,war and peace
+101,decorum: decorous,order: politeness,law and order
+102,deference: deferential,respectful submission: yielding,give up?
+103,degradation,humiliation,pride
+104,deleterious,harmful,war and peace
+105,delineate,list: explain,argument and language
+106,demonstrative,openly emotional,emotions
+107,demure: demurral,overly modest,pride
+108,demystify,make clear and comprehensible,truth
+109,denigrate,belittle,praise and criticism
+110,depose,dethrone: remove from power,politics and tradition
+111,depravity,moral corruption,war and peace
+112,deprecate,disapprove: belittle,praise and criticism
+113,depreciation: depreciatory,decrease in value,money
+114,deride,make fun of,praise and criticism
+115,derivative,not original,politics and tradition
+116,derogatory: derogate,disparaging: belittling,praise and criticism
+117,desecration,violate the sacredness of,politics and tradition
+118,despondent,sad: depressed,emotions
+119,despot,dictator,politics and tradition
+120,destitute,poor,money
+121,deterrent,hindrance: impediment,give up?
+122,devoid,lacking,size: amount: location
+123,didactic,(often excessively) morally instructive,knowledge and skill
+124,diffident: diffidence,shy,emotions
+125,diffuse,spread out,size: amount: location
+126,digress(ion),stray from the subject at hand,argument and language
+127,dilatory,tending to waste time,time
+128,diminutive: diminution,extremely small,size: amount: location
+129,dire,urgent: dreadful,war and peace
+130,discern: discerning,perceive: perceptive,knowledge and skill
+131,discomfited,disappointed: defeated,emotions
+132,discount (verb),disregard,praise and criticism
+133,disheartening,discouraging,give up?
+134,disillusionment,disenchantment: disappointment,emotions
+135,disingenuous,insincere,truth
+136,disparage,belittle,praise and criticism
+137,dispassionate,unemotional,emotions
+138,dispel,to drive away or disprove,give up?
+139,disputatious,quarrelsome,friends and enemies
+140,disquiet(ing),(causing) anxiety,give up?
+141,disseminate,scatter widely,science
+142,distaste,dislike: aversion,friends and enemies
+143,divergent,different: conflicting,war and peace
+144,divisive,creating conflict,war and peace
+145,divulge,make known,truth
+146,doctrine,religious: political: or philosophical principles or teachings,politics and tradition
+147,dogmatic,tending to force one's own opinions on other people,politics and tradition
+148,dormant,inactive,energy
+149,dupe,deceive,truth
+150,duplicitous: duplicity,deliberately deceptive,truth
+151,ebullient,enthusiastic,energy
+152,eclectic,from diverse sources,politics and tradition
+153,efface(ment),erase,size: amount: location
+154,effervesce,bubble: fizz,science
+155,egalitarian,belief in equality,politics and tradition
+156,elated: elation,joyful,emotions
+157,elicit,bring about,science
+158,elucidate,clarify,argument and language
+159,elude,evade,war and peace
+160,elusive,difficulty to catch or define,war and peace
+161,embitter(ed),make worse,war and peace
+162,embroil(ed),involve in an argument or conflict,argument and language
+163,empathetic: empathy,compassionate,friends and enemies
+164,empiric(al),based on observation and experiment (not theory),argument and language
+165,encompass,include: surround,size: amount: location
+166,encroaching,intrusive,size: amount: location
+167,encumbrance,burden,war and peace
+168,enigma(tic),mystery: mysterious,truth
+169,enumerate,list,argument and language
+170,ephemeral,short-lived,time
+171,epiphany,sudden realization,knowledge and skill
+172,epitome: epitomize,representative example,argument and language
+173,equanimity,calmness,energy
+174,equitable,even-handed,law and order
+175,equivocal,ambiguous,argument and language
+176,erudite: erudition,scholarly,knowledge and skill
+177,esoteric,understood only by a few,knowledge and skill
+178,estrange: estrangement,alienate: alienation,friends and enemies
+179,eulogy: eulogize,praising speech,praise and criticism
+180,evoke,bring about: stir up,emotions
+181,exacting,demanding: severe requirements,friends and enemies
+182,excavate,unearth: dig up,size: amount: location
+183,exemplar,representative example,argument and language
+184,exhibitionist: exhibitionistic,deliberately behaving a certain way to attract attention,politics and tradition
+185,exhort,encourage,argument and language
+186,exorbitant,too expensive,money
+187,expedient,useful,argument and language
+188,exposé,a report designed to reveal the truth to the public,truth
+189,extol,praise,praise and criticism
+190,extricate,disentangle,size: amount: location
+191,facile,superficial: effortless,give up?
+192,faction,group within a larger group,politics and tradition
+193,fallacious,deceitful: incorrect,truth
+194,fallacy,false belief,truth
+195,fanaticism,excessive enthusiasm,politics and tradition
+196,fastidious,careful,knowledge and skill
+197,fathom (verb),understand,argument and language
+198,felicitous,well-suited: happy,emotions
+199,finesse,tact: elegant skill,knowledge and skill
+200,flagrant,evident: obvious,argument and language
+201,flippant: flippancy,disrespectful,pride
+202,florid(ity),flushed: flowery,argument and language
+203,flummox,confuse,knowledge and skill
+204,folly,foolishness,knowledge and skill
+205,foolhardy,recklessly daring,knowledge and skill
+206,forlorn,sad,emotions
+207,fortitude,courage,emotions
+208,fortuitous,fortunate: lucky,war and peace
+209,fraudulent,deceitful,truth
+210,frugal(ity),cheap(ness),money
+211,furor,commotion: anger,emotions
+212,furtive,sneaky,truth
+213,futile: futility,hopeless,give up?
+214,gait,manner of walking,the senses
+215,gallant(ry),courageous,give up?
+216,gargantuan,gigantic,size: amount: location
+217,garish,tastelessly showy,the senses
+218,genial,friendly,friends and enemies
+219,germinate,(cause to) grow,size: amount: location
+220,glutton(ous),someone who eats and drinks too much,the senses
+221,grandiose,pompous: pretentious,knowledge and skill
+222,hackneyed,common,politics and tradition
+223,hamper (verb),hinder: restrict,size: amount: location
+224,hardy,robust: sturdy,energy
+225,hasten,speed up the progress of,time
+226,heresy: heretic,belief contrary to the established opinion,politics and tradition
+227,histrionic,excessively dramatic or emotional,emotions
+228,hubris,arrogance,pride
+229,idiosyncracy: idiosyncratic,unique personal trait: quirky,politics and tradition
+230,idyllic,simply tranquil,emotions
+231,ignominy: ignominious,dishonor: humiliation,pride
+232,illicit,illegal,law and order
+233,impasse,obstacle,give up?
+234,imperious,arrogant,pride
+235,impetuous,rash: passionate,emotions
+236,impudence: impudent,disrespectful: insolent,pride
+237,inane,senseless: stupid,knowledge and skill
+238,incongruity: incongruous,inappropriateness: discrepancy,argument and language
+239,incredulous: incredulity,skeptical,truth
+240,incriminate,accuse someone of a crime,law and order
+241,incubate,develop: grow,size: amount: location
+242,indeterminate,left doubtful: inconclusive,truth
+243,indict(ment),formally accuse of a crime,law and order
+244,indigenous,native to a region,science
+245,indignant,angered (by injustice),law and order
+246,indiscriminate,unselective: random,size: amount: location
+247,indolent,lazy,energy
+248,indomitable,too strong to be defeated,give up?
+249,induce,cause,science
+250,indulgent,lenient,law and order
+251,ineffable,impossible to express in words,argument and language
+252,ineptitude,incompetence,knowledge and skill
+253,inert: inertia,not moving or active,science
+254,ingenuous,unsophisticated and trusting: naïve,knowledge and skill
+255,inherent,intrinsic: natural,science
+256,inhibit(ing),restrain(ing),size: amount: location
+257,innate,intrinsic: natural,size: amount: location
+258,innocuous,harmless,size: amount: location
+259,innuendo,implicit suggestion,argument and language
+260,inscrutable,mysterious,truth
+261,insipid,dull: boring,energy
+262,insolence: insolent,disrespectful,pride
+263,instigate,provoke: start,energy
+264,insular(ity),related to or similar to an island,size: amount: location
+265,intrepid,courageous,give up?
+266,inundate,flood,size: amount: location
+267,invoke,call forth: appeal to,energy
+268,irate,angry,emotions
+269,irony: ironic,incongruity between what is expected and what actually results,truth
+270,irreverent: irreverence,disrespectful,pride
+271,jaded,tired: bored,emotions
+272,jocular,cheerful,emotions
+273,jovial,cheerful,emotions
+274,judicious,fair,law and order
+275,lackadaisical,lacking energy: lethargic,energy
+276,laconic,concise,argument and language
+277,laggard,lazy person,energy
+278,languid,inactive: dreamy,energy
+279,latent: latency,the state of being not yet evident or active,size: amount: location
+280,laud: laudatory,praise,praise and criticism
+281,listless,languid: sluggish,energy
+282,lithe,graceful: supple,knowledge and skill
+283,lucid,clear: easily understood,argument and language
+284,lucrative,profitable,money
+285,lull,short period of calm,energy
+286,lurid,sensational: shocking,the senses
+287,luxuriant,lush: elaborate,money
+288,magnanimity: magnanimous,generosity: generous,money
+289,malleable,capable of being shaped: pliable,the senses
+290,marred,scarred,war and peace
+291,maudlin,overly sentimental,emotions
+292,melancholy,bleak,emotions
+293,mercenary,motivated by money,money
+294,mercurial,fickle,emotions
+295,miserly,cheap: stingy,money
+296,mitigate: mitigator,moderate: alleviate,size: amount: location
+297,modicum,small amount,size: amount: location
+298,morose,depressed,emotions
+299,motley,diverse: heterogeneous,size: amount: location
+300,multifarious,many types,science
+301,nebulous,vague,argument and language
+302,nefarious,evil,war and peace
+303,neophyte,beginner,knowledge and skill
+304,notoriety: notorious,infamous: ill fame,pride
+305,noxious,poisonous,praise and criticism
+306,nuance,subtle difference,argument and language
+307,obdurate,stubborn,pride
+308,obstinate (obstinacy),stubborn(ness),pride
+309,officious,meddlesome: interfering,friends and enemies
+310,onerous,difficult: trying,give up?
+311,opportunist: opportunistic,a person who takes advantage of opportunities: often unethically,pride
+312,oracle,prophet,time
+313,orthodox,conservative: traditional,politics and tradition
+314,ostensible,apparent: seeming,truth
+315,oversight,mistake,knowledge and skill
+316,pacifist,one who completely opposes violence,politics and tradition
+317,pacify,soothe: calm,energy
+318,painstaking,careful,knowledge and skill
+319,palliate: palliative,relieve pain without curing,war and peace
+320,paradigm,clear example,argument and language
+321,parch,make dry,size: amount: location
+322,parody,intentional mockery,friends and enemies
+323,partisan,someone with biased beliefs,politics and tradition
+324,patronize,financially support: be condescending towards,money
+325,paucity,scarcity,size: amount: location
+326,pedant: pedantic: pedantry,a person who makes a great show of his knowledge,knowledge and skill
+327,peevish,unpleasant,emotions
+328,penchant,preference,emotions
+329,penurious,cheap: stingy,money
+330,peremptory,bossy: decisive,pride
+331,perfunctory,done routinely with little interest or care,emotions
+332,peripheral,outermost: secondary,size: amount: location
+333,perquisite,additional payment: bonus,money
+334,petulant,irritable,emotions
+335,philanthropist: philanthropic,someone who supports charity,money
+336,piety: pious,religious devotion,politics and tradition
+337,placate,calm someone down,energy
+338,placid,calm,energy
+339,plasticity,malleability: the ability to be shaped or molded,size: amount: location
+340,plausible: plausibility,likely true,truth
+341,plethora: plethoric,surplus,size: amount: location
+342,pliable: pliant,easily shaped or influenced,size: amount: location
+343,polemical,controversial,politics and tradition
+344,prattle,babble,argument and language
+345,precarious,dangerous: unstable,war and peace
+346,precipitate,outcome,science
+347,preclude,prevent,size: amount: location
+348,precocious,early development in maturity and intelligence,knowledge and skill
+349,presumptuous,too bold: arrogant,pride
+350,pretext,misleading claim or appearance,truth
+351,prevaricator,liar,truth
+352,procure,get or provide,money
+353,prodigious,huge,size: amount: location
+354,profound: profundity,intense: significant,emotions
+355,profuse: profusion,plentiful,size: amount: location
+356,prohibitive: prohibition,restrictive,size: amount: location
+357,proliferate: proliferation,grow: increase,size: amount: location
+358,prolific,fertile: fruitful,size: amount: location
+359,pronouncement,formal declaration,argument and language
+360,propensity,inclination: tendency,emotions
+361,proponent,supporter,argument and language
+362,prosaic,lacking imagination: dull,argument and language
+363,prospective,likely or expected to become,time
+364,provident,prudent: frugal,money
+365,provincial,narrow-minded: unsophisticated,knowledge and skill
+366,punctilious,meticulous: attentive to detail,knowledge and skill
+367,pundit,a knowledgeable commentator,knowledge and skill
+368,quell,suppress: quench,size: amount: location
+369,quixotic,foolish,knowledge and skill
+370,rampant,unrestrained: growing,size: amount: location
+371,ramshackle,poorly constructed,the senses
+372,rancor(ous),bitter resentment,friends and enemies
+373,rapport,relationship,friends and enemies
+374,ratify,approve: confirm,law and order
+375,raucous,harsh: rowdy,energy
+376,ravenous,insatiable: having a huge appetite,size: amount: location
+377,raze,destroy: demolish,war and peace
+378,reap,harvest: gather,size: amount: location
+379,rebuttal,defense: counterargument,argument and language
+380,recalcitrant,stubborn,pride
+381,recant,reject,argument and language
+382,recessive,tending to go backward,size: amount: location
+383,recluse: reclusive,hermit,friends and enemies
+384,rectify: rectitude,put right: correct,truth
+385,redolent,reminiscent: having smell,the senses
+386,refutation: refute,arguing that a claim is false,truth
+387,regressive,tending to return or revert,time
+388,relegate,demote,size: amount: location
+389,relinquish,give back,size: amount: location
+390,renounce,reject,politics and tradition
+391,repertory,collection,size: amount: location
+392,reprehensible,blameworthy,praise and criticism
+393,reprimand,belittle,praise and criticism
+394,reproach,scold,praise and criticism
+395,repudiate,reject,argument and language
+396,repugnant,offensive: disgusting,emotions
+397,rescind,annull: retract,argument and language
+398,reticent: reticence,emotionally reserved,emotions
+399,reverent,respectful: pious,politics and tradition
+400,rhetoric(al): rhetorician,(related to) elegant speech/writing: elegant speaker/writer,argument and language
+401,rouse: rousing,provoke: excite,energy
+402,sage,wise,knowledge and skill
+403,sanctimonious,pretending to be religious: hypocritical,truth
+404,sanction (verb),formally approve,law and order
+405,sanctity,holiness,politics and tradition
+406,sanguine,cheerfully confident: optimistic,emotions
+407,satiate,satisfy fully,size: amount: location
+408,satire: satirical: satirize,sarcastic imitation,friends and enemies
+409,saturate,flood: soak,size: amount: location
+410,scanty,barely sufficient,size: amount: location
+411,scathing,harshly critical,praise and criticism
+412,scintillating,lively: effervescent,energy
+413,scope,opportunity: range,size: amount: location
+414,scrupulous,very careful and precise,knowledge and skill
+415,scrutinize: scrutiny,examine carefully,argument and language
+416,self-righteous,smug: holier-than-thou,pride
+417,self-serving,selfish,pride
+418,serendipity,luck,war and peace
+419,servile,submissive: subservient,give up?
+420,shrewd,astute: smart,knowledge and skill
+421,shroud,hide: obscure,the senses
+422,simile,comparison,argument and language
+423,slight (verb),insult: snub,praise and criticism
+424,slipshod,careless: sloppy,knowledge and skill
+425,solace,comfort: consolation,emotions
+426,solicitous(ness),expressing care or concern: often too much,friends and enemies
+427,somber,bleak,emotions
+428,sophistry,deceptive reasoning,truth
+429,spartan,simple: self-disciplined,war and peace
+430,sporadic,occurring at irregular intervals,time
+431,spurious,false: inauthentic,truth
+432,spurn,reject with contempt,praise and criticism
+433,squander,waste,money
+434,stagnant: stagnation,not moving,energy
+435,stark(ness),harsh: plain,the senses
+436,static (adjective),not moving,energy
+437,staunch,strong and loyal,politics and tradition
+438,steadfast,not yielding,give up?
+439,stock (adjective),standard: hackneyed,politics and tradition
+440,strident,loud and harsh,politics and tradition
+441,stupefy: stupefaction,bewilder,knowledge and skill
+442,subservient,yielding,give up?
+443,substantiate,confirm: establish as genuine,truth
+444,subversive,one who intends to overthrow the government,politics and tradition
+445,succulent,delicious,the senses
+446,supercilious,arrogant,pride
+447,superfluous,more than necessary,size: amount: location
+448,supplant,to take the place of,politics and tradition
+449,surfeit,surplus,size: amount: location
+450,susceptible,easily influenced or affected,knowledge and skill
+451,sycophant,suck up: flatterer,politics and tradition
+452,tangential,digressive: irrelevant,argument and language
+453,teem: teeming,abundant,size: amount: location
+454,temperamental,moody,emotions
+455,temporize,delay: evade,time
+456,tenacious: tenacity,stubborn: determined,give up?
+457,tenuous,insignificant: flimsy,give up?
+458,tirade,critical speech,praise and criticism
+459,toady,suck-up,politics and tradition
+460,torpor,drowsiness: apathy,energy
+461,totalitarian,undemocratic: rigid political control,politics and tradition
+462,tout,praise,praise and criticism
+463,tractable,easily managed or controlled,knowledge and skill
+464,transient,lasting for only a short time,time
+465,treatise,extensive written argument about some topic,argument and language
+466,trepidation,apprehension,emotions
+467,tribulation,suffering,give up?
+468,trifling,frivolous: unimportant,size: amount: location
+469,trite,common,politics and tradition
+470,truculent: truculence,aggressive: bad-tempered,emotions
+471,ubiquitous,ever-present: pervasive,size: amount: location
+472,unabashed,not embarrassed,pride
+473,uncanny,extraordinary: weird,knowledge and skill
+474,uncouth,crude,knowledge and skill
+475,unfathomable,incomprehensible: unbelievable,knowledge and skill
+476,ungainly,clumsy,knowledge and skill
+477,unruly,boisterous: unrestrained,energy
+478,unwitting,unintentional,friends and enemies
+479,urbane,elegant: sophisticated,knowledge and skill
+480,usurp,seize power without authority,politics and tradition
+481,vacuous: vacuity,empty,size: amount: location
+482,vanquish,conquer: defeat,war and peace
+483,vapid,dull: uninteresting,energy
+484,venal(ity),willing to accept bribes,money
+485,venerable,commanding respect because of age: dignity,knowledge and skill
+486,verbose,wordy: long-winded,argument and language
+487,vicarious,felt indirectly by imagining someone else's experiences,emotions
+488,vigilant,watchful: alert,war and peace
+489,vindicate: vindication,clear of blame or suspicion,law and order
+490,vindictive,seeking revenge,war and peace
+491,virtuoso: virtuosity,one with exceptional musical skill,knowledge and skill
+492,virulent,poisonous,war and peace
+493,viscous,thick: sticky,size: amount: location
+494,vocation,career,money
+495,vying,striving,give up?
+496,waning,lessening,size: amount: location
+497,wayward,selfish: stubborn,pride
+498,wrath,anger,emotions
+499,wry,clever or grim sense of humor,knowledge and skill
+500,zealot,fanatic,politics and tradition

@@ -61,6 +61,9 @@
 - (UIImage *)blit {
     UIGraphicsBeginImageContextWithOptions(self.bounds.size, NO, [UIScreen mainScreen].scale);
     CGContextRef context = UIGraphicsGetCurrentContext();
+    if (context == nil) {
+        NSLog(@"*** context: %s", __PRETTY_FUNCTION__);
+    }
     [self.layer renderInContext:context];
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();

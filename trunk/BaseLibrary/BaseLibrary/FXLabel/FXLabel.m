@@ -542,12 +542,18 @@
     }
     
     CGContextRef context = UIGraphicsGetCurrentContext();
+    if (context == nil) {
+        NSLog(@"*** context: %s", __PRETTY_FUNCTION__);
+    }
     if (usingMask)
     {
         //create image context with correct scale
         CGAffineTransform ctm = CGContextGetCTM(context);
         UIGraphicsBeginImageContextWithOptions(size, NO, ctm.a);
         context = UIGraphicsGetCurrentContext();
+        if (context == nil) {
+            NSLog(@"*** context: %s", __PRETTY_FUNCTION__);
+        }
     }
     else
     {
@@ -597,6 +603,9 @@
         UIGraphicsEndImageContext();
         
         context = UIGraphicsGetCurrentContext();
+        if (context == nil) {
+            NSLog(@"*** context: %s", __PRETTY_FUNCTION__);
+        }
         CGRect rect = CGRectMake(0, 0, size.width, size.height);
         CGContextSaveGState(context);
         CGContextTranslateCTM(context, point.x, size.height + y);
@@ -1141,7 +1150,9 @@
         UIGraphicsBeginImageContextWithOptions(rect.size, NO, _oversampling);
     }
     CGContextRef context = UIGraphicsGetCurrentContext();
-    
+    if (context == nil) {
+        NSLog(@"*** context: %s", __PRETTY_FUNCTION__);
+    }
     //apply insets
     CGRect contentRect = rect;
     contentRect.origin.x += _textInsets.left;
@@ -1308,6 +1319,9 @@
         {
             //set up shadow
             context = UIGraphicsGetCurrentContext();
+            if (context == nil) {
+                NSLog(@"*** context: %s", __PRETTY_FUNCTION__);
+            }
             CGContextSaveGState(context);
             CGContextSetShadowWithColor(context, self.shadowOffset, shadowBlur, self.shadowColor.CGColor);
             [image drawInRect:rect];
