@@ -291,6 +291,7 @@
 		D0F375E818FA990100D32A10 /* tier4-2.png in Resources */ = {isa = PBXBuildFile; fileRef = D0F375E518FA990100D32A10 /* tier4-2.png */; };
 		D0F375E918FA990100D32A10 /* tier2-2.png in Resources */ = {isa = PBXBuildFile; fileRef = D0F375E618FA990100D32A10 /* tier2-2.png */; };
 		D0F375EA18FA990100D32A10 /* tier5-2.png in Resources */ = {isa = PBXBuildFile; fileRef = D0F375E718FA990100D32A10 /* tier5-2.png */; };
+		D0F562A719DFDF4100A31680 /* particleEffect.json in Resources */ = {isa = PBXBuildFile; fileRef = D0F562A519DFDF4100A31680 /* particleEffect.json */; };
 		D0F5D15419C965D000ADB923 /* DiggerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0F5D15319C965D000ADB923 /* DiggerView.xib */; };
 		D0F624A719C64FA100E4BDB9 /* BlockView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F624A619C64FA100E4BDB9 /* BlockView.m */; };
 		D0F624AC19C6500900E4BDB9 /* BlockView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0F624AB19C6500900E4BDB9 /* BlockView.xib */; };
@@ -662,6 +663,7 @@
 		D0F375E518FA990100D32A10 /* tier4-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tier4-2.png"; sourceTree = "<group>"; };
 		D0F375E618FA990100D32A10 /* tier2-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tier2-2.png"; sourceTree = "<group>"; };
 		D0F375E718FA990100D32A10 /* tier5-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tier5-2.png"; sourceTree = "<group>"; };
+		D0F562A519DFDF4100A31680 /* particleEffect.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = particleEffect.json; sourceTree = "<group>"; };
 		D0F5D15319C965D000ADB923 /* DiggerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiggerView.xib; sourceTree = "<group>"; };
 		D0F624A519C64FA100E4BDB9 /* BlockView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockView.h; sourceTree = "<group>"; };
 		D0F624A619C64FA100E4BDB9 /* BlockView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlockView.m; sourceTree = "<group>"; };
@@ -913,6 +915,7 @@
 		D0E30ECD18A3780B00FFD3CE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D0F562A119DFDF3200A31680 /* ParticleEffects */,
 				D0E1121B18C2EC6000808072 /* Sounds */,
 				D015790618ACD9F500AA3803 /* Icons */,
 				D0E50A2818A7349300AA353E /* Images */,
@@ -1193,6 +1196,15 @@
 				D0EB9F6D19CF74CA005CC229 /* UpgradeShopDialogView.m */,
 			);
 			path = Upgrade;
+			sourceTree = "<group>";
+		};
+		D0F562A119DFDF3200A31680 /* ParticleEffects */ = {
+			isa = PBXGroup;
+			children = (
+				D0F562A519DFDF4100A31680 /* particleEffect.json */,
+			);
+			name = ParticleEffects;
+			path = Resources/ParticleEffects;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1531,6 +1543,7 @@
 				D0156ECB19C64692002D3D22 /* BaseLibraryResource.bundle in Resources */,
 				D0E52B3619273C650015CD5A /* icon_cigar.png in Resources */,
 				D031B7A719CD82B100711845 /* PowerView.xib in Resources */,
+				D0F562A719DFDF4100A31680 /* particleEffect.json in Resources */,
 				D048A83F18ACAAAB00411DF9 /* facebook_share.png in Resources */,
 				D0E52B4319274A220015CD5A /* money.png in Resources */,
 				D0EBC78419596F190023EF01 /* button_press.png in Resources */,
