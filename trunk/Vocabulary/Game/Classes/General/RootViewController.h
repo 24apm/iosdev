@@ -7,7 +7,6 @@
 //
 
 #import "GameViewControllerBase.h"
-#import "DiggerView.h"
 
 @interface RootViewController : GameViewControllerBase
 

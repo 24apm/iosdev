@@ -12,11 +12,14 @@
 #import "GameConstants.h"
 #import "GameCenterHelper.h"
 #import "CAEmitterHelperLayer.h"
+#import "VocabularyManager.h"
+#import "VocabularyTableDialogView.h"
+#import "GameView.h"
 
 @interface RootViewController ()
 
-@property (strong, nonatomic) DiggerView *diggerView;
 @property (strong, nonatomic) NSArray *products;
+@property (strong, nonatomic) GameView *gameView;
 
 @end
 
@@ -50,74 +53,24 @@
     [GameCenterHelper instance].currentLeaderBoard = kLeaderboardBestScoreID;
     [[GameCenterHelper instance] loginToGameCenter];
     
-//    self.diggerView = [[DiggerView alloc] initWithFrame:self.view.frame];
-//    [self.view addSubview:self.diggerView];
+    self.gameView = [[GameView alloc] initWithFrame:self.view.frame];
+    [self.view addSubview:self.gameView];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    self.diggerView.frame = CGRectMake(0,
-                                       self.adBannerView.height,
-                                       self.view.width,
-                                       self.view.height - self.adBannerView.height);
     
-//    [self.diggerView setup];
-    [self readFile];
+    [[VocabularyManager instance] loadFile];
+//    [[[VocabularyTableDialogView alloc] init] show];
+    self.gameView.frame = CGRectMake(0,
+                                     self.adBannerView.height,
+                                     self.view.width,
+                                     self.view.height - self.adBannerView.height);
+    
+    [self.gameView setup];
+    
 }
 
-- (void)readFile {
-//    NSString* content = [NSString stringWithContentsOfFile:@"vocabulary.txt"
-//                                                  encoding:NSUTF8StringEncoding
-    //                                                     error:NULL];
-    //    NSLog(@"%@",content);
-    
-    
-    NSString *tmp;
-    NSArray *lines;
-    NSError *error;
-    NSString* filePath = [[NSBundle mainBundle] pathForResource:@"vocabulary" ofType:@"txt"];
-    NSString *content = [NSString stringWithContentsOfFile:filePath
-                                                     encoding:NSUTF8StringEncoding
-                                                        error:&error];
-    lines = [content componentsSeparatedByString:@"\n"];
-    
-    NSEnumerator *nse = [lines objectEnumerator];
-    
-    NSMutableArray *entries = [NSMutableArray array];
-    
-    NSMutableDictionary *vocabGroups = [NSMutableDictionary dictionary];
-
-    while(tmp = [nse nextObject]) {
-        
-        // replace ":" with ","
-        NSMutableArray *vocab = [NSMutableArray arrayWithArray:[tmp componentsSeparatedByString:@","]];
-        for (int i = 0; i < vocab.count; i++) {
-            vocab[i] = [vocab[i] stringByReplacingOccurrencesOfString:@":" withString:@","];
-        }
-        
-        // "palliate, palliative" -> "palliate"
-        NSMutableArray *word = [NSMutableArray arrayWithArray:[vocab[1] componentsSeparatedByString:@","]];
-        vocab[1] = word[0];
-        
-        // Array version
-        [entries addObject:vocab];
-        
-        // Dictionary version
-        NSMutableArray *vocabGroup = [vocabGroups objectForKey:vocab[3]];
-        if (vocabGroup == nil) {
-            vocabGroup = [NSMutableArray array];
-            [vocabGroups setObject:vocabGroup forKey:vocab[3]];
-        }
-        [vocabGroup addObject:vocab];
-    }
-    
-    for (NSString *key in [vocabGroups allKeys]) {
-        NSLog(@"%@ %d", key, [[vocabGroups objectForKey:key] count]);
-    }
-    NSLog(@"%@", vocabGroups);
-
-    NSLog(@"%@", entries);
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

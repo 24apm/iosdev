@@ -7,7 +7,6 @@
 //
 
 #import "GameCenterHelper.h"
-#import "UserData.h"
 #import "GameConstants.h"
 #import "GameManager.h"
 

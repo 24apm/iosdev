@@ -117,11 +117,6 @@ typedef enum {
     BlockTypeWaypoint
 } BlockType;
 
-typedef enum {
-    LevelDataType,
-    LevelDataTier
-} LevelData;
-
 @interface GameConstants : NSObject
 
 @end

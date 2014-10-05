@@ -15,36 +15,17 @@ extern NSString *const UserDataHouseDataChangedNotification;
 
 + (UserData *)instance;
 
-- (void)decrementRetry;
-- (void)refillRetry;
-- (BOOL)hasRetry;
-
 - (BOOL)hasCoin:(long long)coin;
 - (void)incrementCoin:(long long)coin;
 - (void)decrementCoin:(long long)coin;
 
-- (void)incrementStamina:(long long)stamina;
-- (void)decrementStamina:(long long)stamina;
-- (void)incrementLevelStaminaCapacity;
-- (float)formatPercentageStamina;
-- (void)refillStamina;
+- (void)decrementRetry;
+- (void)refillRetry;
+- (BOOL)hasRetry;
 
-- (void)incrementLevelDrill;
-
-- (void)unlockWaypointRank:(NSUInteger)integer;
-
-- (void)incrementDepth:(NSUInteger)depth;
-- (void)resetDepth;
+@property (nonatomic) long long coin;
 
 @property (nonatomic) NSInteger retry;
 @property (nonatomic) NSInteger retryCapacity;
-
-@property (nonatomic) long long coin;
-@property (nonatomic) long long stamina;
-@property (nonatomic) long long staminaCapacity;
-@property (nonatomic) long long staminaCapacityLevel;
-@property (nonatomic) long long drillLevel;
-@property (nonatomic) NSUInteger currentDepth;
-@property (strong, nonatomic) NSMutableArray *waypointRank;
 
 @end
