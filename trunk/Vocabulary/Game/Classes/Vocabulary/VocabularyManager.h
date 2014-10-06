@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "LevelData.h"
 
+#define NUM_COL 12
+#define NUM_ROW 12
+
 @interface VocabularyManager : NSObject
 
 + (VocabularyManager *)instance;
@@ -22,6 +25,9 @@
 - (NSString *)randomLetter;
 
 - (LevelData *)generateLevel;
+- (void)printMap:(NSArray *)map;
+- (NSString *)mapToString:(NSArray *)map;
 
+- (BOOL)checkSolution:(LevelData *)levelData word:(NSString *)word;
 
 @end

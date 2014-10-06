@@ -7,9 +7,12 @@
 //
 
 #import "XibView.h"
+#import "LevelData.h"
+
+#define NOTIFICATION_WORD_MATCHED @"NOTIFICATION_WORD_MATCHED"
 
 @interface BoardView : UIView
 
-- (void)reset;
+- (void)setupWithLevel:(LevelData *)levelData;
 
 @end

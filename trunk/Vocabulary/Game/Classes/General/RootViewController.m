@@ -61,7 +61,7 @@
     [super viewWillAppear:animated];
     
     [[VocabularyManager instance] loadFile];
-//    [[[VocabularyTableDialogView alloc] init] show];
+    
     self.gameView.frame = CGRectMake(0,
                                      self.adBannerView.height,
                                      self.view.width,

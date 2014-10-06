@@ -10,9 +10,7 @@
 #import "SlotView.h"
 #import "VocabularyManager.h"
 #import "CAEmitterHelperLayer.h"
-
-#define NUM_COL 9
-#define NUM_ROW 9
+#import "NSString+StringUtils.h"
 
 @interface BoardView()
 
@@ -21,6 +19,7 @@
 @property (strong, nonatomic) NSMutableArray *slotSelection;
 @property (strong, nonatomic) UIImage *cachedLineImage;
 @property (nonatomic) BOOL hasCorrectMatch;
+@property (strong, nonatomic) LevelData *levelData;
 
 @end
 
@@ -40,7 +39,8 @@
     return self;
 }
 
-- (void)reset {
+- (void)setupWithLevel:(LevelData *)levelData {
+    self.levelData = levelData;
     self.cachedLineImage = nil;
     [self.slotSelection removeAllObjects];
     [self refreshSlots];
@@ -48,8 +48,10 @@
 }
 
 - (void)refreshSlots {
-    for (SlotView *slotView in self.slots) {
-        slotView.labelView.text = [[VocabularyManager instance] randomLetter];
+    for (int i = 0; i < self.slots.count; i++) {
+        SlotView *slotView = [self.slots objectAtIndex:i];
+        NSString *letter = [self.levelData.letterMap objectAtIndex:i];
+        slotView.labelView.text = letter;
     }
 }
 
@@ -149,11 +151,35 @@
 }
 
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-    self.hasCorrectMatch = arc4random() % 2 == 1; //TODO hardcoding to rand for now
+    NSString *word = [self buildStringFromArray:self.slotSelection];
+
+    // check string
+    self.hasCorrectMatch = [self checkSolution:word];
+    if (!self.hasCorrectMatch) {
+        // check reversed string
+        word = [word reversedString];
+        self.hasCorrectMatch = [self checkSolution:word];
+    }
+
     if (!self.hasCorrectMatch) {
         [self.slotSelection removeAllObjects];
+    } else {
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_WORD_MATCHED object:word];
     }
     [self setNeedsDisplay];
+}
+
+- (NSString *)buildStringFromArray:(NSArray *)slotSelection {
+    NSString *word = @"";
+    for (int i = 0; i < slotSelection.count; i++) {
+        SlotView *slotView = slotSelection[i];
+        word = [NSString stringWithFormat:@"%@%@", word, slotView.labelView.text];
+    }
+    return word;
+}
+
+- (BOOL)checkSolution:(NSString *)word {
+    return [[VocabularyManager instance] checkSolution:self.levelData word:word];
 }
 
 - (void)cacheImage {
