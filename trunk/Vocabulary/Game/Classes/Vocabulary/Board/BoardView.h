@@ -13,6 +13,10 @@
 
 @interface BoardView : UIView
 
+@property (nonatomic) CGSize slotSize;
+@property (strong, nonatomic) NSMutableArray *slotSelection;
+@property (nonatomic) BOOL hasCorrectMatch;
+
 - (void)setupWithLevel:(LevelData *)levelData;
 
 @end

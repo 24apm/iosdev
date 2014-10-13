@@ -12,19 +12,114 @@
 #import "CAEmitterHelperLayer.h"
 #import "NSString+StringUtils.h"
 
+@interface BoardDrawView : UIView
+
+@property (strong, nonatomic) UIImage *cachedLineImage;
+@property (strong, nonatomic) BoardView *boardView;
+
+@end
+
+@implementation BoardDrawView
+
+- (instancetype)initWithBoardView:(BoardView *)boardView {
+    self = [super init];
+    if (self) {
+        self.boardView = boardView;
+    }
+    return self;
+}
+
+- (void)cacheImage {
+    UIGraphicsBeginImageContextWithOptions(self.bounds.size, NO, [[UIScreen mainScreen] scale]);
+    [self.layer renderInContext:UIGraphicsGetCurrentContext()];
+    
+    self.cachedLineImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    // end the context
+    UIGraphicsEndImageContext();
+}
+
+- (void)drawPath:(UIBezierPath *)bezierPath {
+    SlotView *slotView = [self.boardView.slotSelection objectAtIndex:0];
+    
+    [bezierPath moveToPoint:slotView.center];
+    
+    for (int i = 1; i < self.boardView.slotSelection.count; i++) {
+        slotView = [self.boardView.slotSelection objectAtIndex:i];
+        [bezierPath addLineToPoint:slotView.center];
+    }
+    
+    slotView = [self.boardView.slotSelection lastObject];
+    
+    [bezierPath stroke];
+}
+
+- (void)drawRect:(CGRect)rect {
+    [super drawRect:rect];
+    
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextClearRect(context, self.bounds);
+    [self.cachedLineImage drawInRect:rect];
+    
+    if (self.boardView.slotSelection.count > 0) {
+        
+        UIColor *outerStrokeColor;
+        UIColor *innerStrokeColor;
+        
+        if (self.boardView.hasCorrectMatch) {
+            outerStrokeColor = [UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:0.5f];
+            innerStrokeColor = [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:0.5f];
+        } else {
+            outerStrokeColor = [UIColor colorWithRed:0 green:0 blue:1.f alpha:0.5f];
+            innerStrokeColor = [UIColor colorWithRed:0 green:1 blue:0 alpha:0.5f];
+        }
+        
+        //Outer
+        UIBezierPath *bezierPath = [UIBezierPath bezierPath];
+        CGContextSetStrokeColorWithColor(context, [outerStrokeColor CGColor]);
+        bezierPath.lineWidth = self.boardView.slotSize.width * 0.6f;
+        bezierPath.lineJoinStyle = kCGLineJoinRound;
+        bezierPath.lineCapStyle = kCGLineCapRound;
+        
+        [self drawPath:bezierPath];
+        
+        //Inner
+        UIBezierPath *bezierPathInner = [UIBezierPath bezierPath];
+        CGContextSetStrokeColorWithColor(context, [innerStrokeColor CGColor]);
+        bezierPathInner.lineWidth =  self.boardView.slotSize.width * 0.5f;
+        bezierPathInner.lineJoinStyle = kCGLineJoinRound;
+        bezierPathInner.lineCapStyle = kCGLineCapRound;
+        
+        [self drawPath:bezierPathInner];
+        
+        if (self.boardView.hasCorrectMatch) {
+            [self cacheImage];
+            [self.boardView.slotSelection removeAllObjects];
+            self.boardView.hasCorrectMatch = NO;
+        }
+    }
+}
+
+- (void)refresh {
+    [self setNeedsDisplay];
+}
+
+- (void)reset {
+    self.cachedLineImage = nil;
+}
+
+@end
+
 @interface BoardView()
 
 @property (strong, nonatomic) NSMutableArray *slots;
-@property (nonatomic) CGSize slotSize;
-@property (strong, nonatomic) NSMutableArray *slotSelection;
-@property (strong, nonatomic) UIImage *cachedLineImage;
-@property (nonatomic) BOOL hasCorrectMatch;
 @property (strong, nonatomic) LevelData *levelData;
 @property (nonatomic) CGPoint firstLocation;
 @property (nonatomic) CGPoint previousPoint;
 @property (nonatomic) NSInteger previousMax;
 @property (nonatomic) CGPoint previousFirstSlotPoint;
 @property (strong, nonatomic) SlotView *previousSelectedSlotView;
+@property (strong, nonatomic) BoardDrawView *boardDrawView;
 
 @end
 
@@ -42,6 +137,10 @@
         self.backgroundColor = [UIColor clearColor];
         self.firstLocation = CGPointMake(0.f, 0.f);
         [self resetPreviousLine];
+        self.boardDrawView = [[BoardDrawView alloc] initWithBoardView:self];
+        self.boardDrawView.backgroundColor = [UIColor clearColor];
+        self.boardDrawView.frame = CGRectMake(0.f, 0.f, self.width, self.height);
+        [self addSubview:self.boardDrawView];
     }
     return self;
 }
@@ -55,10 +154,14 @@
 
 - (void)setupWithLevel:(LevelData *)levelData {
     self.levelData = levelData;
-    self.cachedLineImage = nil;
+    [self.boardDrawView reset];
     [self.slotSelection removeAllObjects];
     [self refreshSlots];
-    [self setNeedsDisplay];
+    [self refresh];
+}
+
+- (void)refresh {
+    [self.boardDrawView refresh];
 }
 
 - (void)refreshSlots {
@@ -117,7 +220,7 @@
         self.hasCorrectMatch = NO;
         [slotView animateLabelSelection];
         [self.slotSelection addObject:slotView];
-        [self setNeedsDisplay];
+        [self refresh];
     }
 }
 
@@ -213,7 +316,7 @@
        directionalUnit:point
               distance:maxDistance];
         
-        [self setNeedsDisplay];
+        [self refresh];
     }
 }
 
@@ -254,7 +357,7 @@
     } else {
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_WORD_MATCHED object:word];
     }
-    [self setNeedsDisplay];
+    [self refresh];
 }
 
 - (NSString *)buildStringFromArray:(NSArray *)slotSelection {
@@ -268,77 +371,6 @@
 
 - (BOOL)checkSolution:(NSString *)word {
     return [[VocabularyManager instance] checkSolution:self.levelData word:word];
-}
-
-- (void)cacheImage {
-    UIGraphicsBeginImageContextWithOptions(self.bounds.size, NO, [[UIScreen mainScreen] scale]);
-    [self.layer renderInContext:UIGraphicsGetCurrentContext()];
-    
-    self.cachedLineImage = UIGraphicsGetImageFromCurrentImageContext();
-    
-    // end the context
-    UIGraphicsEndImageContext();
-}
-
-- (void)drawPath:(UIBezierPath *)bezierPath {
-    SlotView *slotView = [self.slotSelection objectAtIndex:0];
-    
-    [bezierPath moveToPoint:slotView.center];
-    
-    for (int i = 1; i < self.slotSelection.count; i++) {
-        slotView = [self.slotSelection objectAtIndex:i];
-        [bezierPath addLineToPoint:slotView.center];
-    }
-    
-    slotView = [self.slotSelection lastObject];
-    
-    [bezierPath stroke];
-}
-
-- (void)drawRect:(CGRect)rect {
-    [super drawRect:rect];
-    
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextClearRect(context, self.bounds);
-    [self.cachedLineImage drawInRect:rect];
-    
-    if (self.slotSelection.count > 0) {
-        
-        UIColor *outerStrokeColor;
-        UIColor *innerStrokeColor;
-        
-        if (self.hasCorrectMatch) {
-            outerStrokeColor = [UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:0.5f];
-            innerStrokeColor = [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:0.5f];
-        } else {
-            outerStrokeColor = [UIColor colorWithRed:0 green:0 blue:1.f alpha:0.5f];
-            innerStrokeColor = [UIColor colorWithRed:0 green:1 blue:0 alpha:0.5f];
-        }
-        
-        //Outer
-        UIBezierPath *bezierPath = [UIBezierPath bezierPath];
-        CGContextSetStrokeColorWithColor(context, [outerStrokeColor CGColor]);
-        bezierPath.lineWidth = self.slotSize.width * 0.6f;
-        bezierPath.lineJoinStyle = kCGLineJoinRound;
-        bezierPath.lineCapStyle = kCGLineCapRound;
-        
-        [self drawPath:bezierPath];
-        
-        //Inner
-        UIBezierPath *bezierPathInner = [UIBezierPath bezierPath];
-        CGContextSetStrokeColorWithColor(context, [innerStrokeColor CGColor]);
-        bezierPathInner.lineWidth =  self.slotSize.width * 0.5f;
-        bezierPathInner.lineJoinStyle = kCGLineJoinRound;
-        bezierPathInner.lineCapStyle = kCGLineCapRound;
-        
-        [self drawPath:bezierPathInner];
-        
-        if (self.hasCorrectMatch) {
-            [self cacheImage];
-            [self.slotSelection removeAllObjects];
-            self.hasCorrectMatch = NO;
-        }
-    }
 }
 
 @end
