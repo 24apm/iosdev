@@ -131,16 +131,19 @@
         self.slots = [NSMutableArray array];
         float blockWidth = self.width / NUM_COL;
         self.slotSize = CGSizeMake(blockWidth, blockWidth);
-        [self generateSlots];
-        [self refreshSlots];
         self.slotSelection = [NSMutableArray array];
         self.backgroundColor = [UIColor clearColor];
         self.firstLocation = CGPointMake(0.f, 0.f);
         [self resetPreviousLine];
+        
+        // board draw view
         self.boardDrawView = [[BoardDrawView alloc] initWithBoardView:self];
         self.boardDrawView.backgroundColor = [UIColor clearColor];
         self.boardDrawView.frame = CGRectMake(0.f, 0.f, self.width, self.height);
         [self addSubview:self.boardDrawView];
+        
+        [self generateSlots];
+        [self refreshSlots];
     }
     return self;
 }

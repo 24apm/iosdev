@@ -7,7 +7,6 @@
 //
 
 #import "VocabularyManager.h"
-#import "VocabularyObject.h"
 #import "NSArray+Util.h"
 #import "UserData.h"
 
@@ -105,6 +104,10 @@
         [self populateSectionDictionary:self.dictionaryBySection vocabData:vocabData];
     }
 //    [self testMaxLength];
+}
+
+- (VocabularyObject *)vocabObjectForWord:(NSString *)word {
+    return [self.dictionaryByVocab objectForKey:word];
 }
 
 - (void)populateSectionDictionary:(NSMutableDictionary *)dictionary vocabData:(VocabularyObject *)vocabData {

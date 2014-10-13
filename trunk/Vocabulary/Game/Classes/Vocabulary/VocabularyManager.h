@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "LevelData.h"
+#import "VocabularyObject.h"
 
 #define NUM_COL 12
 #define NUM_ROW 12
@@ -28,6 +29,8 @@
 - (LevelData *)generateLevel;
 - (void)printMap:(NSArray *)map;
 - (NSString *)mapToString:(NSArray *)map;
+
+- (VocabularyObject *)vocabObjectForWord:(NSString *)word;
 
 - (BOOL)checkSolution:(LevelData *)levelData word:(NSString *)word;
 

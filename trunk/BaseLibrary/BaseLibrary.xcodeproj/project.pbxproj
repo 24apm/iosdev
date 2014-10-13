@@ -127,6 +127,7 @@
 		D0E21AEB199DD27800358DE5 /* PromoIconView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E21AC4199DCB9B00358DE5 /* PromoIconView.xib */; };
 		D0E21AEC199DD27800358DE5 /* PromoIconView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E21AC5199DCB9B00358DE5 /* PromoIconView~ipad.xib */; };
 		D0E21AF1199DD3E400358DE5 /* NSBundle+BundleUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E21AF0199DD3E400358DE5 /* NSBundle+BundleUtil.m */; };
+		D0EE619519EB9254002AE2E3 /* ModelObject.m in Sources */ = {isa = PBXBuildFile; fileRef = D0EE619419EB9254002AE2E3 /* ModelObject.m */; };
 		D0EEF2A519CABCB20026376F /* GridPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = D0EEF2A419CABCB20026376F /* GridPoint.m */; };
 /* End PBXBuildFile section */
 
@@ -314,6 +315,8 @@
 		D0E21ADC199DD20600358DE5 /* BaseLibraryResource-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BaseLibraryResource-Prefix.pch"; sourceTree = "<group>"; };
 		D0E21AEF199DD3E400358DE5 /* NSBundle+BundleUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+BundleUtil.h"; sourceTree = "<group>"; };
 		D0E21AF0199DD3E400358DE5 /* NSBundle+BundleUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+BundleUtil.m"; sourceTree = "<group>"; };
+		D0EE619319EB9254002AE2E3 /* ModelObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelObject.h; sourceTree = "<group>"; };
+		D0EE619419EB9254002AE2E3 /* ModelObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelObject.m; sourceTree = "<group>"; };
 		D0EEF2A319CABCB20026376F /* GridPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridPoint.h; sourceTree = "<group>"; };
 		D0EEF2A419CABCB20026376F /* GridPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GridPoint.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -528,6 +531,8 @@
 				D097A5CF1983A04800A6EB7A /* XibTableViewCell.m */,
 				D097A5D01983A04800A6EB7A /* XibView.h */,
 				D097A5D11983A04800A6EB7A /* XibView.m */,
+				D0EE619319EB9254002AE2E3 /* ModelObject.h */,
+				D0EE619419EB9254002AE2E3 /* ModelObject.m */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -853,6 +858,7 @@
 				D097A62C1983A04800A6EB7A /* AnimUtil.m in Sources */,
 				D097A6371983A04800A6EB7A /* FXLabel.m in Sources */,
 				D097A6221983A04800A6EB7A /* XibTableViewCell.m in Sources */,
+				D0EE619519EB9254002AE2E3 /* ModelObject.m in Sources */,
 				D0E21AC8199DCB9B00358DE5 /* PromoBannerView.m in Sources */,
 				D0E21ACC199DCB9B00358DE5 /* PromoManager.m in Sources */,
 				D097A6241983A04800A6EB7A /* ProgressBarComponent.m in Sources */,

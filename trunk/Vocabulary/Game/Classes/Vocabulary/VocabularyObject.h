@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ModelObject.h"
 
-@interface VocabularyObject : NSObject
+@interface VocabularyObject : ModelObject
 
 @property (strong, nonatomic) NSString *word;
 @property (strong, nonatomic) NSString *definition;

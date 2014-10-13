@@ -11,6 +11,7 @@
 @interface LevelData : NSObject
 
 @property (strong, nonatomic) NSArray *vocabularyList;
+@property (strong, nonatomic) NSMutableArray *wordsFoundList;
 @property (strong, nonatomic) NSArray *letterMap;
 @property (strong, nonatomic) NSMutableDictionary *answerSheets;
 @property (strong, nonatomic) NSArray *finalAnswerSheet;

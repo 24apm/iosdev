@@ -7,6 +7,7 @@
 //
 
 #import "VocabularyObject.h"
+#import <objc/runtime.h>
 
 @implementation VocabularyObject
 

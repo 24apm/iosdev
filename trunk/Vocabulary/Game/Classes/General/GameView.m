@@ -59,36 +59,42 @@
 }
 
 - (void)refreshWordList {
+    // refresh words
     for (int i = 0; i < self.words.count; i++) {
         UILabel *wordLabel = [self.words objectAtIndex:i];
         
         if (i < self.levelData.vocabularyList.count) {
             VocabularyObject *vocabData = [self.levelData.vocabularyList objectAtIndex:i];
             wordLabel.text = vocabData.word;
-            wordLabel.alpha = 1.f;
             wordLabel.hidden = NO;
+            if ([self.levelData.wordsFoundList containsObject:vocabData.word]) {
+                wordLabel.alpha = 0.5f;
+            } else {
+                wordLabel.alpha = 1.f;
+            }
         } else {
             wordLabel.hidden = YES;
         }
     }
-    self.definitionLabel.text = @"";
+    
+    // refresh definitions
+    NSString *lastWord = [self.levelData.wordsFoundList lastObject];
+    if (lastWord) {
+        VocabularyObject *lastVocabData = [[VocabularyManager instance] vocabObjectForWord:lastWord];
+        self.definitionLabel.text = [NSString stringWithFormat:@"%@: %@", lastVocabData.word, lastVocabData.definition];
+    } else {
+        self.definitionLabel.text = @"";
+    }
 }
 
 - (void)wordMatched:(NSNotification *)notification {
     NSString *matchedWord = notification.object;
+    [self.levelData.wordsFoundList addObject:matchedWord];
+
+    // update user data
+    [[UserData instance] updateDictionaryWith:matchedWord];
     
-    for (UILabel *word in self.words) {
-        if ([word.text isEqualToString:matchedWord]) {
-            word.alpha = 0.5f;
-        }
-    }
-    
-    for (VocabularyObject *vocabData in self.levelData.vocabularyList) {
-        if ([vocabData.word isEqualToString:matchedWord]) {
-            self.definitionLabel.text = [NSString stringWithFormat:@"%@: %@", vocabData.word, vocabData.definition];
-            [[UserData instance] updateDictionaryWith:vocabData];
-        }
-    }
+    [self refreshWordList];
 }
 
 @end

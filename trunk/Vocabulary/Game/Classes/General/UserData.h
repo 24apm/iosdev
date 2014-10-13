@@ -24,7 +24,7 @@ extern NSString *const UserDataHouseDataChangedNotification;
 - (void)refillRetry;
 - (BOOL)hasRetry;
 
-- (void)updateDictionaryWith:(VocabularyObject *)newVocabulary;
+- (void)updateDictionaryWith:(NSString *)newVocabulary;
 
 @property (nonatomic) long long coin;
 @property (strong, nonatomic) NSMutableArray *pokedex;

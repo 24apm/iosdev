@@ -12,6 +12,14 @@
 
 @implementation LevelData
 
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.wordsFoundList = [[NSMutableArray alloc] init];
+    }
+    return self;
+}
+
 - (void)printAnswers {
 
     NSMutableArray *wordSortedByLength = [NSMutableArray arrayWithArray:[self.answerSheets allKeys]];
