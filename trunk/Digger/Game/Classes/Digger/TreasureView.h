@@ -7,9 +7,12 @@
 //
 
 #import "BlockView.h"
+#import "TreasureData.h"
 
 @interface TreasureView : BlockView
 
 - (void)setupWithTier:(NSUInteger)tier;
+@property (nonatomic) NSUInteger tier;
+@property (strong, nonatomic) IBOutlet UIImageView *imageView;
 
 @end

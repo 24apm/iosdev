@@ -22,6 +22,7 @@
 #import "ShopTableView.h"
 #import "WaypointView.h"
 #import "CAEmitterHelperLayer.h"
+#import "ChoiceDialogView.h"
 
 typedef enum {
     DirectionLeft,
@@ -42,9 +43,12 @@ typedef enum {
 @property (strong, nonatomic) IBOutlet UILabel *staminaLabel;
 @property (strong, nonatomic) IBOutlet UILabel *retryLabel;
 @property (strong, nonatomic) IBOutlet UIButton *wayPoint;
+@property (strong, nonatomic) IBOutlet UIButton *inventoryButton;
 @property (nonatomic) BOOL tableViewOpen;
 @property (nonatomic) TableType currentTableType;
 @property (nonatomic, retain) ShopTableView *shopTableView;
+@property (nonatomic) NSUInteger tempTreasure;
+@property (nonatomic) BOOL isOverWeight;
 
 @end
 
@@ -70,7 +74,11 @@ typedef enum {
     [[UserData instance] addObserver:self forKeyPath:@"coin" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
     [[UserData instance] addObserver:self forKeyPath:@"retry" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(movedToDepth:) name:WAYPOINT_ITEM_PRESSED_NOTIFICATION object:nil];
-    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(dropItem:) name:INVENTORY_ITEM_DROP_PRESSED_NOTIFICATION object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(openFullInventory) name:REMOVING_ITEM_FOR_SPACE_NOTIFICATION object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(closedInventory) name:    SHOP_TABLE_VIEW_NOTIFICATION_CLOSE object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(closingInventory) name:    FINISH_ANIMATING_ROW_REFRESH_NOTIFICATION object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(refreshStamina) name:    NOTIFICATION_REFRESH_STAMINA object:nil];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
@@ -117,8 +125,19 @@ typedef enum {
     [self updateDepthLabel];
     
 }
+
 - (void)updateDepthLabel {
     self.depthLabel.text = [NSString stringWithFormat:@"Depth: %d",[UserData instance].currentDepth];
+}
+
+- (void)dropItem:(NSNotification *)notification {
+    self.isOverWeight = NO;
+    InventoryRowItem *item = notification.object;
+    if ([[UserData instance] isKnapsackOverWeight]) {
+        self.isOverWeight = YES;
+    }
+    [[UserData instance] removeKnapsackIndex:[item.name integerValue]];
+    [self.shopTableView refreshInventory];
 }
 
 - (void)slotPressed:(NSNotification *)notification {
@@ -224,6 +243,14 @@ typedef enum {
     [self showTableView:sender tableType:self.currentTableType];
 }
 
+- (IBAction)inventoryButtonPressed:(UIButton *)sender {
+    self.tableViewOpen = YES;
+    self.currentTableType = TableTypeInventory;
+    [self.shopTableView setupInventory];
+    [self.shopTableView showTable];
+    
+}
+
 - (void)showTableView:(UIButton *)button tableType:(TableType)type {
     //button.enabled = NO;
     [self.shopTableView setupWithType:type];
@@ -251,19 +278,9 @@ typedef enum {
 }
 
 - (BOOL)actionByBlockType:(SlotView *)slotView {
+    
     if (slotView.blockView) {
         switch (slotView.blockView.type) {
-            case BlockTypeObstacle: {
-                ObstacleView *obstacleView = (ObstacleView *)slotView.blockView;
-                [self staminaBarDecrease:obstacleView.hp];
-                CAEmitterHelperLayer *cellLayer = [CAEmitterHelperLayer emitter:@"particleEffect.json" onView:self.boardView.playerView];
-                cellLayer.cellImage = slotView.blockView.imageView.image;
-                [cellLayer refreshEmitter];
-                [self.boardView.playerView.slotView.superview bringSubviewToFront:self.boardView.playerView.slotView];
-                
-                return YES;
-                break;
-            }
             case BlockTypePower: {
                 PowerView *powerView = (PowerView *)slotView.blockView;
                 [self staminaBarIncrease:2.f * powerView.hp];
@@ -275,11 +292,11 @@ typedef enum {
                 break;
             }
             case BlockTypeTreasure: {
-                [[UserData instance] incrementCoin:1];
+                //                [[UserData instance] incrementCoin:1];
                 [self flyIconFrom:slotView.blockView.imageView toView:self.coinImageView];
                 [CAEmitterHelperLayer emitter:@"particleEffect.json" onView:self.boardView.playerView].cellImage = slotView.blockView.imageView.image;
                 [self.boardView.playerView.slotView.superview bringSubviewToFront:self.boardView.playerView.slotView];
-                
+                [self pickingUpTreasure:slotView];
                 [self staminaBarDecrease:1.f];
                 return YES;
                 
@@ -300,8 +317,42 @@ typedef enum {
     } else {
         return YES;
     }
+    
+    
+    
+    return [slotView.blockView doAction:slotView];
+
 }
 
+- (void)pickingUpTreasure:(SlotView *)slot {
+    if ([[UserData instance] isKnapsackFull]) {
+        self.tempTreasure = slot.blockView.tier;
+        [[[ChoiceDialogView alloc]init] show];
+    } else {
+        [[UserData instance] addKnapsackWith:slot.blockView.tier];
+    }
+}
+
+- (void)openFullInventory {
+    [[UserData instance] addKnapsackWith:self.tempTreasure];
+    [self inventoryButtonPressed:nil];
+}
+
+- (void)closedInventory {
+    [self cleanExtraInventoryItem];
+}
+
+- (void)closingInventory {
+    if (self.isOverWeight) {
+        [self.shopTableView closeTable];
+    }
+}
+
+- (void)cleanExtraInventoryItem {
+    while([[UserData instance] isKnapsackOverWeight]) {
+        [[UserData instance] removeKnapsackIndex:[UserData instance].knapsack.count - 1];
+    }
+}
 
 - (void)staminaBarDecrease:(NSUInteger)points {
     [[UserData instance] decrementStamina:points];
@@ -357,4 +408,5 @@ typedef enum {
 - (void)positionBlocks {
     
 }
+
 @end

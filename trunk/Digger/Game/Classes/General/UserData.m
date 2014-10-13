@@ -52,12 +52,20 @@ NSString *const UserDataHouseDataChangedNotification = @"UserDataHouseDataChange
         self.retryCapacity = [[[NSUserDefaults standardUserDefaults] objectForKey:@"retryCapacity"] integerValue];
     }
     
-    // Stamina Capacity Level
-    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"retry"] == nil) {
-        self.retry = self.retryCapacity;
-        [self saveData:@(self.retry) forKey:@"retry"];
+    // Knapsack
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"knapsack"] == nil) {
+        self.knapsack = [NSMutableArray array];
+        [self saveData:self.knapsack forKey:@"knapsack"];
     } else {
-        self.retry = [[[NSUserDefaults standardUserDefaults] objectForKey:@"retry"] integerValue];
+        self.knapsack = [[NSUserDefaults standardUserDefaults] objectForKey:@"knapsack"];
+    }
+    
+    // Knapsack Capacity Level
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"knapsackCapacity"] == nil) {
+        self.knapsackCapacity = 2;
+        [self saveData:@(self.knapsackCapacity) forKey:@"knapsackCapacity"];
+    } else {
+        self.knapsackCapacity = [[[NSUserDefaults standardUserDefaults] objectForKey:@"knapsackCapacity"] integerValue];
     }
     
     // Coin
@@ -66,6 +74,14 @@ NSString *const UserDataHouseDataChangedNotification = @"UserDataHouseDataChange
         [self saveData:@(self.coin) forKey:@"coin"];
     } else {
         self.coin = [[[NSUserDefaults standardUserDefaults] objectForKey:@"coin"] integerValue];
+    }
+    
+    // Retry Capacity
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"retry"] == nil) {
+        self.retry = self.retryCapacity;
+        [self saveData:@(self.retry) forKey:@"retry"];
+    } else {
+        self.retry = [[[NSUserDefaults standardUserDefaults] objectForKey:@"retry"] integerValue];
     }
     
     // Stamina Capacity Level
@@ -119,6 +135,24 @@ NSString *const UserDataHouseDataChangedNotification = @"UserDataHouseDataChange
     self.staminaCapacityLevel++;;
     
     [self saveData:@(self.staminaCapacityLevel) forKey:@"staminaCapacityLevel"];
+}
+
+- (void)incrementKnapsackCapacity {
+    self.knapsackCapacity++;;
+    
+    [self saveData:@(self.staminaCapacityLevel) forKey:@"knapsackCapacity"];
+}
+
+- (void)addKnapsackWith:(Treasure)treasureTier {
+        [self.knapsack addObject:[NSNumber numberWithInteger:treasureTier]];
+        
+        [self saveData:self.knapsack forKey:@"knapsack"];
+}
+
+- (void)removeKnapsackIndex:(NSUInteger)treasureIndex {
+    [self.knapsack removeObjectAtIndex:treasureIndex];
+    
+    [self saveData:self.knapsack forKey:@"knapsack"];
 }
 
 - (long long)staminaCapacity {
@@ -201,6 +235,23 @@ NSString *const UserDataHouseDataChangedNotification = @"UserDataHouseDataChange
 
 - (void)resetDepth {
     self.currentDepth = 0;
+}
+
+- (BOOL)isKnapsackFull {
+    BOOL full = NO;
+    if (self.knapsack.count >= self.knapsackCapacity) {
+        full = YES;
+    }
+    return full;
+}
+
+- (BOOL)isKnapsackOverWeight {
+    BOOL overweight = NO;
+    NSUInteger overMax = self.knapsackCapacity + 1;
+    if (self.knapsack.count >= overMax) {
+        overweight = YES;
+    }
+    return overweight;
 }
 
 - (void)saveData:(NSObject *)obj forKey:(NSString *)key {

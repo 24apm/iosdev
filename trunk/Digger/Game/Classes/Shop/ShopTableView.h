@@ -19,5 +19,7 @@
 - (void)refresh;
 - (void)setupWithItemIds:(NSArray *)items;
 - (void)setupWithType:(TableType)type;
-
+- (void)setupInventory;
+- (void)closeTable;
+- (void)refreshInventory;
 @end

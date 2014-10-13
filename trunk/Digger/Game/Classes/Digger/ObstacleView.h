@@ -14,5 +14,6 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *tierLabel;
 @property (nonatomic) NSInteger hp;
+@property (nonatomic) NSInteger lvl;
 
 @end

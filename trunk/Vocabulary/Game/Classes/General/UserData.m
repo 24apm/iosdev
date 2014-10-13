@@ -14,6 +14,7 @@
 #import "CoinIAPHelper.h"
 #import "CoinView.h"
 
+
 #define NEW_USER_COIN 1000
 #define DEFAULT_STAMINA_LEVEL 1
 
@@ -65,7 +66,27 @@ NSString *const UserDataHouseDataChangedNotification = @"UserDataHouseDataChange
     } else {
         self.coin = [[[NSUserDefaults standardUserDefaults] objectForKey:@"coin"] integerValue];
     }
+    
+    // Pokedex
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"pokedex"] == nil) {
+        self.pokedex = [NSMutableArray array];
+        [self saveData:self.pokedex forKey:@"pokedex"];
+    } else {
+        self.pokedex = [[NSUserDefaults standardUserDefaults] objectForKey:@"pokedex"];
+    }
 }
+
+
+- (void)updateDictionaryWith:(VocabularyObject *)newVocabulary {
+    NSMutableArray *unsortedArray = self.pokedex;
+    if (![unsortedArray containsObject:newVocabulary.word]) {
+        [unsortedArray addObject:newVocabulary.word];
+        NSArray *sortedArray = [unsortedArray sortedArrayUsingSelector:@selector(compare:)];
+        self.pokedex = [NSMutableArray arrayWithArray:sortedArray];
+        [self saveData:self.pokedex forKey:@"pokedex"];
+    }
+}
+
 - (void)refillRetry {
     self.retry = self.retryCapacity;
     [self saveData:@(self.retry) forKey:@"retry"];

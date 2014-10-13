@@ -25,5 +25,7 @@
 - (long long) priceForItemId:(NSString *)itemId type:(TableType)type;
 - (ShopRowItem *)shopItemForItemId:(NSString *)itemId dictionary:(TableType)type;
 - (WaypointRowItem *)waypointItemForItemId:(NSString *)itemId dictionary:(TableType)type;
+- (InventoryRowItem *)inventoryItemForItemId:(NSString *)itemId dictionary:(TableType)type;
+- (NSArray *)arrayOfInventory;
 
 @end

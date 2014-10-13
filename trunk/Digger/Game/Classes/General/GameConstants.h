@@ -88,6 +88,7 @@
 #define VIEWING_NEW_HOUSE_NOTIFICATION @"VIEWING_NEW_HOUSE_NOTIFICATION"
 #define SHOP_TABLE_VIEW_NOTIFICATION_OPEN @"SHOP_TABLE_VIEW_NOTIFICATION_OPEN"
 #define SHOP_TABLE_VIEW_NOTIFICATION_CLOSE @"SHOP_TABLE_VIEW_NOTIFICATION_CLOSE"
+#define FINISH_ANIMATING_ROW_REFRESH_NOTIFICATION @"FINISH_ANIMATING_ROW_REFRESH_NOTIFICATION"
 
 #define FIND_HOUSE_NOTIFICATION @"FIND_HOUSE_NOTIFICATION"
 
@@ -100,6 +101,11 @@
 #define WAYPOINT_ITEM_ID_6 @"WAYPOINT_ITEM_ID_6"
 #define WAYPOINT_ITEM_ID_7 @"WAYPOINT_ITEM_ID_7"
 
+#define INVENTORY_ITEM_PRESSED_NOTIFICATION @"INVENTORY_ITEM_PRESSED_NOTIFICATION"
+#define INVENTORY_ITEM_DROP_PRESSED_NOTIFICATION @"INVENTORY_ITEM_DROP_PRESSED_NOTIFICATION"
+#define REMOVING_ITEM_FOR_SPACE_NOTIFICATION @"REMOVING_ITEM_FOR_SPACE_NOTIFICATION"
+#define NOTIFICATION_REFRESH_STAMINA @"NOTIFICATION_REFRESH_STAMINA"
+
 #define UPDATE_TIME_PER_TICK 10.f
 #define UPDATE_TIME_PER_TICK_FOR_BONUS 30.f
 #define LEVEL_CAP 100
@@ -108,6 +114,12 @@ typedef enum {
     TableTypeInventory,
     TableTypeIAP
 } TableType;
+
+typedef enum {
+    KnapsackStateOccupy,
+    KnapsackStateEmpty,
+    KnapsackStateOverWeight
+} KnapsackState;
 
 typedef enum {
     BlockTypeObstacle,
@@ -119,8 +131,25 @@ typedef enum {
 
 typedef enum {
     LevelDataType,
-    LevelDataTier
+    LevelDataTier,
+    LevelDataBlockTier
 } LevelData;
+
+typedef enum {
+    TreasureTier1,
+    TreasureTier2
+} Treasure;
+
+typedef  enum {
+    Obstacle1,
+    Obstacle2,
+    Obstacle3,
+    PowerHP,
+    PowerBomb,
+    TreasureLoot,
+    TreasureUpgrade
+    
+} PropertyType;
 
 @interface GameConstants : NSObject
 

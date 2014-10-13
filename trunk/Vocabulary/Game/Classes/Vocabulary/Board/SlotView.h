@@ -12,4 +12,6 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *labelView;
 
+- (void)animateLabelSelection;
+
 @end

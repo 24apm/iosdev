@@ -11,21 +11,21 @@
 @implementation InventoryRowItem
 
 + (InventoryRowItem *)createItem:(NSString *)itemId
-                    name:(NSString *)name
-               imagePath:(NSString *)imagePath
-         priceMultiplier:(long long)priceMultipler
-       upgradeMultiplier:(double)upgradeMultiplier
-                    type:(TableType)type
-                    rank:(int)rank           {
+                            name:(NSString *)name
+                descriptionLabel:(NSString *)descriptionLabel
+                       imagePath:(NSString *)imagePath
+                            type:(TableType)type
+                            rank:(int)rank
+                           state:(KnapsackState)state   {
     
     InventoryRowItem *item = [[InventoryRowItem alloc] init];
     item.name = name;
+    item.descriptionLabel = descriptionLabel;
     item.imagePath = imagePath;
     item.itemId = itemId;
-    item.priceMultiplier = priceMultipler;
-    item.upgradeMultiplier = upgradeMultiplier;
     item.type = type;
     item.rank = rank;
+    item.state = state;
     return item;
 }
 

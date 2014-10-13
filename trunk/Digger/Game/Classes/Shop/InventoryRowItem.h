@@ -14,19 +14,19 @@
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *imagePath;
 @property (nonatomic) NSString * itemId;
-@property (nonatomic) long long priceMultiplier;
+@property (nonatomic, strong) NSString * descriptionLabel;
 @property (nonatomic) double value;
 @property (nonatomic) TableType type;
-@property (nonatomic) double upgradeMultiplier;
 @property (nonatomic) int rank;
+@property (nonatomic) KnapsackState state;
 
 + (InventoryRowItem *)createItem:(NSString *)itemId
-                    name:(NSString *)name
-               imagePath:(NSString *)imagePath
-         priceMultiplier:(long long)priceMultipler
-       upgradeMultiplier:(double)upgradeMultiplier
-                    type:(TableType)type
-                    rank:(int)rank;
+                            name:(NSString *)name
+                descriptionLabel:(NSString *)descriptionLabel
+                       imagePath:(NSString *)imagePath
+                            type:(TableType)type
+                            rank:(int)rank
+                           state:(KnapsackState)state;
 
 - (NSString *)formatDescriptionWithValue:(double)value;
 - (UIColor *)tierColor:(int)tier;

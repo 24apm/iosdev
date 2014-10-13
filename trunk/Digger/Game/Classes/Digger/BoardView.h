@@ -7,9 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SlotView.h"
 #import "PlayerView.h"
-
-@class SlotView;
 
 @interface BoardView : UIView
 

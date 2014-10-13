@@ -13,6 +13,7 @@
 #import "LevelData.h"
 #import "VocabularyObject.h"
 #import "MessageDialogView.h"
+#import "UserData.h"
 
 @interface GameView()
 
@@ -85,6 +86,7 @@
     for (VocabularyObject *vocabData in self.levelData.vocabularyList) {
         if ([vocabData.word isEqualToString:matchedWord]) {
             self.definitionLabel.text = [NSString stringWithFormat:@"%@: %@", vocabData.word, vocabData.definition];
+            [[UserData instance] updateDictionaryWith:vocabData];
         }
     }
 }

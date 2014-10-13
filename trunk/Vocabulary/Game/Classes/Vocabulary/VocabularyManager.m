@@ -9,6 +9,7 @@
 #import "VocabularyManager.h"
 #import "VocabularyObject.h"
 #import "NSArray+Util.h"
+#import "UserData.h"
 
 #define TEXT_FILE @"vocabulary.txt"
 #define EMPTY_SPACE @"_"
@@ -16,8 +17,8 @@
 
 @interface VocabularyManager()
 
-@property (strong, nonatomic) NSMutableDictionary *vocabListByDictionary;
-@property (strong, nonatomic) NSMutableArray *vocabListByArray;
+@property (strong, nonatomic) NSMutableDictionary *dictionaryBySection;
+@property (strong, nonatomic) NSMutableDictionary *dictionaryByVocab;
 @property (strong, nonatomic) NSString *letters;
 
 @end
@@ -42,16 +43,28 @@
 }
 
 - (NSDictionary *)vocabList {
-    return [NSDictionary dictionaryWithDictionary:self.vocabListByDictionary];
+    return [NSDictionary dictionaryWithDictionary:self.dictionaryBySection];
+}
+
+- (NSDictionary *)userVocabList {
+    NSMutableDictionary *userDictionary = [NSMutableDictionary dictionary];
+    NSArray *userSavedKeys = [UserData instance].pokedex;
+    
+    for (NSString *word in userSavedKeys) {
+        VocabularyObject *vocabData = [self.dictionaryByVocab objectForKey:word];
+        
+        [self populateSectionDictionary:userDictionary vocabData:vocabData];
+        
+    }
+    return [NSDictionary dictionaryWithDictionary:userDictionary];
 }
 
 - (int)maxCount {
-    return self.vocabListByArray.count;
+    return self.dictionaryByVocab.count;
 }
 
 - (int)currentCount {
-    //TODO look up userData for current Vocab Count
-    return 5;
+    return [UserData instance].pokedex.count;
 }
 
 - (void)loadFile {
@@ -67,9 +80,9 @@
     
     NSEnumerator *nse = [lines objectEnumerator];
     
-    self.vocabListByArray = [NSMutableArray array];
+    self.dictionaryByVocab = [NSMutableDictionary dictionary];
     
-    self.vocabListByDictionary = [NSMutableDictionary dictionary];
+    self.dictionaryBySection = [NSMutableDictionary dictionary];
     while(row = [nse nextObject]) {
         
         NSMutableArray *vocabParts = [NSMutableArray arrayWithArray:[row componentsSeparatedByString:@"\t"]];
@@ -82,28 +95,31 @@
         vocabData.definition = vocabParts[1];
         
         // "palliate, palliative" -> "palliate"
-        NSMutableArray *word = [NSMutableArray arrayWithArray:[vocabData.definition componentsSeparatedByString:@","]];
-        vocabData.definition = word[0];
+        NSMutableArray *word = [NSMutableArray arrayWithArray:[vocabData.word componentsSeparatedByString:@","]];
+        vocabData.word = word[0];
         
-        // Array version
-        [self.vocabListByArray addObject:vocabData];
-        
-        // Dictionary version
-        NSString *key = [[vocabData.word substringToIndex:1] uppercaseString];
-        NSMutableArray *vocabSection = [self.vocabListByDictionary objectForKey:key];
-        if (vocabSection == nil) {
-            vocabSection = [NSMutableArray array];
-            [self.vocabListByDictionary setObject:vocabSection forKey:key];
-        }
-        [vocabSection addObject:vocabData];
+        // Dictionary flat version
+        [self.dictionaryByVocab setObject:vocabData forKey:vocabData.word];
+
+        // Dictionary section version
+        [self populateSectionDictionary:self.dictionaryBySection vocabData:vocabData];
     }
 //    [self testMaxLength];
 }
 
+- (void)populateSectionDictionary:(NSMutableDictionary *)dictionary vocabData:(VocabularyObject *)vocabData {
+    NSString *key = [[vocabData.word substringToIndex:1] uppercaseString];
+    NSMutableArray *vocabSection = [dictionary objectForKey:key];
+    if (vocabSection == nil) {
+        vocabSection = [NSMutableArray array];
+        [dictionary setObject:vocabSection forKey:key];
+    }
+    [vocabSection addObject:vocabData];
+}
+
 - (void)testMaxLength {
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
-    for (int i = 0; i < self.vocabListByArray.count; i++) {
-        VocabularyObject *vocabData = [self.vocabListByArray objectAtIndex:i];
+    for (VocabularyObject *vocabData in self.dictionaryByVocab) {
         NSString *lengthLabel = [NSString stringWithFormat:@"%d", vocabData.word.length];
         if (![dictionary objectForKey:lengthLabel]) {
             [dictionary setObject:@(0) forKey:lengthLabel];
@@ -115,12 +131,12 @@
 }
 
 - (void)printDebug {
-    for (NSString *key in [self.vocabListByDictionary allKeys]) {
-        NSLog(@"%@ %d", key, [[self.vocabListByDictionary objectForKey:key] count]);
+    for (NSString *key in [self.dictionaryBySection allKeys]) {
+        NSLog(@"%@ %d", key, [[self.dictionaryBySection objectForKey:key] count]);
     }
-    NSLog(@"%@", self.vocabListByDictionary);
+    NSLog(@"%@", self.dictionaryBySection);
     
-    NSLog(@"%@", self.vocabListByArray);
+    NSLog(@"%@", self.dictionaryByVocab);
 }
 
 
@@ -136,7 +152,9 @@
     
     // setup words
     while (vocabularyList.count < 9) {
-        VocabularyObject *vocabData = [self.vocabListByArray randomObject];
+        NSArray *allWords = [self.dictionaryByVocab allKeys];
+        NSString *randomWord = [allWords randomObject];
+        VocabularyObject *vocabData = [self.dictionaryByVocab objectForKey:randomWord];
         if (![vocabularyList containsObject:vocabData]) {
             [vocabularyList addObject:vocabData];
         }

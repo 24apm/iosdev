@@ -6,7 +6,6 @@
 //  Copyright (c) 2014 MacCoder. All rights reserved.
 //
 
-#import "BoardView.h"
 #import "SlotView.h"
 #import "ObstacleView.h"
 #import "PlayerView.h"

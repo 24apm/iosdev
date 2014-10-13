@@ -8,11 +8,12 @@
 
 #import "TableManager.h"
 #import "UserData.h"
+#import "TreasureData.h"
 
 @interface TableManager()
 
 @property (nonatomic, strong) NSMutableDictionary *itemsForUpgrade;
-
+@property (nonatomic, strong) NSMutableDictionary *itemsForInventory;
 @property (nonatomic, strong) NSMutableDictionary *itemsForIAP;
 
 @property (nonatomic, strong) NSMutableDictionary *priceDictionary;
@@ -50,13 +51,13 @@
 
 - (void)createInventoryItem:(NSString *)itemId
                        name:(NSString *)name
+           descriptionLabel:(NSString *)descriptionLabel
                   imagePath:(NSString *)imagePath
-            priceMultiplier:(long double)priceMultipler
-          upgradeMultiplier:(long double)upgradeMultiplier
-                       rank:(int)rank                 {
+                       rank:(int)rank
+                      state:(KnapsackState)state     {
     
-    InventoryRowItem *item = [InventoryRowItem createItem:itemId name:name imagePath:imagePath priceMultiplier:priceMultipler upgradeMultiplier:upgradeMultiplier type:TableTypeWaypoint rank:rank];
-    [self.itemsForUpgrade setObject:item forKey:item.itemId];
+    InventoryRowItem *item = [InventoryRowItem createItem:(NSString *)itemId name:name descriptionLabel:descriptionLabel imagePath:imagePath type:TableTypeWaypoint rank:rank state:state];
+    [self.itemsForInventory setObject:item forKey:item.itemId];
 }
 
 
@@ -71,7 +72,54 @@
     [self.itemsForIAP setObject:item forKey:item.itemId];
 }
 
+- (void)setupInventoryItems {
+    self.itemsForInventory = [NSMutableDictionary dictionary];
+    for (NSUInteger i = 0; i < [UserData instance].knapsack.count; i++) {
+        NSUInteger currentRank = [[[UserData instance].knapsack objectAtIndex:i] integerValue];
+        TreasureData *data = [[TreasureData alloc] init];
+        data = [data setupItemWithRank:currentRank];
+        NSString *name = data.name;
+        NSString *icon = data.icon;
+        NSString *descriptionLabel = data.descriptionLabel;
+        NSUInteger rank = currentRank;
+        NSString *itemID = [NSString stringWithFormat:@"%d",i];
+        KnapsackState state = KnapsackStateOccupy;
+        [self createInventoryItem:itemID name:name descriptionLabel:descriptionLabel imagePath:icon rank:rank state:state];
+    }
+    
+    if (![[UserData instance]isKnapsackFull]) {
+        for (NSUInteger i = [UserData instance].knapsack.count; i < [UserData instance].knapsackCapacity; i++) {
+            
+            NSString *name = @"";
+            NSString *icon = @"";
+            NSString *descriptionLabel = @"";
+            NSUInteger rank = 0;
+            NSString *itemID = [NSString stringWithFormat:@"%d",i];
+            KnapsackState state = KnapsackStateEmpty;
+            [self createInventoryItem:itemID name:name descriptionLabel:descriptionLabel imagePath:icon rank:rank state:state];
+        }
+    }
+    
+    
+    if ([[UserData instance]isKnapsackOverWeight]) {
+        for (NSUInteger i = [UserData instance].knapsackCapacity; i < [UserData instance].knapsack.count; i++) {
+            
+            NSUInteger currentRank = [[[UserData instance].knapsack objectAtIndex:i] integerValue];
+            TreasureData *data = [[TreasureData alloc] init];
+            data = [data setupItemWithRank:currentRank];
+            NSString *name = data.name;
+            NSString *icon = data.icon;
+            NSString *descriptionLabel = data.descriptionLabel;
+            NSUInteger rank = currentRank;
+            NSString *itemID = [NSString stringWithFormat:@"%d",i];
+            KnapsackState state = KnapsackStateOverWeight;
+            [self createInventoryItem:itemID name:name descriptionLabel:descriptionLabel imagePath:icon rank:rank state:state];
+        }
+    }
+}
+
 - (void)setupItems {
+    [self setupInventoryItems];
     self.itemsForUpgrade = [NSMutableDictionary dictionary];
     
     self.itemsForIAP = [NSMutableDictionary dictionary];
@@ -208,6 +256,9 @@
         case TableTypeWaypoint:
             return self.itemsForUpgrade;
             break;
+        case TableTypeInventory:
+            return self.itemsForInventory;
+            break;
         case TableTypeIAP:
             return self.itemsForIAP;
             break;
@@ -226,6 +277,11 @@
     return array;
 }
 
+- (NSArray *)arrayOfInventory {
+    [self setupInventoryItems];
+    return [self.itemsForInventory allKeys];
+}
+
 
 - (ShopRowItem *)shopItemForItemId:(NSString *)itemId dictionary:(TableType)type {
     return [[self dictionaryForType:type] objectForKey:itemId];
@@ -235,4 +291,7 @@
     return [[self dictionaryForType:type] objectForKey:itemId];
 }
 
+- (InventoryRowItem *)inventoryItemForItemId:(NSString *)itemId dictionary:(TableType)type {
+    return [[self dictionaryForType:type] objectForKey:itemId];
+}
 @end

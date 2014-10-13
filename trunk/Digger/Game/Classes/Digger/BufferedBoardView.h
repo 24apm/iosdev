@@ -12,6 +12,7 @@
 
 @property (strong, nonatomic) NSArray *nextBufferedTypes;
 @property (strong, nonatomic) NSArray *nextBufferedTiers;
+@property (strong, nonatomic) NSArray *nextBufferedBlockTiers;
 
 @property (strong, nonatomic) NSMutableArray *slots;
 

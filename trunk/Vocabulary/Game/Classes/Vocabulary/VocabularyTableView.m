@@ -11,6 +11,7 @@
 #import "XibTableViewCell.h"
 #import "VocabularyRowView.h"
 #import "VocabularyObject.h"
+#import "UserData.h"
 
 @interface VocabularyTableView()
 
@@ -42,7 +43,7 @@
     VocabularyRowView *t = [[VocabularyRowView alloc] init];
     self.cellFrame = t.frame;
 
-    self.vocabularyDictionary = [[VocabularyManager instance] vocabList];
+    self.vocabularyDictionary = [[VocabularyManager instance] userVocabList];
     
     self.sortedSectionHeaders = [[self.vocabularyDictionary allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
     

@@ -15,6 +15,9 @@
 #import "BlockView.h"
 #import "PowerView.h"
 #import "WaypointView.h"
+#import "BoardView.h"
+#import "SlotView.h"
+#import "BlockView.h"
 
 @interface BoardManager()
 
@@ -106,27 +109,27 @@
     
     switch (currentType) {
         case BlockTypeObstacle: {
-            blockView = [[ObstacleView alloc] init];
+            blockView = [[ObstacleView alloc] initWithBoardView:self.boardView];
             blockView.type = currentType;
             break;
         }
         case BlockTypePower: {
-            blockView = [[PowerView alloc] init];
+            blockView = [[PowerView alloc]  initWithBoardView:self.boardView];
             blockView.type = currentType;
             break;
         }
         case BlockTypeTreasure: {
-            blockView = [[TreasureView alloc] init];
+            blockView = [[TreasureView alloc]  initWithBoardView:self.boardView];
             blockView.type = currentType;
             break;
         }
         case BlockTypeWaypoint: {
-            blockView = [[WaypointView alloc] init];
+            blockView = [[WaypointView alloc]  initWithBoardView:self.boardView];
             blockView.type = currentType;
             break;
         }
         default: {
-            blockView = [[BlockView alloc] init];
+            blockView = [[BlockView alloc]  initWithBoardView:self.boardView];
             blockView.type = currentType;
             break;
         }

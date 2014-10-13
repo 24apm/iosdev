@@ -16,6 +16,7 @@
 
 + (VocabularyManager *)instance;
 - (NSDictionary *)vocabList;
+- (NSDictionary *)userVocabList;
 
 - (void)loadFile;
 

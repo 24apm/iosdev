@@ -50,30 +50,6 @@
 //    return [self addGoods:levelDataType];
 //}
 
-- (NSMutableArray *)addGoods:(NSMutableArray *)levelDataType {
-    
-    NSMutableArray *levelDataTypeWithGoods = levelDataType;
-    
-    NSUInteger numOfPower = [Utils randBetweenMinInt:5 max:10];
-    NSUInteger numOfTreasure = [Utils randBetweenMinInt:5 max:10];
-    NSUInteger numOfGoods = [Utils randBetweenMinInt:5 max:10];
-    NSUInteger numOfPowerMade = 0;
-    NSUInteger numOfTreasureMade = 0;
-    NSUInteger numOfGoodsMade = 0;
-    
-    for (int i = 0; i < numOfGoods; i++) {
-        BlockType block = [Utils randBetweenMinInt:BlockTypePower max:BlockTypeTreasure];
-        if (block == BlockTypePower && numOfPowerMade <= numOfPower) {
-            numOfPowerMade++;
-        } else if (block == BlockTypeTreasure && numOfTreasureMade <= numOfTreasure) {
-            numOfTreasureMade++;
-        }
-        [levelDataTypeWithGoods replaceObjectAtIndex:[Utils randBetweenMinInt:0 max:levelDataTypeWithGoods.count - 1] withObject:[NSNumber numberWithInteger:block]];
-    }
-    
-    return levelDataTypeWithGoods;
-}
-
 //- (NSArray *)levelDataTierFor:(NSUInteger)slots {
 //    NSMutableArray *levelDataTier = [NSMutableArray array];
 //    NSUInteger depth = [[BoardManager instance] checkCurrentDepth]/ NUM_ROW;
@@ -89,9 +65,8 @@
     NSMutableArray *levelData = [NSMutableArray array];
     NSMutableArray *levelDataType = [NSMutableArray array];
     NSMutableArray *levelDataTier = [NSMutableArray array];
-    NSUInteger depthLevel = [UserData instance].currentDepth/ NUM_ROW;
-    NSUInteger max = [self maxForDepth:depthLevel];
-    NSUInteger min = [self minForDepth:depthLevel];
+    NSMutableArray *levelDataBlockTier = [NSMutableArray array];
+    
     NSArray *waypointID = [[TableManager instance] arrayOfitemIdsFor:TableTypeWaypoint];
     NSUInteger waypointIndex = [self calculateWaypointLevel:waypointID];
     WaypointRowItem *waypointItem = [[TableManager instance] waypointItemForItemId:[waypointID objectAtIndex:waypointIndex] dictionary:TableTypeWaypoint];
@@ -103,21 +78,62 @@
     
     for (int i = 0; i < slots; i++) {
         [levelDataType addObject:[NSNumber numberWithInteger:BlockTypeObstacle]];
-        [levelDataTier addObject:[NSNumber numberWithInt:[Utils randBetweenMinInt:min max:max]]];
+        [levelDataTier addObject:[NSNumber numberWithInt:[self randomNumberBasedOnDepth]]];
+        [levelDataBlockTier addObject:[NSNumber numberWithInt:[self randomNumberBasedOnDepth]]];
     }
-    [self addGoods:levelDataType];
+    
     [levelData addObject:levelDataType];
     [levelData addObject:levelDataTier];
     
+    [self addGoods:levelData];
+    
     if (spawnWaypoint) {
-       levelData = [self addWaypoint:levelData atPosition:waypointItem.level withRank:waypointItem.rank];
+        levelData = [self addWaypoint:levelData atPosition:waypointItem.level withRank:waypointItem.rank];
     }
     
     // [self addDesignLine:levelData];
     //[self addDesignCross:levelData];
     //  [self addDesignBoxRight:levelData];
     //    [self addDesignBoxLeft:levelData];
+    [levelData addObject:levelDataBlockTier];
     return levelData;
+}
+
+- (NSUInteger)randomNumberBasedOnDepth {
+    NSUInteger depthLevel = [UserData instance].currentDepth/ NUM_ROW;
+    NSUInteger max = [self maxForDepth:depthLevel];
+    NSUInteger min = [self minForDepth:depthLevel];
+    return [Utils randBetweenMinInt:min max:max];
+}
+
+- (NSMutableArray *)addGoods:(NSMutableArray *)levelData {
+    
+    NSMutableArray *levelDataTypeWithGoodsType = [levelData objectAtIndex:0];
+    NSMutableArray *levelDataTypeWithGoodsTier = [levelData objectAtIndex:1];
+    
+    NSUInteger numOfPower = [Utils randBetweenMinInt:5 max:10];
+    NSUInteger numOfTreasure = [Utils randBetweenMinInt:5 max:10];
+    NSUInteger numOfGoods = [Utils randBetweenMinInt:5 max:10];
+    NSUInteger numOfPowerMade = 0;
+    NSUInteger numOfTreasureMade = 0;
+    NSUInteger numOfGoodsMade = 0;
+    
+    for (int i = 0; i < numOfGoods; i++) {
+        BlockType block = [Utils randBetweenMinInt:BlockTypePower max:BlockTypeTreasure];
+        if (block == BlockTypePower && numOfPowerMade <= numOfPower) {
+            numOfPowerMade++;
+        } else if (block == BlockTypeTreasure && numOfTreasureMade <= numOfTreasure) {
+            numOfTreasureMade++;
+        }
+        NSUInteger target = [Utils randBetweenMinInt:0 max:levelDataTypeWithGoodsType.count - 1];
+        [levelDataTypeWithGoodsType replaceObjectAtIndex:target withObject:[NSNumber numberWithInteger:block]];
+        [levelDataTypeWithGoodsTier replaceObjectAtIndex:target withObject:[NSNumber numberWithInteger:[self randomNumberBasedOnDepth]]];
+    }
+    NSMutableArray *levelDataTypeWithGoods = [NSMutableArray array];
+    [levelDataTypeWithGoods addObject:levelDataTypeWithGoodsType];
+    [levelDataTypeWithGoods addObject:levelDataTypeWithGoodsTier];
+    
+    return levelDataTypeWithGoods;
 }
 
 - (NSUInteger)calculateWaypointLevel:(NSArray *)waypointID {
@@ -159,11 +175,9 @@
     NSMutableArray *levelDataWithDesign = [NSMutableArray array];
     NSMutableArray *levelDataTypeWithDesign = [levelData objectAtIndex:LevelDataType];
     NSMutableArray *levelDataTierWithDesign = [levelData objectAtIndex:LevelDataTier];
-    NSUInteger depthLevel = [UserData instance].currentDepth/ NUM_ROW;
-    NSUInteger max = [self maxForDepth:depthLevel];
-    NSUInteger min = [self minForDepth:depthLevel];
+    
     NSUInteger bonus = 7;//[Utils randBetweenMinInt:3 max:5];
-    NSUInteger bonusLevel = [Utils randBetweenMinInt:min max:max] + bonus;
+    NSUInteger bonusLevel = [self randomNumberBasedOnDepth] + bonus;
     BlockType blockTreasure = [Utils randBetweenMinInt:BlockTypePower max:BlockTypeTreasure];
     BlockType blockObstacle = BlockTypeObstacle;
     
@@ -209,11 +223,9 @@
     NSMutableArray *levelDataWithDesign = [NSMutableArray array];
     NSMutableArray *levelDataTypeWithDesign = [levelData objectAtIndex:LevelDataType];
     NSMutableArray *levelDataTierWithDesign = [levelData objectAtIndex:LevelDataTier];
-    NSUInteger depthLevel = [UserData instance].currentDepth/ NUM_ROW;
-    NSUInteger max = [self maxForDepth:depthLevel];
-    NSUInteger min = [self minForDepth:depthLevel];
+    
     NSUInteger bonus = 10;//[Utils randBetweenMinInt:3 max:5];
-    NSUInteger bonusLevel = [Utils randBetweenMinInt:min max:max] + bonus;
+    NSUInteger bonusLevel = [self randomNumberBasedOnDepth] + bonus;
     
     BlockType blockObstacle = BlockTypeObstacle;
     
@@ -274,11 +286,9 @@
     NSMutableArray *levelDataWithDesign = [NSMutableArray array];
     NSMutableArray *levelDataTypeWithDesign = [levelData objectAtIndex:LevelDataType];
     NSMutableArray *levelDataTierWithDesign = [levelData objectAtIndex:LevelDataTier];
-    NSUInteger depthLevel = [UserData instance].currentDepth/ NUM_ROW;
-    NSUInteger max = [self maxForDepth:depthLevel];
-    NSUInteger min = [self minForDepth:depthLevel];
+    
     NSUInteger bonus = 10;//[Utils randBetweenMinInt:3 max:5];
-    NSUInteger bonusLevel = [Utils randBetweenMinInt:min max:max] + bonus;
+    NSUInteger bonusLevel = [self randomNumberBasedOnDepth] + bonus;
     
     BlockType blockObstacle = BlockTypeObstacle;
     
@@ -340,11 +350,9 @@
     NSMutableArray *levelDataWithDesign = [NSMutableArray array];
     NSMutableArray *levelDataTypeWithDesign = [levelData objectAtIndex:LevelDataType];
     NSMutableArray *levelDataTierWithDesign = [levelData objectAtIndex:LevelDataTier];
-    NSUInteger depthLevel = [UserData instance].currentDepth/ NUM_ROW;
-    NSUInteger max = [self maxForDepth:depthLevel];
-    NSUInteger min = [self minForDepth:depthLevel];
+    
     NSUInteger bonus = 4;//[Utils randBetweenMinInt:3 max:5];
-    NSUInteger bonusLevel = [Utils randBetweenMinInt:min max:max] + bonus;
+    NSUInteger bonusLevel = [self randomNumberBasedOnDepth] + bonus;
     BlockType blockObstacle = BlockTypeObstacle;
     
     NSUInteger target = [Utils randBetweenMinInt:0 max:NUM_ROW-1];

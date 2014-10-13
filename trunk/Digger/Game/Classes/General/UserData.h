@@ -36,6 +36,12 @@ extern NSString *const UserDataHouseDataChangedNotification;
 - (void)incrementDepth:(NSUInteger)depth;
 - (void)resetDepth;
 
+- (void)addKnapsackWith:(Treasure)treasure;
+- (void)removeKnapsackIndex:(NSUInteger)treasure;
+- (void)incrementKnapsackCapacity;
+- (BOOL)isKnapsackFull;
+- (BOOL)isKnapsackOverWeight;
+
 @property (nonatomic) NSInteger retry;
 @property (nonatomic) NSInteger retryCapacity;
 
@@ -46,5 +52,8 @@ extern NSString *const UserDataHouseDataChangedNotification;
 @property (nonatomic) long long drillLevel;
 @property (nonatomic) NSUInteger currentDepth;
 @property (strong, nonatomic) NSMutableArray *waypointRank;
+
+@property (strong, nonatomic) NSMutableArray *knapsack;
+@property (nonatomic) NSUInteger knapsackCapacity;
 
 @end

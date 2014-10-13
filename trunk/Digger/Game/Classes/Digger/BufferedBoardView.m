@@ -10,6 +10,8 @@
 #import "BoardManager.h"
 #import "LevelManager.h"
 #import "GameConstants.h"
+#import "ObstacleView.h"
+#import "SlotView.h"
 
 @interface BufferedBoardView()
 
@@ -54,9 +56,12 @@
     for (SlotView *slot in nextBufferedRow) {
         NSUInteger currentType = [[self.nextBufferedTypes objectAtIndex:index]intValue];
         NSUInteger currentTier = [[self.nextBufferedTiers objectAtIndex:index]intValue];
-        index++;
         BlockView *blockView = [[BoardManager instance] blockViewForType:currentType];
         [blockView setupWithTier:currentTier];
+        if (currentType == BlockTypeObstacle) {
+            blockView.level = [[self.nextBufferedBlockTiers objectAtIndex:index]intValue];
+        }
+        index++;
         [[BoardManager instance] moveBlock:blockView toSlot:slot];
     }
     
@@ -88,6 +93,7 @@
     NSArray *levelData = [[LevelManager instance] levelDataTypeAndTierFor:self.slots.count];
     self.nextBufferedTypes = [levelData objectAtIndex:LevelDataType];
     self.nextBufferedTiers = [levelData objectAtIndex:LevelDataTier];
+    self.nextBufferedBlockTiers =[levelData objectAtIndex:LevelDataBlockTier];
 }
 
 - (BOOL)canGenerateNextRow {

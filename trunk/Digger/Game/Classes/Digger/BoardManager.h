@@ -7,15 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BlockView.h"
+#import "GameConstants.h"
 #import "SlotView.h"
 #import "BoardView.h"
+#import "PlayerView.h"
 
 #define NUM_COL 5
 #define NUM_ROW 10
 #define MARGIN_BLOCK 10 * IPAD_SCALE
 
 @class GridPoint;
+@class BoardView;
+@class SlotView;
+@class BlockView;
 
 @interface BoardManager : NSObject
 

@@ -7,21 +7,31 @@
 //
 
 #import "ObstacleView.h"
+#import "UserData.h"
+#import "GameConstants.h"
+#import "CAEmitterHelperLayer.h"
+#import "BoardManager.h"
+#import "Utils.h"
 
 @implementation ObstacleView
-
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-    }
-    return self;
-}
-
 
 - (void)setupWithTier:(NSUInteger)tier {
     [super setupWithTier:tier];
     self.hp = tier;
+}
+
+- (BOOL)doAction:(SlotView *)slotView {
+    [super doAction:slotView];
+    
+    CAEmitterHelperLayer *cellLayer = [CAEmitterHelperLayer emitter:@"particleEffect.json" onView:[Utils rootViewController].view];
+    cellLayer.cellImage = slotView.blockView.imageView.image;
+    [cellLayer refreshEmitter];
+    cellLayer.emitterPosition = [slotView.superview convertPoint:slotView.center toView:[Utils rootViewController].view];
+    
+    [[UserData instance] decrementStamina:self.hp];
+
+    [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFICATION_REFRESH_STAMINA object:self];
+    return YES;
 }
 
 - (void)refresh {
@@ -67,7 +77,6 @@
 - (void)setHp:(NSInteger)hp {
     _hp = hp;
     [self refresh];
-    
 }
 
 @end

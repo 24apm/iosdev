@@ -20,6 +20,11 @@
 @property (strong, nonatomic) UIImage *cachedLineImage;
 @property (nonatomic) BOOL hasCorrectMatch;
 @property (strong, nonatomic) LevelData *levelData;
+@property (nonatomic) CGPoint firstLocation;
+@property (nonatomic) CGPoint previousPoint;
+@property (nonatomic) NSInteger previousMax;
+@property (nonatomic) CGPoint previousFirstSlotPoint;
+@property (strong, nonatomic) SlotView *previousSelectedSlotView;
 
 @end
 
@@ -35,9 +40,18 @@
         [self refreshSlots];
         self.slotSelection = [NSMutableArray array];
         self.backgroundColor = [UIColor clearColor];
+        self.firstLocation = CGPointMake(0.f, 0.f);
+        [self resetPreviousLine];
     }
     return self;
 }
+
+- (void)resetPreviousLine {
+    self.previousFirstSlotPoint = CGPointZero;
+    self.previousPoint = CGPointZero;
+    self.previousMax = 0;
+}
+
 
 - (void)setupWithLevel:(LevelData *)levelData {
     self.levelData = levelData;
@@ -70,13 +84,16 @@
     }
 }
 
-- (SlotView *)slotAtPoint:(CGPoint)point {
-    int row = (int)point.y / (int)self.slotSize.height;
-    int col = (int)point.x / (int)self.slotSize.width;
+- (SlotView *)slotAtScreenPoint:(CGPoint)point {
+    NSInteger row = (int)point.y / (int)self.slotSize.height;
+    NSInteger col = (int)point.x / (int)self.slotSize.width;
     return [self slotAtRow:row column:col];
 }
 
-- (SlotView *)slotAtRow:(NSUInteger)r column:(NSUInteger)c {
+- (SlotView *)slotAtRow:(NSInteger)r column:(NSInteger)c {
+    if (r >= NUM_ROW || c >= NUM_COL || r < 0 || c < 0) {
+        return nil;
+    }
     NSUInteger index = r * NUM_COL + c;
     if (index < self.slots.count) {
         return [self.slots objectAtIndex:index];
@@ -85,7 +102,7 @@
     }
 }
 
-- (CGPoint)pointForSlot:(SlotView *)slotView {
+- (CGPoint)gridPointForSlot:(SlotView *)slotView {
     NSUInteger index = [self.slots indexOfObject:slotView];
     NSUInteger r = index / NUM_COL;
     NSUInteger c = index % NUM_COL;
@@ -95,9 +112,10 @@
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     UITouch *touch = [touches anyObject];
     CGPoint location = [touch locationInView:self];
-    SlotView *slotView = [self slotAtPoint:location];
+    SlotView *slotView = [self slotAtScreenPoint:location];
     if (slotView && !self.hasCorrectMatch) {
         self.hasCorrectMatch = NO;
+        [slotView animateLabelSelection];
         [self.slotSelection addObject:slotView];
         [self setNeedsDisplay];
     }
@@ -107,52 +125,122 @@
     UITouch *touch = [touches anyObject];
     CGPoint location = [touch locationInView:self];
     
-    SlotView *slotView = [self slotAtPoint:location];
+    if (self.firstLocation.x == 0 && self.firstLocation.y == 0) {
+        self.firstLocation = location;
+    }
     
+    SlotView *slotView = [self slotAtScreenPoint:location];
+
     // return if nil
     if (!slotView) return;
+    
+    // return if same tile is highlighted again
+    if (self.previousSelectedSlotView == slotView) return;
+    self.previousSelectedSlotView = slotView;
     
     // return if still in the process of drawing last hasCorrect cache
     if (self.hasCorrectMatch) return;
     
     // return if before first element is added
     if (self.slotSelection.count <= 0) return;
-    
+
     // return if the line is the same
     if (slotView == [self.slotSelection lastObject]) return;
     
     SlotView *firstSlotView = [self.slotSelection firstObject];
     
-    CGPoint firstSlotPoint = [self pointForSlot:firstSlotView];
-    CGPoint currentSlotPoint = [self pointForSlot:slotView];
-    int distanceX = currentSlotPoint.x - firstSlotPoint.x;
-    int distanceY = currentSlotPoint.y - firstSlotPoint.y;
+    [slotView animateLabelSelection];
     
-    // get the unit versions
-    if (distanceX == 0 ||                        // match row
-        distanceY == 0 ||                        // match col
-        abs(distanceX) == abs(distanceY)) {   // match horizontal
-        
-        // renew the line
-        [self.slotSelection removeObjectsInRange:NSMakeRange(1, self.slotSelection.count-1)];
-        
-        int directionalUnitX = abs(distanceX) == 0 ? 0 : distanceX / (abs(distanceX));
-        int directionalUnitY = abs(distanceY) == 0 ? 0 : distanceY / (abs(distanceY));
-
-        // add line in the direction of the target slot
-        int maxDistance = MAX(abs(distanceX), abs(distanceY));
-        for (int i = 1; i <= maxDistance; i++) {
-            slotView = [self slotAtRow:firstSlotPoint.x + i * directionalUnitX
-                                column:firstSlotPoint.y + i * directionalUnitY];
-            [self.slotSelection addObject:slotView];
+    
+    float gapY = location.y - self.firstLocation.y;
+    float gapX = location.x - self.firstLocation.x;
+    
+    CGPoint firstSlotPoint = [self gridPointForSlot:firstSlotView];
+    CGPoint touchGridPoint = [self gridPointForSlot:slotView];
+    
+    int distanceX = touchGridPoint.x - firstSlotPoint.x;
+    int distanceY = touchGridPoint.y - firstSlotPoint.y;
+    
+    NSInteger maxDistance = MAX(fabs(distanceX), fabs(distanceY));
+    
+    [self slotAtRow:maxDistance column:maxDistance];
+    
+    NSLog(@"gap Y %f", gapY);
+    NSLog(@"gap X %f", gapX);
+    CGPoint point = CGPointMake(0, 0);
+    if (fabsf(gapX) > fabsf(gapY)) {
+        if (gapX > 0) {
+            if (gapX/2 * -1 >= gapY) {
+                point = CGPointMake(-1, 1); //up right
+            } else if (gapX/2 <= gapY){
+                point = CGPointMake(1, 1);  //down right
+            } else {
+                point = CGPointMake(0, 1);  //right
+            }
+        } else if (gapX < 0) {
+            if (gapX/2 >= gapY) {
+                point = CGPointMake(-1, -1); //up left
+            } else if (gapX/2 * -1 <= gapY){
+                point = CGPointMake(1, -1); //down left
+            } else {
+                point = CGPointMake(0, -1); //left
+            }
         }
+    } else {
+        if (gapY > 0) {
+            if (gapY/2 <= gapX) {
+                point = CGPointMake(1, 1);  // down right
+            } else if (gapY/2 * -1 >= gapX){
+                point = CGPointMake(1, -1); // down left
+            } else {
+                point = CGPointMake(1, 0);  //down
+            }
+        } else if (gapY < 0) {
+            if (gapY/2 * -1 <= gapX) {
+                point = CGPointMake(-1, 1); //up right
+            } else if (gapY/2 >= gapX){
+                point = CGPointMake(-1, -1);    //up left
+            } else {
+                point = CGPointMake(-1, 0); //up
+            }
+        }
+    }
+    
+    if (!(self.previousFirstSlotPoint.x != firstSlotPoint.x && self.previousFirstSlotPoint.y != firstSlotPoint.y
+        && self.previousMax != maxDistance
+        && self.previousPoint.x != point.x && self.previousPoint.y != point.y)) {
+        [self fillLine:firstSlotPoint
+       directionalUnit:point
+              distance:maxDistance];
+        
         [self setNeedsDisplay];
     }
 }
 
--(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-    NSString *word = [self buildStringFromArray:self.slotSelection];
+- (void)fillLine:(CGPoint)firstSlotPoint directionalUnit:(CGPoint)directionalUnit distance:(NSInteger)distance {
+    NSLog(@"maxd %ld", (long)distance);
+    // renew the line
+    [self.slotSelection removeObjectsInRange:NSMakeRange(1, self.slotSelection.count-1)];
+    
+    // add line in the direction of the target slot
+    for (int i = 1; i <= distance; i++) {
+        SlotView *slotView = [self slotAtRow:firstSlotPoint.x + i * directionalUnit.x
+                                      column:firstSlotPoint.y + i * directionalUnit.y];
+        if (slotView != nil) {
+            [self.slotSelection addObject:slotView];
+        } else {
+            break;
+        }
+    }
+    self.previousFirstSlotPoint = firstSlotPoint;
+    self.previousMax = distance;
+    self.previousPoint = directionalUnit;
+}
 
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    [self resetPreviousLine];
+    NSString *word = [self buildStringFromArray:self.slotSelection];
+    self.firstLocation = CGPointZero;
     // check string
     self.hasCorrectMatch = [self checkSolution:word];
     if (!self.hasCorrectMatch) {
@@ -160,7 +248,7 @@
         word = [word reversedString];
         self.hasCorrectMatch = [self checkSolution:word];
     }
-
+    
     if (!self.hasCorrectMatch) {
         [self.slotSelection removeAllObjects];
     } else {
@@ -185,7 +273,7 @@
 - (void)cacheImage {
     UIGraphicsBeginImageContextWithOptions(self.bounds.size, NO, [[UIScreen mainScreen] scale]);
     [self.layer renderInContext:UIGraphicsGetCurrentContext()];
-
+    
     self.cachedLineImage = UIGraphicsGetImageFromCurrentImageContext();
     
     // end the context
@@ -242,7 +330,7 @@
         bezierPathInner.lineWidth =  self.slotSize.width * 0.5f;
         bezierPathInner.lineJoinStyle = kCGLineJoinRound;
         bezierPathInner.lineCapStyle = kCGLineCapRound;
-
+        
         [self drawPath:bezierPathInner];
         
         if (self.hasCorrectMatch) {

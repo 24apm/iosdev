@@ -7,6 +7,7 @@
 //
 
 #import "GameConstants.h"
+#import "VocabularyObject.h"
 
 
 extern NSString *const UserDataHouseDataChangedNotification;
@@ -23,7 +24,10 @@ extern NSString *const UserDataHouseDataChangedNotification;
 - (void)refillRetry;
 - (BOOL)hasRetry;
 
+- (void)updateDictionaryWith:(VocabularyObject *)newVocabulary;
+
 @property (nonatomic) long long coin;
+@property (strong, nonatomic) NSMutableArray *pokedex;
 
 @property (nonatomic) NSInteger retry;
 @property (nonatomic) NSInteger retryCapacity;

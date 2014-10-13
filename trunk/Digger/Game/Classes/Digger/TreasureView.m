@@ -20,6 +20,10 @@
 
 
 - (void)setupWithTier:(NSUInteger)tier {
+    self.tier = tier;
+    TreasureData *data = [[TreasureData alloc] init];
+    data = [data setupItemWithRank:self.tier];
+    self.imageView.image = [UIImage imageNamed:data.icon];
     switch (tier) {
         case 0:
             self.block.backgroundColor = [UIColor brownColor];
