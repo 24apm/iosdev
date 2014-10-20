@@ -173,6 +173,8 @@
         
         // setup answer
         NSArray *finalAnswerSheet;
+        NSMutableDictionary *answerIndexesToDrawGroup = [NSMutableDictionary dictionary];
+        
         NSMutableDictionary *answerSheets = [NSMutableDictionary dictionary];
         NSArray *words = vocabularyList;
         NSMutableArray *map = [NSMutableArray array];
@@ -241,16 +243,22 @@
                 
                 // place word
                 if (canFit) {
+                    NSMutableArray *answerIndexesToDrawWord = [NSMutableArray array];
                     for (int i = 0; i < word.length; i++) {
-                        int mapIndex = [self indexForLeveData:levelData row:sRow + i * directionalRow column:sCol + i * directionalCol];
+                        int row = sRow + i * directionalRow;
+                        int col = sCol + i * directionalCol;
+                        int mapIndex = [self indexForLeveData:levelData row:row column:col];
                         NSString *newString = [NSString stringWithFormat:@"%c",[word characterAtIndex:i]];
                         [map replaceObjectAtIndex:mapIndex withObject:newString];
+                        NSValue *point = [NSValue valueWithCGPoint:CGPointMake(row, col)];
+                        [answerIndexesToDrawWord addObject:point];
                     }
                     didFit = YES;
+                    [answerIndexesToDrawGroup setObject:answerIndexesToDrawWord forKey:word];
                     finalAnswerSheet = [map copy];
                     [answerSheets setObject:finalAnswerSheet forKey:word];
                 }
-            }
+            } // while(!didFit)
         }
         
         // setup map
@@ -267,6 +275,7 @@
         levelData.letterMap = map;
         levelData.answerSheets = answerSheets;
         levelData.finalAnswerSheet = [finalAnswerSheet copy];
+        levelData.answerIndexesToDrawGroup = answerIndexesToDrawGroup;
     }
     return levelData;
 }

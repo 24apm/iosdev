@@ -45,9 +45,11 @@
 }
 
 - (IBAction)answerPressed:(id)sender {
-    MessageDialogView *messageDialog = [[MessageDialogView alloc] initWithHeaderText:@"Answer" bodyText:[self.levelData formatFinalAnswer]];
-    messageDialog.bodyLabel.font = [UIFont fontWithName:messageDialog.bodyLabel.font.familyName size:6];
-    [messageDialog show];
+//    MessageDialogView *messageDialog = [[MessageDialogView alloc] initWithHeaderText:@"Answer" bodyText:[self.levelData formatFinalAnswer]];
+//    messageDialog.bodyLabel.font = [UIFont fontWithName:messageDialog.bodyLabel.font.familyName size:6];
+//    [messageDialog show];
+    
+    [self.boardView showAnswer];
 }
 
 - (void)generateNewLevel {

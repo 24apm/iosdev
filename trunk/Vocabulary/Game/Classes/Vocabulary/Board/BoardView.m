@@ -60,12 +60,10 @@
     [bezierPath stroke];
 }
 
-- (void)drawRect:(CGRect)rect {
-    [super drawRect:rect];
-    
+- (void)drawSelectionStroke {
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextClearRect(context, self.bounds);
-    [self.cachedLineImage drawInRect:rect];
+    [self.cachedLineImage drawInRect:self.bounds];
     
     if (self.boardView.slotSelection.count > 0) {
         
@@ -80,18 +78,26 @@
             innerStrokeColor = [UIColor colorWithRed:0 green:1 blue:0 alpha:0.5f];
         }
         
-        //Outer
-        [self drawPath:context color:outerStrokeColor.CGColor lineWidth:self.boardView.slotSize.width * 0.7f];
-
-        //Inner
-//        [self drawPath:context color:innerStrokeColor.CGColor lineWidth:self.boardView.slotSize.width * 0.5f];
+        [self drawPath:context color:outerStrokeColor.CGColor lineWidth:self.boardView.slotSize.width * 0.6f];
         
         if (self.boardView.hasCorrectMatch) {
             [self cacheImage];
+
+            int index = 0;
+            for (SlotView *slotView in self.boardView.slotSelection) {
+                [slotView performSelector:@selector(animateLabelSelection) withObject:nil afterDelay:(float)index * 0.1f];
+                index++;
+            }
             [self.boardView.slotSelection removeAllObjects];
             self.boardView.hasCorrectMatch = NO;
         }
     }
+}
+
+- (void)drawRect:(CGRect)rect {
+    [super drawRect:rect];
+    
+    [self drawSelectionStroke];
 }
 
 - (void)refresh {
@@ -104,16 +110,81 @@
 
 @end
 
+
+@interface BoardAnswerDrawView : UIView
+
+@property (strong, nonatomic) BoardView *boardView;
+
+@end
+
+@implementation BoardAnswerDrawView
+
+- (instancetype)initWithBoardView:(BoardView *)boardView {
+    self = [super init];
+    if (self) {
+        self.boardView = boardView;
+    }
+    return self;
+}
+
+- (void)drawPath:(CGContextRef)context pathArr:(NSArray *)pathArr color:(CGColorRef)color lineWidth:(CGFloat)lineWidth {
+    UIBezierPath *bezierPath = [UIBezierPath bezierPath];
+    CGContextSetStrokeColorWithColor(context, color);
+    bezierPath.lineWidth =  lineWidth;
+    bezierPath.lineJoinStyle = kCGLineJoinRound;
+    bezierPath.lineCapStyle = kCGLineCapRound;
+    
+    SlotView *slotView = [pathArr objectAtIndex:0];
+    
+    [bezierPath moveToPoint:slotView.center];
+    
+    for (int i = 1; i < pathArr.count; i++) {
+        slotView = [pathArr objectAtIndex:i];
+        [bezierPath addLineToPoint:slotView.center];
+    }
+    
+    slotView = [pathArr lastObject];
+    
+    [bezierPath stroke];
+}
+
+- (void)drawSelectionStroke {
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextClearRect(context, self.bounds);
+    UIColor *strokeColor = [UIColor colorWithRed:1 green:0 blue:0 alpha:0.5f];
+    
+    
+    for (NSArray *pointsArr in [self.boardView.levelData.answerIndexesToDrawGroup allValues]) {
+        NSMutableArray *pathArr = [NSMutableArray array];
+        for (NSValue *pointValue in pointsArr) {
+            CGPoint point = [pointValue CGPointValue];
+            SlotView *slotView = [self.boardView slotAtRow:point.x column:point.y];
+            [pathArr addObject:slotView];
+        }
+        [self drawPath:context pathArr:pathArr color:strokeColor.CGColor lineWidth:self.boardView.slotSize.width * 0.6f];
+    }
+}
+
+- (void)drawRect:(CGRect)rect {
+    [super drawRect:rect];
+    [self drawSelectionStroke];
+}
+
+@end
+
+
 @interface BoardView()
 
 @property (strong, nonatomic) NSMutableArray *slots;
-@property (strong, nonatomic) LevelData *levelData;
 @property (nonatomic) CGPoint firstLocation;
 @property (nonatomic) CGPoint previousPoint;
 @property (nonatomic) NSInteger previousMax;
 @property (nonatomic) CGPoint previousFirstSlotPoint;
 @property (strong, nonatomic) SlotView *previousSelectedSlotView;
 @property (strong, nonatomic) BoardDrawView *boardDrawView;
+@property (strong, nonatomic) BoardAnswerDrawView *boardAnswerDrawView;
+
+@property (strong, nonatomic) UIView *slotViewContainers;
 
 @end
 
@@ -127,6 +198,17 @@
         self.backgroundColor = [UIColor clearColor];
         self.firstLocation = CGPointMake(0.f, 0.f);
         [self resetPreviousLine];
+        
+        self.slotViewContainers = [[UIView alloc] initWithFrame:self.bounds];
+        self.slotViewContainers.backgroundColor = [UIColor clearColor];
+        [self addSubview:self.slotViewContainers];
+        
+        // answer board
+        self.boardAnswerDrawView = [[BoardAnswerDrawView alloc] initWithBoardView:self];
+        self.boardAnswerDrawView.backgroundColor = [UIColor clearColor];
+        self.boardAnswerDrawView.frame = CGRectMake(0.f, 0.f, self.width, self.height);
+        [self addSubview:self.boardAnswerDrawView];
+        self.boardAnswerDrawView.hidden = YES;
         
         // board draw view
         self.boardDrawView = [[BoardDrawView alloc] initWithBoardView:self];
@@ -152,7 +234,9 @@
     
     float blockWidth = self.width / self.levelData.numColumn;
     self.slotSize = CGSizeMake(blockWidth, blockWidth);
-
+    
+    self.boardAnswerDrawView.hidden = YES;
+    
     [self generateSlots];
     [self refreshSlots];
     [self refresh];
@@ -187,7 +271,7 @@
                                                        self.slotSize.height));
             slotView.userInteractionEnabled = NO;
             [self.slots addObject:slotView];
-            [self addSubview:slotView];
+            [self.slotViewContainers addSubview:slotView];
         }
     }
 }
@@ -227,6 +311,20 @@
         [self.slotSelection addObject:slotView];
         [self refresh];
     }
+}
+
+- (void)showAnswer {
+//    for (NSString *key in [self.levelData.answerIndexesToDrawGroup allKeys]) {
+//        NSArray *indexes = [self.levelData.answerIndexesToDrawGroup objectForKey:key];
+//        for (int i = 0; i < indexes.count; i++) {
+//            CGPoint index = [[indexes objectAtIndex:i] CGPointValue];
+//            SlotView *slotView = [self slotAtRow:index.x column:index.y];
+//            slotView.backgroundColor = [UIColor colorWithRed:1.f green:0.f blue:0.f alpha:0.5f];
+//            
+//        }
+//    }
+    [self.boardAnswerDrawView setNeedsDisplay];
+    self.boardAnswerDrawView.hidden = NO;
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {

@@ -23,6 +23,9 @@
 @property (strong, nonatomic) NSArray *letterMap;
 
 @property (strong, nonatomic) NSMutableDictionary *answerSheets;
+
+@property (strong, nonatomic) NSMutableDictionary *answerIndexesToDrawGroup;
+
 @property (strong, nonatomic) NSArray *finalAnswerSheet;
 
 
