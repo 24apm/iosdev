@@ -22,17 +22,29 @@
 @property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *words;
 @property (strong, nonatomic) IBOutlet UILabel *definitionLabel;
 @property (strong, nonatomic) LevelData *levelData;
+@property (strong, nonatomic) UIActivityIndicatorView *spinner;
 
 @end
 
 @implementation GameView
 
+- (instancetype)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
+    if (self) {
+        self.boardView = [[BoardView alloc] initWithFrame:CGRectMake(0, 0, self.boardViewContainer.size.width, self.boardViewContainer.size.height)];
+        [self.boardViewContainer addSubview:self.boardView];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(wordMatched:) name:NOTIFICATION_WORD_MATCHED object:nil];
+        self.spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        [self addSubview:self.spinner];
+        self.spinner.hidesWhenStopped = YES;
+        self.spinner.center = self.definitionLabel.center;
+
+    }
+    return self;
+}
+
 - (void)setup {
-    self.boardView = [[BoardView alloc] initWithFrame:CGRectMake(0, 0, self.boardViewContainer.size.width, self.boardViewContainer.size.height)];
-    [self.boardViewContainer addSubview:self.boardView];
     [self generateNewLevel];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(wordMatched:) name:NOTIFICATION_WORD_MATCHED object:nil];
 
 }
 
@@ -41,7 +53,8 @@
 }
 
 - (IBAction)resetPressed:(id)sender {
-    [self generateNewLevel];
+    [self.spinner startAnimating];
+    [self performSelector:@selector(generateNewLevel) withObject:nil afterDelay:0.0];
 }
 
 - (IBAction)answerPressed:(id)sender {
@@ -53,18 +66,21 @@
 }
 
 - (void)generateNewLevel {
-    NSInteger size = [Utils randBetweenMinInt:6 max:12];
+    NSInteger size = [Utils randBetweenMinInt:8 max:12];
     self.levelData = [[VocabularyManager instance] generateLevel:[Utils randBetweenMinInt:3 max:9]
                                                              row:size
                                                              col:size];
     [self.boardView setupWithLevel:self.levelData];
     [self refreshWordList];
+
     //debug
 //    [self.levelData printAnswers];
 }
 
 - (void)refreshWordList {
     // refresh words
+    [self.spinner stopAnimating];
+
     for (int i = 0; i < self.words.count; i++) {
         UILabel *wordLabel = [self.words objectAtIndex:i];
         

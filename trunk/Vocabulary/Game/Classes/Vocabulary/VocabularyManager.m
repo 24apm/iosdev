@@ -14,7 +14,7 @@
 #define EMPTY_SPACE @"_"
 #define MAX_STRING_LENGTH 8
 #define NUM_OF_WORDS 9
-#define WORD_FIT_ATTEMPTS 50
+#define WORD_FIT_ATTEMPTS 10
 
 @interface VocabularyManager()
 
@@ -129,7 +129,7 @@
         if (![dictionary objectForKey:lengthLabel]) {
             [dictionary setObject:@(0) forKey:lengthLabel];
         }
-        int value = [[dictionary objectForKey:lengthLabel] integerValue];
+        NSInteger value = [[dictionary objectForKey:lengthLabel] integerValue];
         [dictionary setObject:@(value+1) forKey:lengthLabel];
     }
     NSLog(@"testMaxLength %@", dictionary);
@@ -137,7 +137,7 @@
 
 - (void)printDebug {
     for (NSString *key in [self.dictionaryBySection allKeys]) {
-        NSLog(@"%@ %d", key, [[self.dictionaryBySection objectForKey:key] count]);
+        NSLog(@"%@ %lu", key, (unsigned long)[[self.dictionaryBySection objectForKey:key] count]);
     }
     NSLog(@"%@", self.dictionaryBySection);
     
@@ -157,6 +157,7 @@
     levelData.numRow = row;
     
     // try to generateMap
+
     BOOL generatedMap = NO;
     while(!generatedMap) {
         NSMutableArray *vocabularyList = [NSMutableArray array];
@@ -178,7 +179,7 @@
         NSMutableDictionary *answerSheets = [NSMutableDictionary dictionary];
         NSArray *words = vocabularyList;
         NSMutableArray *map = [NSMutableArray array];
-        int total = levelData.numColumn * levelData.numRow;
+        NSInteger total = levelData.numColumn * levelData.numRow;
         for (int i = 0; i < total; i++) {
             [map addObject:EMPTY_SPACE];
         }
@@ -201,7 +202,6 @@
                 
                 // break if we try enough
                 if (attempts > WORD_FIT_ATTEMPTS) {
-                    NSLog(@"WORD_FIT_ATTEMPTS");
                     break;
                 }
                 attempts++;
@@ -219,7 +219,7 @@
                 for (int i = 0; i < word.length; i++) {
                     int eRow = sRow + i * directionalRow;
                     int eCol = sCol + i * directionalCol;
-                    int mapIndex = [self indexForLeveData:levelData row:eRow column:eCol];
+                    NSInteger mapIndex = [self indexForLeveData:levelData row:eRow column:eCol];
                     
                     // test for:
                     //  1) boundary check
@@ -247,7 +247,7 @@
                     for (int i = 0; i < word.length; i++) {
                         int row = sRow + i * directionalRow;
                         int col = sCol + i * directionalCol;
-                        int mapIndex = [self indexForLeveData:levelData row:row column:col];
+                        NSInteger mapIndex = [self indexForLeveData:levelData row:row column:col];
                         NSString *newString = [NSString stringWithFormat:@"%c",[word characterAtIndex:i]];
                         [map replaceObjectAtIndex:mapIndex withObject:newString];
                         NSValue *point = [NSValue valueWithCGPoint:CGPointMake(row, col)];
@@ -261,21 +261,23 @@
             } // while(!didFit)
         }
         
-        // setup map
-        for (int i = 0; i < total; i++) {
-            NSString *letter = [map objectAtIndex:i];
-            if ([letter isEqualToString:EMPTY_SPACE]) {
-                NSString *randomLetter = [self randomLetter];
-                [map replaceObjectAtIndex:i withObject:randomLetter];
+        if (answerIndexesToDrawGroup.count >= wordSortedByLength.count) {
+            // setup map
+            for (int i = 0; i < total; i++) {
+                NSString *letter = [map objectAtIndex:i];
+                if ([letter isEqualToString:EMPTY_SPACE]) {
+                    NSString *randomLetter = [self randomLetter];
+                    [map replaceObjectAtIndex:i withObject:randomLetter];
+                }
             }
+            
+            generatedMap = YES;
+            levelData.vocabularyList = wordSortedByLength;
+            levelData.letterMap = map;
+            levelData.answerSheets = answerSheets;
+            levelData.finalAnswerSheet = [finalAnswerSheet copy];
+            levelData.answerIndexesToDrawGroup = answerIndexesToDrawGroup;
         }
-        
-        generatedMap = YES;
-        levelData.vocabularyList = wordSortedByLength;
-        levelData.letterMap = map;
-        levelData.answerSheets = answerSheets;
-        levelData.finalAnswerSheet = [finalAnswerSheet copy];
-        levelData.answerIndexesToDrawGroup = answerIndexesToDrawGroup;
     }
     return levelData;
 }

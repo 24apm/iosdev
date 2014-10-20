@@ -10,6 +10,6 @@
 
 @interface GameView : XibView
 
-- (void)setup;
+- (void)generateNewLevel;
 
 @end
