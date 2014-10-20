@@ -14,6 +14,7 @@
 #define EMPTY_SPACE @"_"
 #define MAX_STRING_LENGTH 8
 #define NUM_OF_WORDS 9
+#define WORD_FIT_ATTEMPTS 50
 
 @interface VocabularyManager()
 
@@ -149,113 +150,129 @@
     return randomLetter;
 }
 
-- (LevelData *)generateLevel {
+- (LevelData *)generateLevel:(NSInteger)numOfWords row:(NSInteger)row col:(NSInteger)col {
     LevelData *levelData = [[LevelData alloc] init];
+    levelData.numOfWords = numOfWords;
+    levelData.numColumn = col;
+    levelData.numRow = row;
     
-    NSMutableArray *vocabularyList = [NSMutableArray array];
-    
-    // setup words
-    while (vocabularyList.count < NUM_OF_WORDS) {
-        NSArray *allWords = [self.dictionaryByVocab allKeys];
-        NSString *randomWord = [allWords randomObject];
-        VocabularyObject *vocabData = [self.dictionaryByVocab objectForKey:randomWord];
-        if (![vocabularyList containsObject:vocabData]) {
-            [vocabularyList addObject:vocabData];
-        }
-    }
-    
-    // setup answer
-    NSArray *finalAnswerSheet;
-    NSMutableDictionary *answerSheets = [NSMutableDictionary dictionary];
-    NSArray *words = vocabularyList;
-    NSMutableArray *map = [NSMutableArray array];
-    int total = NUM_COL * NUM_ROW;
-    for (int i = 0; i < total; i++) {
-        [map addObject:EMPTY_SPACE];
-    }
-    
-    NSMutableArray *wordSortedByLength = [NSMutableArray arrayWithArray:words];
-    NSSortDescriptor *sortDescriptor;
-    sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"word.length"
-                                                 ascending:NO];
-    NSArray *sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
-    
-    [wordSortedByLength sortUsingDescriptors:sortDescriptors];
-    
-    for (VocabularyObject *vocabData in wordSortedByLength) {
-        NSString *word = vocabData.word;
-        BOOL didFit = NO;
+    // try to generateMap
+    BOOL generatedMap = NO;
+    while(!generatedMap) {
+        NSMutableArray *vocabularyList = [NSMutableArray array];
         
-        while(!didFit) {
-            BOOL canFit = YES;
+        // setup words
+        while (vocabularyList.count < levelData.numOfWords) {
+            NSArray *allWords = [self.dictionaryByVocab allKeys];
+            NSString *randomWord = [allWords randomObject];
+            VocabularyObject *vocabData = [self.dictionaryByVocab objectForKey:randomWord];
+            if (![vocabularyList containsObject:vocabData]) {
+                [vocabularyList addObject:vocabData];
+            }
+        }
+        
+        // setup answer
+        NSArray *finalAnswerSheet;
+        NSMutableDictionary *answerSheets = [NSMutableDictionary dictionary];
+        NSArray *words = vocabularyList;
+        NSMutableArray *map = [NSMutableArray array];
+        int total = levelData.numColumn * levelData.numRow;
+        for (int i = 0; i < total; i++) {
+            [map addObject:EMPTY_SPACE];
+        }
+        
+        NSMutableArray *wordSortedByLength = [NSMutableArray arrayWithArray:words];
+        NSSortDescriptor *sortDescriptor;
+        sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"word.length"
+                                                     ascending:NO];
+        NSArray *sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
+        
+        [wordSortedByLength sortUsingDescriptors:sortDescriptors];
+        
+        for (VocabularyObject *vocabData in wordSortedByLength) {
+            NSString *word = vocabData.word;
+            BOOL didFit = NO;
+            NSInteger attempts = 0;
             
-            int sRow = arc4random() % NUM_ROW;
-            int sCol = arc4random() % NUM_COL;
-            
-            //            int directionalRow = arc4random() % 2 - 1; // -1, 0, or 1
-            //            int directionalCol = arc4random() % 2 - 1; // -1, 0, or 1
-            CGPoint randomDirectionalPoint = [self randomDirectionPoint];
-            int directionalRow = randomDirectionalPoint.y;
-            int directionalCol = randomDirectionalPoint.x;
-            
-            // test word placement
-            for (int i = 0; i < word.length; i++) {
-                int eRow = sRow + i * directionalRow;
-                int eCol = sCol + i * directionalCol;
-                int mapIndex = [self indexAtRow:eRow column:eCol];
+            while(!didFit) {
+                BOOL canFit = YES;
                 
-                // test for:
-                //  1) boundary check
-                //  2) target space is empty
-                //  3) and can match letter
-                if (!(mapIndex > -1
-                      && mapIndex < NUM_ROW * NUM_COL
-                      && eRow > -1
-                      && eCol > -1
-                      && eRow < NUM_ROW
-                      && eCol < NUM_COL
-                      && ([[map objectAtIndex:mapIndex] isEqualToString:EMPTY_SPACE] ||
-                          [[map objectAtIndex:mapIndex] isEqualToString:[NSString stringWithFormat:@"%c",[word characterAtIndex:i]]]))
-                    
-                    ) {
-                    
-                    canFit = NO;
+                // break if we try enough
+                if (attempts > WORD_FIT_ATTEMPTS) {
+                    NSLog(@"WORD_FIT_ATTEMPTS");
                     break;
                 }
-            }
-            
-            // place word
-            if (canFit) {
+                attempts++;
+                
+                int sRow = arc4random() % levelData.numRow;
+                int sCol = arc4random() % levelData.numColumn;
+                
+                //            int directionalRow = arc4random() % 2 - 1; // -1, 0, or 1
+                //            int directionalCol = arc4random() % 2 - 1; // -1, 0, or 1
+                CGPoint randomDirectionalPoint = [self randomDirectionPoint];
+                int directionalRow = randomDirectionalPoint.y;
+                int directionalCol = randomDirectionalPoint.x;
+                
+                // test word placement
                 for (int i = 0; i < word.length; i++) {
-                    int mapIndex = [self indexAtRow:sRow + i * directionalRow column:sCol + i * directionalCol];
-                    NSString *newString = [NSString stringWithFormat:@"%c",[word characterAtIndex:i]];
-                    [map replaceObjectAtIndex:mapIndex withObject:newString];
+                    int eRow = sRow + i * directionalRow;
+                    int eCol = sCol + i * directionalCol;
+                    int mapIndex = [self indexForLeveData:levelData row:eRow column:eCol];
+                    
+                    // test for:
+                    //  1) boundary check
+                    //  2) target space is empty
+                    //  3) and can match letter
+                    if (!(mapIndex > -1
+                          && mapIndex < levelData.numRow * levelData.numColumn
+                          && eRow > -1
+                          && eCol > -1
+                          && eRow < levelData.numRow
+                          && eCol < levelData.numColumn
+                          && ([[map objectAtIndex:mapIndex] isEqualToString:EMPTY_SPACE] ||
+                              [[map objectAtIndex:mapIndex] isEqualToString:[NSString stringWithFormat:@"%c",[word characterAtIndex:i]]]))
+                        
+                        ) {
+                        
+                        canFit = NO;
+                        break;
+                    }
                 }
-                didFit = YES;
-                finalAnswerSheet = [map copy];
-                [answerSheets setObject:finalAnswerSheet forKey:word];
+                
+                // place word
+                if (canFit) {
+                    for (int i = 0; i < word.length; i++) {
+                        int mapIndex = [self indexForLeveData:levelData row:sRow + i * directionalRow column:sCol + i * directionalCol];
+                        NSString *newString = [NSString stringWithFormat:@"%c",[word characterAtIndex:i]];
+                        [map replaceObjectAtIndex:mapIndex withObject:newString];
+                    }
+                    didFit = YES;
+                    finalAnswerSheet = [map copy];
+                    [answerSheets setObject:finalAnswerSheet forKey:word];
+                }
             }
         }
-    }
-    
-    // setup map
-    for (int i = 0; i < total; i++) {
-        NSString *letter = [map objectAtIndex:i];
-        if ([letter isEqualToString:EMPTY_SPACE]) {
-            NSString *randomLetter = [self randomLetter];
-            [map replaceObjectAtIndex:i withObject:randomLetter];
+        
+        // setup map
+        for (int i = 0; i < total; i++) {
+            NSString *letter = [map objectAtIndex:i];
+            if ([letter isEqualToString:EMPTY_SPACE]) {
+                NSString *randomLetter = [self randomLetter];
+                [map replaceObjectAtIndex:i withObject:randomLetter];
+            }
         }
+        
+        generatedMap = YES;
+        levelData.vocabularyList = wordSortedByLength;
+        levelData.letterMap = map;
+        levelData.answerSheets = answerSheets;
+        levelData.finalAnswerSheet = [finalAnswerSheet copy];
     }
-    
-    levelData.vocabularyList = wordSortedByLength;
-    levelData.letterMap = map;
-    levelData.answerSheets = answerSheets;
-    levelData.finalAnswerSheet = [finalAnswerSheet copy];
     return levelData;
 }
 
-- (NSUInteger)indexAtRow:(NSUInteger)r column:(NSUInteger)c {
-    return r * NUM_COL + c;
+- (NSUInteger)indexForLeveData:(LevelData *)levelData row:(NSUInteger)r column:(NSUInteger)c {
+    return r * levelData.numColumn + c;
 }
 
 - (CGPoint)randomDirectionPoint {
@@ -317,22 +334,6 @@
     return directionalPoint;
 }
 
-- (void)printMap:(NSArray *)map {
-     NSLog (@"%@", [self mapToString:map]);
-}
-
-- (NSString *)mapToString:(NSArray *)map {
-    NSString *string = @"";
-    for (int i = 0; i < NUM_ROW; i++) {
-        for (int j = 0; j < NUM_COL; j++) {
-            NSString *letter = [map objectAtIndex:[self indexAtRow:i column:j]];
-            string = [NSString stringWithFormat:@"%@ %@",string,letter];
-        }
-        string = [string stringByAppendingString:@"\n"];
-    }
-    return string;
-}
-
 - (BOOL)checkSolution:(LevelData *)levelData word:(NSString *)word {
     for (VocabularyObject *vocabData in levelData.vocabularyList) {
         if ([word isEqualToString:vocabData.word]) {
@@ -350,6 +351,26 @@
         }
     }
     return YES;
+}
+
+- (void)printMap:(LevelData *)levelData {
+    NSLog (@"%@", [self mapToString:levelData map:levelData.letterMap]);
+}
+
+- (void)printAnswer:(LevelData *)levelData {
+    NSLog (@"%@", [self mapToString:levelData map:levelData.letterMap]);
+}
+
+- (NSString *)mapToString:(LevelData *)levelData map:(NSArray *)map {
+    NSString *string = @"";
+    for (int i = 0; i < levelData.numRow; i++) {
+        for (int j = 0; j < levelData.numColumn; j++) {
+            NSString *letter = [map objectAtIndex:[self indexForLeveData:levelData row:i column:j]];
+            string = [NSString stringWithFormat:@"%@ %@",string,letter];
+        }
+        string = [string stringByAppendingString:@"\n"];
+    }
+    return string;
 }
 
 @end

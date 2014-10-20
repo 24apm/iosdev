@@ -34,13 +34,16 @@
         NSString *key = [wordSortedByLength objectAtIndex:i];
         
         NSLog(@"-- %@ --", key);
-        [[VocabularyManager instance] printMap:[self.answerSheets objectForKey:key]];
+        NSLog (@"%@", [[VocabularyManager instance] mapToString:self map:[self.answerSheets objectForKey:key]]);
+
         NSLog(@"\n\n");
     }
 }
 
 - (NSString *)formatFinalAnswer {
-    return [[VocabularyManager instance] mapToString:self.finalAnswerSheet];
+    return [[VocabularyManager instance] mapToString:self map:self.finalAnswerSheet];
 }
+
+
 
 @end

@@ -84,7 +84,7 @@
         [self drawPath:context color:outerStrokeColor.CGColor lineWidth:self.boardView.slotSize.width * 0.7f];
 
         //Inner
-        [self drawPath:context color:innerStrokeColor.CGColor lineWidth:self.boardView.slotSize.width * 0.5f];
+//        [self drawPath:context color:innerStrokeColor.CGColor lineWidth:self.boardView.slotSize.width * 0.5f];
         
         if (self.boardView.hasCorrectMatch) {
             [self cacheImage];
@@ -123,8 +123,6 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.slots = [NSMutableArray array];
-        float blockWidth = self.width / NUM_COL;
-        self.slotSize = CGSizeMake(blockWidth, blockWidth);
         self.slotSelection = [NSMutableArray array];
         self.backgroundColor = [UIColor clearColor];
         self.firstLocation = CGPointMake(0.f, 0.f);
@@ -136,8 +134,6 @@
         self.boardDrawView.frame = CGRectMake(0.f, 0.f, self.width, self.height);
         [self addSubview:self.boardDrawView];
         
-        [self generateSlots];
-        [self refreshSlots];
     }
     return self;
 }
@@ -153,6 +149,11 @@
     self.levelData = levelData;
     [self.boardDrawView reset];
     [self.slotSelection removeAllObjects];
+    
+    float blockWidth = self.width / self.levelData.numColumn;
+    self.slotSize = CGSizeMake(blockWidth, blockWidth);
+
+    [self generateSlots];
     [self refreshSlots];
     [self refresh];
 }
@@ -170,8 +171,15 @@
 }
 
 - (void)generateSlots {
-    for (int r = 0; r < NUM_ROW; r++) {
-        for (int c = 0; c < NUM_COL; c++) {
+    // remove old slots
+    for (SlotView *slotView in self.slots) {
+        [slotView removeFromSuperview];
+    }
+    [self.slots removeAllObjects];
+    
+    // renew slots
+    for (int r = 0; r < self.levelData.numRow; r++) {
+        for (int c = 0; c < self.levelData.numColumn; c++) {
             SlotView *slotView = [[SlotView alloc] init];
             slotView.frame = CGRectIntegral(CGRectMake(c * self.slotSize.width,
                                                        r * self.slotSize.height,
@@ -191,10 +199,10 @@
 }
 
 - (SlotView *)slotAtRow:(NSInteger)r column:(NSInteger)c {
-    if (r >= NUM_ROW || c >= NUM_COL || r < 0 || c < 0) {
+    if (r >= self.levelData.numRow || c >= self.levelData.numColumn || r < 0 || c < 0) {
         return nil;
     }
-    NSUInteger index = r * NUM_COL + c;
+    NSUInteger index = r * self.levelData.numColumn + c;
     if (index < self.slots.count) {
         return [self.slots objectAtIndex:index];
     } else {
@@ -204,8 +212,8 @@
 
 - (CGPoint)gridPointForSlot:(SlotView *)slotView {
     NSUInteger index = [self.slots indexOfObject:slotView];
-    NSUInteger r = index / NUM_COL;
-    NSUInteger c = index % NUM_COL;
+    NSUInteger r = index / self.levelData.numColumn;
+    NSUInteger c = index % self.levelData.numColumn;
     return CGPointMake(r, c);
 }
 

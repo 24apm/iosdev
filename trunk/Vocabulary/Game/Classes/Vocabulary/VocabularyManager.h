@@ -26,10 +26,11 @@
 
 - (NSString *)randomLetter;
 
-- (LevelData *)generateLevel;
-- (void)printMap:(NSArray *)map;
-- (NSString *)mapToString:(NSArray *)map;
+- (void)printMap:(LevelData *)levelData;
+- (void)printAnswer:(LevelData *)levelData;
+- (NSString *)mapToString:(LevelData *)levelData map:(NSArray *)map;
 
+- (LevelData *)generateLevel:(NSInteger)numOfWords row:(NSInteger)row col:(NSInteger)col;
 - (VocabularyObject *)vocabObjectForWord:(NSString *)word;
 
 - (BOOL)checkSolution:(LevelData *)levelData word:(NSString *)word;

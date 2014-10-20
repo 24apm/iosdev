@@ -51,11 +51,14 @@
 }
 
 - (void)generateNewLevel {
-    self.levelData = [[VocabularyManager instance] generateLevel];
-    [self refreshWordList];
+    NSInteger size = [Utils randBetweenMinInt:6 max:12];
+    self.levelData = [[VocabularyManager instance] generateLevel:[Utils randBetweenMinInt:3 max:9]
+                                                             row:size
+                                                             col:size];
     [self.boardView setupWithLevel:self.levelData];
-    
-    [self.levelData printAnswers];
+    [self refreshWordList];
+    //debug
+//    [self.levelData printAnswers];
 }
 
 - (void)refreshWordList {
