@@ -43,7 +43,7 @@
             break;
         case 3:
             name = @"item3";
-            icon = @"cashmoney";
+            icon = @"casemoney";
             descriptionLabel = @"Item #3";
             break;
         case 4:

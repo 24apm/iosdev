@@ -23,14 +23,9 @@
 - (BOOL)doAction:(SlotView *)slotView {
     [super doAction:slotView];
     
-    CAEmitterHelperLayer *cellLayer = [CAEmitterHelperLayer emitter:@"particleEffect.json" onView:[Utils rootViewController].view];
-    cellLayer.cellImage = slotView.blockView.imageView.image;
-    [cellLayer refreshEmitter];
-    cellLayer.emitterPosition = [slotView.superview convertPoint:slotView.center toView:[Utils rootViewController].view];
-    
     [[UserData instance] decrementStamina:self.hp];
-
-    [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFICATION_REFRESH_STAMINA object:self];
+    [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFICATION_ANIMATE_FOR_BLOCK_QUEUE object:slotView.blockView.imageView.image];
+    [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFICATION_REFRESH_STAMINA object:nil];
     return YES;
 }
 

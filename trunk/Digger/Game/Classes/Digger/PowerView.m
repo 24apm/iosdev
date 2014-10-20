@@ -7,6 +7,13 @@
 //
 
 #import "PowerView.h"
+#import "CAEmitterHelperLayer.h"
+#import "UserData.h"
+#import "GameConstants.h"
+#import "CAEmitterHelperLayer.h"
+#import "BoardManager.h"
+#import "Utils.h"
+
 
 @implementation PowerView
 
@@ -16,6 +23,18 @@
     if (self) {
     }
     return self;
+}
+
+- (BOOL)doAction:(SlotView *)slotView {
+    [super doAction:slotView];
+    
+    NSInteger staminaBarIncrease = 2.f * self.hp;
+    [[UserData instance] incrementStamina:staminaBarIncrease];
+    
+    [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFICATION_ANIMATE_FOR_BLOCK_QUEUE object:slotView.blockView.imageView.image];
+    
+    [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFICATION_ANIMATE_POWER object:self];
+    return YES;
 }
 
 - (void)setupWithTier:(NSUInteger)tier {

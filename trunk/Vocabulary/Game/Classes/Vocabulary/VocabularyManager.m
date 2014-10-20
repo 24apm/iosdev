@@ -13,6 +13,7 @@
 #define TEXT_FILE @"vocabulary.txt"
 #define EMPTY_SPACE @"_"
 #define MAX_STRING_LENGTH 8
+#define NUM_OF_WORDS 9
 
 @interface VocabularyManager()
 
@@ -154,7 +155,7 @@
     NSMutableArray *vocabularyList = [NSMutableArray array];
     
     // setup words
-    while (vocabularyList.count < 9) {
+    while (vocabularyList.count < NUM_OF_WORDS) {
         NSArray *allWords = [self.dictionaryByVocab allKeys];
         NSString *randomWord = [allWords randomObject];
         VocabularyObject *vocabData = [self.dictionaryByVocab objectForKey:randomWord];
@@ -339,6 +340,16 @@
         }
     }
     return NO;
+}
+
+- (BOOL)hasCompletedLevel:(LevelData *)levelData {
+    // compare found words against all words
+    for (VocabularyObject *vocabData in levelData.vocabularyList) {
+        if (![levelData.wordsFoundList containsObject:vocabData.word]) {
+            return NO;
+        }
+    }
+    return YES;
 }
 
 @end

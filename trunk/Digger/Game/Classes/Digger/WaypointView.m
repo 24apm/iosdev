@@ -7,6 +7,7 @@
 //
 
 #import "WaypointView.h"
+#import "UserData.h"
 
 @implementation WaypointView
 
@@ -18,6 +19,15 @@
     return self;
 }
 
+- (BOOL)doAction:(SlotView *)slotView {
+    [super doAction:slotView];
+    
+    [[UserData instance] unlockWaypointRank:self.tier];
+    NSInteger staminaCost = 1;
+    [[UserData instance]decrementStamina:staminaCost];
+    [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFICATION_REFRESH_STAMINA object:nil];
+    return YES;
+}
 
 - (void)setupWithTier:(NSUInteger)tier {
     [super setupWithTier:tier];

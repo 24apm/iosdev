@@ -13,18 +13,18 @@
 - (void)animateLabelSelection {
     [self.labelView.layer removeAllAnimations];
     
-    CGFloat doubleDigits[10] = {0.f, 0.3f, 0.0, 0.2f, 0.f,
-                                0.1f, 0.f, 0.05f, 0, 0};
+    CGFloat doubleDigits[7] = {0.f, 0.2f, 0.0, 0.1f, 0.f,
+                                0.05f, 0.f};
     CAKeyframeAnimation *keyFrameAnimation = [CAKeyframeAnimation animationWithKeyPath:@"transform.translation.y"];
     NSMutableArray *values = [NSMutableArray array];
     
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < 7; i++) {
         CGFloat height = -doubleDigits[i] * self.height;
         [values addObject:@(height)];
     }
     
     keyFrameAnimation.values = values;
-    keyFrameAnimation.duration = 1.f;
+    keyFrameAnimation.duration = 0.8f;
     [self.labelView.layer addAnimation:keyFrameAnimation forKey:@"bounce"];
 }
 

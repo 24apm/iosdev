@@ -15,5 +15,6 @@
 
 - (void)refreshEmitter;
 + (CAEmitterHelperLayer *)emitter:(NSString *)json onView:(UIView *)view;
+- (CGFloat)totalDuration;
 
 @end

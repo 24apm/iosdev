@@ -95,6 +95,12 @@
     [[UserData instance] updateDictionaryWith:matchedWord];
     
     [self refreshWordList];
+    
+    // end game
+    if ([[VocabularyManager instance] hasCompletedLevel:self.levelData]) {
+        [self performSelector:@selector(generateNewLevel) withObject:nil afterDelay:3.0f];
+        NSLog(@"YOU WON!!!");
+    }
 }
 
 @end

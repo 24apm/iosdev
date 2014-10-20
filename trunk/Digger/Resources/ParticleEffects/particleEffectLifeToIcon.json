@@ -1,0 +1,39 @@
+{
+    "scale" : 1,
+    "velocity" : 1,
+    "birthRate" : 1,
+    "emitterHeight" : 200,
+    "emitterShape" : "backToFront",
+    "emitterWidth" : 20,
+    "lifetime" : 1,
+    "emitterCells" : [
+                      {
+                      "colorRed" : 1,
+                      "scaleRange" : 0,
+                      "scale" : 0.1940063,
+                      "velocity" : 0,
+                      "velocityRange" : 27.60252,
+                      "emissionRange" : 2.149464,
+                      "colorBlue" : 1,
+                      "blueRange" : 0,
+                      "scaleSpeed" : -0.06309128,
+                      "emissionLongitude" : 4.546562,
+                      "xAcceleration" : -3.154602,
+                      "greenRange" : 0,
+                      "alphaSpeed" : -0.2823129,
+                      "spin" : 0.8990536,
+                      "lifetime" : 0.170347,
+                      "lifetimeRange" : 0.9936908,
+                      "colorGreen" : 1,
+                      "yAcceleration" : 135.6467,
+                      "renderMode" : "backToFront",
+                      "birthRate" : 30,
+                      "textureName" : "bagmoney.png",
+                      "colorAlpha" : 1,
+                      "redRange" : 0
+                      }
+                      ],
+    "lifeSpan" : 1.1025236621499062,
+    "duration" : 1.1025236621499062,
+    "renderMode" : "backToFront"
+}

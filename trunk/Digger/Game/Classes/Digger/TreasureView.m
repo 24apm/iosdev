@@ -7,6 +7,11 @@
 //
 
 #import "TreasureView.h"
+#import "UserData.h"
+#import "GameConstants.h"
+#import "CAEmitterHelperLayer.h"
+#import "BoardManager.h"
+#import "Utils.h"
 
 @implementation TreasureView
 
@@ -18,6 +23,27 @@
     return self;
 }
 
+- (BOOL)doAction:(SlotView *)slotView {
+    [super doAction:slotView];
+    
+    [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFICATION_ANIMATE_FOR_BLOCK_QUEUE object:slotView.blockView.imageView.image];
+    
+    [self pickingUpTreasure:slotView];
+    NSInteger staminaCost = 1;
+    [[UserData instance]decrementStamina:staminaCost];
+    [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFICATION_REFRESH_STAMINA object:[NSNumber numberWithInteger:staminaCost]];
+    [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFICATION_ANIMATE_TREASURE object:self];
+    return YES;
+}
+
+- (void)pickingUpTreasure:(SlotView *)slot {
+    NSInteger itemTier = slot.blockView.tier;
+    if ([[UserData instance] isKnapsackFull]) {
+        [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFICATION_KNAPSACK_FULL object:[NSNumber numberWithInteger:itemTier]];
+    } else {
+        [[UserData instance] addKnapsackWith:itemTier];
+    }
+}
 
 - (void)setupWithTier:(NSUInteger)tier {
     self.tier = tier;

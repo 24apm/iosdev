@@ -106,14 +106,21 @@
 }
 
 - (void)startEmitting {
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(stopEmitter) object:nil];
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(cleanUpEmitter) object:nil];
+
     if (self.lifeSpan > 0) {
+        [self performSelector:@selector(stopEmitter) withObject:nil afterDelay:self.lifeSpan];
         [self performSelector:@selector(cleanUpEmitter) withObject:nil afterDelay:[self totalDuration]];
     } else {
         [self cleanUpEmitter];
     }
     
     [self setIsEmitting:YES];
+}
+
+- (void)stopEmitter {
+    [self setIsEmitting:NO];
 }
 
 - (void)cleanUpEmitter {

@@ -16,6 +16,7 @@
 #import "ProgressBarComponent.h"
 #import "ObstacleView.h"
 #import "PowerView.h"
+#import "TreasureView.h"
 #import "UserData.h"
 #import "UpgradeShopDialogView.h"
 #import "Utils.h"
@@ -49,6 +50,8 @@ typedef enum {
 @property (nonatomic, retain) ShopTableView *shopTableView;
 @property (nonatomic) NSUInteger tempTreasure;
 @property (nonatomic) BOOL isOverWeight;
+@property (nonatomic, strong) UIImage *onQueueImage;
+@property (nonatomic, strong) UIView *particleView;
 
 @end
 
@@ -58,6 +61,9 @@ typedef enum {
     self = [super initWithFrame:frame];
     if (self) {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(slotPressed:) name:SLOTS_PRESSED_NOTIFICATION object:nil];
+        self.particleView = [[UIView alloc]initWithFrame:CGRectMake(self.x, self.y, self.width, self.height)];
+        [self addSubview:self.particleView];
+        self.particleView.userInteractionEnabled = NO;
     }
     return self;
 }
@@ -79,6 +85,10 @@ typedef enum {
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(closedInventory) name:    SHOP_TABLE_VIEW_NOTIFICATION_CLOSE object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(closingInventory) name:    FINISH_ANIMATING_ROW_REFRESH_NOTIFICATION object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(refreshStamina) name:    NOTIFICATION_REFRESH_STAMINA object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(showFullNotification:) name:    NOTIFICATION_KNAPSACK_FULL object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(animatePowerToIcon:) name:    NOTIFICATION_ANIMATE_POWER object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(animateTreasureToIcon:) name:    NOTIFICATION_ANIMATE_TREASURE object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(saveQueueImage:) name:    NOTIFICATION_ANIMATE_FOR_BLOCK_QUEUE object:nil];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
@@ -136,63 +146,12 @@ typedef enum {
     if ([[UserData instance] isKnapsackOverWeight]) {
         self.isOverWeight = YES;
     }
-    [[UserData instance] removeKnapsackIndex:[item.name integerValue]];
+    [[UserData instance] removeKnapsackIndex:[item.itemId integerValue]];
     [self.shopTableView refreshInventory];
 }
 
 - (void)slotPressed:(NSNotification *)notification {
     SlotView *slotView = notification.object;
-    //    CGPoint point = [[BoardManager instance] pointForSlot:self.boardView.playerView.slotView];
-    //    SlotView *slotView = [[BoardManager instance] slotAtRow:point.x column:point.y];
-    
-    //    if (blockView.type == BlockTypeObstacle) {
-    //        Direction currentDirection = [self drillDirectionTo:blockView];
-    //        CGFloat duration = 0.3f;
-    //        int steps = 20;
-    //        NSMutableArray *values = [NSMutableArray arrayWithCapacity:steps];
-    //        double value = 0;
-    //        float e = 2.71;
-    //        CGFloat distance;
-    //        if (currentDirection == DirectionDown) {
-    //            distance = self.boardView.playerView.height / 2;
-    //            for (int t = 0; t < steps; t++) {
-    //                value = distance * pow(e, -0.055*t) * sin(-0.08*t) + distance / 2;
-    //                [values addObject:[NSNumber numberWithFloat:value]];
-    //            }
-    //
-    //            CAKeyframeAnimation *bounceAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position.y"];
-    //            bounceAnimation.values = values;
-    //            bounceAnimation.duration = duration;
-    //            [self.boardView.playerView.layer addAnimation:bounceAnimation forKey:@"bounceAnimation"];
-    //        } else if (currentDirection == DirectionLeft) {
-    //            distance = self.boardView.playerView.width / 2;
-    //            for (int t = 0; t < steps; t++) {
-    //                value = distance * pow(e, -0.055*t) * (1 - cos(-0.08*t)) + distance / 2;
-    //                [values addObject:[NSNumber numberWithFloat:value]];
-    //            }
-    //
-    //            CAKeyframeAnimation *bounceAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position.x"];
-    //            bounceAnimation.values = values;
-    //            bounceAnimation.duration = duration;
-    //            [self.boardView.playerView.layer addAnimation:bounceAnimation forKey:@"bounceAnimation"];
-    //        } else if (currentDirection == DirectionRight) {
-    //            distance = self.boardView.playerView.width / 2;
-    //
-    //            for (int t = 0; t < steps; t++) {
-    //                value = distance * pow(e, -0.055*t) * cos(-0.08*t) + distance / 2;
-    //                [values addObject:[NSNumber numberWithFloat:value]];
-    //            }
-    //
-    //            CAKeyframeAnimation *bounceAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position.x"];
-    //            bounceAnimation.values = values;
-    //            bounceAnimation.duration = duration;
-    //            [self.boardView.playerView.layer addAnimation:bounceAnimation forKey:@"bounceAnimation"];
-    //        }
-    //        [self performSelector:@selector(handlePressed:) withObject:blockView afterDelay:duration + 0.2f];
-    //
-    //    } else {
-    //        [self handlePressed:blockView];
-    //    }
     [self handlePressed:slotView];
     
 }
@@ -204,6 +163,7 @@ typedef enum {
 
 - (void)handlePressed:(SlotView *)slotView {
     // [self bombPressed:slotView];
+    self.onQueueImage = nil;
     if ([self.boardView isNeighboringSlot:slotView]) {
         if ([self actionByBlockType:slotView]) {
             Direction currentDirection = [self drillDirectionTo:slotView];
@@ -224,6 +184,11 @@ typedef enum {
                 self.playerMargin++;
             }
         }
+        
+        if (self.onQueueImage != nil) {
+            [self animateParticleOnBlockPressed:self.onQueueImage];
+        }
+        
         if ([UserData instance].stamina <= 0) {
             [[UserData instance] decrementRetry];
             [[UserData instance]resetDepth];
@@ -278,58 +243,10 @@ typedef enum {
 }
 
 - (BOOL)actionByBlockType:(SlotView *)slotView {
-    
     if (slotView.blockView) {
-        switch (slotView.blockView.type) {
-            case BlockTypePower: {
-                PowerView *powerView = (PowerView *)slotView.blockView;
-                [self staminaBarIncrease:2.f * powerView.hp];
-                [self flyIconFrom:slotView.blockView.imageView toView:self.staminaImageView];
-                [CAEmitterHelperLayer emitter:@"particleEffect.json" onView:self.boardView.playerView].cellImage = slotView.blockView.imageView.image;
-                [self.boardView.playerView.slotView.superview bringSubviewToFront:self.boardView.playerView.slotView];
-                
-                return YES;
-                break;
-            }
-            case BlockTypeTreasure: {
-                //                [[UserData instance] incrementCoin:1];
-                [self flyIconFrom:slotView.blockView.imageView toView:self.coinImageView];
-                [CAEmitterHelperLayer emitter:@"particleEffect.json" onView:self.boardView.playerView].cellImage = slotView.blockView.imageView.image;
-                [self.boardView.playerView.slotView.superview bringSubviewToFront:self.boardView.playerView.slotView];
-                [self pickingUpTreasure:slotView];
-                [self staminaBarDecrease:1.f];
-                return YES;
-                
-                break;
-            }
-            case BlockTypeWaypoint: {
-                [[UserData instance] unlockWaypointRank:slotView.blockView.tier];
-                [self staminaBarDecrease:1.f];
-                return YES;
-                
-                break;
-            }
-            default: {
-                return YES;
-                break;
-            }
-        }
+        return [slotView.blockView doAction:slotView];
     } else {
         return YES;
-    }
-    
-    
-    
-    return [slotView.blockView doAction:slotView];
-
-}
-
-- (void)pickingUpTreasure:(SlotView *)slot {
-    if ([[UserData instance] isKnapsackFull]) {
-        self.tempTreasure = slot.blockView.tier;
-        [[[ChoiceDialogView alloc]init] show];
-    } else {
-        [[UserData instance] addKnapsackWith:slot.blockView.tier];
     }
 }
 
@@ -405,8 +322,63 @@ typedef enum {
     [[[UpgradeShopDialogView alloc] init] show];
 }
 
-- (void)positionBlocks {
-    
+- (void)showFullNotification:(NSNotification *)notification {
+    self.tempTreasure = [notification.object integerValue];
+    [[[ChoiceDialogView alloc]init] show];
 }
 
+- (void)animatePowerToIcon:(NSNotification *)notification {
+    PowerView *targetView = notification.object;
+    [self animateImageView:targetView.imageView toView:self.staminaImageView];
+}
+
+- (void)animateTreasureToIcon:(NSNotification *)notification {
+    TreasureView *targetView = notification.object;
+        //[self animateImageView:targetView.imageView toView:self.coinImageView];
+        [self flyIconFrom:targetView.imageView toView:self.coinImageView];
+}
+
+- (void)animateImageView:(UIImageView *)image toView:(UIImageView *)view {
+    [self animateBlocks:image toView:view];
+    [self animateBlocks:image toView:view];
+    [self animateBlocks:image toView:view];
+}
+
+- (void)animateBlocks:(UIImageView *)image toView:(UIImageView *)view {
+    CAEmitterHelperLayer *cellLayer = [CAEmitterHelperLayer emitter:@"particleEffectLifeToIcon.json" onView:self.particleView];
+    cellLayer.cellImage = image.image;
+    [cellLayer refreshEmitter];
+    
+    CGPoint start = [image.superview convertPoint:image.center toView:self.particleView];
+    
+    CGPoint toPoint = [view.superview convertPoint:view.center toView:self.particleView];
+    
+    UIBezierPath *path = [UIBezierPath bezierPath];
+    
+    [path moveToPoint:start];
+    
+    CGFloat rand = arc4random() % (int)self.height;
+    CGPoint c = CGPointMake(rand, rand);
+    [path addQuadCurveToPoint:toPoint controlPoint:c];
+    
+    CAKeyframeAnimation *position = [CAKeyframeAnimation animationWithKeyPath:@"emitterPosition"];
+    position.removedOnCompletion = NO;
+    position.fillMode = kCAFillModeBoth;
+    position.path = path.CGPath;
+    position.duration = cellLayer.lifeSpan;
+    [cellLayer addAnimation:position forKey:@"animateIn"];
+    [self performSelector:@selector(refreshStamina) withObject:nil afterDelay:position.duration];
+}
+
+- (void)animateParticleOnBlockPressed:(UIImage *)image {
+    CAEmitterHelperLayer *cellLayer = [CAEmitterHelperLayer emitter:@"particleEffect.json" onView:self.particleView];
+    cellLayer.cellImage = image;
+    [cellLayer refreshEmitter];
+    cellLayer.emitterPosition = [self.boardView.playerView.superview convertPoint:self.boardView.playerView.center toView:self.particleView];
+}
+
+- (void)saveQueueImage:(NSNotification *)notification {
+    UIImage *image = notification.object;
+    self.onQueueImage = image;
+}
 @end

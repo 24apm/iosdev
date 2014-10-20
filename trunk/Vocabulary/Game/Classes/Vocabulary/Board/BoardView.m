@@ -39,7 +39,13 @@
     UIGraphicsEndImageContext();
 }
 
-- (void)drawPath:(UIBezierPath *)bezierPath {
+- (void)drawPath:(CGContextRef)context color:(CGColorRef)color lineWidth:(CGFloat)lineWidth {
+    UIBezierPath *bezierPath = [UIBezierPath bezierPath];
+    CGContextSetStrokeColorWithColor(context, color);
+    bezierPath.lineWidth =  lineWidth;
+    bezierPath.lineJoinStyle = kCGLineJoinRound;
+    bezierPath.lineCapStyle = kCGLineCapRound;
+    
     SlotView *slotView = [self.boardView.slotSelection objectAtIndex:0];
     
     [bezierPath moveToPoint:slotView.center];
@@ -75,22 +81,10 @@
         }
         
         //Outer
-        UIBezierPath *bezierPath = [UIBezierPath bezierPath];
-        CGContextSetStrokeColorWithColor(context, [outerStrokeColor CGColor]);
-        bezierPath.lineWidth = self.boardView.slotSize.width * 0.6f;
-        bezierPath.lineJoinStyle = kCGLineJoinRound;
-        bezierPath.lineCapStyle = kCGLineCapRound;
-        
-        [self drawPath:bezierPath];
-        
+        [self drawPath:context color:outerStrokeColor.CGColor lineWidth:self.boardView.slotSize.width * 0.7f];
+
         //Inner
-        UIBezierPath *bezierPathInner = [UIBezierPath bezierPath];
-        CGContextSetStrokeColorWithColor(context, [innerStrokeColor CGColor]);
-        bezierPathInner.lineWidth =  self.boardView.slotSize.width * 0.5f;
-        bezierPathInner.lineJoinStyle = kCGLineJoinRound;
-        bezierPathInner.lineCapStyle = kCGLineCapRound;
-        
-        [self drawPath:bezierPathInner];
+        [self drawPath:context color:innerStrokeColor.CGColor lineWidth:self.boardView.slotSize.width * 0.5f];
         
         if (self.boardView.hasCorrectMatch) {
             [self cacheImage];
@@ -236,7 +230,7 @@
     }
     
     SlotView *slotView = [self slotAtScreenPoint:location];
-
+    
     // return if nil
     if (!slotView) return;
     
@@ -249,7 +243,7 @@
     
     // return if before first element is added
     if (self.slotSelection.count <= 0) return;
-
+    
     // return if the line is the same
     if (slotView == [self.slotSelection lastObject]) return;
     
@@ -271,8 +265,6 @@
     
     [self slotAtRow:maxDistance column:maxDistance];
     
-    NSLog(@"gap Y %f", gapY);
-    NSLog(@"gap X %f", gapX);
     CGPoint point = CGPointMake(0, 0);
     if (fabsf(gapX) > fabsf(gapY)) {
         if (gapX > 0) {
@@ -312,9 +304,8 @@
         }
     }
     
-    if (!(self.previousFirstSlotPoint.x != firstSlotPoint.x && self.previousFirstSlotPoint.y != firstSlotPoint.y
-        && self.previousMax != maxDistance
-        && self.previousPoint.x != point.x && self.previousPoint.y != point.y)) {
+    if (self.previousMax != maxDistance
+        || (self.previousPoint.x != point.x || self.previousPoint.y != point.y)) {
         [self fillLine:firstSlotPoint
        directionalUnit:point
               distance:maxDistance];
@@ -324,7 +315,7 @@
 }
 
 - (void)fillLine:(CGPoint)firstSlotPoint directionalUnit:(CGPoint)directionalUnit distance:(NSInteger)distance {
-    NSLog(@"maxd %ld", (long)distance);
+    
     // renew the line
     [self.slotSelection removeObjectsInRange:NSMakeRange(1, self.slotSelection.count-1)];
     

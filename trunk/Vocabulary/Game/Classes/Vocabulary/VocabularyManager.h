@@ -34,4 +34,6 @@
 
 - (BOOL)checkSolution:(LevelData *)levelData word:(NSString *)word;
 
+- (BOOL)hasCompletedLevel:(LevelData *)levelData;
+
 @end
