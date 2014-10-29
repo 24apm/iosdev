@@ -11,6 +11,7 @@
 #import "VocabularyManager.h"
 #import "CAEmitterHelperLayer.h"
 #import "NSString+StringUtils.h"
+#import "GameConstants.h"
 
 @interface BoardDrawView : UIView
 
@@ -216,6 +217,7 @@
         self.boardDrawView.frame = CGRectMake(0.f, 0.f, self.width, self.height);
         [self addSubview:self.boardDrawView];
         
+        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(animateAnswerIsOn) name:ANIMATE_CORRECT_WORD_NOTIFICATION object:nil];
     }
     return self;
 }
@@ -441,7 +443,6 @@
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-    [self resetPreviousLine];
     NSString *word = [self buildStringFromArray:self.slotSelection];
     self.firstLocation = CGPointZero;
     // check string
@@ -456,7 +457,9 @@
         [self.slotSelection removeAllObjects];
     } else {
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_WORD_MATCHED object:word];
+        [self animatingAnswer];
     }
+    [self resetPreviousLine];
     [self refresh];
 }
 
@@ -473,4 +476,32 @@
     return [[VocabularyManager instance] checkSolution:self.levelData word:word];
 }
 
+- (void)animatingAnswer {
+    SlotView *slotViewStart = [self slotAtRow:self.previousFirstSlotPoint.x
+                                     column:self.previousFirstSlotPoint.y];
+    
+    SlotView *slotViewEnd = [self slotAtRow:self.previousFirstSlotPoint.x + self.previousMax * self.previousPoint.x
+                                  column:self.previousFirstSlotPoint.y + self.previousMax * self.previousPoint.y];
+    
+    CAEmitterHelperLayer *cellLayer = [CAEmitterHelperLayer emitter:@"particleEffect.json" onView:self];
+    //cellLayer.cellImage = image.image;
+    [cellLayer refreshEmitter];
+    
+    CGPoint start = [slotViewStart.superview convertPoint:slotViewStart.center toView:self];
+    
+    CGPoint toPoint = [slotViewEnd.superview convertPoint:slotViewEnd.center toView:self];
+    
+    UIBezierPath *path = [UIBezierPath bezierPath];
+    
+    [path moveToPoint:start];
+    
+    [path addLineToPoint:toPoint];
+    
+    CAKeyframeAnimation *position = [CAKeyframeAnimation animationWithKeyPath:@"emitterPosition"];
+    position.removedOnCompletion = NO;
+    position.fillMode = kCAFillModeBoth;
+    position.path = path.CGPath;
+    position.duration = cellLayer.lifeSpan;
+    [cellLayer addAnimation:position forKey:@"animateIn"];
+}
 @end

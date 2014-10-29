@@ -51,6 +51,14 @@ NSString *const UserDataHouseDataChangedNotification = @"UserDataHouseDataChange
         self.retryCapacity = [[[NSUserDefaults standardUserDefaults] objectForKey:@"retryCapacity"] integerValue];
     }
     
+    // Current Level
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"currentLevel"] == nil) {
+        self.currentLevel = 1;
+        [self saveData:@(self.currentLevel) forKey:@"currentLevel"];
+    } else {
+        self.currentLevel = [[[NSUserDefaults standardUserDefaults] objectForKey:@"currentLevel"] integerValue];
+    }
+    
     // Stamina Capacity Level
     if ([[NSUserDefaults standardUserDefaults] objectForKey:@"retry"] == nil) {
         self.retry = self.retryCapacity;
@@ -116,6 +124,13 @@ NSString *const UserDataHouseDataChangedNotification = @"UserDataHouseDataChange
     self.coin += coin;
     
     [self saveData:@(self.coin) forKey:@"coin"];
+}
+
+- (void)incrementCurrentLevel {
+
+    self.currentLevel++;
+    
+    [self saveData:@(self.currentLevel) forKey:@"currentLevel"];
 }
 
 - (void)decrementCoin:(long long)coin {

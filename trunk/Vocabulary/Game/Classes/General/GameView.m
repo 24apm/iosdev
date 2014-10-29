@@ -14,6 +14,7 @@
 #import "VocabularyObject.h"
 #import "MessageDialogView.h"
 #import "UserData.h"
+#import "GameConstants.h"
 
 @interface GameView()
 

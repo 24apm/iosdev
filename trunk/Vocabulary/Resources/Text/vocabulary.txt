@@ -345,7 +345,7 @@ BIZARRE	strangely unconventional in style or appearance
 BLANCH	to grow or become white
 BLAND	mild, soft, gentle
 BLARE	to make a loud sound
-BLASÉ	uninterested because of frequent exposure or indulgence
+BLASE	uninterested because of frequent exposure or indulgence
 BLATANT	noisy and rough
 BLAZE	a bright flame or fire
 BLAZON	to describe a coat of arms
@@ -835,7 +835,7 @@ EGOIST	a conceited and self-centered person
 EGOTISM	a tendency to talk excessively about oneself
 EGOTIST	a person who talks excessively about himself
 EGRESS	to exit or leave, to go or come out
-ÉLAN	spirit, zeal, ardor
+ELAN	spirit, zeal, ardor
 ELAPSE	to pass or move by
 ELATED	very happy or proud, jubilant, in high spirits
 ELEGY	a lament a melancholy composition
@@ -890,7 +890,7 @@ ENTHUSE	to cause (someone) to feel enthusiasm or to be enthusiastic
 ENTICE	tempt or persuade
 ENTRAIL	the internal parts of the trunk of a body, the intestines
 ENTREAT	ask earnestly
-ENTRÉE	a dish served as the main course of a meal
+ENTREE	a dish served as the main course of a meal
 ENTWINE	to twist or twine around something (or one another)
 ENVENOM	to make poisonous
 ENVOY	a representative, a diplomatic agent
@@ -1330,7 +1330,6 @@ INFIRM	to contradict, to provide proof that something is not
 INFLUX	a flow inward or into something
 INFUSE	put pour fill
 INGENUE	an innocent, naïve, wholesome girl or young woman
-INGÉNUE	alternative spelling of ingénue
 INGEST	take in by swallowing
 INGRAFT	to insert, as of one plant into another, for propagation
 INGRATE	ungrateful
@@ -1937,7 +1936,6 @@ PROSE	the ordinary form of spoken or written language
 PROSODY	the study of speech
 PROTEAN	readily assuming different forms or characters
 PROTEGE	a person guided and protected by a more prominent person
-PROTÉGÉ	a person guided and protected by a more prominent person
 PROVERB	a basic truth which may be applied to common situations
 PROVISO	a conditional provision to an agreement
 PROVOKE	make angry vax
@@ -2177,7 +2175,7 @@ SCRUPLE	a moral standard that inhibits certain actions
 SCURVY	a disease caused by a diet lacking in vitamin c
 SCUTTLE	to sink a boat deliberately by making openings in the bottom
 SCYTHE	a long, curved blade used for cutting grass and grain
-SÉANCE	meeting where a mystic tries to communicate with the dead
+SEANCE	meeting where a mystic tries to communicate with the dead
 SEAR	to char the surface of something with a hot instrument
 SECANT	a straight line that intersects a curve at 2 or more points
 SECEDE	to withdraw formally from an alliance

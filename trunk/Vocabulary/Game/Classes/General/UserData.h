@@ -23,11 +23,14 @@ extern NSString *const UserDataHouseDataChangedNotification;
 - (void)decrementRetry;
 - (void)refillRetry;
 - (BOOL)hasRetry;
+- (void)incrementCurrentLevel;
 
 - (void)updateDictionaryWith:(NSString *)newVocabulary;
 
 @property (nonatomic) long long coin;
 @property (strong, nonatomic) NSMutableArray *pokedex;
+
+@property (nonatomic) int currentLevel;
 
 @property (nonatomic) NSInteger retry;
 @property (nonatomic) NSInteger retryCapacity;

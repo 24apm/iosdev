@@ -9,8 +9,10 @@
 #import "VocabularyManager.h"
 #import "NSArray+Util.h"
 #import "UserData.h"
+#import "Utils.h"
 
 #define TEXT_FILE @"vocabulary.txt"
+#define MIX_TEXT_FILE @"mixvocabulary.txt"
 #define EMPTY_SPACE @"_"
 #define MAX_STRING_LENGTH 8
 #define NUM_OF_WORDS 9
@@ -20,6 +22,9 @@
 
 @property (strong, nonatomic) NSMutableDictionary *dictionaryBySection;
 @property (strong, nonatomic) NSMutableDictionary *dictionaryByVocab;
+@property (strong, nonatomic) NSMutableArray *mixVocabArray;
+
+
 @property (strong, nonatomic) NSString *letters;
 
 @end
@@ -37,7 +42,7 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-//         self.letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        //         self.letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
         self.letters = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     }
     return self;
@@ -60,15 +65,16 @@
     return [NSDictionary dictionaryWithDictionary:userDictionary];
 }
 
-- (int)maxCount {
+- (NSUInteger)maxCount {
     return self.dictionaryByVocab.count;
 }
 
-- (int)currentCount {
+- (NSUInteger)currentCount {
     return [UserData instance].pokedex.count;
 }
 
 - (void)loadFile {
+    [self loadFileForMix];
     NSString *row;
     NSArray *lines;
     NSError *error;
@@ -101,11 +107,44 @@
         
         // Dictionary flat version
         [self.dictionaryByVocab setObject:vocabData forKey:vocabData.word];
-
+        
         // Dictionary section version
         [self populateSectionDictionary:self.dictionaryBySection vocabData:vocabData];
     }
-//    [self testMaxLength];
+    //    [self testMaxLength];
+}
+
+- (void)loadFileForMix {
+    NSString *row;
+    NSArray *lines;
+    NSError *error;
+    NSString* filePath = [[NSBundle mainBundle] pathForResource:MIX_TEXT_FILE ofType:nil];
+    NSString *content = [NSString stringWithContentsOfFile:filePath
+                                                  encoding:NSUTF8StringEncoding
+                                                     error:&error];
+    
+    lines = [content componentsSeparatedByString:@"\n"];
+    
+    NSEnumerator *nse = [lines objectEnumerator];
+    
+    self.mixVocabArray = [NSMutableArray array];
+    
+    while(row = [nse nextObject]) {
+        
+        NSString *rawWord = row;
+        
+        [self.mixVocabArray addObject:rawWord];
+    }
+}
+
+// remove all accents
+-(NSString *)removeAccents:(NSString *)word {
+    NSData *asciiEncoded = [word dataUsingEncoding:NSASCIIStringEncoding
+                              allowLossyConversion:YES];
+    
+    // take the data object and recreate a string using the lossy conversion
+    return [[NSString alloc] initWithData:asciiEncoded
+                                 encoding:NSASCIIStringEncoding];
 }
 
 - (VocabularyObject *)vocabObjectForWord:(NSString *)word {
@@ -125,7 +164,7 @@
 - (void)testMaxLength {
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
     for (VocabularyObject *vocabData in self.dictionaryByVocab) {
-        NSString *lengthLabel = [NSString stringWithFormat:@"%d", vocabData.word.length];
+        NSString *lengthLabel = [NSString stringWithFormat:@"%lu", (unsigned long)vocabData.word.length];
         if (![dictionary objectForKey:lengthLabel]) {
             [dictionary setObject:@(0) forKey:lengthLabel];
         }
@@ -148,6 +187,15 @@
 - (NSString *)randomLetter {
     NSString *randomLetter = [NSString stringWithFormat:@"%C", [self.letters characterAtIndex: arc4random_uniform([self.letters length]) % [self.letters length]]];
     return randomLetter;
+    
+}
+
+- (void)divideDictionary {
+    NSMutableArray *allWords = [NSMutableArray arrayWithArray:[self.dictionaryByVocab allKeys]];
+    [allWords shuffle];
+    
+    NSLog(@"COMPLETE");
+    
 }
 
 - (LevelData *)generateLevel:(NSInteger)numOfWords row:(NSInteger)row col:(NSInteger)col {
@@ -155,16 +203,18 @@
     levelData.numOfWords = numOfWords;
     levelData.numColumn = col;
     levelData.numRow = row;
-    
+    //[self divideDictionary];
     // try to generateMap
-
+    
+    
     BOOL generatedMap = NO;
     while(!generatedMap) {
         NSMutableArray *vocabularyList = [NSMutableArray array];
         
         // setup words
+        NSArray *allWords = [self mixVocabFromLevel:0 toLevel:[UserData instance].currentLevel];
+        
         while (vocabularyList.count < levelData.numOfWords) {
-            NSArray *allWords = [self.dictionaryByVocab allKeys];
             NSString *randomWord = [allWords randomObject];
             VocabularyObject *vocabData = [self.dictionaryByVocab objectForKey:randomWord];
             if (![vocabularyList containsObject:vocabData]) {
@@ -288,41 +338,47 @@
 
 - (CGPoint)randomDirectionPoint {
     CGPoint directionalPoint;
-    int direction = arc4random() % 8;
+    int direction = 7;
+    int orderRatio = arc4random() % 3;
+    if (orderRatio <= 1) {
+        direction = [Utils randBetweenMinInt:0 max:3];
+    } else {
+        direction = [Utils randBetweenMinInt:4 max:7];
+    }
+    
     switch (direction) {
-        // top left
-        case 0: {
-            directionalPoint.y = -1;
-            directionalPoint.x = -1;
-        }
-        break;
-        // top
-        case 1: {
-            directionalPoint.y = -1;
-            directionalPoint.x = 0;
-        }
-        break;
         // top right
-        case 2: {
+        case 0: {
             directionalPoint.y = -1;
             directionalPoint.x = 1;
         }
         break;
         // right
-        case 3: {
+        case 1: {
             directionalPoint.y = 0;
             directionalPoint.x = 1;
         }
         break;
         // bottom right
-        case 4: {
+        case 2: {
             directionalPoint.y = 1;
             directionalPoint.x = 1;
         }
         break;
         // bottom
-        case 5: {
+        case 3: {
             directionalPoint.y = 1;
+            directionalPoint.x = 0;
+        }
+        // top left
+        case 4: {
+            directionalPoint.y = -1;
+            directionalPoint.x = -1;
+        }
+        break;
+        // top
+        case 5: {
+            directionalPoint.y = -1;
             directionalPoint.x = 0;
         }
         break;
@@ -382,6 +438,98 @@
         string = [string stringByAppendingString:@"\n"];
     }
     return string;
+}
+
+- (NSMutableArray *)mixVocabFromLevel:(int)start toLevel:(int)end  {
+    int levelStart = [self mixVocabIndexWith:start];
+    int levelEnd = [self mixVocabIndexWith:end];
+    NSMutableArray *currentLevelVocab = [NSMutableArray array];
+    for (int i = levelStart; i < levelEnd; i++) {
+        [currentLevelVocab addObject:[self.mixVocabArray objectAtIndex:i]];
+    }
+    return currentLevelVocab;
+}
+
+- (int)mixVocabIndexWith:(int)level {
+    int index = 0;
+    switch (level) {
+        case 0:
+            index = 0;
+            break;
+        case 1:
+            index = 10;
+            break;
+        case 2:
+            index = 50;
+            break;
+        case 3:
+            index = 70;
+            break;
+        case 4:
+            index = 90;
+            break;
+        case 5:
+            index = 110;
+            break;
+        case 6:
+            index = 130;
+            break;
+        case 7:
+            index = 150;
+            break;
+        case 8:
+            index = 180;
+            break;
+        case 9:
+            index = 210;
+            break;
+        case 10:
+            index = 240;
+            break;
+        case 11:
+            index = 270;
+            break;
+        case 12:
+            index = 300;
+            break;
+        case 13:
+            index = 340;
+            break;
+        case 14:
+            index = 380;
+            break;
+        case 15:
+            index = 420;
+            break;
+        case 16:
+            index = 460;
+            break;
+        case 17:
+            index = 500;
+            break;
+        case 18:
+            index = 550;
+            break;
+        case 19:
+            index = 600;
+            break;
+        case 20:
+            index = 650;
+            break;
+        case 21:
+            index = 700;
+            break;
+        case 22:
+            index = 750;
+            break;
+        case 23:
+            index = 800;
+            break;
+            
+        default:
+            break;
+    }
+    return index;
 }
 
 @end

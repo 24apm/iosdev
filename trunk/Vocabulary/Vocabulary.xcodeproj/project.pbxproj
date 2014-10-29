@@ -247,6 +247,9 @@
 		D0EBCBE219B1C5BD00933AD2 /* bagmoney.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EBCBE119B1C5BD00933AD2 /* bagmoney.png */; };
 		D0EC757918EBE5E40015AD4C /* cloud2.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EC757718EBE5E40015AD4C /* cloud2.png */; };
 		D0EC757A18EBE5E40015AD4C /* cloud1.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EC757818EBE5E40015AD4C /* cloud1.png */; };
+		D0EC819119FF60DE00603FF2 /* word_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EC818E19FF60DD00603FF2 /* word_bg.png */; };
+		D0EC819219FF60DE00603FF2 /* board_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EC818F19FF60DD00603FF2 /* board_bg.png */; };
+		D0EC819319FF60DE00603FF2 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EC819019FF60DD00603FF2 /* background.png */; };
 		D0ED116618CF04BC00C55BA9 /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = D0ED116518CF04BC00C55BA9 /* heart.png */; };
 		D0ED147119DF9B22009902ED /* vocabulary.txt in Resources */ = {isa = PBXBuildFile; fileRef = D0ED147019DF9B22009902ED /* vocabulary.txt */; };
 		D0ED6FDF19501FAE009F2384 /* speedline.png in Resources */ = {isa = PBXBuildFile; fileRef = D0ED6FDE19501FAE009F2384 /* speedline.png */; };
@@ -289,7 +292,9 @@
 		D0F375E818FA990100D32A10 /* tier4-2.png in Resources */ = {isa = PBXBuildFile; fileRef = D0F375E518FA990100D32A10 /* tier4-2.png */; };
 		D0F375E918FA990100D32A10 /* tier2-2.png in Resources */ = {isa = PBXBuildFile; fileRef = D0F375E618FA990100D32A10 /* tier2-2.png */; };
 		D0F375EA18FA990100D32A10 /* tier5-2.png in Resources */ = {isa = PBXBuildFile; fileRef = D0F375E718FA990100D32A10 /* tier5-2.png */; };
+		D0F570E819FC4EFC008EB513 /* mixvocabulary.txt in Resources */ = {isa = PBXBuildFile; fileRef = D0F570E719FC4EFC008EB513 /* mixvocabulary.txt */; };
 		D0F5D15419C965D000ADB923 /* DiggerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0F5D15319C965D000ADB923 /* DiggerView.xib */; };
+		D0FB4D9C19F635F0006F62C7 /* particleEffect2.json in Resources */ = {isa = PBXBuildFile; fileRef = D0FB4D9B19F635F0006F62C7 /* particleEffect2.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -600,6 +605,9 @@
 		D0EBCBE119B1C5BD00933AD2 /* bagmoney.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bagmoney.png; sourceTree = "<group>"; };
 		D0EC757718EBE5E40015AD4C /* cloud2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cloud2.png; sourceTree = "<group>"; };
 		D0EC757818EBE5E40015AD4C /* cloud1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cloud1.png; sourceTree = "<group>"; };
+		D0EC818E19FF60DD00603FF2 /* word_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = word_bg.png; sourceTree = "<group>"; };
+		D0EC818F19FF60DD00603FF2 /* board_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = board_bg.png; sourceTree = "<group>"; };
+		D0EC819019FF60DD00603FF2 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		D0ED116518CF04BC00C55BA9 /* heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart.png; sourceTree = "<group>"; };
 		D0ED147019DF9B22009902ED /* vocabulary.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vocabulary.txt; sourceTree = "<group>"; };
 		D0ED6FDE19501FAE009F2384 /* speedline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = speedline.png; sourceTree = "<group>"; };
@@ -642,7 +650,9 @@
 		D0F375E518FA990100D32A10 /* tier4-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tier4-2.png"; sourceTree = "<group>"; };
 		D0F375E618FA990100D32A10 /* tier2-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tier2-2.png"; sourceTree = "<group>"; };
 		D0F375E718FA990100D32A10 /* tier5-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tier5-2.png"; sourceTree = "<group>"; };
+		D0F570E719FC4EFC008EB513 /* mixvocabulary.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mixvocabulary.txt; sourceTree = "<group>"; };
 		D0F5D15319C965D000ADB923 /* DiggerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiggerView.xib; sourceTree = "<group>"; };
+		D0FB4D9B19F635F0006F62C7 /* particleEffect2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = particleEffect2.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -903,6 +913,9 @@
 				D0EBCBE119B1C5BD00933AD2 /* bagmoney.png */,
 				D0EBCBDD19B1C50E00933AD2 /* moneybath.png */,
 				D0EBCBDE19B1C50E00933AD2 /* casemoney.png */,
+				D0EC818E19FF60DD00603FF2 /* word_bg.png */,
+				D0EC818F19FF60DD00603FF2 /* board_bg.png */,
+				D0EC819019FF60DD00603FF2 /* background.png */,
 				D0EBCBDB19B1BA2000933AD2 /* stackmoney.png */,
 				D0EBCBD919B1AF6C00933AD2 /* moneycoin.png */,
 				D0E8072B19A861E20036710B /* femaleface.png */,
@@ -1120,8 +1133,10 @@
 		D0ED146F19DF9AFB009902ED /* Text */ = {
 			isa = PBXGroup;
 			children = (
+				D0F570E719FC4EFC008EB513 /* mixvocabulary.txt */,
 				D0ED147019DF9B22009902ED /* vocabulary.txt */,
 				D0139FA519DFC89500875248 /* particleEffect.json */,
+				D0FB4D9B19F635F0006F62C7 /* particleEffect2.json */,
 			);
 			name = Text;
 			path = Resources/Text;
@@ -1262,6 +1277,7 @@
 				D0E6B6121956947700940695 /* character_flapdown.png in Resources */,
 				D0E541C019174EBB00DD7B1A /* button_powerup_bomb_shuffle.png in Resources */,
 				D0E555EF193B084A00F59DF6 /* background_tier6.png in Resources */,
+				D0EC819119FF60DE00603FF2 /* word_bg.png in Resources */,
 				D0E26B0319580CEB00314A7C /* character_learning4.png in Resources */,
 				D033855218EA9C22008D7861 /* defaultbackground.png in Resources */,
 				D0EBCBDC19B1BA2000933AD2 /* stackmoney.png in Resources */,
@@ -1270,6 +1286,7 @@
 				D0E6337018FFBA05007C1622 /* bui.caf in Resources */,
 				D0933A5E19AEFEB2008C90EB /* MessageDialogView~ipad.xib in Resources */,
 				D0E8072E19A861E20036710B /* maleface.png in Resources */,
+				D0F570E819FC4EFC008EB513 /* mixvocabulary.txt in Resources */,
 				D038463A191EB12E00265FE1 /* InfoPlist.strings in Resources */,
 				D0EAB6E8195FF75800C90F0E /* last.png in Resources */,
 				D0E8072D19A861E20036710B /* femaleface.png in Resources */,
@@ -1341,6 +1358,7 @@
 				D0E428FA193700B200210F85 /* icon_iap.png in Resources */,
 				D0EBC78619596F190023EF01 /* icon_wing in Resources */,
 				D0A79574195BEDE2009270DE /* mountain.png in Resources */,
+				D0EC819319FF60DE00603FF2 /* background.png in Resources */,
 				D0EF3FD418D7FB1B00C50442 /* red_header.png in Resources */,
 				D0EBC78319596F190023EF01 /* button_default.png in Resources */,
 				D0F03566192C8D5000F0B0BE /* icon_bucket.png in Resources */,
@@ -1382,6 +1400,7 @@
 				D0E541C119174EBB00DD7B1A /* button_powerup_bomb2.png in Resources */,
 				D0E541C41917527700DD7B1A /* coin.png in Resources */,
 				D0EBCBE219B1C5BD00933AD2 /* bagmoney.png in Resources */,
+				D0EC819219FF60DE00603FF2 /* board_bg.png in Resources */,
 				D0F375DC18FA958000D32A10 /* tier12-2.png in Resources */,
 				D0A9405E18D6BED20049E018 /* rip.png in Resources */,
 				D055B91D1918A7A4007730EB /* tier4coin.png in Resources */,
@@ -1398,6 +1417,7 @@
 				D0E33016191A140100FB5EB8 /* rating.png in Resources */,
 				D0EAB6EB195FF75800C90F0E /* blackholeentrance.png in Resources */,
 				D0E555F6193B084A00F59DF6 /* clicker_character6.png in Resources */,
+				D0FB4D9C19F635F0006F62C7 /* particleEffect2.json in Resources */,
 				D0E1123318C2ECF300808072 /* ticking.caf in Resources */,
 				D0E47C2918ED2F9F009CA771 /* homebutton.png in Resources */,
 				D0E48B7718DD9964000EF905 /* toilet_main.png in Resources */,

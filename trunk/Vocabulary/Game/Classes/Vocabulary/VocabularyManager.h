@@ -21,8 +21,8 @@
 
 - (void)loadFile;
 
-- (int)currentCount;
-- (int)maxCount;
+- (NSUInteger)currentCount;
+- (NSUInteger)maxCount;
 
 - (NSString *)randomLetter;
 

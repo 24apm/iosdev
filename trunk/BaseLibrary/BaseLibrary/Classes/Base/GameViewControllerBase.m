@@ -85,6 +85,7 @@
 }
 
 - (void)layoutAnimated:(BOOL)animated {
+    NSLog(@"ADlayoutAnimated");
     float bannerYOffset;
     if (self.adBannerView.bannerLoaded) {
         [self.promoBannerView hide];
