@@ -12,4 +12,6 @@
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
+- (void)setupWithData:(NSArray *)sections rows:(NSDictionary *)dictionary;
+
 @end

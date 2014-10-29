@@ -39,13 +39,19 @@
     return self;
 }
 
+- (void)setupWithData:(NSArray *)sections rows:(NSDictionary *)dictionary {
+    self.vocabularyDictionary = dictionary;
+    self.sortedSectionHeaders = sections;
+    [self refresh];
+}
+
 - (void)setup {
     VocabularyRowView *t = [[VocabularyRowView alloc] init];
     self.cellFrame = t.frame;
 
-    self.vocabularyDictionary = [[VocabularyManager instance] userVocabList];
-    
-    self.sortedSectionHeaders = [[self.vocabularyDictionary allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+//    self.vocabularyDictionary = [[VocabularyManager instance] userVocabList];
+//    
+//    self.sortedSectionHeaders = [[self.vocabularyDictionary allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
     
     [self refresh];
 }
@@ -83,8 +89,9 @@
     }
     VocabularyRowView *rowView = (VocabularyRowView *)cell.view;
     NSString *key = [self.sortedSectionHeaders objectAtIndex:indexPath.section];
-    VocabularyObject *vocabData = [[self.vocabularyDictionary objectForKey:key] objectAtIndex:indexPath.row];
-    [rowView setupWithData:vocabData];
+    NSString *vocab = [[self.vocabularyDictionary objectForKey:key] objectAtIndex:indexPath.row];
+    
+    [rowView setupWithData:[[VocabularyManager instance] vocabObjectForWord:vocab]];
     
     return cell;
 }

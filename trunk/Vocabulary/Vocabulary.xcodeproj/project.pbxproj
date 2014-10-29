@@ -265,6 +265,7 @@
 		D0EFC638191B373A008A54C8 /* gloweffect.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EFC637191B373A008A54C8 /* gloweffect.png */; };
 		D0EFC656191B9083008A54C8 /* tier2coin.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EFC655191B9083008A54C8 /* tier2coin.png */; };
 		D0F03566192C8D5000F0B0BE /* icon_bucket.png in Resources */ = {isa = PBXBuildFile; fileRef = D0F03565192C8D5000F0B0BE /* icon_bucket.png */; };
+		D0F074FF1A00A60A00760A25 /* mixvocabularyIndexes.txt in Resources */ = {isa = PBXBuildFile; fileRef = D0F074FE1A00A60A00760A25 /* mixvocabularyIndexes.txt */; };
 		D0F181B019A7190200F6F131 /* powericon.png in Resources */ = {isa = PBXBuildFile; fileRef = D0F181AF19A7190200F6F131 /* powericon.png */; };
 		D0F375B818FA3D9300D32A10 /* tier0.png in Resources */ = {isa = PBXBuildFile; fileRef = D0F375B718FA3D9300D32A10 /* tier0.png */; };
 		D0F375BF18FA457100D32A10 /* tier7.png in Resources */ = {isa = PBXBuildFile; fileRef = D0F375B918FA457100D32A10 /* tier7.png */; };
@@ -623,6 +624,7 @@
 		D0EFC637191B373A008A54C8 /* gloweffect.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gloweffect.png; sourceTree = "<group>"; };
 		D0EFC655191B9083008A54C8 /* tier2coin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tier2coin.png; sourceTree = "<group>"; };
 		D0F03565192C8D5000F0B0BE /* icon_bucket.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_bucket.png; sourceTree = "<group>"; };
+		D0F074FE1A00A60A00760A25 /* mixvocabularyIndexes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mixvocabularyIndexes.txt; sourceTree = "<group>"; };
 		D0F181AF19A7190200F6F131 /* powericon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = powericon.png; sourceTree = "<group>"; };
 		D0F375B718FA3D9300D32A10 /* tier0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tier0.png; sourceTree = "<group>"; };
 		D0F375B918FA457100D32A10 /* tier7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tier7.png; sourceTree = "<group>"; };
@@ -1134,6 +1136,7 @@
 			isa = PBXGroup;
 			children = (
 				D0F570E719FC4EFC008EB513 /* mixvocabulary.txt */,
+				D0F074FE1A00A60A00760A25 /* mixvocabularyIndexes.txt */,
 				D0ED147019DF9B22009902ED /* vocabulary.txt */,
 				D0139FA519DFC89500875248 /* particleEffect.json */,
 				D0FB4D9B19F635F0006F62C7 /* particleEffect2.json */,
@@ -1328,6 +1331,7 @@
 				D0BCA0491963D9FA006E01B4 /* icon_fall.png in Resources */,
 				D0E41C9C1928135500AF68FE /* clicker_character2.png in Resources */,
 				D0E555F4193B084A00F59DF6 /* background_tier1.png in Resources */,
+				D0F074FF1A00A60A00760A25 /* mixvocabularyIndexes.txt in Resources */,
 				D0F375E918FA990100D32A10 /* tier2-2.png in Resources */,
 				D0E42906193724EC00210F85 /* icon_iap_funding.png in Resources */,
 				D0EAB6F3195FF75800C90F0E /* neptune.png in Resources */,

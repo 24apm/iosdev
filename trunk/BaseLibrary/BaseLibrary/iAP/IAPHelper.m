@@ -94,19 +94,21 @@ NSString *const IAPHelperProductFailedNotification = @"IAPHelperProductFailedNot
               skProduct.price.floatValue);
     }
     
-    self._completionHandler(YES, skProducts);
-    self._completionHandler = nil;
-    
+    if (self._completionHandler) {
+        self._completionHandler(YES, skProducts);
+        self._completionHandler = nil;
+    }
 }
 
 - (void)request:(SKRequest *)request didFailWithError:(NSError *)error {
     
     NSLog(@"Failed to load list of products.");
+    
     self._productsRequest = nil;
-    
-    self._completionHandler(NO, nil);
-    self._completionHandler = nil;
-    
+    if (self._completionHandler) {
+        self._completionHandler(NO, nil);
+        self._completionHandler = nil;
+    }
 }
 
 #pragma mark SKPaymentTransactionOBserver

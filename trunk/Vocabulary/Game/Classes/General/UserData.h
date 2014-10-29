@@ -27,6 +27,8 @@ extern NSString *const UserDataHouseDataChangedNotification;
 
 - (void)updateDictionaryWith:(NSString *)newVocabulary;
 
+- (void)resetUserDefaults;
+
 @property (nonatomic) long long coin;
 @property (strong, nonatomic) NSMutableArray *pokedex;
 

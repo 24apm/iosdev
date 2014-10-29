@@ -23,6 +23,9 @@
 @property (strong, nonatomic) NSMutableDictionary *dictionaryBySection;
 @property (strong, nonatomic) NSMutableDictionary *dictionaryByVocab;
 @property (strong, nonatomic) NSMutableArray *mixVocabArray;
+@property (strong, nonatomic) NSDictionary *vocabSectionsToIndexes;
+@property (strong, nonatomic) NSDictionary *vocabIndexesToSections;
+@property (strong, nonatomic) NSDictionary *mixedVocabDictionaryBySection;
 
 
 @property (strong, nonatomic) NSString *letters;
@@ -37,6 +40,10 @@
         instance = [[VocabularyManager alloc] init];
     }
     return instance;
+}
+
+- (BOOL)hasUserUnlockedVocab:(NSString *)vocab {
+    return [[UserData instance].pokedex containsObject:vocab];
 }
 
 - (instancetype)init {
@@ -57,12 +64,31 @@
     NSArray *userSavedKeys = [UserData instance].pokedex;
     
     for (NSString *word in userSavedKeys) {
-        VocabularyObject *vocabData = [self.dictionaryByVocab objectForKey:word];
-        
-        [self populateSectionDictionary:userDictionary vocabData:vocabData];
-        
+        [self populateSectionDictionary:userDictionary word:word];
     }
     return [NSDictionary dictionaryWithDictionary:userDictionary];
+}
+
+- (NSDictionary *)userMixedVocabList {
+    NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
+    int level = [self unlockUptoLevel];
+    for (NSString *key in [self.mixedVocabDictionaryBySection allKeys]) {
+        if ([key intValue] < level) {
+            [dictionary setObject:[self.mixedVocabDictionaryBySection objectForKey:key] forKey:key];
+        }
+    }
+    return dictionary;
+}
+
+- (NSString *)definitionForVocab:(NSString *)vocab {
+    return [self.dictionaryByVocab objectForKey:vocab];
+}
+
+- (VocabularyObject *)vocabObjectForVocab:(NSString *)vocab {
+    VocabularyObject *vocabObject = [[VocabularyObject alloc] init];
+    vocabObject.word = vocab;
+    vocabObject.definition = [self definitionForVocab:vocab];
+    return vocabObject;
 }
 
 - (NSUInteger)maxCount {
@@ -74,7 +100,6 @@
 }
 
 - (void)loadFile {
-    [self loadFileForMix];
     NSString *row;
     NSArray *lines;
     NSError *error;
@@ -109,9 +134,24 @@
         [self.dictionaryByVocab setObject:vocabData forKey:vocabData.word];
         
         // Dictionary section version
-        [self populateSectionDictionary:self.dictionaryBySection vocabData:vocabData];
+        [self populateSectionDictionary:self.dictionaryBySection word:vocabData.word];
     }
     //    [self testMaxLength];
+    
+    [self loadFileForMix];
+    [self loadFileForIndexes];
+    [self setupMixedDictionary];
+}
+
+- (void)setupMixedDictionary {
+    NSMutableDictionary *mixedDictionaryBySection = [NSMutableDictionary dictionary];
+    for (int i = 0; i < self.vocabSectionsToIndexes.count - 1; i++) {
+        NSString *key = [NSString stringWithFormat:@"%d", i];
+        
+        NSArray *mixVocabFromLevel = [self mixVocabFromLevel:i toLevel:i+1];
+        [mixedDictionaryBySection setObject:mixVocabFromLevel forKey:key];
+    }
+    self.mixedVocabDictionaryBySection = mixedDictionaryBySection;
 }
 
 - (void)loadFileForMix {
@@ -137,6 +177,32 @@
     }
 }
 
+- (void)loadFileForIndexes {
+    NSString *row;
+    NSArray *lines;
+    NSError *error;
+    NSString* filePath = [[NSBundle mainBundle] pathForResource:@"mixvocabularyIndexes.txt" ofType:nil];
+    NSString *content = [NSString stringWithContentsOfFile:filePath
+                                                  encoding:NSUTF8StringEncoding
+                                                     error:&error];
+    
+    lines = [content componentsSeparatedByString:@"\n"];
+    
+    NSEnumerator *nse = [lines objectEnumerator];
+    
+    self.vocabSectionsToIndexes = [NSMutableDictionary dictionary];
+    self.vocabIndexesToSections = [NSMutableDictionary dictionary];
+    int sectionIndex = 0;
+    
+    while(row = [nse nextObject]) {
+        NSString *rawWord = row;
+        NSString *sectionString = [NSString stringWithFormat:@"%d",sectionIndex];
+        [self.vocabSectionsToIndexes setValue:rawWord forKey:sectionString];
+        [self.vocabIndexesToSections setValue:sectionString forKey:rawWord];
+        sectionIndex++;
+    }
+}
+
 // remove all accents
 -(NSString *)removeAccents:(NSString *)word {
     NSData *asciiEncoded = [word dataUsingEncoding:NSASCIIStringEncoding
@@ -151,14 +217,14 @@
     return [self.dictionaryByVocab objectForKey:word];
 }
 
-- (void)populateSectionDictionary:(NSMutableDictionary *)dictionary vocabData:(VocabularyObject *)vocabData {
-    NSString *key = [[vocabData.word substringToIndex:1] uppercaseString];
+- (void)populateSectionDictionary:(NSMutableDictionary *)dictionary word:(NSString *)word {
+    NSString *key = [[word substringToIndex:1] uppercaseString];
     NSMutableArray *vocabSection = [dictionary objectForKey:key];
     if (vocabSection == nil) {
         vocabSection = [NSMutableArray array];
         [dictionary setObject:vocabSection forKey:key];
     }
-    [vocabSection addObject:vocabData];
+    [vocabSection addObject:word];
 }
 
 - (void)testMaxLength {
@@ -198,6 +264,10 @@
     
 }
 
+- (int)unlockUptoLevel {
+    return [self unlockedUptoLevel:[UserData instance].pokedex.count];
+}
+
 - (LevelData *)generateLevel:(NSInteger)numOfWords row:(NSInteger)row col:(NSInteger)col {
     LevelData *levelData = [[LevelData alloc] init];
     levelData.numOfWords = numOfWords;
@@ -212,7 +282,7 @@
         NSMutableArray *vocabularyList = [NSMutableArray array];
         
         // setup words
-        NSArray *allWords = [self mixVocabFromLevel:0 toLevel:[UserData instance].currentLevel];
+        NSArray *allWords = [self mixVocabFromLevel:0 toLevel:[self unlockUptoLevel]];
         
         while (vocabularyList.count < levelData.numOfWords) {
             NSString *randomWord = [allWords randomObject];
@@ -450,86 +520,110 @@
     return currentLevelVocab;
 }
 
-- (int)mixVocabIndexWith:(int)level {
-    int index = 0;
-    switch (level) {
-        case 0:
-            index = 0;
+- (int)unlockedUptoLevel:(int)wordsFound {
+    NSArray *sortedMixedVocabsIndexes = [[self.vocabIndexesToSections allKeys] sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+        if ([obj1 intValue]==[obj2 intValue])
+            return NSOrderedSame;
+        else if ([obj1 intValue]<[obj2 intValue])
+            return NSOrderedAscending;
+        else
+            return NSOrderedDescending;
+    }];
+    
+    
+    int i = 0;
+    for (; i < sortedMixedVocabsIndexes.count; i++) {
+        int index = [[sortedMixedVocabsIndexes objectAtIndex:i] integerValue];
+        if (wordsFound < index) {
             break;
-        case 1:
-            index = 10;
-            break;
-        case 2:
-            index = 50;
-            break;
-        case 3:
-            index = 70;
-            break;
-        case 4:
-            index = 90;
-            break;
-        case 5:
-            index = 110;
-            break;
-        case 6:
-            index = 130;
-            break;
-        case 7:
-            index = 150;
-            break;
-        case 8:
-            index = 180;
-            break;
-        case 9:
-            index = 210;
-            break;
-        case 10:
-            index = 240;
-            break;
-        case 11:
-            index = 270;
-            break;
-        case 12:
-            index = 300;
-            break;
-        case 13:
-            index = 340;
-            break;
-        case 14:
-            index = 380;
-            break;
-        case 15:
-            index = 420;
-            break;
-        case 16:
-            index = 460;
-            break;
-        case 17:
-            index = 500;
-            break;
-        case 18:
-            index = 550;
-            break;
-        case 19:
-            index = 600;
-            break;
-        case 20:
-            index = 650;
-            break;
-        case 21:
-            index = 700;
-            break;
-        case 22:
-            index = 750;
-            break;
-        case 23:
-            index = 800;
-            break;
-            
-        default:
-            break;
+        }
     }
-    return index;
+    return i;
+}
+
+- (int)mixVocabIndexWith:(int)level {
+    NSString *key = [NSString stringWithFormat:@"%d",level];
+    return [[self.vocabSectionsToIndexes objectForKey:key] integerValue];
+    
+//    int index = 0;
+//    switch (level) {
+//        case 0:
+//            index = 0;
+//            break;
+//        case 1:
+//            index = 10;
+//            break;
+//        case 2:
+//            index = 50;
+//            break;
+//        case 3:
+//            index = 70;
+//            break;
+//        case 4:
+//            index = 90;
+//            break;
+//        case 5:
+//            index = 110;
+//            break;
+//        case 6:
+//            index = 130;
+//            break;
+//        case 7:
+//            index = 150;
+//            break;
+//        case 8:
+//            index = 180;
+//            break;
+//        case 9:
+//            index = 210;
+//            break;
+//        case 10:
+//            index = 240;
+//            break;
+//        case 11:
+//            index = 270;
+//            break;
+//        case 12:
+//            index = 300;
+//            break;
+//        case 13:
+//            index = 340;
+//            break;
+//        case 14:
+//            index = 380;
+//            break;
+//        case 15:
+//            index = 420;
+//            break;
+//        case 16:
+//            index = 460;
+//            break;
+//        case 17:
+//            index = 500;
+//            break;
+//        case 18:
+//            index = 550;
+//            break;
+//        case 19:
+//            index = 600;
+//            break;
+//        case 20:
+//            index = 650;
+//            break;
+//        case 21:
+//            index = 700;
+//            break;
+//        case 22:
+//            index = 750;
+//            break;
+//        case 23:
+//            index = 800;
+//            break;
+//            
+//        default:
+//            break;
+//    }
+//    return index;
 }
 
 @end

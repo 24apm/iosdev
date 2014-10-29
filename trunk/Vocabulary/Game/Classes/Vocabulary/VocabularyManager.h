@@ -18,6 +18,9 @@
 + (VocabularyManager *)instance;
 - (NSDictionary *)vocabList;
 - (NSDictionary *)userVocabList;
+- (NSDictionary *)userMixedVocabList;
+- (NSString *)definitionForVocab:(NSString *)vocab;
+- (VocabularyObject *)vocabObjectForVocab:(NSString *)vocab;
 
 - (void)loadFile;
 
@@ -36,5 +39,6 @@
 - (BOOL)checkSolution:(LevelData *)levelData word:(NSString *)word;
 
 - (BOOL)hasCompletedLevel:(LevelData *)levelData;
+- (BOOL)hasUserUnlockedVocab:(NSString *)vocab;
 
 @end

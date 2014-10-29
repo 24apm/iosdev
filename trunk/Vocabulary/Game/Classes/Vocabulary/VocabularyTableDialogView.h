@@ -8,7 +8,10 @@
 
 #import "AnimatingDialogView.h"
 
+@class VocabularyTableView;
+
 @interface VocabularyTableDialogView : AnimatingDialogView
 
+@property (strong, nonatomic) IBOutlet VocabularyTableView *tableView;
 @property (strong, nonatomic) IBOutlet UILabel *progressLabel;
 @end

@@ -149,4 +149,10 @@ NSString *const UserDataHouseDataChangedNotification = @"UserDataHouseDataChange
     [defaults synchronize];
 }
 
+- (void)resetUserDefaults {
+    NSString *appDomain = [[NSBundle mainBundle] bundleIdentifier];
+    [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
+    [self setup];
+}
+
 @end
