@@ -17,7 +17,11 @@
 
 @property (strong, nonatomic) NSDictionary *vocabularyDictionary;
 @property (nonatomic) CGRect cellFrame;
-@property (strong, nonatomic) NSArray *sortedSectionHeaders;
+@property (strong, nonatomic) NSArray *sortedDisplaySectionHeaders;
+@property (strong, nonatomic) NSArray *sortedDisplaySectionIndexes;
+@property (strong, nonatomic) NSArray *sortedSectionIndexes;
+
+@property (nonatomic) BOOL isLevel;
 
 @end
 
@@ -39,21 +43,28 @@
     return self;
 }
 
-- (void)setupWithData:(NSArray *)sections rows:(NSDictionary *)dictionary {
+- (void)setupWithData:(NSArray *)displaySectionHeaders
+                 rows:(NSDictionary *)dictionary
+displaySectionIndexes:(NSArray *)displaySectionIndexes
+       sectionIndexes:(NSArray *)sectionIndexes {
+    
     self.vocabularyDictionary = dictionary;
-    self.sortedSectionHeaders = sections;
+    self.sortedDisplaySectionHeaders = displaySectionHeaders;
+    self.sortedDisplaySectionIndexes = displaySectionIndexes;
+    self.sortedSectionIndexes = sectionIndexes;
     [self refresh];
+}
+
+- (void)scrollTo:(NSIndexPath *)indexPath {
+    [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:NO];
 }
 
 - (void)setup {
     VocabularyRowView *t = [[VocabularyRowView alloc] init];
     self.cellFrame = t.frame;
 
-//    self.vocabularyDictionary = [[VocabularyManager instance] userVocabList];
-//    
-//    self.sortedSectionHeaders = [[self.vocabularyDictionary allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
-    
-    [self refresh];
+    self.tableView.sectionIndexBackgroundColor = [UIColor clearColor];
+    self.tableView.sectionIndexColor = [UIColor colorWithRed:75.f/255.f green:211.f/255.f blue:193.f/255.f alpha:1.0f];
 }
 
 - (void)refresh {
@@ -70,16 +81,16 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    return [self.sortedSectionHeaders objectAtIndex:section];
+    return [self.sortedDisplaySectionHeaders objectAtIndex:section];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [[self.vocabularyDictionary valueForKey:[self.sortedSectionHeaders objectAtIndex:section]] count];
+    return [[self.vocabularyDictionary valueForKey:[self.sortedSectionIndexes objectAtIndex:section]] count];
 }
 
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
-    return self.sortedSectionHeaders;
+    return self.sortedDisplaySectionIndexes;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -88,7 +99,7 @@
         cell = [[XibTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"VocabularyRowView" className:@"VocabularyRowView"];
     }
     VocabularyRowView *rowView = (VocabularyRowView *)cell.view;
-    NSString *key = [self.sortedSectionHeaders objectAtIndex:indexPath.section];
+    NSString *key = [self.sortedSectionIndexes objectAtIndex:indexPath.section];
     NSString *vocab = [[self.vocabularyDictionary objectForKey:key] objectAtIndex:indexPath.row];
     
     [rowView setupWithData:[[VocabularyManager instance] vocabObjectForWord:vocab]];

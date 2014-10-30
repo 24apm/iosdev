@@ -70,11 +70,14 @@
 }
 
 - (NSDictionary *)userMixedVocabList {
+    // filter up to unlocked level
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
     int level = [self unlockUptoLevel];
     for (NSString *key in [self.mixedVocabDictionaryBySection allKeys]) {
         if ([key intValue] < level) {
             [dictionary setObject:[self.mixedVocabDictionaryBySection objectForKey:key] forKey:key];
+        } else {
+            [dictionary setObject:[NSArray array] forKey:key];
         }
     }
     return dictionary;
@@ -149,7 +152,11 @@
         NSString *key = [NSString stringWithFormat:@"%d", i];
         
         NSArray *mixVocabFromLevel = [self mixVocabFromLevel:i toLevel:i+1];
-        [mixedDictionaryBySection setObject:mixVocabFromLevel forKey:key];
+        
+        // sort
+        NSArray *mixVocabFromLevelSorted = [mixVocabFromLevel sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+
+        [mixedDictionaryBySection setObject:mixVocabFromLevelSorted forKey:key];
     }
     self.mixedVocabDictionaryBySection = mixedDictionaryBySection;
 }

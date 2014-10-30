@@ -12,6 +12,11 @@
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
-- (void)setupWithData:(NSArray *)sections rows:(NSDictionary *)dictionary;
+- (void)setupWithData:(NSArray *)displaySectionHeaders
+                 rows:(NSDictionary *)dictionary
+displaySectionIndexes:(NSArray *)displaySectionIndexes
+       sectionIndexes:(NSArray *)sectionIndexes;
+
+- (void)scrollTo:(NSIndexPath *)indexPath;
 
 @end

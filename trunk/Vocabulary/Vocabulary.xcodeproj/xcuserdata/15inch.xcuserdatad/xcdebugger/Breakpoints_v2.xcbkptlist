@@ -408,11 +408,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Game/Classes/Vocabulary/VocabularyManager.m"
-            timestampString = "436254890.642202"
+            timestampString = "436337101.218543"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "494"
-            endingLineNumber = "494"
+            startingLineNumber = "501"
+            endingLineNumber = "501"
             landmarkName = "-printMap:"
             landmarkType = "5">
          </BreakpointContent>
@@ -424,11 +424,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Game/Classes/Vocabulary/VocabularyManager.m"
-            timestampString = "436254890.642202"
+            timestampString = "436337101.218543"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "498"
-            endingLineNumber = "498"
+            startingLineNumber = "505"
+            endingLineNumber = "505"
             landmarkName = "-printAnswer:"
             landmarkType = "5">
          </BreakpointContent>
