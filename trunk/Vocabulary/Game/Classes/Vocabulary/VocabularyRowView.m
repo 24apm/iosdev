@@ -20,8 +20,8 @@
         self.definitionLabel.alpha = 1.0f;
         self.definitionLabel.text = data.definition;
     } else {
-        self.wordLabel.alpha = 0.5f;
-        self.definitionLabel.alpha = 0.5f;
+        self.wordLabel.alpha = 0.3f;
+        self.definitionLabel.alpha = 0.3f;
         self.definitionLabel.text = @"???";
     }
 }

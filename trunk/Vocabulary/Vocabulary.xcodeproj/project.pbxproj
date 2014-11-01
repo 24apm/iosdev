@@ -295,6 +295,9 @@
 		D0F375EA18FA990100D32A10 /* tier5-2.png in Resources */ = {isa = PBXBuildFile; fileRef = D0F375E718FA990100D32A10 /* tier5-2.png */; };
 		D0F570E819FC4EFC008EB513 /* mixvocabulary.txt in Resources */ = {isa = PBXBuildFile; fileRef = D0F570E719FC4EFC008EB513 /* mixvocabulary.txt */; };
 		D0F5D15419C965D000ADB923 /* DiggerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0F5D15319C965D000ADB923 /* DiggerView.xib */; };
+		D0F7DFD81A048E14009D1BBB /* definition_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = D0F7DFD71A048E14009D1BBB /* definition_bg.png */; };
+		D0F7DFDD1A049827009D1BBB /* CompletedLevelDialogView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0F7DFDC1A049827009D1BBB /* CompletedLevelDialogView.xib */; };
+		D0F7DFE01A04984E009D1BBB /* CompletedLevelDialogView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F7DFDF1A04984E009D1BBB /* CompletedLevelDialogView.m */; };
 		D0FB4D9C19F635F0006F62C7 /* particleEffect2.json in Resources */ = {isa = PBXBuildFile; fileRef = D0FB4D9B19F635F0006F62C7 /* particleEffect2.json */; };
 /* End PBXBuildFile section */
 
@@ -654,6 +657,10 @@
 		D0F375E718FA990100D32A10 /* tier5-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tier5-2.png"; sourceTree = "<group>"; };
 		D0F570E719FC4EFC008EB513 /* mixvocabulary.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mixvocabulary.txt; sourceTree = "<group>"; };
 		D0F5D15319C965D000ADB923 /* DiggerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiggerView.xib; sourceTree = "<group>"; };
+		D0F7DFD71A048E14009D1BBB /* definition_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = definition_bg.png; sourceTree = "<group>"; };
+		D0F7DFDC1A049827009D1BBB /* CompletedLevelDialogView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CompletedLevelDialogView.xib; sourceTree = "<group>"; };
+		D0F7DFDE1A04984E009D1BBB /* CompletedLevelDialogView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompletedLevelDialogView.h; sourceTree = "<group>"; };
+		D0F7DFDF1A04984E009D1BBB /* CompletedLevelDialogView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompletedLevelDialogView.m; sourceTree = "<group>"; };
 		D0FB4D9B19F635F0006F62C7 /* particleEffect2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = particleEffect2.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -721,6 +728,8 @@
 				D02B95F819C6317E00F565C1 /* CustomGameLoopTimer.h */,
 				D02B95F919C6317E00F565C1 /* CustomGameLoopTimer.m */,
 				D02B95FA19C6317E00F565C1 /* ErrorDialogView.h */,
+				D0F7DFDE1A04984E009D1BBB /* CompletedLevelDialogView.h */,
+				D0F7DFDF1A04984E009D1BBB /* CompletedLevelDialogView.m */,
 				D02B95FB19C6317E00F565C1 /* ErrorDialogView.m */,
 				D02B95FC19C6317E00F565C1 /* GameCenterHelper.h */,
 				D02B95FD19C6317E00F565C1 /* GameCenterHelper.m */,
@@ -798,6 +807,7 @@
 				D0E37DA01978F0DB00CAED14 /* ConfirmDialogView.xib */,
 				D0933A5719AEF81A008C90EB /* ConfirmDialogView~ipad.xib */,
 				D051F11719731381000F98DC /* RootViewController.xib */,
+				D0F7DFDC1A049827009D1BBB /* CompletedLevelDialogView.xib */,
 			);
 			path = Xib;
 			sourceTree = "<group>";
@@ -914,6 +924,7 @@
 			children = (
 				D0EBCBE119B1C5BD00933AD2 /* bagmoney.png */,
 				D0EBCBDD19B1C50E00933AD2 /* moneybath.png */,
+				D0F7DFD71A048E14009D1BBB /* definition_bg.png */,
 				D0EBCBDE19B1C50E00933AD2 /* casemoney.png */,
 				D0EC818E19FF60DD00603FF2 /* word_bg.png */,
 				D0EC818F19FF60DD00603FF2 /* board_bg.png */,
@@ -1317,6 +1328,7 @@
 				D0933A5819AEF81A008C90EB /* ConfirmDialogView~ipad.xib in Resources */,
 				D0E52B2E192724AC0015CD5A /* icon_tap.png in Resources */,
 				D0E4B2CB18FCEEE700260ABD /* playbutton.png in Resources */,
+				D0F7DFD81A048E14009D1BBB /* definition_bg.png in Resources */,
 				D0E37D961978DB3800CAED14 /* MessageDialogView.xib in Resources */,
 				D0EBCBDF19B1C50E00933AD2 /* moneybath.png in Resources */,
 				D038463B191EB12E00265FE1 /* Images.xcassets in Resources */,
@@ -1437,6 +1449,7 @@
 				D0E33008191A04EA00FB5EB8 /* arrowdown.png in Resources */,
 				D0F375C118FA457100D32A10 /* tier5.png in Resources */,
 				D0EDA2AA196686F600989065 /* makeitflappy_profile_stats_bar.png in Resources */,
+				D0F7DFDD1A049827009D1BBB /* CompletedLevelDialogView.xib in Resources */,
 				D0F375C218FA457100D32A10 /* tier6.png in Resources */,
 				D0EAB6FB1960049F00C90F0E /* sonicboom.png in Resources */,
 				D04F685A19E10CAD00A65E09 /* VocabularyRowView.xib in Resources */,
@@ -1527,6 +1540,7 @@
 				D04F685119E107DF00A65E09 /* VocabularyManager.m in Sources */,
 				D02B963A19C6317E00F565C1 /* ResultView.m in Sources */,
 				D02B962419C6317E00F565C1 /* AnimatedLabel.m in Sources */,
+				D0F7DFE01A04984E009D1BBB /* CompletedLevelDialogView.m in Sources */,
 				D0E8165519D7E46700EF0B8C /* IAPRowItem.m in Sources */,
 				D02B963319C6317E00F565C1 /* NotificationManager.m in Sources */,
 				D0D3F1E619E1CB810036179E /* SlotView.m in Sources */,

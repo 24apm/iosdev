@@ -18,6 +18,7 @@
 + (VocabularyManager *)instance;
 - (NSDictionary *)vocabList;
 - (int)unlockUptoLevel;
+- (int)mixVocabIndexWith:(int)level;
 - (NSDictionary *)userVocabList;
 - (NSDictionary *)userMixedVocabList;
 - (NSString *)definitionForVocab:(NSString *)vocab;

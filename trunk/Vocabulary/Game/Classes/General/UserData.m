@@ -87,11 +87,19 @@ NSString *const UserDataHouseDataChangedNotification = @"UserDataHouseDataChange
 
 - (void)updateDictionaryWith:(NSString *)newVocabulary {
     NSMutableArray *unsortedArray = self.pokedex;
-    if (![unsortedArray containsObject:newVocabulary]) {
+    if (![self hasVocabFound:newVocabulary]) {
         [unsortedArray addObject:newVocabulary];
         NSArray *sortedArray = [unsortedArray sortedArrayUsingSelector:@selector(compare:)];
         self.pokedex = [NSMutableArray arrayWithArray:sortedArray];
         [self saveData:self.pokedex forKey:@"pokedex"];
+    }
+}
+
+- (BOOL)hasVocabFound:(NSString *)newVocabulary  {
+    if ([self.pokedex containsObject:newVocabulary]) {
+        return YES;
+    } else {
+        return NO;
     }
 }
 
@@ -127,7 +135,7 @@ NSString *const UserDataHouseDataChangedNotification = @"UserDataHouseDataChange
 }
 
 - (void)incrementCurrentLevel {
-
+    
     self.currentLevel++;
     
     [self saveData:@(self.currentLevel) forKey:@"currentLevel"];

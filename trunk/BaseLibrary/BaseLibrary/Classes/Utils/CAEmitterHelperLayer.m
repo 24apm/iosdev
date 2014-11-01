@@ -20,7 +20,11 @@
     CAEmitterHelperLayer *emitterLayer = [[CAEmitterHelperLayer alloc] init];
     [view.layer addSublayer:emitterLayer];
     [emitterLayer setupWithJson:json];
-    emitterLayer.frame = emitterLayer.superlayer.frame;
+    emitterLayer.frame = CGRectMake(0,
+                                    0,
+                                    emitterLayer.superlayer.frame.size.width,
+                                    emitterLayer.superlayer.frame.size.height);
+    
     emitterLayer.emitterPosition = CGPointMake(emitterLayer.superlayer.bounds.size.width / 2,
                                               emitterLayer.superlayer.bounds.size.height / 2);
     return emitterLayer;

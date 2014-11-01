@@ -26,6 +26,9 @@
 @property (strong, nonatomic) NSDictionary *vocabSectionsToIndexes;
 @property (strong, nonatomic) NSDictionary *vocabIndexesToSections;
 @property (strong, nonatomic) NSDictionary *mixedVocabDictionaryBySection;
+@property (nonatomic) BOOL foundNewWord;
+@property (nonatomic) int gamesNoNewWord;
+@property (nonatomic) BOOL gameWithNewWords;
 
 
 @property (strong, nonatomic) NSString *letters;
@@ -51,6 +54,7 @@
     if (self) {
         //         self.letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
         self.letters = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+           self.foundNewWord = YES;
     }
     return self;
 }
@@ -62,6 +66,10 @@
 - (NSDictionary *)userVocabList {
     NSMutableDictionary *userDictionary = [NSMutableDictionary dictionary];
     NSArray *userSavedKeys = [UserData instance].pokedex;
+    for (int i = 0; i < self.letters.length; i++) {
+        NSString *key = [NSString stringWithFormat:@"%c",[self.letters characterAtIndex:i]];
+        [userDictionary setObject:[NSMutableArray array] forKey:key];
+    }
     
     for (NSString *word in userSavedKeys) {
         [self populateSectionDictionary:userDictionary word:word];
@@ -155,7 +163,7 @@
         
         // sort
         NSArray *mixVocabFromLevelSorted = [mixVocabFromLevel sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
-
+        
         [mixedDictionaryBySection setObject:mixVocabFromLevelSorted forKey:key];
     }
     self.mixedVocabDictionaryBySection = mixedDictionaryBySection;
@@ -227,10 +235,6 @@
 - (void)populateSectionDictionary:(NSMutableDictionary *)dictionary word:(NSString *)word {
     NSString *key = [[word substringToIndex:1] uppercaseString];
     NSMutableArray *vocabSection = [dictionary objectForKey:key];
-    if (vocabSection == nil) {
-        vocabSection = [NSMutableArray array];
-        [dictionary setObject:vocabSection forKey:key];
-    }
     [vocabSection addObject:word];
 }
 
@@ -275,7 +279,20 @@
     return [self unlockedUptoLevel:[UserData instance].pokedex.count];
 }
 
+- (NSArray *)createNewWordArray {
+    NSArray *allCurrentWords = [self mixVocabFromLevel:[self unlockUptoLevel] -1 toLevel:[self unlockUptoLevel]];
+    NSMutableArray *newWordsArray = [NSMutableArray array];
+    for (int i = 0; i < allCurrentWords.count; i++) {
+        if (![[UserData instance].pokedex containsObject: [allCurrentWords objectAtIndex:i]]) {
+            VocabularyObject *vocabData = [self.dictionaryByVocab objectForKey:[allCurrentWords objectAtIndex:i]];
+            [newWordsArray addObject:vocabData];
+        }
+    }
+    return newWordsArray;
+}
+
 - (LevelData *)generateLevel:(NSInteger)numOfWords row:(NSInteger)row col:(NSInteger)col {
+    [self checkNewWordsFound];
     LevelData *levelData = [[LevelData alloc] init];
     levelData.numOfWords = numOfWords;
     levelData.numColumn = col;
@@ -290,6 +307,10 @@
         
         // setup words
         NSArray *allWords = [self mixVocabFromLevel:0 toLevel:[self unlockUptoLevel]];
+        if (self.gameWithNewWords) {
+            NSArray *newWords = [self createNewWordArray];
+            [vocabularyList addObject:[newWords randomObject]];
+        }
         
         while (vocabularyList.count < levelData.numOfWords) {
             NSString *randomWord = [allWords randomObject];
@@ -424,56 +445,56 @@
     }
     
     switch (direction) {
-        // top right
+            // top right
         case 0: {
             directionalPoint.y = -1;
             directionalPoint.x = 1;
         }
-        break;
-        // right
+            break;
+            // right
         case 1: {
             directionalPoint.y = 0;
             directionalPoint.x = 1;
         }
-        break;
-        // bottom right
+            break;
+            // bottom right
         case 2: {
             directionalPoint.y = 1;
             directionalPoint.x = 1;
         }
-        break;
-        // bottom
+            break;
+            // bottom
         case 3: {
             directionalPoint.y = 1;
             directionalPoint.x = 0;
         }
-        // top left
+            // top left
         case 4: {
             directionalPoint.y = -1;
             directionalPoint.x = -1;
         }
-        break;
-        // top
+            break;
+            // top
         case 5: {
             directionalPoint.y = -1;
             directionalPoint.x = 0;
         }
-        break;
-        // bottom left
+            break;
+            // bottom left
         case 6: {
             directionalPoint.y = 1;
             directionalPoint.x = -1;
         }
-        break;
-        // left
+            break;
+            // left
         case 7: {
             directionalPoint.y = 0;
             directionalPoint.x = -1;
         }
-        break;
-        
+            break;
+            
         default:
-        break;
+            break;
     }
     return directionalPoint;
 }
@@ -481,6 +502,9 @@
 - (BOOL)checkSolution:(LevelData *)levelData word:(NSString *)word {
     for (VocabularyObject *vocabData in levelData.vocabularyList) {
         if ([word isEqualToString:vocabData.word]) {
+            if (![[UserData instance].pokedex containsObject:word]) {
+                self.foundNewWord = YES;
+            }
             return YES; // found match
         }
     }
@@ -548,89 +572,104 @@
     return i;
 }
 
+- (void)checkNewWordsFound {
+    if (!self.foundNewWord) {
+        self.gamesNoNewWord++;
+    } else {
+        self.foundNewWord = NO;
+        self.gamesNoNewWord = 0;
+    }
+    
+    if (self.gamesNoNewWord > 2) {
+        self.gameWithNewWords = YES;
+    } else {
+        self.gameWithNewWords = NO;
+    }
+}
+
 - (int)mixVocabIndexWith:(int)level {
     NSString *key = [NSString stringWithFormat:@"%d",level];
     return [[self.vocabSectionsToIndexes objectForKey:key] integerValue];
     
-//    int index = 0;
-//    switch (level) {
-//        case 0:
-//            index = 0;
-//            break;
-//        case 1:
-//            index = 10;
-//            break;
-//        case 2:
-//            index = 50;
-//            break;
-//        case 3:
-//            index = 70;
-//            break;
-//        case 4:
-//            index = 90;
-//            break;
-//        case 5:
-//            index = 110;
-//            break;
-//        case 6:
-//            index = 130;
-//            break;
-//        case 7:
-//            index = 150;
-//            break;
-//        case 8:
-//            index = 180;
-//            break;
-//        case 9:
-//            index = 210;
-//            break;
-//        case 10:
-//            index = 240;
-//            break;
-//        case 11:
-//            index = 270;
-//            break;
-//        case 12:
-//            index = 300;
-//            break;
-//        case 13:
-//            index = 340;
-//            break;
-//        case 14:
-//            index = 380;
-//            break;
-//        case 15:
-//            index = 420;
-//            break;
-//        case 16:
-//            index = 460;
-//            break;
-//        case 17:
-//            index = 500;
-//            break;
-//        case 18:
-//            index = 550;
-//            break;
-//        case 19:
-//            index = 600;
-//            break;
-//        case 20:
-//            index = 650;
-//            break;
-//        case 21:
-//            index = 700;
-//            break;
-//        case 22:
-//            index = 750;
-//            break;
-//        case 23:
-//            index = 800;
-//            break;
-//            
-//        default:
-//            break;
-//    }
-//    return index;
+    //    int index = 0;
+    //    switch (level) {
+    //        case 0:
+    //            index = 0;
+    //            break;
+    //        case 1:
+    //            index = 10;
+    //            break;
+    //        case 2:
+    //            index = 50;
+    //            break;
+    //        case 3:
+    //            index = 70;
+    //            break;
+    //        case 4:
+    //            index = 90;
+    //            break;
+    //        case 5:
+    //            index = 110;
+    //            break;
+    //        case 6:
+    //            index = 130;
+    //            break;
+    //        case 7:
+    //            index = 150;
+    //            break;
+    //        case 8:
+    //            index = 180;
+    //            break;
+    //        case 9:
+    //            index = 210;
+    //            break;
+    //        case 10:
+    //            index = 240;
+    //            break;
+    //        case 11:
+    //            index = 270;
+    //            break;
+    //        case 12:
+    //            index = 300;
+    //            break;
+    //        case 13:
+    //            index = 340;
+    //            break;
+    //        case 14:
+    //            index = 380;
+    //            break;
+    //        case 15:
+    //            index = 420;
+    //            break;
+    //        case 16:
+    //            index = 460;
+    //            break;
+    //        case 17:
+    //            index = 500;
+    //            break;
+    //        case 18:
+    //            index = 550;
+    //            break;
+    //        case 19:
+    //            index = 600;
+    //            break;
+    //        case 20:
+    //            index = 650;
+    //            break;
+    //        case 21:
+    //            index = 700;
+    //            break;
+    //        case 22:
+    //            index = 750;
+    //            break;
+    //        case 23:
+    //            index = 800;
+    //            break;
+    //
+    //        default:
+    //            break;
+    //    }
+    //    return index;
 }
 
 @end

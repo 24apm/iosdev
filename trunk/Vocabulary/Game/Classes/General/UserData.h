@@ -29,6 +29,8 @@ extern NSString *const UserDataHouseDataChangedNotification;
 
 - (void)resetUserDefaults;
 
+- (BOOL)hasVocabFound:(NSString *)newVocabulary;
+
 @property (nonatomic) long long coin;
 @property (strong, nonatomic) NSMutableArray *pokedex;
 

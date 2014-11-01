@@ -30,6 +30,7 @@
 
 - (void)loadMixedVocabularyDictionary {
     NSDictionary *mixedVocabularyDictionary = [[VocabularyManager instance] userMixedVocabList];
+    int unlockUptoLevel = [[VocabularyManager instance] unlockUptoLevel];
     
     // sorting numerically
     // 0 index based
@@ -45,6 +46,8 @@
     // 1 index based array
     NSMutableArray *sortedDisplaySectionIndexes = [NSMutableArray array];
     NSMutableArray *sortedDisplaySectionHeaders = [NSMutableArray array];
+    int userPokedex = [UserData instance].pokedex.count;
+    int userLevel = [[VocabularyManager instance] unlockUptoLevel];
     
     for (NSString *index in sortedMixedVocabHeaders) {
         int newIndex = [index integerValue] + 1;
@@ -52,7 +55,22 @@
         NSString *newIndexKey = [NSString stringWithFormat:@"%d", newIndex];
         [sortedDisplaySectionIndexes addObject:newIndexKey];
         
-        NSString *newHeader = [NSString stringWithFormat:@"Level %d", newIndex];
+        int nextLevelIndex = [index integerValue] +1;
+        int prevLevelIndex = [index integerValue];
+        int currentLevelCap = [[VocabularyManager instance] mixVocabIndexWith:nextLevelIndex] - [[VocabularyManager instance] mixVocabIndexWith:prevLevelIndex];
+        int currentLevel = 0;
+        if (userLevel == [index integerValue] + 1) {
+            currentLevel = userPokedex - [[VocabularyManager instance] mixVocabIndexWith:prevLevelIndex];
+        } else {
+            currentLevel = currentLevelCap;
+        }
+        
+        NSString *newHeader;
+        if ([index intValue] < unlockUptoLevel) {
+            newHeader = [NSString stringWithFormat:@"[Level %d] %d/%d", newIndex, currentLevel, currentLevelCap];
+        } else {
+            newHeader = [NSString stringWithFormat:@"[Level %d] Locked", newIndex];
+        }
         [sortedDisplaySectionHeaders addObject:newHeader];
     }
     
@@ -63,7 +81,7 @@
     
 //    //scroll to last unlocked level
     if (sortedMixedVocabHeaders.count > 0) {
-        NSIndexPath *path = [NSIndexPath indexPathForRow:0 inSection:[[VocabularyManager instance] unlockUptoLevel] - 1];
+        NSIndexPath *path = [NSIndexPath indexPathForRow:0 inSection:unlockUptoLevel - 1];
         [self.tableView scrollTo:path];
     }
 }
