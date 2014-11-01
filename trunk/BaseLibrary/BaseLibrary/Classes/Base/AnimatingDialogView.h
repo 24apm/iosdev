@@ -10,4 +10,7 @@
 
 @interface AnimatingDialogView : XibDialogView
 
+- (void)popIn:(UIView *)view;
+- (void)popOut:(UIView *)view;
+
 @end

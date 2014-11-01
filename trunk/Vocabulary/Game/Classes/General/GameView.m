@@ -83,7 +83,7 @@
 
 - (void)generateNewLevel {
     
-    NSInteger size = [Utils randBetweenMinInt:8 max:12];
+    NSInteger size = [Utils randBetweenMinInt:10 max:10];
     self.levelData = [[VocabularyManager instance] generateLevel:9
                                                              row:size
                                                              col:size];
@@ -129,25 +129,18 @@
 - (void)wordMatched:(NSNotification *)notification {
     NSString *matchedWord = notification.object;
     [self.levelData.wordsFoundList addObject:matchedWord];
-//    
-//    if (![[UserData instance] hasVocabFound:matchedWord]) {
-//        // update user data
-//        VocabularyObject *vocabObject = [[VocabularyManager instance] vocabObjectForWord:matchedWord];
-//        [[UserData instance] updateDictionaryWith:matchedWord];
-//        [[[MessageDialogView alloc] initWithHeaderText:vocabObject.word bodyText:vocabObject.definition] show];
-//    }
-    
     [self refreshWordList];
     
     // end game
     if ([[VocabularyManager instance] hasCompletedLevel:self.levelData]) {
-//        [self performSelector:@selector(generateNewLevel) withObject:nil afterDelay:3.0f];
-//        [[[MessageDialogView alloc] initWithHeaderText:@"YOU WON" bodyText:@"CONGRATS!!!"] show];
-        
-        [[[CompletedLevelDialogView alloc] initWithCallback:^{
-            [self generateNewLevel];
-        }] show];
+        [self performSelector:@selector(showCompleteLevel) withObject:nil afterDelay:1.0f];
     }
+}
+
+- (void)showCompleteLevel {
+    [[[CompletedLevelDialogView alloc] initWithCallback:^{
+        [self generateNewLevel];
+    }] show];
 }
 
 - (void)animateWordMatched:(NSNotification *)notification {
@@ -165,11 +158,7 @@
 }
 
 - (void)animatingAnswer:(UIView *)fromView toView:(UIView *)toView {
- 
     CAEmitterHelperLayer *cellLayer = [CAEmitterHelperLayer emitter:@"particleEffect.json" onView:self];
-//    cellLayer.cellImage = [UIImage imageNamed:@"cloud1.png"];
-//    [cellLayer refreshEmitter];
-    
     CGPoint start = [fromView.superview convertPoint:fromView.center toView:self];
     
     CGPoint toPoint = [toView.superview convertPoint:toView.center toView:self];

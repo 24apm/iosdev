@@ -453,7 +453,10 @@
         self.hasCorrectMatch = [self checkSolution:word];
     }
     
-    if (!self.hasCorrectMatch) {
+    // 1) if word is invalid or
+    // 2) has been found before, cancel selection
+    if (!self.hasCorrectMatch || [self.levelData.wordsFoundList containsObject:word]) {
+        self.hasCorrectMatch = NO;
         [self.slotSelection removeAllObjects];
     } else {
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_WORD_MATCHED object:word];

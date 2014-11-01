@@ -28,7 +28,7 @@
                       "yAcceleration" : 0.6467,
                       "renderMode" : "backToFront",
                       "birthRate" : 55.60252,
-                      "textureName" : "bagmoney.png",
+                      "textureName" : "particle_star.png",
                       "colorAlpha" : 1,
                       "redRange" : 0
                       }

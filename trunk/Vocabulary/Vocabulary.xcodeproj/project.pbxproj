@@ -298,6 +298,8 @@
 		D0F7DFD81A048E14009D1BBB /* definition_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = D0F7DFD71A048E14009D1BBB /* definition_bg.png */; };
 		D0F7DFDD1A049827009D1BBB /* CompletedLevelDialogView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0F7DFDC1A049827009D1BBB /* CompletedLevelDialogView.xib */; };
 		D0F7DFE01A04984E009D1BBB /* CompletedLevelDialogView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F7DFDF1A04984E009D1BBB /* CompletedLevelDialogView.m */; };
+		D0F7DFE31A04AC93009D1BBB /* particle_star.png in Resources */ = {isa = PBXBuildFile; fileRef = D0F7DFE11A04AC93009D1BBB /* particle_star.png */; };
+		D0F7DFE41A04AC93009D1BBB /* particle_diamond.png in Resources */ = {isa = PBXBuildFile; fileRef = D0F7DFE21A04AC93009D1BBB /* particle_diamond.png */; };
 		D0FB4D9C19F635F0006F62C7 /* particleEffect2.json in Resources */ = {isa = PBXBuildFile; fileRef = D0FB4D9B19F635F0006F62C7 /* particleEffect2.json */; };
 /* End PBXBuildFile section */
 
@@ -661,6 +663,8 @@
 		D0F7DFDC1A049827009D1BBB /* CompletedLevelDialogView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CompletedLevelDialogView.xib; sourceTree = "<group>"; };
 		D0F7DFDE1A04984E009D1BBB /* CompletedLevelDialogView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompletedLevelDialogView.h; sourceTree = "<group>"; };
 		D0F7DFDF1A04984E009D1BBB /* CompletedLevelDialogView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompletedLevelDialogView.m; sourceTree = "<group>"; };
+		D0F7DFE11A04AC93009D1BBB /* particle_star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = particle_star.png; sourceTree = "<group>"; };
+		D0F7DFE21A04AC93009D1BBB /* particle_diamond.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = particle_diamond.png; sourceTree = "<group>"; };
 		D0FB4D9B19F635F0006F62C7 /* particleEffect2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = particleEffect2.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -923,6 +927,8 @@
 			isa = PBXGroup;
 			children = (
 				D0EBCBE119B1C5BD00933AD2 /* bagmoney.png */,
+				D0F7DFE11A04AC93009D1BBB /* particle_star.png */,
+				D0F7DFE21A04AC93009D1BBB /* particle_diamond.png */,
 				D0EBCBDD19B1C50E00933AD2 /* moneybath.png */,
 				D0F7DFD71A048E14009D1BBB /* definition_bg.png */,
 				D0EBCBDE19B1C50E00933AD2 /* casemoney.png */,
@@ -1381,6 +1387,7 @@
 				D0E42902193722EF00210F85 /* icon_iap_super.png in Resources */,
 				D0E52B2919271DAF0015CD5A /* btn_green_up.png in Resources */,
 				D0E6337218FFBA11007C1622 /* dong.caf in Resources */,
+				D0F7DFE31A04AC93009D1BBB /* particle_star.png in Resources */,
 				D0E7FF6B18E69DEB00896C7B /* opendoor.png in Resources */,
 				D0E52B3819273C650015CD5A /* icon_weed.png in Resources */,
 				D0F375BF18FA457100D32A10 /* tier7.png in Resources */,
@@ -1403,6 +1410,7 @@
 				D0F375EA18FA990100D32A10 /* tier5-2.png in Resources */,
 				D0EBC77E195951A40023EF01 /* icon_lvlup in Resources */,
 				D0F375E118FA981100D32A10 /* tier7-2.png in Resources */,
+				D0F7DFE41A04AC93009D1BBB /* particle_diamond.png in Resources */,
 				D0D3F1EC19E1CDF20036179E /* GameView.xib in Resources */,
 				D0ED147119DF9B22009902ED /* vocabulary.txt in Resources */,
 				D0E6B6141956947700940695 /* character_standing.png in Resources */,
