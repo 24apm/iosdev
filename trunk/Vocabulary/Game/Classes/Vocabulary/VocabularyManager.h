@@ -43,4 +43,6 @@
 - (BOOL)hasCompletedLevel:(LevelData *)levelData;
 - (BOOL)hasUserUnlockedVocab:(NSString *)vocab;
 
+- (void)addWordToUserData:(NSString *)word;
+
 @end

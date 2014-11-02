@@ -20,6 +20,7 @@
 @property (strong, nonatomic) NSArray *sortedDisplaySectionHeaders;
 @property (strong, nonatomic) NSArray *sortedDisplaySectionIndexes;
 @property (strong, nonatomic) NSArray *sortedSectionIndexes;
+@property (strong, nonatomic) NSDictionary *unseenWords;
 
 @property (nonatomic) BOOL isLevel;
 
@@ -46,12 +47,14 @@
 - (void)setupWithData:(NSArray *)displaySectionHeaders
                  rows:(NSDictionary *)dictionary
 displaySectionIndexes:(NSArray *)displaySectionIndexes
-       sectionIndexes:(NSArray *)sectionIndexes {
+       sectionIndexes:(NSArray *)sectionIndexes
+          unseenWords:(NSDictionary *)unseenWords {
     
     self.vocabularyDictionary = dictionary;
     self.sortedDisplaySectionHeaders = displaySectionHeaders;
     self.sortedDisplaySectionIndexes = displaySectionIndexes;
     self.sortedSectionIndexes = sectionIndexes;
+    self.unseenWords = unseenWords;
     [self refresh];
 }
 
@@ -102,7 +105,10 @@ displaySectionIndexes:(NSArray *)displaySectionIndexes
     NSString *key = [self.sortedSectionIndexes objectAtIndex:indexPath.section];
     NSString *vocab = [[self.vocabularyDictionary objectForKey:key] objectAtIndex:indexPath.row];
     
-    [rowView setupWithData:[[VocabularyManager instance] vocabObjectForWord:vocab]];
+    VocabularyObject *vocabData = [[VocabularyManager instance] vocabObjectForWord:vocab];
+    [rowView setupWithData:vocabData];
+    rowView.highlighted = [self.unseenWords objectForKey:vocabData.word] != nil;
+    [[UserData instance] removeUnseenWord:vocabData.word];
     
     return cell;
 }

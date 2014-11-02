@@ -31,8 +31,15 @@ extern NSString *const UserDataHouseDataChangedNotification;
 
 - (BOOL)hasVocabFound:(NSString *)newVocabulary;
 
+
+// unseen words
+- (void)addUnseenWord:(NSString *)word;
+- (void)removeUnseenWord:(NSString *)word;
+- (int)unseenWordCount;
+
 @property (nonatomic) long long coin;
 @property (strong, nonatomic) NSMutableArray *pokedex;
+@property (strong, nonatomic) NSMutableDictionary *unseenWords;
 
 @property (nonatomic) int currentLevel;
 

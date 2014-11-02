@@ -13,6 +13,8 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *wordLabel;
 @property (strong, nonatomic) IBOutlet UILabel *definitionLabel;
+@property (nonatomic) BOOL highlighted;
+@property (strong, nonatomic) IBOutlet UIView *backgroundView;
 
 - (void)setupWithData:(VocabularyObject *)data;
 

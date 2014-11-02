@@ -592,4 +592,11 @@
     return [[self.vocabSectionsToIndexes objectForKey:key] integerValue];
 }
 
+- (void)addWordToUserData:(NSString *)word {
+    if (![[UserData instance] hasVocabFound:word]) {
+        [[UserData instance] updateDictionaryWith:word];
+        [[UserData instance] addUnseenWord:word];
+    }
+}
+
 @end

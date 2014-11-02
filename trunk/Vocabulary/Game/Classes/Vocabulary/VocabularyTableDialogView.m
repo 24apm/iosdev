@@ -11,6 +11,12 @@
 #import "VocabularyTableView.h"
 #import "UserData.h"
 
+@interface VocabularyTableDialogView()
+
+@property (nonatomic, strong) NSDictionary *unseenWords;
+
+@end
+
 @implementation VocabularyTableDialogView
 
 - (instancetype)init {
@@ -18,7 +24,7 @@
     if (self) {
         self.progressLabel.text = [NSString stringWithFormat:@"%d/%d", [VocabularyManager instance].currentCount, [VocabularyManager instance].maxCount];
         [self loadMixedVocabularyDictionary];
-
+        self.unseenWords = [[UserData instance].unseenWords copy];
     }
     return self;
 }
@@ -77,7 +83,8 @@
     [self.tableView setupWithData:sortedDisplaySectionHeaders
                              rows:mixedVocabularyDictionary
             displaySectionIndexes:sortedDisplaySectionIndexes
-                   sectionIndexes:sortedMixedVocabHeaders];
+                   sectionIndexes:sortedMixedVocabHeaders
+                      unseenWords:self.unseenWords];
     
 //    //scroll to last unlocked level
     if (sortedMixedVocabHeaders.count > 0) {
@@ -99,13 +106,19 @@
     [self.tableView setupWithData:sortedDisplaySectionHeaders
                              rows:vocabularyDictionary
             displaySectionIndexes:sortedDisplaySectionHeaders
-                   sectionIndexes:sortedDisplaySectionHeaders];
+                   sectionIndexes:sortedDisplaySectionHeaders
+                      unseenWords:self.unseenWords];
 }
 
 #pragma mark - reset
 - (IBAction)resetPressed:(id)sender {
     [[UserData instance] resetUserDefaults];
     [self dismissed:self];
+}
+
+- (void)dismissed:(id)sender {
+    [[NSNotificationCenter defaultCenter] postNotificationName:VocabularyTableDialogViewDimissed object:nil];
+    [super dismissed:sender];
 }
 
 @end

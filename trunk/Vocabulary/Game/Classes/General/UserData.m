@@ -82,12 +82,33 @@ NSString *const UserDataHouseDataChangedNotification = @"UserDataHouseDataChange
     } else {
         self.pokedex = [[NSUserDefaults standardUserDefaults] objectForKey:@"pokedex"];
     }
+    
+    // Unseen words
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"unseenWords"] == nil) {
+        self.unseenWords = [NSMutableDictionary dictionary];
+        [self saveData:self.unseenWords forKey:@"unseenWords"];
+    } else {
+        self.unseenWords = [[NSUserDefaults standardUserDefaults] objectForKey:@"unseenWords"];
+    }
 }
 
+- (void)addUnseenWord:(NSString *)word {
+    [self.unseenWords setValue:word forKey:word];
+    [self saveData:self.unseenWords forKey:@"unseenWords"];
+}
+
+- (void)removeUnseenWord:(NSString *)word {
+    [self.unseenWords removeObjectForKey:word];
+    [self saveData:self.unseenWords forKey:@"unseenWords"];
+}
+
+- (int)unseenWordCount {
+    return self.unseenWords.count;
+}
 
 - (void)updateDictionaryWith:(NSString *)newVocabulary {
-    NSMutableArray *unsortedArray = self.pokedex;
     if (![self hasVocabFound:newVocabulary]) {
+        NSMutableArray *unsortedArray = self.pokedex;
         [unsortedArray addObject:newVocabulary];
         NSArray *sortedArray = [unsortedArray sortedArrayUsingSelector:@selector(compare:)];
         self.pokedex = [NSMutableArray arrayWithArray:sortedArray];

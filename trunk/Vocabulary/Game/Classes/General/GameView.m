@@ -42,7 +42,9 @@
         self.boardView = [[BoardView alloc] initWithFrame:CGRectMake(0, 0, self.boardViewContainer.size.width, self.boardViewContainer.size.height)];
         [self.boardViewContainer addSubview:self.boardView];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(wordMatched:) name:NOTIFICATION_WORD_MATCHED object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshBubble) name:VocabularyTableDialogViewDimissed object:nil];
 
+        
         self.spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
         [self addSubview:self.spinner];
         self.spinner.hidesWhenStopped = YES;
@@ -100,7 +102,8 @@
                                                              col:size];
     [self.boardView setupWithLevel:self.levelData];
     [self refreshWordList];
-    
+    [self updateBubbleCount:[[UserData instance] unseenWordCount]];
+
     //debug
     //    [self.levelData printAnswers];
 }
@@ -148,13 +151,18 @@
     }
     
     [self.levelData.wordsFoundList addObject:word];
-    [[UserData instance] updateDictionaryWith:word];
+    [[VocabularyManager instance] addWordToUserData:word];
+    [self performSelector:@selector(refreshBubble) withObject:nil afterDelay:0.6f];
     [self refreshWordList];
     
     // end game
     if ([[VocabularyManager instance] hasCompletedLevel:self.levelData]) {
         [self performSelector:@selector(showCompleteLevel) withObject:nil afterDelay:1.0f];
     }
+}
+
+- (void)refreshBubble {
+    [self updateBubbleCount:[[UserData instance] unseenWordCount]];
 }
 
 - (void)showCompleteLevel {

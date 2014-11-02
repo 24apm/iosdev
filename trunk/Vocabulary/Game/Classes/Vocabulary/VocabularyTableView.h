@@ -15,7 +15,8 @@
 - (void)setupWithData:(NSArray *)displaySectionHeaders
                  rows:(NSDictionary *)dictionary
 displaySectionIndexes:(NSArray *)displaySectionIndexes
-       sectionIndexes:(NSArray *)sectionIndexes;
+       sectionIndexes:(NSArray *)sectionIndexes
+          unseenWords:(NSDictionary *)unseenWords;
 
 - (void)scrollTo:(NSIndexPath *)indexPath;
 
