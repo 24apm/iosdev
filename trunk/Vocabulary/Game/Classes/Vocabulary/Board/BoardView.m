@@ -459,13 +459,11 @@
         self.hasCorrectMatch = NO;
         [self.slotSelection removeAllObjects];
     } else {
-        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_WORD_MATCHED object:word];
-        
         NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
         [dictionary setObject:[self.slotSelection copy] forKey:@"slotsArray"];
         [dictionary setObject:word forKey:@"word"];
-
-        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_ANIMATE_WORD_MATCHED object:dictionary];
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_WORD_MATCHED object:dictionary];
 
         [self animatingAnswer];
     }

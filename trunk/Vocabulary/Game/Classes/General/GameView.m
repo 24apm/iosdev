@@ -29,6 +29,9 @@
 @property (strong, nonatomic) UIActivityIndicatorView *spinner;
 @property (strong, nonatomic) IBOutlet UIButton *wordButton;
 
+@property (strong, nonatomic) IBOutlet UIView *bubbleView;
+@property (strong, nonatomic) IBOutlet UILabel *bubbleLabel;
+
 @end
 
 @implementation GameView
@@ -39,7 +42,6 @@
         self.boardView = [[BoardView alloc] initWithFrame:CGRectMake(0, 0, self.boardViewContainer.size.width, self.boardViewContainer.size.height)];
         [self.boardViewContainer addSubview:self.boardView];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(wordMatched:) name:NOTIFICATION_WORD_MATCHED object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animateWordMatched:) name:NOTIFICATION_ANIMATE_WORD_MATCHED object:nil];
 
         self.spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
         [self addSubview:self.spinner];
@@ -48,6 +50,15 @@
         
     }
     return self;
+}
+
+- (void)updateBubbleCount:(int)count {
+    if (count > 0) {
+        self.bubbleView.hidden = NO;
+        self.bubbleLabel.text = [NSString stringWithFormat:@"%d", count];
+    } else {
+        self.bubbleView.hidden = YES;
+    }
 }
 
 - (void)setup {
@@ -127,8 +138,17 @@
 }
 
 - (void)wordMatched:(NSNotification *)notification {
-    NSString *matchedWord = notification.object;
-    [self.levelData.wordsFoundList addObject:matchedWord];
+    NSMutableDictionary *dictionary = notification.object;
+    NSArray *slotViews = [dictionary objectForKey:@"slotsArray"];
+    NSString *word = [dictionary objectForKey:@"word"];
+
+    // if new word, animate
+    if (![[VocabularyManager instance] hasUserUnlockedVocab:word]) {
+        [self performSelector:@selector(animateFromTileToMenu:) withObject:slotViews afterDelay:0.6f];
+    }
+    
+    [self.levelData.wordsFoundList addObject:word];
+    [[UserData instance] updateDictionaryWith:word];
     [self refreshWordList];
     
     // end game
@@ -143,22 +163,18 @@
     }] show];
 }
 
-- (void)animateWordMatched:(NSNotification *)notification {
-    NSMutableDictionary *dictionary = notification.object;
-    NSArray *slotViews = [dictionary objectForKey:@"slotsArray"];
-    NSString *word = [dictionary objectForKey:@"word"];
-
-    // if new word, animate
-    if (![[VocabularyManager instance] hasUserUnlockedVocab:word]) {
-        // animation
-        for (UIView *slotView in slotViews) {
-            [self animatingAnswer:slotView toView:self.wordButton];
-        }        
+- (void)animateFromTileToMenu:(NSArray *)slotViews {
+    // animation
+    for (UIView *slotView in slotViews) {
+        [self animatingAnswer:slotView toView:self.wordButton];
     }
 }
 
 - (void)animatingAnswer:(UIView *)fromView toView:(UIView *)toView {
     CAEmitterHelperLayer *cellLayer = [CAEmitterHelperLayer emitter:@"particleEffect.json" onView:self];
+    cellLayer.lifeSpan *= 2;
+    [cellLayer refreshEmitter];
+    
     CGPoint start = [fromView.superview convertPoint:fromView.center toView:self];
     
     CGPoint toPoint = [toView.superview convertPoint:toView.center toView:self];
