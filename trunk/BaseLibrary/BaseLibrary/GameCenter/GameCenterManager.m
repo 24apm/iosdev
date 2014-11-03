@@ -132,13 +132,13 @@
 }
 
 
-- (void) authenticateLocalUser
+- (void) authenticateLocalUser:(BOOL)showLogin
 {
 	if([GKLocalPlayer localPlayer].authenticated == NO)
 	{
         GKLocalPlayer *localPlayer = [GKLocalPlayer localPlayer];
         [localPlayer setAuthenticateHandler:(^(UIViewController* viewcontroller, NSError *error) {
-            if (!error) {
+            if (showLogin && !error && viewcontroller) {
                 [[Utils rootViewController] presentViewController:viewcontroller animated:YES completion:^{
                     if ([GKLocalPlayer localPlayer].isAuthenticated)
                     {

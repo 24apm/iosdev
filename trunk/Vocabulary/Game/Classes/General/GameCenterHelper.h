@@ -12,7 +12,7 @@
 @interface GameCenterHelper : GameCenterHelperBase
 
 + (GameCenterHelper *)instance;
-- (void)login;
+- (void)reportScore:(NSInteger)score;
 
 @property (nonatomic, strong) NSString *imgName;
 

@@ -8,8 +8,6 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GameView">
             <connections>
                 <outlet property="boardViewContainer" destination="Qoo-qy-EUL" id="KCl-nK-xfB"/>
-                <outlet property="bubbleLabel" destination="PUD-3c-pRS" id="Cqh-A6-MTM"/>
-                <outlet property="bubbleView" destination="uvt-Q8-KDc" id="5XS-dc-Oyl"/>
                 <outlet property="definitionLabel" destination="hQJ-Z6-Tcw" id="X3Z-be-sYd"/>
                 <outlet property="nextLevelLabel" destination="DN1-aG-im3" id="LNR-qb-8sn"/>
                 <outlet property="wordButton" destination="3dz-TU-ecR" id="tcC-Ie-a2r"/>
@@ -204,25 +202,6 @@
                                 <action selector="wordPressed:" destination="-1" eventType="touchUpInside" id="tMv-v2-ufF"/>
                             </connections>
                         </button>
-                        <view contentMode="scaleToFill" id="uvt-Q8-KDc" userLabel="Bubble View">
-                            <rect key="frame" x="300" y="-2" width="22" height="22"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="ePa-XL-meL">
-                                    <rect key="frame" x="0.0" y="0.0" width="22" height="22"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <color key="backgroundColor" red="0.81568627449999997" green="0.19266968900000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="99" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" id="PUD-3c-pRS">
-                                    <rect key="frame" x="0.0" y="0.0" width="22" height="22"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                            </subviews>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        </view>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>

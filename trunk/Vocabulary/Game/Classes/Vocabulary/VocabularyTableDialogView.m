@@ -10,6 +10,7 @@
 #import "VocabularyManager.h"
 #import "VocabularyTableView.h"
 #import "UserData.h"
+#import "GameCenterHelper.h"
 
 @interface VocabularyTableDialogView()
 
@@ -96,6 +97,10 @@
 #pragma mark - all vocabulary
 - (IBAction)vocabularyPressed:(id)sender {
     [self loadVocabularyDictionary];
+}
+
+- (IBAction)leaderboardPressed:(id)sender {
+    [[GameCenterHelper instance] showLeaderboard:[Utils rootViewController]];
 }
 
 - (void)loadVocabularyDictionary {

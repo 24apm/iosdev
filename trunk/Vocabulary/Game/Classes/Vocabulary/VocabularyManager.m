@@ -10,6 +10,7 @@
 #import "NSArray+Util.h"
 #import "UserData.h"
 #import "Utils.h"
+#import "GameCenterHelper.h"
 
 #define TEXT_FILE @"vocabulary.txt"
 #define MIX_TEXT_FILE @"mixvocabulary.txt"
@@ -17,7 +18,6 @@
 #define MAX_STRING_LENGTH 8
 #define NUM_OF_WORDS 9
 #define WORD_FIT_ATTEMPTS 10
-
 @interface VocabularyManager()
 
 @property (strong, nonatomic) NSMutableDictionary *dictionaryBySection;
@@ -596,6 +596,7 @@
     if (![[UserData instance] hasVocabFound:word]) {
         [[UserData instance] updateDictionaryWith:word];
         [[UserData instance] addUnseenWord:word];
+        [[GameCenterHelper instance] reportScore:[UserData instance].pokedex.count];
     }
 }
 

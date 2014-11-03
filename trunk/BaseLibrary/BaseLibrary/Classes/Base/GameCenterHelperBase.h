@@ -15,7 +15,7 @@
 @property (nonatomic, retain) GameCenterManager *gameCenterManager;
 @property (nonatomic, retain) NSString* currentLeaderBoard;
 
-- (void)loginToGameCenter;
+- (void)loginToGameCenterWithAuthentication:(BOOL)showLogin;
 - (void)showLeaderboard:(UIViewController *)viewController;
 - (void)showLeaderboard:(UIViewController *)viewController category:(NSString *)category;
 - (void)showAchievements:(UIViewController *)viewController;

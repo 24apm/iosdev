@@ -112,6 +112,7 @@ NSString *const UserDataHouseDataChangedNotification = @"UserDataHouseDataChange
         [unsortedArray addObject:newVocabulary];
         NSArray *sortedArray = [unsortedArray sortedArrayUsingSelector:@selector(compare:)];
         self.pokedex = [NSMutableArray arrayWithArray:sortedArray];
+
         [self saveData:self.pokedex forKey:@"pokedex"];
     }
 }

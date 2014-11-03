@@ -13,13 +13,14 @@
 
 #pragma mark - GameCenter
 
-- (void)loginToGameCenter {
+- (void)loginToGameCenterWithAuthentication:(BOOL)showLogin {
     if ([GameCenterManager isGameCenterAvailable]) {
         if (!self.gameCenterManager) {
             self.gameCenterManager = [[GameCenterManager alloc] init];
             [self.gameCenterManager setDelegate:self];
         }
-        [self.gameCenterManager authenticateLocalUser];
+        
+        [self.gameCenterManager authenticateLocalUser:showLogin];
         [self retrieveLocalPlayerScore];
     } else {
         
@@ -50,6 +51,7 @@
 }
 
 - (void)showLeaderboard:(UIViewController *)viewController category:(NSString *)category {
+    [self loginToGameCenterWithAuthentication:YES];
     GKLeaderboardViewController *leaderboardController = [[GKLeaderboardViewController alloc] init];
     if (leaderboardController != NULL) {
         leaderboardController.category = category;
@@ -71,6 +73,7 @@
 
 
 - (void)showAchievements:(UIViewController *)viewController {
+    [self loginToGameCenterWithAuthentication:YES];
     [TrackUtils trackAction:@"GameCenterHelperBase" label:@"showAchievements"];
 
     GKAchievementViewController *achievements = [[GKAchievementViewController alloc] init];

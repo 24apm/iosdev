@@ -26,9 +26,16 @@
     return instance;
 }
 
-- (void)login {
-    [GameCenterHelper instance].currentLeaderBoard = kLeaderboardBestScoreID;
-    [[GameCenterHelper instance] loginToGameCenter];
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.currentLeaderBoard = kLeaderboardWords;
+    }
+    return self;
+}
+
+- (void)reportScore:(NSInteger)score {
+    [self.gameCenterManager reportScore:score forCategory:self.currentLeaderBoard];
 }
 
 - (void) checkAchievements

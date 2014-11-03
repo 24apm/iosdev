@@ -14,8 +14,7 @@
 #define ENABLED_ADS YES
 
 // Game Center
-#define kLeaderboardBestTimeID @"com.jeffrwan.restroom2.fastest"
-#define kLeaderboardBestScoreID @"com.jeffrwan.makeitflappy.height"
+#define kLeaderboardWords @"com.jeffrwan.vocabulary.words"
 
 #define kAchievementOneStreak @"com.jeffrwan.thenumbergame.level1"
 #define kAchievement5Streak @"com.jeffrwan.thenumbergame.level5"

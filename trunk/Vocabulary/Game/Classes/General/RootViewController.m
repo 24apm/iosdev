@@ -49,6 +49,7 @@
     
     [[CustomGameLoopTimer instance] initialize];
     
+    [[GameCenterHelper instance] loginToGameCenterWithAuthentication:NO];
     [self preloadSounds];
   
     self.gameView = [[GameView alloc] initWithFrame:self.view.frame];
