@@ -217,7 +217,7 @@
         self.boardDrawView.frame = CGRectMake(0.f, 0.f, self.width, self.height);
         [self addSubview:self.boardDrawView];
         
-        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(animateAnswerIsOn) name:ANIMATE_CORRECT_WORD_NOTIFICATION object:nil];
+//        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(animateAnswerIsOn) name:ANIMATE_CORRECT_WORD_NOTIFICATION object:nil];
     }
     return self;
 }

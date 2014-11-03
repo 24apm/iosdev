@@ -17,21 +17,28 @@
 #import "GameConstants.h"
 #import "CAEmitterHelperLayer.h"
 #import "CompletedLevelDialogView.h"
+#import "CoinIAPHelper.h"
+#import "UpgradeView.h"
+#import "THLabel.h"
+#import "PromoDialogView.h"
+#import "GameCenterHelper.h"
 
 @interface GameView()
 
 @property (strong, nonatomic) IBOutlet UILabel *nextLevelLabel;
 @property (strong, nonatomic) BoardView *boardView;
 @property (strong, nonatomic) IBOutlet UIView *boardViewContainer;
-@property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *words;
+@property (strong, nonatomic) IBOutletCollection(THLabel) NSArray *words;
 @property (strong, nonatomic) IBOutlet UILabel *definitionLabel;
 @property (strong, nonatomic) LevelData *levelData;
 @property (strong, nonatomic) UIActivityIndicatorView *spinner;
 @property (strong, nonatomic) IBOutlet UIButton *wordButton;
-
+@property (nonatomic) BOOL newSectionUnlocked;
 @property (strong, nonatomic) IBOutlet UIView *bubbleView;
 @property (strong, nonatomic) IBOutlet UILabel *bubbleLabel;
+@property (nonatomic) int numOfGame;
 
+@property (nonatomic) int currentPrevIndex;
 @end
 
 @implementation GameView
@@ -43,15 +50,26 @@
         [self.boardViewContainer addSubview:self.boardView];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(wordMatched:) name:NOTIFICATION_WORD_MATCHED object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshBubble) name:VocabularyTableDialogViewDimissed object:nil];
-
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(unlockAnswer) name:UNLOCK_ANSWER_NOTIFICATION object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(buyMoreCoin) name:BUY_COIN_VIEW_NOTIFICATION object:nil];
+        self.newSectionUnlocked = NO;
+        
         
         self.spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
         [self addSubview:self.spinner];
         self.spinner.hidesWhenStopped = YES;
         self.spinner.center = self.definitionLabel.center;
-        
+        self.numOfGame = 0;
     }
     return self;
+}
+
+- (void)unlockAnswer {
+    [self.boardView showAnswer];
+}
+
+- (void)buyMoreCoin {
+    [[CoinIAPHelper sharedInstance] showCoinMenu];
 }
 
 - (void)updateBubbleCount:(int)count {
@@ -65,7 +83,6 @@
 
 - (void)setup {
     [self generateNewLevel];
-    
 }
 
 - (IBAction)wordPressed:(id)sender {
@@ -73,29 +90,29 @@
 }
 
 - (IBAction)resetPressed:(id)sender {
+    
     [self.spinner startAnimating];
     [self performSelector:@selector(generateNewLevel) withObject:nil afterDelay:0.0];
 }
 
 - (IBAction)answerPressed:(id)sender {
-    //    MessageDialogView *messageDialog = [[MessageDialogView alloc] initWithHeaderText:@"Answer" bodyText:[self.levelData formatFinalAnswer]];
-    //    messageDialog.bodyLabel.font = [UIFont fontWithName:messageDialog.bodyLabel.font.familyName size:6];
-    //    [messageDialog show];
-    
-    [self.boardView showAnswer];
+    [[[UpgradeView alloc] init] show];
 }
 
 - (void)updateNextLevelLabel {
-    int nextLevelIndex = [[VocabularyManager instance] unlockUptoLevel];
-    int prevLevelCap = [[VocabularyManager instance] mixVocabIndexWith:nextLevelIndex -1];
+    int prevLevelCap = [[VocabularyManager instance] mixVocabIndexWith:self.currentPrevIndex -1];
     int currentLevel = [UserData instance].pokedex.count - prevLevelCap;
-    int currentLevelCap = [[VocabularyManager instance] mixVocabIndexWith:nextLevelIndex] - prevLevelCap;
+    int currentLevelCap = [[VocabularyManager instance] mixVocabIndexWith:self.currentPrevIndex] - prevLevelCap;
     
     self.nextLevelLabel.text = [NSString stringWithFormat:@"%d/%d", currentLevel, currentLevelCap];
+    if (currentLevel == currentLevelCap) {
+        self.newSectionUnlocked = YES;
+        
+    }
 }
 
 - (void)generateNewLevel {
-    
+    self.currentPrevIndex = [[VocabularyManager instance] unlockUptoLevel];
     NSInteger size = [Utils randBetweenMinInt:10 max:10];
     self.levelData = [[VocabularyManager instance] generateLevel:9
                                                              row:size
@@ -103,7 +120,6 @@
     [self.boardView setupWithLevel:self.levelData];
     [self refreshWordList];
     [self updateBubbleCount:[[UserData instance] unseenWordCount]];
-
     //debug
     //    [self.levelData printAnswers];
 }
@@ -114,7 +130,7 @@
     [self.spinner stopAnimating];
     
     for (int i = 0; i < self.words.count; i++) {
-        UILabel *wordLabel = [self.words objectAtIndex:i];
+        THLabel *wordLabel = [self.words objectAtIndex:i];
         
         if (i < self.levelData.vocabularyList.count) {
             VocabularyObject *vocabData = [self.levelData.vocabularyList objectAtIndex:i];
@@ -124,6 +140,11 @@
                 wordLabel.alpha = 0.3f;
             } else {
                 wordLabel.alpha = 1.f;
+                if (![[UserData instance].pokedex containsObject:vocabData.word]) {
+                    wordLabel.textColor = [UIColor orangeColor];
+                } else {
+                    wordLabel.textColor = [UIColor blackColor];
+                }
             }
         } else {
             wordLabel.hidden = YES;
@@ -144,7 +165,7 @@
     NSMutableDictionary *dictionary = notification.object;
     NSArray *slotViews = [dictionary objectForKey:@"slotsArray"];
     NSString *word = [dictionary objectForKey:@"word"];
-
+    
     // if new word, animate
     if (![[VocabularyManager instance] hasUserUnlockedVocab:word]) {
         [self performSelector:@selector(animateFromTileToMenu:) withObject:slotViews afterDelay:0.6f];
@@ -166,9 +187,25 @@
 }
 
 - (void)showCompleteLevel {
-    [[[CompletedLevelDialogView alloc] initWithCallback:^{
-        [self generateNewLevel];
-    }] show];
+    if (self.newSectionUnlocked) {
+        self.newSectionUnlocked = NO;
+        // dialog - new level unlocked
+        [[[VocabularyTableDialogView alloc] init] show];
+
+        [[[CompletedLevelDialogView alloc] initWithCallback:^{
+            [self generateNewLevel];
+        }] show];
+    } else {
+        // no dialog, auto refresh
+        [self performSelector:@selector(generateNewLevel) withObject:nil afterDelay:1.0f];
+        [[GameCenterHelper instance] login];
+    }
+    
+    self.numOfGame++;
+
+    if (self.numOfGame % 3 == 0) {
+        [PromoDialogView show];
+    }
 }
 
 - (void)animateFromTileToMenu:(NSArray *)slotViews {
@@ -186,11 +223,11 @@
     CGPoint start = [fromView.superview convertPoint:fromView.center toView:self];
     
     CGPoint toPoint = [toView.superview convertPoint:toView.center toView:self];
-
+    
     NSMutableArray *values = [NSMutableArray array];
     [values addObject:[NSValue valueWithCGPoint:start]];
     [values addObject:[NSValue valueWithCGPoint:toPoint]];
-
+    
     CAKeyframeAnimation *position = [CAKeyframeAnimation animationWithKeyPath:@"emitterPosition"];
     position.removedOnCompletion = NO;
     position.fillMode = kCAFillModeBoth;

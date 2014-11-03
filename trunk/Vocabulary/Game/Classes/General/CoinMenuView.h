@@ -15,7 +15,7 @@
 #define PURCHASE_SUCCESS_NOTIFICATION @"PURCHASE_SUCCESS_NOTIFICATION"
 
 @interface CoinMenuView : AnimatingDialogView
-
+@property (strong, nonatomic) IBOutletCollection(CoinView) NSArray *coinViewCollection;
 + (CoinMenuView *)instance;
 -(void)show;
 

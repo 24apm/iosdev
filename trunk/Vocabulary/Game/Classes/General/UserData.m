@@ -15,7 +15,7 @@
 #import "CoinView.h"
 
 
-#define NEW_USER_COIN 1000
+#define NEW_USER_COIN 0
 #define DEFAULT_STAMINA_LEVEL 1
 
 NSString *const UserDataHouseDataChangedNotification = @"UserDataHouseDataChangedNotification";

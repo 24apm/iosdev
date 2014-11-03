@@ -26,6 +26,11 @@
     return instance;
 }
 
+- (void)login {
+    [GameCenterHelper instance].currentLeaderBoard = kLeaderboardBestScoreID;
+    [[GameCenterHelper instance] loginToGameCenter];
+}
+
 - (void) checkAchievements
 {
     double percentComplete = 100;

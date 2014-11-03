@@ -45,7 +45,7 @@
                                                         encoding:[NSString defaultCStringEncoding]];
             NSString *propertyType = [NSString stringWithCString:propType
                                                         encoding:[NSString defaultCStringEncoding]];
-            
+            propertyType = propertyType; //todo
             [dictionary setObject:[self valueForKey:propertyName] forKey:propertyName];
         }
     }

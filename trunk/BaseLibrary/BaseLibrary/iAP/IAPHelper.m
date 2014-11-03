@@ -153,7 +153,7 @@ NSString *const IAPHelperProductFailedNotification = @"IAPHelperProductFailedNot
     {
         NSLog(@"Transaction error: %@", transaction.error.localizedDescription);
     }
-    [[NSNotificationCenter defaultCenter] postNotificationName:IAPHelperProductFailedNotification object:nil userInfo:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:IAPHelperProductFailedNotification object:transaction userInfo:nil];
     [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
 }
 

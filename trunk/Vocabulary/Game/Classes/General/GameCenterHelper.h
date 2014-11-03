@@ -12,6 +12,7 @@
 @interface GameCenterHelper : GameCenterHelperBase
 
 + (GameCenterHelper *)instance;
+- (void)login;
 
 @property (nonatomic, strong) NSString *imgName;
 

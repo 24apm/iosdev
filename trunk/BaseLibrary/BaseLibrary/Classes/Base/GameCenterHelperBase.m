@@ -15,9 +15,10 @@
 
 - (void)loginToGameCenter {
     if ([GameCenterManager isGameCenterAvailable]) {
-        
-        self.gameCenterManager = [[GameCenterManager alloc] init];
-        [self.gameCenterManager setDelegate:self];
+        if (!self.gameCenterManager) {
+            self.gameCenterManager = [[GameCenterManager alloc] init];
+            [self.gameCenterManager setDelegate:self];
+        }
         [self.gameCenterManager authenticateLocalUser];
         [self retrieveLocalPlayerScore];
     } else {

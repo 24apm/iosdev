@@ -65,9 +65,14 @@ displaySectionIndexes:(NSArray *)displaySectionIndexes
 - (void)setup {
     VocabularyRowView *t = [[VocabularyRowView alloc] init];
     self.cellFrame = t.frame;
-
-    self.tableView.sectionIndexBackgroundColor = [UIColor clearColor];
-    self.tableView.sectionIndexColor = [UIColor colorWithRed:75.f/255.f green:211.f/255.f blue:193.f/255.f alpha:1.0f];
+    
+    if ([self.tableView respondsToSelector:@selector(sectionIndexBackgroundColor)]) {
+        self.tableView.sectionIndexBackgroundColor = [UIColor clearColor];
+    }
+    
+    if ([self.tableView respondsToSelector:@selector(sectionIndexColor)]) {
+        self.tableView.sectionIndexColor = [UIColor colorWithRed:75.f/255.f green:211.f/255.f blue:193.f/255.f alpha:1.0f];
+    }
 }
 
 - (void)refresh {

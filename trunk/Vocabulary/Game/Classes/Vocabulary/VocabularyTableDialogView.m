@@ -23,8 +23,8 @@
     self = [super init];
     if (self) {
         self.progressLabel.text = [NSString stringWithFormat:@"%d/%d", [VocabularyManager instance].currentCount, [VocabularyManager instance].maxCount];
-        [self loadMixedVocabularyDictionary];
         self.unseenWords = [[UserData instance].unseenWords copy];
+        [self loadMixedVocabularyDictionary];
     }
     return self;
 }

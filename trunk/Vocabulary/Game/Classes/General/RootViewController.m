@@ -50,9 +50,7 @@
     [[CustomGameLoopTimer instance] initialize];
     
     [self preloadSounds];
-    [GameCenterHelper instance].currentLeaderBoard = kLeaderboardBestScoreID;
-    [[GameCenterHelper instance] loginToGameCenter];
-    
+  
     self.gameView = [[GameView alloc] initWithFrame:self.view.frame];
     [self.view addSubview:self.gameView];
 }
@@ -62,10 +60,18 @@
     
     [[VocabularyManager instance] loadFile];
     
+    // banner top
     self.gameView.frame = CGRectMake(0,
                                      self.adBannerView.height,
                                      self.view.width,
                                      self.view.height - self.adBannerView.height);
+    
+
+//    self.gameView.frame = CGRectMake(0,
+//                                     0,
+//                                     self.view.width,
+//                                     self.view.height - self.adBannerView.height);
+    
     
     [self.gameView generateNewLevel];
     

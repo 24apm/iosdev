@@ -71,6 +71,12 @@
         application.applicationIconBadgeNumber = 0;
     }
     
+    if ([UIApplication instancesRespondToSelector:@selector(registerUserNotificationSettings:)]){
+        [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeBadge|UIUserNotificationTypeSound categories:nil]];
+    }
+    
+    [self registerNotification];
+    
     [iRate sharedInstance].delegate = self;
 
     self.window.frame = UIScreen.mainScreen.applicationFrame;
@@ -85,6 +91,10 @@
     [request send];
     
     return YES;
+}
+
+- (void)registerNotification {
+    // override
 }
 
 - (void)setupAnalytics {

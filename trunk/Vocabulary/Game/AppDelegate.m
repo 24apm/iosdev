@@ -22,8 +22,7 @@
     
     [iRate sharedInstance].usesUntilPrompt = 2;
     [iRate sharedInstance].eventsUntilPrompt = 5;
-    
-    [[NotificationManager instance] registerNotifications];
+
     [[CoinIAPHelper sharedInstance] loadProduct];
 
     RootViewController *myViewController = [[RootViewController alloc] init];
@@ -36,6 +35,11 @@
     [self.window makeKeyAndVisible];
     
     return YES;
+}
+
+- (void)registerNotification {
+    [super registerNotification];
+    [[NotificationManager instance] registerNotifications];
 }
 
 @end

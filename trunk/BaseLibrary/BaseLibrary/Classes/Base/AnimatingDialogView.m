@@ -16,9 +16,8 @@
 }
 
 - (IBAction)dismissed:(id)sender {
-    [self popOut:self];
     self.userInteractionEnabled = NO;
-    [self performSelector:@selector(dismissView:) withObject:self afterDelay:0.1f];
+    [self performSelector:@selector(dismissView:) withObject:self afterDelay:[self popOut:self]];
 }
 
 - (void)popIn:(UIView *)view {
@@ -28,13 +27,14 @@
     [view.layer addAnimation:popIn forKey:@"popIn"];
 }
 
-- (void)popOut:(UIView *)view {
+- (CGFloat)popOut:(UIView *)view {
     CAKeyframeAnimation *animateScale = [CAKeyframeAnimation animationWithKeyPath:@"transform.scale"];
     animateScale.values = @[@(1.f), @(0.f)];
     animateScale.duration = 0.1f;
     animateScale.removedOnCompletion = NO;
     animateScale.fillMode = kCAFillModeForwards;
     [view.layer addAnimation:animateScale forKey:@"animateScaleOut"];
+    return animateScale.duration;
 }
 
 - (void)dismissView:(XibDialogView *)dialogView {

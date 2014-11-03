@@ -23,7 +23,7 @@
 
 - (void)showCoinMenu {
     if ([CoinIAPHelper sharedInstance].hasLoaded) {
-        //[[[CoinMenuView alloc] init] show];
+        [[[CoinMenuView alloc] init] show];
     } else {
         [[[ErrorDialogView alloc] init] show];
     }
@@ -34,27 +34,28 @@
     static CoinIAPHelper * sharedInstance;
     dispatch_once(&once, ^{
         NSSet * productIdentifiers = [NSSet setWithObjects:
-                                      POWER_UP_IAP_FUND,
-                                      POWER_UP_IAP_DOUBLE,
-                                      POWER_UP_IAP_QUADPLE,
-                                      POWER_UP_IAP_SUPER,
+                                      IAP_TIER_1,
+                                      IAP_TIER_2,
+                                      IAP_TIER_3,
+                                      IAP_TIER_4,
                                       nil];
         sharedInstance = [[self alloc] initWithProductIdentifiers:productIdentifiers];
     });
     return sharedInstance;
 }
 
-- (void)loadProduct {
-    [self notificationSetUp];
-    self.loadingTimer = [NSTimer scheduledTimerWithTimeInterval:30.f target:self selector:@selector(_loadProduct) userInfo:nil repeats:YES];
-    [self _loadProduct];
+- (id)initWithProductIdentifiers:(NSSet *)productIdentifiers {
+    self = [super initWithProductIdentifiers:productIdentifiers];
+    if (self) {
+        // add notification
+        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(applyPowerUp:) name:APPLY_TRANSACTION_NOTIFICATION object:nil];
+    }
+    return self;
 }
 
-- (void)notificationSetUp {
-        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(buyingProduct:) name:IAP_ITEM_PRESSED_NOTIFICATION object:nil];
-        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(applyPowerUp:) name:BUYING_PRODUCT_SUCCESSFUL_NOTIFICATION object:nil];
-        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(boughtProduct:) name:IAPHelperProductPurchasedNotification object:nil];
-        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(productFailed:) name:IAPHelperProductFailedNotification object:nil];
+- (void)loadProduct {
+    self.loadingTimer = [NSTimer scheduledTimerWithTimeInterval:30.f target:self selector:@selector(_loadProduct) userInfo:nil repeats:YES];
+    [self _loadProduct];
 }
 
 - (void)_loadProduct {
@@ -82,16 +83,16 @@
     SKProduct *skProduct = nil;
     switch (type) {
         case IAPTypeFund:
-            skProduct = [[CoinIAPHelper sharedInstance].productDictionary objectForKey:POWER_UP_IAP_FUND];
+            skProduct = [[CoinIAPHelper sharedInstance].productDictionary objectForKey:IAP_TIER_1];
             break;
         case IAPTypeDouble:
-            skProduct = [[CoinIAPHelper sharedInstance].productDictionary objectForKey:POWER_UP_IAP_DOUBLE];
+            skProduct = [[CoinIAPHelper sharedInstance].productDictionary objectForKey:IAP_TIER_2];
             break;
         case IAPTypeQuadruple:
-            skProduct = [[CoinIAPHelper sharedInstance].productDictionary objectForKey:POWER_UP_IAP_QUADPLE];
+            skProduct = [[CoinIAPHelper sharedInstance].productDictionary objectForKey:IAP_TIER_3];
             break;
         case IAPTypeSuper:
-            skProduct = [[CoinIAPHelper sharedInstance].productDictionary objectForKey:POWER_UP_IAP_SUPER];
+            skProduct = [[CoinIAPHelper sharedInstance].productDictionary objectForKey:IAP_TIER_4];
             break;
         default:
             break;
@@ -99,43 +100,40 @@
     return skProduct;
 }
 
-- (void)buyingProduct:(NSNotification *)notification {
-    [TrackUtils trackAction:@"buyingProduct" label:@""];
-    CoinView * coinView = notification.object;
-    [[CoinIAPHelper sharedInstance] buyProduct:coinView.product];
-}
-
-- (void)boughtProduct:(NSNotification *)notification {
-    NSString *productIdentifier = notification.object;
-    if (productIdentifier) {
-        [TrackUtils trackAction:@"buyingProductSuccess" label:@""];
-        [[NSNotificationCenter defaultCenter]postNotificationName:BUYING_PRODUCT_SUCCESSFUL_NOTIFICATION object:productIdentifier];
++ (NSMutableDictionary *)iAPDictionary {
+    static NSMutableDictionary *iAPDictionary;
+    if (!iAPDictionary) {
+        iAPDictionary = [NSMutableDictionary dictionary];
+        [iAPDictionary setObject:@(100) forKey:IAP_TIER_1];
+        [iAPDictionary setObject:@(750) forKey:IAP_TIER_2];
+        [iAPDictionary setObject:@(4000) forKey:IAP_TIER_3];
+        [iAPDictionary setObject:@(10000) forKey:IAP_TIER_4];
     }
+    return iAPDictionary;
 }
-
-- (void)productFailed:(NSNotification *)notification {
-    [TrackUtils trackAction:@"buyingProductFail" label:@""];
-    [[NSNotificationCenter defaultCenter]postNotificationName:BUYING_PRODUCT_ENDED_NOTIFICATION object:nil];
-}
+//1 ->     2   +   0%      -> 2    *   50 = 100
+// 5 ->     10  +   50%     -> 15   *   50 = 750
+// 20 ->    40  +   100%    -> 80   *   50 = 4000
+// 50 ->    100 +   200%    -> 200  *   50 = 10000
 
 - (void)applyPowerUp:(NSNotification *)notification {
     NSString *productIdentifier = notification.object;
     [[NSNotificationCenter defaultCenter]postNotificationName:BUYING_PRODUCT_ENDED_NOTIFICATION object:nil];
-    if ([productIdentifier isEqualToString:POWER_UP_IAP_FUND]) {
-        [TrackUtils trackAction:@"+5,000" label:@"End"];
-        [[UserData instance] incrementCoin:5000];
+    if ([productIdentifier isEqualToString:IAP_TIER_1]) {
+        [TrackUtils trackAction:@"Tier 1" label:@"End"];
+        [[UserData instance] incrementCoin:[[[CoinIAPHelper iAPDictionary] objectForKey:IAP_TIER_1] integerValue]];
         
-    } else if ([productIdentifier isEqualToString:POWER_UP_IAP_DOUBLE]) {
-        [TrackUtils trackAction:@"+20,000" label:@"End"];
-        [[UserData instance] incrementCoin:20000];
+    } else if ([productIdentifier isEqualToString:IAP_TIER_2]) {
+        [TrackUtils trackAction:@"Tier 2" label:@"End"];
+        [[UserData instance] incrementCoin:[[[CoinIAPHelper iAPDictionary] objectForKey:IAP_TIER_2] integerValue]];
         
-    } else if ([productIdentifier isEqualToString:POWER_UP_IAP_QUADPLE]) {
-        [TrackUtils trackAction:@"+100,000" label:@"End"];
-        [[UserData instance] incrementCoin:100000];
+    } else if ([productIdentifier isEqualToString:IAP_TIER_3]) {
+        [TrackUtils trackAction:@"Tier 3" label:@"End"];
+        [[UserData instance] incrementCoin:[[[CoinIAPHelper iAPDictionary] objectForKey:IAP_TIER_3] integerValue]];
         
-    } else if ([productIdentifier isEqualToString:POWER_UP_IAP_SUPER]) {
-        [TrackUtils trackAction:@"+1,000,000" label:@"End"];
-        [[UserData instance] incrementCoin:10000000];
+    } else if ([productIdentifier isEqualToString:IAP_TIER_4]) {
+        [TrackUtils trackAction:@"Tier 4" label:@"End"];
+        [[UserData instance] incrementCoin:[[[CoinIAPHelper iAPDictionary] objectForKey:IAP_TIER_4] integerValue]];
     }
 }
 

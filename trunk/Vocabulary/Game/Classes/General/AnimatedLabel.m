@@ -20,12 +20,12 @@
 
 - (void)animate {
     self.hidden = YES;
-    [self performSelector:@selector(_animate) withObject:nil afterDelay:.3];
+    [self performSelector:@selector(_animate) withObject:nil afterDelay:.1];
 }
 
 - (void)animateSlow {
     self.hidden = YES;
-    [self performSelector:@selector(_animateSlow) withObject:nil afterDelay:.3];
+    [self performSelector:@selector(_animateSlow) withObject:nil afterDelay:.1];
 }
 
 - (void)_animateSlow{
@@ -56,7 +56,7 @@
 
 - (void)_animate {
     self.hidden = NO;
-    float offset = self.y - (1 * self.height);
+    float offset = self.y - (1 * self.height/3);
     self.alpha = 1.f;
 
     CABasicAnimation *animatePosition = [CABasicAnimation animationWithKeyPath:@"position"];
@@ -71,7 +71,7 @@
 
     CAAnimationGroup *animateGroup = [CAAnimationGroup animation];
     animateGroup.animations = [NSArray arrayWithObjects:animatePosition, scaleIn, animateAlpha, nil];
-    animateGroup.duration = 2.f;
+    animateGroup.duration = 1.8f;
     animateGroup.fillMode = kCAFillModeForwards;
     animateGroup.removedOnCompletion = NO;
     [self.layer addAnimation:animateGroup forKey:@"animateGroup"];

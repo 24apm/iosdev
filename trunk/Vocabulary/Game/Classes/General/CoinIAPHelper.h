@@ -25,6 +25,8 @@ typedef enum {
 @property (strong, nonatomic) NSDictionary *productDictionary;
 @property (readonly, nonatomic) BOOL hasLoaded;
 
++ (NSMutableDictionary *)iAPDictionary;
+
 + (CoinIAPHelper *)sharedInstance;
 - (void)loadProduct;
 - (SKProduct *)productForType:(IAPType)type ;

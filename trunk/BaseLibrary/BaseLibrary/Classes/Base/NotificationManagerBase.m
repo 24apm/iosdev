@@ -20,6 +20,7 @@
 }
 
 - (void)registerNotifications {
+    
     [[UIApplication sharedApplication] cancelAllLocalNotifications];
     
     NSArray *dates = [self notificationDates];

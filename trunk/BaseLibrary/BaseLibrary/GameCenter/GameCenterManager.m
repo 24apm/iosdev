@@ -47,7 +47,7 @@
 
 #import "GameCenterManager.h"
 #import <GameKit/GameKit.h>
-
+#import "Utils.h"
 
 
 @implementation GameCenterManager
@@ -136,10 +136,23 @@
 {
 	if([GKLocalPlayer localPlayer].authenticated == NO)
 	{
-		[[GKLocalPlayer localPlayer] authenticateWithCompletionHandler:^(NSError *error) 
-		{
-			[self callDelegateOnMainThread: @selector(processGameCenterAuth:) withArg: NULL error: error];
-		}];
+        GKLocalPlayer *localPlayer = [GKLocalPlayer localPlayer];
+        [localPlayer setAuthenticateHandler:(^(UIViewController* viewcontroller, NSError *error) {
+            if (!error) {
+                [[Utils rootViewController] presentViewController:viewcontroller animated:YES completion:^{
+                    if ([GKLocalPlayer localPlayer].isAuthenticated)
+                    {
+                        // your code if authenticated
+                    }
+                    else {
+                        // your code if not authenticated
+                    }
+                }];
+            }
+            else {
+                // error handling code here
+            }
+        })];
 	}
 }
 
