@@ -15,6 +15,7 @@
 #import "VocabularyManager.h"
 #import "VocabularyTableDialogView.h"
 #import "GameView.h"
+#import "UserData.h"
 
 @interface RootViewController ()
 
@@ -49,7 +50,10 @@
     
     [[CustomGameLoopTimer instance] initialize];
     
-    [[GameCenterHelper instance] loginToGameCenterWithAuthentication:NO];
+    if (![UserData instance].isTutorial) {
+        [[GameCenterHelper instance] loginToGameCenterWithAuthentication];
+    }
+    
     [self preloadSounds];
   
     self.gameView = [[GameView alloc] initWithFrame:self.view.frame];

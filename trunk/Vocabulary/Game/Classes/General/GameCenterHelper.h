@@ -7,6 +7,7 @@
 //
 
 #import "GameCenterHelperBase.h"
+
 #define SHOW_ACHIEVETMENT_EARNED @"SHOW_ACHIEVETMENT_EARNED"
 
 @interface GameCenterHelper : GameCenterHelperBase

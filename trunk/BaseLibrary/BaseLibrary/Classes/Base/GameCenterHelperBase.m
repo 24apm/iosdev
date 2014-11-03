@@ -13,14 +13,12 @@
 
 #pragma mark - GameCenter
 
-- (void)loginToGameCenterWithAuthentication:(BOOL)showLogin {
+- (void)loginToGameCenterWithAuthentication {
     if ([GameCenterManager isGameCenterAvailable]) {
-        if (!self.gameCenterManager) {
-            self.gameCenterManager = [[GameCenterManager alloc] init];
-            [self.gameCenterManager setDelegate:self];
-        }
+        self.gameCenterManager = [[GameCenterManager alloc] init];
+        [self.gameCenterManager setDelegate:self];
         
-        [self.gameCenterManager authenticateLocalUser:showLogin];
+        [self.gameCenterManager authenticateLocalUser];
         [self retrieveLocalPlayerScore];
     } else {
         
@@ -51,7 +49,6 @@
 }
 
 - (void)showLeaderboard:(UIViewController *)viewController category:(NSString *)category {
-    [self loginToGameCenterWithAuthentication:YES];
     GKLeaderboardViewController *leaderboardController = [[GKLeaderboardViewController alloc] init];
     if (leaderboardController != NULL) {
         leaderboardController.category = category;
@@ -62,9 +59,12 @@
 }
 
 - (void)showLeaderboard:(UIViewController *)viewController {
-    [TrackUtils trackAction:@"GameCenterHelperBase" label:@"showLeaderboard"];
-
-    [self showLeaderboard:viewController category:self.currentLeaderBoard];
+    if (![GKLocalPlayer localPlayer].isAuthenticated) {
+        [self loginToGameCenterWithAuthentication];
+    } else {
+        [TrackUtils trackAction:@"GameCenterHelperBase" label:@"showLeaderboard"];
+        [self showLeaderboard:viewController category:self.currentLeaderBoard];
+    }
 }
 
 - (void)leaderboardViewControllerDidFinish:(GKLeaderboardViewController *)viewController {
@@ -73,15 +73,18 @@
 
 
 - (void)showAchievements:(UIViewController *)viewController {
-    [self loginToGameCenterWithAuthentication:YES];
-    [TrackUtils trackAction:@"GameCenterHelperBase" label:@"showAchievements"];
-
-    GKAchievementViewController *achievements = [[GKAchievementViewController alloc] init];
-    if (achievements != NULL)
-    {
-        achievements.achievementDelegate = self;
-        [viewController presentViewController:achievements animated:YES completion:nil];
-
+    if (![GKLocalPlayer localPlayer].isAuthenticated) {
+        [self loginToGameCenterWithAuthentication];
+    } else {
+        [TrackUtils trackAction:@"GameCenterHelperBase" label:@"showAchievements"];
+        
+        GKAchievementViewController *achievements = [[GKAchievementViewController alloc] init];
+        if (achievements != NULL)
+        {
+            achievements.achievementDelegate = self;
+            [viewController presentViewController:achievements animated:YES completion:nil];
+            
+        }
     }
 }
 

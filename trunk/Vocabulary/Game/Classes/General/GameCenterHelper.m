@@ -9,6 +9,7 @@
 #import "GameCenterHelper.h"
 #import "GameConstants.h"
 #import "GameManager.h"
+#import "UserData.h"
 
 @interface GameCenterHelper()
 
@@ -163,6 +164,10 @@
         // Achievement Submission Failed.
         
     }
+}
+
+- (void)onLocalPlayerScoreReceived:(GKScore *)score {
+    [[GameCenterHelper instance] reportScore:[UserData instance].pokedex.count];
 }
 
 @end

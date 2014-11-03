@@ -198,7 +198,9 @@
     } else {
         // no dialog, auto refresh
         [self performSelector:@selector(generateNewLevel) withObject:nil afterDelay:1.0f];
-        [[GameCenterHelper instance] loginToGameCenterWithAuthentication:YES];
+        if ([UserData instance].isTutorial) {
+            [[GameCenterHelper instance] loginToGameCenterWithAuthentication];
+        }
     }
     
     self.numOfGame++;

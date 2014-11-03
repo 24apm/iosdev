@@ -37,6 +37,8 @@ extern NSString *const UserDataHouseDataChangedNotification;
 - (void)removeUnseenWord:(NSString *)word;
 - (int)unseenWordCount;
 
+- (BOOL)isTutorial;
+
 @property (nonatomic) long long coin;
 @property (strong, nonatomic) NSMutableArray *pokedex;
 @property (strong, nonatomic) NSMutableDictionary *unseenWords;
