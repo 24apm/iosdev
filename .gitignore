@@ -12,8 +12,10 @@ build/
 *.xcworkspace
 !default.xcworkspace
 xcuserdata
+*xcuserdata*
 profile
 *.moved-aside
+trunk/BaseLibrary/build/BaseLibrary.build/*
 DerivedData
 .idea/
 # Pods - for those of you who use CocoaPods
