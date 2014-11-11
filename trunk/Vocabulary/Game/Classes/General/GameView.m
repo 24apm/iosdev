@@ -100,7 +100,7 @@
         double newRefillTime = [UserData instance].retryTime + TIME_FOR_ONE_RETRY;
         [[UserData instance] retryRefillStartAt:newRefillTime];
         if ([UserData instance].retry >= [UserData instance].retryCapacity) {
-            [[UserData instance] refillRetryAtStart: CURRENT_TIME];
+            [[UserData instance] retryRefillStartAt: CURRENT_TIME];
             break;
         }
     }
