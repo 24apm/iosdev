@@ -996,6 +996,7 @@
 		D097A5971983A00D00A6EB7A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DSTROOT = /tmp/BaseLibrary.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BaseLibrary/BaseLibrary-Prefix.pch";
@@ -1004,10 +1005,10 @@
 					"$(inherited)",
 					$SOURCE_ROOT/BaseLibrary/Analytics/Library,
 				);
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "bdbf547c-f6d7-4a12-80d0-02608f7cb0b2";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 				USER_HEADER_SEARCH_PATHS = "";
 			};
@@ -1016,6 +1017,7 @@
 		D097A5981983A00D00A6EB7A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DSTROOT = /tmp/BaseLibrary.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BaseLibrary/BaseLibrary-Prefix.pch";
@@ -1024,10 +1026,10 @@
 					"$(inherited)",
 					$SOURCE_ROOT/BaseLibrary/Analytics/Library,
 				);
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "bdbf547c-f6d7-4a12-80d0-02608f7cb0b2";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 				USER_HEADER_SEARCH_PATHS = "";
 			};

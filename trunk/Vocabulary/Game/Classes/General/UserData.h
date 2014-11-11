@@ -26,7 +26,7 @@ extern NSString *const UserDataHouseDataChangedNotification;
 - (void)incrementCurrentLevel;
 
 - (void)updateDictionaryWith:(NSString *)newVocabulary;
-
+- (void)refillRetryByOne ;
 - (void)resetUserDefaults;
 
 - (BOOL)hasVocabFound:(NSString *)newVocabulary;
@@ -36,6 +36,7 @@ extern NSString *const UserDataHouseDataChangedNotification;
 - (void)addUnseenWord:(NSString *)word;
 - (void)removeUnseenWord:(NSString *)word;
 - (int)unseenWordCount;
+- (void)retryRefillStartAt:(double)time;
 
 - (BOOL)isTutorial;
 
@@ -47,5 +48,6 @@ extern NSString *const UserDataHouseDataChangedNotification;
 
 @property (nonatomic) NSInteger retry;
 @property (nonatomic) NSInteger retryCapacity;
+@property (nonatomic) double retryTime;
 
 @end

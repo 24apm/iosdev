@@ -12,6 +12,7 @@
 #import "CAEmitterHelperLayer.h"
 #import "NSString+StringUtils.h"
 #import "GameConstants.h"
+#import "SoundManager.h"
 
 @interface BoardDrawView : UIView
 
@@ -308,6 +309,7 @@
     CGPoint location = [touch locationInView:self];
     SlotView *slotView = [self slotAtScreenPoint:location];
     if (slotView && !self.hasCorrectMatch) {
+        [[SoundManager instance] play:SOUND_EFFECT_POP];
         self.hasCorrectMatch = NO;
         [slotView animateLabelSelection];
         [self.slotSelection addObject:slotView];
@@ -325,8 +327,16 @@
 //            
 //        }
 //    }
+    [self.boardAnswerDrawView.layer removeAllAnimations];
     [self.boardAnswerDrawView setNeedsDisplay];
     self.boardAnswerDrawView.hidden = NO;
+    CABasicAnimation *fadeInAndOut = [CABasicAnimation animationWithKeyPath:@"opacity"];
+    fadeInAndOut.fromValue = [NSNumber numberWithFloat:0.3f];
+    fadeInAndOut.toValue = [NSNumber numberWithFloat:1.f];
+    fadeInAndOut.autoreverses = YES;
+    fadeInAndOut.duration = 1.2f;
+    fadeInAndOut.repeatCount = HUGE_VAL;
+    [self.boardAnswerDrawView.layer addAnimation:fadeInAndOut forKey:@"fadeInAndOut"];
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -417,7 +427,7 @@
         [self fillLine:firstSlotPoint
        directionalUnit:point
               distance:maxDistance];
-        
+        [[SoundManager instance] play:SOUND_EFFECT_POP];
         [self refresh];
     }
 }
@@ -466,6 +476,7 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_WORD_MATCHED object:dictionary];
 
         [self animatingAnswer];
+        [[SoundManager instance] play:SOUND_EFFECT_BLING];
     }
     [self resetPreviousLine];
     [self refresh];

@@ -8,7 +8,7 @@
     "lifetime" : 1,
     "emitterCells" : [
                       {
-                      "colorRed" : 1,
+                      "colorRed" : 0,
                       "scaleRange" : 0,
                       "scale" : 0.1940063,
                       "velocity" : 1.6719,

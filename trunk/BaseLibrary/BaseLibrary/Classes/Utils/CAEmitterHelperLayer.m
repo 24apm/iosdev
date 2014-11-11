@@ -43,7 +43,10 @@
     self.velocity = [[dictionary objectForKey:@"velocity"] floatValue];
     self.birthRate = [[dictionary objectForKey:@"birthRate"] floatValue];
     self.lifetime = [[dictionary objectForKey:@"lifetime"] floatValue];
-    self.lifeSpan = [[dictionary objectForKey:@"lifeSpan"] floatValue];
+    self.lifeSpan = [[dictionary objectForKey:@"lifeSpan"] floatValue];\
+    if (self.lifeSpan <= 0) {
+        self.lifeSpan = HUGE_VALF;
+    }
     self.renderMode = [dictionary objectForKey:@"renderMode"];
     self.emitterShape = [dictionary objectForKey:@"emitterShape"];
     self.emitterSize = self.superlayer.bounds.size;

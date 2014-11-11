@@ -7,26 +7,43 @@
 //
 
 #import "CompletedLevelDialogView.h"
+#import "CAEmitterHelperLayer.h"
 
 @interface CompletedLevelDialogView()
 
+@property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 @property (nonatomic, strong) BLOCK block;
-
+@property (strong, nonatomic) IBOutlet UIView *animateView;
+@property (strong, nonatomic) IBOutlet UILabel *messageLabel;
+@property (strong, nonatomic) IBOutlet UIButton *replayBigButton;
+@property (strong, nonatomic) IBOutlet UIButton *replaySmallButton;
+@property (strong, nonatomic) IBOutlet UIButton *bookButton;
 @end
 
 @implementation CompletedLevelDialogView
 
-- (id)initWithCallback:(BLOCK)callback; {
+- (id)initForState:(NSString *)state; {
     self = [super init];
     if (self) {
-        self.block = callback;
+        if ([state isEqualToString:GAME_END]) {
+            self.replaySmallButton.hidden = YES;
+            self.bookButton.hidden = YES;
+            [CAEmitterHelperLayer emitter:@"particleEffectSlowBurst.json" onView:self.animateView];
+        } else if ([state isEqualToString:GAME_END_NEW]) {
+            self.replayBigButton.hidden = YES;
+        }
     }
+    
     return self;
 }
 
 
 - (IBAction)nextPressed:(id)sender {
-    self.block();
+    [[NSNotificationCenter defaultCenter]postNotificationName:START_NEW_GAME_NOTIFICATION object:nil];
+    [self dismissed:self];
+}
+- (IBAction)bookPressed:(id)sender {
+    [[NSNotificationCenter defaultCenter]postNotificationName:OPEN_BOOK_NOTIFICATION object:nil];
     [self dismissed:self];
 }
 
@@ -35,7 +52,7 @@
 //    popIn.values = @[@(0.f), @(1.2f), @(0.9f), @(1.0f)];
 //    popIn.duration = 1.0f;
 //    [view.layer addAnimation:popIn forKey:@"popIn"];
-//    
+//
 //    CGFloat rotations = 3;
 //    CGFloat duration = 1;
 //    CABasicAnimation* rotationAnimation;
@@ -44,7 +61,7 @@
 //    rotationAnimation.duration = duration;
 //    rotationAnimation.cumulative = YES;
 //    rotationAnimation.repeatCount = YES;
-//    
+//
 //    [view.layer addAnimation:rotationAnimation forKey:@"rotationAnimation"];
 //}
 

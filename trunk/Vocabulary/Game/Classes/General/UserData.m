@@ -45,7 +45,7 @@ NSString *const UserDataHouseDataChangedNotification = @"UserDataHouseDataChange
 - (void)setup {
     // Stamina Capacity Level
     if ([[NSUserDefaults standardUserDefaults] objectForKey:@"retryCapacity"] == nil) {
-        self.retryCapacity = 3;
+        self.retryCapacity = 5;
         [self saveData:@(self.retryCapacity) forKey:@"retryCapacity"];
     } else {
         self.retryCapacity = [[[NSUserDefaults standardUserDefaults] objectForKey:@"retryCapacity"] integerValue];
@@ -90,6 +90,18 @@ NSString *const UserDataHouseDataChangedNotification = @"UserDataHouseDataChange
     } else {
         self.unseenWords = [[NSUserDefaults standardUserDefaults] objectForKey:@"unseenWords"];
     }
+    //  Retry Time
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"retrytime"] == nil) {
+        self.retryTime = 0;
+        [self saveData:[NSNumber numberWithDouble:self.retryTime] forKey:@"retrytime"];
+    } else {
+        self.retryTime = [[[NSUserDefaults standardUserDefaults] objectForKey:@"retrytime"] doubleValue];
+    }
+}
+
+- (void)retryRefillStartAt:(double)time {
+    self.retryTime = time;
+    [self saveData:[NSNumber numberWithDouble:self.retryTime] forKey:@"retrytime"];
 }
 
 - (void)addUnseenWord:(NSString *)word {
@@ -126,7 +138,15 @@ NSString *const UserDataHouseDataChangedNotification = @"UserDataHouseDataChange
 }
 
 - (void)refillRetry {
-    self.retry = self.retryCapacity;
+   self.retry = self.retryCapacity;
+    [self saveData:@(self.retry) forKey:@"retry"];
+}
+
+- (void)refillRetryByOne {
+    self.retry++;
+    if (self.retry > self.retryCapacity) {
+        self.retry = self.retryCapacity;
+    }
     [self saveData:@(self.retry) forKey:@"retry"];
 }
 
@@ -188,5 +208,4 @@ NSString *const UserDataHouseDataChangedNotification = @"UserDataHouseDataChange
 - (BOOL)isTutorial {
     return self.pokedex.count < 1;
 }
-
 @end

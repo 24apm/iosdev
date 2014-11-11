@@ -59,7 +59,7 @@ displaySectionIndexes:(NSArray *)displaySectionIndexes
 }
 
 - (void)scrollTo:(NSIndexPath *)indexPath {
-    [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:NO];
+    [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:NO];
 }
 
 - (void)setup {

@@ -10,6 +10,11 @@
 #import "AnimatedLabel.h"
 #import "GameConstants.h"
 #import "TrackUtils.h"
+@interface UpgradeView ()
+
+@property (nonatomic, strong) NSString *stateNotification;
+
+@end
 
 @implementation UpgradeView
 
@@ -17,9 +22,9 @@
     if (YES || [UserData instance].coin >= self.cost) {
         //[[UserData instance] decrementCoin:self.cost];
         self.userInteractionEnabled = NO;
-        [[NSNotificationCenter defaultCenter]postNotificationName:UNLOCK_ANSWER_NOTIFICATION object:nil];
+        [[NSNotificationCenter defaultCenter]postNotificationName:self.stateNotification object:nil];
         [self animateLabelWithStringRedCenter:[NSString stringWithFormat:@"-%lld", self.cost]];
-        [self performSelector:@selector(dismissed:) withObject:nil afterDelay:2.f];
+        [self performSelector:@selector(dismissed:) withObject:nil afterDelay:1.f];
     } else {
         [[NSNotificationCenter defaultCenter]postNotificationName:BUY_COIN_VIEW_NOTIFICATION object:nil];
     }
@@ -35,6 +40,20 @@
     [self refresh];
 }
 
+- (void)showForAnswer {
+    self.cost = 50;
+    self.lvlLabel.text = @"Show Answer for:";
+    self.stateNotification = UNLOCK_ANSWER_NOTIFICATION;
+    [self show];
+}
+
+- (void)showForKey {
+    self.cost = 10;
+    self.lvlLabel.text = @"Refill all Keys for:";
+    self.stateNotification = ADD_KEY_NOTIFICATION;
+    [self show];
+}
+
 - (void)dismissed:(id)sender {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [super dismissed:sender];
@@ -45,7 +64,6 @@
 }
 
 - (void)refresh {
-    self.cost = 50;
     self.currentExpLabel.text = [NSString stringWithFormat:@"%@",[Utils formatLongLongWithComma:[UserData instance].coin]];
     self.nextCostLabel.text = [NSString stringWithFormat:@"%@",[Utils formatLongLongWithComma:self.cost]];
     long long tempResult = [UserData instance].coin;
