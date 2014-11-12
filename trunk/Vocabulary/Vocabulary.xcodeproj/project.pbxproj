@@ -108,9 +108,6 @@
 		D0E30E8518A376E300FFD3CE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E30E8418A376E300FFD3CE /* Foundation.framework */; };
 		D0E30E8718A376E300FFD3CE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E30E8618A376E300FFD3CE /* CoreGraphics.framework */; };
 		D0E30E8918A376E300FFD3CE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E30E8818A376E300FFD3CE /* UIKit.framework */; };
-		D0E30EA418A376E300FFD3CE /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E30EA318A376E300FFD3CE /* XCTest.framework */; };
-		D0E30EA518A376E300FFD3CE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E30E8418A376E300FFD3CE /* Foundation.framework */; };
-		D0E30EA618A376E300FFD3CE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E30E8818A376E300FFD3CE /* UIKit.framework */; };
 		D0E30EDF18A37D6400FFD3CE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E30EDE18A37D6400FFD3CE /* QuartzCore.framework */; };
 		D0E33003191A04EA00FB5EB8 /* disconnected.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E32FF7191A04EA00FB5EB8 /* disconnected.png */; };
 		D0E33004191A04EA00FB5EB8 /* globe.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E32FF8191A04EA00FB5EB8 /* globe.png */; };
@@ -374,16 +371,6 @@
 		D0FB4D9C19F635F0006F62C7 /* particleEffectSlowBurst.json in Resources */ = {isa = PBXBuildFile; fileRef = D0FB4D9B19F635F0006F62C7 /* particleEffectSlowBurst.json */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		D0E30EA718A376E300FFD3CE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D0E30E7918A376E300FFD3CE /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D0E30E8018A376E300FFD3CE;
-			remoteInfo = Bird;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		D0139FA519DFC89500875248 /* particleEffect.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = particleEffect.json; sourceTree = "<group>"; };
 		D02B95E819C6317E00F565C1 /* AnimatedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatedLabel.h; sourceTree = "<group>"; };
@@ -515,7 +502,6 @@
 		D0E30E8418A376E300FFD3CE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D0E30E8618A376E300FFD3CE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		D0E30E8818A376E300FFD3CE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		D0E30EA218A376E300FFD3CE /* VocabularyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VocabularyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0E30EA318A376E300FFD3CE /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		D0E30EDE18A37D6400FFD3CE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D0E32FF7191A04EA00FB5EB8 /* disconnected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = disconnected.png; sourceTree = "<group>"; };
@@ -862,16 +848,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D0E30E9F18A376E300FFD3CE /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D0E30EA418A376E300FFD3CE /* XCTest.framework in Frameworks */,
-				D0E30EA618A376E300FFD3CE /* UIKit.framework in Frameworks */,
-				D0E30EA518A376E300FFD3CE /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -1050,7 +1026,6 @@
 			isa = PBXGroup;
 			children = (
 				D0E30E8118A376E300FFD3CE /* Vocabulary.app */,
-				D0E30EA218A376E300FFD3CE /* VocabularyTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1620,24 +1595,6 @@
 			productReference = D0E30E8118A376E300FFD3CE /* Vocabulary.app */;
 			productType = "com.apple.product-type.application";
 		};
-		D0E30EA118A376E300FFD3CE /* VocabularyTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D0E30EB618A376E300FFD3CE /* Build configuration list for PBXNativeTarget "VocabularyTests" */;
-			buildPhases = (
-				D0E30E9E18A376E300FFD3CE /* Sources */,
-				D0E30E9F18A376E300FFD3CE /* Frameworks */,
-				D0E30EA018A376E300FFD3CE /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				D0E30EA818A376E300FFD3CE /* PBXTargetDependency */,
-			);
-			name = VocabularyTests;
-			productName = BirdTests;
-			productReference = D0E30EA218A376E300FFD3CE /* VocabularyTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -1649,9 +1606,6 @@
 				TargetAttributes = {
 					D0E30E8018A376E300FFD3CE = {
 						DevelopmentTeam = YS47XTCZZB;
-					};
-					D0E30EA118A376E300FFD3CE = {
-						TestTargetID = D0E30E8018A376E300FFD3CE;
 					};
 				};
 			};
@@ -1669,7 +1623,6 @@
 			projectRoot = "";
 			targets = (
 				D0E30E8018A376E300FFD3CE /* Vocabulary */,
-				D0E30EA118A376E300FFD3CE /* VocabularyTests */,
 			);
 		};
 /* End PBXProject section */
@@ -1953,13 +1906,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D0E30EA018A376E300FFD3CE /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -2044,22 +1990,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D0E30E9E18A376E300FFD3CE /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		D0E30EA818A376E300FFD3CE /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D0E30E8018A376E300FFD3CE /* Vocabulary */;
-			targetProxy = D0E30EA718A376E300FFD3CE /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		D03845EF191EB12D00265FE1 /* InfoPlist.strings */ = {
@@ -2216,46 +2147,6 @@
 			};
 			name = Release;
 		};
-		D0E30EB718A376E300FFD3CE /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/NumberGame.app/NumberGame";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "NumberGame/NumberGame-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "NumberGameTests/NumberGameTests-Info.plist";
-				PRODUCT_NAME = VocabularyTests;
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		D0E30EB818A376E300FFD3CE /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/NumberGame.app/NumberGame";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "NumberGame/NumberGame-Prefix.pch";
-				INFOPLIST_FILE = "NumberGameTests/NumberGameTests-Info.plist";
-				PRODUCT_NAME = VocabularyTests;
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -2273,15 +2164,6 @@
 			buildConfigurations = (
 				D0E30EB418A376E300FFD3CE /* Debug */,
 				D0E30EB518A376E300FFD3CE /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D0E30EB618A376E300FFD3CE /* Build configuration list for PBXNativeTarget "VocabularyTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D0E30EB718A376E300FFD3CE /* Debug */,
-				D0E30EB818A376E300FFD3CE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
