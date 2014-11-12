@@ -287,6 +287,7 @@
 		D097A6101983A04800A6EB7A /* FXLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXLabel.m; sourceTree = "<group>"; };
 		D097A6761983A26500A6EB7A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D097A6781983A2C600A6EB7A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		D09AC4271A13511800658D51 /* Prefix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefix.h; sourceTree = "<group>"; };
 		D0E21AB2199DCB9B00358DE5 /* FlappyBallIcon100x100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FlappyBallIcon100x100.png; sourceTree = "<group>"; };
 		D0E21AB3199DCB9B00358DE5 /* NGIcon120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NGIcon120.png; sourceTree = "<group>"; };
 		D0E21AB4199DCB9B00358DE5 /* RushyKnightIcon120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RushyKnightIcon120.png; sourceTree = "<group>"; };
@@ -584,6 +585,7 @@
 		D097A5E61983A04800A6EB7A /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				D09AC4271A13511800658D51 /* Prefix.h */,
 				D097A5E71983A04800A6EB7A /* AnimUtil.h */,
 				D097A5E81983A04800A6EB7A /* AnimUtil.m */,
 				D0EEF2A319CABCB20026376F /* GridPoint.h */,
@@ -996,7 +998,7 @@
 		D097A5971983A00D00A6EB7A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				DSTROOT = /tmp/BaseLibrary.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BaseLibrary/BaseLibrary-Prefix.pch";
@@ -1017,7 +1019,7 @@
 		D097A5981983A00D00A6EB7A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				DSTROOT = /tmp/BaseLibrary.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BaseLibrary/BaseLibrary-Prefix.pch";
