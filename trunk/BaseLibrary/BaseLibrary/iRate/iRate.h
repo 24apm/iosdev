@@ -34,7 +34,7 @@
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wobjc-missing-property-synthesis"
 
-
+#import "Prefix.h"
 #import <Availability.h>
 #undef weak_delegate
 #if __has_feature(objc_arc_weak) && \

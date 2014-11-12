@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 MacCoder. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "Prefix.h"
 
 @interface NSBundle (BundleUtil)
 

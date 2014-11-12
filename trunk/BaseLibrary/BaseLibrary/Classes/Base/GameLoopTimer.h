@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 MacCoder. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "Prefix.h"
 
 #define DRAW_STEP_NOTIFICATION @"DRAW_STEP_NOTIFICATION"
 

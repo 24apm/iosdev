@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 MacCoder. All rights reserved.
 //
 
+#import "Prefix.h"
 #import <QuartzCore/QuartzCore.h>
 
 @interface CAEmitterHelperLayer : CAEmitterLayer
