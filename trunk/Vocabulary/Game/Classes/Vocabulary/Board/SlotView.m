@@ -18,7 +18,7 @@
     CAKeyframeAnimation *keyFrameAnimation = [CAKeyframeAnimation animationWithKeyPath:@"transform.translation.y"];
     NSMutableArray *values = [NSMutableArray array];
     
-    for (int i = 0; i < 7; i++) {
+    for (NSInteger i = 0; i < 7; i++) {
         CGFloat height = -doubleDigits[i] * self.height;
         [values addObject:@(height)];
     }

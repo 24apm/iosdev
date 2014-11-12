@@ -18,7 +18,7 @@
 @property (nonatomic) double value;
 @property (nonatomic) TableType type;
 @property (nonatomic) double upgradeMultiplier;
-@property (nonatomic) int rank;
+@property (nonatomic) NSInteger rank;
 
 + (InventoryRowItem *)createItem:(NSString *)itemId
                     name:(NSString *)name
@@ -26,9 +26,9 @@
          priceMultiplier:(long long)priceMultipler
        upgradeMultiplier:(double)upgradeMultiplier
                     type:(TableType)type
-                    rank:(int)rank;
+                    rank:(NSInteger)rank;
 
 - (NSString *)formatDescriptionWithValue:(double)value;
-- (UIColor *)tierColor:(int)tier;
+- (UIColor *)tierColor:(NSInteger)tier;
 
 @end

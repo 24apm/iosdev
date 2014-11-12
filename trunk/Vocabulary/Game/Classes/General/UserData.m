@@ -114,7 +114,7 @@ NSString *const UserDataHouseDataChangedNotification = @"UserDataHouseDataChange
     [self saveData:self.unseenWords forKey:@"unseenWords"];
 }
 
-- (int)unseenWordCount {
+- (NSInteger)unseenWordCount {
     return self.unseenWords.count;
 }
 

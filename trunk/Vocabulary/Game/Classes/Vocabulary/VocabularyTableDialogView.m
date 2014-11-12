@@ -37,7 +37,7 @@
 
 - (void)loadMixedVocabularyDictionary {
     NSDictionary *mixedVocabularyDictionary = [[VocabularyManager instance] userMixedVocabList];
-    int unlockUptoLevel = [[VocabularyManager instance] unlockUptoLevel];
+    NSInteger unlockUptoLevel = [[VocabularyManager instance] unlockUptoLevel];
     
     // sorting numerically
     // 0 index based
@@ -53,19 +53,19 @@
     // 1 index based array
     NSMutableArray *sortedDisplaySectionIndexes = [NSMutableArray array];
     NSMutableArray *sortedDisplaySectionHeaders = [NSMutableArray array];
-    int userPokedex = [UserData instance].pokedex.count;
-    int userLevel = [[VocabularyManager instance] unlockUptoLevel];
+    NSInteger userPokedex = [UserData instance].pokedex.count;
+    NSInteger userLevel = [[VocabularyManager instance] unlockUptoLevel];
     
     for (NSString *index in sortedMixedVocabHeaders) {
-        int newIndex = [index integerValue] + 1;
+        NSInteger newIndex = [index integerValue] + 1;
         
         NSString *newIndexKey = [NSString stringWithFormat:@"%d", newIndex];
         [sortedDisplaySectionIndexes addObject:newIndexKey];
         
-        int nextLevelIndex = [index integerValue] +1;
-        int prevLevelIndex = [index integerValue];
-        int currentLevelCap = [[VocabularyManager instance] mixVocabIndexWith:nextLevelIndex] - [[VocabularyManager instance] mixVocabIndexWith:prevLevelIndex];
-        int currentLevel = 0;
+        NSInteger nextLevelIndex = [index integerValue] +1;
+        NSInteger prevLevelIndex = [index integerValue];
+        NSInteger currentLevelCap = [[VocabularyManager instance] mixVocabIndexWith:nextLevelIndex] - [[VocabularyManager instance] mixVocabIndexWith:prevLevelIndex];
+        NSInteger currentLevel = 0;
         if (userLevel == [index integerValue] + 1) {
             currentLevel = userPokedex - [[VocabularyManager instance] mixVocabIndexWith:prevLevelIndex];
         } else {

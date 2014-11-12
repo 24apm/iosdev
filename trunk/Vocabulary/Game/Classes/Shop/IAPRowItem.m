@@ -16,7 +16,7 @@
          priceMultiplier:(long long)priceMultipler
        upgradeMultiplier:(double)upgradeMultiplier
                     type:(TableType)type
-                    rank:(int)rank           {
+                    rank:(NSInteger)rank           {
     
     IAPRowItem *item = [[IAPRowItem alloc] init];
     item.name = name;
@@ -47,7 +47,7 @@
     return temp;
 }
 
-- (UIColor *)tierColor:(int)tier {
+- (UIColor *)tierColor:(NSInteger)tier {
     switch (tier) {
         case 1:
             return [UIColor whiteColor];
@@ -86,7 +86,7 @@
 }
 
 - (NSString *)descriptionForIAP:(float)value {
-    int currentRank = self.rank;
+    NSInteger currentRank = self.rank;
     switch (currentRank) {
         case 4:
             return @"+$5,000!";
@@ -108,7 +108,7 @@
 }
 
 - (NSString *)descriptionForWaypoint:(float)value {
-    int currentRank = self.rank;
+    NSInteger currentRank = self.rank;
     switch (currentRank) {
         case 4:
             return @"+$5,000!";
@@ -130,7 +130,7 @@
 }
 
 - (NSString *)descriptionForInventory:(float)value {
-    int currentRank = self.rank;
+    NSInteger currentRank = self.rank;
     switch (currentRank) {
         case 4:
             return @"+$5,000!";

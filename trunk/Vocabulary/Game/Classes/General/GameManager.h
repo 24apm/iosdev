@@ -39,10 +39,10 @@ typedef enum {
 
 @property (nonatomic, strong) NSMutableArray *unitQueue;
 @property (nonatomic, strong) NSMutableArray *bossQueue;
-@property (nonatomic) int step;
+@property (nonatomic) NSInteger step;
 @property (nonatomic, strong) NSString *gameMode;
 
-@property (nonatomic) int playerOneScore;
-@property (nonatomic) int playerTwoScore;
+@property (nonatomic) NSInteger playerOneScore;
+@property (nonatomic) NSInteger playerTwoScore;
 
 @end

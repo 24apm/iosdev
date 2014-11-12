@@ -49,12 +49,12 @@
 
 @property (strong, nonatomic) IBOutlet UIImageView *foundNewWordGlowView;
 @property (strong, nonatomic) IBOutlet UIImageView *wordBook;
-@property (nonatomic) int numOfGame;
+@property (nonatomic) NSInteger numOfGame;
 @property (nonatomic) double animateDuration;
 @property (nonatomic) BOOL animateGlow;
 
 
-@property (nonatomic) int currentPrevIndex;
+@property (nonatomic) NSInteger currentPrevIndex;
 @end
 
 @implementation GameView
@@ -94,8 +94,8 @@
 
 - (void)refillRetryAtStart {
     double gapTime = CURRENT_TIME - [UserData instance].retryTime;
-    int numberOfRetrySaved = gapTime/TIME_FOR_ONE_RETRY;
-    for (int i = 0; i < numberOfRetrySaved; i++) {
+    NSInteger numberOfRetrySaved = gapTime/TIME_FOR_ONE_RETRY;
+    for (NSInteger i = 0; i < numberOfRetrySaved; i++) {
         [[UserData instance] refillRetryByOne];
         double newRefillTime = [UserData instance].retryTime + TIME_FOR_ONE_RETRY;
         [[UserData instance] retryRefillStartAt:newRefillTime];
@@ -166,7 +166,7 @@
     [[CoinIAPHelper sharedInstance] showCoinMenu];
 }
 
-- (void)updateBubbleCount:(int)count {
+- (void)updateBubbleCount:(NSInteger)count {
     if (count > 0) {
         self.animateGlow = NO;
     } else {
@@ -254,10 +254,10 @@
 }
 
 - (void)_animateAddingKeys {
-    int gap = [UserData instance].retryCapacity - [UserData instance].retry;
+    NSInteger gap = [UserData instance].retryCapacity - [UserData instance].retry;
     double delay = 0;
     
-    for (int i = 0; i < gap; i ++) {
+    for (NSInteger i = 0; i < gap; i ++) {
         CAEmitterHelperLayer *cellLayer = [CAEmitterHelperLayer emitter:@"particleEffectKeys.json" onView:self];
         cellLayer.cellImage = [UIImage imageNamed:@"key"];
         float x = [Utils randBetweenMin:0 max:self.width];
@@ -270,7 +270,7 @@
         
         [path moveToPoint:start];
         
-        CGFloat rand = arc4random() % (int)self.width;
+        CGFloat rand = arc4random() % (NSInteger)self.width;
         CGPoint c = CGPointMake(rand, rand);
         [path addQuadCurveToPoint:toPoint controlPoint:c];
         
@@ -293,9 +293,9 @@
 }
 
 - (void)updateNextLevelLabel {
-    int prevLevelCap = [[VocabularyManager instance] mixVocabIndexWith:self.currentPrevIndex -1];
-    int currentLevel = [UserData instance].pokedex.count - prevLevelCap;
-    int currentLevelCap = [[VocabularyManager instance] mixVocabIndexWith:self.currentPrevIndex] - prevLevelCap;
+    NSInteger prevLevelCap = [[VocabularyManager instance] mixVocabIndexWith:self.currentPrevIndex -1];
+    NSInteger currentLevel = [UserData instance].pokedex.count - prevLevelCap;
+    NSInteger currentLevelCap = [[VocabularyManager instance] mixVocabIndexWith:self.currentPrevIndex] - prevLevelCap;
     
     self.nextLevelLabel.text = [NSString stringWithFormat:@"%d/%d", currentLevel, currentLevelCap];
     if (currentLevel == currentLevelCap) {
@@ -322,7 +322,7 @@
     [self updateNextLevelLabel];
     [self.spinner stopAnimating];
     
-    for (int i = 0; i < self.words.count; i++) {
+    for (NSInteger i = 0; i < self.words.count; i++) {
         THLabel *wordLabel = [self.words objectAtIndex:i];
         
         if (i < self.levelData.vocabularyList.count) {

@@ -14,7 +14,7 @@
 
 @interface ResultView : XibView
 
-@property (nonatomic) int lastMaxScore;
+@property (nonatomic) NSInteger lastMaxScore;
 @property (strong, nonatomic) IBOutlet UIImageView *imgView;
 @property (strong, nonatomic) IBOutlet UILabel *achievementLabel;
 

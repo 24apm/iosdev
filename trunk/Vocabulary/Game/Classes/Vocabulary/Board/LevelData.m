@@ -30,7 +30,7 @@
     
     [wordSortedByLength sortUsingDescriptors:sortDescriptors];
     
-    for (int i = 0; i < wordSortedByLength.count; i++) {
+    for (NSInteger i = 0; i < wordSortedByLength.count; i++) {
         NSString *key = [wordSortedByLength objectAtIndex:i];
         
         NSLog(@"-- %@ --", key);

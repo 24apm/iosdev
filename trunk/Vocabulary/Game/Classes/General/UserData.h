@@ -35,7 +35,7 @@ extern NSString *const UserDataHouseDataChangedNotification;
 // unseen words
 - (void)addUnseenWord:(NSString *)word;
 - (void)removeUnseenWord:(NSString *)word;
-- (int)unseenWordCount;
+- (NSInteger)unseenWordCount;
 - (void)retryRefillStartAt:(double)time;
 
 - (BOOL)isTutorial;
@@ -44,7 +44,7 @@ extern NSString *const UserDataHouseDataChangedNotification;
 @property (strong, nonatomic) NSMutableArray *pokedex;
 @property (strong, nonatomic) NSMutableDictionary *unseenWords;
 
-@property (nonatomic) int currentLevel;
+@property (nonatomic) NSInteger currentLevel;
 
 @property (nonatomic) NSInteger retry;
 @property (nonatomic) NSInteger retryCapacity;

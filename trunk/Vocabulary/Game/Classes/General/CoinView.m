@@ -10,7 +10,7 @@
 #import "GameConstants.h"
 
 @interface CoinView()
-@property (nonatomic) int loop;
+@property (nonatomic) NSInteger loop;
 @end
 @implementation CoinView
 

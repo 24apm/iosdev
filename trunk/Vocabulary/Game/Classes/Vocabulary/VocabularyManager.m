@@ -27,7 +27,7 @@
 @property (strong, nonatomic) NSDictionary *vocabIndexesToSections;
 @property (strong, nonatomic) NSDictionary *mixedVocabDictionaryBySection;
 @property (nonatomic) BOOL foundNewWord;
-@property (nonatomic) int gamesNoNewWord;
+@property (nonatomic) NSInteger gamesNoNewWord;
 @property (nonatomic) BOOL gameWithNewWords;
 
 
@@ -66,7 +66,7 @@
 - (NSDictionary *)userVocabList {
     NSMutableDictionary *userDictionary = [NSMutableDictionary dictionary];
     NSArray *userSavedKeys = [UserData instance].pokedex;
-    for (int i = 0; i < self.letters.length; i++) {
+    for (NSInteger i = 0; i < self.letters.length; i++) {
         NSString *key = [NSString stringWithFormat:@"%c",[self.letters characterAtIndex:i]];
         [userDictionary setObject:[NSMutableArray array] forKey:key];
     }
@@ -80,7 +80,7 @@
 - (NSDictionary *)userMixedVocabList {
     // filter up to unlocked level
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
-    int level = [self unlockUptoLevel];
+    NSInteger level = [self unlockUptoLevel];
     for (NSString *key in [self.mixedVocabDictionaryBySection allKeys]) {
         if ([key intValue] < level) {
             [dictionary setObject:[self.mixedVocabDictionaryBySection objectForKey:key] forKey:key];
@@ -156,7 +156,7 @@
 
 - (void)setupMixedDictionary {
     NSMutableDictionary *mixedDictionaryBySection = [NSMutableDictionary dictionary];
-    for (int i = 0; i < self.vocabSectionsToIndexes.count - 1; i++) {
+    for (NSInteger i = 0; i < self.vocabSectionsToIndexes.count - 1; i++) {
         NSString *key = [NSString stringWithFormat:@"%d", i];
         
         NSArray *mixVocabFromLevel = [self mixVocabFromLevel:i toLevel:i+1];
@@ -207,7 +207,7 @@
     
     self.vocabSectionsToIndexes = [NSMutableDictionary dictionary];
     self.vocabIndexesToSections = [NSMutableDictionary dictionary];
-    int sectionIndex = 0;
+    NSInteger sectionIndex = 0;
     
     while(row = [nse nextObject]) {
         NSString *rawWord = row;
@@ -275,14 +275,14 @@
     
 }
 
-- (int)unlockUptoLevel {
+- (NSInteger)unlockUptoLevel {
     return [self unlockedUptoLevel:[UserData instance].pokedex.count];
 }
 
 - (NSArray *)createNewWordArray {
     NSArray *allCurrentWords = [self mixVocabFromLevel:[self unlockUptoLevel] -1 toLevel:[self unlockUptoLevel]];
     NSMutableArray *newWordsArray = [NSMutableArray array];
-    for (int i = 0; i < allCurrentWords.count; i++) {
+    for (NSInteger i = 0; i < allCurrentWords.count; i++) {
         if (![[UserData instance].pokedex containsObject: [allCurrentWords objectAtIndex:i]]) {
             VocabularyObject *vocabData = [self.dictionaryByVocab objectForKey:[allCurrentWords objectAtIndex:i]];
             [newWordsArray addObject:vocabData];
@@ -328,7 +328,7 @@
         NSArray *words = vocabularyList;
         NSMutableArray *map = [NSMutableArray array];
         NSInteger total = levelData.numColumn * levelData.numRow;
-        for (int i = 0; i < total; i++) {
+        for (NSInteger i = 0; i < total; i++) {
             [map addObject:EMPTY_SPACE];
         }
         
@@ -354,19 +354,19 @@
                 }
                 attempts++;
                 
-                int sRow = arc4random() % levelData.numRow;
-                int sCol = arc4random() % levelData.numColumn;
+                NSInteger sRow = arc4random() % levelData.numRow;
+                NSInteger sCol = arc4random() % levelData.numColumn;
                 
-                //            int directionalRow = arc4random() % 2 - 1; // -1, 0, or 1
-                //            int directionalCol = arc4random() % 2 - 1; // -1, 0, or 1
+                //            NSInteger directionalRow = arc4random() % 2 - 1; // -1, 0, or 1
+                //            NSInteger directionalCol = arc4random() % 2 - 1; // -1, 0, or 1
                 CGPoint randomDirectionalPoint = [self randomDirectionPoint];
-                int directionalRow = randomDirectionalPoint.y;
-                int directionalCol = randomDirectionalPoint.x;
+                NSInteger directionalRow = randomDirectionalPoint.y;
+                NSInteger directionalCol = randomDirectionalPoint.x;
                 
                 // test word placement
-                for (int i = 0; i < word.length; i++) {
-                    int eRow = sRow + i * directionalRow;
-                    int eCol = sCol + i * directionalCol;
+                for (NSInteger i = 0; i < word.length; i++) {
+                    NSInteger eRow = sRow + i * directionalRow;
+                    NSInteger eCol = sCol + i * directionalCol;
                     NSInteger mapIndex = [self indexForLeveData:levelData row:eRow column:eCol];
                     
                     // test for:
@@ -392,9 +392,9 @@
                 // place word
                 if (canFit) {
                     NSMutableArray *answerIndexesToDrawWord = [NSMutableArray array];
-                    for (int i = 0; i < word.length; i++) {
-                        int row = sRow + i * directionalRow;
-                        int col = sCol + i * directionalCol;
+                    for (NSInteger i = 0; i < word.length; i++) {
+                        NSInteger row = sRow + i * directionalRow;
+                        NSInteger col = sCol + i * directionalCol;
                         NSInteger mapIndex = [self indexForLeveData:levelData row:row column:col];
                         NSString *newString = [NSString stringWithFormat:@"%c",[word characterAtIndex:i]];
                         [map replaceObjectAtIndex:mapIndex withObject:newString];
@@ -411,7 +411,7 @@
         
         if (answerIndexesToDrawGroup.count >= wordSortedByLength.count) {
             // setup map
-            for (int i = 0; i < total; i++) {
+            for (NSInteger i = 0; i < total; i++) {
                 NSString *letter = [map objectAtIndex:i];
                 if ([letter isEqualToString:EMPTY_SPACE]) {
                     NSString *randomLetter = [self randomLetter];
@@ -436,8 +436,8 @@
 
 - (CGPoint)randomDirectionPoint {
     CGPoint directionalPoint;
-    int direction = 7;
-    int orderRatio = arc4random() % 3;
+    NSInteger direction = 7;
+    NSInteger orderRatio = arc4random() % 3;
     if (orderRatio <= 1) {
         direction = [Utils randBetweenMinInt:0 max:3];
     } else {
@@ -531,8 +531,8 @@
 
 - (NSString *)mapToString:(LevelData *)levelData map:(NSArray *)map {
     NSString *string = @"";
-    for (int i = 0; i < levelData.numRow; i++) {
-        for (int j = 0; j < levelData.numColumn; j++) {
+    for (NSInteger i = 0; i < levelData.numRow; i++) {
+        for (NSInteger j = 0; j < levelData.numColumn; j++) {
             NSString *letter = [map objectAtIndex:[self indexForLeveData:levelData row:i column:j]];
             string = [NSString stringWithFormat:@"%@ %@",string,letter];
         }
@@ -541,17 +541,17 @@
     return string;
 }
 
-- (NSMutableArray *)mixVocabFromLevel:(int)start toLevel:(int)end  {
-    int levelStart = [self mixVocabIndexWith:start];
-    int levelEnd = [self mixVocabIndexWith:end];
+- (NSMutableArray *)mixVocabFromLevel:(NSInteger)start toLevel:(NSInteger)end  {
+    NSInteger levelStart = [self mixVocabIndexWith:start];
+    NSInteger levelEnd = [self mixVocabIndexWith:end];
     NSMutableArray *currentLevelVocab = [NSMutableArray array];
-    for (int i = levelStart; i < levelEnd; i++) {
+    for (NSInteger i = levelStart; i < levelEnd; i++) {
         [currentLevelVocab addObject:[self.mixVocabArray objectAtIndex:i]];
     }
     return currentLevelVocab;
 }
 
-- (int)unlockedUptoLevel:(int)wordsFound {
+- (NSInteger)unlockedUptoLevel:(NSInteger)wordsFound {
     NSArray *sortedMixedVocabsIndexes = [[self.vocabIndexesToSections allKeys] sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
         if ([obj1 intValue]==[obj2 intValue])
             return NSOrderedSame;
@@ -562,9 +562,9 @@
     }];
     
     
-    int i = 0;
+    NSInteger i = 0;
     for (; i < sortedMixedVocabsIndexes.count; i++) {
-        int index = [[sortedMixedVocabsIndexes objectAtIndex:i] integerValue];
+        NSInteger index = [[sortedMixedVocabsIndexes objectAtIndex:i] integerValue];
         if (wordsFound < index) {
             break;
         }
@@ -587,7 +587,7 @@
     }
 }
 
-- (int)mixVocabIndexWith:(int)level {
+- (NSInteger)mixVocabIndexWith:(NSInteger)level {
     NSString *key = [NSString stringWithFormat:@"%d",level];
     return [[self.vocabSectionsToIndexes objectForKey:key] integerValue];
 }

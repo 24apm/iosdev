@@ -26,7 +26,7 @@
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(buyingProduct:) name:PURCHASE_BUTTON_TAPPED object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(productPurchased:) name:IAPHelperProductPurchasedNotification object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(productFailed:) name:IAPHelperProductFailedNotification object:nil];
-    for (int i = 0; i < self.coinViewCollection.count; i++) {
+    for (NSInteger i = 0; i < self.coinViewCollection.count; i++) {
         [[self.coinViewCollection objectAtIndex:i] setupProduct:[[CoinIAPHelper sharedInstance] productForType:i]];
     }
 }

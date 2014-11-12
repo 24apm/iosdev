@@ -52,7 +52,7 @@
     
     [bezierPath moveToPoint:slotView.center];
     
-    for (int i = 1; i < self.boardView.slotSelection.count; i++) {
+    for (NSInteger i = 1; i < self.boardView.slotSelection.count; i++) {
         slotView = [self.boardView.slotSelection objectAtIndex:i];
         [bezierPath addLineToPoint:slotView.center];
     }
@@ -85,7 +85,7 @@
         if (self.boardView.hasCorrectMatch) {
             [self cacheImage];
 
-            int index = 0;
+            NSInteger index = 0;
             for (SlotView *slotView in self.boardView.slotSelection) {
                 [slotView performSelector:@selector(animateLabelSelection) withObject:nil afterDelay:(float)index * 0.1f];
                 index++;
@@ -140,7 +140,7 @@
     
     [bezierPath moveToPoint:slotView.center];
     
-    for (int i = 1; i < pathArr.count; i++) {
+    for (NSInteger i = 1; i < pathArr.count; i++) {
         slotView = [pathArr objectAtIndex:i];
         [bezierPath addLineToPoint:slotView.center];
     }
@@ -250,7 +250,7 @@
 }
 
 - (void)refreshSlots {
-    for (int i = 0; i < self.slots.count; i++) {
+    for (NSInteger i = 0; i < self.slots.count; i++) {
         SlotView *slotView = [self.slots objectAtIndex:i];
         NSString *letter = [self.levelData.letterMap objectAtIndex:i];
         slotView.labelView.text = letter;
@@ -265,8 +265,8 @@
     [self.slots removeAllObjects];
     
     // renew slots
-    for (int r = 0; r < self.levelData.numRow; r++) {
-        for (int c = 0; c < self.levelData.numColumn; c++) {
+    for (NSInteger r = 0; r < self.levelData.numRow; r++) {
+        for (NSInteger c = 0; c < self.levelData.numColumn; c++) {
             SlotView *slotView = [[SlotView alloc] init];
             slotView.frame = CGRectIntegral(CGRectMake(c * self.slotSize.width,
                                                        r * self.slotSize.height,
@@ -280,8 +280,8 @@
 }
 
 - (SlotView *)slotAtScreenPoint:(CGPoint)point {
-    NSInteger row = (int)point.y / (int)self.slotSize.height;
-    NSInteger col = (int)point.x / (int)self.slotSize.width;
+    NSInteger row = (NSInteger)point.y / (NSInteger)self.slotSize.height;
+    NSInteger col = (NSInteger)point.x / (NSInteger)self.slotSize.width;
     return [self slotAtRow:row column:col];
 }
 
@@ -320,7 +320,7 @@
 - (void)showAnswer {
 //    for (NSString *key in [self.levelData.answerIndexesToDrawGroup allKeys]) {
 //        NSArray *indexes = [self.levelData.answerIndexesToDrawGroup objectForKey:key];
-//        for (int i = 0; i < indexes.count; i++) {
+//        for (NSInteger i = 0; i < indexes.count; i++) {
 //            CGPoint index = [[indexes objectAtIndex:i] CGPointValue];
 //            SlotView *slotView = [self slotAtRow:index.x column:index.y];
 //            slotView.backgroundColor = [UIColor colorWithRed:1.f green:0.f blue:0.f alpha:0.5f];
@@ -376,8 +376,8 @@
     CGPoint firstSlotPoint = [self gridPointForSlot:firstSlotView];
     CGPoint touchGridPoint = [self gridPointForSlot:slotView];
     
-    int distanceX = touchGridPoint.x - firstSlotPoint.x;
-    int distanceY = touchGridPoint.y - firstSlotPoint.y;
+    NSInteger distanceX = touchGridPoint.x - firstSlotPoint.x;
+    NSInteger distanceY = touchGridPoint.y - firstSlotPoint.y;
     
     NSInteger maxDistance = MAX(fabs(distanceX), fabs(distanceY));
     
@@ -438,7 +438,7 @@
     [self.slotSelection removeObjectsInRange:NSMakeRange(1, self.slotSelection.count-1)];
     
     // add line in the direction of the target slot
-    for (int i = 1; i <= distance; i++) {
+    for (NSInteger i = 1; i <= distance; i++) {
         SlotView *slotView = [self slotAtRow:firstSlotPoint.x + i * directionalUnit.x
                                       column:firstSlotPoint.y + i * directionalUnit.y];
         if (slotView != nil) {
@@ -484,7 +484,7 @@
 
 - (NSString *)buildStringFromArray:(NSArray *)slotSelection {
     NSString *word = @"";
-    for (int i = 0; i < slotSelection.count; i++) {
+    for (NSInteger i = 0; i < slotSelection.count; i++) {
         SlotView *slotView = slotSelection[i];
         word = [NSString stringWithFormat:@"%@%@", word, slotView.labelView.text];
     }
