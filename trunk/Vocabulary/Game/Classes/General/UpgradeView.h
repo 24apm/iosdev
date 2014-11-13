@@ -18,6 +18,7 @@
 @property (nonatomic) long long cost;
 @property (strong, nonatomic) IBOutlet UIImageView *upgradeIcon;
 
+- (id)initWithBlock:(BLOCK)block;
 - (void)showForAnswer;
 - (void)showForKey;
 

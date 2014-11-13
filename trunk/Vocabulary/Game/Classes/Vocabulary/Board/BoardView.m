@@ -331,7 +331,7 @@
     [self.boardAnswerDrawView setNeedsDisplay];
     self.boardAnswerDrawView.hidden = NO;
     CABasicAnimation *fadeInAndOut = [CABasicAnimation animationWithKeyPath:@"opacity"];
-    fadeInAndOut.fromValue = [NSNumber numberWithFloat:0.3f];
+    fadeInAndOut.fromValue = [NSNumber numberWithFloat:0.6f];
     fadeInAndOut.toValue = [NSNumber numberWithFloat:1.f];
     fadeInAndOut.autoreverses = YES;
     fadeInAndOut.duration = 1.2f;

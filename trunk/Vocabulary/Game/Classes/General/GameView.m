@@ -28,6 +28,7 @@
 
 #define CURRENT_TIME [[NSDate date] timeIntervalSince1970]
 #define TIME_FOR_ONE_RETRY 720.0
+#define FADE_DURATION 1.8f
 
 @interface GameView()
 
@@ -46,12 +47,15 @@
 @property (strong, nonatomic) UIActivityIndicatorView *spinner;
 @property (strong, nonatomic) IBOutlet UIButton *wordButton;
 @property (nonatomic) BOOL newSectionUnlocked;
+@property (nonatomic) BOOL unlockingBoardBool;
+@property (strong, nonatomic) IBOutlet UIButton *answerButton;
+@property (strong, nonatomic) IBOutlet UIButton *buyKeyButton;
 
 @property (strong, nonatomic) IBOutlet UIImageView *foundNewWordGlowView;
 @property (strong, nonatomic) IBOutlet UIImageView *wordBook;
 @property (nonatomic) NSInteger numOfGame;
-@property (nonatomic) double animateDuration;
-@property (nonatomic) BOOL animateGlow;
+@property (nonatomic) BOOL gameEnded;
+@property (strong, nonatomic) IBOutlet UIView *animationView;
 
 
 @property (nonatomic) NSInteger currentPrevIndex;
@@ -75,7 +79,6 @@
         self.newSectionUnlocked = NO;
         [self refillRetryAtStart];
         
-        
         self.spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
         [self addSubview:self.spinner];
         self.spinner.hidesWhenStopped = YES;
@@ -83,11 +86,14 @@
         self.numOfGame = 0;
         self.liveStockLabel.text = [NSString stringWithFormat:@"x%.f", 0.0];
         self.nextLiveTimeLabel.text = [NSString stringWithFormat:@"%d:0%d", 0, 0];
-        self.animateGlow = NO;
         if ([[UserData instance] unseenWordCount] > 0) {
-            [self openBook];
+            [self hasUnseenWords:YES];
+        } else {
+            [self hasUnseenWords:NO];
         }
+        self.unlockingBoardBool = NO;
         [self unlockBoardSetTo:NO];
+        [self hideLabels:[NSNumber numberWithBool:YES]];
     }
     return self;
 }
@@ -153,8 +159,10 @@
         [[UserData instance] decrementRetry];
         [self generateNewLevel];
     } else {
-        [self buyKeyButtonPressed:nil];
-        [self animateLockedBoardState:NO];
+        [[[UpgradeView alloc] initWithBlock:^{
+            [self animateLockedBoardToOpen:NO];
+            [self userInterfaceInWaiting:YES];
+        }] showForKey];
     }
 }
 
@@ -168,16 +176,28 @@
 
 - (void)updateBubbleCount:(NSInteger)count {
     if (count > 0) {
-        self.animateGlow = NO;
+        [self hasUnseenWords:YES];
     } else {
-        self.foundNewWordGlowView.hidden = YES;
-        self.wordBook.image = [UIImage imageNamed:@"closeBook"];
-        self.animateGlow = YES;
+        [self hasUnseenWords:NO];
     }
 }
 
+- (void)hasUnseenWords:(BOOL)state {
+    if (state) {
+        self.foundNewWordGlowView.hidden = NO;
+        self.wordBook.highlighted = YES;
+    } else {
+        self.wordBook.highlighted = NO;
+        self.foundNewWordGlowView.hidden = YES;
+    }
+}
+
+- (void)hasUnseenWordsNSNumber:(NSNumber *)state {
+    [self hasUnseenWords:[state boolValue]];
+}
+
 - (void)setup {
-    [self generateNewLevel];
+    //[self generateNewLevel];
 }
 
 - (IBAction)wordPressed:(id)sender {
@@ -192,7 +212,8 @@
 }
 
 - (IBAction)resetPressed:(id)sender {
-    self.newSectionUnlocked = YES;
+    [self animateLockedBoardToOpen:NO];
+    [self userInterfaceInWaiting:YES];
     //[self showCompleteLevel];
     [self decrementRetry];
     
@@ -204,25 +225,42 @@
     [[[UpgradeView alloc] init] showForAnswer];
 }
 - (IBAction)unlockedButtonPressed:(UIButton *)sender {
-    if ([UserData instance].retry > 0) {
-        [self animateLockedBoardState:YES];
-        [self decrementRetry];
-    } else {
-        [[[UpgradeView alloc] init] showForKey];
+    if (self.unlockingBoardBool == NO) {
+        if ([UserData instance].retry > 0) {
+            [self generateNewLevel];
+            [self userInterfaceInWaiting:NO];
+            [self animateLockedBoardToOpen:YES];
+            [self decrementRetry];
+            self.unlockingBoardBool = YES;
+        } else {
+            [[[UpgradeView alloc] init] showForKey];
+        }
     }
-    
 }
 
 - (IBAction)lockedBoardPressed:(UIButton *)sender {
+    
     [self unlockedButtonPressed:sender];
 }
 
 - (void)unlockBoardSetTo:(BOOL)state {
     self.lockedBoardView.hidden = state;
+    self.unlockingBoardBool = NO;
 }
 
-- (void)animateLockedBoardState:(BOOL)state {
-    
+- (void)unlockBoardSetToWithNSNumber:(NSNumber *)state {
+    [self unlockBoardSetTo:[state boolValue]];
+}
+
+- (void)animateLockedBoardToOpen:(BOOL)state {
+    if (state == NO) {
+        [self unlockBoardSetTo:NO];
+    }
+    [self animateFadeInAndOut:self.lockedBoardView forState:state];
+    [self performSelector:@selector(unlockBoardSetToWithNSNumber:) withObject:[NSNumber numberWithBool:state] afterDelay:FADE_DURATION + 0.1f];
+}
+
+-(void)animateFadeInAndOut:(UIView *)view forState:(BOOL)state {
     float startValue = 0.0;
     float endValue = 0.0;
     if (state == NO) {
@@ -233,23 +271,24 @@
     CABasicAnimation *fadeInAndOut = [CABasicAnimation animationWithKeyPath:@"opacity"];
     fadeInAndOut.fromValue = [NSNumber numberWithFloat:startValue];
     fadeInAndOut.toValue = [NSNumber numberWithFloat:endValue];
-    fadeInAndOut.autoreverses = YES;
-    fadeInAndOut.duration = 1.8f;
-    fadeInAndOut.repeatCount = HUGE_VAL;
-    [self.lockedBoardView.layer addAnimation:fadeInAndOut forKey:@"fadeInAndOut"];
-    [self performSelector:@selector(removeSelfAnimation:) withObject:self.lockedBoardView afterDelay:fadeInAndOut.duration + 0.1f];
-    [self performSelector:@selector(unlockBoardSetTo:) withObject:[NSNumber numberWithBool:state] afterDelay:fadeInAndOut.duration + 0.1f];
+    fadeInAndOut.duration = FADE_DURATION;
+    fadeInAndOut.removedOnCompletion = NO;
+    fadeInAndOut.fillMode = kCAFillModeBoth;
+    [view.layer addAnimation:fadeInAndOut forKey:@"fadeInAndOut"];
+    [self performSelector:@selector(removeViewAnimation:) withObject:view afterDelay:fadeInAndOut.duration + 0.2f];
 }
 
-- (void)removeSelfAnimation:(UIView *)view {
+- (void)removeViewAnimation:(UIView *)view {
     [view.layer removeAllAnimations];
 }
 
 - (void)addKey {
     [[UserData instance] refillRetry];
+    self.buyKeyButton.hidden = NO;
 }
 
 - (void)animateAddingKeys {
+    self.buyKeyButton.hidden = YES;
     [self performSelector:@selector(_animateAddingKeys) withObject:nil afterDelay:1.4f];
 }
 
@@ -292,13 +331,13 @@
     }
 }
 
-- (void)updateNextLevelLabel {
+- (void)updateNextLevel
+{
     NSInteger prevLevelCap = [[VocabularyManager instance] mixVocabIndexWith:self.currentPrevIndex -1];
     NSInteger currentLevel = [UserData instance].pokedex.count - prevLevelCap;
     NSInteger currentLevelCap = [[VocabularyManager instance] mixVocabIndexWith:self.currentPrevIndex] - prevLevelCap;
     
-    self.nextLevelLabel.text = [NSString stringWithFormat:@"%d/%d", currentLevel, currentLevelCap];
-    if (currentLevel == currentLevelCap) {
+    if (currentLevel >= currentLevelCap) {
         self.newSectionUnlocked = YES;
         
     }
@@ -319,7 +358,7 @@
 
 - (void)refreshWordList {
     // refresh words
-    [self updateNextLevelLabel];
+    [self updateNextLevel];
     [self.spinner stopAnimating];
     
     for (NSInteger i = 0; i < self.words.count; i++) {
@@ -328,7 +367,7 @@
         if (i < self.levelData.vocabularyList.count) {
             VocabularyObject *vocabData = [self.levelData.vocabularyList objectAtIndex:i];
             wordLabel.text = vocabData.word;
-            wordLabel.hidden = NO;
+            //wordLabel.hidden = NO;
             if ([self.levelData.wordsFoundList containsObject:vocabData.word]) {
                 wordLabel.alpha = 0.3f;
             } else {
@@ -366,7 +405,7 @@
     
     [self.levelData.wordsFoundList addObject:word];
     [[VocabularyManager instance] addWordToUserData:word];
-    [self performSelector:@selector(refreshBubble) withObject:nil afterDelay:0.6f];
+    //[self performSelector:@selector(refreshBubble) withObject:nil afterDelay:0.6f];
     [self refreshWordList];
     
     // end game
@@ -399,14 +438,11 @@
         [PromoDialogView show];
     }
 }
+
 - (void)animateFromTileToMenu:(NSArray *)slotViews {
     // animation
     for (UIView *slotView in slotViews) {
         [self animatingAnswer:slotView toView:self.wordButton];
-    }
-    if (self.animateGlow == YES) {
-        [self performSelector:@selector(animatingExplosion:) withObject:self.wordBook afterDelay:self.animateDuration];
-        [self performSelector:@selector(openBook) withObject:nil afterDelay:self.animateDuration + 0.1f];
     }
 }
 
@@ -428,14 +464,17 @@
     position.fillMode = kCAFillModeBoth;
     position.values = values;
     position.duration = cellLayer.lifeSpan;
-    self.animateDuration = position.duration +.01f;
     [cellLayer addAnimation:position forKey:@"animateIn"];
+    if (self.wordBook.highlighted == NO) {
+        [self performSelector:@selector(animatingExplosion:) withObject:self.wordBook afterDelay: position.duration +.01f];
+    }
 }
 
 - (void)animatingExplosion:(UIView *)view {
     CAEmitterHelperLayer *cellLayer = [CAEmitterHelperLayer emitter:@"particleEffectFastBurst.json" onView:self];
     CGPoint point = view.center;
     cellLayer.position = point;
+    [self performSelector:@selector(hasUnseenWordsNSNumber:) withObject:[NSNumber numberWithBool:YES] afterDelay: 0.1f];
 }
 
 - (void)animatingExplosionForKey:(UIView *)view {
@@ -444,9 +483,31 @@
     cellLayer.position = point;
 }
 
-- (void)openBook {
-    self.wordBook.image = [UIImage imageNamed:@"openBook"];
-    self.foundNewWordGlowView.hidden = NO;
+- (void)userInterfaceInWaiting:(BOOL)state {
+    
+    if (state == NO) {
+        self.definitionLabel.hidden = NO;
+        self.answerButton.hidden = NO;
+        for (THLabel* label in self.words) {
+            label.hidden = NO;
+        }
+    }
+    [self animateFadeInAndOut:self.definitionLabel forState:state];
+    [self animateFadeInAndOut:self.answerButton forState:state];
+    for (THLabel* label in self.words) {
+        [self animateFadeInAndOut:label forState:state];
+    }
+    [self performSelector:@selector(hideLabels:) withObject:[NSNumber numberWithBool:state] afterDelay:FADE_DURATION];
+    
+}
+
+- (void)hideLabels:(NSNumber *)stateBool {
+    BOOL state = [stateBool boolValue];
+    self.definitionLabel.hidden = state;
+    self.answerButton.hidden = state;
+    for (THLabel* label in self.words) {
+        label.hidden = state;
+    }
 }
 
 @end

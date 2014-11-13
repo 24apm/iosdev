@@ -13,10 +13,19 @@
 @interface UpgradeView ()
 
 @property (nonatomic, strong) NSString *stateNotification;
-
+@property (nonatomic, strong) BLOCK block;
 @end
 
 @implementation UpgradeView
+
+
+- (id)initWithBlock:(BLOCK)block; {
+    self = [super init];
+    if (self) {
+        self.block = block;
+        }
+    return self;
+}
 
 - (IBAction)LvlButtonPressed:(id)sender {
     if (YES || [UserData instance].coin >= self.cost) {
@@ -60,7 +69,14 @@
 }
 
 - (IBAction)closeButtonPressed:(UIButton *)sender {
+    [self activateBlock];
     [self dismissed:self];
+}
+
+- (void)activateBlock {
+    if (self.block != nil) {
+        self.block();
+    }
 }
 
 - (void)refresh {

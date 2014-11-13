@@ -6,7 +6,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GameView">
             <connections>
+                <outlet property="animationView" destination="fK5-rz-eQy" id="7D8-xu-sFz"/>
+                <outlet property="answerButton" destination="cef-jX-QeO" id="VLd-aJ-f7j"/>
                 <outlet property="boardViewContainer" destination="Qoo-qy-EUL" id="KCl-nK-xfB"/>
+                <outlet property="buyKeyButton" destination="Pka-su-erQ" id="fF1-gw-rwj"/>
                 <outlet property="definitionLabel" destination="hQJ-Z6-Tcw" id="X3Z-be-sYd"/>
                 <outlet property="foundNewWordGlowView" destination="3cU-W1-cnh" id="Gfz-BL-8Og"/>
                 <outlet property="keyImageView" destination="uxJ-QL-wjr" id="4wQ-3d-hGK"/>
@@ -225,7 +228,7 @@
                             <rect key="frame" x="212" y="-13" width="140" height="60"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="closebook.png" id="fXK-dG-qDL" userLabel="book.png">
+                        <imageView userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="closebook.png" highlightedImage="openbook.png" id="fXK-dG-qDL" userLabel="book.png">
                             <rect key="frame" x="254" y="-9" width="50" height="50"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
@@ -263,7 +266,7 @@
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Pka-su-erQ">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Pka-su-erQ" userLabel="Key Button">
                     <rect key="frame" x="173" y="-1" width="63" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -274,6 +277,11 @@
                         <action selector="buyKeyButtonPressed:" destination="-1" eventType="touchUpInside" id="tn4-n0-uZe"/>
                     </connections>
                 </button>
+                <view userInteractionEnabled="NO" contentMode="scaleToFill" id="fK5-rz-eQy" userLabel="Animation View">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="430"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <nil key="simulatedStatusBarMetrics"/>
@@ -291,6 +299,7 @@
         <image name="definition_bg.png" width="320" height="140"/>
         <image name="gloweffect.png" width="256" height="256"/>
         <image name="key.png" width="200" height="200"/>
+        <image name="openbook.png" width="200" height="200"/>
         <image name="word_bg.png" width="320" height="150"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

@@ -28,9 +28,11 @@
         if ([state isEqualToString:GAME_END]) {
             self.replaySmallButton.hidden = YES;
             self.bookButton.hidden = YES;
-            [CAEmitterHelperLayer emitter:@"particleEffectSlowBurst.json" onView:self.animateView];
+            self.messageLabel.text = @"You have just completed a level!";
         } else if ([state isEqualToString:GAME_END_NEW]) {
             self.replayBigButton.hidden = YES;
+            self.messageLabel.text = @"You have just unlocked new set of words!";
+            [CAEmitterHelperLayer emitter:@"particleEffectSlowBurst.json" onView:self.animateView];
         }
     }
     

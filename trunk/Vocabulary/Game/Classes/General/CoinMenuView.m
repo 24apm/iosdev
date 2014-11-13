@@ -56,7 +56,7 @@
         [TrackUtils trackAction:@"buyingProductSuccess" label:@""];
         [[NSNotificationCenter defaultCenter]postNotificationName:BUYING_PRODUCT_SUCCESSFUL_NOTIFICATION object:self];
         [[[MessageDialogView alloc] initWithHeaderText:@"Yay!" bodyText:[NSString stringWithFormat:@"You bought %d coins!", [[[CoinIAPHelper iAPDictionary] objectForKey:productIdentifier] integerValue]]] show];
-
+        
         [[NSNotificationCenter defaultCenter]postNotificationName:APPLY_TRANSACTION_NOTIFICATION object:productIdentifier];
         [self dismissed:self];
     }
@@ -70,7 +70,7 @@
 
 - (void)dismissed:(id)sender {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-        [[NSNotificationCenter defaultCenter]postNotificationName:BUY_COIN_VIEW_DISMISS_NOTIFICATION object:nil];
+    [[NSNotificationCenter defaultCenter]postNotificationName:BUY_COIN_VIEW_DISMISS_NOTIFICATION object:nil];
     [super dismissed:sender];
 }
 
