@@ -40,20 +40,20 @@
     [[NSNotificationCenter defaultCenter]postNotificationName:BUYING_PRODUCT_ENDED_NOTIFICATION object:nil];
 }
 
-- (void)buyingProduct:(NSNotification *)notification {
-    [self enableButtons:NO];
-    [TrackUtils trackAction:@"buyingProduct" label:@""];
-    CoinView * coinView = notification.object;
-    [[NSNotificationCenter defaultCenter]postNotificationName:APPLY_TRANSACTION_NOTIFICATION object:coinView.product.productIdentifier];
-    [self dismissed:self];
-}
-
 //- (void)buyingProduct:(NSNotification *)notification {
 //    [self enableButtons:NO];
 //    [TrackUtils trackAction:@"buyingProduct" label:@""];
 //    CoinView * coinView = notification.object;
-//    [[CoinIAPHelper sharedInstance] buyProduct:coinView.product];
+//    [[NSNotificationCenter defaultCenter]postNotificationName:APPLY_TRANSACTION_NOTIFICATION object:coinView.product.productIdentifier];
+//    [self dismissed:self];
 //}
+
+- (void)buyingProduct:(NSNotification *)notification {
+    [self enableButtons:NO];
+    [TrackUtils trackAction:@"buyingProduct" label:@""];
+    CoinView * coinView = notification.object;
+    [[CoinIAPHelper sharedInstance] buyProduct:coinView.product];
+}
 
 - (void)productPurchased:(NSNotification *)notification {
     NSString *productIdentifier = notification.object;
