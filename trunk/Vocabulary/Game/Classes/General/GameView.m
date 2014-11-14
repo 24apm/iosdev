@@ -151,6 +151,7 @@
 
 - (void)openBookEndGame {
     [self unlockBoardSetTo:NO];
+    [self userInterfaceInWaiting:YES];
     [[[VocabularyTableDialogView alloc] init] show];
 }
 

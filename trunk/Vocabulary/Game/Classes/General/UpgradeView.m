@@ -10,6 +10,9 @@
 #import "AnimatedLabel.h"
 #import "GameConstants.h"
 #import "TrackUtils.h"
+#import "CoinIAPHelper.h"
+#import "CAEmitterHelperLayer.h"
+
 @interface UpgradeView ()
 
 @property (nonatomic, strong) NSString *stateNotification;
@@ -23,13 +26,20 @@
     self = [super init];
     if (self) {
         self.block = block;
-        }
+    }
     return self;
 }
 
+
+-(void)animateCoinsToIcon:(NSNotification *)notification {
+    self.userInteractionEnabled = NO;
+    NSString *productIdentifier = notification.object;
+    
+    [self animateCoins:productIdentifier];
+}
 - (IBAction)LvlButtonPressed:(id)sender {
-    if (YES || [UserData instance].coin >= self.cost) {
-        //[[UserData instance] decrementCoin:self.cost];
+    if ([UserData instance].coin >= self.cost) {
+        [[UserData instance] decrementCoin:self.cost];
         self.userInteractionEnabled = NO;
         [[NSNotificationCenter defaultCenter]postNotificationName:self.stateNotification object:nil];
         [self animateLabelWithStringRedCenter:[NSString stringWithFormat:@"-%lld", self.cost]];
@@ -45,6 +55,7 @@
 
 - (void)show {
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(refresh) name:BUY_COIN_VIEW_DISMISS_NOTIFICATION  object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(animateCoinsToIcon:) name:APPLY_TRANSACTION_NOTIFICATION object:nil];
     [super show];
     [self refresh];
 }
@@ -87,15 +98,73 @@
     self.afterCostLabel.text = [NSString stringWithFormat:@"%@",[Utils formatLongLongWithComma:tempResult]];
 }
 
-- (void)animateLabelWithStringGreenCenter:(NSString *)string {
+- (void)animateCoins:(NSString *)identifier {
+    NSInteger gap = 4;
+    double delay = 0;
+    
+    CGPoint convertedPoint = [self.upgradeIcon.superview convertPoint:self.upgradeIcon.center toView:self.superview];
+    
+    NSMutableArray *pointsBez = [NSMutableArray array];
+    double distancex1 = convertedPoint.x/2;
+    double distancey1 = convertedPoint.y/2;
+    double distancex2 = (self.width - convertedPoint.x)/2;
+    double distancey2 = convertedPoint.y/2;
+    double distancex3 = (self.width - convertedPoint.x)/2;
+    double distancey3 = (self.height - convertedPoint.y)/2;
+    double distancex4 = convertedPoint.x/2;
+    double distancey4 = (self.height - convertedPoint.y)/2;
+    [pointsBez addObject:[NSValue valueWithCGPoint:CGPointMake(distancex1, distancey1)]];
+    [pointsBez addObject:[NSValue valueWithCGPoint:CGPointMake(distancex2, distancey2)]];
+    [pointsBez addObject:[NSValue valueWithCGPoint:CGPointMake(distancex3, distancey3)]];
+    [pointsBez addObject:[NSValue valueWithCGPoint:CGPointMake(distancex4, distancey4)]];
+    
+    NSMutableArray *points = [NSMutableArray array];
+    [points addObject:[NSValue valueWithCGPoint:CGPointMake(0.f, 0.f)]];
+    [points addObject:[NSValue valueWithCGPoint:CGPointMake(self.width, 0.f)]];
+    [points addObject:[NSValue valueWithCGPoint:CGPointMake(self.width, self.height)]];
+    [points addObject:[NSValue valueWithCGPoint:CGPointMake(0.f, self.height)]];
+    for (NSInteger i = 0; i < gap; i ++) {
+        CAEmitterHelperLayer *cellLayer = [CAEmitterHelperLayer emitter:@"particleEffectKeys.json" onView:self];
+        cellLayer.cellImage = [UIImage imageNamed:@"key"];
+        
+        CGPoint start = [[points objectAtIndex:i] CGPointValue];
+        
+        CGPoint toPoint = convertedPoint;
+        
+        UIBezierPath *path = [UIBezierPath bezierPath];
+        
+        [path moveToPoint:start];
+        
+        [path addQuadCurveToPoint:toPoint controlPoint:[[pointsBez objectAtIndex:i] CGPointValue]];
+        
+        CAKeyframeAnimation *position = [CAKeyframeAnimation animationWithKeyPath:@"emitterPosition"];
+        position.removedOnCompletion = NO;
+        position.fillMode = kCAFillModeBoth;
+        position.path = path.CGPath;
+        position.duration = cellLayer.lifeSpan;
+        [cellLayer addAnimation:position forKey:@"animateIn"];
+        delay = position.duration;
+    }
+    
+    NSInteger value = [[[CoinIAPHelper iAPDictionary] objectForKey:identifier] integerValue];
+    [self performSelector:@selector(animateLabelAtCoin:) withObject:[NSString stringWithFormat:@"%d", value] afterDelay:delay];
+    [self performSelector:@selector(postApplyEffect:) withObject:identifier afterDelay:delay];
+}
+
+- (void)postApplyEffect:(NSString *)identifier {
+    [[NSNotificationCenter defaultCenter]postNotificationName:APPLY_TRANSACTION_EFFECT_NOTIFICATION object:identifier];
+    [self performSelector:@selector(refresh) withObject:nil afterDelay:0.1f];
+}
+
+- (void)animateLabelAtCoin:(NSString *)string {
+    self.userInteractionEnabled = YES;
     AnimatedLabel *label = [[AnimatedLabel alloc] init];
     [self addSubview:label];
     label.label.text = string;
     label.label.textColor = [UIColor colorWithRed:0.f green:1.f blue:0.f alpha:1.f];
-    label.label.font = [label.label.font fontWithSize:100];
-    float midX = self.center.x;
-    float midY = self.center.y - (80 * IPAD_SCALE);
-    label.center = CGPointMake(midX, midY);
+    label.label.font = [label.label.font fontWithSize:60];
+        CGPoint convertedPoint = [self.upgradeIcon.superview convertPoint:self.upgradeIcon.center toView:self.superview];
+    label.center = convertedPoint;
     [label animateSlow];
 }
 

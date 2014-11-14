@@ -48,7 +48,7 @@
     self = [super initWithProductIdentifiers:productIdentifiers];
     if (self) {
         // add notification
-        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(applyPowerUp:) name:APPLY_TRANSACTION_NOTIFICATION object:nil];
+        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(applyPowerUp:) name:APPLY_TRANSACTION_EFFECT_NOTIFICATION object:nil];
     }
     return self;
 }
