@@ -26,7 +26,7 @@
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(productPurchased:) name:IAPHelperProductPurchasedNotification object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(productFailed:) name:IAPHelperProductFailedNotification object:nil];
     for (NSInteger i = 0; i < self.coinViewCollection.count; i++) {
-        [[self.coinViewCollection objectAtIndex:i] setupProduct:[[CoinIAPHelper sharedInstance] productForType:i]];
+        [[self.coinViewCollection objectAtIndex:i] setupProduct:[[CoinIAPHelper sharedInstance] productForType:(int)i]];
     }
 }
 
@@ -40,20 +40,21 @@
     [[NSNotificationCenter defaultCenter]postNotificationName:BUYING_PRODUCT_ENDED_NOTIFICATION object:nil];
 }
 
-//- (void)buyingProduct:(NSNotification *)notification {
-//    [self enableButtons:NO];
-//    [TrackUtils trackAction:@"buyingProduct" label:@""];
-//    CoinView * coinView = notification.object;
-//    [[NSNotificationCenter defaultCenter]postNotificationName:APPLY_TRANSACTION_NOTIFICATION object:coinView.product.productIdentifier];
-//    [self dismissed:self];
-//}
-
 - (void)buyingProduct:(NSNotification *)notification {
     [self enableButtons:NO];
     [TrackUtils trackAction:@"buyingProduct" label:@""];
     CoinView * coinView = notification.object;
-    [[CoinIAPHelper sharedInstance] buyProduct:coinView.product];
+    [[NSNotificationCenter defaultCenter]postNotificationName:APPLY_TRANSACTION_NOTIFICATION object:coinView.product.productIdentifier];
+    [[NSNotificationCenter defaultCenter]postNotificationName:APPLY_TRANSACTION_EFFECT_NOTIFICATION object:coinView.product.productIdentifier];
+    [self dismissed:self];
 }
+
+//- (void)buyingProduct:(NSNotification *)notification {
+//    [self enableButtons:NO];
+//    [TrackUtils trackAction:@"buyingProduct" label:@""];
+//    CoinView * coinView = notification.object;
+//    [[CoinIAPHelper sharedInstance] buyProduct:coinView.product];
+//}
 
 - (void)productPurchased:(NSNotification *)notification {
     NSString *productIdentifier = notification.object;
@@ -62,9 +63,10 @@
         [self enableButtons:YES];
         [TrackUtils trackAction:@"buyingProductSuccess" label:@""];
         [[NSNotificationCenter defaultCenter]postNotificationName:BUYING_PRODUCT_SUCCESSFUL_NOTIFICATION object:self];
-        [[[MessageDialogView alloc] initWithHeaderText:@"Yay!" bodyText:[NSString stringWithFormat:@"You bought %d coins!", [[[CoinIAPHelper iAPDictionary] objectForKey:productIdentifier] integerValue]]] show];
+        [[[MessageDialogView alloc] initWithHeaderText:@"Yay!" bodyText:[NSString stringWithFormat:@"You bought %d coins!", [[[CoinIAPHelper iAPDictionary] objectForKey:productIdentifier] intValue]]] show];
         
         [[NSNotificationCenter defaultCenter]postNotificationName:APPLY_TRANSACTION_NOTIFICATION object:productIdentifier];
+        [[NSNotificationCenter defaultCenter]postNotificationName:APPLY_TRANSACTION_EFFECT_NOTIFICATION object:productIdentifier];
         [self dismissed:self];
     }
 }

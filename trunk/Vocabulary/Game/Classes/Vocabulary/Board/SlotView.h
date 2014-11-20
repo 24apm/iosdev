@@ -7,10 +7,11 @@
 //
 
 #import "XibView.h"
+#import "LabelBase.h"
 
 @interface SlotView : XibView
 
-@property (strong, nonatomic) IBOutlet UILabel *labelView;
+@property (strong, nonatomic) IBOutlet LabelBase *labelView;
 
 - (void)animateLabelSelection;
 

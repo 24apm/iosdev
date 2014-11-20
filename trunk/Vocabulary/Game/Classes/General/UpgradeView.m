@@ -43,6 +43,7 @@
         self.userInteractionEnabled = NO;
         [[NSNotificationCenter defaultCenter]postNotificationName:self.stateNotification object:nil];
         [self animateLabelWithStringRedCenter:[NSString stringWithFormat:@"-%lld", self.cost]];
+        [self refresh];
         [self performSelector:@selector(dismissed:) withObject:nil afterDelay:1.f];
     } else {
         [[NSNotificationCenter defaultCenter]postNotificationName:BUY_COIN_VIEW_NOTIFICATION object:nil];
@@ -95,7 +96,6 @@
     self.nextCostLabel.text = [NSString stringWithFormat:@"%@",[Utils formatLongLongWithComma:self.cost]];
     long long tempResult = [UserData instance].coin;
     tempResult -= self.cost;
-    self.afterCostLabel.text = [NSString stringWithFormat:@"%@",[Utils formatLongLongWithComma:tempResult]];
 }
 
 - (void)animateCoins:(NSString *)identifier {
@@ -105,13 +105,13 @@
     CGPoint convertedPoint = [self.upgradeIcon.superview convertPoint:self.upgradeIcon.center toView:self.superview];
     
     NSMutableArray *pointsBez = [NSMutableArray array];
-    double distancex1 = convertedPoint.x/2;
+    double distancex1 = convertedPoint.x*3;
     double distancey1 = convertedPoint.y/2;
-    double distancex2 = (self.width - convertedPoint.x)/2;
-    double distancey2 = convertedPoint.y/2;
-    double distancex3 = (self.width - convertedPoint.x)/2;
-    double distancey3 = (self.height - convertedPoint.y)/2;
-    double distancex4 = convertedPoint.x/2;
+    double distancex2 = (self.width - convertedPoint.x);
+    double distancey2 = convertedPoint.y*2;
+    double distancex3 = (convertedPoint.x);
+    double distancey3 = (self.height - convertedPoint.y);
+    double distancex4 = -convertedPoint.x/2;
     double distancey4 = (self.height - convertedPoint.y)/2;
     [pointsBez addObject:[NSValue valueWithCGPoint:CGPointMake(distancex1, distancey1)]];
     [pointsBez addObject:[NSValue valueWithCGPoint:CGPointMake(distancex2, distancey2)]];
@@ -122,10 +122,9 @@
     [points addObject:[NSValue valueWithCGPoint:CGPointMake(0.f, 0.f)]];
     [points addObject:[NSValue valueWithCGPoint:CGPointMake(self.width, 0.f)]];
     [points addObject:[NSValue valueWithCGPoint:CGPointMake(self.width, self.height)]];
-    [points addObject:[NSValue valueWithCGPoint:CGPointMake(0.f, self.height)]];
+    [points addObject:[NSValue valueWithCGPoint:CGPointMake(convertedPoint.x, self.height)]];
     for (NSInteger i = 0; i < gap; i ++) {
-        CAEmitterHelperLayer *cellLayer = [CAEmitterHelperLayer emitter:@"particleEffectKeys.json" onView:self];
-        cellLayer.cellImage = [UIImage imageNamed:@"key"];
+        CAEmitterHelperLayer *cellLayer = [CAEmitterHelperLayer emitter:@"particleEffectShortBurst.json" onView:self];
         
         CGPoint start = [[points objectAtIndex:i] CGPointValue];
         
@@ -147,12 +146,12 @@
     }
     
     NSInteger value = [[[CoinIAPHelper iAPDictionary] objectForKey:identifier] integerValue];
-    [self performSelector:@selector(animateLabelAtCoin:) withObject:[NSString stringWithFormat:@"%d", value] afterDelay:delay];
+    [self performSelector:@selector(animateLabelAtCoin:) withObject:[NSString stringWithFormat:@"%ld", (long)value] afterDelay:delay + 0.1f];
     [self performSelector:@selector(postApplyEffect:) withObject:identifier afterDelay:delay];
 }
 
 - (void)postApplyEffect:(NSString *)identifier {
-    [[NSNotificationCenter defaultCenter]postNotificationName:APPLY_TRANSACTION_EFFECT_NOTIFICATION object:identifier];
+    [self animatingExplosionFor:self.upgradeIcon];
     [self performSelector:@selector(refresh) withObject:nil afterDelay:0.1f];
 }
 
@@ -160,9 +159,9 @@
     self.userInteractionEnabled = YES;
     AnimatedLabel *label = [[AnimatedLabel alloc] init];
     [self addSubview:label];
-    label.label.text = string;
+    label.label.text = [NSString stringWithFormat:@"+%@", string];
     label.label.textColor = [UIColor colorWithRed:0.f green:1.f blue:0.f alpha:1.f];
-    label.label.font = [label.label.font fontWithSize:60];
+    label.label.font = [label.label.font fontWithSize:40];
         CGPoint convertedPoint = [self.upgradeIcon.superview convertPoint:self.upgradeIcon.center toView:self.superview];
     label.center = convertedPoint;
     [label animateSlow];
@@ -175,8 +174,14 @@
     label.label.textColor = [UIColor colorWithRed:1.f green:0.f blue:0.f alpha:1.f];
     label.label.font = [label.label.font fontWithSize:100];
     float midX = self.center.x;
-    float midY = self.center.y *(IPAD_SCALE);
+    float midY = self.center.y;
     label.center = CGPointMake(midX, midY);
     [label animate];
+}
+
+- (void)animatingExplosionFor:(UIView *)view {
+    CAEmitterHelperLayer *cellLayer = [CAEmitterHelperLayer emitter:@"particleEffectLittleSpark.json" onView:self];
+    CGPoint point = [view.superview convertPoint:view.center toView:self.superview];
+    cellLayer.position = point;
 }
 @end

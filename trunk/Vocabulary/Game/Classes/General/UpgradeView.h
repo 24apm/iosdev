@@ -13,7 +13,6 @@
 @interface UpgradeView : AnimatingDialogView
 @property (strong, nonatomic) IBOutlet UILabel *currentExpLabel;
 @property (strong, nonatomic) IBOutlet UILabel *nextCostLabel;
-@property (strong, nonatomic) IBOutlet UILabel *afterCostLabel;
 @property (strong, nonatomic) IBOutlet UILabel *lvlLabel;
 @property (nonatomic) long long cost;
 @property (strong, nonatomic) IBOutlet UIImageView *upgradeIcon;

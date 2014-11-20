@@ -23,7 +23,7 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.progressLabel.text = [NSString stringWithFormat:@"%d/%d", [VocabularyManager instance].currentCount, [VocabularyManager instance].maxCount];
+        self.progressLabel.text = [NSString stringWithFormat:@"%ld/%ld", (long)[VocabularyManager instance].currentCount, (long)[VocabularyManager instance].maxCount];
         self.unseenWords = [[UserData instance].unseenWords copy];
         [self loadMixedVocabularyDictionary];
     }
@@ -59,7 +59,7 @@
     for (NSString *index in sortedMixedVocabHeaders) {
         NSInteger newIndex = [index integerValue] + 1;
         
-        NSString *newIndexKey = [NSString stringWithFormat:@"%d", newIndex];
+        NSString *newIndexKey = [NSString stringWithFormat:@"%ld", (long)newIndex];
         [sortedDisplaySectionIndexes addObject:newIndexKey];
         
         NSInteger nextLevelIndex = [index integerValue] +1;
@@ -74,9 +74,9 @@
         
         NSString *newHeader;
         if ([index intValue] < unlockUptoLevel) {
-            newHeader = [NSString stringWithFormat:@"[Level %d] %d/%d", newIndex, currentLevel, currentLevelCap];
+            newHeader = [NSString stringWithFormat:@"[Level %ld] %ld/%ld", (long)newIndex, (long)currentLevel, (long)currentLevelCap];
         } else {
-            newHeader = [NSString stringWithFormat:@"[Level %d] Locked", newIndex];
+            newHeader = [NSString stringWithFormat:@"[Level %ld] Locked",(long) newIndex];
         }
         [sortedDisplaySectionHeaders addObject:newHeader];
     }

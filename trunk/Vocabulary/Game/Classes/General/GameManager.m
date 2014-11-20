@@ -38,7 +38,7 @@
 }
 
 -(Winner)calculateWinner {
-    NSInteger winner = Tie;
+    int winner = Tie;
     if (self.playerOneScore > self.playerTwoScore) {
         winner = PlayerOneWin;
     } else if (self.playerOneScore < self.playerTwoScore) {

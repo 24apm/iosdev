@@ -55,8 +55,9 @@
     }
     
     [self preloadSounds];
-  
-    self.gameView = [[GameView alloc] initWithFrame:self.view.frame];
+    self.view.frame = [UIScreen mainScreen].bounds;
+    
+    self.gameView = [[GameView alloc] init];
     [self.view addSubview:self.gameView];
 }
 
@@ -64,6 +65,8 @@
     [super viewWillAppear:animated];
     
     [[VocabularyManager instance] loadFile];
+    
+    // banner ipad = 66 height
     
     // banner top
     self.gameView.frame = CGRectMake(0,

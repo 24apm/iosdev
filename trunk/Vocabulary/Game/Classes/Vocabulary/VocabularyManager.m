@@ -157,7 +157,7 @@
 - (void)setupMixedDictionary {
     NSMutableDictionary *mixedDictionaryBySection = [NSMutableDictionary dictionary];
     for (NSInteger i = 0; i < self.vocabSectionsToIndexes.count - 1; i++) {
-        NSString *key = [NSString stringWithFormat:@"%d", i];
+        NSString *key = [NSString stringWithFormat:@"%ld", (long)i];
         
         NSArray *mixVocabFromLevel = [self mixVocabFromLevel:i toLevel:i+1];
         
@@ -211,7 +211,7 @@
     
     while(row = [nse nextObject]) {
         NSString *rawWord = row;
-        NSString *sectionString = [NSString stringWithFormat:@"%d",sectionIndex];
+        NSString *sectionString = [NSString stringWithFormat:@"%ld",(long)sectionIndex];
         [self.vocabSectionsToIndexes setValue:rawWord forKey:sectionString];
         [self.vocabIndexesToSections setValue:sectionString forKey:rawWord];
         sectionIndex++;
@@ -262,7 +262,7 @@
 
 
 - (NSString *)randomLetter {
-    NSString *randomLetter = [NSString stringWithFormat:@"%C", [self.letters characterAtIndex: arc4random_uniform([self.letters length]) % [self.letters length]]];
+    NSString *randomLetter = [NSString stringWithFormat:@"%C", [self.letters characterAtIndex: arc4random_uniform((uint32_t)([self.letters length])) % [self.letters length]]];
     return randomLetter;
     
 }
@@ -588,7 +588,7 @@
 }
 
 - (NSInteger)mixVocabIndexWith:(NSInteger)level {
-    NSString *key = [NSString stringWithFormat:@"%d",level];
+    NSString *key = [NSString stringWithFormat:@"%ld",(long)level];
     return [[self.vocabSectionsToIndexes objectForKey:key] integerValue];
 }
 

@@ -129,6 +129,9 @@
 		D0E21AF1199DD3E400358DE5 /* NSBundle+BundleUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E21AF0199DD3E400358DE5 /* NSBundle+BundleUtil.m */; };
 		D0EE619519EB9254002AE2E3 /* ModelObject.m in Sources */ = {isa = PBXBuildFile; fileRef = D0EE619419EB9254002AE2E3 /* ModelObject.m */; };
 		D0EEF2A519CABCB20026376F /* GridPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = D0EEF2A419CABCB20026376F /* GridPoint.m */; };
+		D0FADAB11A1BD0480004C356 /* ButtonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FADAB01A1BD0480004C356 /* ButtonBase.m */; };
+		D0FADAB41A1BD1870004C356 /* ConfigManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FADAB31A1BD1870004C356 /* ConfigManager.m */; };
+		D0FADAB71A1BED450004C356 /* LabelBase.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FADAB61A1BED450004C356 /* LabelBase.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -320,6 +323,12 @@
 		D0EE619419EB9254002AE2E3 /* ModelObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelObject.m; sourceTree = "<group>"; };
 		D0EEF2A319CABCB20026376F /* GridPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridPoint.h; sourceTree = "<group>"; };
 		D0EEF2A419CABCB20026376F /* GridPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GridPoint.m; sourceTree = "<group>"; };
+		D0FADAAF1A1BD0480004C356 /* ButtonBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonBase.h; sourceTree = "<group>"; };
+		D0FADAB01A1BD0480004C356 /* ButtonBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ButtonBase.m; sourceTree = "<group>"; };
+		D0FADAB21A1BD1870004C356 /* ConfigManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigManager.h; sourceTree = "<group>"; };
+		D0FADAB31A1BD1870004C356 /* ConfigManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigManager.m; sourceTree = "<group>"; };
+		D0FADAB51A1BED450004C356 /* LabelBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LabelBase.h; sourceTree = "<group>"; };
+		D0FADAB61A1BED450004C356 /* LabelBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LabelBase.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -543,6 +552,12 @@
 			children = (
 				D097A5D31983A04800A6EB7A /* ProgressBarComponent.h */,
 				D097A5D41983A04800A6EB7A /* ProgressBarComponent.m */,
+				D0FADAAF1A1BD0480004C356 /* ButtonBase.h */,
+				D0FADAB01A1BD0480004C356 /* ButtonBase.m */,
+				D0FADAB21A1BD1870004C356 /* ConfigManager.h */,
+				D0FADAB31A1BD1870004C356 /* ConfigManager.m */,
+				D0FADAB51A1BED450004C356 /* LabelBase.h */,
+				D0FADAB61A1BED450004C356 /* LabelBase.m */,
 			);
 			path = Componenets;
 			sourceTree = "<group>";
@@ -847,8 +862,10 @@
 				D097A6171983A04800A6EB7A /* AppDelegateBase.m in Sources */,
 				D097A62D1983A04800A6EB7A /* NSArray+Util.m in Sources */,
 				D097A6111983A04800A6EB7A /* IAPHelper.m in Sources */,
+				D0FADAB11A1BD0480004C356 /* ButtonBase.m in Sources */,
 				D097A6281983A04800A6EB7A /* WorldObjectView.m in Sources */,
 				D097A62A1983A04800A6EB7A /* SoundEffectHelper.m in Sources */,
+				D0FADAB71A1BED450004C356 /* LabelBase.m in Sources */,
 				D097A6211983A04800A6EB7A /* XibDialogView.m in Sources */,
 				D0E21AF1199DD3E400358DE5 /* NSBundle+BundleUtil.m in Sources */,
 				D097A6181983A04800A6EB7A /* Base.m in Sources */,
@@ -857,6 +874,7 @@
 				D097A6251983A04800A6EB7A /* AppInfoHTTPRequest.m in Sources */,
 				D097A6201983A04800A6EB7A /* NotificationManagerBase.m in Sources */,
 				D097A6191983A04800A6EB7A /* ConfirmDialogView.m in Sources */,
+				D0FADAB41A1BD1870004C356 /* ConfigManager.m in Sources */,
 				D097A62C1983A04800A6EB7A /* AnimUtil.m in Sources */,
 				D097A6371983A04800A6EB7A /* FXLabel.m in Sources */,
 				D097A6221983A04800A6EB7A /* XibTableViewCell.m in Sources */,

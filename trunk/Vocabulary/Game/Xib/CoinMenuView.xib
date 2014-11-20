@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
-        <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <objects>
@@ -21,7 +20,7 @@
                 <view contentMode="scaleToFill" id="k7j-mq-Ap5">
                     <rect key="frame" x="5" y="40" width="310" height="420"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.90706712369999998" green="0.90706712369999998" blue="0.90706712369999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.48586973849999998" green="0.43151447279999999" blue="0.30706658440000001" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
                 <view contentMode="scaleToFill" id="Qph-zR-H84" customClass="CoinView">
                     <rect key="frame" x="10" y="75" width="300" height="80"/>

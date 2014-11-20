@@ -13,6 +13,7 @@
 #import "PromoManager.h"
 #import "CoinIAPHelper.h"
 #import "RootViewController.h"
+#import "ConfigManager.h"
 
 @implementation AppDelegate
 
@@ -34,7 +35,13 @@
     self.window.rootViewController = self.navigationController;
     [self.window makeKeyAndVisible];
     
+    [self setupConfig];
+    
     return YES;
+}
+
+- (void)setupConfig {
+    [ConfigManager instance].ipadScale = ((UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 2.0f : 1.0f);
 }
 
 - (void)registerNotification {

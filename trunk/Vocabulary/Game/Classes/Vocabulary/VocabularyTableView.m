@@ -12,6 +12,8 @@
 #import "VocabularyRowView.h"
 #import "VocabularyObject.h"
 #import "UserData.h"
+#import "VocabularyHeaderRowView.h"
+#import "ConfigManager.h"
 
 @interface VocabularyTableView()
 
@@ -64,7 +66,10 @@ displaySectionIndexes:(NSArray *)displaySectionIndexes
 
 - (void)setup {
     VocabularyRowView *t = [[VocabularyRowView alloc] init];
-    self.cellFrame = t.frame;
+    CGRect rect = t.frame;
+    rect.size.width *= [ConfigManager instance].ipadScale;
+    rect.size.height *= [ConfigManager instance].ipadScale;
+    self.cellFrame = rect;
     
     if ([self.tableView respondsToSelector:@selector(sectionIndexBackgroundColor)]) {
         self.tableView.sectionIndexBackgroundColor = [UIColor clearColor];
@@ -85,11 +90,6 @@ displaySectionIndexes:(NSArray *)displaySectionIndexes
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return [[self.vocabularyDictionary allKeys] count];
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-    return [self.sortedDisplaySectionHeaders objectAtIndex:section];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -118,9 +118,23 @@ displaySectionIndexes:(NSArray *)displaySectionIndexes
     return cell;
 }
 
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    XibTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"VocabularyHeaderRowView"];
+    if (!cell) {
+        cell = [[XibTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"VocabularyHeaderRowView" className:@"VocabularyHeaderRowView"];
+    }
+    
+    VocabularyHeaderRowView *view = (VocabularyHeaderRowView *)cell.view;
+    view.headerLabel.text = [self.sortedDisplaySectionHeaders objectAtIndex:section];
+    return view;
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return self.cellFrame.size.height;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return self.cellFrame.size.height;
+}
 
 @end

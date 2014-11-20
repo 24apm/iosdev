@@ -32,7 +32,7 @@
 }
 
 - (void)refresh {
-    self.coinLabel.text = [NSString stringWithFormat:@"%d",[[[CoinIAPHelper iAPDictionary] objectForKey:self.product.productIdentifier] integerValue]];
+    self.coinLabel.text = [NSString stringWithFormat:@"%ld",[[[CoinIAPHelper iAPDictionary] objectForKey:self.product.productIdentifier] longValue]];
     self.coinLabel.strokeColor = [UIColor blackColor];
     self.coinLabel.strokeSize = 2.f * IPAD_SCALE;
     self.costLabel.strokeColor = [UIColor colorWithRed:.5f green:.5f blue:0.f alpha:1.f];

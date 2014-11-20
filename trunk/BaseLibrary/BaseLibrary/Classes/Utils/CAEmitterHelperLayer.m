@@ -7,6 +7,7 @@
 //
 
 #import "CAEmitterHelperLayer.h"
+#import "ConfigManager.h"
 
 @interface CAEmitterHelperLayer()
 
@@ -43,7 +44,7 @@
     self.velocity = [[dictionary objectForKey:@"velocity"] floatValue];
     self.birthRate = [[dictionary objectForKey:@"birthRate"] floatValue];
     self.lifetime = [[dictionary objectForKey:@"lifetime"] floatValue];
-    self.lifeSpan = [[dictionary objectForKey:@"lifeSpan"] floatValue];\
+    self.lifeSpan = [[dictionary objectForKey:@"lifeSpan"] floatValue];
     if (self.lifeSpan <= 0) {
         self.lifeSpan = HUGE_VALF;
     }
@@ -89,16 +90,16 @@
     [emitterCell setName:@"emitterCell"];
     
     emitterCell.alphaSpeed = [[emitterCellDictionary valueForKey:@"alphaSpeed"] floatValue];
-    emitterCell.velocity = [[emitterCellDictionary valueForKey:@"velocity"] floatValue];
-    emitterCell.velocityRange = [[emitterCellDictionary valueForKey:@"velocityRange"] floatValue];
+    emitterCell.velocity = [[emitterCellDictionary valueForKey:@"velocity"] floatValue] * [ConfigManager instance].ipadScale;
+    emitterCell.velocityRange = [[emitterCellDictionary valueForKey:@"velocityRange"] floatValue] * [ConfigManager instance].ipadScale;
     emitterCell.emissionRange = [[emitterCellDictionary valueForKey:@"emissionRange"] floatValue];
-    emitterCell.scaleRange = [[emitterCellDictionary valueForKey:@"scaleRange"] floatValue];
-    emitterCell.scale = [[emitterCellDictionary valueForKey:@"scale"] floatValue];
-    emitterCell.scaleSpeed = [[emitterCellDictionary valueForKey:@"scaleSpeed"] floatValue];
+    emitterCell.scaleRange = [[emitterCellDictionary valueForKey:@"scaleRange"] floatValue] * [ConfigManager instance].ipadScale;
+    emitterCell.scale = [[emitterCellDictionary valueForKey:@"scale"] floatValue] * [ConfigManager instance].ipadScale;
+    emitterCell.scaleSpeed = [[emitterCellDictionary valueForKey:@"scaleSpeed"] floatValue] * [ConfigManager instance].ipadScale;
     emitterCell.spin = [[emitterCellDictionary valueForKey:@"spin"] floatValue];
     emitterCell.emissionLongitude = [[emitterCellDictionary valueForKey:@"emissionLongitude"] floatValue];
-    emitterCell.yAcceleration = [[emitterCellDictionary valueForKey:@"yAcceleration"] floatValue];
-    emitterCell.xAcceleration = [[emitterCellDictionary valueForKey:@"xAcceleration"] floatValue];
+    emitterCell.yAcceleration = [[emitterCellDictionary valueForKey:@"yAcceleration"] floatValue] * [ConfigManager instance].ipadScale;
+    emitterCell.xAcceleration = [[emitterCellDictionary valueForKey:@"xAcceleration"] floatValue] * [ConfigManager instance].ipadScale;
     
     return emitterCell;
 }

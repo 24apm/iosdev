@@ -195,7 +195,6 @@
 		D0E8072E19A861E20036710B /* maleface.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E8072C19A861E20036710B /* maleface.png */; };
 		D0E8165519D7E46700EF0B8C /* IAPRowItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E8164619D7E46700EF0B8C /* IAPRowItem.m */; };
 		D0E8165619D7E46700EF0B8C /* InventoryRowItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E8164819D7E46700EF0B8C /* InventoryRowItem.m */; };
-		D0E87F311A06E8EB00438831 /* UpgradeView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E87F2F1A06E8EB00438831 /* UpgradeView~ipad.xib */; };
 		D0E87F321A06E8EB00438831 /* UpgradeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E87F301A06E8EB00438831 /* UpgradeView.xib */; };
 		D0E87F381A06E90300438831 /* UpgradeView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E87F361A06E90300438831 /* UpgradeView.m */; };
 		D0E981221968C871001A591F /* icon_lvl.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E981211968C871001A591F /* icon_lvl.png */; };
@@ -272,7 +271,10 @@
 		D0F080041A0B783B009CDAF0 /* page.png in Resources */ = {isa = PBXBuildFile; fileRef = D0F080031A0B783B009CDAF0 /* page.png */; };
 		D0F080061A0CAE03009CDAF0 /* LockedBoard.png in Resources */ = {isa = PBXBuildFile; fileRef = D0F080051A0CAE02009CDAF0 /* LockedBoard.png */; };
 		D0F080081A0CBB3E009CDAF0 /* key.png in Resources */ = {isa = PBXBuildFile; fileRef = D0F080071A0CBB3E009CDAF0 /* key.png */; };
+		D0F0C7CB1A17340B00AC1B8A /* particleEffectShortBurst.json in Resources */ = {isa = PBXBuildFile; fileRef = D0F0C7CA1A17340B00AC1B8A /* particleEffectShortBurst.json */; };
 		D0F181B019A7190200F6F131 /* powericon.png in Resources */ = {isa = PBXBuildFile; fileRef = D0F181AF19A7190200F6F131 /* powericon.png */; };
+		D0F19C981A19F16800363CB5 /* leaderboard.png in Resources */ = {isa = PBXBuildFile; fileRef = D0F19C961A19F16700363CB5 /* leaderboard.png */; };
+		D0F19C991A19F16800363CB5 /* answericon.png in Resources */ = {isa = PBXBuildFile; fileRef = D0F19C971A19F16700363CB5 /* answericon.png */; };
 		D0F375B818FA3D9300D32A10 /* tier0.png in Resources */ = {isa = PBXBuildFile; fileRef = D0F375B718FA3D9300D32A10 /* tier0.png */; };
 		D0F375BF18FA457100D32A10 /* tier7.png in Resources */ = {isa = PBXBuildFile; fileRef = D0F375B918FA457100D32A10 /* tier7.png */; };
 		D0F375C018FA457100D32A10 /* tier8.png in Resources */ = {isa = PBXBuildFile; fileRef = D0F375BA18FA457100D32A10 /* tier8.png */; };
@@ -309,10 +311,18 @@
 		D0F7DFE31A04AC93009D1BBB /* particle_star.png in Resources */ = {isa = PBXBuildFile; fileRef = D0F7DFE11A04AC93009D1BBB /* particle_star.png */; };
 		D0F7DFE41A04AC93009D1BBB /* particle_diamond.png in Resources */ = {isa = PBXBuildFile; fileRef = D0F7DFE21A04AC93009D1BBB /* particle_diamond.png */; };
 		D0F7DFE71A05FCF1009D1BBB /* CoinMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0F7DFE51A05FCF1009D1BBB /* CoinMenuView.xib */; };
-		D0F7DFE81A05FCF1009D1BBB /* CoinMenuView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0F7DFE61A05FCF1009D1BBB /* CoinMenuView~ipad.xib */; };
 		D0F7DFEB1A05FF46009D1BBB /* CoinView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0F7DFE91A05FF46009D1BBB /* CoinView~ipad.xib */; };
 		D0F7DFEC1A05FF46009D1BBB /* CoinView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0F7DFEA1A05FF46009D1BBB /* CoinView.xib */; };
+		D0FADABC1A1BF0060004C356 /* CoinMenuView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0FADABB1A1BF0060004C356 /* CoinMenuView~ipad.xib */; };
 		D0FB4D9C19F635F0006F62C7 /* particleEffectSlowBurst.json in Resources */ = {isa = PBXBuildFile; fileRef = D0FB4D9B19F635F0006F62C7 /* particleEffectSlowBurst.json */; };
+		D0FBF54E1A1B1EA50019CDD7 /* UpgradeView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0FBF54D1A1B1EA50019CDD7 /* UpgradeView~ipad.xib */; };
+		D0FBF5501A1B34A30019CDD7 /* GameView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0FBF54F1A1B34A30019CDD7 /* GameView~ipad.xib */; };
+		D0FBF5521A1B376D0019CDD7 /* CompletedLevelDialogView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0FBF5511A1B376D0019CDD7 /* CompletedLevelDialogView~ipad.xib */; };
+		D0FBF5541A1B380A0019CDD7 /* VocabularyTableDialogView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0FBF5531A1B380A0019CDD7 /* VocabularyTableDialogView~ipad.xib */; };
+		D0FF13481A1C650400054B15 /* VocabularyHeaderRowView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0FF13471A1C650400054B15 /* VocabularyHeaderRowView.xib */; };
+		D0FF134D1A1C659300054B15 /* VocabularyHeaderRowView.h in Resources */ = {isa = PBXBuildFile; fileRef = D0FF134C1A1C659300054B15 /* VocabularyHeaderRowView.h */; };
+		D0FF134F1A1C65A600054B15 /* VocabularyHeaderRowView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FF134E1A1C65A600054B15 /* VocabularyHeaderRowView.m */; };
+		D0FF13511A1D847E00054B15 /* particleEffectLittleSpark.json in Resources */ = {isa = PBXBuildFile; fileRef = D0FF13501A1D847E00054B15 /* particleEffectLittleSpark.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -566,7 +576,6 @@
 		D0E8164619D7E46700EF0B8C /* IAPRowItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAPRowItem.m; sourceTree = "<group>"; };
 		D0E8164719D7E46700EF0B8C /* InventoryRowItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InventoryRowItem.h; sourceTree = "<group>"; };
 		D0E8164819D7E46700EF0B8C /* InventoryRowItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InventoryRowItem.m; sourceTree = "<group>"; };
-		D0E87F2F1A06E8EB00438831 /* UpgradeView~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "UpgradeView~ipad.xib"; sourceTree = "<group>"; };
 		D0E87F301A06E8EB00438831 /* UpgradeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UpgradeView.xib; sourceTree = "<group>"; };
 		D0E87F361A06E90300438831 /* UpgradeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpgradeView.m; sourceTree = "<group>"; };
 		D0E87F371A06E90300438831 /* UpgradeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpgradeView.h; sourceTree = "<group>"; };
@@ -644,7 +653,10 @@
 		D0F080031A0B783B009CDAF0 /* page.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = page.png; sourceTree = "<group>"; };
 		D0F080051A0CAE02009CDAF0 /* LockedBoard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LockedBoard.png; sourceTree = "<group>"; };
 		D0F080071A0CBB3E009CDAF0 /* key.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = key.png; sourceTree = "<group>"; };
+		D0F0C7CA1A17340B00AC1B8A /* particleEffectShortBurst.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = particleEffectShortBurst.json; sourceTree = "<group>"; };
 		D0F181AF19A7190200F6F131 /* powericon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = powericon.png; sourceTree = "<group>"; };
+		D0F19C961A19F16700363CB5 /* leaderboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = leaderboard.png; sourceTree = "<group>"; };
+		D0F19C971A19F16700363CB5 /* answericon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = answericon.png; sourceTree = "<group>"; };
 		D0F375B718FA3D9300D32A10 /* tier0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tier0.png; sourceTree = "<group>"; };
 		D0F375B918FA457100D32A10 /* tier7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tier7.png; sourceTree = "<group>"; };
 		D0F375BA18FA457100D32A10 /* tier8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tier8.png; sourceTree = "<group>"; };
@@ -682,10 +694,18 @@
 		D0F7DFE11A04AC93009D1BBB /* particle_star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = particle_star.png; sourceTree = "<group>"; };
 		D0F7DFE21A04AC93009D1BBB /* particle_diamond.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = particle_diamond.png; sourceTree = "<group>"; };
 		D0F7DFE51A05FCF1009D1BBB /* CoinMenuView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CoinMenuView.xib; sourceTree = "<group>"; };
-		D0F7DFE61A05FCF1009D1BBB /* CoinMenuView~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "CoinMenuView~ipad.xib"; sourceTree = "<group>"; };
 		D0F7DFE91A05FF46009D1BBB /* CoinView~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "CoinView~ipad.xib"; sourceTree = "<group>"; };
 		D0F7DFEA1A05FF46009D1BBB /* CoinView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CoinView.xib; sourceTree = "<group>"; };
+		D0FADABB1A1BF0060004C356 /* CoinMenuView~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "CoinMenuView~ipad.xib"; sourceTree = "<group>"; };
 		D0FB4D9B19F635F0006F62C7 /* particleEffectSlowBurst.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = particleEffectSlowBurst.json; sourceTree = "<group>"; };
+		D0FBF54D1A1B1EA50019CDD7 /* UpgradeView~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "UpgradeView~ipad.xib"; sourceTree = "<group>"; };
+		D0FBF54F1A1B34A30019CDD7 /* GameView~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = "GameView~ipad.xib"; path = "Game/Classes/General/GameView~ipad.xib"; sourceTree = SOURCE_ROOT; };
+		D0FBF5511A1B376D0019CDD7 /* CompletedLevelDialogView~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "CompletedLevelDialogView~ipad.xib"; sourceTree = "<group>"; };
+		D0FBF5531A1B380A0019CDD7 /* VocabularyTableDialogView~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "VocabularyTableDialogView~ipad.xib"; sourceTree = "<group>"; };
+		D0FF13471A1C650400054B15 /* VocabularyHeaderRowView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VocabularyHeaderRowView.xib; sourceTree = "<group>"; };
+		D0FF134C1A1C659300054B15 /* VocabularyHeaderRowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VocabularyHeaderRowView.h; sourceTree = "<group>"; };
+		D0FF134E1A1C65A600054B15 /* VocabularyHeaderRowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VocabularyHeaderRowView.m; sourceTree = "<group>"; };
+		D0FF13501A1D847E00054B15 /* particleEffectLittleSpark.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = particleEffectLittleSpark.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -795,7 +815,10 @@
 				D04F685419E10BB900A65E09 /* VocabularyTableView.m */,
 				D04F685619E10C7300A65E09 /* VocabularyRowView.h */,
 				D04F685719E10C7300A65E09 /* VocabularyRowView.m */,
+				D0FF134C1A1C659300054B15 /* VocabularyHeaderRowView.h */,
+				D0FF134E1A1C65A600054B15 /* VocabularyHeaderRowView.m */,
 				D04F685919E10CAD00A65E09 /* VocabularyRowView.xib */,
+				D0FF13471A1C650400054B15 /* VocabularyHeaderRowView.xib */,
 				D04F685B19E10D9500A65E09 /* VocabularyObject.h */,
 				D04F685C19E10D9500A65E09 /* VocabularyObject.m */,
 				D04F686119E1143300A65E09 /* VocabularyTableDialogView.h */,
@@ -808,13 +831,14 @@
 		D06181DE193453F5001740D4 /* Xib */ = {
 			isa = PBXGroup;
 			children = (
-				D0E87F2F1A06E8EB00438831 /* UpgradeView~ipad.xib */,
 				D0E87F301A06E8EB00438831 /* UpgradeView.xib */,
+				D0FBF54D1A1B1EA50019CDD7 /* UpgradeView~ipad.xib */,
 				D0F7DFE91A05FF46009D1BBB /* CoinView~ipad.xib */,
 				D0F7DFEA1A05FF46009D1BBB /* CoinView.xib */,
 				D0F7DFE51A05FCF1009D1BBB /* CoinMenuView.xib */,
-				D0F7DFE61A05FCF1009D1BBB /* CoinMenuView~ipad.xib */,
+				D0FADABB1A1BF0060004C356 /* CoinMenuView~ipad.xib */,
 				D0D3F1EB19E1CDF20036179E /* GameView.xib */,
+				D0FBF54F1A1B34A30019CDD7 /* GameView~ipad.xib */,
 				D0933A5919AEF9A4008C90EB /* AnimatedLabel~ipad.xib */,
 				D04F6BAE199B15DD009930A7 /* ShopRowView~ipad.xib */,
 				D04F6BAC199B15D4009930A7 /* ShopTableView~ipad.xib */,
@@ -823,6 +847,7 @@
 				D06181DF193453F5001740D4 /* AnimatedLabel.xib */,
 				D06181E3193453F5001740D4 /* ErrorDialogView.xib */,
 				D04F686419E114A700A65E09 /* VocabularyTableDialogView.xib */,
+				D0FBF5531A1B380A0019CDD7 /* VocabularyTableDialogView~ipad.xib */,
 				D0F5D15319C965D000ADB923 /* DiggerView.xib */,
 				D0E37D951978DB3800CAED14 /* MessageDialogView.xib */,
 				D0933A5D19AEFEB2008C90EB /* MessageDialogView~ipad.xib */,
@@ -830,6 +855,7 @@
 				D0933A5719AEF81A008C90EB /* ConfirmDialogView~ipad.xib */,
 				D051F11719731381000F98DC /* RootViewController.xib */,
 				D0F7DFDC1A049827009D1BBB /* CompletedLevelDialogView.xib */,
+				D0FBF5511A1B376D0019CDD7 /* CompletedLevelDialogView~ipad.xib */,
 			);
 			path = Xib;
 			sourceTree = "<group>";
@@ -943,6 +969,8 @@
 		D0E50A2818A7349300AA353E /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				D0F19C961A19F16700363CB5 /* leaderboard.png */,
+				D0F19C971A19F16700363CB5 /* answericon.png */,
 				D0F080071A0CBB3E009CDAF0 /* key.png */,
 				D0F080051A0CAE02009CDAF0 /* LockedBoard.png */,
 				D0F080031A0B783B009CDAF0 /* page.png */,
@@ -1179,7 +1207,9 @@
 				D0ED147019DF9B22009902ED /* vocabulary.txt */,
 				D0139FA519DFC89500875248 /* particleEffect.json */,
 				D0F691EC1A10914100C761E4 /* particleEffectKeys.json */,
+				D0F0C7CA1A17340B00AC1B8A /* particleEffectShortBurst.json */,
 				D0F691F11A109BCD00C761E4 /* particleEffectSpark.json */,
+				D0FF13501A1D847E00054B15 /* particleEffectLittleSpark.json */,
 				D0F080001A0B6855009CDAF0 /* particleEffectFastBurst.json */,
 				D0FB4D9B19F635F0006F62C7 /* particleEffectSlowBurst.json */,
 			);
@@ -1297,12 +1327,12 @@
 				D06DB4251939BE9400B33BEC /* guinea_pig.caf in Resources */,
 				D0F375CF18FA896300D32A10 /* tier1.png in Resources */,
 				D0E555F0193B084A00F59DF6 /* background_tier5.png in Resources */,
+				D0FBF5521A1B376D0019CDD7 /* CompletedLevelDialogView~ipad.xib in Resources */,
 				D0E428FD1937124400210F85 /* clicker_pig.png in Resources */,
 				D0F375D918FA958000D32A10 /* tier9-2.png in Resources */,
 				D0E6B6121956947700940695 /* character_flapdown.png in Resources */,
 				D0E541C019174EBB00DD7B1A /* button_powerup_bomb_shuffle.png in Resources */,
 				D0E555EF193B084A00F59DF6 /* background_tier6.png in Resources */,
-				D0F7DFE81A05FCF1009D1BBB /* CoinMenuView~ipad.xib in Resources */,
 				D0EC819119FF60DE00603FF2 /* word_bg.png in Resources */,
 				D0E26B0319580CEB00314A7C /* character_learning4.png in Resources */,
 				D033855218EA9C22008D7861 /* defaultbackground.png in Resources */,
@@ -1315,7 +1345,6 @@
 				D0E8072E19A861E20036710B /* maleface.png in Resources */,
 				D0F691F21A109BCD00C761E4 /* particleEffectSpark.json in Resources */,
 				D0F570E819FC4EFC008EB513 /* mixvocabulary.txt in Resources */,
-				D0E87F311A06E8EB00438831 /* UpgradeView~ipad.xib in Resources */,
 				D038463A191EB12E00265FE1 /* InfoPlist.strings in Resources */,
 				D0EAB6E8195FF75800C90F0E /* last.png in Resources */,
 				D0E8072D19A861E20036710B /* femaleface.png in Resources */,
@@ -1323,6 +1352,8 @@
 				D0E33009191A04EA00FB5EB8 /* applyingshuffle.png in Resources */,
 				D0E52B3719273C650015CD5A /* icon_cigarette.png in Resources */,
 				D0DFFCCD18DC1687001424DF /* femalelose.png in Resources */,
+				D0FBF54E1A1B1EA50019CDD7 /* UpgradeView~ipad.xib in Resources */,
+				D0F0C7CB1A17340B00AC1B8A /* particleEffectShortBurst.json in Resources */,
 				D0A79575195BEDE2009270DE /* cloud.png in Resources */,
 				D0E21E88193AD87500E53E8B /* btn_gold_up.png in Resources */,
 				D0F375C718FA466400D32A10 /* tier12.png in Resources */,
@@ -1341,6 +1372,7 @@
 				D0A79571195BEDE2009270DE /* space.png in Resources */,
 				D0EAB6F0195FF75800C90F0E /* uranus.png in Resources */,
 				D097A56919839F7800A6EB7A /* male.png in Resources */,
+				D0FADABC1A1BF0060004C356 /* CoinMenuView~ipad.xib in Resources */,
 				D0933A5819AEF81A008C90EB /* ConfirmDialogView~ipad.xib in Resources */,
 				D0E52B2E192724AC0015CD5A /* icon_tap.png in Resources */,
 				D0E4B2CB18FCEEE700260ABD /* playbutton.png in Resources */,
@@ -1358,6 +1390,7 @@
 				D06DB4261939BE9400B33BEC /* anvil.caf in Resources */,
 				D0E42903193722EF00210F85 /* icon_iap_x4.png in Resources */,
 				D0BCA0491963D9FA006E01B4 /* icon_fall.png in Resources */,
+				D0F19C991A19F16800363CB5 /* answericon.png in Resources */,
 				D0E41C9C1928135500AF68FE /* clicker_character2.png in Resources */,
 				D0E555F4193B084A00F59DF6 /* background_tier1.png in Resources */,
 				D0F074FF1A00A60A00760A25 /* mixvocabularyIndexes.txt in Resources */,
@@ -1397,6 +1430,7 @@
 				D0EF3FD418D7FB1B00C50442 /* red_header.png in Resources */,
 				D0EBC78319596F190023EF01 /* button_default.png in Resources */,
 				D0F03566192C8D5000F0B0BE /* icon_bucket.png in Resources */,
+				D0FF13481A1C650400054B15 /* VocabularyHeaderRowView.xib in Resources */,
 				D0E42902193722EF00210F85 /* icon_iap_super.png in Resources */,
 				D0E52B2919271DAF0015CD5A /* btn_green_up.png in Resources */,
 				D0E6337218FFBA11007C1622 /* dong.caf in Resources */,
@@ -1434,6 +1468,7 @@
 				D0F375CC18FA7FA600D32A10 /* tier10.png in Resources */,
 				D0E3A4A719A344A90017EAD4 /* backgroundimage.png in Resources */,
 				D0F375DB18FA958000D32A10 /* tier1-2.png in Resources */,
+				D0FBF5541A1B380A0019CDD7 /* VocabularyTableDialogView~ipad.xib in Resources */,
 				D0F07FFB1A0B61B4009CDAF0 /* closebook.png in Resources */,
 				D097A56819839F7800A6EB7A /* female.png in Resources */,
 				D0E541C119174EBB00DD7B1A /* button_powerup_bomb2.png in Resources */,
@@ -1443,6 +1478,7 @@
 				D0F375DC18FA958000D32A10 /* tier12-2.png in Resources */,
 				D0A9405E18D6BED20049E018 /* rip.png in Resources */,
 				D055B91D1918A7A4007730EB /* tier4coin.png in Resources */,
+				D0FF134D1A1C659300054B15 /* VocabularyHeaderRowView.h in Resources */,
 				D0E26B0619580CEB00314A7C /* character_learning1.png in Resources */,
 				D0E1122B18C2EC6000808072 /* boing.caf in Resources */,
 				D0EC757A18EBE5E40015AD4C /* cloud1.png in Resources */,
@@ -1465,11 +1501,13 @@
 				D0E981221968C871001A591F /* icon_lvl.png in Resources */,
 				D0E6B6101956947700940695 /* character_falling.png in Resources */,
 				D04F6BAD199B15D4009930A7 /* ShopTableView~ipad.xib in Resources */,
+				D0F19C981A19F16800363CB5 /* leaderboard.png in Resources */,
 				D0F080011A0B6855009CDAF0 /* particleEffectFastBurst.json in Resources */,
 				D0E47C2318ED29EA009CA771 /* vsbutton.png in Resources */,
 				D033855318EA9C22008D7861 /* bluebackground.png in Resources */,
 				D0E87F321A06E8EB00438831 /* UpgradeView.xib in Resources */,
 				D0EA7EC118D521C90095DEBD /* monster.png in Resources */,
+				D0FF13511A1D847E00054B15 /* particleEffectLittleSpark.json in Resources */,
 				D0A79573195BEDE2009270DE /* atmosphere.png in Resources */,
 				D0E33008191A04EA00FB5EB8 /* arrowdown.png in Resources */,
 				D0F375C118FA457100D32A10 /* tier5.png in Resources */,
@@ -1503,6 +1541,7 @@
 				D0EBC78519596F190023EF01 /* button_hold.png in Resources */,
 				D0880683196529E5001CC7A7 /* icon_instruction.png in Resources */,
 				D0EAB6F4195FF75800C90F0E /* saturn.png in Resources */,
+				D0FBF5501A1B34A30019CDD7 /* GameView~ipad.xib in Resources */,
 				D0EAB6F5195FF75800C90F0E /* jupiter.png in Resources */,
 				D0E1123518C2EDF000808072 /* bling.caf in Resources */,
 				D0E4E2DD195ACCE7009DA44A /* ground.png in Resources */,
@@ -1551,6 +1590,7 @@
 				D02B963B19C6317E00F565C1 /* RootViewController.m in Sources */,
 				D0E87F381A06E90300438831 /* UpgradeView.m in Sources */,
 				D0D3F1EA19E1CD420036179E /* GameView.m in Sources */,
+				D0FF134F1A1C65A600054B15 /* VocabularyHeaderRowView.m in Sources */,
 				D02B962C19C6317E00F565C1 /* CustomGameLoopTimer.m in Sources */,
 				D02B962D19C6317E00F565C1 /* ErrorDialogView.m in Sources */,
 				D02B962919C6317E00F565C1 /* CoinIAPHelper.m in Sources */,

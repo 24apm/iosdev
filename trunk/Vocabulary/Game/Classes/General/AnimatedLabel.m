@@ -8,6 +8,7 @@
 
 #import "AnimatedLabel.h"
 #import "GameConstants.h"
+#import "ConfigManager.h"
 
 @implementation AnimatedLabel
 

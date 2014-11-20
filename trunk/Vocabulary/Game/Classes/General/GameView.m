@@ -25,6 +25,7 @@
 #import "SoundManager.h"
 #import "GameLoopTimer.h"
 #import "ProgressBarComponent.h"
+#import "ConfigManager.h"
 
 #define CURRENT_TIME [[NSDate date] timeIntervalSince1970]
 #define TIME_FOR_ONE_RETRY 720.0
@@ -63,8 +64,8 @@
 
 @implementation GameView
 
-- (instancetype)initWithFrame:(CGRect)frame {
-    self = [super initWithFrame:frame];
+- (instancetype)init {
+    self = [super init];
     if (self) {
         self.boardView = [[BoardView alloc] initWithFrame:CGRectMake(0, 0, self.boardViewContainer.size.width, self.boardViewContainer.size.height)];
         [self.boardViewContainer addSubview:self.boardView];
@@ -76,6 +77,7 @@
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(drawStep) name:DRAW_STEP_NOTIFICATION object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openBookEndGame) name:OPEN_BOOK_NOTIFICATION object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(generateNewLevelEndGame) name:START_NEW_GAME_NOTIFICATION object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(lockedAnswerButton) name:UNLOCK_ANSWER_NOTIFICATION object:nil];
         self.newSectionUnlocked = NO;
         [self refillRetryAtStart];
         
@@ -123,6 +125,11 @@
     [self fillLiveTime];
 }
 
+
+-(void)lockedAnswerButton {
+    self.answerButton.userInteractionEnabled = NO;
+}
+
 - (void)fillLiveTime {
     self.nextLiveTimeLabel.hidden = YES;
     
@@ -136,7 +143,7 @@
             self.nextLiveTimeLabel.hidden = NO;
             NSInteger min = nextRetryTime / 60;
             NSInteger sec = nextRetryTime % 60;
-            self.nextLiveTimeLabel.text = [NSString stringWithFormat:@"Next in: %d:%0.2d", min, sec];
+            self.nextLiveTimeLabel.text = [NSString stringWithFormat:@"Next in: %ld:%0.2ld", (long)min, (long)sec];
         }
     }
     self.liveStockLabel.text = [NSString stringWithFormat:@"x%.f", currentOwnedRetry];
@@ -213,13 +220,12 @@
 }
 
 - (IBAction)resetPressed:(id)sender {
-    [self animateLockedBoardToOpen:NO];
-    [self userInterfaceInWaiting:YES];
+    [[GameCenterHelper instance] showLeaderboard:[Utils rootViewController]];
+    //[self animateLockedBoardToOpen:NO];
+    //[self userInterfaceInWaiting:YES];
     //[self showCompleteLevel];
-    [self decrementRetry];
-    
-    [self.spinner startAnimating];
-    [self performSelector:@selector(generateNewLevel) withObject:nil afterDelay:0.0];
+    //[self decrementRetry];
+    //[self performSelector:@selector(generateNewLevel) withObject:nil afterDelay:0.0];
 }
 
 - (IBAction)answerPressed:(id)sender {
@@ -286,10 +292,12 @@
 - (void)addKey {
     [[UserData instance] refillRetry];
     self.buyKeyButton.hidden = NO;
+    self.lockedBoardView.userInteractionEnabled = YES;
 }
 
 - (void)animateAddingKeys {
     self.buyKeyButton.hidden = YES;
+    self.lockedBoardView.userInteractionEnabled = NO;
     [self performSelector:@selector(_animateAddingKeys) withObject:nil afterDelay:1.4f];
 }
 
@@ -327,7 +335,7 @@
 }
 
 - (IBAction)buyKeyButtonPressed:(UIButton *)sender {
-    if ([UserData instance].retry < [[UserData instance]retryCapacity]) {
+    if ([UserData instance].retry <= 0) {
         [[[UpgradeView alloc] init] showForKey];
     }
 }
@@ -432,7 +440,7 @@
             [[GameCenterHelper instance] loginToGameCenterWithAuthentication];
         }
     }
-    
+    self.answerButton.userInteractionEnabled = YES;
     self.numOfGame++;
     
     if (self.numOfGame % 3 == 0) {
