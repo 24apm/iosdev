@@ -166,7 +166,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="613" height="613"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
                                 </imageView>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="IqD-sr-Zcv" userLabel="UNLOCK board button">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="IqD-sr-Zcv" userLabel="UNLOCK board button">
                                     <rect key="frame" x="0.0" y="0.0" width="613" height="613"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                     <state key="normal">
@@ -176,11 +176,14 @@
                                         <action selector="lockedBoardPressed:" destination="-1" eventType="touchUpInside" id="yZx-n6-jbp"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="B6G-tB-b4j" userLabel="UNLOCK">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="B6G-tB-b4j" userLabel="UNLOCK" customClass="ButtonBase">
                                     <rect key="frame" x="209" y="415" width="199" height="66"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" red="0.82876275510204078" green="0.63815703758024622" blue="0.058796094631588761" alpha="1" colorSpace="calibratedRGB"/>
-                                    <state key="normal" title="UNLOCK"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                    <state key="normal" title="UNLOCK">
+                                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </state>
                                     <connections>
                                         <action selector="unlockedButtonPressed:" destination="-1" eventType="touchUpInside" id="S85-Nc-LOE"/>
                                     </connections>
@@ -258,7 +261,7 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Pka-su-erQ" userLabel="Key Button">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Pka-su-erQ" userLabel="Key Button">
                     <rect key="frame" x="295" y="-2" width="151" height="67"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

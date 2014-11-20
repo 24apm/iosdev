@@ -580,7 +580,7 @@
         self.gamesNoNewWord = 0;
     }
     
-    if (self.gamesNoNewWord > 2) {
+    if (self.gamesNoNewWord > 1) {
         self.gameWithNewWords = YES;
     } else {
         self.gameWithNewWords = NO;

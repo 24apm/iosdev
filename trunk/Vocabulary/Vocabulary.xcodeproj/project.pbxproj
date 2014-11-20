@@ -1725,7 +1725,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				BUNDLE_IDENTIFIER = com.jeffrwan.vocabulary;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Jeffrey Wan (MT34DA8UCA)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jeffrey Wan (MT34DA8UCA)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jeffrey Wan (YS47XTCZZB)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Game/Vocabulary-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -1742,7 +1742,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = Vocabulary;
-				PROVISIONING_PROFILE = "CB4532C1-7837-4A67-A8D6-32AA044757BD";
+				PROVISIONING_PROFILE = "25336CE5-0E73-45EB-821E-02AB4A5F21C8";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(inherited) /Users/15inch/Desktop/tut/iosdev/trunk/Base/Analytics/Library $SOURCE_ROOT/../BaseLibrary/**";
 				VALID_ARCHS = "arm64 armv7 armv7s i386 x86_64";
@@ -1757,7 +1757,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				BUNDLE_IDENTIFIER = com.jeffrwan.vocabulary;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Jeffrey Wan (MT34DA8UCA)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jeffrey Wan (MT34DA8UCA)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jeffrey Wan (YS47XTCZZB)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Game/Vocabulary-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -1774,7 +1774,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = Vocabulary;
-				PROVISIONING_PROFILE = "CB4532C1-7837-4A67-A8D6-32AA044757BD";
+				PROVISIONING_PROFILE = "25336CE5-0E73-45EB-821E-02AB4A5F21C8";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(inherited) /Users/15inch/Desktop/tut/iosdev/trunk/Base/Analytics/Library $SOURCE_ROOT/../BaseLibrary/**";
 				VALID_ARCHS = "arm64 armv7 armv7s i386 x86_64";
