@@ -1,0 +1,40 @@
+{
+    "scale" : 1,
+    "velocity" : 1,
+    "birthRate" : 1,
+    "emitterHeight" : 568,
+    "emitterShape" : "point",
+    "emitterWidth" : 320,
+    "lifetime" : 1,
+    "emitterCells" : [
+                      {
+                      "colorRed" : 1,
+                      "scaleRange" : 0,
+                      "scale" : 0.1624606,
+                      "alphaRange" : 0.0,
+                      "velocity" : 51.91167,
+                      "velocityRange" : 0,
+                      "emissionRange" : 360,
+                      "colorBlue" : 1,
+                      "blueRange" : 0,
+                      "scaleSpeed" : 1.03785491,
+                      "emissionLongitude" : 0,
+                      "xAcceleration" : 0,
+                      "greenRange" : 0,
+                      "alphaSpeed" : -1.9132493,
+                      "spin" : 0.8044164,
+                      "lifetime" : 0.5936908,
+                      "lifetimeRange" : 0,
+                      "colorGreen" : 1,
+                      "yAcceleration" : 0,
+                      "renderMode" : "backToFront",
+                      "birthRate" : 30.06625,
+                      "textureName" : "gloweffect.png",
+                      "colorAlpha" : 1,
+                      "redRange" : 0
+                      }
+                      ],
+    "lifeSpan" : 0.11675079047679901,
+    "duration" : 0.11675079047679901,
+    "renderMode" : "backToFront"
+}
