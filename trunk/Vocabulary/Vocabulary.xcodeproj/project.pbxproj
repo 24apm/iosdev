@@ -1656,7 +1656,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Jeffrey Wan (YS47XTCZZB)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jeffrey Wan (MT34DA8UCA)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jeffrey Wan (YS47XTCZZB)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1675,7 +1675,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MACH_O_TYPE = mh_execute;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "bdbf547c-f6d7-4a12-80d0-02608f7cb0b2";
+				PROVISIONING_PROFILE = "91964095-c5a8-4ca2-8036-b95707f0a168";
 				SDKROOT = iphoneos;
 				VALID_ARCHS = "arm64 armv7 armv7s i386 x86_64";
 			};
@@ -1711,7 +1711,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MACH_O_TYPE = mh_execute;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "bdbf547c-f6d7-4a12-80d0-02608f7cb0b2";
+				PROVISIONING_PROFILE = "91964095-c5a8-4ca2-8036-b95707f0a168";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 				VALID_ARCHS = "arm64 armv7 armv7s i386 x86_64";
@@ -1724,7 +1724,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				BUNDLE_IDENTIFIER = com.jeffrwan.vocabulary;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Jeffrey Wan (MT34DA8UCA)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Jeffrey Wan (YS47XTCZZB)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jeffrey Wan (YS47XTCZZB)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Game/Vocabulary-Prefix.pch";
@@ -1742,7 +1742,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = Vocabulary;
-				PROVISIONING_PROFILE = "25336CE5-0E73-45EB-821E-02AB4A5F21C8";
+				PROVISIONING_PROFILE = "91964095-c5a8-4ca2-8036-b95707f0a168";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(inherited) /Users/15inch/Desktop/tut/iosdev/trunk/Base/Analytics/Library $SOURCE_ROOT/../BaseLibrary/**";
 				VALID_ARCHS = "arm64 armv7 armv7s i386 x86_64";
@@ -1756,7 +1756,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				BUNDLE_IDENTIFIER = com.jeffrwan.vocabulary;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Jeffrey Wan (MT34DA8UCA)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Jeffrey Wan (YS47XTCZZB)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jeffrey Wan (YS47XTCZZB)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Game/Vocabulary-Prefix.pch";
@@ -1774,7 +1774,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = Vocabulary;
-				PROVISIONING_PROFILE = "25336CE5-0E73-45EB-821E-02AB4A5F21C8";
+				PROVISIONING_PROFILE = "91964095-c5a8-4ca2-8036-b95707f0a168";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(inherited) /Users/15inch/Desktop/tut/iosdev/trunk/Base/Analytics/Library $SOURCE_ROOT/../BaseLibrary/**";
 				VALID_ARCHS = "arm64 armv7 armv7s i386 x86_64";

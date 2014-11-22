@@ -26,6 +26,7 @@
 #import "GameLoopTimer.h"
 #import "ProgressBarComponent.h"
 #import "ConfigManager.h"
+#import "TrackUtils.h"
 
 #define CURRENT_TIME [[NSDate date] timeIntervalSince1970]
 #define TIME_FOR_ONE_RETRY 720.0
@@ -176,6 +177,7 @@
 
 - (void)unlockAnswer {
     [self.boardView showAnswer];
+    [TrackUtils trackAction:@"boughtAnswer" label:@""];
 }
 
 - (void)buyMoreCoin {
@@ -296,6 +298,7 @@
 }
 
 - (void)animateAddingKeys {
+    [TrackUtils trackAction:@"boughtKey" label:@""];
     self.buyKeyButton.hidden = YES;
     self.lockedBoardView.userInteractionEnabled = NO;
     [self performSelector:@selector(_animateAddingKeys) withObject:nil afterDelay:1.4f];
