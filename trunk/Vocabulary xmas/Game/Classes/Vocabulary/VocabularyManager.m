@@ -11,6 +11,7 @@
 #import "UserData.h"
 #import "Utils.h"
 #import "GameCenterHelper.h"
+#import "NSString+StringUtils.h"
 
 #define TEXT_FILE @"vocabulary.txt"
 #define MIX_TEXT_FILE @"mixvocabulary.txt"
@@ -447,9 +448,11 @@
                 
                 NSInteger letterIndex = 0;
                 if ([storedLetters allKeys].count > 0) {
+                    NSString *shuffleWord = [NSString shuffleString:word];
+                    
                     for (NSInteger i = 0; i < word.length; i++) {
                         letterIndex = i;
-                        NSString *currentLetter = [NSString stringWithFormat:@"%c", [word characterAtIndex:i] ];
+                        NSString *currentLetter = [NSString stringWithFormat:@"%c", [shuffleWord characterAtIndex:i]];
                         
                         //check if storedLetter has points of current letter
                         

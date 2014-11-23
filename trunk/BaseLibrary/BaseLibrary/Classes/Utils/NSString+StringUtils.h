@@ -12,4 +12,6 @@
 
 @property (nonatomic, readonly) NSString *reversedString;
 
++ (NSString *)shuffleString:(NSString *)string;
+
 @end

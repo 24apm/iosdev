@@ -7,6 +7,7 @@
 //
 
 #import "NSString+StringUtils.h"
+#import "Utils.h"
 
 @implementation NSString (StringUtils)
 
@@ -22,4 +23,28 @@
     return reversedString;
 }
 
++ (NSString *) shuffleString:(NSString *)string {
+    
+    if (string.length <= 0) {
+        return @"";
+    }
+    
+    NSString *shuffleString = @"";
+    
+    NSInteger totalNumber = string.length;
+    NSInteger currentLength = [[NSNumber numberWithUnsignedInt:totalNumber] integerValue];
+    NSMutableArray *randomOrder = [NSMutableArray array];
+    for (NSInteger i = 0; i< currentLength; i++) {
+        [randomOrder addObject:[NSNumber numberWithInteger:i]];
+    }
+    [randomOrder shuffle];
+    
+    
+    for (NSInteger i = 0; i < randomOrder.count; i++) {
+        shuffleString = [shuffleString stringByAppendingString:[NSString stringWithFormat:@"%c", [string characterAtIndex:[[randomOrder objectAtIndex:i]integerValue ]]]];
+    }
+    
+    return shuffleString;
+    
+}
 @end
