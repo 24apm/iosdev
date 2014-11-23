@@ -222,12 +222,13 @@
 }
 
 - (IBAction)resetPressed:(id)sender {
-    [[GameCenterHelper instance] showLeaderboard:[Utils rootViewController]];
+    //[[GameCenterHelper instance] showLeaderboard:[Utils rootViewController]];
     //[self animateLockedBoardToOpen:NO];
     //[self userInterfaceInWaiting:YES];
     //[self showCompleteLevel];
     //[self decrementRetry];
-    //[self performSelector:@selector(generateNewLevel) withObject:nil afterDelay:0.0];
+    [self performSelector:@selector(generateNewLevel) withObject:nil afterDelay:0.0];
+    self.answerButton.userInteractionEnabled = YES;
 }
 
 - (IBAction)answerPressed:(id)sender {
@@ -235,7 +236,7 @@
 }
 - (IBAction)unlockedButtonPressed:(UIButton *)sender {
     if (self.unlockingBoardBool == NO) {
-        if ([UserData instance].retry > 0) {
+        if (YES || [UserData instance].retry > 0) {
             [self generateNewLevel];
             [self userInterfaceInWaiting:NO];
             [self animateLockedBoardToOpen:YES];

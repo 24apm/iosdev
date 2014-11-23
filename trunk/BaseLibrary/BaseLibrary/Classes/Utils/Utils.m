@@ -173,4 +173,16 @@
                               encoding:NSUTF8StringEncoding];
 }
 
++ (NSString *)reverseString:(NSString *)string {
+    
+    NSMutableString *reversedString = [NSMutableString string];
+    NSInteger charIndex = [string length];
+    while (charIndex > 0) {
+        charIndex--;
+        NSRange subStrRange = NSMakeRange(charIndex, 1);
+        [reversedString appendString:[string substringWithRange:subStrRange]];
+    }
+    return reversedString;
+}
+
 @end

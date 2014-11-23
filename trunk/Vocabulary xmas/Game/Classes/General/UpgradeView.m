@@ -38,7 +38,7 @@
     [self animateCoins:productIdentifier];
 }
 - (IBAction)LvlButtonPressed:(id)sender {
-    if ([UserData instance].coin >= self.cost) {
+    if (YES || [UserData instance].coin >= self.cost) {
         [[UserData instance] decrementCoin:self.cost];
         self.userInteractionEnabled = NO;
         [[NSNotificationCenter defaultCenter]postNotificationName:self.stateNotification object:nil];
