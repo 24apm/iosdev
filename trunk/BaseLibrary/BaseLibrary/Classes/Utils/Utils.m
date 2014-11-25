@@ -34,6 +34,16 @@
     return arc4random() % (max-min + 1) + min;
 }
 
++ (BOOL)randBetweenTrueFalse {
+   NSInteger test = [self randBetweenMinInt:0 max:1];
+    if (test == 1) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+
 + (UIViewController *)rootViewController {
     return [UIApplication sharedApplication].delegate.window.rootViewController;
 }

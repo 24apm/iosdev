@@ -138,7 +138,7 @@
         }
         VocabularyObject *vocabData = [[VocabularyObject alloc] init];
         vocabData.word = vocabParts[0];
-        vocabData.definition = vocabParts[1];
+        //vocabData.definition = vocabParts[1];
         
         // "palliate, palliative" -> "palliate"
         NSMutableArray *word = [NSMutableArray arrayWithArray:[vocabData.word componentsSeparatedByString:@","]];
@@ -191,6 +191,10 @@
         
         NSString *rawWord = row;
         
+        if (rawWord.length > MAX_STRING_LENGTH) {
+            continue;
+        }
+        
         [self.mixVocabArray addObject:rawWord];
     }
 }
@@ -214,6 +218,10 @@
     
     while(row = [nse nextObject]) {
         NSString *rawWord = row;
+        
+        NSInteger maxValue = MIN([rawWord integerValue], self.dictionaryByVocab.count - 1);
+        rawWord = [NSString stringWithFormat:@"%ld", (long)maxValue];
+        
         NSString *sectionString = [NSString stringWithFormat:@"%ld",(long)sectionIndex];
         [self.vocabSectionsToIndexes setValue:rawWord forKey:sectionString];
         [self.vocabIndexesToSections setValue:sectionString forKey:rawWord];
@@ -447,7 +455,9 @@
                 //loop through letter if has stored letters
                 
                 NSInteger letterIndex = 0;
-                if ([storedLetters allKeys].count > 0) {
+                BOOL shouldOverlap = [Utils randBetweenTrueFalse];
+                
+                if (shouldOverlap && [storedLetters allKeys].count > 0) {
                     NSString *shuffleWord = [NSString shuffleString:word];
                     
                     for (NSInteger i = 0; i < word.length; i++) {
@@ -458,7 +468,7 @@
                         
                         if ([storedLetters objectForKey:currentLetter] > 0) {
                             
-                            //check for fit with ordered directions
+                            //check for fit with ordered directions in linking words
                             
                             for (NSInteger i = 0; i < directionArray.count; i++) {
                                 NSInteger direction = [[directionArray objectAtIndex:i] integerValue];
@@ -488,7 +498,7 @@
                     }
                 }
                 
-                // if don't have stored letters or can't fit in stored letters
+                // if don't have stored letters or can't fit in stored letters no linking
                 if (!foundAFit || [storedLetters allKeys].count <= 0) {
                     sRow = arc4random() % self.levelData.numRow;
                     sCol = arc4random() % self.levelData.numColumn;
@@ -530,7 +540,7 @@
                     }
                     
                     if (letterIndex > 0) {
-                        for (NSInteger i = 1; i < letterIndex; i++) {
+                        for (NSInteger i = 0; i <= letterIndex; i++) {
                             NSInteger row = sRow - i * directionalRow;
                             NSInteger col = sCol - i * directionalCol;
                             NSInteger mapIndex = [self indexForLeveData:self.levelData row:row column:col];

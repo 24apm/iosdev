@@ -26,6 +26,7 @@ __x > __high ? __high : (__x < __low ? __low : __x);\
 + (CGSize)screenSize;
 + (float)randBetweenMin:(float)min max:(float)max;
 + (int)randBetweenMinInt:(int)min max:(int)max;
++ (BOOL)randBetweenTrueFalse;
 + (UIViewController *)rootViewController;
 + (NSString *)formatWithComma:(int)integer;
 + (NSString *)formatWithFreeCost:(int)cost;
