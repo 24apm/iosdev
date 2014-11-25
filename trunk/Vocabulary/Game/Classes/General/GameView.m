@@ -156,10 +156,14 @@
     }
 }
 
+- (void)isWaitingState:(BOOL)state {
+
+    [self animateLockedBoardToOpen:!state];
+    [self userInterfaceInWaiting:state];
+}
 
 - (void)openBookEndGame {
-    [self unlockBoardSetTo:NO];
-    [self userInterfaceInWaiting:YES];
+    [self isWaitingState:YES];
     [[[VocabularyTableDialogView alloc] init] show];
 }
 
@@ -168,9 +172,8 @@
         [[UserData instance] decrementRetry];
         [self generateNewLevel];
     } else {
+        [self isWaitingState:YES];
         [[[UpgradeView alloc] initWithBlock:^{
-            [self animateLockedBoardToOpen:NO];
-            [self userInterfaceInWaiting:YES];
         }] showForKey];
     }
 }
@@ -237,8 +240,7 @@
     if (self.unlockingBoardBool == NO) {
         if ([UserData instance].retry > 0) {
             [self generateNewLevel];
-            [self userInterfaceInWaiting:NO];
-            [self animateLockedBoardToOpen:YES];
+            [self isWaitingState:NO];
             [self decrementRetry];
             self.unlockingBoardBool = YES;
         } else {

@@ -55,7 +55,7 @@
 }
 
 - (void)show {
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(refresh) name:BUY_COIN_VIEW_DISMISS_NOTIFICATION  object:nil];
+    //[[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(refresh) name:BUY_COIN_VIEW_DISMISS_NOTIFICATION  object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(animateCoinsToIcon:) name:APPLY_TRANSACTION_NOTIFICATION object:nil];
     [super show];
     [self refresh];
