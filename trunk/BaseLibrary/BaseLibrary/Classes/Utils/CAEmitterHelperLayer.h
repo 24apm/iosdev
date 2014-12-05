@@ -17,5 +17,6 @@
 - (void)refreshEmitter;
 + (CAEmitterHelperLayer *)emitter:(NSString *)json onView:(UIView *)view;
 - (CGFloat)totalDuration;
+- (void)setStartPoint:(CGPoint)point;
 
 @end

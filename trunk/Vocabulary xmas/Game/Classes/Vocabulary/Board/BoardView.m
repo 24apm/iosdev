@@ -153,7 +153,7 @@
 - (void)drawSelectionStroke {
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextClearRect(context, self.bounds);
-    UIColor *strokeColor = [UIColor colorWithRed:1 green:0 blue:0 alpha:0.5f];
+    UIColor *strokeColor = [UIColor colorWithRed:1 green:1 blue:0 alpha:0.5f];
     
     
     for (NSArray *pointsArr in [self.boardView.levelData.answerIndexesToDrawGroup allValues]) {

@@ -131,6 +131,11 @@
     [self setIsEmitting:NO];
 }
 
+- (void)setStartPoint:(CGPoint)point {
+    self.emitterPosition = point;
+
+}
+
 - (void)cleanUpEmitter {
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(cleanUpEmitter) object:nil];
     [self setIsEmitting:NO];

@@ -281,14 +281,14 @@
     <resources>
         <image name="LockedBoard.png" width="1000" height="1000"/>
         <image name="answericon.png" width="200" height="200"/>
-        <image name="board_bg.png" width="320" height="320"/>
+        <image name="board_bg.png" width="1000" height="1000"/>
         <image name="closebook.png" width="200" height="200"/>
         <image name="definition_bg.png" width="320" height="140"/>
         <image name="gloweffect.png" width="256" height="256"/>
         <image name="key.png" width="200" height="200"/>
         <image name="leaderboard.png" width="200" height="200"/>
         <image name="openbook.png" width="200" height="200"/>
-        <image name="word_bg.png" width="320" height="150"/>
+        <image name="word_bg.png" width="1000" height="1000"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

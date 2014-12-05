@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
+        <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <objects>
@@ -9,7 +10,7 @@
                 <outlet property="answerButton" destination="cef-jX-QeO" id="VLd-aJ-f7j"/>
                 <outlet property="boardViewContainer" destination="Qoo-qy-EUL" id="KCl-nK-xfB"/>
                 <outlet property="buyKeyButton" destination="Pka-su-erQ" id="fF1-gw-rwj"/>
-                <outlet property="definitionLabel" destination="hQJ-Z6-Tcw" id="X3Z-be-sYd"/>
+                <outlet property="emitterLayer" destination="kuy-sp-9r2" id="Mgh-oy-5Vf"/>
                 <outlet property="foundNewWordGlowView" destination="3cU-W1-cnh" id="Gfz-BL-8Og"/>
                 <outlet property="keyImageView" destination="uxJ-QL-wjr" id="4wQ-3d-hGK"/>
                 <outlet property="liveStockLabel" destination="dmh-S2-vJX" id="zVm-OL-qhp"/>
@@ -26,27 +27,29 @@
                 <outletCollection property="words" destination="SUH-b7-Cme" id="y89-uB-6ul"/>
                 <outletCollection property="words" destination="PUa-aq-VsY" id="BWU-QR-55B"/>
                 <outletCollection property="words" destination="wmy-Ce-R93" id="4hB-Gl-Ave"/>
+                <outletCollection property="words" destination="Rqu-eV-hXr" id="GIa-YX-BzL"/>
+                <outletCollection property="words" destination="1dr-8o-vDP" id="DBK-fJ-SIa"/>
+                <outletCollection property="words" destination="l8j-Ar-URW" id="8ic-Sy-4UM"/>
+                <outletCollection property="words" destination="gkG-0k-V39" id="Vq8-8n-X8Y"/>
+                <outletCollection property="words" destination="XMo-26-6lg" id="KFC-q3-ItJ"/>
+                <outletCollection property="words" destination="gQ8-7n-36D" id="FQI-aR-bMx"/>
             </connections>
         </placeholder>
         <view contentMode="scaleToFill" id="mXS-jD-5j4">
             <rect key="frame" x="0.0" y="0.0" width="320" height="430"/>
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="word_bg.png" id="gaR-zo-Tfy">
-                    <rect key="frame" x="0.0" y="279" width="320" height="150"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                <view userInteractionEnabled="NO" contentMode="scaleToFill" id="kuy-sp-9r2" userLabel="emitter">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="430"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                </imageView>
+                </view>
                 <view contentMode="scaleToFill" id="zio-1x-Bez">
                     <rect key="frame" x="0.0" y="279" width="320" height="150"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="word_bg.png" id="680-vG-PbU">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="definition_bg.png" id="E8b-Mj-r8A">
-                            <rect key="frame" x="0.0" y="-15" width="320" height="140"/>
+                            <rect key="frame" x="0.0" y="38" width="320" height="112"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Word" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="PUa-aq-VsY" customClass="THLabel">
@@ -130,13 +133,59 @@
                             <color key="shadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <size key="shadowOffset" width="1" height="1"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Definition Definition DefinitionDefinition Definition DefinitionDefinition Definition Definition" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="hQJ-Z6-Tcw">
-                            <rect key="frame" x="8" y="41" width="304" height="39"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Word" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="gQ8-7n-36D" customClass="THLabel">
+                            <rect key="frame" x="8" y="59" width="100" height="20"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="14"/>
-                            <color key="textColor" red="0.066271381294354836" green="0.61554400843587054" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
+                            <color key="shadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <size key="shadowOffset" width="1" height="1"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Word" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="XMo-26-6lg" customClass="THLabel">
+                            <rect key="frame" x="110" y="59" width="100" height="20"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="14"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                            <color key="shadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <size key="shadowOffset" width="1" height="1"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Word" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="gkG-0k-V39" customClass="THLabel">
+                            <rect key="frame" x="212" y="59" width="100" height="20"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="14"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                            <color key="shadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <size key="shadowOffset" width="1" height="1"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Word" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="l8j-Ar-URW" customClass="THLabel">
+                            <rect key="frame" x="8" y="37" width="100" height="20"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="14"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                            <color key="shadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <size key="shadowOffset" width="1" height="1"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Word" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="1dr-8o-vDP" customClass="THLabel">
+                            <rect key="frame" x="110" y="37" width="100" height="20"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="14"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                            <color key="shadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <size key="shadowOffset" width="1" height="1"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Word" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="Rqu-eV-hXr" customClass="THLabel">
+                            <rect key="frame" x="212" y="37" width="100" height="20"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="14"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                            <color key="shadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <size key="shadowOffset" width="1" height="1"/>
                         </label>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -146,7 +195,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="board_bg.png" id="g6A-Aj-eci">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
+                            <rect key="frame" x="20" y="15" width="280" height="280"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                         </imageView>
                         <view contentMode="scaleToFill" id="Qoo-qy-EUL">
@@ -155,16 +204,17 @@
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
                         <view contentMode="scaleToFill" id="LBE-w5-XyF" userLabel="Locked Board View">
-                            <rect key="frame" x="20" y="15" width="280" height="280"/>
+                            <rect key="frame" x="15" y="10" width="290" height="290"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LockedBoard.png" id="M2p-AP-cEF">
-                                    <rect key="frame" x="0.0" y="0.0" width="280" height="280"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="290" height="290"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="IqD-sr-Zcv" userLabel="UNLOCK board button">
-                                    <rect key="frame" x="0.0" y="0.0" width="280" height="280"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="290" height="290"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <state key="normal">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
@@ -186,7 +236,7 @@
                                     </connections>
                                 </button>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -244,7 +294,7 @@
                     <rect key="frame" x="166" y="10" width="79" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="key.png" id="uxJ-QL-wjr">
@@ -255,7 +305,7 @@
                     <rect key="frame" x="144" y="11" width="42" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Pka-su-erQ" userLabel="Key Button">
@@ -281,14 +331,13 @@
     <resources>
         <image name="LockedBoard.png" width="1000" height="1000"/>
         <image name="answericon.png" width="200" height="200"/>
-        <image name="board_bg.png" width="320" height="320"/>
+        <image name="board_bg.png" width="1000" height="1000"/>
         <image name="closebook.png" width="200" height="200"/>
-        <image name="definition_bg.png" width="320" height="140"/>
         <image name="gloweffect.png" width="256" height="256"/>
         <image name="key.png" width="200" height="200"/>
         <image name="leaderboard.png" width="200" height="200"/>
         <image name="openbook.png" width="200" height="200"/>
-        <image name="word_bg.png" width="320" height="150"/>
+        <image name="word_bg.png" width="1000" height="1000"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

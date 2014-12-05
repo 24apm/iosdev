@@ -53,6 +53,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *answerButton;
 @property (strong, nonatomic) IBOutlet UIButton *buyKeyButton;
 
+@property (strong, nonatomic) IBOutlet UIView *emitterLayer;
 @property (strong, nonatomic) IBOutlet UIImageView *foundNewWordGlowView;
 @property (strong, nonatomic) IBOutlet UIImageView *wordBook;
 @property (nonatomic) NSInteger numOfGame;
@@ -97,8 +98,17 @@
         self.unlockingBoardBool = NO;
         [self unlockBoardSetTo:NO];
         [self hideLabels:[NSNumber numberWithBool:YES]];
+        [self startFallingEffect];
     }
     return self;
+}
+
+- (void)startFallingEffect {
+ CAEmitterHelperLayer *cell = [CAEmitterHelperLayer emitter:@"particleEffectFalling.json" onView:self.emitterLayer];
+    CGPoint point = CGPointMake(self.emitterLayer.width/2, 0);
+    [cell setStartPoint:point];
+    [cell refreshEmitter];
+    
 }
 
 - (void)refillRetryAtStart {
@@ -150,12 +160,17 @@
     self.liveStockLabel.text = [NSString stringWithFormat:@"x%.f", currentOwnedRetry];
     
     if (currentOwnedRetry >= [UserData instance].retryCapacity) {
-        self.liveStockLabel.textColor = [UIColor orangeColor];
+        self.liveStockLabel.textColor = [UIColor yellowColor];
     } else {
-        self.liveStockLabel.textColor = [UIColor blackColor];
+        self.liveStockLabel.textColor = [UIColor whiteColor];
     }
 }
 
+- (void)isWaitingState:(BOOL)state {
+    
+    [self animateLockedBoardToOpen:!state];
+    [self userInterfaceInWaiting:state];
+}
 
 - (void)openBookEndGame {
     [self unlockBoardSetTo:NO];
@@ -168,9 +183,8 @@
         [[UserData instance] decrementRetry];
         [self generateNewLevel];
     } else {
+        [self isWaitingState:YES];
         [[[UpgradeView alloc] initWithBlock:^{
-            [self animateLockedBoardToOpen:NO];
-            [self userInterfaceInWaiting:YES];
         }] showForKey];
     }
 }
@@ -238,8 +252,7 @@
     if (self.unlockingBoardBool == NO) {
         if (YES || [UserData instance].retry > 0) {
             [self generateNewLevel];
-            [self userInterfaceInWaiting:NO];
-            [self animateLockedBoardToOpen:YES];
+            [self isWaitingState:NO];
             [self decrementRetry];
             self.unlockingBoardBool = YES;
         } else {
@@ -359,7 +372,7 @@
 - (void)generateNewLevel {
     self.currentPrevIndex = [[VocabularyManager instance] unlockUptoLevel];
     NSInteger size = [Utils randBetweenMinInt:10 max:10];
-    self.levelData = [[VocabularyManager instance] generateLevel:9
+    self.levelData = [[VocabularyManager instance] generateLevel:self.words.count
                                                              row:size
                                                              col:size];
     [self.boardView setupWithLevel:self.levelData];
@@ -386,9 +399,9 @@
             } else {
                 wordLabel.alpha = 1.f;
                 if (![[UserData instance].pokedex containsObject:vocabData.word]) {
-                    wordLabel.textColor = [UIColor orangeColor];
+                    wordLabel.textColor = [UIColor colorWithRed:0.8f green:0.f blue:0.f alpha:1.f];
                 } else {
-                    wordLabel.textColor = [UIColor blackColor];
+                    wordLabel.textColor = [UIColor colorWithRed:0.f green:0.6f blue:0.f alpha:1.f];
                 }
             }
         } else {

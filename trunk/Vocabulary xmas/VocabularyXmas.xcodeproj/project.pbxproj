@@ -26,6 +26,8 @@
 		D033855218EA9C22008D7861 /* defaultbackground.png in Resources */ = {isa = PBXBuildFile; fileRef = D033854F18EA9C22008D7861 /* defaultbackground.png */; };
 		D033855318EA9C22008D7861 /* bluebackground.png in Resources */ = {isa = PBXBuildFile; fileRef = D033855018EA9C22008D7861 /* bluebackground.png */; };
 		D033855418EA9C22008D7861 /* pinkbackground.png in Resources */ = {isa = PBXBuildFile; fileRef = D033855118EA9C22008D7861 /* pinkbackground.png */; };
+		D035B4021A2F0C6400A0CB63 /* particleEffectFalling.json in Resources */ = {isa = PBXBuildFile; fileRef = D035B4011A2F0C6400A0CB63 /* particleEffectFalling.json */; };
+		D035B4071A2F0F8900A0CB63 /* snowflake.png in Resources */ = {isa = PBXBuildFile; fileRef = D035B4061A2F0F8800A0CB63 /* snowflake.png */; };
 		D0384616191EB12E00265FE1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D03845A8191EB12D00265FE1 /* AppDelegate.m */; };
 		D038463A191EB12E00265FE1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D03845EF191EB12D00265FE1 /* InfoPlist.strings */; };
 		D038463B191EB12E00265FE1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D03845F1191EB12D00265FE1 /* Images.xcassets */; };
@@ -391,6 +393,8 @@
 		D033854F18EA9C22008D7861 /* defaultbackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = defaultbackground.png; sourceTree = "<group>"; };
 		D033855018EA9C22008D7861 /* bluebackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bluebackground.png; sourceTree = "<group>"; };
 		D033855118EA9C22008D7861 /* pinkbackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pinkbackground.png; sourceTree = "<group>"; };
+		D035B4011A2F0C6400A0CB63 /* particleEffectFalling.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = particleEffectFalling.json; sourceTree = "<group>"; };
+		D035B4061A2F0F8800A0CB63 /* snowflake.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = snowflake.png; sourceTree = "<group>"; };
 		D03845A7191EB12D00265FE1 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D03845A8191EB12D00265FE1 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		D03845ED191EB12D00265FE1 /* VocabularyXmas-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "VocabularyXmas-Info.plist"; sourceTree = "<group>"; };
@@ -969,6 +973,7 @@
 		D0E50A2818A7349300AA353E /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				D035B4061A2F0F8800A0CB63 /* snowflake.png */,
 				D0F19C961A19F16700363CB5 /* leaderboard.png */,
 				D0F19C971A19F16700363CB5 /* answericon.png */,
 				D0F080071A0CBB3E009CDAF0 /* key.png */,
@@ -1212,6 +1217,7 @@
 				D0FF13501A1D847E00054B15 /* particleEffectLittleSpark.json */,
 				D0F080001A0B6855009CDAF0 /* particleEffectFastBurst.json */,
 				D0FB4D9B19F635F0006F62C7 /* particleEffectSlowBurst.json */,
+				D035B4011A2F0C6400A0CB63 /* particleEffectFalling.json */,
 			);
 			name = Text;
 			path = Resources/Text;
@@ -1446,6 +1452,7 @@
 				D06181ED193453F5001740D4 /* AnimatedLabel.xib in Resources */,
 				D051F11819731381000F98DC /* RootViewController.xib in Resources */,
 				D0EAB6F6195FF75800C90F0E /* comet.png in Resources */,
+				D035B4071A2F0F8900A0CB63 /* snowflake.png in Resources */,
 				D0E555F2193B084A00F59DF6 /* background_tier3.png in Resources */,
 				D0F375D718FA958000D32A10 /* tier11-2.png in Resources */,
 				D0E6336E18FFB9F8007C1622 /* duing.caf in Resources */,
@@ -1534,6 +1541,7 @@
 				D0E3A0D518E8119D00C7B63D /* doorsPerson.png in Resources */,
 				D0F375C818FA466400D32A10 /* tier11.png in Resources */,
 				D055B91B1918A066007730EB /* tier3coin.png in Resources */,
+				D035B4021A2F0C6400A0CB63 /* particleEffectFalling.json in Resources */,
 				D0F375DA18FA958000D32A10 /* tier0-2.png in Resources */,
 				D0E3300D191A04EA00FB5EB8 /* afterbomb2.png in Resources */,
 				D0E26B0119580CEB00314A7C /* character_learningfail.png in Resources */,
