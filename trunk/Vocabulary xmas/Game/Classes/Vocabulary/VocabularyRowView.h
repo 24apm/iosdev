@@ -15,6 +15,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *definitionLabel;
 @property (nonatomic) BOOL highlighted;
 @property (strong, nonatomic) IBOutlet UIView *backgroundView;
+@property (strong, nonatomic) IBOutlet UIImageView *backgroundImage;
 
 - (void)setupWithData:(VocabularyObject *)data;
 

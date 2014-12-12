@@ -63,14 +63,14 @@
 
 - (void)showForAnswer {
     self.cost = 50;
-    self.lvlLabel.text = @"Show Answer for:";
+    self.lvlLabel.text = @"Santa reveals Answer for:";
     self.stateNotification = UNLOCK_ANSWER_NOTIFICATION;
     [self show];
 }
 
 - (void)showForKey {
     self.cost = 10;
-    self.lvlLabel.text = @"Refill all Keys for:";
+    self.lvlLabel.text = @"Refill all Scissors for:";
     self.stateNotification = ADD_KEY_NOTIFICATION;
     [self show];
 }

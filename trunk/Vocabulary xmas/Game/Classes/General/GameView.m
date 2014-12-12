@@ -27,12 +27,14 @@
 #import "ProgressBarComponent.h"
 #import "ConfigManager.h"
 #import "TrackUtils.h"
+#import "ButtonBase.h"
 
 #define CURRENT_TIME [[NSDate date] timeIntervalSince1970]
 #define TIME_FOR_ONE_RETRY 720.0
 #define FADE_DURATION 1.8f
 
 @interface GameView()
+@property (strong, nonatomic) IBOutlet UIButton *unlockBoardBackground;
 
 @property (strong, nonatomic) IBOutlet UILabel *nextLiveTimeLabel;
 @property (strong, nonatomic) IBOutlet UIImageView *keyImageView;
@@ -49,16 +51,18 @@
 @property (strong, nonatomic) UIActivityIndicatorView *spinner;
 @property (strong, nonatomic) IBOutlet UIButton *wordButton;
 @property (nonatomic) BOOL newSectionUnlocked;
+@property (strong, nonatomic) IBOutlet ButtonBase *unlockButon;
 @property (nonatomic) BOOL unlockingBoardBool;
 @property (strong, nonatomic) IBOutlet UIButton *answerButton;
 @property (strong, nonatomic) IBOutlet UIButton *buyKeyButton;
+@property (strong, nonatomic) IBOutlet UIImageView *lockedBoardImage;
 
 @property (strong, nonatomic) IBOutlet UIView *emitterLayer;
 @property (strong, nonatomic) IBOutlet UIImageView *foundNewWordGlowView;
 @property (strong, nonatomic) IBOutlet UIImageView *wordBook;
 @property (nonatomic) NSInteger numOfGame;
 @property (nonatomic) BOOL gameEnded;
-@property (strong, nonatomic) IBOutlet UIView *animationView;
+@property (nonatomic) double startTime;
 
 
 @property (nonatomic) NSInteger currentPrevIndex;
@@ -99,12 +103,13 @@
         [self unlockBoardSetTo:NO];
         [self hideLabels:[NSNumber numberWithBool:YES]];
         [self startFallingEffect];
+        [self initUnlockingBoardAnimation];
     }
     return self;
 }
 
 - (void)startFallingEffect {
- CAEmitterHelperLayer *cell = [CAEmitterHelperLayer emitter:@"particleEffectFalling.json" onView:self.emitterLayer];
+    CAEmitterHelperLayer *cell = [CAEmitterHelperLayer emitter:@"particleEffectFalling.json" onView:self.emitterLayer];
     CGPoint point = CGPointMake(self.emitterLayer.width/2, 0);
     [cell setStartPoint:point];
     [cell refreshEmitter];
@@ -160,14 +165,14 @@
     self.liveStockLabel.text = [NSString stringWithFormat:@"x%.f", currentOwnedRetry];
     
     if (currentOwnedRetry >= [UserData instance].retryCapacity) {
-        self.liveStockLabel.textColor = [UIColor yellowColor];
+        self.liveStockLabel.textColor = [UIColor greenColor];
     } else {
         self.liveStockLabel.textColor = [UIColor whiteColor];
     }
 }
 
 - (void)isWaitingState:(BOOL)state {
-    
+    self.unlockButon.hidden = !state;
     [self animateLockedBoardToOpen:!state];
     [self userInterfaceInWaiting:state];
 }
@@ -239,7 +244,7 @@
     //[[GameCenterHelper instance] showLeaderboard:[Utils rootViewController]];
     //[self animateLockedBoardToOpen:NO];
     //[self userInterfaceInWaiting:YES];
-    //[self showCompleteLevel];
+    [self showCompleteLevel];
     //[self decrementRetry];
     [self performSelector:@selector(generateNewLevel) withObject:nil afterDelay:0.0];
     self.answerButton.userInteractionEnabled = YES;
@@ -250,11 +255,12 @@
 }
 - (IBAction)unlockedButtonPressed:(UIButton *)sender {
     if (self.unlockingBoardBool == NO) {
-        if (YES || [UserData instance].retry > 0) {
+        if ([UserData instance].retry > 0) {
+            self.unlockingBoardBool = YES;
+            self.lockedBoardView.userInteractionEnabled = NO;
             [self generateNewLevel];
             [self isWaitingState:NO];
             [self decrementRetry];
-            self.unlockingBoardBool = YES;
         } else {
             [[[UpgradeView alloc] init] showForKey];
         }
@@ -268,6 +274,7 @@
 
 - (void)unlockBoardSetTo:(BOOL)state {
     self.lockedBoardView.hidden = state;
+    self.lockedBoardView.userInteractionEnabled = YES;
     self.unlockingBoardBool = NO;
 }
 
@@ -279,8 +286,18 @@
     if (state == NO) {
         [self unlockBoardSetTo:NO];
     }
-    [self animateFadeInAndOut:self.lockedBoardView forState:state];
-    [self performSelector:@selector(unlockBoardSetToWithNSNumber:) withObject:[NSNumber numberWithBool:state] afterDelay:FADE_DURATION + 0.1f];
+    if (state == YES) {
+        [self.lockedBoardImage startAnimating];
+        [self performSelector:@selector(delayFadingForUnlockAnimation) withObject:nil afterDelay:FADE_DURATION];
+        [self performSelector:@selector(unlockBoardSetToWithNSNumber:) withObject:[NSNumber numberWithBool:state] afterDelay:FADE_DURATION + FADE_DURATION + 0.1f];
+    } else {
+        [self animateFadeInAndOut:self.lockedBoardView forState:state];
+        [self performSelector:@selector(unlockBoardSetToWithNSNumber:) withObject:[NSNumber numberWithBool:state] afterDelay:FADE_DURATION + 0.1f];
+    }
+}
+
+- (void)delayFadingForUnlockAnimation {
+    [self animateFadeInAndOut:self.lockedBoardView forState:YES];
 }
 
 -(void)animateFadeInAndOut:(UIView *)view forState:(BOOL)state {
@@ -370,6 +387,7 @@
 }
 
 - (void)generateNewLevel {
+    self.startTime = CURRENT_TIME;
     self.currentPrevIndex = [[VocabularyManager instance] unlockUptoLevel];
     NSInteger size = [Utils randBetweenMinInt:10 max:10];
     self.levelData = [[VocabularyManager instance] generateLevel:self.words.count
@@ -445,7 +463,7 @@
 }
 
 - (void)showCompleteLevel {
-    if (self.newSectionUnlocked) {
+    if (YES || self.newSectionUnlocked) {
         self.newSectionUnlocked = NO;
         // dialog - new level unlocked
         [[SoundManager instance] play:SOUND_EFFECT_WINNING];
@@ -459,10 +477,57 @@
     }
     self.answerButton.userInteractionEnabled = YES;
     self.numOfGame++;
-    
+    [self timeGap:CURRENT_TIME - self.startTime];
+    [[UserData instance] incrementGamePlayed];
     if (self.numOfGame % 3 == 0) {
         [PromoDialogView show];
     }
+}
+
+- (void)timeGap:(double)gap {
+    NSString *timeLabel = @"10sec";
+    if (gap < 10) {
+        timeLabel = @"10sec";
+    } else if (gap < 20) {
+        timeLabel = @"20sec";
+    } else if (gap < 30) {
+        timeLabel = @"30sec";
+    } else if (gap < 40) {
+        timeLabel = @"40sec";
+    } else if (gap < 50) {
+        timeLabel = @"50sec";
+    } else if (gap < 60) {
+        timeLabel = @"1min";
+    } else if (gap < 90) {
+       timeLabel = @"1min30sec";
+    } else if (gap < 180) {
+        timeLabel = @"3min";
+    } else if (gap < 240) {
+        timeLabel = @"4min";
+    } else if (gap < 300) {
+        timeLabel = @"5min";
+    } else if (gap < 360) {
+        timeLabel = @"6min";
+    } else if (gap < 420) {
+        timeLabel = @"7min";
+    } else if (gap < 480) {
+        timeLabel = @"8min";
+    } else if (gap < 540) {
+        timeLabel = @"9min";
+    } else if (gap < 600) {
+        timeLabel = @"10min";
+    } else if (gap < 900) {
+        timeLabel = @"15min";
+    } else if (gap < 1200) {
+        timeLabel = @"20min";
+    } else if (gap < 1800) {
+        timeLabel = @"30min";
+    } else if (gap < 3600) {
+        timeLabel = @"1hr";
+    } else {
+        timeLabel = @"1hr+";
+    }
+    //[TrackUtils trackAction:@"timeGamePlayed" label:timeLabel];
 }
 
 - (void)animateFromTileToMenu:(NSArray *)slotViews {
@@ -534,6 +599,22 @@
     for (THLabel* label in self.words) {
         label.hidden = state;
     }
+}
+
+- (void)initUnlockingBoardAnimation {
+    UIImage* img1 = [UIImage imageNamed:@"cut1.png"];
+    UIImage* img2 = [UIImage imageNamed:@"cut2.png"];
+    UIImage* img3 = [UIImage imageNamed:@"cut3.png"];
+    UIImage* img4 = [UIImage imageNamed:@"cut4.png"];
+    UIImage* img5 = [UIImage imageNamed:@"cut5.png"];
+    UIImage* img6 = [UIImage imageNamed:@"cut6.png"];
+    UIImage* img7 = [UIImage imageNamed:@"cut7.png"];
+    UIImage* img8 = [UIImage imageNamed:@"cut8.png"];
+    UIImage* img9 = [UIImage imageNamed:@"cut9.png"];
+    NSArray *images = [NSArray arrayWithObjects:img1,img2,img3,img4,img5,img6,img7,img8,img9,img9,img9,img9,img9,img9,img9,img9,img9,img9, nil];
+    self.lockedBoardImage.animationImages = images;
+    self.lockedBoardImage.animationRepeatCount = 1;
+    self.lockedBoardImage.animationDuration = FADE_DURATION+FADE_DURATION;
 }
 
 @end

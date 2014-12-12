@@ -39,6 +39,7 @@ extern NSString *const UserDataHouseDataChangedNotification;
 - (void)retryRefillStartAt:(double)time;
 
 - (BOOL)isTutorial;
+- (void)incrementGamePlayed;
 
 @property (nonatomic) long long coin;
 @property (strong, nonatomic) NSMutableArray *pokedex;
@@ -49,5 +50,7 @@ extern NSString *const UserDataHouseDataChangedNotification;
 @property (nonatomic) NSInteger retry;
 @property (nonatomic) NSInteger retryCapacity;
 @property (nonatomic) double retryTime;
+
+@property (nonatomic) NSInteger gamePlayed;
 
 @end

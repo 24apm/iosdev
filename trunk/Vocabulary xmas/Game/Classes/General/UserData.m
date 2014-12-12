@@ -97,6 +97,14 @@ NSString *const UserDataHouseDataChangedNotification = @"UserDataHouseDataChange
     } else {
         self.retryTime = [[[NSUserDefaults standardUserDefaults] objectForKey:@"retrytime"] doubleValue];
     }
+    
+    // Game played
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"gamePlayed"] == nil) {
+        self.gamePlayed = 0;
+        [self saveData:@(self.gamePlayed) forKey:@"gamePlayed"];
+    } else {
+        self.gamePlayed = [[[NSUserDefaults standardUserDefaults] objectForKey:@"gamePlayed"] integerValue];
+    }
 }
 
 - (void)retryRefillStartAt:(double)time {
@@ -127,6 +135,12 @@ NSString *const UserDataHouseDataChangedNotification = @"UserDataHouseDataChange
 
         [self saveData:self.pokedex forKey:@"pokedex"];
     }
+}
+
+- (void)incrementGamePlayed {
+    self.gamePlayed++;
+    [TrackUtils trackAction:@"gamePlayed" label:[NSString stringWithFormat:@"%d", self.gamePlayed]];
+    [self saveData:@(self.gamePlayed) forKey:@"gamePlayed"];
 }
 
 - (BOOL)hasVocabFound:(NSString *)newVocabulary  {

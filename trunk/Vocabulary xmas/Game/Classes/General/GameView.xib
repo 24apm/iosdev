@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
-        <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <objects>
@@ -14,8 +13,11 @@
                 <outlet property="foundNewWordGlowView" destination="3cU-W1-cnh" id="Gfz-BL-8Og"/>
                 <outlet property="keyImageView" destination="uxJ-QL-wjr" id="4wQ-3d-hGK"/>
                 <outlet property="liveStockLabel" destination="dmh-S2-vJX" id="zVm-OL-qhp"/>
-                <outlet property="lockedBoardView" destination="LBE-w5-XyF" id="1bV-Vd-nHd"/>
+                <outlet property="lockedBoardImage" destination="M2p-AP-cEF" id="CC9-g3-89Q"/>
+                <outlet property="lockedBoardView" destination="LBE-w5-XyF" id="STS-1f-J2E"/>
                 <outlet property="nextLiveTimeLabel" destination="9rj-Vp-cZ9" id="v7D-hj-r0X"/>
+                <outlet property="unlockBoardBackground" destination="IqD-sr-Zcv" id="VkO-Ro-olZ"/>
+                <outlet property="unlockButon" destination="B6G-tB-b4j" id="Vbc-tz-llh"/>
                 <outlet property="wordBook" destination="fXK-dG-qDL" id="8lo-Ex-CLQ"/>
                 <outlet property="wordButton" destination="3dz-TU-ecR" id="tcC-Ie-a2r"/>
                 <outletCollection property="words" destination="kg1-DH-o2l" id="yHS-dr-CV4"/>
@@ -225,9 +227,9 @@
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="B6G-tB-b4j" userLabel="UNLOCK" customClass="ButtonBase">
                                     <rect key="frame" x="96" y="190" width="91" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <color key="backgroundColor" red="0.82876275510204078" green="0.63815703758024622" blue="0.058796094631588761" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" red="0.65351961096938771" green="0.60216672908740276" blue="0.024510085303914478" alpha="1" colorSpace="calibratedRGB"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                    <state key="normal" title="UNLOCK">
+                                    <state key="normal" title="OPEN">
                                         <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
@@ -242,7 +244,7 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="XCa-yw-K4u">
-                    <rect key="frame" x="5" y="2" width="50" height="30"/>
+                    <rect key="frame" x="0.0" y="0.0" width="35" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="18"/>
                     <state key="normal">
@@ -254,11 +256,11 @@
                     </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="leaderboard.png" id="nSb-WW-hZc">
-                    <rect key="frame" x="3" y="-8" width="50" height="50"/>
+                    <rect key="frame" x="3" y="0.0" width="30" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="cef-jX-QeO">
-                    <rect key="frame" x="60" y="-2" width="35" height="35"/>
+                    <rect key="frame" x="63" y="0.0" width="30" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="16"/>
                     <state key="normal" backgroundImage="answericon.png">
@@ -270,11 +272,11 @@
                     </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gloweffect.png" id="3cU-W1-cnh">
-                    <rect key="frame" x="212" y="-13" width="140" height="60"/>
+                    <rect key="frame" x="270" y="-13" width="45" height="60"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="closebook.png" highlightedImage="openbook.png" id="fXK-dG-qDL" userLabel="book.png">
-                    <rect key="frame" x="254" y="-9" width="50" height="50"/>
+                    <rect key="frame" x="277" y="0.0" width="30" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="3dz-TU-ecR">
