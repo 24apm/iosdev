@@ -14,7 +14,7 @@
 #define ENABLED_ADS YES
 
 // Game Center
-#define kLeaderboardWords @"com.jeffrwan.vocabulary.words"
+#define kLeaderboardWords @"com.jeffrwan.frostywordsearch.words"
 
 #define kAchievementOneStreak @"com.jeffrwan.thenumbergame.level1"
 #define kAchievement5Streak @"com.jeffrwan.thenumbergame.level5"
@@ -64,10 +64,10 @@
 
 #define TIMES_PLAYED_BEFORE_PROMO 2
 
-#define IAP_TIER_1 @"com.jeffrwan.vocabulary.cointier1"
-#define IAP_TIER_2 @"com.jeffrwan.vocabulary.cointier2"
-#define IAP_TIER_3 @"com.jeffrwan.vocabulary.cointier3"
-#define IAP_TIER_4 @"com.jeffrwan.vocabulary.cointier4"
+#define IAP_TIER_1 @"com.jeffrwan.frostywordsearch.cointier1"
+#define IAP_TIER_2 @"com.jeffrwan.frostywordsearch.cointier2"
+#define IAP_TIER_3 @"com.jeffrwan.frostywordsearch.cointier3"
+#define IAP_TIER_4 @"com.jeffrwan.frostywordsearch.cointier4"
 #define IAP_ITEM_PRESSED_NOTIFICATION @"IAP_ITEM_PRESSED_NOTIFICATION"
 #define CONFIRMED_RENTER_NOTIFICATION @"CONFIRMED_RENTER_NOTIFICATION"
 

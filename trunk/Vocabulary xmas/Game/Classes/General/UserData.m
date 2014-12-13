@@ -139,7 +139,7 @@ NSString *const UserDataHouseDataChangedNotification = @"UserDataHouseDataChange
 
 - (void)incrementGamePlayed {
     self.gamePlayed++;
-    [TrackUtils trackAction:@"gamePlayed" label:[NSString stringWithFormat:@"%d", self.gamePlayed]];
+    [TrackUtils trackAction:@"gamePlayed" label:[NSString stringWithFormat:@"%ld", (long)self.gamePlayed]];
     [self saveData:@(self.gamePlayed) forKey:@"gamePlayed"];
 }
 
@@ -198,12 +198,11 @@ NSString *const UserDataHouseDataChangedNotification = @"UserDataHouseDataChange
 }
 
 - (void)decrementCoin:(long long)coin {
+    self.coin -= coin;
     if (self.coin <= 0) {
         self.coin = 0;
     }
-    
-    self.coin -= coin;
-    
+
     [self saveData:@(self.coin) forKey:@"coin"];
 }
 

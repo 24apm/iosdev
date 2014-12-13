@@ -28,6 +28,7 @@
 #import "ConfigManager.h"
 #import "TrackUtils.h"
 #import "ButtonBase.h"
+#import "GameCenterManager.h"
 
 #define CURRENT_TIME [[NSDate date] timeIntervalSince1970]
 #define TIME_FOR_ONE_RETRY 720.0
@@ -35,6 +36,7 @@
 
 @interface GameView()
 @property (strong, nonatomic) IBOutlet UIButton *unlockBoardBackground;
+@property (strong, nonatomic) IBOutlet UIView *gamecenterBlocker;
 
 @property (strong, nonatomic) IBOutlet UILabel *nextLiveTimeLabel;
 @property (strong, nonatomic) IBOutlet UIImageView *keyImageView;
@@ -241,13 +243,13 @@
 }
 
 - (IBAction)resetPressed:(id)sender {
-    //[[GameCenterHelper instance] showLeaderboard:[Utils rootViewController]];
+    [[GameCenterHelper instance] showLeaderboard:[Utils rootViewController]];
     //[self animateLockedBoardToOpen:NO];
     //[self userInterfaceInWaiting:YES];
-    [self showCompleteLevel];
+    // [self showCompleteLevel];
     //[self decrementRetry];
-    [self performSelector:@selector(generateNewLevel) withObject:nil afterDelay:0.0];
-    self.answerButton.userInteractionEnabled = YES;
+    // [self performSelector:@selector(generateNewLevel) withObject:nil afterDelay:0.0];
+    //self.answerButton.userInteractionEnabled = YES;
 }
 
 - (IBAction)answerPressed:(id)sender {
@@ -386,7 +388,16 @@
     }
 }
 
+- (void)checkGameCenter {
+    if([GameCenterManager isGameCenterAvailable]) {
+        self.gamecenterBlocker.hidden = YES;
+    } else {
+        self.gamecenterBlocker.hidden = NO;
+    }
+}
+
 - (void)generateNewLevel {
+    [self checkGameCenter];
     self.startTime = CURRENT_TIME;
     self.currentPrevIndex = [[VocabularyManager instance] unlockUptoLevel];
     NSInteger size = [Utils randBetweenMinInt:10 max:10];
@@ -463,7 +474,7 @@
 }
 
 - (void)showCompleteLevel {
-    if (YES || self.newSectionUnlocked) {
+    if (self.newSectionUnlocked) {
         self.newSectionUnlocked = NO;
         // dialog - new level unlocked
         [[SoundManager instance] play:SOUND_EFFECT_WINNING];
@@ -499,7 +510,7 @@
     } else if (gap < 60) {
         timeLabel = @"1min";
     } else if (gap < 90) {
-       timeLabel = @"1min30sec";
+        timeLabel = @"1min30sec";
     } else if (gap < 180) {
         timeLabel = @"3min";
     } else if (gap < 240) {

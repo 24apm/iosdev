@@ -10,13 +10,16 @@
                 <outlet property="answerButton" destination="cef-jX-QeO" id="VLd-aJ-f7j"/>
                 <outlet property="boardViewContainer" destination="Qoo-qy-EUL" id="KCl-nK-xfB"/>
                 <outlet property="buyKeyButton" destination="Pka-su-erQ" id="fF1-gw-rwj"/>
-                <outlet property="definitionLabel" destination="hQJ-Z6-Tcw" id="X3Z-be-sYd"/>
+                <outlet property="emitterLayer" destination="kuy-sp-9r2" id="Mgh-oy-5Vf"/>
                 <outlet property="foundNewWordGlowView" destination="3cU-W1-cnh" id="Gfz-BL-8Og"/>
+                <outlet property="gamecenterBlocker" destination="Etc-Zt-fUF" id="BvB-gk-Tgb"/>
                 <outlet property="keyImageView" destination="uxJ-QL-wjr" id="4wQ-3d-hGK"/>
                 <outlet property="liveStockLabel" destination="dmh-S2-vJX" id="zVm-OL-qhp"/>
-                <outlet property="lockedBoardView" destination="LBE-w5-XyF" id="1bV-Vd-nHd"/>
+                <outlet property="lockedBoardImage" destination="M2p-AP-cEF" id="CC9-g3-89Q"/>
+                <outlet property="lockedBoardView" destination="LBE-w5-XyF" id="STS-1f-J2E"/>
                 <outlet property="nextLiveTimeLabel" destination="9rj-Vp-cZ9" id="v7D-hj-r0X"/>
-                <outlet property="unlockBoardBackground" destination="IqD-sr-Zcv" id="YwY-WP-bLg"/>
+                <outlet property="unlockBoardBackground" destination="IqD-sr-Zcv" id="VkO-Ro-olZ"/>
+                <outlet property="unlockButon" destination="B6G-tB-b4j" id="Vbc-tz-llh"/>
                 <outlet property="wordBook" destination="fXK-dG-qDL" id="8lo-Ex-CLQ"/>
                 <outlet property="wordButton" destination="3dz-TU-ecR" id="tcC-Ie-a2r"/>
                 <outletCollection property="words" destination="kg1-DH-o2l" id="yHS-dr-CV4"/>
@@ -28,35 +31,33 @@
                 <outletCollection property="words" destination="SUH-b7-Cme" id="y89-uB-6ul"/>
                 <outletCollection property="words" destination="PUa-aq-VsY" id="BWU-QR-55B"/>
                 <outletCollection property="words" destination="wmy-Ce-R93" id="4hB-Gl-Ave"/>
+                <outletCollection property="words" destination="Rqu-eV-hXr" id="GIa-YX-BzL"/>
+                <outletCollection property="words" destination="1dr-8o-vDP" id="DBK-fJ-SIa"/>
+                <outletCollection property="words" destination="l8j-Ar-URW" id="8ic-Sy-4UM"/>
+                <outletCollection property="words" destination="gkG-0k-V39" id="Vq8-8n-X8Y"/>
+                <outletCollection property="words" destination="XMo-26-6lg" id="KFC-q3-ItJ"/>
+                <outletCollection property="words" destination="gQ8-7n-36D" id="FQI-aR-bMx"/>
             </connections>
         </placeholder>
         <view contentMode="scaleToFill" id="mXS-jD-5j4">
             <rect key="frame" x="0.0" y="0.0" width="768" height="958"/>
-            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.png" id="0Mx-1i-KtP">
-                    <rect key="frame" x="0.0" y="0.0" width="768" height="996"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="word_bg.png" id="gaR-zo-Tfy">
-                    <rect key="frame" x="0.0" y="622" width="768" height="334"/>
+                <view userInteractionEnabled="NO" contentMode="scaleToFill" id="kuy-sp-9r2" userLabel="emitter">
+                    <rect key="frame" x="0.0" y="0.0" width="768" height="958"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                </imageView>
+                </view>
                 <view contentMode="scaleToFill" id="zio-1x-Bez">
                     <rect key="frame" x="0.0" y="622" width="768" height="334"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="word_bg.png" id="680-vG-PbU">
-                            <rect key="frame" x="0.0" y="0.0" width="768" height="334"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                        </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="definition_bg.png" id="E8b-Mj-r8A">
-                            <rect key="frame" x="0.0" y="-33" width="768" height="312"/>
+                            <rect key="frame" x="0.0" y="133" width="768" height="202"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Word" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="PUa-aq-VsY" customClass="THLabel">
-                            <rect key="frame" x="19" y="180" width="240" height="45"/>
+                            <rect key="frame" x="19" y="220" width="240" height="38"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="28"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -65,7 +66,7 @@
                             <size key="shadowOffset" width="1" height="1"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Word" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="iMe-ak-W0b" customClass="THLabel">
-                            <rect key="frame" x="19" y="229" width="240" height="45"/>
+                            <rect key="frame" x="19" y="259" width="240" height="38"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="28"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -74,7 +75,7 @@
                             <size key="shadowOffset" width="1" height="1"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Word" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="SUH-b7-Cme" customClass="THLabel">
-                            <rect key="frame" x="19" y="278" width="240" height="45"/>
+                            <rect key="frame" x="19" y="298" width="240" height="38"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="28"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -83,7 +84,7 @@
                             <size key="shadowOffset" width="1" height="1"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Word" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="5kB-yA-9CJ" customClass="THLabel">
-                            <rect key="frame" x="264" y="180" width="240" height="45"/>
+                            <rect key="frame" x="264" y="220" width="240" height="38"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="28"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -92,7 +93,7 @@
                             <size key="shadowOffset" width="1" height="1"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Word" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="wmy-Ce-R93" customClass="THLabel">
-                            <rect key="frame" x="264" y="229" width="240" height="45"/>
+                            <rect key="frame" x="264" y="259" width="240" height="38"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="28"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -101,7 +102,7 @@
                             <size key="shadowOffset" width="1" height="1"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Word" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="bDZ-iP-qan" customClass="THLabel">
-                            <rect key="frame" x="264" y="278" width="240" height="45"/>
+                            <rect key="frame" x="264" y="298" width="240" height="38"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="28"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -110,7 +111,7 @@
                             <size key="shadowOffset" width="1" height="1"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Word" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="kg1-DH-o2l" customClass="THLabel">
-                            <rect key="frame" x="509" y="180" width="240" height="45"/>
+                            <rect key="frame" x="509" y="220" width="240" height="38"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="28"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -119,7 +120,7 @@
                             <size key="shadowOffset" width="1" height="1"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Word" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="PUd-B2-TZL" customClass="THLabel">
-                            <rect key="frame" x="509" y="229" width="240" height="45"/>
+                            <rect key="frame" x="509" y="259" width="240" height="38"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="28"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -128,7 +129,7 @@
                             <size key="shadowOffset" width="1" height="1"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Word" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="sse-wE-1zA" customClass="THLabel">
-                            <rect key="frame" x="509" y="278" width="240" height="45"/>
+                            <rect key="frame" x="509" y="298" width="240" height="38"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="28"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -136,41 +137,88 @@
                             <color key="shadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <size key="shadowOffset" width="1" height="1"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Definition Definition DefinitionDefinition Definition DefinitionDefinition Definition Definition" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="hQJ-Z6-Tcw">
-                            <rect key="frame" x="19" y="91" width="730" height="87"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Word" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="gQ8-7n-36D" customClass="THLabel">
+                            <rect key="frame" x="19" y="181" width="240" height="38"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="28"/>
-                            <color key="textColor" red="0.066271381294354836" green="0.61554400843587054" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
+                            <color key="shadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <size key="shadowOffset" width="1" height="1"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Word" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="XMo-26-6lg" customClass="THLabel">
+                            <rect key="frame" x="264" y="181" width="240" height="38"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="28"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                            <color key="shadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <size key="shadowOffset" width="1" height="1"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Word" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="gkG-0k-V39" customClass="THLabel">
+                            <rect key="frame" x="509" y="181" width="240" height="38"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="28"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                            <color key="shadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <size key="shadowOffset" width="1" height="1"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Word" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="l8j-Ar-URW" customClass="THLabel">
+                            <rect key="frame" x="19" y="142" width="240" height="38"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="28"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                            <color key="shadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <size key="shadowOffset" width="1" height="1"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Word" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="1dr-8o-vDP" customClass="THLabel">
+                            <rect key="frame" x="264" y="142" width="240" height="38"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="28"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                            <color key="shadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <size key="shadowOffset" width="1" height="1"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Word" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="Rqu-eV-hXr" customClass="THLabel">
+                            <rect key="frame" x="509" y="142" width="240" height="38"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="28"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                            <color key="shadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <size key="shadowOffset" width="1" height="1"/>
                         </label>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" id="Exn-Ly-8hR" userLabel="boardView">
-                    <rect key="frame" x="34" y="47" width="700" height="700"/>
+                    <rect key="frame" x="0.0" y="42" width="768" height="713"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="board_bg.png" id="g6A-Aj-eci">
-                            <rect key="frame" x="0.0" y="0.0" width="700" height="700"/>
+                            <rect key="frame" x="48" y="33" width="672" height="672"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <view contentMode="scaleToFill" id="Qoo-qy-EUL">
-                            <rect key="frame" x="43" y="32" width="613" height="613"/>
+                            <rect key="frame" x="48" y="33" width="672" height="672"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
                         <view contentMode="scaleToFill" id="LBE-w5-XyF" userLabel="Locked Board View">
-                            <rect key="frame" x="43" y="32" width="613" height="613"/>
+                            <rect key="frame" x="36" y="22" width="696" height="696"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LockedBoard.png" id="M2p-AP-cEF">
-                                    <rect key="frame" x="0.0" y="0.0" width="613" height="613"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="696" height="696"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="IqD-sr-Zcv" userLabel="UNLOCK board button">
-                                    <rect key="frame" x="0.0" y="0.0" width="613" height="613"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="696" height="696"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <state key="normal">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
@@ -179,25 +227,26 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="B6G-tB-b4j" userLabel="UNLOCK" customClass="ButtonBase">
-                                    <rect key="frame" x="209" y="415" width="199" height="66"/>
+                                    <rect key="frame" x="230" y="456" width="218" height="72"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                    <color key="backgroundColor" red="0.653519611" green="0.60216672910000002" blue="0.024510085300000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" red="0.65351961096938771" green="0.60216672908740276" blue="0.024510085303914478" alpha="1" colorSpace="calibratedRGB"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                     <state key="normal" title="OPEN">
                                         <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                     <connections>
                                         <action selector="unlockedButtonPressed:" destination="-1" eventType="touchUpInside" id="S85-Nc-LOE"/>
                                     </connections>
                                 </button>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="XCa-yw-K4u">
-                    <rect key="frame" x="12" y="4" width="120" height="67"/>
+                    <rect key="frame" x="0.0" y="0.0" width="84" height="67"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="18"/>
                     <state key="normal">
@@ -209,12 +258,17 @@
                     </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="leaderboard.png" id="nSb-WW-hZc">
-                    <rect key="frame" x="7" y="-18" width="120" height="111"/>
+                    <rect key="frame" x="7" y="0.0" width="72" height="67"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="cef-jX-QeO">
-                    <rect key="frame" x="164" y="-4" width="84" height="78"/>
+                <view contentMode="scaleToFill" id="Etc-Zt-fUF" userLabel="Button Blocker">
+                    <rect key="frame" x="0.0" y="0.0" width="84" height="67"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.017757493622448939" green="0.017757493622448939" blue="0.017757493622448939" alpha="0.5" colorSpace="calibratedRGB"/>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="cef-jX-QeO">
+                    <rect key="frame" x="151" y="0.0" width="72" height="67"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="16"/>
                     <state key="normal" backgroundImage="answericon.png">
                         <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -225,15 +279,15 @@
                     </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gloweffect.png" id="3cU-W1-cnh">
-                    <rect key="frame" x="509" y="-29" width="336" height="134"/>
+                    <rect key="frame" x="648" y="-29" width="108" height="134"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="closebook.png" highlightedImage="openbook.png" id="fXK-dG-qDL" userLabel="book.png">
-                    <rect key="frame" x="610" y="-20" width="120" height="111"/>
+                    <rect key="frame" x="665" y="0.0" width="72" height="67"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="3dz-TU-ecR">
-                    <rect key="frame" x="581" y="2" width="175" height="67"/>
+                    <rect key="frame" x="648" y="2" width="108" height="67"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="18"/>
@@ -260,7 +314,7 @@
                     <rect key="frame" x="346" y="25" width="101" height="47"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="34"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Pka-su-erQ" userLabel="Key Button">
@@ -275,7 +329,7 @@
                     </connections>
                 </button>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <nil key="simulatedStatusBarMetrics"/>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
@@ -286,10 +340,8 @@
     <resources>
         <image name="LockedBoard.png" width="1000" height="1000"/>
         <image name="answericon.png" width="200" height="200"/>
-        <image name="background.png" width="1000" height="1000"/>
         <image name="board_bg.png" width="1000" height="1000"/>
         <image name="closebook.png" width="200" height="200"/>
-        <image name="definition_bg.png" width="320" height="140"/>
         <image name="gloweffect.png" width="256" height="256"/>
         <image name="key.png" width="200" height="200"/>
         <image name="leaderboard.png" width="200" height="200"/>

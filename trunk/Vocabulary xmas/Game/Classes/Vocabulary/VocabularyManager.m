@@ -133,9 +133,10 @@
         
         NSMutableArray *vocabParts = [NSMutableArray arrayWithArray:[row componentsSeparatedByString:@"\t"]];
         NSString *rawWord = vocabParts[0];
-        if (rawWord.length > MAX_STRING_LENGTH) {
+        if (rawWord.length > MAX_STRING_LENGTH || [rawWord containsString:@" "] || [rawWord containsString:@"."]) {
             continue;
         }
+        
         VocabularyObject *vocabData = [[VocabularyObject alloc] init];
         vocabData.word = vocabParts[0];
         //vocabData.definition = vocabParts[1];
