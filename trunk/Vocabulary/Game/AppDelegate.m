@@ -35,12 +35,12 @@
     self.window.rootViewController = self.navigationController;
     [self.window makeKeyAndVisible];
     
-    [self setupConfig];
     
     return YES;
 }
 
 - (void)setupConfig {
+    [super setupConfig];
     [ConfigManager instance].ipadScale = ((UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 2.0f : 1.0f);
 }
 

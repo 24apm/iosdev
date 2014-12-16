@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
-        <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <objects>
@@ -9,6 +8,7 @@
             <connections>
                 <outlet property="animateView" destination="G7n-tA-P17" id="PDU-ZL-uNe"/>
                 <outlet property="bookButton" destination="OXR-ES-trB" id="veO-si-sQD"/>
+                <outlet property="dismissButton" destination="zKf-kN-9Xg" id="I87-wH-7un"/>
                 <outlet property="messageLabel" destination="bWC-R3-K66" id="Qt5-CO-H4O"/>
                 <outlet property="replayBigButton" destination="xSA-WN-h5D" id="gMf-fu-TM6"/>
                 <outlet property="replaySmallButton" destination="x4v-ix-nTJ" id="GkR-i2-oCH"/>
@@ -86,6 +86,16 @@
                         <action selector="nextPressed:" destination="-1" eventType="touchUpInside" id="6AI-Bm-lWB"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="zKf-kN-9Xg">
+                    <rect key="frame" x="253" y="136" width="30" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" backgroundImage="cross.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="dismissButtonPressed:" destination="-1" eventType="touchUpInside" id="Ur7-g5-AH4"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
             <nil key="simulatedStatusBarMetrics"/>
@@ -95,6 +105,9 @@
             <point key="canvasLocation" x="186" y="271"/>
         </view>
     </objects>
+    <resources>
+        <image name="cross.png" width="256" height="256"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

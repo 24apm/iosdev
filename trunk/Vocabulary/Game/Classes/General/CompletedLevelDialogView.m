@@ -11,6 +11,7 @@
 
 @interface CompletedLevelDialogView()
 
+@property (strong, nonatomic) IBOutlet UIButton *dismissButton;
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 @property (nonatomic, strong) BLOCK block;
 @property (strong, nonatomic) IBOutlet UIView *animateView;
@@ -39,6 +40,9 @@
     return self;
 }
 
+- (IBAction)dismissButtonPressed:(UIButton *)sender {
+    [self dismissed:self];
+}
 
 - (IBAction)nextPressed:(id)sender {
     [[NSNotificationCenter defaultCenter]postNotificationName:START_NEW_GAME_NOTIFICATION object:nil];
@@ -46,7 +50,6 @@
 }
 - (IBAction)bookPressed:(id)sender {
     [[NSNotificationCenter defaultCenter]postNotificationName:OPEN_BOOK_NOTIFICATION object:nil];
-    [self dismissed:self];
 }
 
 //- (void)popIn:(UIView *)view {

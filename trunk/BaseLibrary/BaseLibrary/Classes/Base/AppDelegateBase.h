@@ -15,5 +15,6 @@
 @property (strong, nonatomic) IBOutlet UIViewController *viewController;
 
 - (void)registerNotification;
+- (void)setupConfig;
 
 @end
