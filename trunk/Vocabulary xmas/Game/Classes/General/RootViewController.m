@@ -81,7 +81,7 @@
 //                                     self.view.height - self.adBannerView.height);
     
     
-    [self.gameView generateNewLevel];
+    //[self.gameView generateNewLevel];
     
 }
 

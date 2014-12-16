@@ -91,6 +91,16 @@
                         <action selector="nextPressed:" destination="-1" eventType="touchUpInside" id="6AI-Bm-lWB"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="0Gj-6y-d70">
+                    <rect key="frame" x="251" y="138" width="30" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                    <state key="normal" backgroundImage="cross.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="dimissButtonPressed:" destination="-1" eventType="touchUpInside" id="B4h-Mv-zqV"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
             <nil key="simulatedStatusBarMetrics"/>
@@ -101,6 +111,7 @@
         </view>
     </objects>
     <resources>
+        <image name="cross.png" width="256" height="256"/>
         <image name="winningmenu.png" width="480" height="400"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

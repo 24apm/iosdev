@@ -39,6 +39,9 @@
     return self;
 }
 
+- (IBAction)dimissButtonPressed:(UIButton *)sender {
+    [self dismissed:self];
+}
 
 - (IBAction)nextPressed:(id)sender {
     [[NSNotificationCenter defaultCenter]postNotificationName:START_NEW_GAME_NOTIFICATION object:nil];
@@ -46,7 +49,6 @@
 }
 - (IBAction)bookPressed:(id)sender {
     [[NSNotificationCenter defaultCenter]postNotificationName:OPEN_BOOK_NOTIFICATION object:nil];
-    [self dismissed:self];
 }
 
 //- (void)popIn:(UIView *)view {
