@@ -13,5 +13,6 @@
 @property (nonatomic, readonly) NSString *reversedString;
 
 + (NSString *)shuffleString:(NSString *)string;
+- (BOOL)hasSubString:(NSString *)string;
 
 @end

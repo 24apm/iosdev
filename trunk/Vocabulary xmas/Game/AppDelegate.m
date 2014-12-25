@@ -19,6 +19,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [self setupConfig];
     [super application:application didFinishLaunchingWithOptions:launchOptions];
     
     [iRate sharedInstance].usesUntilPrompt = 2;
@@ -35,7 +36,6 @@
     self.window.rootViewController = self.navigationController;
     [self.window makeKeyAndVisible];
     
-    [self setupConfig];
     
     return YES;
 }

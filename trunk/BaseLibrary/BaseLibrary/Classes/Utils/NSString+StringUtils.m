@@ -23,6 +23,14 @@
     return reversedString;
 }
 
+- (BOOL)hasSubString:(NSString *)string {
+    if([self rangeOfString:string].length == NSNotFound) {
+        return YES;
+    } else {
+        return NO;
+    }
+}
+
 + (NSString *) shuffleString:(NSString *)string {
     
     if (string.length <= 0) {
