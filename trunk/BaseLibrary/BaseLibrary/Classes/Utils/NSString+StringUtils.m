@@ -39,8 +39,8 @@
     
     NSString *shuffleString = @"";
     
-    NSInteger totalNumber = string.length;
-    NSInteger currentLength = [[NSNumber numberWithInteger:totalNumber] integerValue];
+    NSInteger currentLength = string.length;
+
     NSMutableArray *randomOrder = [NSMutableArray array];
     for (NSInteger i = 0; i< currentLength; i++) {
         [randomOrder addObject:[NSNumber numberWithInteger:i]];

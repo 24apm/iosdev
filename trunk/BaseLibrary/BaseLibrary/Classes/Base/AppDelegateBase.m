@@ -90,10 +90,16 @@
     AppInfoHTTPRequest *request = [[AppInfoHTTPRequest alloc] initWithURL:@"https://itunes.apple.com/search?term=jeffrey+wan&entity=software"];
     [request send];
     
+    [self setupConfig];
+
     return YES;
 }
 
 - (void)registerNotification {
+    // override
+}
+
+- (void)setupConfig {
     // override
 }
 

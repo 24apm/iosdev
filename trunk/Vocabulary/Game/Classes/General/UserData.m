@@ -206,6 +206,7 @@ NSString *const UserDataHouseDataChangedNotification = @"UserDataHouseDataChange
 }
 
 - (BOOL)isTutorial {
+    return NO;
     return self.pokedex.count < 1;
 }
 @end
