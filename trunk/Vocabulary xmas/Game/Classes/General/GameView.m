@@ -538,7 +538,7 @@
     } else {
         timeLabel = @"1hr+";
     }
-    //[TrackUtils trackAction:@"timeGamePlayed" label:timeLabel];
+    [TrackUtils trackAction:@"timeGamePlayed" label:timeLabel];
 }
 
 - (void)animateFromTileToMenu:(NSArray *)slotViews {
