@@ -34,6 +34,7 @@
 
 @interface GameView()
 
+@property (nonatomic) double startTime;
 @property (strong, nonatomic) IBOutlet UILabel *nextLiveTimeLabel;
 @property (strong, nonatomic) IBOutlet UIImageView *keyImageView;
 
@@ -96,6 +97,7 @@
         }
         self.unlockingBoardBool = NO;
         [self unlockBoardSetTo:NO];
+        self.startTime = 0.f;
         [self hideLabels:[NSNumber numberWithBool:YES]];
     }
     return self;
@@ -358,6 +360,7 @@
 }
 
 - (void)generateNewLevel {
+    self.startTime = CURRENT_TIME;
     self.currentPrevIndex = [[VocabularyManager instance] unlockUptoLevel];
     NSInteger size = [Utils randBetweenMinInt:10 max:10];
     self.levelData = [[VocabularyManager instance] generateLevel:9
@@ -445,6 +448,7 @@
             [[GameCenterHelper instance] loginToGameCenterWithAuthentication];
         }
     }
+    [self timeGap:CURRENT_TIME - self.startTime];
     self.answerButton.userInteractionEnabled = YES;
     self.numOfGame++;
     
@@ -514,6 +518,53 @@
     [self performSelector:@selector(hideLabels:) withObject:[NSNumber numberWithBool:state] afterDelay:FADE_DURATION];
     
 }
+
+- (void)timeGap:(double)gap {
+    NSString *timeLabel = @"10sec";
+    if (gap < 10) {
+        timeLabel = @"10sec";
+    } else if (gap < 20) {
+        timeLabel = @"20sec";
+    } else if (gap < 30) {
+        timeLabel = @"30sec";
+    } else if (gap < 40) {
+        timeLabel = @"40sec";
+    } else if (gap < 50) {
+        timeLabel = @"50sec";
+    } else if (gap < 60) {
+        timeLabel = @"1min";
+    } else if (gap < 90) {
+        timeLabel = @"1min30sec";
+    } else if (gap < 180) {
+        timeLabel = @"3min";
+    } else if (gap < 240) {
+        timeLabel = @"4min";
+    } else if (gap < 300) {
+        timeLabel = @"5min";
+    } else if (gap < 360) {
+        timeLabel = @"6min";
+    } else if (gap < 420) {
+        timeLabel = @"7min";
+    } else if (gap < 480) {
+        timeLabel = @"8min";
+    } else if (gap < 540) {
+        timeLabel = @"9min";
+    } else if (gap < 600) {
+        timeLabel = @"10min";
+    } else if (gap < 900) {
+        timeLabel = @"15min";
+    } else if (gap < 1200) {
+        timeLabel = @"20min";
+    } else if (gap < 1800) {
+        timeLabel = @"30min";
+    } else if (gap < 3600) {
+        timeLabel = @"1hr";
+    } else {
+        timeLabel = @"1hr+";
+    }
+    [TrackUtils trackAction:@"timeGamePlayed" label:timeLabel];
+}
+
 
 - (void)hideLabels:(NSNumber *)stateBool {
     BOOL state = [stateBool boolValue];
