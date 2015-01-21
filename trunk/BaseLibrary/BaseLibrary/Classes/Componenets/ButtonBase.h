@@ -10,4 +10,6 @@
 
 @interface ButtonBase : UIButton
 
+@property (nonatomic, strong) NSString *title;
+
 @end

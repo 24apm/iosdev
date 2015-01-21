@@ -1,0 +1,40 @@
+{
+    "scale" : 1,
+    "velocity" : 1,
+    "birthRate" : 1,
+    "emitterHeight" : 568,
+    "emitterShape" : "point",
+    "emitterWidth" : 320,
+    "lifetime" : 1,
+    "emitterCells" : [
+                      {
+                      "colorRed" : 1.0,
+                      "scaleRange" : 0,
+                      "scale" : 0.0860252,
+                      "alphaRange" : -0.009463727,
+                      "velocity" : 248.10725,
+                      "velocityRange" : 0,
+                      "emissionRange" : 6.28,
+                      "colorBlue" : 1.0,
+                      "blueRange" : 0,
+                      "scaleSpeed" : 0.0,
+                      "emissionLongitude" : 6.28,
+                      "xAcceleration" : 0,
+                      "greenRange" : 0,
+                      "alphaSpeed" : -0.02208203,
+                      "spin" : 3.157729,
+                      "lifetime" : 10.9306,
+                      "lifetimeRange" : 0,
+                      "colorGreen" : 1.0,
+                      "yAcceleration" : 0,
+                      "renderMode" : "backToFront",
+                      "birthRate" : 33.33438,
+                      "textureName" : "iceshard.png",
+                      "colorAlpha" : 1,
+                      "redRange" : 0
+                      }
+                      ],
+    "lifeSpan" : 0,
+    "duration" : 0,
+    "renderMode" : "backToFront"
+}

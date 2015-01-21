@@ -35,4 +35,12 @@
 
 }
 
+- (void)setTitle:(NSString *)title {
+    _title = title;
+    [self setTitle:title forState:UIControlStateNormal];
+    [self setTitle:title forState:UIControlStateHighlighted];
+    [self setTitle:title forState:UIControlStateDisabled];
+    [self setTitle:title forState:UIControlStateSelected];
+}
+
 @end
