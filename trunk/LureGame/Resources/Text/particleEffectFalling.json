@@ -1,0 +1,40 @@
+{
+    "scale" : 1,
+    "velocity" : 1,
+    "birthRate" : 1,
+    "emitterHeight" : 568,
+    "emitterShape" : "line",
+    "emitterWidth" : 320,
+    "lifetime" : 1,
+    "emitterCells" : [
+                      {
+                      "colorRed" : 1,
+                      "scaleRange" : 0,
+                      "scale" : 0.0823975,
+                      "alphaRange" : -0.09148264,
+                      "velocity" : 14.98423,
+                      "velocityRange" : 1.104101,
+                      "emissionRange" : 0.02971609,
+                      "colorBlue" : 1,
+                      "blueRange" : 0,
+                      "scaleSpeed" : 0,
+                      "emissionLongitude" : 3.14,
+                      "xAcceleration" : 0,
+                      "greenRange" : 0,
+                      "alphaSpeed" : 0.0,
+                      "spin" : 0.8044164,
+                      "lifetime" : 15.36278,
+                      "lifetimeRange" : 0,
+                      "colorGreen" : 1,
+                      "yAcceleration" : 3.154602,
+                      "renderMode" : "backToFront",
+                      "birthRate" : 2.365931,
+                      "textureName" : "snowflake.png",
+                      "colorAlpha" : 1,
+                      "redRange" : 0
+                      }
+                      ],
+    "lifeSpan" : 0,
+    "duration" : 0,
+    "renderMode" : "backToFront"
+}

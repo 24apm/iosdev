@@ -115,13 +115,6 @@ typedef enum {
     TableTypeIAP
 } TableType;
 
-typedef enum {
-    BlockTypeObstacle,
-    BlockTypePower,
-    BlockTypeTreasure,
-    BlockTypePlayer,
-    BlockTypeWaypoint
-} BlockType;
 
 @interface GameConstants : NSObject
 

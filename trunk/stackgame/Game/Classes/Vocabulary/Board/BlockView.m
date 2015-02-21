@@ -10,12 +10,18 @@
 
 @implementation BlockView
 
-- (void)blockLabelSetTo:(NSString *)string {
-    self.label.text = string;
-    if ([self.label.text isEqualToString:@""]) {
-        self.hidden = YES;
+- (void)blockSetTo:(BlockType)type {
+    if (type <= 0) {
+        self.label.text = @"";
     } else {
-        self.hidden = NO;
+        self.label.text = [NSString stringWithFormat:@"%d", type];
     }
+    self.fruitType = type;
+   self.backgroundColor = [BlockManager colorForBlockType:type];
 }
+
+- (void)blockStateSetTo:(BlockState)state {
+    self.state = state;
+}
+
 @end

@@ -8,6 +8,7 @@
 
 #import "XibView.h"
 #import "LevelData.h"
+#import "BlockView.h"
 
 @class SlotView;
 
@@ -27,6 +28,8 @@
 - (void)setupWithLevel:(LevelData *)levelData;
 - (SlotView *)slotAtRow:(NSInteger)r column:(NSInteger)c;
 - (NSString *)buildStringFromArray:(NSArray *)slotSelection;
-- (void)placeBlockWithTag:(NSString *)string;
+- (void)placeBlockLine;
+- (void)shiftBlocksDown;
+- (void)destroyBlocksForType:(BlockType)type;
 
 @end

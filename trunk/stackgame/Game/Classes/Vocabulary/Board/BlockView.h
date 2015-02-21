@@ -7,9 +7,13 @@
 //
 
 #import "XibView.h"
+#import "BlockManager.h"
 
 @interface BlockView : XibView
 
 @property (strong, nonatomic) IBOutlet UILabel *label;
-- (void)blockLabelSetTo:(NSString *)string;
+@property (nonatomic) BlockType fruitType;
+@property (nonatomic) BlockState state;
+
+- (void)blockSetTo:(BlockType)type;
 @end

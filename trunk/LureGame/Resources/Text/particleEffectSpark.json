@@ -1,0 +1,41 @@
+
+{
+    "scale" : 1,
+    "velocity" : 1,
+    "birthRate" : 1,
+    "emitterHeight" : 568,
+    "emitterShape" : "point",
+    "emitterWidth" : 320,
+    "lifetime" : 1,
+    "emitterCells" : [
+                      {
+                      "colorRed" : 1,
+                      "scaleRange" : 0,
+                      "scale" : 0.1624606,
+                      "alphaRange" : -0.09148264,
+                      "velocity" : 51.26183,
+                      "velocityRange" : 0,
+                      "emissionRange" : 1.040063,
+                      "colorBlue" : 0,
+                      "blueRange" : 0,
+                      "scaleSpeed" : -0.03785491,
+                      "emissionLongitude" : 4.823912,
+                      "xAcceleration" : 0,
+                      "greenRange" : 0,
+                      "alphaSpeed" : -0.08517349,
+                      "spin" : 22.8044164,
+                      "lifetime" : 1.940063,
+                      "lifetimeRange" : 0,
+                      "colorGreen" : 1,
+                      "yAcceleration" : 53.62781,
+                      "renderMode" : "backToFront",
+                      "birthRate" : 32.33438,
+                      "textureName" : "particle_diamond.png",
+                      "colorAlpha" : 1,
+                      "redRange" : 0
+                      }
+                      ],
+    "lifeSpan" : 0.2444794923067093,
+    "duration" : 0.2444794923067093,
+    "renderMode" : "backToFront"
+}

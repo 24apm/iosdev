@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D00012161A985B9500DA8541 /* BlockManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D00012151A985B9500DA8541 /* BlockManager.m */; };
 		D0038E951A3C11C300C3B257 /* GameView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0038E941A3C11C300C3B257 /* GameView~ipad.xib */; };
 		D0139FA719DFC89500875248 /* particleEffect.json in Resources */ = {isa = PBXBuildFile; fileRef = D0139FA519DFC89500875248 /* particleEffect.json */; };
 		D02B962419C6317E00F565C1 /* AnimatedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = D02B95E919C6317E00F565C1 /* AnimatedLabel.m */; };
@@ -381,6 +382,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D00012141A985B9500DA8541 /* BlockManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockManager.h; sourceTree = "<group>"; };
+		D00012151A985B9500DA8541 /* BlockManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlockManager.m; sourceTree = "<group>"; };
 		D0038E941A3C11C300C3B257 /* GameView~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = "GameView~ipad.xib"; path = "Game/Classes/General/GameView~ipad.xib"; sourceTree = SOURCE_ROOT; };
 		D0139FA519DFC89500875248 /* particleEffect.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = particleEffect.json; sourceTree = "<group>"; };
 		D02B95E819C6317E00F565C1 /* AnimatedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatedLabel.h; sourceTree = "<group>"; };
@@ -835,6 +838,8 @@
 				D02B961719C6317E00F565C1 /* RootViewController.m */,
 				D0D3F1E819E1CD420036179E /* GameView.h */,
 				D0D3F1E919E1CD420036179E /* GameView.m */,
+				D00012141A985B9500DA8541 /* BlockManager.h */,
+				D00012151A985B9500DA8541 /* BlockManager.m */,
 				D0EB603E1A6B7B7100DB9B45 /* UserChoice.h */,
 				D0EB603F1A6B7B7100DB9B45 /* UserChoice.m */,
 			);
@@ -1710,6 +1715,7 @@
 				D02B963019C6317E00F565C1 /* GameManager.m in Sources */,
 				D02B962B19C6317E00F565C1 /* CoinView.m in Sources */,
 				D02B962F19C6317E00F565C1 /* GameConstants.m in Sources */,
+				D00012161A985B9500DA8541 /* BlockManager.m in Sources */,
 				D04F686319E1143300A65E09 /* VocabularyTableDialogView.m in Sources */,
 				D0EB60381A6B68E100DB9B45 /* BlockView.m in Sources */,
 				D04F686019E1134500A65E09 /* UserData.m in Sources */,

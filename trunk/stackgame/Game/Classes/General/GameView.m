@@ -65,6 +65,8 @@
 @property (nonatomic) NSInteger numOfGame;
 @property (nonatomic) BOOL gameEnded;
 @property (nonatomic) double startTime;
+@property (nonatomic) double nextDropTime;
+@property (nonatomic) double shiftBlockTime;
 @property (strong, nonatomic) IBOutlet UserChoice *userChoice1;
 @property (strong, nonatomic) IBOutlet UserChoice *userChoice2;
 @property (strong, nonatomic) IBOutlet UserChoice *userChoice3;
@@ -110,6 +112,8 @@
         [self initUnlockingBoardAnimation];
         //        [self shuffleChoiceButton];
         [self generateNewLevel];
+        self.nextDropTime = CURRENT_TIME;
+        self.shiftBlockTime = CURRENT_TIME;
     }
     return self;
 }
@@ -137,6 +141,17 @@
 }
 
 - (void)drawStep {
+    
+    if (CURRENT_TIME - self.shiftBlockTime > 0.5f) {
+        [self.boardView shiftBlocksDown];
+        self.shiftBlockTime = CURRENT_TIME;
+    }
+    
+    if (CURRENT_TIME - self.nextDropTime > 1.5f) {
+        [self.boardView placeBlockLine];
+        self.nextDropTime = CURRENT_TIME;
+    }
+    
     if ([UserData instance].retry < [UserData instance].retryCapacity) {
         double gapTime = CURRENT_TIME - [UserData instance].retryTime;
         if (gapTime >= TIME_FOR_ONE_RETRY) {
@@ -394,6 +409,7 @@
 }
 
 - (void)generateNewLevel {
+    [self shuffleChoiceButton];
     [self checkGameCenter];
     self.startTime = CURRENT_TIME;
     self.currentPrevIndex = [[VocabularyManager instance] unlockUptoLevel];
@@ -569,23 +585,40 @@
 //}
 
 - (void)userChoicePressed:(NSNotification *)notification {
-    NSString *string = notification.object;
-    [self.boardView placeBlockWithTag:string];
-//    [self.userChoice1 shuffleID];
-//    [self.userChoice2 shuffleID];
-//    [self.userChoice3 shuffleID];
-    //    [self shuffleChoiceButton];
+    BlockType type = [notification.object integerValue];
+    [self.boardView destroyBlocksForType:type];
+    
+    
+    [self shuffleChoiceButton];
 }
 
-//- (void)shuffleChoiceButton {
-//    self.choice1.tag = [Utils randBetweenMinInt:1 max:1];
-//    self.choice2.tag = [Utils randBetweenMinInt:7 max:7];
-//    self.choice3.tag = [Utils randBetweenMinInt:1 max:7];
-//    [self updateChoiceButtonImage];
-//}
+- (NSMutableArray *)createChoiceArray {
+    NSMutableArray *arrayOfChoices = [NSMutableArray array];
+    [arrayOfChoices addObject:[NSNumber numberWithInteger:BlockType_Apple]];
+    [arrayOfChoices addObject:[NSNumber numberWithInteger:BlockType_Watermelon]];
+    [arrayOfChoices addObject:[NSNumber numberWithInteger:BlockType_Mango]];
+    [arrayOfChoices addObject:[NSNumber numberWithInteger:BlockType_Strawberry]];
+    [arrayOfChoices addObject:[NSNumber numberWithInteger:BlockType_Pear]];
+    [arrayOfChoices addObject:[NSNumber numberWithInteger:BlockType_Grape]];
+    [arrayOfChoices addObject:[NSNumber numberWithInteger:BlockType_Banana]];
+    [arrayOfChoices addObject:[NSNumber numberWithInteger:BlockType_Cherry]];
+    [arrayOfChoices addObject:[NSNumber numberWithInteger:BlockType_Lemon]];
+    return  arrayOfChoices;
+}
 
-- (void)updateChoiceButtonImage {
+- (void)shuffleChoiceButton {
     
+    NSMutableArray *arrayOfChoices = [self createChoiceArray];
+    NSInteger index = [Utils randBetweenMinInt:0 max:arrayOfChoices.count -1];
+    [self.userChoice1 setChoiceID:[[arrayOfChoices objectAtIndex:index] integerValue]];
+    [arrayOfChoices removeObjectAtIndex:index];
+    index = [Utils randBetweenMinInt:0 max:arrayOfChoices.count -1];
+    
+    [self.userChoice2 setChoiceID:[[arrayOfChoices objectAtIndex:index] integerValue]];
+    [arrayOfChoices removeObjectAtIndex:index];
+    index = [Utils randBetweenMinInt:0 max:arrayOfChoices.count -1];
+    
+    [self.userChoice3 setChoiceID:[[arrayOfChoices objectAtIndex:index] integerValue]];
 }
 
 @end

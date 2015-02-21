@@ -13,6 +13,10 @@
 #import "NSString+StringUtils.h"
 #import "GameConstants.h"
 #import "SoundManager.h"
+#import "Utils.h"
+
+
+#define TILE_MOVE_ANIMATION_DURATION 1.f
 
 @interface BoardView()
 
@@ -56,7 +60,8 @@
 - (void)refreshSlots {
     for (NSInteger i = 0; i < self.slots.count; i++) {
         SlotView *slotView = [self.slots objectAtIndex:i];
-        [slotView.block blockLabelSetTo:@""];
+        [slotView.block blockSetTo:BlockType_Empty];
+        slotView.block.hidden = NO;
     }
 }
 
@@ -135,33 +140,73 @@
     return [currentSlot.block.label.text isEqual:@""];
 }
 
-- (void)placeBlockWithTag:(NSString *)string {
-    NSInteger emptySlotIndex = [self findEmptySlot];
-    if (emptySlotIndex < 0) {
-        NSInteger maxCheck = 0;
-        
-        while (maxCheck <= NUM_COL && emptySlotIndex < 0) {
-            maxCheck ++;
-            [self increaseColPointer];
-            emptySlotIndex = [self findEmptySlot];
-        }
-        if (maxCheck >= NUM_COL) {
-            return;
+- (void)placeBlockLine {
+    NSInteger targetSlotIndex = 0;
+    NSInteger fruitType;
+    BOOL canFitLine = NO;
+    SlotView* currentSlot = [self.slots objectAtIndex:targetSlotIndex];
+    while (targetSlotIndex < NUM_COL && currentSlot.block.fruitType == BlockType_Empty) {
+        fruitType = [Utils randBetweenMinInt:BlockType_Orange max:BlockType_Lemon];
+        [currentSlot.block blockSetTo:fruitType];
+        targetSlotIndex++;
+        currentSlot = [self.slots objectAtIndex:targetSlotIndex];
+        if (canFitLine == NO) {
+            canFitLine = YES;
         }
     }
-    if (emptySlotIndex < 0) {
+    
+    if (canFitLine == NO) {
         [[NSNotificationCenter defaultCenter]postNotificationName:NO_MORE_MOVE object:nil];
         return;
     }
-    SlotView* currentSlot = [self.slots objectAtIndex:emptySlotIndex];
-    [currentSlot.block blockLabelSetTo:string];
-    [self checkForMatchHori];
-    [self checkForMatchVert];
-    [self destroyBlocksfor:self.matchedSetsArray];
-    [self shiftBlocksDown];
-    [self increaseColPointer];
-    
 }
+
+
+- (void)destroyBlocksForType:(BlockType)type {
+    [self checkForType:type];
+    [self animateDestroyArrayBlocks:self.matchedSetsArray];
+    [self shiftBlocksDown];
+}
+
+- (void)checkForType:(BlockType)type {
+    for (NSInteger i = 0; i < NUM_ROW; i++) {
+        for (NSInteger j = 0; j < NUM_COL; j++) {
+            SlotView* currentSlot = [self slotAtRow:i column:j];
+            if (currentSlot.block.fruitType !=type) {
+                continue;
+            } else {
+                [self.matchedSetsArray addObject:currentSlot];
+            }
+        }
+    }
+}
+//- (void)placeBlockWithTag:(NSString *)string {
+//    NSInteger emptySlotIndex = [self findEmptySlot];
+//    if (emptySlotIndex < 0) {
+//        NSInteger maxCheck = 0;
+//
+//        while (maxCheck <= NUM_COL && emptySlotIndex < 0) {
+//            maxCheck ++;
+//            [self increaseColPointer];
+//            emptySlotIndex = [self findEmptySlot];
+//        }
+//        if (maxCheck >= NUM_COL) {
+//            return;
+//        }
+//    }
+//    if (emptySlotIndex < 0) {
+//        [[NSNotificationCenter defaultCenter]postNotificationName:NO_MORE_MOVE object:nil];
+//        return;
+//    }
+//    SlotView* currentSlot = [self.slots objectAtIndex:emptySlotIndex];
+//    [currentSlot.block blockLabelSetTo:string];
+//    [self checkForMatchHori];
+//    [self checkForMatchVert];
+//    [self destroyBlocksfor:self.matchedSetsArray];
+//    [self shiftBlocksDown];
+//    [self increaseColPointer];
+//
+//}
 
 - (void)increaseColPointer {
     self.colPointer++;
@@ -174,7 +219,7 @@
     for (NSInteger i = 0; i < NUM_ROW; i++) {
         for (NSInteger j = 0; j <= NUM_COL- MIN_SIZE_TO_MATCH; j++) {
             SlotView* currentSlot = [self slotAtRow:i column:j];
-            if ([currentSlot.block.label.text isEqualToString:@""]) {
+            if (currentSlot.block.fruitType != BlockType_Orange || currentSlot.block.state == BlockStateDropping) {
                 continue;
             }
             
@@ -182,7 +227,7 @@
             NSInteger numOfMatchingSet = 1;
             while (right++ < NUM_COL) {
                 SlotView* nextSlot = [self slotAtRow:i column:right];
-                if ([currentSlot.block.label.text isEqualToString:nextSlot.block.label.text]) {
+                if (nextSlot.block.fruitType == BlockType_Orange && nextSlot.block.state == BlockStateLanded) {
                     numOfMatchingSet++;
                 } else {
                     break;
@@ -204,7 +249,7 @@
     for (NSInteger i = 0; i <= NUM_ROW - MIN_SIZE_TO_MATCH; i++) {
         for (NSInteger j = 0; j < NUM_COL; j++) {
             SlotView* currentSlot = [self slotAtRow:i column:j];
-            if ([currentSlot.block.label.text isEqualToString:@""]) {
+            if (currentSlot.block.fruitType != BlockType_Orange || currentSlot.block.state == BlockStateDropping) {
                 continue;
             }
             
@@ -212,7 +257,7 @@
             NSInteger numOfMatchingSet = 1;
             while (down++ < NUM_ROW) {
                 SlotView* nextSlot = [self slotAtRow:down column:j];
-                if ([currentSlot.block.label.text isEqualToString:nextSlot.block.label.text]) {
+                if (nextSlot.block.fruitType == BlockType_Orange && nextSlot.block.state == BlockStateLanded) {
                     numOfMatchingSet++;
                 } else {
                     break;
@@ -258,14 +303,14 @@
 //                    break;
 //                }
 //            }
-//        
+//
 //        if (matchedBlocksSet.count > 2) {
 //            [self destroyBlocksfor:matchedBlocksSet];
 //            [self shiftBlocksDown];
 //        }
-//        
+//
 //        [matchedBlocksSet removeAllObjects];
-//    
+//
 //        }
 //    }
 //}
@@ -277,21 +322,63 @@
     for (NSInteger i = NUM_ROW - 1; i >= 0; i--) {
         for (NSInteger j = NUM_COL - 1; j >= 0; j--) {
             currentSlot = [self slotAtRow:i column:j];
-            if (![currentSlot.block.label.text isEqualToString:@""]) {
+            if (currentSlot.block.fruitType == BlockType_Empty) {
                 continue;
             }
-            NSInteger up = i;
-            while (up > 0) {
-                up--;
-                targetSlot = [self slotAtRow:up column:j];
-                if (![targetSlot.block.label.text isEqualToString:@""]) {
-                    break;
-                }
+            NSInteger down = i;
+            down++;
+            targetSlot = [self slotAtRow:down column:j];
+            if (down < NUM_ROW && targetSlot.block.fruitType == BlockType_Empty) {
+                [targetSlot.block blockSetTo:currentSlot.block.fruitType];
+                [currentSlot.block blockSetTo:BlockType_Empty];
+                currentSlot.block.state = BlockStateDropping;
+            } else {
+                currentSlot.block.state = BlockStateLanded;
+                [self checkForMatchHori];
+                [self checkForMatchVert];
+                [self animateDestroyArrayBlocks:self.matchedSetsArray];
             }
-            [currentSlot.block blockLabelSetTo:targetSlot.block.label.text];
-            [targetSlot.block blockLabelSetTo:@""];
         }
     }
+}
+
+- (void)animateDestroyArrayBlocks:(NSMutableArray *)array {
+//    NSMutableArray *matchedBlocksSet = array;
+//    for (NSInteger j = 0; j < matchedBlocksSet.count; j++) {
+//        SlotView *slot = [matchedBlocksSet objectAtIndex:j];
+//        [self animateDestroyTile:slot];
+//    }
+    [self destroyBlocksfor:array];
+    
+}
+
+- (void)animateDestroyTile:(SlotView *)slot {
+    
+    CABasicAnimation *animateScale = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+    animateScale.toValue = [NSNumber numberWithFloat:1.4f];
+    
+    CABasicAnimation *animateOpacity = [CABasicAnimation animationWithKeyPath:@"opacity"];
+    animateOpacity.toValue = [NSNumber numberWithFloat:0.3f];
+    
+    CABasicAnimation *rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
+    rotationAnimation.fromValue = [NSNumber numberWithFloat:0.0f];
+    rotationAnimation.toValue = [NSNumber numberWithFloat: M_PI * 2.0f];
+    rotationAnimation.duration = 0.5f;
+    rotationAnimation.cumulative = YES;
+    rotationAnimation.repeatCount = HUGE_VAL;
+    
+    CAAnimationGroup *animateGroup = [CAAnimationGroup animation];
+    animateGroup.animations = [NSArray arrayWithObjects:rotationAnimation, animateScale, animateOpacity, nil];
+    animateGroup.duration = TILE_MOVE_ANIMATION_DURATION + .2f;
+    animateGroup.fillMode = kCAFillModeForwards;
+//    animateGroup.removedOnCompletion = NO;
+    
+    [slot.block.layer addAnimation:animateGroup forKey:@"animateDestroyTile"];
+    [self performSelector:@selector(removeDestroyTile:) withObject:slot afterDelay:animateGroup.duration];
+}
+
+- (void)removeDestroyTile:(SlotView *)slot {
+    [slot.block blockSetTo:BlockType_Empty];
 }
 
 - (void)destroyBlocksfor:(NSMutableArray *)array {
@@ -299,7 +386,7 @@
     
     for (NSInteger j = 0; j < matchedBlocksSet.count; j++) {
         SlotView *slot = [matchedBlocksSet objectAtIndex:j];
-        [slot.block blockLabelSetTo:@""];
+        [slot.block blockSetTo:BlockType_Empty];
     }
     [self.matchedSetsArray removeAllObjects];
 }
